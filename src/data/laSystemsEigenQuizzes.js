@@ -372,6 +372,89 @@ export const LA_S_GEO_QUIZ = [
   },
 ];
 
+
+export const LA_S_LU_QUIZ = [
+  {
+    prompt: "In A = LU, what kind of matrix is U?",
+    options: ["Upper triangular", "Lower triangular", "Diagonal", "Orthogonal"],
+    answer: "A",
+    explanation: "U is upper triangular — it's the result of forward elimination on A, assuming no row swaps were needed.",
+  },
+  {
+    prompt: "What goes on the diagonal of L?",
+    options: ["The pivots of A", "1's", "The eigenvalues of A", "0's"],
+    answer: "B",
+    explanation: "By convention L is unit lower triangular — its diagonal entries are always 1.",
+  },
+  {
+    prompt: "What do the below-diagonal entries of L represent?",
+    options: [
+      "Random placeholder values",
+      "The eigenvalues of A",
+      "The multipliers used to eliminate each entry during forward elimination",
+      "The entries of U reversed",
+    ],
+    answer: "C",
+    explanation: "Each below-diagonal entry of L records the multiplier used in the row operation that cleared that position.",
+  },
+  {
+    prompt: "Why factor A = LU before solving Ax = b for several different values of b?",
+    options: [
+      "It changes the solution set to something simpler",
+      "It makes A invertible even if it wasn't before",
+      "Elimination is done once; each new b only needs two cheap triangular solves",
+      "It avoids needing b at all",
+    ],
+    answer: "C",
+    explanation: "Forming L and U is the expensive step; once done, each new b costs only a forward and a back substitution.",
+  },
+  {
+    prompt: "Solving Ly = b is done by:",
+    options: ["Back substitution, bottom to top", "Forward substitution, top to bottom", "Matrix inversion", "Cramer's Rule"],
+    answer: "B",
+    explanation: "Since L is lower triangular, its first row involves only the first unknown, letting you solve top to bottom.",
+  },
+  {
+    prompt: "Once y is known from Ly = b, how do you find x?",
+    options: [
+      "Solve Ux = y by back substitution, bottom to top",
+      "Solve Ux = y by forward substitution, top to bottom",
+      "x equals y directly",
+      "Multiply y by U",
+    ],
+    answer: "A",
+    explanation: "U is upper triangular, so its last row involves only the last unknown, letting you solve bottom to top.",
+  },
+  {
+    prompt: "If a needed pivot is zero during elimination, what's the correct fix?",
+    options: [
+      "Set that pivot to 1 and continue",
+      "Give up — no factorization exists",
+      "Swap rows and track it with a permutation matrix P, giving PA = LU",
+      "Swap columns instead of rows",
+    ],
+    answer: "C",
+    explanation: "A permutation matrix P records the row swap; the reordered matrix PA then factors cleanly as LU.",
+  },
+  {
+    prompt: "Why is LU factorization especially useful in engineering simulations with many load cases?",
+    options: [
+      "Each load case needs a full new elimination anyway",
+      "The same A's expensive elimination is reused, and only the cheap triangular solves repeat per case",
+      "It removes the need for a coefficient matrix",
+      "It only works for one load case at a time",
+    ],
+    answer: "B",
+    explanation: "Factor once; every new right-hand side (load case) only needs the two fast triangular solves.",
+  },
+  {
+    prompt: "Multiplying L and U back together should give you:",
+    options: ["The identity matrix", "The original matrix A (or PA if rows were swapped)", "The zero matrix", "U squared"],
+    answer: "B",
+    explanation: "LU is a factorization of A, so recombining L and U must reconstruct A exactly (or PA if a permutation was used).",
+  },
+];
+
 export const LA_E_INTRO_QUIZ = [
   {
     prompt: "If $A\\mathbf{v}=3\\mathbf{v}$ with $\\mathbf{v}\\ne\\mathbf{0}$, then $\\mathbf{v}$ is an eigenvector with eigenvalue:",
