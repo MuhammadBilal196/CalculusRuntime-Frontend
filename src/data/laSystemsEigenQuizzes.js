@@ -734,6 +734,88 @@ export const LA_E_DIAG_QUIZ = [
   },
 ];
 
+export const LA_E_SPECTRAL_QUIZ = [
+  {
+    prompt: "The Spectral Theorem applies to which matrices?",
+    options: ["Any square matrix", "Real symmetric matrices (A = Aᵀ)", "Only diagonal matrices", "Any invertible matrix"],
+    answer: "B",
+    explanation: "The theorem's guarantee — real eigenvalues and an orthogonal eigenbasis — specifically requires A to equal its own transpose.",
+  },
+  {
+    prompt: "For a real symmetric matrix, eigenvalues are always:",
+    options: ["Complex", "Real", "Negative", "Equal to each other"],
+    answer: "B",
+    explanation: "Symmetry guarantees every eigenvalue of a real symmetric matrix is a real number, never complex.",
+  },
+  {
+    prompt: "Eigenvectors of a real symmetric matrix belonging to two different eigenvalues are:",
+    options: ["Always parallel", "Always orthogonal to each other", "Unrelated in general", "Always equal"],
+    answer: "B",
+    explanation: "Symmetry forces λ₁(v₁·v₂) = λ₂(v₁·v₂); if λ₁ ≠ λ₂, this can only hold if v₁·v₂ = 0.",
+  },
+  {
+    prompt: "In A = QΛQᵀ, what property does Q have?",
+    options: ["Q is orthogonal: Q⁻¹ = Qᵀ", "Q is diagonal", "Q is any invertible matrix", "Q is lower triangular"],
+    answer: "A",
+    explanation: "The extra guarantee beyond ordinary diagonalizability is that the change-of-basis matrix can always be chosen orthogonal.",
+  },
+  {
+    prompt: "If an eigenvalue of a real symmetric matrix has algebraic multiplicity 2, what must be done to get an orthonormal basis for that eigenspace?",
+    options: [
+      "Nothing — any basis for that eigenspace is automatically orthogonal",
+      "Apply Gram-Schmidt within that eigenspace, since two vectors in the same eigenspace aren't automatically orthogonal to each other",
+      "The matrix cannot be diagonalized in this case",
+      "Discard one of the two eigenvectors",
+    ],
+    answer: "B",
+    explanation: "Orthogonality across different eigenspaces is automatic, but a chosen basis within one multi-dimensional eigenspace may need Gram-Schmidt.",
+  },
+  {
+    prompt: "For a real symmetric matrix, is geometric multiplicity ever less than algebraic multiplicity?",
+    options: [
+      "Yes, often",
+      "No — for symmetric matrices they always match, so it's never defective",
+      "Only for 2x2 matrices",
+      "Only when eigenvalues are negative",
+    ],
+    answer: "B",
+    explanation: "One consequence of the Spectral Theorem is that real symmetric matrices are never defective — every eigenspace has full dimension.",
+  },
+  {
+    prompt: "Quantum mechanics represents measurable quantities (observables) as symmetric/Hermitian operators mainly because:",
+    options: [
+      "It simplifies notation only",
+      "It guarantees the eigenvalues (possible measurement outcomes) are real numbers",
+      "It makes the operator invertible",
+      "It has no physical motivation",
+    ],
+    answer: "B",
+    explanation: "A measurable physical quantity must have real possible outcomes, and symmetry/Hermitian structure is exactly what guarantees real eigenvalues.",
+  },
+  {
+    prompt: "PCA (Principal Component Analysis) relies on the Spectral Theorem to:",
+    options: [
+      "Orthogonally diagonalize a covariance matrix into uncorrelated principal directions",
+      "Compute a matrix inverse",
+      "Solve a system of linear equations",
+      "Find the determinant of a matrix",
+    ],
+    answer: "A",
+    explanation: "A covariance matrix is symmetric, so the Spectral Theorem guarantees it can be orthogonally diagonalized into uncorrelated directions of variance.",
+  },
+  {
+    prompt: "Classifying a quadratic form as positive or negative definite is done by looking at:",
+    options: [
+      "The determinant of Q",
+      "The signs of the eigenvalues of the associated symmetric matrix",
+      "The number of rows in the matrix",
+      "Whether the matrix is triangular",
+    ],
+    answer: "B",
+    explanation: "Once orthogonally diagonalized, a quadratic form's definiteness is read directly off the signs of its (real) eigenvalues.",
+  },
+];
+
 export const LA_E_APPS_QUIZ = [
   {
     prompt: "For a Markov transition matrix, long-run behavior is governed by:",
