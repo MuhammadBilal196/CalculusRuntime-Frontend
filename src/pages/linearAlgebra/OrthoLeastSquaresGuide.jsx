@@ -15,7 +15,7 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
         <nav className="sidebar">
           <div className="sb-brand"><div className="sb-title">Ortho · Part 2</div></div>
           <a className="sb-link" href="#la-o-proj">Orthogonal Projections</a>
-          <a className="sb-link" href="#la-o-proc2">Method</a>
+          <a className="sb-link" href="#la-o-proc2">Normal equations & QR</a>
           <a className="sb-link" href="#la-o-ex-p2">Examples</a>
           <a className="sb-link" href="#quiz-la-o-proj">Quiz</a>
           <a className="sb-link" href="#la-o-apps">Applications</a>
@@ -25,7 +25,7 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
           <header className="ch-hdr">
             <div className="ch-eye">Linear Algebra · Part 2 of 2</div>
             <h1 className="ch-title">Orthogonality & Least Squares</h1>
-            <p className="ch-sub">Projections, normal equations, and least-squares applications</p>
+            <p className="ch-sub">Projections, normal equations, QR least squares, and applications</p>
             <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
           </header>
 
@@ -38,6 +38,16 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
             <TheoryBox title="Projection onto a subspace">
               <p>
                 {"If the columns of A form a basis for W, the projection of b onto W is $\\hat{b}=A\\hat{x}$ where $\\hat{x}$ solves the normal equations $A^TA\\hat{x}=A^Tb$. The residual $b-\\hat{b}$ is orthogonal to every column of A (and therefore to all of W)."}
+              </p>
+            </TheoryBox>
+            <TheoremBox title="Why the normal equations appear">
+              <p>
+                {"Let $r=b-A\\hat{x}$ be the least-squares residual. At the closest point $A\\hat{x}$, the error must satisfy $r\\perp\\operatorname{Col}(A)$. Therefore $A^Tr=0$, so $A^T(b-A\\hat{x})=0$, which rearranges to $A^TA\\hat{x}=A^Tb$. If A has full column rank, $A^TA$ is symmetric positive definite and the least-squares solution is unique."}
+              </p>
+            </TheoremBox>
+            <TheoryBox title="Projection matrix properties">
+              <p>
+                {"When A has full column rank, $P=A(A^TA)^{-1}A^T$ is the orthogonal projector onto $\\operatorname{Col}(A)$. It satisfies $P^T=P$ and $P^2=P$, while $I-P$ projects onto $\\operatorname{Col}(A)^\\perp=\\operatorname{Nul}(A^T)$. Thus every vector decomposes as $b=Pb+(I-P)b$ into perpendicular components."}
               </p>
             </TheoryBox>
             <PracticalTheory title="Workflow that stays organized">
@@ -63,14 +73,29 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
                 { text: "Solve the square system for $\\hat{x}$ (unique when A has independent columns).", why: "AᵀA is invertible precisely when the columns of A are independent." },
                 { text: "Compute the projection $\\hat{b}=A\\hat{x}$ and the residual $b-\\hat{b}$.", why: "The residual must be orthogonal to every column of A." },
                 { text: "Optionally compute the error $||b-\\hat{b}||$.", why: "This quantifies how well the model fits the data." },
-                { text: "For a projection matrix instead of a single vector, compute $P=A(A^TA)^{-1}A^T$.", why: "P sends any b directly to its projection $Ab$ onto Col(A)." },
+                { text: "For a projection matrix instead of a single vector, compute $P=A(A^TA)^{-1}A^T$.", why: "P sends any b directly to its projection $Pb$ onto Col(A)." },
+              ]}
+            />
+          
+            <TheoryBox title="QR least squares — avoid forming AᵀA">
+              <p>
+                {"If A has full column rank and $A=QR$ with Q having orthonormal columns, then minimizing $\\|Ax-b\\|_2$ reduces to the triangular system $R\\hat{x}=Q^Tb$. In numerical computation this route is usually preferable to explicitly forming $A^TA$, because $\\kappa_2(A^TA)=\\kappa_2(A)^2$."}
+              </p>
+            </TheoryBox>
+            <ProcedureBox
+              title="Least squares with a QR factorization"
+              steps={[
+                { text: "Factor $A=QR$ with Q having orthonormal columns and R upper triangular.", why: "QR packages an orthonormal basis for Col(A)." },
+                { text: "Compute $c=Q^Tb$.", why: "These are the coordinates of the projection of b in the Q-basis." },
+                { text: "Solve $R\\hat{x}=c$ by back-substitution.", why: "This gives the least-squares coefficients without explicitly forming $A^TA$." },
+                { text: "Check $A^T(b-A\\hat{x})=0$.", why: "The residual must be orthogonal to the column space." },
               ]}
             />
           </section>
 
           <section className="section" id="la-o-ex-p2">
             <div className="sec-badge">Large examples</div>
-            <h2 className="sec-title">Four detailed worked examples</h2>
+            <h2 className="sec-title">Five detailed worked examples</h2>
 
             <WorkedExample
               number={1}
@@ -119,6 +144,20 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
               ]}
               result={"$W^{\\perp}=\\operatorname{span}(1,2,-1)$; $b=(2.5,0,2.5)+(0.5,1,-0.5)$."}
               check={"$(2.5,0,2.5)\\cdot(1,2,-1)=0$, confirming it lies in $W$."}
+            />
+          
+            <WorkedExample
+              number={5}
+              title="Least squares by QR instead of normal equations"
+              setup={"Let $A=\\begin{pmatrix}1&1\\\\1&0\\\\0&1\\end{pmatrix}$ and $b=(1,2,2)^T$. Use QR to find the least-squares solution."}
+              steps={[
+                { text: "$q_1=\\tfrac{1}{\\sqrt2}(1,1,0)^T$, $q_2=\\tfrac{1}{\\sqrt6}(1,-1,2)^T$, and $R=\\begin{pmatrix}\\sqrt2&1/\\sqrt2\\\\0&\\sqrt{3/2}\\end{pmatrix}$.", why: "These come from Gram–Schmidt on the columns of A." },
+                { text: "$Q^Tb=(3/\\sqrt2,\\,3/\\sqrt6)^T=(3/\\sqrt2,\\sqrt{3/2})^T$.", why: "Project b onto the orthonormal Q directions." },
+                { text: "Solve $R\\hat{x}=Q^Tb$: the second equation gives $\\hat{x}_2=1$, then the first gives $\\hat{x}_1=1$.", why: "R is upper triangular, so back-substitution is immediate." },
+                { text: "Residual $r=b-A\\hat{x}=(-1,1,1)^T$ and $A^Tr=0$.", why: "This verifies the least-squares orthogonality condition." },
+              ]}
+              result={"$\\hat{x}=(1,1)^T$ using the QR route."}
+              check={"$A^Tr=(0,0)^T$, so the residual is orthogonal to $\\operatorname{Col}(A)$."}
             />
           </section>
 
@@ -221,6 +260,7 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
       <nav className="sidebar">
         <div className="sb-brand"><div className="sb-title">Ortho · Part 1</div></div>
         <a className="sb-link" href="#la-o-intro">Orthogonality</a>
+        <a className="sb-link" href="#la-o-inner">Inner products & Q matrices</a>
         <a className="sb-link" href="#la-o-proc1">Method</a>
         <a className="sb-link" href="#la-o-ex-p1">Examples</a>
         <a className="sb-link" href="#quiz-la-o-intro">Quiz</a>
@@ -231,7 +271,7 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
         <header className="ch-hdr">
           <div className="ch-eye">Linear Algebra · Part 1 of 2</div>
           <h1 className="ch-title">Orthogonality & Least Squares</h1>
-          <p className="ch-sub">Orthogonal sets, projections, and orthonormal bases</p>
+          <p className="ch-sub">Inner products, norms, orthogonal sets and matrices, Gram–Schmidt, and QR</p>
           <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
         </header>
 
@@ -252,6 +292,43 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
             </p>
           </TheoremBox>
           <RealLifeUse>{"GPS receivers and robotics controllers use orthonormal coordinate frames so that measuring along one axis never leaks error into another."}</RealLifeUse>
+        </section>
+
+        <section className="section" id="la-o-inner">
+          <div className="sec-badge">University Linear Algebra · Inner-product structure</div>
+          <h2 className="sec-title">Inner products, norms, and orthogonal matrices</h2>
+          <TheoryBox title="Inner product and induced norm">
+            <p>
+              {"An inner product $\\langle u,v\\rangle$ is a scalar-valued pairing that is linear in each vector argument over the real numbers, symmetric $\\langle u,v\\rangle=\\langle v,u\\rangle$, and positive definite: $\\langle v,v\\rangle>0$ for every nonzero v. It induces the norm $\\|v\\|=\\sqrt{\\langle v,v\\rangle}$ and defines orthogonality by $\\langle u,v\\rangle=0$. The usual dot product is the standard example; weighted products such as $\\langle u,v\\rangle_W=u^TWv$ with symmetric positive-definite W are also valid."}
+            </p>
+          </TheoryBox>
+          <TheoremBox title="Cauchy–Schwarz and triangle inequalities">
+            <p>
+              {"Every inner-product space satisfies $|\\langle u,v\\rangle|\\le\\|u\\|\\,\\|v\\|$. This implies $\\|u+v\\|\\le\\|u\\|+\\|v\\|$ and justifies the angle formula $\\cos\\theta=\\langle u,v\\rangle/(\\|u\\|\\|v\\|)$ for nonzero vectors."}
+            </p>
+          </TheoremBox>
+          <TheoryBox title="Orthogonal matrices preserve geometry">
+            <p>
+              {"A square real matrix Q is orthogonal when $Q^TQ=QQ^T=I$, equivalently $Q^{-1}=Q^T$. Its columns and rows are orthonormal bases. Orthogonal matrices preserve inner products and Euclidean norms: $(Qx)^T(Qy)=x^Ty$ and $\\|Qx\\|_2=\\|x\\|_2$. Hence they preserve lengths and angles, and $\\det(Q)=\\pm1$."}
+            </p>
+          </TheoryBox>
+          <PracticalTheory title="Coordinates in an orthonormal basis">
+            <p>
+              {"If $Q=[q_1\\;\\cdots\\;q_n]$ is orthogonal, the coordinate vector of x in that basis is $Q^Tx$. Equivalently, $x=\\sum_i(q_i^Tx)q_i$. This is why orthonormal bases simplify projections, QR factorization, Fourier methods, and numerical algorithms."}
+            </p>
+          </PracticalTheory>
+          <WorkedExample
+            number={1}
+            title="Orthogonality under a weighted inner product"
+            setup={"Use $\\langle u,v\\rangle_W=u^TWv$ with $W=\\operatorname{diag}(2,1)$ to test $u=(1,1)$ and $v=(1,-2)$."}
+            steps={[
+              { text: "$Wv=(2,-2)^T$.", why: "Apply the positive-definite weighting matrix first." },
+              { text: "$\\langle u,v\\rangle_W=u^TWv=(1,1)\\cdot(2,-2)=0$.", why: "Zero inner product means orthogonality in this geometry." },
+              { text: "$\\|u\\|_W=\\sqrt3$ and $\\|v\\|_W=\\sqrt6$.", why: "Use $\\|x\\|_W=\\sqrt{x^TWx}$." },
+            ]}
+            result={"u and v are W-orthogonal, even though the geometry is weighted."}
+            check={"The matrix W is symmetric positive definite, so it defines a valid inner product."}
+          />
         </section>
 
         <section className="section" id="la-o-proc1">
@@ -365,6 +442,21 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
               {"Given any basis, the Gram–Schmidt process produces an orthonormal basis for the same span by successive orthogonal projections and normalization."}
             </p>
           </TheoryBox>
+          <TheoremBox title="Gram–Schmidt recurrence">
+            <p>
+              {"For linearly independent $v_1,\\ldots,v_k$, set $u_1=v_1$ and recursively $u_j=v_j-\\sum_{i=1}^{j-1}\\operatorname{proj}_{u_i}(v_j)$, where $\\operatorname{proj}_{u_i}(v_j)=\\frac{v_j\\cdot u_i}{u_i\\cdot u_i}u_i$. Then normalize with $q_j=u_j/\\|u_j\\|$. The vectors $q_1,\\ldots,q_k$ are orthonormal and span exactly the same subspace as the original vectors."}
+            </p>
+          </TheoremBox>
+          <TheoryBox title="From Gram–Schmidt to QR">
+            <p>
+              {"For a full-column-rank matrix $A=[a_1\\;\\cdots\\;a_n]$, Gram–Schmidt produces $Q=[q_1\\;\\cdots\\;q_n]$ and an upper-triangular R such that $A=QR$. The entries satisfy $r_{ij}=q_i^Ta_j$ for $i\\le j$, while $r_{ij}=0$ for $i>j$. Because $Q^TQ=I$, the factorization is especially useful for least squares."}
+            </p>
+          </TheoryBox>
+          <PracticalTheory title="Numerical note: classical vs modified Gram–Schmidt">
+            <p>
+              {"In exact arithmetic classical and modified Gram–Schmidt produce the same mathematical QR factorization. In floating-point arithmetic, modified Gram–Schmidt is usually more resistant to loss of orthogonality. High-quality numerical libraries often use Householder reflections for even stronger stability."}
+            </p>
+          </PracticalTheory>
         </section>
 
         <LaMcqSection
