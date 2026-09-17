@@ -265,14 +265,14 @@ export const COURSES = [
       },
       {
         title: "Orthogonality & Least Squares",
-        description: "Orthogonal projections, Gram–Schmidt, QR, and best-fit lines.",
+        description: "Inner products, norms, orthogonal matrices, Gram–Schmidt, QR, projections, and least-squares solutions.",
         path: "/linear-algebra/orthogonality/1",
         meta: "2 parts · MCQ practice",
         icon: "⊥",
       },
       {
         title: "Singular Value Decomposition",
-        description: "SVD, singular values, low-rank approximation, and the pseudoinverse.",
+        description: "Full and compact SVD, singular values, fundamental subspaces, conditioning, low-rank approximation, and the pseudoinverse.",
         path: "/linear-algebra/svd/1",
         meta: "2 parts · MCQ practice",
         icon: "Σ",
