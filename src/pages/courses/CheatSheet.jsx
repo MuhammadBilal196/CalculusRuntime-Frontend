@@ -1,47 +1,70 @@
-// src/pages/CheatSheet.jsx
-import { useState, useRef } from "react";
+// src/pages/courses/CheatSheet.jsx
+import { useState, useRef, useMemo } from "react";
 import { useProgress } from "../../context/ProgressContext";
 import formulaData from "../../data/formulaData.js";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import "./CheatSheet.css";
 
 // ─── Topic key → progress key mapping ────────────────────────────────────────
-// Adjust these keys to match what your ProgressContext actually stores
 const TOPIC_PROGRESS_KEYS = {
-  "partial-derivatives": ["partial-derivatives/1", "partial-derivatives/2", "vector-1", "partial-1"],
-  "vector-calculus":     ["vector-calculus/1", "vector-calculus/2", "vector-1", "vector-2"],
-  "limits-continuity":   ["limits-continuity/1", "limits-continuity/2", "limits-1", "limits-2"],
-  "multiple-integrals":  ["multiple-integrals/1", "multiple-integrals/2", "integrals-1", "integrals-2"],
+  "limits-continuity":   ["limits-1", "limits-2"],
+  differentiation:       ["calc-diff-1", "calc-diff-2"],
+  integration:           ["calc-int-1", "calc-int-2"],
+  "sequences-series":    ["calc-series-1", "calc-series-2"],
+  "conic-sections":      ["calc-conics-1", "calc-conics-2"],
+  "lines-geometry":      ["lines-1", "lines-2"],
+  "circles-tangents":    ["circles-1", "circles-2"],
+  "advanced-calculus":   ["advcalc-1", "advcalc-2"],
+  "differential-equations": ["ode-1", "ode-2"],
+  "taylor-series":       ["taylor-1", "taylor-2"],
+  "partial-derivatives": ["partial-1", "partial-2"],
   extrema:               ["extreme", "extrema"],
-  "taylor-series":       ["taylor-series/1", "taylor-series/2", "taylor-1", "taylor-2"],
-  "lagrange-multipliers": ["lagrange-multipliers/1", "lagrange-multipliers/2", "lagrange-1", "lagrange-2"],
-  "stokes-theorem":      ["stokes-theorem/1", "stokes-theorem/2", "stokes-1", "stokes-2"],
-  "divergence-curl":     ["divergence-curl/1", "divergence-curl/2", "divergence/1", "divergence/2"],
-  "la-vectors":          ["linear-algebra/vectors/1", "linear-algebra/vectors/2"],
-  "la-matrices":         ["linear-algebra/matrices/1", "linear-algebra/matrices/2"],
-  "la-systems":          ["linear-algebra/systems/1", "linear-algebra/systems/2"],
-  "la-eigen":            ["linear-algebra/eigen/1", "linear-algebra/eigen/2"],
-  "prob-basics":         ["probability-statistics/probability-basics"],
-  "prob-random-vars":    ["probability-statistics/random-variables"],
-  "prob-descriptive":    ["probability-statistics/descriptive-statistics"],
-  "prob-hypothesis":     ["probability-statistics/hypothesis-testing"],
-  "prob-regression":     ["probability-statistics/regression-correlation"],
-  "simple-concepts":     ["simple-concepts"],
+  "lagrange-multipliers": ["lagrange-1", "lagrange-2"],
+  "multiple-integrals":  ["integrals-1", "integrals-2"],
+  "vector-calculus":     ["vector-1", "vector-2"],
+  "divergence-curl":     ["divergence-1", "divergence-2"],
+  "stokes-theorem":      ["stokes-1", "stokes-2"],
+  "la-equations":        ["la-eq-1", "la-eq-2"],
+  "la-subspaces":        ["la-sys-2", "la-vec-2"],
+  "la-vectors":          ["la-vec-1", "la-vec-2"],
+  "la-matrices":         ["la-mat-1", "la-mat-2"],
+  "la-systems":          ["la-sys-1", "la-sys-2"],
+  "la-transformations":  ["la-trans-1", "la-trans-2"],
+  "la-orthogonality":    ["la-ortho-1", "la-ortho-2"],
+  "la-eigen":            ["la-eigen-1", "la-eigen-2"],
+  "la-svd":              ["la-svd-1", "la-svd-2"],
+  "prob-basics":         ["ps-prob-1", "ps-prob-2"],
+  "prob-random-vars":    ["ps-rv-1", "ps-rv-2"],
+  "prob-distributions":  ["ps-rv-1", "ps-rv-2"],
+  "prob-descriptive":    ["ps-desc-1", "ps-desc-2"],
+  "prob-hypothesis":     ["ps-hyp-1", "ps-hyp-2"],
+  "prob-regression":     ["ps-reg-1", "ps-reg-2"],
 };
 
+const CATEGORIES = [
+  "All Subjects",
+  "Calculus & Geometry",
+  "Multivariable Calculus",
+  "Linear Algebra",
+  "Probability & Stats",
+];
+
 export default function CheatSheet() {
-  const { completedTopics = [] } = useProgress();  // adjust to your context shape
+  const { progress } = useProgress();
+  const completedSections = progress?.completedSections || {};
   const sheetRef = useRef(null);
+  
+  const [activeCategory, setActiveCategory] = useState("All Subjects");
   const [downloading, setDownloading] = useState(false);
-  const [selectedTopics, setSelectedTopics] = useState(() =>
-    Object.keys(formulaData)
-  );
+  const [copiedIndex, setCopiedIndex] = useState(null);
+  const [selectedTopics, setSelectedTopics] = useState(() => Object.keys(formulaData));
   const [searchTerm, setSearchTerm] = useState("");
 
   // ── Which topics has the student completed? ──────────────────────────────
   const isCompleted = (topicKey) => {
     const keys = TOPIC_PROGRESS_KEYS[topicKey] ?? [topicKey];
-    return keys.some((k) => completedTopics.includes(k));
+    return keys.some((k) => !!completedSections[k]);
   };
 
   // ── Toggle topic selection ───────────────────────────────────────────────
@@ -51,24 +74,45 @@ export default function CheatSheet() {
     );
   };
 
-  const selectAll   = () => setSelectedTopics(Object.keys(formulaData));
-  const selectDone  = () =>
+  const selectAll = () => setSelectedTopics(Object.keys(formulaData));
+  const selectDone = () =>
     setSelectedTopics(Object.keys(formulaData).filter(isCompleted));
-  const clearAll    = () => setSelectedTopics([]);
+  const clearAll = () => setSelectedTopics([]);
 
-  // ── Filtered formulas by search ──────────────────────────────────────────
-  const filteredData = Object.entries(formulaData).filter(([key]) =>
-    selectedTopics.includes(key)
-  ).map(([key, topic]) => ({
-    key,
-    ...topic,
-    formulas: topic.formulas.filter(
-      (f) =>
-        searchTerm === "" ||
-        f.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        f.formula.toLowerCase().includes(searchTerm.toLowerCase())
-    ),
-  })).filter((t) => t.formulas.length > 0);
+  // Copy formula text to clipboard
+  const copyFormula = (formulaText, id) => {
+    navigator.clipboard.writeText(formulaText);
+    setCopiedIndex(id);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
+  // ── Filtered formulas by search and category ──────────────────────────────
+  const filteredData = useMemo(() => {
+    return Object.entries(formulaData)
+      .filter(([key, topic]) => {
+        const matchesSelection = selectedTopics.includes(key);
+        const matchesCategory =
+          activeCategory === "All Subjects" || topic.category === activeCategory;
+        return matchesSelection && matchesCategory;
+      })
+      .map(([key, topic]) => ({
+        key,
+        ...topic,
+        formulas: topic.formulas.filter(
+          (f) =>
+            searchTerm === "" ||
+            f.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            f.formula.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (f.note && f.note.toLowerCase().includes(searchTerm.toLowerCase()))
+        ),
+      }))
+      .filter((t) => t.formulas.length > 0);
+  }, [selectedTopics, activeCategory, searchTerm]);
+
+  // Total formulas count
+  const totalFormulasCount = useMemo(() => {
+    return filteredData.reduce((acc, t) => acc + t.formulas.length, 0);
+  }, [filteredData]);
 
   // ── PDF Download ─────────────────────────────────────────────────────────
   const downloadPDF = async () => {
@@ -86,167 +130,186 @@ export default function CheatSheet() {
         unit: "mm",
         format: "a4",
       });
-      const pageW  = pdf.internal.pageSize.getWidth();
-      const pageH  = pdf.internal.pageSize.getHeight();
-      const ratio  = canvas.width / canvas.height;
-      const imgW   = pageW - 20;
-      const imgH   = imgW / ratio;
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      const ratio = canvas.width / canvas.height;
+      const imgW = pageW - 20;
+      const imgH = imgW / ratio;
       let heightLeft = imgH;
-      let position   = 10;
+      let position = 10;
+
       pdf.addImage(imgData, "PNG", 10, position, imgW, imgH);
       heightLeft -= pageH - 20;
+
       while (heightLeft > 0) {
         position = heightLeft - imgH + 10;
         pdf.addPage();
         pdf.addImage(imgData, "PNG", 10, position, imgW, imgH);
         heightLeft -= pageH - 20;
       }
-      pdf.save("CalcVoyager-CheatSheet.pdf");
+      pdf.save("CalcVoyager-Formula-CheatSheet.pdf");
     } catch (err) {
       console.error("PDF generation failed:", err);
     }
     setDownloading(false);
   };
 
-  // ── UI ───────────────────────────────────────────────────────────────────
   return (
     <div className="cheat-page">
+      {/* ── Page Hero ── */}
+      <div className="cs-hero">
+        <div className="cs-hero-kicker">Formula Reference &amp; Study Guide</div>
+        <h1 className="cs-hero-title">Mathematical Formula Cheat Sheet</h1>
+        <p className="cs-hero-desc">
+          Comprehensive catalog of definitions, identities, theorems, and computational formulas across Single-Variable Calculus, Multivariable Calculus, Linear Algebra, and Probability &amp; Statistics.
+        </p>
+      </div>
 
-      {/* ── Page header ── */}
-      <div className="tool-hero">
-        <div>
-          <p className="tool-hero-kicker">Formula Reference</p>
-          <h1>Formula Cheat Sheet</h1>
-          <p className="tool-hero-sub">
-            Select topics, search formulas, then download your personalised PDF.
-          </p>
+      {/* ── Category Filter Tabs ── */}
+      <div className="cs-category-tabs">
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            className={`cs-cat-tab ${activeCategory === cat ? "cs-cat-tab--active" : ""}`}
+            onClick={() => setActiveCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* ── Controls Bar ── */}
+      <div className="cs-controls-bar">
+        {/* Search */}
+        <div className="cs-search-box">
+          <span className="cs-search-icon">🔍</span>
+          <input
+            type="text"
+            className="cs-search-input"
+            placeholder="Search formulas, theorems, variables (e.g. Stokes, Bayes, Eigen, Taylor)..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+        {/* Action Buttons */}
+        <div className="cs-btn-group">
+          <button onClick={selectAll} className="cs-action-btn">
+            All Topics
+          </button>
+          <button onClick={selectDone} className="cs-action-btn">
+            ✓ Mastered Only
+          </button>
+          <button onClick={clearAll} className="cs-action-btn">
+            Clear
+          </button>
+          <button
+            onClick={downloadPDF}
+            disabled={downloading || totalFormulasCount === 0}
+            className="cs-action-btn cs-download-btn"
+          >
+            {downloading ? "⏳ Building PDF..." : `⬇ Export PDF (${totalFormulasCount})`}
+          </button>
         </div>
       </div>
 
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "32px 16px" }}>
-
-      {/* ── Controls bar ── */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center", marginBottom: "24px", padding: "16px", background: "var(--cv-bg-surface)", borderRadius: "12px", boxShadow: "var(--cv-shadow-md)" }}>
-
-        {/* Search */}
-        <input
-          type="text"
-          placeholder="🔍 Search formulas..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ flex: "1 1 220px", padding: "10px 14px", borderRadius: "8px", border: "2px solid var(--cv-border)", background: "var(--cv-input-bg)", color: "var(--cv-text-primary)", fontSize: "14px" }}
-        />
-
-        {/* Quick select buttons */}
-        <button onClick={selectAll}  className="cv-btn cv-btn--function" style={{ padding: "9px 14px", fontSize: "13px", borderRadius: "8px" }}>All Topics</button>
-        <button onClick={selectDone} className="cv-btn cv-btn--operator" style={{ padding: "9px 14px", fontSize: "13px", borderRadius: "8px" }}>✅ Completed Only</button>
-        <button onClick={clearAll}   className="cv-btn cv-btn--function" style={{ padding: "9px 14px", fontSize: "13px", borderRadius: "8px" }}>Clear</button>
-
-        {/* Download */}
-        <button
-          onClick={downloadPDF}
-          disabled={downloading || filteredData.length === 0}
-          className="cv-btn cv-btn--equals"
-          style={{ padding: "10px 20px", fontSize: "14px", fontWeight: 700, borderRadius: "8px", minWidth: "160px" }}
-        >
-          {downloading ? "⏳ Generating PDF..." : "⬇️ Download PDF"}
-        </button>
+      {/* ── Topic Filter Chips ── */}
+      <div className="cs-chips-container">
+        {Object.entries(formulaData)
+          .filter(
+            ([, topic]) =>
+              activeCategory === "All Subjects" || topic.category === activeCategory
+          )
+          .map(([key, topic]) => {
+            const active = selectedTopics.includes(key);
+            const completed = isCompleted(key);
+            return (
+              <button
+                key={key}
+                onClick={() => toggleTopic(key)}
+                className={`cs-chip ${active ? "cs-chip--active" : ""}`}
+              >
+                {completed ? "✓ " : ""}
+                {topic.title}
+              </button>
+            );
+          })}
       </div>
 
-      {/* ── Topic filter chips ── */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "28px" }}>
-        {Object.entries(formulaData).map(([key, topic]) => {
-          const active    = selectedTopics.includes(key);
-          const completed = isCompleted(key);
-          return (
-            <button
-              key={key}
-              onClick={() => toggleTopic(key)}
-              style={{
-                padding: "7px 14px",
-                borderRadius: "20px",
-                border: `2px solid ${active ? "var(--cv-accent)" : "var(--cv-border)"}`,
-                background: active ? "var(--cv-accent-light)" : "var(--cv-bg-surface)",
-                color: active ? "var(--cv-accent-text, var(--cv-accent))" : "var(--cv-text-secondary)",
-                fontWeight: 600,
-                fontSize: "13px",
-                cursor: "pointer",
-                transition: "all 0.2s",
-              }}
-            >
-              {completed ? "✅ " : ""}{topic.title}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* ── Formula sheet (this gets rendered to PDF) ── */}
+      {/* ── Formula Sheet (Rendered on page & Exported to PDF) ── */}
       {filteredData.length === 0 ? (
-        <div style={{ textAlign: "center", padding: "60px", color: "var(--cv-text-muted)" }}>
-          <div style={{ fontSize: "48px", marginBottom: "12px" }}>📭</div>
-          <p>No formulas match your selection. Try selecting a topic above.</p>
+        <div className="cs-empty-state">
+          <span className="cs-empty-icon">📭</span>
+          <h3>No matching formulas found</h3>
+          <p>Try clearing your search or selecting different topics above.</p>
         </div>
       ) : (
-        <div
-          ref={sheetRef}
-          style={{ background: "#ffffff", borderRadius: "16px", padding: "32px", boxShadow: "var(--cv-shadow-lg)" }}
-        >
-          {/* PDF Header */}
-          <div style={{ textAlign: "center", borderBottom: "3px solid #a0720a", paddingBottom: "16px", marginBottom: "28px" }}>
-            <h2 style={{ fontSize: "1.8em", fontWeight: 900, color: "#1a1a2e", margin: "0 0 4px" }}>
-              📐 CalcVoyager — Formula Reference Sheet
-            </h2>
-            <p style={{ color: "#666", fontSize: "13px", margin: 0 }}>
-              Generated on {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+        <div className="cs-sheet-container" ref={sheetRef}>
+          {/* PDF Brand Header */}
+          <div className="cs-sheet-header">
+            <h2 className="cs-sheet-logo">CalcVoyager — Comprehensive Mathematical Reference Sheet</h2>
+            <p className="cs-sheet-date">
+              Curated Reference Guide · Generated on {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
             </p>
           </div>
 
-          {/* Topics */}
+          {/* Topics & Formula Cards */}
           {filteredData.map((topic) => (
-            <div key={topic.key} style={{ marginBottom: "32px" }}>
-
-              {/* Topic heading */}
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px", paddingBottom: "8px", borderBottom: `2px solid ${topic.color}` }}>
-                <div style={{ width: "14px", height: "14px", borderRadius: "50%", background: topic.color }} />
-                <h3 style={{ margin: 0, fontSize: "1.15em", fontWeight: 800, color: "#1a1a2e" }}>
-                  {topic.title}
-                </h3>
-                <span style={{ marginLeft: "auto", fontSize: "12px", color: "#888" }}>
-                  {topic.formulas.length} formula{topic.formulas.length !== 1 ? "s" : ""}
+            <div key={topic.key} className="cs-topic-block">
+              {/* Topic Header */}
+              <div className="cs-topic-header">
+                <div
+                  className="cs-topic-color-bar"
+                  style={{ background: topic.color || "#0284c7" }}
+                />
+                <h3 className="cs-topic-title">{topic.title}</h3>
+                <span className="cs-topic-badge">{topic.category}</span>
+                <span className="cs-topic-count">
+                  {topic.formulas.length} formula{topic.formulas.length === 1 ? "" : "s"}
                 </span>
               </div>
 
-              {/* Formula cards */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "12px" }}>
-                {topic.formulas.map((f, i) => (
-                  <div
-                    key={i}
-                    style={{ padding: "12px 14px", borderRadius: "10px", border: `1px solid ${topic.color}44`, background: topic.color + "0d", borderLeft: `4px solid ${topic.color}` }}
-                  >
-                    <div style={{ fontWeight: 700, fontSize: "12px", color: topic.color, marginBottom: "6px", textTransform: "uppercase", letterSpacing: "0.5px" }}>
-                      {f.name}
-                    </div>
-                    <div style={{ fontFamily: "monospace", fontSize: "13px", color: "#1a1a2e", background: "#fff", padding: "8px 10px", borderRadius: "6px", marginBottom: f.note ? "6px" : 0, wordBreak: "break-word" }}>
-                      {f.formula}
-                    </div>
-                    {f.note && (
-                      <div style={{ fontSize: "11px", color: "#666", fontStyle: "italic", marginTop: "4px" }}>
-                        💡 {f.note}
+              {/* Formulas Grid */}
+              <div className="cs-formula-grid">
+                {topic.formulas.map((f, i) => {
+                  const cardId = `${topic.key}-${i}`;
+                  return (
+                    <div
+                      key={i}
+                      className="cs-formula-card"
+                      style={{ borderLeft: `4px solid ${topic.color || "#0284c7"}` }}
+                    >
+                      <div className="cs-formula-top">
+                        <span
+                          className="cs-formula-name"
+                          style={{ color: topic.color || "#0284c7" }}
+                        >
+                          {f.name}
+                        </span>
+                        <button
+                          className="cs-copy-btn"
+                          onClick={() => copyFormula(f.formula, cardId)}
+                          title="Copy formula expression"
+                        >
+                          {copiedIndex === cardId ? "✓ Copied" : "Copy"}
+                        </button>
                       </div>
-                    )}
-                  </div>
-                ))}
+
+                      <div className="cs-formula-box">{f.formula}</div>
+
+                      {f.note && (
+                        <div className="cs-formula-note">
+                          💡 <strong>Note:</strong> {f.note}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}
-
-          {/* PDF Footer */}
-          <div style={{ textAlign: "center", borderTop: "1px solid #e5e7eb", paddingTop: "16px", marginTop: "16px", color: "#999", fontSize: "11px" }}>
-            CalcVoyager · Multivariable Calculus Tools · calcvoyager.com
-          </div>
         </div>
       )}
-      </div>
     </div>
   );
 }

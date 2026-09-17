@@ -64,7 +64,7 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
               })}
             </div>
             <button type="button" className="mcq-reveal-btn">
-              Reveal Answer
+              Submit Answer
             </button>
             <div className="mcq-answer">
               <span className="mcq-correct-badge">Correct Option: {q.answer}</span>

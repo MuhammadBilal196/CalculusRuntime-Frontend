@@ -338,28 +338,60 @@
 .practice-submit,
 .practice-next {
   border: none;
-  border-radius: 10px;
-  padding: 0.7rem 1.15rem;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 0.75rem 1.6rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   cursor: pointer;
+  transition: all 0.18s ease;
 }
 
 .practice-submit {
-  background: #4f46e5;
-  color: #fff;
+  background: #0056D2;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 86, 210, 0.3);
+}
+
+.practice-submit:hover:not(:disabled) {
+  background: #0043a8;
+  transform: translateY(-1px);
 }
 
 .practice-submit:disabled {
-  opacity: 0.4;
+  opacity: 0.55;
+  background: #94a3b8;
+  color: #ffffff !important;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .practice-next {
-  background: #111827;
-  color: #fff;
+  background: #0f172a;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+}
+
+.practice-next:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .practice-submit {
+  background: #0284c7;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+}
+
+[data-theme="dark"] .practice-submit:disabled {
+  background: #334155;
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .practice-next {
+  background: #1e293b;
+  color: #f8fafc !important;
+  border: 1px solid #334155;
 }
 
 .practice-insight {

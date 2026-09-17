@@ -22,7 +22,7 @@ export default function TopicPlaceholder() {
         course topics so content can drop in without changing routes.
       </p>
       <p>
-        <Link to="/courses/probability-statistics" style={{ color: "var(--gold, #c8922a)", fontWeight: 600 }}>
+        <Link to="/courses/probability-statistics" style={{ color: "var(--gold, #0284c7)", fontWeight: 600 }}>
           ← Back to Probability and Statistics
         </Link>
       </p>

@@ -29,9 +29,12 @@ function GuideSidebarPart1() {
       <div className="sb-brand">
         <div className="sb-title">{"Limits & Continuity · Part 1"}</div>
       </div>
+      <a className="sb-link" href="#lc-basic-1">{"Formal Definition (ε-δ)"}</a>
+      <a className="sb-link" href="#lc-basic-2">{"Squeeze Thm & IVT"}</a>
+      <a className="sb-link" href="#lc-basic-3">{"L'Hôpital's Rule"}</a>
       <a className="sb-link" href="#lc-1">{"Limits of Two Variables"}</a>
       <a className="sb-link" href="#lc-2">{"Two-Path Test"}</a>
-      <a className="sb-link" href="#lc-3">{"Squeeze Theorem"}</a>
+      <a className="sb-link" href="#lc-3">{"Squeeze Theorem (2D)"}</a>
       <a className="sb-link" href="#lc-cert-p1">{"Certificate examples (8)"}</a>
       <a className="sb-link" href="#lc-quiz1">{"Quiz 1 · 15 Qs"}</a>
     </nav>
@@ -79,9 +82,12 @@ function TableOfContentsPart1() {
     <div className="toc">
       <p className="toc-h">{"CONTENTS — PART 1 OF 2"}</p>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem" }}>
+        <a className="toc-a" href="#lc-basic-1">{"Formal Definition (ε-δ)"}</a>
+        <a className="toc-a" href="#lc-basic-2">{"Squeeze Thm & IVT"}</a>
+        <a className="toc-a" href="#lc-basic-3">{"L'Hôpital's Rule"}</a>
         <a className="toc-a" href="#lc-1">{"Limits of Two Variables"}</a>
         <a className="toc-a" href="#lc-2">{"Two-Path Test"}</a>
-        <a className="toc-a" href="#lc-3">{"Squeeze Theorem"}</a>
+        <a className="toc-a" href="#lc-3">{"Squeeze Theorem (2D)"}</a>
         <a className="toc-a" href="#lc-quiz1">{"Quiz 1 · 15 questions"}</a>
       </div>
     </div>
@@ -98,6 +104,91 @@ function TableOfContentsPart2() {
         <a className="toc-a" href="#lc-quiz2">{"Quiz 2 · 15 questions"}</a>
       </div>
     </div>
+  );
+}
+
+function SectionEpsilonDelta() {
+  return (
+    <section className="section" id="lc-basic-1">
+      <div className="sec-badge">{"Section"}</div>
+      <h2 className="sec-title">{"The Formal Definition of a Limit (Epsilon-Delta)"}</h2>
+      <p>
+        {"Before looking at multivariable functions, we must understand the strict, formal way of proving a limit in single-variable calculus: the $\\varepsilon$-$\\delta$ proof."}
+      </p>
+      <div className="box def">
+        <div className="box-lbl">{"Definition"}</div>
+        <p>
+          {"We write $\\lim_{x\\to a} f(x) = L$ if for every number $\\varepsilon > 0$ there is a number $\\delta > 0$ such that if $0 < |x-a| < \\delta$, then $|f(x)-L| < \\varepsilon$."}
+        </p>
+      </div>
+      <div className="box exm">
+        <div className="box-lbl">{"Example"}</div>
+        <div className="exm-title">
+          {"Prove that $\\lim_{x\\to 2} (3x-1) = 5$"}
+        </div>
+        <div className="sol">
+          <div className="sol-lbl">{"Solution"}</div>
+          <p>{"We need $|(3x-1)-5| < \\varepsilon$, which means $|3x-6| < \\varepsilon$, or $3|x-2| < \\varepsilon$."}</p>
+          <p>{"If we choose $\\delta = \\varepsilon/3$, then whenever $0 < |x-2| < \\delta$, we have $|x-2| < \\varepsilon/3$, which implies $3|x-2| < \\varepsilon$, meaning $|(3x-1)-5| < \\varepsilon$. The proof is complete."}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SectionSingleSqueezeIVT() {
+  return (
+    <section className="section" id="lc-basic-2">
+      <div className="sec-badge">{"Section"}</div>
+      <h2 className="sec-title">{"Squeeze Theorem & Intermediate Value Theorem"}</h2>
+      <h3 className="subsec">{"The Squeeze Theorem"}</h3>
+      <p>
+        {"If $f(x) \\leq g(x) \\leq h(x)$ for all $x$ near $a$ (except possibly at $a$), and if $\\lim_{x\\to a} f(x) = \\lim_{x\\to a} h(x) = L$, then $\\lim_{x\\to a} g(x) = L$."}
+      </p>
+      <div className="box exm">
+        <div className="box-lbl">{"Example"}</div>
+        <div className="exm-title">
+          {"Evaluate $\\lim_{x\\to 0} x^2 \\sin(1/x)$"}
+        </div>
+        <div className="sol">
+          <div className="sol-lbl">{"Solution"}</div>
+          <p>{"Since $-1 \\leq \\sin(1/x) \\leq 1$, multiplying by $x^2$ gives $-x^2 \\leq x^2 \\sin(1/x) \\leq x^2$. Since $\\lim_{x\\to 0} (-x^2) = 0$ and $\\lim_{x\\to 0} (x^2) = 0$, by the Squeeze Theorem, the limit is $0$."}</p>
+        </div>
+      </div>
+      <h3 className="subsec">{"Intermediate Value Theorem (IVT)"}</h3>
+      <p>
+        {"If $f$ is continuous on a closed interval $[a,b]$, and $N$ is any number between $f(a)$ and $f(b)$, then there exists a number $c$ in $(a,b)$ such that $f(c) = N$."}
+      </p>
+    </section>
+  );
+}
+
+function SectionLHopital() {
+  return (
+    <section className="section" id="lc-basic-3">
+      <div className="sec-badge">{"Section"}</div>
+      <h2 className="sec-title">{"L'Hôpital's Rule"}</h2>
+      <p>
+        {"A trick for solving limits that come out as indeterminate forms like $0/0$ or $\\infty/\\infty$."}
+      </p>
+      <div className="box def">
+        <div className="box-lbl">{"Theorem"}</div>
+        <p>
+          {"If $\\lim \\frac{f(x)}{g(x)}$ results in $0/0$ or $\\pm\\infty/\\pm\\infty$, then $\\lim \\frac{f(x)}{g(x)} = \\lim \\frac{f'(x)}{g'(x)}$, provided the latter limit exists."}
+        </p>
+      </div>
+      <div className="box exm">
+        <div className="box-lbl">{"Example"}</div>
+        <div className="exm-title">
+          {"Evaluate $\\lim_{x\\to 0} \\frac{\\sin x}{x}$"}
+        </div>
+        <div className="sol">
+          <div className="sol-lbl">{"Solution"}</div>
+          <p>{"Direct substitution gives $0/0$. Applying L'Hôpital's Rule:"}</p>
+          <div className="fml">{"$$\\lim_{x\\to 0} \\frac{\\sin x}{x} = \\lim_{x\\to 0} \\frac{\\cos x}{1} = \\frac{1}{1} = 1$$"}</div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -299,6 +390,12 @@ function LimitsContent({ part }) {
           <TableOfContentsPart1 />
           <Divider />
           <OpeningNote />
+          <Divider />
+          <SectionEpsilonDelta />
+          <Divider />
+          <SectionSingleSqueezeIVT />
+          <Divider />
+          <SectionLHopital />
           <Divider />
           <SectionLC1 />
           <Divider />

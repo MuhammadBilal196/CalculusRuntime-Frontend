@@ -289,19 +289,19 @@ export default function ExtremeValueFinder() {
     <div className="ev-page">
       <style>{`
                 .ev-page {
-                    --ev-teal: #a0720a;
-                    --ev-gold: #c89318;
+                    --ev-teal: #0284c7;
+                    --ev-gold: #0056D2;
                     --ev-blue: #8a6209;
                     --ev-red: #7c2f0a;
                     --ev-green: #3a5f32;
                     --ev-ink: #16120a;
                     --ev-muted: #5c4f3a;
-                    --ev-card: #fdf8f0;
-                    --ev-soft: #f4ede0;
-                    --ev-line: #d4c4a8;
+                    --ev-card: #ffffff;
+                    --ev-soft: #ffffff;
+                    --ev-line: #e2e8f0;
                     --ev-shadow: 0 8px 32px rgba(21,16,12,0.10);
                     min-height: 100vh;
-                    background: var(--paper, #f4ede0);
+                    background: var(--paper, #ffffff);
                     padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 3rem);
                 }
 

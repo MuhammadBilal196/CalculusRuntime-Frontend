@@ -1,0 +1,254 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CalcVoyager — Official Design System & Theme Specification
+   Shareable Reference for UI Development & New Feature Extensions
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. CORE DESIGN TOKENS (LIGHT & DARK MODE)
+   ───────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Brand / Primary Accents */
+  --cv-blue:              #0056D2;      /* Coursera Blue / Primary CTA */
+  --cv-blue-hover:        #0043a8;      /* Primary Hover */
+  --cv-sky:               #0284c7;      /* Secondary Sky Blue */
+  --cv-sky-light:         #e0f2fe;      /* Sky Accent Background */
+
+  /* Subject Domain Color Palettes */
+  --cv-subject-gold:      #c28a2e;      /* Calculus & Analytical Geometry */
+  --cv-subject-gold-bg:   rgba(194, 138, 46, 0.12);
+  --cv-subject-teal:      #0d9488;      /* Multivariable Calculus */
+  --cv-subject-teal-bg:   rgba(13, 148, 136, 0.12);
+  --cv-subject-blue:      #2563eb;      /* Linear Algebra */
+  --cv-subject-blue-bg:   rgba(37, 99, 235, 0.12);
+  --cv-subject-purple:    #7c3aed;      /* Probability & Statistics */
+  --cv-subject-purple-bg: rgba(124, 58, 237, 0.12);
+
+  /* Semantic Feedback Tokens */
+  --cv-success:           #16a34a;      /* Correct / Completed / Passing */
+  --cv-success-bg:        #dcfce7;
+  --cv-danger:            #dc2626;      /* Error / Incorrect / Danger */
+  --cv-danger-bg:         #fee2e2;
+  --cv-warning:           #d97706;      /* Review Needed / In-Progress */
+  --cv-warning-bg:        #fef3c7;
+
+  /* Surfaces & Backgrounds (Light Mode) */
+  --cv-bg-page:           #ffffff;      /* Main Page Background */
+  --cv-bg-surface:        #ffffff;      /* Card / Container Surface */
+  --cv-bg-subtle:         #f8fafc;      /* Alternate / Input Surface */
+  --cv-bg-hero:           #0B1120;      /* Premium Dark Hero Surface */
+  
+  /* Borders & Dividers (Light Mode) */
+  --cv-border:            #e2e8f0;      /* Standard 1px/1.5px Card Border */
+  --cv-border-focus:       #0284c7;      /* Active / Focus Border */
+
+  /* Text & Ink (Light Mode) */
+  --cv-text-primary:      #0f172a;      /* Headings, Main Text (Slate 900) */
+  --cv-text-secondary:    #475569;      /* Descriptions, Body Text (Slate 600) */
+  --cv-text-muted:        #64748b;      /* Metadata, Timestamps, Labels (Slate 500) */
+  --cv-text-inverse:      #ffffff;      /* Text on Dark Heros / CTAs */
+
+  /* Typography Stack */
+  --cv-font-sans:         Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --cv-font-math:         'Cambria Math', 'KaTeX_Main', 'Times New Roman', Georgia, serif;
+  --cv-font-mono:         'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  /* Elevation & Shadows */
+  --cv-shadow-sm:         0 2px 8px rgba(0, 0, 0, 0.04);
+  --cv-shadow-md:         0 4px 16px rgba(0, 0, 0, 0.06);
+  --cv-shadow-lg:         0 12px 32px rgba(0, 0, 0, 0.10);
+  --cv-shadow-glow-blue:  0 4px 16px rgba(0, 86, 210, 0.35);
+
+  /* Radii */
+  --cv-radius-sm:         6px;
+  --cv-radius-md:         10px;
+  --cv-radius-lg:         14px;
+  --cv-radius-xl:         18px;
+  --cv-radius-pill:       999px;
+
+  /* Transition Speeds */
+  --cv-transition-fast:   150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --cv-transition-normal: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. DARK MODE OVERRIDES ([data-theme="dark"])
+   Rule: All primary content text uses unified crisp #f8fafc
+   ───────────────────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --cv-bg-page:           #0B1120;
+  --cv-bg-surface:        #111827;
+  --cv-bg-subtle:         #0f172a;
+  --cv-bg-hero:           #050811;
+
+  --cv-border:            #1e293b;
+  --cv-border-focus:       #38bdf8;
+
+  --cv-text-primary:      #f8fafc;
+  --cv-text-secondary:    #cbd5e1;
+  --cv-text-muted:        #94a3b8;
+  --cv-text-inverse:      #ffffff;
+
+  --cv-subject-gold:      #fbbf24;
+  --cv-subject-teal:      #2dd4bf;
+  --cv-subject-blue:      #60a5fa;
+  --cv-subject-purple:    #c084fc;
+
+  --cv-shadow-sm:         0 2px 8px rgba(0, 0, 0, 0.4);
+  --cv-shadow-md:         0 4px 20px rgba(0, 0, 0, 0.5);
+  --cv-shadow-lg:         0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. REUSABLE UI COMPONENT PATTERNS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Hero Banner Container */
+.cv-hero-banner {
+  background: linear-gradient(135deg, #0B1120 0%, #111827 60%, #1e293b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--cv-radius-xl);
+  padding: 2.2rem 2.5rem;
+  color: #ffffff;
+  box-shadow: var(--cv-shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Standard Course & Feature Card */
+.cv-card {
+  background: var(--cv-bg-surface);
+  border: 1.5px solid var(--cv-border);
+  border-radius: var(--cv-radius-lg);
+  padding: 1.6rem 1.8rem;
+  box-shadow: var(--cv-shadow-sm);
+  transition: transform var(--cv-transition-normal), box-shadow var(--cv-transition-normal), border-color var(--cv-transition-normal);
+}
+
+.cv-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--cv-shadow-md);
+  border-color: #38bdf8;
+}
+
+/* Card Typography Hierarchy */
+.cv-card-title {
+  font-family: var(--cv-font-sans);
+  font-size: 1.45rem;
+  font-weight: 850;
+  color: var(--cv-text-primary);
+  margin: 0 0 0.4rem 0;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.cv-card-meta {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--cv-text-muted);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.cv-card-desc {
+  font-size: 1.02rem;
+  color: var(--cv-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Math Logo & Mathematical Badges (Auto-fit & overflow-safe) */
+.cv-math-badge {
+  min-width: 110px;
+  height: 52px;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--cv-radius-md);
+  background: var(--cv-bg-subtle);
+  border: 1px solid var(--cv-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--cv-font-math);
+  font-size: 1.25rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.cv-math-badge--gold   { background: var(--cv-subject-gold-bg); border-color: rgba(194, 138, 46, 0.3); color: var(--cv-subject-gold); }
+.cv-math-badge--teal   { background: var(--cv-subject-teal-bg); border-color: rgba(13, 148, 136, 0.3); color: var(--cv-subject-teal); }
+.cv-math-badge--blue   { background: var(--cv-subject-blue-bg); border-color: rgba(37, 99, 235, 0.3); color: var(--cv-subject-blue); }
+.cv-math-badge--purple { background: var(--cv-subject-purple-bg); border-color: rgba(124, 58, 237, 0.3); color: var(--cv-subject-purple); }
+
+/* Buttons */
+.cv-btn-primary {
+  background: var(--cv-blue);
+  color: #ffffff;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--cv-radius-md);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--cv-shadow-glow-blue);
+  transition: all var(--cv-transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cv-btn-primary:hover {
+  background: var(--cv-blue-hover);
+  transform: translateY(-1px);
+}
+
+.cv-btn-secondary {
+  background: var(--cv-bg-subtle);
+  color: var(--cv-text-primary);
+  border: 1.5px solid var(--cv-border);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--cv-radius-md);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--cv-transition-fast);
+}
+
+.cv-btn-secondary:hover {
+  border-color: #38bdf8;
+  color: var(--cv-sky);
+}
+
+/* Interactive Filter / Tab Pills */
+.cv-tab-pill {
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--cv-radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1.5px solid var(--cv-border);
+  background: var(--cv-bg-surface);
+  color: var(--cv-text-muted);
+  cursor: pointer;
+  transition: all var(--cv-transition-fast);
+}
+
+.cv-tab-pill--active {
+  background: var(--cv-blue) !important;
+  border-color: var(--cv-blue) !important;
+  color: #ffffff !important;
+  box-shadow: var(--cv-shadow-glow-blue);
+}
+
+/* Responsive Grid Helpers */
+.cv-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.cv-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.cv-grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+
+@media (max-width: 1024px) {
+  .cv-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .cv-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .cv-grid-2 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .cv-grid-4, .cv-grid-3, .cv-grid-2 { grid-template-columns: 1fr; }
+}

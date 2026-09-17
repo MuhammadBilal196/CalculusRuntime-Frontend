@@ -1,6 +1,6 @@
 .verify-card {
   background: var(--card, #fff);
-  border: 1.5px solid var(--line, #e0d6c8);
+  border: 1.5px solid var(--line, #e2e8f0);
   border-radius: 14px;
   padding: 3rem 2.5rem;
   max-width: 480px;
@@ -72,7 +72,7 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  border-bottom: 1px solid var(--line, #e0d6c8);
+  border-bottom: 1px solid var(--line, #e2e8f0);
   padding-bottom: 0.6rem;
 }
 

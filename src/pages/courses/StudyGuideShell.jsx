@@ -9,500 +9,10 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 const integrationStyles = `
-.sfl-highlight {
-  outline: 3px solid #c8922a;
-  outline-offset: 4px;
-  border-radius: 8px;
-  transition: outline-color 2s ease;
-}
-
 .study-guide-page {
   min-height: 100vh;
   overflow: visible;
-}
-
-/* Left vertical guide nav — stays visible while scrolling */
-.partial-derivatives-guide {
-  display: block;
-}
-
-.partial-derivatives-guide .sidebar {
-  position: fixed !important;
-  top: var(--sidebar-top, calc(var(--header-h, 64px) + var(--guide-topbar-h, 0px))) !important;
-  left: 0 !important;
-  right: auto !important;
-  bottom: 0 !important;
-  width: 240px !important;
-  max-width: 240px !important;
-  height: calc(100vh - var(--sidebar-top, calc(var(--header-h, 64px) + var(--guide-topbar-h, 0px)))) !important;
-  max-height: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  gap: 0.15rem;
-  background: #0f0e0d;
-  border-right: 1px solid rgba(200, 146, 42, 0.35) !important;
-  border-bottom: 0 !important;
-  border-radius: 0 !important;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 1rem 0.75rem 1.35rem !important;
-  z-index: 115 !important;
-  scrollbar-width: thin;
-  overscroll-behavior-y: contain;
-  box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.18);
-}
-
-.partial-derivatives-guide .guide-nav-spacer {
-  display: none !important;
-}
-
-.partial-derivatives-guide .sidebar::-webkit-scrollbar {
-  width: 4px;
-  height: auto;
-}
-
-.partial-derivatives-guide .sidebar::-webkit-scrollbar-thumb {
-  background: rgba(200, 146, 42, 0.55);
-  border-radius: 2px;
-}
-
-.vector-calculus-guide nav {
-  top: 64px;
-}
-
-.vector-calculus-guide > div > main {
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.55) inset;
-}
-
-.partial-derivatives-guide .sb-brand {
-  flex: 0 0 auto;
-  border-bottom: 1px solid rgba(200, 146, 42, 0.3) !important;
-  border-right: 0 !important;
-  margin: 0 0 0.65rem;
-  padding: 0.35rem 0.55rem 0.85rem !important;
-}
-
-.partial-derivatives-guide .sb-sub {
-  display: none;
-}
-
-.partial-derivatives-guide .sb-title {
-  color: #e8b84b;
-  font-size: 0.85rem;
-  font-style: normal;
-  white-space: normal;
-  line-height: 1.35;
-}
-
-.partial-derivatives-guide .sb-group {
-  display: none;
-}
-
-.partial-derivatives-guide .sb-link {
-  flex: 0 0 auto;
-  display: block !important;
-  border-left: 3px solid transparent !important;
-  border-bottom: 0 !important;
-  border-radius: 6px;
-  color: rgba(250, 247, 242, 0.76);
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.03em;
-  text-transform: none;
-  white-space: normal;
-  padding: 0.55rem 0.65rem !important;
-  line-height: 1.35;
-  background: transparent;
-}
-
-.partial-derivatives-guide .sb-link:hover,
-.partial-derivatives-guide .sb-link.active {
-  background: rgba(200, 146, 42, 0.12) !important;
-  border-left-color: #c8922a !important;
-  border-bottom-color: transparent !important;
-  color: #e8b84b;
-}
-
-.partial-derivatives-guide .sb-link .sn {
-  color: #c8922a;
-  font-size: 0.68rem;
-  margin-right: 0.35em;
-}
-
-.partial-derivatives-guide .main {
-  margin-left: 240px !important;
-  max-width: none;
-  padding: 0;
-  min-width: 0;
-  width: auto;
-}
-
-/* Sequential quiz unlock */
-.partial-derivatives-guide .mcq-card.mcq-locked {
-  display: none !important;
-}
-
-.partial-derivatives-guide .mcq-section.mcq-section-locked {
-  position: relative;
-  opacity: 0.55;
-  pointer-events: none;
-  filter: grayscale(0.25);
-}
-
-.partial-derivatives-guide .mcq-section.mcq-section-locked::before {
-  content: attr(data-lock-hint);
-  display: block;
-  margin: 0 2rem 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: 8px;
-  border: 1px dashed rgba(200, 146, 42, 0.55);
-  background: rgba(200, 146, 42, 0.08);
-  color: #7a5a12;
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.partial-derivatives-guide .mcq-unlock-hint {
-  margin: 0.35rem 0 1rem;
-  color: #7a7268;
-  font-size: 0.88rem;
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-}
-
-
-.partial-derivatives-guide .ch-hdr {
-  /* Warm ink brown with gold pinstripes — matches Vector Calculus guide */
-  background:
-    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(200, 146, 42, 0.06) 40px, rgba(200, 146, 42, 0.06) 41px),
-    #0f0e0d;
-  border-bottom: 0;
-  color: #faf7f2;
-  margin-bottom: 0;
-  overflow: hidden;
-  padding: 3.4rem 2rem 3rem;
-  position: relative;
-}
-
-.partial-derivatives-guide .ch-hdr::after {
-  background: linear-gradient(90deg, transparent, #c8922a, #2a5c45, transparent);
-  content: "";
-  height: 1px;
-  inset: auto 0 0;
-  opacity: 0.8;
-  position: absolute;
-}
-
-.partial-derivatives-guide .ch-eye {
-  color: #e8b84b;
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-}
-
-.partial-derivatives-guide .ch-title {
-  color: #faf7f2;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-}
-
-.partial-derivatives-guide .ch-sub {
-  color: rgba(250, 247, 242, 0.74);
-}
-
-.partial-derivatives-guide .ch-orn {
-  color: #e8b84b;
-}
-
-.partial-derivatives-guide .main > p,
-.partial-derivatives-guide .main > .toc,
-.partial-derivatives-guide .main > .section,
-.partial-derivatives-guide .main > .mcq-section,
-.partial-derivatives-guide .main > .pg-foot {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
-}
-
-.partial-derivatives-guide .main > p {
-  padding: 3rem 2rem 0;
-}
-
-.partial-derivatives-guide .main > .toc {
   background: #ffffff;
-  border: 1px solid #d6cfc4;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-  margin-bottom: 3.5rem;
-  margin-top: 2rem;
-}
-
-.partial-derivatives-guide .toc-h {
-  color: #3d4f6b;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1rem;
-}
-
-.partial-derivatives-guide .toc-a {
-  color: #3d4f6b;
-}
-
-.partial-derivatives-guide .main > .divider {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
-}
-
-.partial-derivatives-guide .section,
-.partial-derivatives-guide .mcq-section {
-  background: transparent;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  scroll-margin-top: calc(var(--header-h, 64px) + var(--guide-topbar-h, 0px) + 3.5rem);
-}
-
-.partial-derivatives-guide .sec-badge,
-.partial-derivatives-guide .mcq-section-badge {
-  color: #c8922a;
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-}
-
-.partial-derivatives-guide .sec-title,
-.partial-derivatives-guide .mcq-section-title {
-  color: #3d4f6b;
-  font-family: 'Playfair Display', Georgia, serif;
-}
-
-.partial-derivatives-guide .box,
-.partial-derivatives-guide .mcq-card,
-.partial-derivatives-guide .sum-card {
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.partial-derivatives-guide .box:hover,
-.partial-derivatives-guide .sum-card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
-}
-
-.partial-derivatives-guide .fml {
-  background: #f7f4ff;
-  border-left: 4px solid #3d4f6b;
-  border-radius: 0 6px 6px 0;
-}
-
-.partial-derivatives-guide .pg-foot {
-  color: #7a7268;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-@media (max-width: 920px) {
-  .partial-derivatives-guide .sidebar {
-    top: calc(var(--header-h, 64px) + var(--guide-topbar-h, 0px)) !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: auto !important;
-    width: 100% !important;
-    max-width: none !important;
-    height: auto !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    padding: 0 1rem !important;
-    border-right: 0 !important;
-    border-bottom: 1px solid rgba(200, 146, 42, 0.35) !important;
-  }
-
-  .partial-derivatives-guide .sb-brand {
-    border-bottom: 0 !important;
-    border-right: 1px solid rgba(200, 146, 42, 0.3) !important;
-    margin: 0 0.5rem 0 0;
-    padding: 0.65rem 1rem 0.65rem 0 !important;
-  }
-
-  .partial-derivatives-guide .sb-title {
-    white-space: nowrap;
-  }
-
-  .partial-derivatives-guide .sb-link {
-    white-space: nowrap;
-    border-left: 0 !important;
-    border-bottom: 2px solid transparent !important;
-    border-radius: 0;
-    text-transform: uppercase;
-    padding: 0.85rem 0.8rem !important;
-  }
-
-  .partial-derivatives-guide .sb-link:hover,
-  .partial-derivatives-guide .sb-link.active {
-    border-left-color: transparent !important;
-    border-bottom-color: #c8922a !important;
-    background: transparent !important;
-  }
-
-  .partial-derivatives-guide .main {
-    margin-left: 0 !important;
-  }
-
-  .partial-derivatives-guide .guide-nav-spacer {
-    display: block !important;
-    width: 100%;
-    height: 52px;
-  }
-
-  .vector-calculus-guide nav {
-    top: var(--header-h, 72px);
-  }
-}
-
-@media (max-width: 640px) {
-  .partial-derivatives-guide .sb-brand {
-    display: none;
-  }
-
-  .partial-derivatives-guide .ch-hdr {
-    padding: 2.4rem 1rem 2.2rem;
-  }
-
-  .partial-derivatives-guide .main > p,
-  .partial-derivatives-guide .section,
-  .partial-derivatives-guide .mcq-section,
-  .partial-derivatives-guide .pg-foot {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-/* ── MCQ Progress Sidebar ────────────────────────────────── */
-.mcq-progress-sidebar {
-  position: fixed;
-  right: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 180;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 1.1rem 0.85rem 1.2rem;
-  background: rgba(15, 14, 13, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(200, 146, 42, 0.35);
-  border-radius: 14px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(200, 146, 42, 0.08);
-  min-width: 58px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.mcq-progress-sidebar.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.mcq-progress-sidebar__label {
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #c8922a;
-  white-space: nowrap;
-}
-
-.mcq-progress-sidebar__track {
-  position: relative;
-  width: 6px;
-  height: 120px;
-  background: rgba(200, 146, 42, 0.15);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.mcq-progress-sidebar__fill {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to top, #c8922a, #e8b84b);
-  border-radius: 3px;
-  transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.mcq-progress-sidebar__count {
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #faf7f2;
-  white-space: nowrap;
-}
-
-.mcq-progress-sidebar__score {
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-  font-size: 0.68rem;
-  color: rgba(250, 247, 242, 0.55);
-  white-space: nowrap;
-}
-
-.mcq-progress-sidebar__pct {
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #e8b84b;
-  line-height: 1;
-}
-
-.mcq-progress-sidebar__check {
-  font-size: 1.25rem;
-  line-height: 1;
-  animation: mcq-check-pop 0.4s ease;
-}
-
-@keyframes mcq-check-pop {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.3); }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-@media (max-width: 920px) {
-  .mcq-progress-sidebar {
-    right: 0.75rem;
-    padding: 0.75rem 0.6rem;
-    min-width: 48px;
-    border-radius: 10px;
-  }
-  .mcq-progress-sidebar__track {
-    height: 80px;
-  }
-}
-
-@media (max-width: 640px) {
-  .mcq-progress-sidebar {
-    top: auto;
-    bottom: 5rem;
-    right: 0.5rem;
-    transform: none;
-    flex-direction: row;
-    padding: 0.5rem 0.75rem;
-    gap: 0.5rem;
-    border-radius: 8px;
-  }
-  .mcq-progress-sidebar__track {
-    width: 60px;
-    height: 5px;
-  }
-  .mcq-progress-sidebar__fill {
-    bottom: 0;
-    left: 0;
-    height: 100% !important;
-    width: var(--fill-w, 0%);
-    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
 }
 `;
 
@@ -516,32 +26,33 @@ const saveForLaterStyles = `
   top: 0.9rem;
   right: 0.9rem;
   background: #ffffff;
-  border: 1px solid rgba(200, 146, 42, 0.4);
-  color: #3d4f6b;
+  border: 1px solid #0284c7;
+  color: #0284c7;
   border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
   cursor: pointer;
   z-index: 5;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  transition: all 0.15s ease;
 }
 .save-example-btn:hover {
-  background: #fbf1dd;
-  border-color: #c8922a;
+  background: #f0f9ff;
+  border-color: #0284c7;
   transform: translateY(-1px);
 }
 .save-example-btn.saved {
-  background: #e8b84b;
-  color: #0f0e0d;
-  border-color: #e8b84b;
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
 }
 .save-example-btn.saved:hover {
-  background: #dfa93b;
+  background: #0369a1;
 }
 .box.exm.exm-flash {
-  outline: 3px solid #c8922a;
+  outline: 3px solid #0284c7;
   outline-offset: 4px;
-  box-shadow: 0 0 0 8px rgba(200, 146, 42, 0.2);
+  box-shadow: 0 0 0 8px rgba(2, 132, 199, 0.2);
   transition: outline 0.2s, box-shadow 0.2s;
 }
 `;
@@ -873,7 +384,8 @@ function setupMcqs(root, { publishQuizToLeaderboard, saveQuizScore, setLeaderboa
       const dot = root.querySelector(`.mcq-dot[data-section="${section}"][data-dot="${qIndex + 1}"]`);
       if (dot) dot.textContent = "✓";
 
-      if (state[key].chosen === correctAnswer) {
+      const isCorrect = state[key].chosen === correctAnswer;
+      if (isCorrect) {
         scores[section] = (scores[section] || 0) + 1;
       }
 
@@ -909,6 +421,17 @@ function setupMcqs(root, { publishQuizToLeaderboard, saveQuizScore, setLeaderboa
           },
         }),
       );
+
+      // Auto-advance on correct answer; stop on wrong so user reviews manually
+      if (isCorrect) {
+        const nextIdx = (activeIndex[section] || 0) + 1;
+        const secCards = cardsBySection[section];
+        if (secCards && nextIdx < secCards.length && !secCards[nextIdx]?.classList.contains("mcq-locked")) {
+          window.setTimeout(() => goToSlide(section, nextIdx), 800);
+        }
+      }
+      // If wrong: do nothing extra — the answer panel is shown and user must
+      // click Next manually to proceed.
     }
   };
 
@@ -1015,7 +538,7 @@ function setupPinnedGuideNav(root) {
     } else {
       sidebar.style.right = "auto";
       sidebar.style.bottom = "0";
-      sidebar.style.width = "240px";
+      sidebar.style.width = "260px";
       sidebar.style.height = `calc(100vh - ${topOffset}px)`;
       sidebar.style.maxHeight = "none";
       sidebar.style.borderRadius = "0";
@@ -1470,7 +993,7 @@ function StudyGuideShell({
 
   return (
     <main className={`study-guide-page ${resolvedClass}`}>
-      <style>{styles + integrationStyles + saveForLaterStyles}</style>
+      <style>{integrationStyles + styles + saveForLaterStyles}</style>
       <button
         type="button"
         onClick={handleSaveAsPDF}
@@ -1481,12 +1004,14 @@ function StudyGuideShell({
           bottom: "5.5rem",
           right: "2rem",
           zIndex: 200,
-          background: "#0f0e0d",
-          color: "#e8b84b",
-          border: "1px solid rgba(200, 146, 42, 0.5)",
+          background: "#0056D2",
+          color: "#ffffff",
+          border: "none",
+          boxShadow: "0 4px 14px rgba(0, 86, 210, 0.3)",
           borderRadius: "6px",
-          padding: "0.6rem 1rem",
+          padding: "0.6rem 1.1rem",
           fontSize: "0.85rem",
+          fontWeight: "600",
           cursor: isGeneratingPDF ? "wait" : "pointer",
           opacity: isGeneratingPDF ? 0.7 : 1,
         }}

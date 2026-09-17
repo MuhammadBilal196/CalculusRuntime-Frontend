@@ -1534,6 +1534,157 @@ function SectionS147() {
               </p>
             </div>
           </div>
+                    <h3 className="subsec">
+            {"The Hessian Matrix"}
+          </h3>
+
+          <p>
+            {"The Hessian matrix collects all second-order partial derivatives of a function into one matrix. It provides a compact way to describe the local curvature of a surface near a critical point and forms the foundation of the second derivative test."}
+          </p>
+
+          <div className="box def">
+            <div className="box-lbl">
+              {"Definition — Hessian Matrix"}
+            </div>
+
+            <p>
+              {"For a twice-differentiable function $f(x,y)$, the Hessian matrix is the $2\\times2$ matrix of second-order partial derivatives:"}
+            </p>
+
+            <div className="fml">
+              {"$$H_f(x,y)=\\begin{pmatrix}f_{xx}(x,y)&f_{xy}(x,y)\\\\f_{yx}(x,y)&f_{yy}(x,y)\\end{pmatrix}$$"}
+            </div>
+
+            <p>
+              {"When the mixed partial derivatives are continuous, Clairaut's theorem gives $f_{xy}=f_{yx}$, so the Hessian is symmetric."}
+            </p>
+          </div>
+
+          <div className="box thm">
+            <div className="box-lbl">
+              {"Hessian-Based Optimization Workflow"}
+            </div>
+
+            <ol className="steps">
+              <li>
+                <strong>
+                  {"Find the first partial derivatives:"}
+                </strong>
+                {" compute $f_x$ and $f_y$."}
+              </li>
+
+              <li>
+                <strong>
+                  {"Find the critical points:"}
+                </strong>
+                {" solve $f_x=0$ and $f_y=0$ simultaneously."}
+              </li>
+
+              <li>
+                <strong>
+                  {"Compute all second-order partial derivatives:"}
+                </strong>
+                {" find $f_{xx}$, $f_{xy}$, $f_{yx}$, and $f_{yy}$."}
+              </li>
+
+              <li>
+                <strong>
+                  {"Construct the Hessian:"}
+                </strong>
+                {" place the second-order partial derivatives into $H_f$."}
+              </li>
+
+              <li>
+                <strong>
+                  {"Evaluate the Hessian at each critical point:"}
+                </strong>
+                {" calculate $H_f(a,b)$ and its determinant."}
+              </li>
+
+              <li>
+                <strong>
+                  {"Classify the critical point:"}
+                </strong>
+                {" use the determinant of the Hessian together with the sign of $f_{xx}$ in the second derivative test below."}
+              </li>
+            </ol>
+          </div>
+
+          <div className="box exm">
+            <div className="box-lbl">
+              {"Example"}
+            </div>
+
+            <div className="exm-title">
+              {"Constructing the Hessian and classifying a critical point"}
+            </div>
+
+            <p>
+              {"Consider $f(x,y)=x^2+y^2$. Find its critical point and use the Hessian matrix to classify it."}
+            </p>
+
+            <div className="sol">
+              <div className="sol-lbl">
+                {"Solution"}
+              </div>
+
+              <p>
+                <strong>
+                  {"Step 1 — Find the critical point."}
+                </strong>
+              </p>
+
+              <div className="fml">
+                {"$$f_x=2x,\\qquad f_y=2y$$"}
+              </div>
+
+              <p>
+                {"Set both partial derivatives equal to zero:"}
+              </p>
+
+              <div className="fml">
+                {"$$2x=0,\\qquad 2y=0\\quad\\Rightarrow\\quad (x,y)=(0,0)$$"}
+              </div>
+
+              <p>
+                <strong>
+                  {"Step 2 — Compute the second-order partial derivatives."}
+                </strong>
+              </p>
+
+              <div className="fml">
+                {"$$f_{xx}=2,\\qquad f_{xy}=0,\\qquad f_{yx}=0,\\qquad f_{yy}=2$$"}
+              </div>
+
+              <p>
+                <strong>
+                  {"Step 3 — Construct the Hessian matrix."}
+                </strong>
+              </p>
+
+              <div className="fml">
+                {"$$H_f(x,y)=\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}$$"}
+              </div>
+
+              <p>
+                <strong>
+                  {"Step 4 — Evaluate its determinant at $(0,0)$."}
+                </strong>
+              </p>
+
+              <div className="fml">
+                {"$$D=\\det(H_f)=2(2)-0(0)=4>0$$"}
+              </div>
+
+              <p>
+                {"Since $D>0$ and $f_{xx}=2>0$, the Hessian is positive definite at the critical point. Therefore, $(0,0)$ is a local minimum."}
+              </p>
+            </div>
+          </div>
+
+          <div className="note">
+            {"The Hessian matrix and the Hessian discriminant are related but are not the same object. The Hessian is the matrix $H_f$ itself, while $D=\\det(H_f)=f_{xx}f_{yy}-f_{xy}f_{yx}$ is its determinant. The determinant is then used, together with the sign of $f_{xx}$, in the two-variable second derivative test."}
+          </div>
           <h3 className="subsec">
             {"The Second Derivative Test"}
           </h3>

@@ -218,17 +218,19 @@ export default function ProbStatsTopic() {
                   onClick={() => handleCheckAnswer(qId)}
                   disabled={!selectedAnswers[qId]}
                   style={{
-                    padding: "10px 16px",
-                    backgroundColor: selectedAnswers[qId] ? "#6366f1" : "#475569",
+                    padding: "10px 18px",
+                    backgroundColor: selectedAnswers[qId] ? "#0284c7" : "#334155",
                     color: "#ffffff",
                     border: "none",
-                    borderRadius: "6px",
+                    borderRadius: "8px",
                     fontSize: "0.95rem",
-                    fontWeight: "600",
+                    fontWeight: "700",
                     cursor: selectedAnswers[qId] ? "pointer" : "not-allowed",
+                    boxShadow: selectedAnswers[qId] ? "0 4px 12px rgba(2, 132, 199, 0.35)" : "none",
+                    transition: "all 0.18s ease",
                   }}
                 >
-                  Check Answer
+                  Submit Answer
                 </button>
               ) : (
                 <button

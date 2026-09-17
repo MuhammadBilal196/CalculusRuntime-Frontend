@@ -2,11 +2,11 @@
 
 .concept-explore-page {
   --ce-ink: #16120a;
-  --ce-cream: #f4ede0;
-  --ce-parchment: #fdf8f0;
-  --ce-gold: #a0720a;
-  --ce-gold-lt: #c89318;
-  --ce-rule: #d4c4a8;
+  --ce-cream: #ffffff;
+  --ce-parchment: #ffffff;
+  --ce-gold: #0284c7;
+  --ce-gold-lt: #0056D2;
+  --ce-rule: #e2e8f0;
   --ce-muted: #7a7268;
   --ce-card: #ffffff;
   background: var(--ce-cream);
@@ -43,8 +43,8 @@
     45deg,
     transparent,
     transparent 40px,
-    rgba(200, 146, 42, 0.06) 40px,
-    rgba(200, 146, 42, 0.06) 41px
+    rgba(2, 132, 199, 0.06) 40px,
+    rgba(2, 132, 199, 0.06) 41px
   );
   pointer-events: none;
 }
@@ -60,7 +60,7 @@
 
 .concept-back-link {
   align-items: center;
-  border: 1px solid rgba(200, 146, 42, 0.35);
+  border: 1px solid rgba(2, 132, 199, 0.35);
   border-radius: 4px;
   color: var(--ce-cream);
   display: inline-flex;

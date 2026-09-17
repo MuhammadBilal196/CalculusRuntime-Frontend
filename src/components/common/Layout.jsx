@@ -1,35 +1,13 @@
-import { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { useTheme } from "../../context/ThemeContext";
 
 function Layout({ body }) {
-  const [darkMode, setDarkMode] = useState(() => {
-    try {
-      return localStorage.getItem("calculus-dark") === "true";
-    } catch {
-      return false;
-    }
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.setAttribute("data-theme", "dark");
-      root.classList.add("dark");
-    } else {
-      root.setAttribute("data-theme", "light");
-      root.classList.remove("dark");
-    }
-    try {
-      localStorage.setItem("calculus-dark", String(darkMode));
-    } catch {}
-  }, [darkMode]);
-
-  const toggle = () => setDarkMode((v) => !v);
+  const { darkMode, toggleTheme } = useTheme();
 
   return (
     <>
-      <Header darkMode={darkMode} onToggleDark={toggle} />
+      <Header darkMode={darkMode} onToggleDark={toggleTheme} />
       {body}
       <Footer />
     </>

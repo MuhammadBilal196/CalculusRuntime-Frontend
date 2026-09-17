@@ -1,53 +1,35 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   MyCertificates — Modern Two-Column Dashboard & Certificate Gallery
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .mycerts-page {
-  max-width: 780px;
-  margin: 2.5rem auto;
+  max-width: 1280px;
+  margin: 2rem auto;
   padding: 0 1.5rem 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
 }
 
 .mycerts-state {
   text-align: center;
-  background: var(--card, #fff);
-  border: 1.5px solid var(--line, #e0d6c8);
-  border-radius: 12px;
-  padding: 3rem 2rem;
-  max-width: 480px;
-  margin: 3rem auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 3.5rem 2rem;
+  max-width: 520px;
+  margin: 4rem auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .mycerts-state h2 {
   margin: 0 0 0.6rem;
+  font-weight: 750;
+  color: #0f172a;
 }
 
 .mycerts-state p {
-  color: var(--muted, #7a7267);
-  margin: 0 0 1.2rem;
-}
-
-.mycerts-header {
-  text-align: center;
-}
-
-.mycerts-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.75rem;
-  color: var(--accent, #c8963e);
-  font-weight: 700;
-  margin: 0 0 0.4rem;
-}
-
-.mycerts-header h1 {
-  margin: 0 0 0.4rem;
-}
-
-.mycerts-sub {
-  color: var(--muted, #7a7267);
-  margin: 0;
-  max-width: 46ch;
-  margin: 0 auto;
+  color: #64748b;
+  margin: 0 0 1.5rem;
 }
 
 .mycerts-error-banner {
@@ -56,71 +38,624 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  background: #fdf1e3;
-  border: 1.5px solid #e0b56b;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
   border-radius: 10px;
-  padding: 0.9rem 1.1rem;
+  padding: 0.9rem 1.2rem;
   font-size: 0.88rem;
-  color: #6b4a1a;
+  color: #be123c;
+  margin-bottom: 1.5rem;
 }
 
-.mycerts-list {
+/* Two-column layout */
+.mycerts-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.95fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.mycerts-section {
+  margin-bottom: 2.5rem;
+}
+
+.mycerts-section-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+/* In Progress Course Cards */
+.mycerts-in-progress-list {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1.15rem;
 }
 
-.mycerts-row {
+.mycerts-course-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  background: var(--card, #fff);
-  border: 1.5px solid var(--line, #e0d6c8);
-  border-radius: 12px;
-  padding: 1.1rem 1.3rem;
+  gap: 1.4rem;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.5rem 1.6rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
-.mycerts-row-title {
+.mycerts-course-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.07);
+  transform: translateY(-2px);
+}
+
+.mycerts-course-card--selected {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25), 0 8px 24px rgba(2, 132, 199, 0.08) !important;
+  background: #f8fafc;
+}
+
+.mycerts-active-badge {
+  font-size: 0.72rem;
   font-weight: 700;
-  font-size: 1.02rem;
-  margin-bottom: 0.25rem;
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.mycerts-row-meta {
-  font-size: 0.85rem;
-  color: var(--muted, #7a7267);
+.mycerts-course-icon-wrap {
+  min-width: 110px;
+  height: 54px;
+  padding: 0.4rem 0.9rem;
+  border-radius: 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.mycerts-row-meta--earned {
-  color: #4a7c4a;
-  font-weight: 600;
+.mycerts-course-icon-wrap--calculus-analytical-geometry {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(2, 132, 199, 0.22));
+  border-color: rgba(14, 165, 233, 0.3);
 }
 
-.mycerts-row-actions {
+.mycerts-course-icon-wrap--multivariable-calculus {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(5, 150, 105, 0.22));
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.mycerts-course-icon-wrap--linear-algebra {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(147, 51, 234, 0.22));
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.mycerts-course-icon-wrap--probability-statistics {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(234, 88, 12, 0.22));
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.mycerts-math-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.mycerts-math-logo .math-logo-card,
+.mycerts-math-logo .math-logo {
+  font-family: 'Cambria Math', 'KaTeX_Main', 'Times New Roman', Georgia, serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  white-space: nowrap !important;
+}
+
+.mycerts-math-logo .math-sym-big {
+  font-size: 1.45rem !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+}
+
+.mycerts-math-glyph {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.mycerts-course-body {
+  flex: 1;
+  min-width: 0;
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.mycerts-course-title {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 750;
+  color: #0f172a;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mycerts-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.mycerts-progress-track {
+  flex: 1;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.mycerts-progress-fill {
+  height: 100%;
+  background: #16a34a;
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.mycerts-progress-fill[style*="width: 0%"] {
+  display: none;
+}
+
+.mycerts-pct-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+  min-width: 85px;
+}
+
+.mycerts-course-action {
+  flex-shrink: 0;
 }
 
 .mycerts-btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.55rem 1.1rem;
-  border-radius: 8px;
-  border: 1.5px solid var(--line, #e0d6c8);
-  background: transparent;
-  color: var(--text, #1c1712);
+  justify-content: center;
+  font-size: 0.86rem;
   font-weight: 600;
-  font-size: 0.88rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
   cursor: pointer;
-  text-decoration: none !important;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
   white-space: nowrap;
 }
 
+.mycerts-btn--continue,
 .mycerts-btn--primary {
-  background: var(--accent, #c8963e);
-  border-color: var(--accent, #c8963e);
-  color: #fff !important;
+  background: #0056D2;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(0, 86, 210, 0.2);
+}
+
+.mycerts-btn--continue:hover,
+.mycerts-btn--primary:hover {
+  background: #0043a8;
+  transform: translateY(-1px);
+}
+
+.mycerts-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.mycerts-content-subtitle {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0.25rem 0 0;
+}
+
+.mycerts-course-switcher {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.mycerts-tab-pill {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mycerts-tab-pill:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.mycerts-tab-pill--active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+}
+
+/* Course Content Checklist */
+.mycerts-content-checklist {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.mycerts-checklist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+  transition: background 0.15s;
+}
+
+.mycerts-checklist-item:last-child {
+  border-bottom: none;
+}
+
+.mycerts-checklist-item:hover {
+  background: #f8fafc;
+}
+
+.mycerts-checklist-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.mycerts-checklist-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #0284c7;
+  padding-top: 0.1rem;
+}
+
+.mycerts-checklist-title {
+  font-weight: 750;
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.mycerts-topic-link {
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 750;
+  transition: color 0.15s ease;
+}
+
+.mycerts-topic-link:hover {
+  color: #0284c7;
+  text-decoration: underline;
+}
+
+.mycerts-checklist-sub {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+.mycerts-checklist-status {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.mycerts-check-icon {
+  color: #16a34a;
+  font-size: 1.1rem;
+}
+
+.mycerts-pending-dash {
+  color: #cbd5e1;
+  font-size: 1.1rem;
+}
+
+/* Right Column: Earned Certificates Cards */
+.mycerts-certs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mycerts-cert-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mycerts-cert-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+/* Realistic Certificate Thumbnail */
+.mycerts-cert-thumb {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 4px #ffffff, inset 0 0 0 5px #e2e8f0;
+  margin-bottom: 1rem;
+}
+
+.mycerts-cert-thumb-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.mycerts-cert-thumb-ribbon {
+  position: absolute;
+  top: -1rem;
+  right: 1.25rem;
+  width: 28px;
+  height: 48px;
+  background: #3b82f6;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+}
+
+.mycerts-cert-thumb-ribbon::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 8px solid #f8fafc;
+}
+
+.mycerts-cert-thumb-header {
+  font-family: 'Times New Roman', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #1e293b;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.mycerts-cert-thumb-line {
+  height: 1px;
+  background: #cbd5e1;
+  width: 60%;
+  margin-bottom: 0.65rem;
+}
+
+.mycerts-cert-thumb-name {
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+}
+
+.mycerts-cert-thumb-sub {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.mycerts-cert-card-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+.mycerts-cert-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mycerts-download-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0056D2;
+  text-decoration: none;
+}
+
+.mycerts-download-link:hover {
+  text-decoration: underline;
+}
+
+.mycerts-download-link--locked {
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.mycerts-view-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+}
+
+.mycerts-view-link:hover {
+  color: #0f172a;
+}
+
+.mycerts-link-sep {
+  color: #cbd5e1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Dark Mode Support for Certificates Page
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-theme="dark"] .mycerts-page {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .mycerts-section-title,
+[data-theme="dark"] .mycerts-course-title,
+[data-theme="dark"] .mycerts-checklist-title,
+[data-theme="dark"] .mycerts-cert-card-title {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .mycerts-course-card,
+[data-theme="dark"] .mycerts-content-checklist,
+[data-theme="dark"] .mycerts-cert-card,
+[data-theme="dark"] .mycerts-state {
+  background: #111827;
+  border-color: #1e293b;
+}
+
+[data-theme="dark"] .mycerts-course-icon-wrap {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .mycerts-course-icon-wrap--calculus-analytical-geometry {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(2, 132, 199, 0.35));
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+[data-theme="dark"] .mycerts-course-icon-wrap--multivariable-calculus {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.35));
+  border-color: rgba(52, 211, 153, 0.4);
+}
+
+[data-theme="dark"] .mycerts-course-icon-wrap--linear-algebra {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(147, 51, 234, 0.35));
+  border-color: rgba(129, 140, 248, 0.4);
+}
+
+[data-theme="dark"] .mycerts-course-icon-wrap--probability-statistics {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 88, 12, 0.35));
+  border-color: rgba(251, 146, 60, 0.4);
+}
+
+[data-theme="dark"] .mycerts-progress-track {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .mycerts-course-card--selected,
+[data-theme="dark"] .mycerts-cert-card--selected {
+  background: #1e293b !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35) !important;
+}
+
+[data-theme="dark"] .mycerts-content-subtitle {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .mycerts-tab-pill {
+  background: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .mycerts-tab-pill:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .mycerts-tab-pill--active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .mycerts-checklist-item {
+  border-bottom-color: #1e293b;
+}
+
+[data-theme="dark"] .mycerts-checklist-item:hover {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .mycerts-topic-link {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .mycerts-topic-link:hover {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .mycerts-checklist-sub {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .mycerts-cert-thumb {
+  background: #0f172a;
+  border-color: #334155;
+  box-shadow: inset 0 0 0 4px #111827, inset 0 0 0 5px #1e293b;
+}
+
+[data-theme="dark"] .mycerts-cert-thumb-ribbon::after {
+  border-bottom-color: #0f172a;
+}
+
+[data-theme="dark"] .mycerts-cert-thumb-header {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .mycerts-cert-thumb-name {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .mycerts-download-link {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .mycerts-view-link {
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .mycerts-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }

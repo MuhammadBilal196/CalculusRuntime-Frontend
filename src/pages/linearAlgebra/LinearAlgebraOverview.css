@@ -1,11 +1,12 @@
 .la-overview-lead {
-  color: var(--muted);
+  color: #475569;
   line-height: 1.75;
   max-width: 68ch;
+  font-size: 1.05rem;
 }
 
 .la-overview-bullets {
-  color: var(--muted);
+  color: #475569;
   line-height: 1.8;
   margin: 1rem 0 0;
   max-width: 60ch;
@@ -19,89 +20,160 @@
 .la-roadmap {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.85rem;
   list-style: none;
-  margin: 1.25rem 0 0;
+  margin: 1.5rem 0 0;
   padding: 0;
 }
 
 .la-roadmap-row {
   align-items: center;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius, 8px);
-  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  color: #0f172a;
   display: flex;
-  gap: 1rem;
-  padding: 0.9rem 1.1rem;
+  gap: 1.2rem;
+  padding: 1.1rem 1.35rem;
   text-decoration: none;
-  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .la-roadmap-row:hover {
-  border-color: var(--gold);
-  box-shadow: var(--shadow-hard, 0 6px 20px rgba(0, 0, 0, 0.08));
-  transform: translateX(2px);
+  border-color: #0284c7;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
+  transform: translateY(-2px);
 }
 
 .la-roadmap-num {
   align-items: center;
-  background: rgba(194, 138, 46, 0.12);
-  border: 1px solid rgba(194, 138, 46, 0.3);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
   border-radius: 50%;
-  color: var(--gold);
+  color: #0056D2;
   display: flex;
   flex: 0 0 auto;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
-  height: 2.1rem;
+  height: 2.3rem;
   justify-content: center;
-  width: 2.1rem;
+  width: 2.3rem;
+  font-size: 0.95rem;
 }
 
 .la-roadmap-copy {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
   min-width: 0;
 }
 
 .la-roadmap-title {
   align-items: center;
-  color: var(--ink);
+  color: #0f172a;
   display: flex;
   flex-wrap: wrap;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Inter, -apple-system, sans-serif;
   font-size: 1.08rem;
   font-weight: 700;
-  gap: 0.55rem;
+  gap: 0.65rem;
 }
 
 .la-roadmap-copy small {
-  color: var(--muted);
-  font-size: 0.85rem;
+  color: #64748b;
+  font-size: 0.88rem;
   line-height: 1.5;
 }
 
 .la-roadmap-tag {
-  background: rgba(0, 0, 0, 0.06);
+  background: #f1f5f9;
   border-radius: 999px;
-  color: var(--muted);
-  font-size: 0.68rem;
+  color: #475569;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  padding: 0.18rem 0.55rem;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
   text-transform: uppercase;
 }
 
 .la-roadmap-tag--core {
-  background: rgba(47, 116, 107, 0.12);
-  color: var(--teal);
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
 }
 
 .la-roadmap-arrow {
-  color: var(--muted);
+  color: #94a3b8;
   flex: 0 0 auto;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.la-roadmap-row:hover .la-roadmap-arrow {
+  color: #0284c7;
+  transform: translateX(4px);
+}
+
+/* ── Dark Mode Overrides ── */
+[data-theme="dark"] .la-overview-lead,
+.dark .la-overview-lead,
+[data-theme="dark"] .la-overview-bullets,
+.dark .la-overview-bullets {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .la-roadmap-row,
+.dark .la-roadmap-row {
+  background: #0b1120;
+  border-color: #1e293b;
+  color: #f1f5f9;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .la-roadmap-row:hover,
+.dark .la-roadmap-row:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.18);
+}
+
+[data-theme="dark"] .la-roadmap-title,
+.dark .la-roadmap-title {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .la-roadmap-copy small,
+.dark .la-roadmap-copy small {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .la-roadmap-num,
+.dark .la-roadmap-num {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .la-roadmap-tag,
+.dark .la-roadmap-tag {
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .la-roadmap-tag--core,
+.dark .la-roadmap-tag--core {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+[data-theme="dark"] .la-roadmap-arrow,
+.dark .la-roadmap-arrow {
+  color: #64748b;
+}
+
+[data-theme="dark"] .la-roadmap-row:hover .la-roadmap-arrow,
+.dark .la-roadmap-row:hover .la-roadmap-arrow {
+  color: #38bdf8;
 }

@@ -33,6 +33,83 @@ function OpeningNote() {
   );
 }
 
+function SectionBigProofs() {
+  return (
+    <section className="section" id="diff-proofs">
+      <div className="sec-badge">Section 1.2</div>
+      <h2 className="sec-title">The Big Proofs</h2>
+      <TheoryBox title="Extreme Value Theorem (EVT) & Fermat's Theorem">
+        <p>
+          {"**EVT**: If $f$ is continuous on a closed interval $[a,b]$, then $f$ attains an absolute maximum and absolute minimum on that interval."}
+        </p>
+        <p>
+          {"**Fermat's Theorem**: If $f$ has a local extremum at $c$ and $f'(c)$ exists, then $f'(c) = 0$. This gives us the method of finding critical points."}
+        </p>
+      </TheoryBox>
+      <TheoryBox title="Rolle's Theorem & Mean Value Theorem (MVT)">
+        <p>
+          {"**Rolle's Theorem**: If $f$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $f(a)=f(b)$, then there exists at least one $c$ in $(a,b)$ where $f'(c) = 0$."}
+        </p>
+        <p>
+          {"**MVT**: A generalization of Rolle's. If $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then there exists a $c$ in $(a,b)$ such that $f'(c) = \\frac{f(b)-f(a)}{b-a}$. In other words, the instantaneous rate of change at some point equals the average rate of change over the interval."}
+        </p>
+      </TheoryBox>
+    </section>
+  );
+}
+
+function SectionAdvancedDiff() {
+  return (
+    <section className="section" id="diff-adv-methods">
+      <div className="sec-badge">Section 2.3</div>
+      <h2 className="sec-title">Advanced Derivative Methods</h2>
+      <TheoryBox title="Implicit & Logarithmic Differentiation">
+        <p>
+          {"**Implicit Differentiation**: When $y$ cannot be easily isolated in an equation involving $x$ and $y$, differentiate both sides with respect to $x$, applying the chain rule to terms with $y$ (multiplying by $y'$ or $\\frac{dy}{dx}$), and then algebraically solve for $y'$."}
+        </p>
+        <p>
+          {"**Logarithmic Differentiation**: Useful for functions like $y = x^x$ or complex products/quotients. Take the natural logarithm $\\ln$ of both sides, simplify using log properties, differentiate implicitly, and solve for $y'$."}
+        </p>
+      </TheoryBox>
+      <PracticalTheory title="Derivatives of Inverse Trig Functions">
+        <p>
+          {"Using implicit differentiation and trig identities, we find:"}<br/>
+          {"$\\frac{d}{dx}[\\arcsin x] = \\frac{1}{\\sqrt{1-x^2}}$"}<br/>
+          {"$\\frac{d}{dx}[\\arccos x] = -\\frac{1}{\\sqrt{1-x^2}}$"}<br/>
+          {"$\\frac{d}{dx}[\\arctan x] = \\frac{1}{1+x^2}$"}
+        </p>
+      </PracticalTheory>
+    </section>
+  );
+}
+
+function SectionTrigDerivations() {
+  return (
+    <section className="section" id="diff-trig-derive">
+      <div className="sec-badge">Section 2.4</div>
+      <h2 className="sec-title">Trigonometric Derivations</h2>
+      <TheoryBox title="Proving Sine and Cosine Derivatives">
+        <p>
+          {"Using the limit definition $f'(x) = \\lim_{h \\to 0} \\frac{f(x+h)-f(x)}{h}$ and the fundamental trig limits $\\lim_{h \\to 0} \\frac{\\sin h}{h} = 1$ and $\\lim_{h \\to 0} \\frac{\\cos h - 1}{h} = 0$, we can derive:"}
+        </p>
+        <p>
+          {"$\\frac{d}{dx}[\\sin x] = \\cos x$"}<br/>
+          {"$\\frac{d}{dx}[\\cos x] = -\\sin x$"}
+        </p>
+      </TheoryBox>
+      <PracticalTheory title="Other Trig Functions via Quotient Rule">
+        <p>
+          {"Since $\\tan x = \\frac{\\sin x}{\\cos x}$, applying the quotient rule yields $\\frac{d}{dx}[\\tan x] = \\sec^2 x$."}<br/>
+          {"Similarly:"}<br/>
+          {"$\\frac{d}{dx}[\\sec x] = \\sec x \\tan x$"}<br/>
+          {"$\\frac{d}{dx}[\\csc x] = -\\csc x \\cot x$"}<br/>
+          {"$\\frac{d}{dx}[\\cot x] = -\\csc^2 x$"}
+        </p>
+      </PracticalTheory>
+    </section>
+  );
+}
+
 export default function DifferentiationGuide({ part = 1 }) {
   if (part === 2) {
     return (
@@ -41,9 +118,11 @@ export default function DifferentiationGuide({ part = 1 }) {
           <div className="sb-brand"><div className="sb-title">Differentiation - Part 2</div></div>
           <a className="sb-link" href="#diff-apps">Applications</a>
           <a className="sb-link" href="#diff-proc2">Method</a>
+          <a className="sb-link" href="#diff-adv-methods">Adv. Methods</a>
+          <a className="sb-link" href="#diff-trig-derive">Trig Proofs</a>
           <a className="sb-link" href="#diff-ex-p2">Examples (8)</a>
           <a className="sb-link" href="#quiz-diff-apps">Quiz 1 - 15 Qs</a>
-          <a className="sb-link" href="#diff-advanced">Advanced tools</a>
+          <a className="sb-link" href="#diff-advanced">MVT (Old)</a>
           <a className="sb-link" href="#quiz-diff-adv">Quiz 2 - 15 Qs</a>
           <a className="sb-link" href="#diff-life2">Real-life use</a>
         </nav>
@@ -95,6 +174,9 @@ export default function DifferentiationGuide({ part = 1 }) {
               SOPs that convert sensor rates into operator actions.
             </RealLifeUse>
           </section>
+
+          <SectionAdvancedDiff />
+          <SectionTrigDerivations />
 
           <section className="section" id="diff-ex-p2">
             <div className="sec-badge">Eight lengthy certificate examples</div>
@@ -161,6 +243,7 @@ export default function DifferentiationGuide({ part = 1 }) {
       <nav className="sidebar">
         <div className="sb-brand"><div className="sb-title">Differentiation - Part 1</div></div>
         <a className="sb-link" href="#diff-theory">Theory</a>
+        <a className="sb-link" href="#diff-proofs">The Big Proofs</a>
         <a className="sb-link" href="#diff-proc1">Method</a>
         <a className="sb-link" href="#diff-ex-p1">Examples (8)</a>
         <a className="sb-link" href="#quiz-diff-rules">Quiz 1 - 15 Qs</a>
@@ -198,6 +281,8 @@ export default function DifferentiationGuide({ part = 1 }) {
             an instantaneous rate (derivative), the other a secant slope over a long interval.
           </RealLifeUse>
         </section>
+
+        <SectionBigProofs />
 
         <section className="section" id="diff-proc1">
           <div className="sec-badge">Procedure</div>

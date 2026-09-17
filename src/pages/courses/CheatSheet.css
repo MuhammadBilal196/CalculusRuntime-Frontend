@@ -1,0 +1,460 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CalcVoyager — Redesigned Cheat Sheet
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cheat-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5rem;
+}
+
+/* ── Hero Banner ── */
+.cs-hero {
+  background: linear-gradient(135deg, #0B1120 0%, #111827 60%, #1e293b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 2.2rem 2.5rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-hero::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -5%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.cs-hero-kicker {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  margin-bottom: 0.4rem;
+}
+
+.cs-hero-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 850;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.cs-hero-desc {
+  font-size: 1rem;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 680px;
+  line-height: 1.55;
+}
+
+/* ── Category Tabs ── */
+.cs-category-tabs {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+  scrollbar-width: none;
+}
+
+.cs-cat-tab {
+  padding: 0.6rem 1.15rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--line, #e2e8f0);
+  background: var(--card, #ffffff);
+  color: var(--muted, #64748b);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.cs-cat-tab:hover {
+  border-color: #38bdf8;
+  color: #0284c7;
+}
+
+.cs-cat-tab--active {
+  background: #0056D2 !important;
+  border-color: #0056D2 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 86, 210, 0.3);
+}
+
+/* ── Controls Bar ── */
+.cs-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--card, #ffffff);
+  border: 1.5px solid var(--line, #e2e8f0);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.cs-search-box {
+  flex: 1 1 240px;
+  position: relative;
+}
+
+.cs-search-input {
+  width: 100%;
+  padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid var(--line, #e2e8f0);
+  border-radius: 9px;
+  font-size: 0.92rem;
+  color: var(--ink, #0f172a);
+  background: var(--paper-2, #f8fafc);
+  transition: border-color 0.15s;
+}
+
+.cs-search-input:focus {
+  outline: none;
+  border-color: #0284c7;
+  background: #ffffff;
+}
+
+.cs-search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted, #94a3b8);
+  font-size: 0.95rem;
+}
+
+.cs-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cs-action-btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  background: var(--paper-2, #f8fafc);
+  border: 1.5px solid var(--line, #e2e8f0);
+  color: var(--ink, #0f172a);
+}
+
+.cs-action-btn:hover {
+  border-color: #38bdf8;
+  color: #0284c7;
+}
+
+.cs-download-btn {
+  background: #0056D2 !important;
+  border-color: #0056D2 !important;
+  color: #ffffff !important;
+  padding: 0.65rem 1.35rem;
+  box-shadow: 0 2px 10px rgba(0, 86, 210, 0.3);
+}
+
+.cs-download-btn:hover:not(:disabled) {
+  background: #0043a8 !important;
+  transform: translateY(-1px);
+}
+
+.cs-download-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Topic Filter Chips ── */
+.cs-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.cs-chip {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid var(--line, #e2e8f0);
+  background: var(--card, #ffffff);
+  color: var(--muted, #64748b);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.cs-chip:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.cs-chip--active {
+  background: rgba(2, 132, 199, 0.12) !important;
+  border-color: #0284c7 !important;
+  color: #0284c7 !important;
+}
+
+/* ── Sheet Container (PDF Canvas Target) ── */
+.cs-sheet-container {
+  background: var(--card, #ffffff);
+  border: 1.5px solid var(--line, #e2e8f0);
+  border-radius: 18px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.cs-sheet-header {
+  text-align: center;
+  border-bottom: 2px solid var(--line, #e2e8f0);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.2rem;
+}
+
+.cs-sheet-logo {
+  font-size: 1.8rem;
+  font-weight: 850;
+  color: var(--ink, #0f172a);
+  margin: 0 0 0.35rem;
+}
+
+.cs-sheet-date {
+  font-size: 0.88rem;
+  color: var(--muted, #64748b);
+  margin: 0;
+}
+
+/* ── Topic Sections ── */
+.cs-topic-block {
+  margin-bottom: 2.5rem;
+}
+
+.cs-topic-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 2px solid var(--line, #e2e8f0);
+}
+
+.cs-topic-color-bar {
+  width: 4px;
+  height: 22px;
+  border-radius: 4px;
+}
+
+.cs-topic-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 850;
+  color: var(--ink, #0f172a);
+  letter-spacing: -0.015em;
+}
+
+.cs-topic-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background: var(--paper-2, #f1f5f9);
+  color: var(--muted, #64748b);
+}
+
+.cs-topic-count {
+  margin-left: auto;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted, #94a3b8);
+}
+
+/* ── Formula Cards Grid ── */
+.cs-formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.1rem;
+}
+
+.cs-formula-card {
+  background: var(--card, #ffffff);
+  border: 1.5px solid var(--line, #e2e8f0);
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  position: relative;
+}
+
+.cs-formula-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.cs-formula-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.cs-formula-name {
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cs-copy-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.82rem;
+  color: var(--muted, #94a3b8);
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.cs-copy-btn:hover {
+  background: var(--paper-2, #f1f5f9);
+  color: #0284c7;
+}
+
+.cs-formula-box {
+  background: var(--paper-2, #f8fafc);
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 8px;
+  padding: 0.8rem 0.95rem;
+  font-family: 'Cambria Math', 'KaTeX_Main', 'Courier New', monospace;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--ink, #0f172a);
+  line-height: 1.45;
+  word-break: break-word;
+  margin-bottom: 0.5rem;
+}
+
+.cs-formula-note {
+  font-size: 0.82rem;
+  color: var(--muted, #64748b);
+  line-height: 1.45;
+  margin-top: auto;
+  padding-top: 0.35rem;
+}
+
+.cs-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted, #64748b);
+}
+
+.cs-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Dark Mode Support for Cheat Sheet
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-theme="dark"] .cheat-page {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .cs-controls-bar,
+[data-theme="dark"] .cs-cat-tab,
+[data-theme="dark"] .cs-action-btn,
+[data-theme="dark"] .cs-chip,
+[data-theme="dark"] .cs-sheet-container,
+[data-theme="dark"] .cs-formula-card {
+  background: #111827 !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .cs-hero-title,
+[data-theme="dark"] .cs-sheet-logo,
+[data-theme="dark"] .cs-topic-title,
+[data-theme="dark"] .cs-formula-box {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .cs-search-input {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .cs-search-input:focus {
+  border-color: #38bdf8 !important;
+}
+
+[data-theme="dark"] .cs-formula-box {
+  background: #0f172a !important;
+  border-color: #1e293b !important;
+}
+
+[data-theme="dark"] .cs-formula-note,
+[data-theme="dark"] .cs-sheet-date,
+[data-theme="dark"] .cs-topic-count {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .cs-chip--active {
+  background: rgba(56, 189, 248, 0.2) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+}
+
+[data-theme="dark"] .cs-topic-badge {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cs-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cs-btn-group {
+    justify-content: stretch;
+  }
+
+  .cs-action-btn,
+  .cs-download-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .cs-sheet-container {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .cs-formula-grid {
+    grid-template-columns: 1fr;
+  }
+}

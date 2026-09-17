@@ -24,6 +24,58 @@ function OpeningNote() {
   );
 }
 
+function SectionMonotoneIntegral() {
+  return (
+    <section className="section" id="ser-mct-tests">
+      <div className="sec-badge">Section 1.2</div>
+      <h2 className="sec-title">Convergence Theorems & Basic Tests</h2>
+      <TheoryBox title="Monotone Convergence Theorem">
+        <p>
+          {"Every bounded, monotonic (entirely non-increasing or non-decreasing) sequence converges. This guarantees a sequence settles down to a finite value even if we don't know the exact limit."}
+        </p>
+      </TheoryBox>
+      <TheoryBox title="Integral & Comparison Tests">
+        <p>
+          {"**Integral Test**: If $f(n) = a_n$ is continuous, positive, and decreasing on $[1, \\infty)$, then $\\sum_{n=1}^\\infty a_n$ converges if and only if $\\int_1^\\infty f(x) dx$ converges."}
+        </p>
+        <p>
+          {"**Direct Comparison Test**: If $0 \\leq a_n \\leq b_n$, and $\\sum b_n$ converges, then $\\sum a_n$ converges. If $\\sum a_n$ diverges, then $\\sum b_n$ diverges."}
+        </p>
+        <p>
+          {"**Limit Comparison Test**: If $\\lim_{n \\to \\infty} \\frac{a_n}{b_n} = c$ where $c > 0$ and finite, both series converge or both diverge."}
+        </p>
+      </TheoryBox>
+    </section>
+  );
+}
+
+function SectionTaylorMaclaurin() {
+  return (
+    <section className="section" id="ser-taylor">
+      <div className="sec-badge">Section 2.2</div>
+      <h2 className="sec-title">Taylor and Maclaurin Series</h2>
+      <TheoryBox title="Function Representation & Error">
+        <p>
+          {"A **Taylor Series** represents a function as an infinite sum evaluated at a point $a$: "}<br/>
+          {"$f(x) = \\sum_{n=0}^\\infty \\frac{f^{(n)}(a)}{n!} (x-a)^n$."}<br/>
+          {"When $a=0$, it is called a **Maclaurin Series**."}
+        </p>
+        <p>
+          {"**Taylor's Inequality (Error Estimation)**: When we approximate $f(x)$ using a finite Taylor polynomial $T_n(x)$ of degree $n$, the remainder $R_n(x)$ satisfies $|R_n(x)| \\leq \\frac{M}{(n+1)!}|x-a|^{n+1}$ where $M$ is an upper bound on $|f^{(n+1)}(x)|$ between $a$ and $x$."}
+        </p>
+      </TheoryBox>
+      <PracticalTheory title="Common Maclaurin Series">
+        <p>
+          {"$e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots$"}<br/>
+          {"$\\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\dots$"}<br/>
+          {"$\\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots$"}<br/>
+          {"$\\frac{1}{1-x} = 1 + x + x^2 + x^3 + \\dots \\quad (|x| < 1)$"}
+        </p>
+      </PracticalTheory>
+    </section>
+  );
+}
+
 export default function SequencesSeriesGuide({ part = 1 }) {
   if (part === 2) {
     return (
@@ -31,6 +83,7 @@ export default function SequencesSeriesGuide({ part = 1 }) {
         <nav className="sidebar">
           <div className="sb-brand"><div className="sb-title">Series · Part 2</div></div>
           <a className="sb-link" href="#ser-tests">Convergence tests</a>
+          <a className="sb-link" href="#ser-taylor">Taylor Series</a>
           <a className="sb-link" href="#ser-proc2">Method</a>
           <a className="sb-link" href="#ser-ex-p2">Examples (8)</a>
           <a className="sb-link" href="#quiz-ser-p2">Quiz · 15 Qs</a>
@@ -66,6 +119,8 @@ export default function SequencesSeriesGuide({ part = 1 }) {
               with a radius large enough for every real input.
             </RealLifeUse>
           </section>
+
+          <SectionTaylorMaclaurin />
 
           <section className="section" id="ser-proc2">
             <ProcedureBox
@@ -116,6 +171,7 @@ export default function SequencesSeriesGuide({ part = 1 }) {
       <nav className="sidebar">
         <div className="sb-brand"><div className="sb-title">Series · Part 1</div></div>
         <a className="sb-link" href="#ser-theory">Sequences &amp; series</a>
+        <a className="sb-link" href="#ser-mct-tests">MCT &amp; Tests</a>
         <a className="sb-link" href="#ser-proc1">Method</a>
         <a className="sb-link" href="#ser-ex-p1">Examples (8)</a>
         <a className="sb-link" href="#quiz-ser-p1">Quiz · 15 Qs</a>
@@ -150,6 +206,8 @@ export default function SequencesSeriesGuide({ part = 1 }) {
             perpetual payment stream are everyday geometric series in disguise.
           </RealLifeUse>
         </section>
+
+        <SectionMonotoneIntegral />
 
         <section className="section" id="ser-proc1">
           <ProcedureBox

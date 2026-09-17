@@ -1,18 +1,18 @@
-/* Simple Concepts — Partials cream / ink / gold theme */
+/* Simple Concepts — Modern White/Blue/Dark-Nav Theme */
 
 .simple-concepts-page {
-  --sc-ink: #16120a;
-  --sc-cream: #f4ede0;
-  --sc-parchment: #fdf8f0;
-  --sc-gold: #a0720a;
-  --sc-gold-lt: #c89318;
-  --sc-rule: #d4c4a8;
-  --sc-muted: #7a7268;
+  --sc-ink: #0f172a;
+  --sc-cream: #ffffff;
+  --sc-parchment: #ffffff;
+  --sc-gold: #0284c7;
+  --sc-gold-lt: #38bdf8;
+  --sc-rule: #e2e8f0;
+  --sc-muted: #64748b;
   --sc-card: #ffffff;
-  --sc-sage: #3a5f32;
-  background: var(--sc-cream);
+  --sc-sage: #059669;
+  background: #ffffff !important;
   color: var(--sc-ink);
-  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh;
   padding-bottom: clamp(3rem, 7vw, 5rem);
 }
@@ -28,27 +28,14 @@
 }
 
 .simple-concepts-hero {
-  background: var(--sc-ink);
-  color: var(--sc-cream);
+  background: #0B1120 !important;
+  color: #ffffff;
   margin-bottom: 0;
   max-width: none;
-  padding: clamp(3rem, 7vw, 4.5rem) clamp(1rem, 4vw, 2rem) clamp(2.5rem, 6vw, 3.5rem);
+  padding: clamp(3.5rem, 7vw, 5rem) clamp(1rem, 4vw, 2rem) clamp(3rem, 6vw, 4rem);
   position: relative;
   overflow: hidden;
-}
-
-.simple-concepts-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 40px,
-    rgba(200, 146, 42, 0.06) 40px,
-    rgba(200, 146, 42, 0.06) 41px
-  );
-  pointer-events: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .simple-concepts-hero > div {
@@ -59,17 +46,17 @@
 }
 
 .simple-concepts-kicker {
-  color: var(--sc-gold-lt);
-  font-size: 0.72rem;
+  color: #38bdf8;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   margin: 0 0 0.75rem;
   text-transform: uppercase;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .simple-concepts-hero .simple-concepts-kicker {
-  color: var(--sc-gold-lt);
+  color: #38bdf8;
 }
 
 .simple-concepts-hero h1,
@@ -77,21 +64,22 @@
 .concept-section h2,
 .self-reading-panel h2 {
   color: inherit;
-  font-family: "Playfair Display", Georgia, serif;
-  line-height: 1.12;
+  font-family: Inter, -apple-system, sans-serif;
+  line-height: 1.15;
   margin: 0;
-  font-weight: 900;
+  font-weight: 850;
+  letter-spacing: -0.02em;
 }
 
 .simple-concepts-hero h1 {
-  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.5rem);
   max-width: 900px;
-  color: var(--sc-cream);
+  color: #ffffff;
 }
 
 .simple-concepts-hero p:last-child {
-  color: rgba(250, 247, 242, 0.72);
-  font-size: clamp(1rem, 2vw, 1.12rem);
+  color: #94a3b8;
+  font-size: clamp(1.05rem, 2vw, 1.15rem);
   line-height: 1.7;
   margin: 1.15rem 0 0;
   max-width: 720px;
@@ -99,44 +87,45 @@
 
 .concept-map {
   align-items: center;
-  background: var(--sc-card);
-  border: 1px solid var(--sc-rule);
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(22, 18, 10, 0.06);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
   grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1fr);
-  margin-top: clamp(2rem, 5vw, 3rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
-  padding-bottom: clamp(1.4rem, 4vw, 2rem);
-  padding-top: clamp(1.4rem, 4vw, 2rem);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
 }
 
 .concept-map .simple-concepts-kicker {
-  color: var(--sc-gold);
+  color: #0284c7;
 }
 
 .concept-map h2 {
-  font-size: clamp(1.45rem, 3vw, 2.1rem);
-  color: var(--sc-ink);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #0f172a;
 }
 
 .concept-map-steps {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.75rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .concept-map-steps span {
-  background: rgba(160, 114, 10, 0.08);
-  border: 1px solid rgba(160, 114, 10, 0.22);
-  border-left: 3px solid var(--sc-gold);
-  border-radius: 0 6px 6px 0;
-  color: var(--sc-ink);
-  font-size: 0.9rem;
-  font-weight: 700;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #0284c7;
+  border-radius: 8px;
+  color: #0f172a;
+  font-size: 0.92rem;
+  font-weight: 600;
   min-height: 52px;
-  padding: 0.85rem 0.95rem;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .concept-section {
@@ -144,119 +133,138 @@
 }
 
 .concept-section-head {
-  border-top: 2px solid var(--sc-gold);
-  padding-top: 1.25rem;
+  border-top: 2px solid #e2e8f0;
+  padding-top: 1.5rem;
+  position: relative;
+}
+
+.concept-section-head::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: #0284c7;
 }
 
 .concept-section .simple-concepts-kicker {
-  color: var(--sc-gold);
+  color: #0284c7;
 }
 
 .concept-section h2,
 .self-reading-panel h2 {
-  font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-  color: var(--sc-ink);
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  color: #0f172a;
 }
 
 .concept-grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .concept-card {
-  background: var(--sc-card);
-  border: 1px solid var(--sc-rule);
-  border-left: 4px solid var(--sc-gold);
-  border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 10px rgba(22, 18, 10, 0.05);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #0284c7;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
   min-height: 218px;
-  padding: 1.25rem;
+  padding: 1.35rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.concept-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.1);
+  border-color: #cbd5e1;
 }
 
 .concept-card--self {
-  border-left-color: var(--sc-sage);
+  border-left-color: #059669;
 }
 
 .self-study-tag {
-  background: rgba(160, 114, 10, 0.12);
-  border: 1px solid rgba(160, 114, 10, 0.28);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   border-radius: 4px;
-  color: var(--sc-gold);
+  color: #16a34a;
   display: inline-flex;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.7rem;
-  padding: 0.22rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+  padding: 0.2rem 0.55rem;
   text-transform: uppercase;
 }
 
 .concept-card h3 {
-  color: var(--sc-ink);
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.2rem;
-  line-height: 1.25;
-  margin: 0 0 0.75rem;
-  font-weight: 700;
+  color: #0f172a;
+  font-family: Inter, -apple-system, sans-serif;
+  font-size: 1.42rem;
+  line-height: 1.3;
+  margin: 0 0 0.65rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
 }
 
 .concept-card p {
-  color: var(--sc-muted);
+  color: #475569;
   flex: 1;
-  line-height: 1.7;
+  line-height: 1.65;
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.04rem;
 }
 
 .concept-card-action {
   align-items: center;
   align-self: flex-start;
-  background: var(--sc-ink);
-  border: 1px solid var(--sc-ink);
-  border-radius: 4px;
-  color: var(--sc-cream);
+  background: #0056D2;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
   display: inline-flex;
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   font-weight: 700;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   min-height: 40px;
-  padding: 0.45rem 0.9rem;
+  padding: 0.55rem 1.25rem;
   text-decoration: none;
-  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(0, 86, 210, 0.25);
+  transition: all 0.18s ease;
 }
 
 .concept-card-action:hover,
 .concept-card-action:focus-visible {
-  background: var(--sc-gold);
-  border-color: var(--sc-gold);
-  color: var(--sc-ink);
+  background: #0043a8;
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .self-reading-panel {
   align-items: start;
-  background: var(--sc-ink);
-  border: 1px solid rgba(200, 146, 42, 0.28);
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(22, 18, 10, 0.18);
-  color: var(--sc-cream);
+  background: #0B1120;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  color: #ffffff;
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
   grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1fr);
-  padding-bottom: clamp(1.5rem, 4vw, 2.2rem);
-  padding-top: clamp(1.5rem, 4vw, 2.2rem);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
 }
 
 .self-reading-panel .simple-concepts-kicker {
-  color: var(--sc-gold-lt);
+  color: #38bdf8;
 }
 
 .self-reading-panel h2 {
-  color: var(--sc-cream);
+  color: #ffffff;
 }
 
 .self-reading-panel ul {
@@ -266,10 +274,10 @@
 }
 
 .self-reading-panel li {
-  border-bottom: 1px solid rgba(250, 247, 242, 0.12);
-  color: rgba(250, 247, 242, 0.78);
-  line-height: 1.6;
-  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  line-height: 1.65;
+  padding: 0.85rem 0;
 }
 
 .self-reading-panel li:first-child {
@@ -302,3 +310,66 @@
     min-height: auto;
   }
 }
+
+/* ── Dark Mode Overrides ────────────────────────────────── */
+[data-theme="dark"] .simple-concepts-page {
+  background: var(--paper, #0B1120) !important;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .concept-map {
+  background: #111827 !important;
+  border-color: #1e293b !important;
+  color: #f8fafc;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .concept-map h2 {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .concept-map .simple-concepts-kicker {
+  color: #38bdf8 !important;
+}
+
+[data-theme="dark"] .concept-map-steps span {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  border-left-color: #38bdf8 !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .concept-card {
+  background: #111827 !important;
+  border-color: #1e293b !important;
+  color: #f8fafc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .concept-card h3 {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .concept-card p {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .concept-section-head {
+  border-top-color: #1e293b !important;
+}
+
+[data-theme="dark"] .concept-section-head h2 {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .self-study-tag {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #38bdf8 !important;
+}
+
+[data-theme="dark"] .self-reading-panel {
+  background: #111827 !important;
+  border-color: #1e293b !important;
+}
+

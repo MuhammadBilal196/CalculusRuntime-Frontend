@@ -22,12 +22,16 @@ const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8002";
  * a name. Returns the certificate data, or null if none exists yet.
  */
 async function fetchExistingCertificate(accessToken, courseId) {
-  const response = await fetchWithTimeout(`${API_URL}/api/certificates/mine/${courseId}`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
-  if (response.status === 404) return null;
-  if (!response.ok) return null;
-  return response.json();
+  try {
+    const response = await fetchWithTimeout(`${API_URL}/api/certificates/mine/${courseId}`, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    if (response.status === 404) return null;
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
 }
 
 /**
@@ -63,11 +67,20 @@ async function requestCertificate(accessToken, courseId, courseTitle, fullName, 
 }
 
 function formatDate(ts) {
-  return new Date(ts).toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  if (!ts) return "";
+  let d;
+  if (typeof ts === "number") {
+    d = new Date(ts < 10000000000 ? ts * 1000 : ts);
+  } else {
+    d = new Date(ts);
+  }
+  return isNaN(d.getTime())
+    ? ""
+    : d.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
 }
 
 function Certificate() {
@@ -110,14 +123,17 @@ function Certificate() {
         const existing = await fetchExistingCertificate(user.accessToken, courseId);
         if (cancelled) return;
         if (existing) {
+          const pdfUrl = existing.pdf_url
+            ? (existing.pdf_url.startsWith("http") ? existing.pdf_url : `${API_URL}${existing.pdf_url}`)
+            : null;
           setCertificate({
             id: existing.cert_id,
             courseTitle,
             studentName: existing.full_name,
-            completedAt: existing.issued_at * 1000,
+            completedAt: existing.issued_at,
             verifyUrl: existing.verify_url,
             qrImage: existing.qr_png_base64,
-            pdfUrl: existing.pdf_url ? `${API_URL}${existing.pdf_url}` : null,
+            pdfUrl,
             score: existing.score,
             total: existing.total,
           });
@@ -204,14 +220,17 @@ function Certificate() {
         quizId,
         getMinQuizScore(courseId)
       );
+      const pdfUrl = data.pdf_url
+        ? (data.pdf_url.startsWith("http") ? data.pdf_url : `${API_URL}${data.pdf_url}`)
+        : null;
       setCertificate({
         id: data.cert_id,
         courseTitle,
         studentName: data.full_name || fullName.trim(),
-        completedAt: pendingCompletedAt || Date.now(),
+        completedAt: data.issued_at || pendingCompletedAt || Date.now(),
         verifyUrl: data.verify_url,
         qrImage: data.qr_png_base64,
-        pdfUrl: data.pdf_url ? `${API_URL}${data.pdf_url}` : null,
+        pdfUrl,
         score: data.score,
         total: data.total,
       });

@@ -763,16 +763,16 @@ function MatrixSandbox() {
 
       <style>{`
                 .ms-page {
-                    --ms-teal: #a0720a;
-                    --ms-gold: #c89318;
+                    --ms-teal: #0284c7;
+                    --ms-gold: #0056D2;
                     --ms-ink: #16120a;
                     --ms-muted: #5c4f3a;
-                    --ms-card: #fdf8f0;
-                    --ms-soft: #f4ede0;
-                    --ms-line: #d4c4a8;
+                    --ms-card: #ffffff;
+                    --ms-soft: #ffffff;
+                    --ms-line: #e2e8f0;
                     --ms-shadow: 0 8px 32px rgba(21,16,12,0.10);
                     min-height: 100vh;
-                    background: var(--paper, #f4ede0);
+                    background: var(--paper, #ffffff);
                     padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 3rem);
                 }
                 [data-theme="dark"] .ms-page {

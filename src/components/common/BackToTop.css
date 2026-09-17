@@ -7,18 +7,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   padding: 0;
-  border: 1px solid rgba(200, 146, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 999px;
-  background: var(--gold, #a0720a);
-  color: #fffdf8;
+  background: #0056D2;
+  color: #ffffff;
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(22, 18, 10, 0.22);
+  box-shadow: 0 4px 16px rgba(0, 86, 210, 0.35);
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
@@ -33,10 +33,9 @@
 
 .back-to-top:hover,
 .back-to-top:focus-visible {
-  background: var(--gold-2, #c89318);
+  background: #0043a8;
   transform: translateY(-2px);
-  outline: 2px solid rgba(200, 146, 42, 0.45);
-  outline-offset: 2px;
+  box-shadow: 0 6px 20px rgba(0, 86, 210, 0.45);
 }
 
 @media (max-width: 640px) {
@@ -50,5 +49,5 @@
 }
 
 [data-theme="dark"] .back-to-top {
-  color: #12100c;
+  color: #ffffff;
 }

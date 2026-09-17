@@ -8,11 +8,11 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  background: var(--paper-2);
-  border-bottom: 1px solid var(--line);
+  background: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
   padding: 0.65rem 1.5rem;
   position: sticky;
-  top: var(--header-h, 64px);
+  top: var(--header-h, 70px);
   z-index: 118;
 }
 
@@ -24,19 +24,20 @@
 }
 
 .guide-part-badge {
-  background: var(--gold);
+  background: #0056D2 !important;
   border-radius: 99px;
-  color: #fff;
+  color: #ffffff !important;
   font-size: 0.72rem;
   font-weight: 700;
   padding: 0.2rem 0.65rem;
   white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .guide-part-title {
-  font-size: 0.82rem;
-  color: var(--muted);
-  font-weight: 500;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
 }
 
 @media (max-width: 640px) {
@@ -46,5 +47,22 @@
 
   .guide-part-title {
     display: none;
+  }
+}
+
+[data-theme="dark"] .guide-part-topbar {
+  background: #0B1120 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .guide-part-title {
+  color: #cbd5e1 !important;
+}
+
+@media (min-width: 861px) {
+  .guide-part-wrapper .scb-wrap {
+    margin-left: calc(var(--sw, 260px) + 2rem) !important;
+    margin-right: 2rem !important;
+    max-width: min(960px, calc(100% - var(--sw, 260px) - 4rem)) !important;
   }
 }

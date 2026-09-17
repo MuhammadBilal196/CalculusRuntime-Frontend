@@ -438,13 +438,13 @@ const ContinuityFinder = () => {
                 .app-body {
                     --continuity-ink: #16120a;
                     --continuity-muted: #5c4f3a;
-                    --continuity-paper: #f4ede0;
-                    --continuity-card: #fdf8f0;
-                    --continuity-line: #d4c4a8;
-                    --continuity-teal: #a0720a;
+                    --continuity-paper: #ffffff;
+                    --continuity-card: #ffffff;
+                    --continuity-line: #e2e8f0;
+                    --continuity-teal: #0284c7;
                     --continuity-blue: #8a6209;
-                    --continuity-gold: #c89318;
-                    --continuity-plum: #a0720a;
+                    --continuity-gold: #0056D2;
+                    --continuity-plum: #0284c7;
                     --continuity-soft: #f4eee5;
                     --continuity-shadow: 0 18px 52px rgba(28, 24, 18, 0.13);
                     --continuity-shadow-sm: 0 8px 24px rgba(28, 24, 18, 0.08);

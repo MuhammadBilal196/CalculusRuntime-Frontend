@@ -61,7 +61,7 @@ function LinearEquationsGuide({ part = 1 }) {
               <LineGraph
                 range={7}
                 lines={[
-                  { a: 1, b: 1, c: 5, color: "#a0720a" },
+                  { a: 1, b: 1, c: 5, color: "#0284c7" },
                   { a: 1, b: -1, c: 1, color: "#1a3358" },
                 ]}
                 extraPoints={[{ x: 3, y: 2, color: "#3a5f32", label: "(3, 2)" }]}
@@ -70,7 +70,7 @@ function LinearEquationsGuide({ part = 1 }) {
               <LineGraph
                 range={7}
                 lines={[
-                  { a: 1, b: 1, c: 2, color: "#a0720a" },
+                  { a: 1, b: 1, c: 2, color: "#0284c7" },
                   { a: 1, b: 1, c: 5, color: "#1a3358" },
                 ]}
                 caption={"Case 2 — no solution: $x+y=2$ and $x+y=5$ are parallel, so they never meet."}
@@ -78,7 +78,7 @@ function LinearEquationsGuide({ part = 1 }) {
               <LineGraph
                 range={7}
                 lines={[
-                  { a: 1, b: 1, c: 2, color: "#a0720a" },
+                  { a: 1, b: 1, c: 2, color: "#0284c7" },
                   { a: 2, b: 2, c: 4, color: "#1a3358", dashed: true },
                 ]}
                 caption={"Case 3 — infinitely many: $x+y=2$ and $2x+2y=4$ trace the exact same line — the navy dashes sit right on top of the gold line."}
@@ -407,7 +407,7 @@ function LinearEquationsGuide({ part = 1 }) {
           <div className="le-graph-row">
             <LineGraph
               range={6}
-              lines={[{ a: 2, b: 3, c: 6, color: "#a0720a", showIntercepts: true }]}
+              lines={[{ a: 2, b: 3, c: 6, color: "#0284c7", showIntercepts: true }]}
               caption={"$2x+3y=6$ — x-intercept $(3,0)$, y-intercept $(0,2)$."}
             />
             <LineGraph

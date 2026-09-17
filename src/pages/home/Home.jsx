@@ -1,7 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { useProgress } from "../../context/ProgressContext";
 import { COURSES } from "../../data/courses";
 
 const guideCards = COURSES.map((c) => ({
@@ -11,6 +10,7 @@ const guideCards = COURSES.map((c) => ({
   meta: c.meta,
   icon: c.icon,
   color: c.color,
+  logo: c.logo || c.modules?.[0]?.logo || c.icon,
 }));
 
 const toolLinks = [
@@ -73,7 +73,6 @@ function Home() {
   const [query, setQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { user } = useAuth();
-  const { stats } = useProgress();
   const navigate = useNavigate();
   const searchRef = useRef(null);
   const isSearching = query.trim().length > 0;
@@ -117,44 +116,25 @@ function Home() {
       {/* Hero */}
       <section className="home-hero">
         <div className="hero-copy">
-          <p className="eyebrow">Multivariable Calculus Studio</p>
-          <h1>Study guides, practice, and calculators in one place.</h1>
+          <h1>Master Calculus with CalcVoyager</h1>
           <p>
-            A focused home for the calculus pages in this site: clean topic
-            navigation, readable notes, interactive checks, and companion tools
-            when you need to compute instead of scroll.
+            An interactive, comprehensive platform for mastering single & multivariable calculus, linear algebra, and probability for STEM students and professionals.
           </p>
           <div className="hero-actions">
             <Link className="primary-action" to="/partial-derivatives/1">
-              Start studying
+              Start learning
             </Link>
-            {user ? (
-              <Link className="secondary-action" to="/dashboard">
-                My dashboard
-              </Link>
-            ) : (
-              <Link className="secondary-action" to="/signup">
-                Create free account
-              </Link>
-            )}
           </div>
-          {user && stats.completedCount > 0 && (
-            <p className="hero-progress-note">
-              You've completed {stats.completedCount} of {stats.totalSections} sections. Keep it up!
-            </p>
-          )}
         </div>
-        <div className="hero-panel" aria-label="Calculus topic map">
-          <div className="orbit-grid">
-            <span>f(x,y)</span>
-            <span>grad f</span>
-            <span>int C</span>
-            <span>curl</span>
-            <span>dA</span>
-            <span>flux</span>
-          </div>
+        <div className="hero-image-container">
+          <img src="/hero-graph.png" alt="3D Wave Graph" className="hero-graph-img" />
         </div>
       </section>
+
+      <div className="trust-badge">
+        <span className="trust-icon" aria-hidden="true">🏛️</span>
+        <p>Trusted by students at leading universities and institutions.</p>
+      </div>
 
       {/* Search */}
       <div className="home-search-wrap" ref={searchRef}>
@@ -246,9 +226,9 @@ function Home() {
                 key={guide.path}
                 to={guide.path}
               >
-                <div className="guide-card-icon">{guide.icon}</div>
-                <span>{guide.meta}</span>
+                {guide.logo && <div className="guide-card-logo">{guide.logo}</div>}
                 <h3>{guide.title}</h3>
+                <span className="guide-card-meta">{guide.meta}</span>
                 <p>{guide.description}</p>
               </Link>
             ))}

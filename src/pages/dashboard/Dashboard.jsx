@@ -338,39 +338,8 @@ const TOOLS = [
   { label: "Matrix Sandbox", path: "/linear-algebra/matrix-sandbox", icon: "▦" },
   { label: "Practice Section", path: "/practice", icon: "✎" },
   { label: "Leaderboard", path: "/leaderboard", icon: "🏆" },
-  { label: "My Certificates", path: "/my-certificates", icon: "🎓" },
+  { label: "My Certificates", path: "/certificates", icon: "🎓" },
 ];
-
-function ProgressBar({ value, max }) {
-  const pct = max > 0 ? Math.round((value / max) * 100) : 0;
-  return (
-    <div className="db-progress-bar" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
-      <div className="db-progress-fill" style={{ width: `${pct}%` }} />
-    </div>
-  );
-}
-
-
-
-// ── Study Streak Component ──
-function StudyStreak({ streak }) {
-  return (
-    <div className="db-streak-card">
-      <span className="db-streak-fire">🔥</span>
-      <div className="db-streak-info">
-        <span className="db-streak-num">{streak}</span>
-        <span className="db-streak-label">day streak</span>
-      </div>
-      <p className="db-streak-msg">
-        {streak === 0
-          ? "Start studying today to begin your streak!"
-          : streak === 1
-          ? "Great start! Come back tomorrow to continue."
-          : `Amazing! You've studied ${streak} days in a row!`}
-      </p>
-    </div>
-  );
-}
 
 // ── Progress Chart Component ──
 function ProgressChart({ curriculum, progress }) {
@@ -391,10 +360,12 @@ function ProgressChart({ curriculum, progress }) {
     <div className="db-chart-wrapper">
       <h3 className="db-chart-title">Curriculum Progress Breakdown</h3>
       <div className="db-chart-bars">
-        {groups.map(({ subject, topics }) => (
-          <div key={subject} className="db-chart-subject-group">
-            <div className="db-chart-subject-heading">{subject}</div>
-            {topics.map((course) => {
+        {groups.map(({ subject, topics }) => {
+          const subjectColor = topics[0]?.color || "blue";
+          return (
+            <div key={subject} className="db-chart-subject-group">
+              <div className={`db-chart-subject-heading db-chart-subject-heading--${subjectColor}`}>{subject}</div>
+              {topics.map((course) => {
               const done = course.parts.filter((p) => progress.completedSections[p.id]).length;
               const pct = (done / course.parts.length) * 100;
               return (
@@ -413,7 +384,8 @@ function ProgressChart({ curriculum, progress }) {
               );
             })}
           </div>
-        ))}
+        );
+      })}
       </div>
       <div className="db-chart-legend">
         <span className="db-legend-item">
@@ -441,24 +413,36 @@ function BookmarksSection({ bookmarks, removeBookmark }) {
     bm.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  if (bookmarks.length === 0) return null;
-
   return (
     <section className="db-section">
-      <h2 className="db-section-title">Bookmarks</h2>
-      <div className="db-bookmark-search-wrapper">
-        <input
-          className="db-bookmark-search"
-          type="text"
-          placeholder="Search bookmarks..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <span className="db-bookmark-count">
-          {filtered.length} / {bookmarks.length}
-        </span>
+      <div className="db-section-header">
+        <div>
+          <h2 className="db-section-title">Bookmarks &amp; Saved Guides</h2>
+          <p className="db-section-desc">Quickly return to study guides and tools you have bookmarked.</p>
+        </div>
+        {bookmarks.length > 0 && (
+          <div className="db-bookmark-search-wrapper">
+            <input
+              className="db-bookmark-search"
+              type="text"
+              placeholder="Search bookmarks..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <span className="db-bookmark-count">
+              {filtered.length} / {bookmarks.length}
+            </span>
+          </div>
+        )}
       </div>
-      {filtered.length === 0 ? (
+
+      {bookmarks.length === 0 ? (
+        <div className="db-empty-box">
+          <span className="db-empty-icon">🔖</span>
+          <h3>No bookmarks saved yet</h3>
+          <p>Click the bookmark icon inside any study guide to save key sections here for quick reference.</p>
+        </div>
+      ) : filtered.length === 0 ? (
         <p className="db-bookmark-empty">No bookmarks match your search.</p>
       ) : (
         <div className="db-bookmarks">
@@ -530,70 +514,213 @@ function Dashboard() {
     ? Math.round((totalCompletedParts / totalCurriculumParts) * 100)
     : 0;
 
+  // Find next incomplete lesson for quick resume
+  const nextLesson = CURRICULUM.flatMap((c) => c.parts).find(
+    (part) => !progress.completedSections[part.id]
+  );
+
+  // Group curriculum stats by courseId for Subject Domain Cards
+  const courseDomains = [
+    {
+      id: "calculus-analytical-geometry",
+      title: "Calculus and Analytical Geometry",
+      icon: "∫",
+      color: "gold",
+      path: "/courses/calculus-analytical-geometry",
+      quizPath: "/quiz/calculus-analytical-geometry",
+      topics: CURRICULUM.filter((c) => c.courseId === "calculus-analytical-geometry"),
+    },
+    {
+      id: "multivariable-calculus",
+      title: "Multivariable Calculus",
+      icon: "∇",
+      color: "teal",
+      path: "/courses/multivariable-calculus",
+      quizPath: "/quiz/multivariable-calculus",
+      topics: CURRICULUM.filter((c) => c.courseId === "multivariable-calculus"),
+    },
+    {
+      id: "linear-algebra",
+      title: "Linear Algebra",
+      icon: "A",
+      color: "blue",
+      path: "/courses/linear-algebra",
+      quizPath: "/quiz/linear-algebra",
+      topics: CURRICULUM.filter((c) => c.courseId === "linear-algebra"),
+    },
+    {
+      id: "probability-statistics",
+      title: "Probability and Statistics",
+      icon: "P",
+      color: "purple",
+      path: "/courses/probability-statistics",
+      quizPath: "/quiz/probability-statistics",
+      topics: CURRICULUM.filter((c) => c.courseId === "probability-statistics"),
+    },
+  ];
+
   return (
     <main className="dashboard">
-      {/* Top bar */}
-      <div className="db-topbar">
-        <div className="db-welcome">
-          <span className="db-avatar">{user.username[0].toUpperCase()}</span>
-          <div>
-            <div className="db-username">{user.username}</div>
-            <div className="db-tagline">Welcome to your learning dashboard. Keep up the momentum!</div>
+      {/* ── Hero Welcome Banner ── */}
+      <section className="db-hero-banner">
+        <div className="db-hero-user">
+          <div className="db-avatar">{user.username[0]?.toUpperCase()}</div>
+          <div className="db-hero-details">
+            <div className="db-hero-tag">
+              <span className="db-status-dot" /> Active Scholar
+            </div>
+            <h1 className="db-hero-title">Welcome back, {user.username}!</h1>
+            <p className="db-hero-subtitle">
+              {overallPct === 100
+                ? "Incredible achievement! You have mastered 100% of the core curriculum."
+                : overallPct > 50
+                ? `You're making great progress! ${overallPct}% of the curriculum completed.`
+                : "Continue your journey across Calculus, Linear Algebra, and Probability."}
+            </p>
           </div>
         </div>
-        <button className="db-logout" onClick={logout}>
-          Sign out
-        </button>
-      </div>
 
-      {/* Stats row */}
-      <div className="db-stats-row">
-        <div className="db-stat">
-          <span className="db-stat-num">{totalCompletedParts}</span>
-          <span className="db-stat-label">Sections completed</span>
-        </div>
-        <div className="db-stat">
-          <span className="db-stat-num">{stats.quizzesTaken}</span>
-          <span className="db-stat-label">Quizzes taken</span>
-        </div>
-        <div className="db-stat">
-          <span className="db-stat-num">{stats.bookmarkCount}</span>
-          <span className="db-stat-label">Bookmarks</span>
-        </div>
-        <div className="db-stat">
-          <span className="db-stat-num">{stats.solverUses}</span>
-          <span className="db-stat-label">AI solver uses</span>
-        </div>
-      </div>
-
-      {/* Streak + Chart row */}
-      <div className="db-streak-chart-row">
-        <StudyStreak streak={streak} />
-        <ProgressChart curriculum={CURRICULUM} progress={progress} />
-      </div>
-
-      {/* Overall progress */}
-      <section className="db-section">
-        <h2 className="db-section-title">Overall Curriculum Progress</h2>
-        <div className="db-overall">
-          <div className="db-overall-label">
-            <span>
-              {totalCompletedParts} / {totalCurriculumParts} theory sections completed
-            </span>
-            <span className="db-overall-pct">{overallPct}%</span>
+        <div className="db-hero-actions">
+          <div className="db-hero-streak-badge">
+            <span className="db-hero-streak-fire">🔥</span>
+            <div>
+              <div className="db-hero-streak-num">{streak} Day Streak</div>
+              <div className="db-hero-streak-sub">
+                {streak === 0 ? "Start today" : "Keep momentum going"}
+              </div>
+            </div>
           </div>
-          <ProgressBar value={totalCompletedParts} max={totalCurriculumParts} />
+          {nextLesson && (
+            <Link to={nextLesson.path} className="db-hero-resume-btn">
+              Resume: {nextLesson.label.split("—")[0]} →
+            </Link>
+          )}
+          <button className="db-logout-btn" onClick={logout} title="Sign Out">
+            Sign out
+          </button>
         </div>
       </section>
 
-      {/* Review reminders */}
+      {/* ── KPI Metric Cards ── */}
+      <section className="db-kpi-grid">
+        <div className="db-kpi-card">
+          <div className="db-kpi-top">
+            <span className="db-kpi-icon db-kpi-icon--progress">📈</span>
+            <span className="db-kpi-badge">{overallPct}% Done</span>
+          </div>
+          <div className="db-kpi-num">
+            {totalCompletedParts} <small>/ {totalCurriculumParts}</small>
+          </div>
+          <div className="db-kpi-label">Sections Mastered</div>
+          <div className="db-kpi-bar-bg">
+            <div className="db-kpi-bar-fill" style={{ width: `${overallPct}%` }} />
+          </div>
+        </div>
+
+        <div className="db-kpi-card">
+          <div className="db-kpi-top">
+            <span className="db-kpi-icon db-kpi-icon--quiz">🏆</span>
+            <span className="db-kpi-badge">80% Pass Goal</span>
+          </div>
+          <div className="db-kpi-num">{stats.quizzesTaken}</div>
+          <div className="db-kpi-label">Certification Quizzes Taken</div>
+          <div className="db-kpi-sub">
+            <Link to="/certificates" className="db-kpi-link">View Certificates →</Link>
+          </div>
+        </div>
+
+        <div className="db-kpi-card">
+          <div className="db-kpi-top">
+            <span className="db-kpi-icon db-kpi-icon--streak">🔥</span>
+            <span className="db-kpi-badge">Active</span>
+          </div>
+          <div className="db-kpi-num">{streak} <small>days</small></div>
+          <div className="db-kpi-label">Study Streak</div>
+          <div className="db-kpi-sub">
+            {streak > 0 ? "Daily study streak maintained!" : "Study today to earn +1 day"}
+          </div>
+        </div>
+
+        <div className="db-kpi-card">
+          <div className="db-kpi-top">
+            <span className="db-kpi-icon db-kpi-icon--ai">🤖</span>
+            <span className="db-kpi-badge">AI Assistant</span>
+          </div>
+          <div className="db-kpi-num">{stats.solverUses}</div>
+          <div className="db-kpi-label">AI Solver &amp; Tool Runs</div>
+          <div className="db-kpi-sub">
+            <Link to="/ai-solver" className="db-kpi-link">Launch AI Solver →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Course Domains Hub ── */}
       <section className="db-section">
-        <h2 className="db-section-title">Spaced Repetition &amp; Review Reminders</h2>
+        <div className="db-section-header">
+          <div>
+            <h2 className="db-section-title">Core Course Domains</h2>
+            <p className="db-section-desc">Track your progress and certificate status across the four subject tracks.</p>
+          </div>
+        </div>
+
+        <div className="db-domains-grid">
+          {courseDomains.map((domain) => {
+            const domainParts = domain.topics.flatMap((t) => t.parts);
+            const doneParts = domainParts.filter((p) => progress.completedSections[p.id]).length;
+            const domainPct = domainParts.length > 0 ? Math.round((doneParts / domainParts.length) * 100) : 0;
+            const isCertReady = domainPct === 100;
+
+            return (
+              <div key={domain.id} className={`db-domain-card db-domain-card--${domain.color}`}>
+                <div className="db-domain-top">
+                  <div className="db-domain-icon-box">{domain.icon}</div>
+                  <span className={`db-domain-status ${isCertReady ? "db-domain-status--ready" : ""}`}>
+                    {isCertReady ? "✓ Exam Unlocked" : `${domainParts.length - doneParts} sections left`}
+                  </span>
+                </div>
+                <h3 className="db-domain-title">{domain.title}</h3>
+                <div className="db-domain-meta">
+                  <span>{doneParts} of {domainParts.length} parts completed</span>
+                  <strong>{domainPct}%</strong>
+                </div>
+                <div className="db-domain-bar-bg">
+                  <div
+                    className={`db-domain-bar-fill db-domain-bar-fill--${domain.color}`}
+                    style={{ width: `${domainPct}%` }}
+                  />
+                </div>
+                <div className="db-domain-actions">
+                  <Link to={domain.path} className="db-domain-btn db-domain-btn--primary">
+                    Explore Guides
+                  </Link>
+                  <Link to={domain.quizPath} className="db-domain-btn db-domain-btn--secondary">
+                    {isCertReady ? "Take Exam" : "Quiz Track"}
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── Curriculum Progress Breakdown ── */}
+      <section className="db-section">
+        <ProgressChart curriculum={CURRICULUM} progress={progress} />
+      </section>
+
+      {/* ── Spaced Repetition & Review Reminders ── */}
+      <section className="db-section">
+        <div className="db-section-header">
+          <div>
+            <h2 className="db-section-title">Spaced Repetition &amp; Review Reminders</h2>
+            <p className="db-section-desc">Active recall recommendations to solidify mathematical concepts in memory.</p>
+          </div>
+        </div>
         {overdueReviewTopics.length === 0 ? (
           <div className="db-review-empty" role="status">
             <div className="db-review-empty-icon">✨</div>
-            <h3>Everything looks fresh</h3>
-            <p>All of your completed topics have been reviewed recently. Keep up the momentum.</p>
+            <h3>Everything is fresh</h3>
+            <p>All completed topics have been reviewed recently. Continue learning new modules or practice problem sets.</p>
           </div>
         ) : (
           <div className="db-review-list">
@@ -607,11 +734,11 @@ function Dashboard() {
                     <span>{part.metadata.days_since_completion} days since completion</span>
                   </div>
                   <p className="db-review-copy">
-                    Consider reviewing this topic before progressing further.
+                    Review this topic to reinforce long-term mastery before advancing further.
                   </p>
                 </div>
                 <Link to={part.path} className="db-review-button">
-                  Review Topic
+                  Review Topic →
                 </Link>
               </article>
             ))}
@@ -619,35 +746,43 @@ function Dashboard() {
         )}
       </section>
 
-      {/* Interactive Tools */}
+      {/* ── Interactive Toolkit & Solvers ── */}
       <section className="db-section">
-        <h2 className="db-section-title">Interactive Math Tools &amp; Solvers</h2>
-        <div className="db-tools">
+        <div className="db-section-header">
+          <div>
+            <h2 className="db-section-title">Interactive Math Tools &amp; Solvers</h2>
+            <p className="db-section-desc">Handy visualizers, step-by-step solvers, and practice environments.</p>
+          </div>
+        </div>
+        <div className="db-tools-grid">
           {TOOLS.map((t) => (
-            <Link key={t.path} to={t.path} className="db-tool-card">
-              <span className="db-tool-icon">{t.icon}</span>
-              <span>{t.label}</span>
+            <Link key={t.path} to={t.path} className="db-tool-item">
+              <span className="db-tool-item-icon">{t.icon}</span>
+              <span className="db-tool-item-label">{t.label}</span>
+              <span className="db-tool-item-arrow">→</span>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Bookmarks with search */}
+      {/* ── Bookmarks Section ── */}
       <BookmarksSection bookmarks={progress.bookmarks} removeBookmark={removeBookmark} />
 
-      {/* Saved Examples */}
+      {/* ── Saved Examples Quick Access ── */}
       <section className="db-section">
-        <h2 className="db-section-title">Saved Examples &amp; Notes</h2>
-        <p style={{ color: "var(--muted)", marginBottom: "0.75rem", fontSize: "0.9rem" }}>
-          Jump back to worked examples and notes you starred in study guides.
-        </p>
-        <Link to="/saved" className="db-tool-card" style={{ display: "inline-flex", maxWidth: "16rem" }}>
-          <span className="db-tool-icon">☆</span>
-          <span>Open starred examples</span>
-        </Link>
+        <div className="db-saved-banner">
+          <div>
+            <h3 className="db-saved-title">⭐ Starred Examples &amp; Formula Notes</h3>
+            <p className="db-saved-desc">Access all worked derivations and examples you favorited across study guides.</p>
+          </div>
+          <Link to="/saved" className="db-saved-btn">
+            Open Starred Library →
+          </Link>
+        </div>
       </section>
     </main>
   );
 }
 
 export default Dashboard;
+

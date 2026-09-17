@@ -61,8 +61,8 @@
   display: inline-flex;
   padding: 10px 16px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--gold, #a0720a) 14%, var(--paper-2, #fdf8f0));
-  color: var(--gold, #a0720a);
+  background: color-mix(in srgb, var(--gold, #0284c7) 14%, var(--paper-2, #ffffff));
+  color: var(--gold, #0284c7);
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -73,8 +73,8 @@
 .derivative-tool__chip {
   padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid var(--line, #d4c4a8);
-  background: var(--card, #fdf8f0);
+  border: 1px solid var(--line, #e2e8f0);
+  background: var(--card, #ffffff);
   color: var(--ink, #16120a);
   cursor: pointer;
   box-shadow: 0 8px 22px rgba(22, 18, 10, 0.04);
@@ -82,15 +82,15 @@
 }
 
 .derivative-tool__chip:hover {
-  background: color-mix(in srgb, var(--gold, #a0720a) 10%, var(--paper-2, #fdf8f0));
-  border-color: var(--gold-2, #c89318);
-  box-shadow: 0 12px 26px rgba(160, 114, 10, 0.12);
+  background: color-mix(in srgb, var(--gold, #0284c7) 10%, var(--paper-2, #ffffff));
+  border-color: var(--gold-2, #0056D2);
+  box-shadow: 0 12px 26px rgba(2, 132, 199, 0.12);
   transform: translateY(-1px);
 }
 
 .derivative-tool__chip--active {
-  background: var(--gold, #a0720a);
-  color: var(--paper-2, #fdf8f0);
+  background: var(--gold, #0284c7);
+  color: var(--paper-2, #ffffff);
   border-color: transparent;
 }
 
@@ -116,15 +116,15 @@
   align-items: center;
   padding: 10px 14px;
   border-radius: 999px;
-  background: var(--paper, #f4ede0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--paper, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
 }
 
 .derivative-tool__hero-card {
   padding: 28px;
   border-radius: 28px;
-  background: linear-gradient(180deg, var(--card, #fdf8f0) 0%, var(--paper, #f4ede0) 100%);
-  border: 1px solid var(--line, #d4c4a8);
+  background: linear-gradient(180deg, var(--card, #ffffff) 0%, var(--paper, #ffffff) 100%);
+  border: 1px solid var(--line, #e2e8f0);
   box-shadow: 0 24px 60px rgba(22, 18, 10, 0.08);
   margin-top: 150px;
 }
@@ -150,8 +150,8 @@
 .derivative-tool__panel-card {
   padding: 24px;
   border-radius: 24px;
-  background: var(--card, #fdf8f0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
   box-shadow: 0 18px 50px rgba(22, 18, 10, 0.06);
 }
 
@@ -164,12 +164,12 @@
 .derivative-tool__formula-card {
   padding: 18px 20px;
   border-radius: 18px;
-  background: var(--paper, #f4ede0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--paper, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
 }
 
 .derivative-tool__formula-label {
-  color: var(--gold, #a0720a);
+  color: var(--gold, #0284c7);
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -186,8 +186,8 @@
 .derivative-tool__examples-card {
   padding: 24px;
   border-radius: 24px;
-  background: var(--card, #fdf8f0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
   box-shadow: 0 18px 50px rgba(22, 18, 10, 0.06);
   margin-bottom: 24px;
 }
@@ -202,14 +202,14 @@
 .derivative-tool__assistant-card {
   padding: 24px;
   border-radius: 24px;
-  background: var(--card, #fdf8f0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
   box-shadow: 0 18px 50px rgba(22, 18, 10, 0.06);
 }
 
 .derivative-tool__result-card--info {
-  background: color-mix(in srgb, var(--gold, #a0720a) 10%, var(--paper-2, #fdf8f0));
-  border-color: color-mix(in srgb, var(--gold, #a0720a) 35%, var(--line, #d4c4a8));
+  background: color-mix(in srgb, var(--gold, #0284c7) 10%, var(--paper-2, #ffffff));
+  border-color: color-mix(in srgb, var(--gold, #0284c7) 35%, var(--line, #e2e8f0));
 }
 
 .derivative-tool__degree-value {
@@ -251,26 +251,26 @@
   margin-top: 18px;
   padding: 14px 16px;
   border-radius: 16px;
-  background: var(--paper, #f4ede0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--paper, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
   color: var(--muted, #5c4f3a);
 }
 
 .derivative-tool__validation--valid {
-  background: color-mix(in srgb, var(--teal, #3a5f32) 12%, var(--paper-2, #fdf8f0));
-  border-color: color-mix(in srgb, var(--teal, #3a5f32) 40%, var(--line, #d4c4a8));
+  background: color-mix(in srgb, var(--teal, #3a5f32) 12%, var(--paper-2, #ffffff));
+  border-color: color-mix(in srgb, var(--teal, #3a5f32) 40%, var(--line, #e2e8f0));
   color: var(--teal, #3a5f32);
 }
 
 .derivative-tool__validation--invalid {
-  background: color-mix(in srgb, var(--plum, #7c2f0a) 10%, var(--paper-2, #fdf8f0));
-  border-color: color-mix(in srgb, var(--plum, #7c2f0a) 35%, var(--line, #d4c4a8));
+  background: color-mix(in srgb, var(--plum, #7c2f0a) 10%, var(--paper-2, #ffffff));
+  border-color: color-mix(in srgb, var(--plum, #7c2f0a) 35%, var(--line, #e2e8f0));
   color: var(--plum, #7c2f0a);
 }
 
 .derivative-tool__validation--idle {
-  background: var(--paper, #f4ede0);
-  border-color: var(--line, #d4c4a8);
+  background: var(--paper, #ffffff);
+  border-color: var(--line, #e2e8f0);
   color: var(--muted, #5c4f3a);
 }
 
@@ -281,8 +281,8 @@
   width: 28px;
   height: 28px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--gold, #a0720a) 16%, transparent);
-  color: var(--gold, #a0720a);
+  background: color-mix(in srgb, var(--gold, #0284c7) 16%, transparent);
+  color: var(--gold, #0284c7);
   font-weight: 700;
 }
 
@@ -322,8 +322,8 @@
   max-width: 100%;
   padding: 28px;
   border-radius: 24px;
-  background: var(--card, #fdf8f0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
   box-shadow: 0 18px 50px rgba(22, 18, 10, 0.06);
   display: flex;
   flex-direction: column;
@@ -378,8 +378,8 @@
 .derivative-tool__syntax-item {
   padding: 18px 20px;
   border-radius: 18px;
-  background: var(--paper, #f4ede0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--paper, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
 }
 
 .derivative-tool__syntax-item p {
@@ -389,13 +389,13 @@
 }
 
 .derivative-tool__syntax-item--good {
-  background: color-mix(in srgb, var(--gold, #a0720a) 12%, var(--paper-2, #fdf8f0));
-  border-color: color-mix(in srgb, var(--gold, #a0720a) 30%, var(--line, #d4c4a8));
+  background: color-mix(in srgb, var(--gold, #0284c7) 12%, var(--paper-2, #ffffff));
+  border-color: color-mix(in srgb, var(--gold, #0284c7) 30%, var(--line, #e2e8f0));
 }
 
 .derivative-tool__syntax-item--bad {
-  background: color-mix(in srgb, var(--plum, #7c2f0a) 10%, var(--paper-2, #fdf8f0));
-  border-color: color-mix(in srgb, var(--plum, #7c2f0a) 30%, var(--line, #d4c4a8));
+  background: color-mix(in srgb, var(--plum, #7c2f0a) 10%, var(--paper-2, #ffffff));
+  border-color: color-mix(in srgb, var(--plum, #7c2f0a) 30%, var(--line, #e2e8f0));
 }
 
 .derivative-tool__syntax-label {
@@ -434,16 +434,16 @@
   min-width: 86px;
   height: 32px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--gold, #a0720a) 0%, var(--gold-2, #c89318) 100%);
-  color: var(--paper-2, #fdf8f0);
+  background: linear-gradient(135deg, var(--gold, #0284c7) 0%, var(--gold-2, #0056D2) 100%);
+  color: var(--paper-2, #ffffff);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .derivative-tool__assistant-card--ready {
-  border-color: var(--gold-2, #c89318);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold, #a0720a) 14%, transparent);
+  border-color: var(--gold-2, #0056D2);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold, #0284c7) 14%, transparent);
 }
 
 .derivative-tool__group {
@@ -473,9 +473,9 @@
 .derivative-tool__group select {
   min-height: 50px;
   padding: 13px 15px;
-  border: 1px solid var(--line, #d4c4a8);
+  border: 1px solid var(--line, #e2e8f0);
   border-radius: 14px;
-  background: var(--cv-input-bg, var(--card, #fdf8f0));
+  background: var(--cv-input-bg, var(--card, #ffffff));
   color: var(--ink, #16120a);
   font-size: 1rem;
   box-shadow: inset 0 1px 2px rgba(22, 18, 10, 0.04);
@@ -485,8 +485,8 @@
 .derivative-tool__group input[type='text']:focus,
 .derivative-tool__group select:focus {
   outline: none;
-  border-color: var(--gold, #a0720a);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold, #a0720a) 18%, transparent);
+  border-color: var(--gold, #0284c7);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold, #0284c7) 18%, transparent);
   transform: translateY(-1px);
 }
 
@@ -501,7 +501,7 @@
   appearance: none;
   height: 6px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--gold-2, #c89318) 0%, var(--gold, #a0720a) 100%);
+  background: linear-gradient(90deg, var(--gold-2, #0056D2) 0%, var(--gold, #0284c7) 100%);
   outline: none;
 }
 
@@ -510,10 +510,10 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--gold, #a0720a);
+  background: var(--gold, #0284c7);
   cursor: pointer;
-  border: 2px solid var(--paper-2, #fdf8f0);
-  box-shadow: 0 2px 8px rgba(160, 114, 10, 0.35);
+  border: 2px solid var(--paper-2, #ffffff);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
 }
 
 .derivative-tool__button {
@@ -522,12 +522,12 @@
   padding: 0 24px;
   border: none;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--gold, #a0720a) 0%, var(--gold-2, #c89318) 100%);
-  color: var(--paper-2, #fdf8f0);
+  background: linear-gradient(135deg, var(--gold, #0284c7) 0%, var(--gold-2, #0056D2) 100%);
+  color: var(--paper-2, #ffffff);
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 12px 24px rgba(160, 114, 10, 0.22);
+  box-shadow: 0 12px 24px rgba(2, 132, 199, 0.22);
   transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
@@ -538,9 +538,9 @@
 
 .derivative-tool__button:hover,
 .derivative-tool__button:focus-visible {
-  background: linear-gradient(135deg, var(--gold-2, #c89318) 0%, var(--gold, #a0720a) 100%);
+  background: linear-gradient(135deg, var(--gold-2, #0056D2) 0%, var(--gold, #0284c7) 100%);
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(160, 114, 10, 0.28);
+  box-shadow: 0 14px 28px rgba(2, 132, 199, 0.28);
 }
 
 .derivative-tool__var-badges {
@@ -558,15 +558,15 @@
   min-height: 28px;
   padding: 0 10px;
   border-radius: 999px;
-  border: 1px solid var(--line, #d4c4a8);
-  background: var(--paper, #f4ede0);
+  border: 1px solid var(--line, #e2e8f0);
+  background: var(--paper, #ffffff);
   color: var(--muted, #5c4f3a);
   font-size: 0.9rem;
 }
 
 .derivative-tool__var-badge--active {
-  background: var(--gold, #a0720a);
-  color: var(--paper-2, #fdf8f0);
+  background: var(--gold, #0284c7);
+  color: var(--paper-2, #ffffff);
   border-color: transparent;
 }
 
@@ -574,7 +574,7 @@
   width: 100%;
   min-height: 460px;
   border-radius: 20px;
-  background: var(--card, #fdf8f0);
+  background: var(--card, #ffffff);
   display: none;
 }
 
@@ -593,11 +593,11 @@
   font-size: 0.98rem;
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--paper, #f4ede0) 90%, transparent),
-    color-mix(in srgb, var(--gold, #a0720a) 8%, var(--paper-2, #fdf8f0))
+    color-mix(in srgb, var(--paper, #ffffff) 90%, transparent),
+    color-mix(in srgb, var(--gold, #0284c7) 8%, var(--paper-2, #ffffff))
   );
   border-radius: 20px;
-  border: 1px solid var(--line, #d4c4a8);
+  border: 1px solid var(--line, #e2e8f0);
   padding: 24px;
   text-align: center;
 }
@@ -623,8 +623,8 @@
 .derivative-tool__view-tab {
   padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid var(--line, #d4c4a8);
-  background: var(--paper, #f4ede0);
+  border: 1px solid var(--line, #e2e8f0);
+  background: var(--paper, #ffffff);
   color: var(--ink, #16120a);
   font-size: 0.92rem;
   font-weight: 600;
@@ -634,14 +634,14 @@
 
 .derivative-tool__view-tab:hover,
 .derivative-tool__view-tab:focus-visible {
-  background: color-mix(in srgb, var(--gold, #a0720a) 12%, var(--paper-2, #fdf8f0));
-  border-color: var(--gold-2, #c89318);
+  background: color-mix(in srgb, var(--gold, #0284c7) 12%, var(--paper-2, #ffffff));
+  border-color: var(--gold-2, #0056D2);
   transform: translateY(-1px);
 }
 
 .derivative-tool__view-tab--active {
-  background: var(--gold, #a0720a);
-  color: var(--paper-2, #fdf8f0);
+  background: var(--gold, #0284c7);
+  color: var(--paper-2, #ffffff);
   border-color: transparent;
 }
 
@@ -651,8 +651,8 @@
   margin-bottom: 18px;
   padding: 18px;
   border-radius: 18px;
-  background: var(--paper, #f4ede0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--paper, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
 }
 
 @media (min-width: 768px) {
@@ -676,14 +676,14 @@
   margin-top: 18px;
   padding: 18px 20px;
   border-radius: 18px;
-  background: color-mix(in srgb, var(--gold, #a0720a) 10%, var(--paper-2, #fdf8f0));
-  border: 1px solid color-mix(in srgb, var(--gold, #a0720a) 30%, var(--line, #d4c4a8));
+  background: color-mix(in srgb, var(--gold, #0284c7) 10%, var(--paper-2, #ffffff));
+  border: 1px solid color-mix(in srgb, var(--gold, #0284c7) 30%, var(--line, #e2e8f0));
 }
 
 .derivative-tool__edu-note h3 {
   margin: 0 0 8px;
   font-size: 0.98rem;
-  color: var(--gold, #a0720a);
+  color: var(--gold, #0284c7);
 }
 
 .derivative-tool__edu-note p {
@@ -697,9 +697,9 @@
   margin-bottom: 16px;
   padding: 14px 16px;
   border-radius: 12px;
-  background: color-mix(in srgb, var(--plum, #7c2f0a) 12%, var(--paper-2, #fdf8f0));
+  background: color-mix(in srgb, var(--plum, #7c2f0a) 12%, var(--paper-2, #ffffff));
   color: var(--plum, #7c2f0a);
-  border: 1px solid color-mix(in srgb, var(--plum, #7c2f0a) 35%, var(--line, #d4c4a8));
+  border: 1px solid color-mix(in srgb, var(--plum, #7c2f0a) 35%, var(--line, #e2e8f0));
 }
 
 .derivative-tool__workspace {
@@ -710,8 +710,8 @@
 .derivative-tool__visual-box,
 .derivative-tool__summary-box {
   border-radius: 24px;
-  background: var(--card, #fdf8f0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--card, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
   box-shadow: 0 18px 50px rgba(22, 18, 10, 0.06);
   padding: 22px;
 }
@@ -747,16 +747,16 @@
   border-radius: 18px;
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, var(--gold, #a0720a) 12%, var(--paper-2, #fdf8f0)) 0%,
-    var(--paper, #f4ede0) 100%
+    color-mix(in srgb, var(--gold, #0284c7) 12%, var(--paper-2, #ffffff)) 0%,
+    var(--paper, #ffffff) 100%
   );
-  border: 1px solid color-mix(in srgb, var(--gold, #a0720a) 28%, var(--line, #d4c4a8));
-  box-shadow: 0 12px 32px rgba(160, 114, 10, 0.08);
+  border: 1px solid color-mix(in srgb, var(--gold, #0284c7) 28%, var(--line, #e2e8f0));
+  box-shadow: 0 12px 32px rgba(2, 132, 199, 0.08);
 }
 
 .derivative-tool__assistant-tutor--ready {
-  border-color: var(--gold-2, #c89318);
-  box-shadow: 0 12px 32px rgba(160, 114, 10, 0.12);
+  border-color: var(--gold-2, #0056D2);
+  box-shadow: 0 12px 32px rgba(2, 132, 199, 0.12);
 }
 
 .derivative-tool__assistant-tutor-header {
@@ -772,8 +772,8 @@
   align-items: center;
   padding: 7px 12px;
   border-radius: 999px;
-  background: var(--gold, #a0720a);
-  color: var(--paper-2, #fdf8f0);
+  background: var(--gold, #0284c7);
+  color: var(--paper-2, #ffffff);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -781,8 +781,8 @@
 }
 
 .derivative-tool__assistant-pill--subtle {
-  background: color-mix(in srgb, var(--gold, #a0720a) 16%, var(--paper-2, #fdf8f0));
-  color: var(--gold, #a0720a);
+  background: color-mix(in srgb, var(--gold, #0284c7) 16%, var(--paper-2, #ffffff));
+  color: var(--gold, #0284c7);
 }
 
 .derivative-tool__assistant-tutor p {
@@ -802,16 +802,16 @@
 .derivative-tool__assistant-tutor-meta span {
   padding: 6px 10px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--card, #fdf8f0) 70%, transparent);
-  border: 1px solid var(--line, #d4c4a8);
+  background: color-mix(in srgb, var(--card, #ffffff) 70%, transparent);
+  border: 1px solid var(--line, #e2e8f0);
 }
 
 .derivative-tool__result-card {
   margin-bottom: 18px;
   padding: 18px;
   border-radius: 18px;
-  background: var(--paper, #f4ede0);
-  border: 1px solid var(--line, #d4c4a8);
+  background: var(--paper, #ffffff);
+  border: 1px solid var(--line, #e2e8f0);
 }
 
 .derivative-tool__result-card h3 {
@@ -823,9 +823,9 @@
 .derivative-tool__expression {
   margin: 0;
   padding: 14px;
-  background: var(--card, #fdf8f0);
+  background: var(--card, #ffffff);
   border-radius: 14px;
-  border: 1px solid var(--line, #d4c4a8);
+  border: 1px solid var(--line, #e2e8f0);
   color: var(--ink, #16120a);
   overflow-x: auto;
   white-space: pre-wrap;
@@ -864,7 +864,7 @@
 [data-theme="dark"] .derivative-tool__box-title,
 [data-theme="dark"] .derivative-tool__degree-value,
 [data-theme="dark"] .derivative-tool__hero-card h2 {
-  color: var(--ink, #f4ede0);
+  color: var(--ink, #ffffff);
 }
 
 [data-theme="dark"] .derivative-tool__hero-card,
@@ -889,7 +889,7 @@
 
 [data-theme="dark"] .derivative-tool__formula-text,
 [data-theme="dark"] .derivative-tool__expression {
-  color: var(--ink, #f4ede0);
+  color: var(--ink, #ffffff);
   background: var(--card, #211c14);
   border-color: var(--line, #3d3428);
 }
@@ -898,12 +898,12 @@
 [data-theme="dark"] .derivative-tool__view-tab {
   background: var(--paper, #12100c);
   border-color: var(--line, #3d3428);
-  color: var(--ink, #f4ede0);
+  color: var(--ink, #ffffff);
 }
 
 [data-theme="dark"] .derivative-tool__chip--active,
 [data-theme="dark"] .derivative-tool__view-tab--active {
-  background: var(--gold, #c89318);
+  background: var(--gold, #0056D2);
   color: #12100c;
 }
 
@@ -911,21 +911,21 @@
 [data-theme="dark"] .derivative-tool__group select {
   background: var(--paper, #12100c);
   border-color: var(--line, #3d3428);
-  color: var(--ink, #f4ede0);
+  color: var(--ink, #ffffff);
 }
 
 [data-theme="dark"] .derivative-tool__plot-placeholder {
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--paper, #12100c) 90%, transparent),
-    color-mix(in srgb, var(--gold, #c89318) 12%, var(--card, #211c14))
+    color-mix(in srgb, var(--gold, #0056D2) 12%, var(--card, #211c14))
   );
   color: var(--muted, #b8a88a);
   border-color: var(--line, #3d3428);
 }
 
 [data-theme="dark"] .derivative-tool__plot-placeholder strong {
-  color: var(--ink, #f4ede0);
+  color: var(--ink, #ffffff);
 }
 
 [data-theme="dark"] .derivative-tool__plot {
@@ -934,12 +934,12 @@
 
 [data-theme="dark"] .derivative-tool__edu-note,
 [data-theme="dark"] .derivative-tool__result-card--info {
-  background: color-mix(in srgb, var(--gold, #c89318) 14%, var(--card, #211c14));
-  border-color: color-mix(in srgb, var(--gold, #c89318) 40%, var(--line, #3d3428));
+  background: color-mix(in srgb, var(--gold, #0056D2) 14%, var(--card, #211c14));
+  border-color: color-mix(in srgb, var(--gold, #0056D2) 40%, var(--line, #3d3428));
 }
 
 [data-theme="dark"] .derivative-tool__edu-note h3 {
-  color: var(--gold-2, #e0b04a);
+  color: var(--gold-2, #38bdf8);
 }
 
 [data-theme="dark"] .derivative-tool__hero-notes span {
@@ -949,6 +949,6 @@
 }
 
 [data-theme="dark"] .derivative-tool__hero-copy .derivative-tool__eyebrow {
-  background: color-mix(in srgb, var(--gold, #c89318) 18%, var(--card, #211c14));
-  color: var(--gold-2, #e0b04a);
+  background: color-mix(in srgb, var(--gold, #0056D2) 18%, var(--card, #211c14));
+  color: var(--gold-2, #38bdf8);
 }

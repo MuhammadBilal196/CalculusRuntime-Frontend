@@ -44,8 +44,18 @@ export default function ConicsGuide({ part = 1 }) {
             <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
           </header>
 
+          <div className="my-4 p-4 bg-blue-600/10 border border-blue-500/30 rounded-xl text-center">
+            <p className="text-blue-700 dark:text-blue-300 font-bold text-sm sm:text-base">
+              📐 Interactive Tool: Explore the{" "}
+              <a href="/analytic-vector-lab" className="underline hover:text-blue-500 font-extrabold">
+                Analytic Geometry &amp; 3D Vector Lab →
+              </a>
+            </p>
+          </div>
+
           <OpeningNote />
           <Divider />
+
 
           <section className="section" id="con-class">
             <div className="sec-badge">Section 2.1</div>
@@ -128,8 +138,18 @@ export default function ConicsGuide({ part = 1 }) {
           <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
         </header>
 
+        <div className="my-4 p-4 bg-blue-600/10 border border-blue-500/30 rounded-xl text-center">
+          <p className="text-blue-700 dark:text-blue-300 font-bold text-sm sm:text-base">
+            📐 Interactive Tool: Explore the{" "}
+            <a href="/analytic-vector-lab" className="underline hover:text-blue-500 font-extrabold">
+              Analytic Geometry &amp; 3D Vector Lab →
+            </a>
+          </p>
+        </div>
+
         <OpeningNote />
         <Divider />
+
 
         <section className="section" id="con-theory">
           <div className="sec-badge">Section 1.1</div>

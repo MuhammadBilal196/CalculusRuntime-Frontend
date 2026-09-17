@@ -87,7 +87,7 @@ export function LineGraph({ lines = [], range = 8, size = 260, extraPoints = [],
                 y1={sy1}
                 x2={sx2}
                 y2={sy2}
-                stroke={ln.color || "var(--gold, #a0720a)"}
+                stroke={ln.color || "var(--gold, #0284c7)"}
                 strokeWidth={ln.dashed ? 4 : 2.5}
                 strokeLinecap="round"
                 strokeDasharray={ln.dashed ? "1 7" : undefined}
@@ -105,7 +105,7 @@ export function LineGraph({ lines = [], range = 8, size = 260, extraPoints = [],
                 const [sx, sy] = toSvg(p.x, p.y, range, size);
                 return (
                   <g key={`int-${i}-${j}`}>
-                    <circle cx={sx} cy={sy} r={4.5} fill={ln.color || "var(--gold, #a0720a)"} stroke="#fff" strokeWidth={1.5} />
+                    <circle cx={sx} cy={sy} r={4.5} fill={ln.color || "var(--gold, #0284c7)"} stroke="#fff" strokeWidth={1.5} />
                     <text
                       x={sx}
                       y={p.kind === "x" ? sy + 16 : sy - 8}
