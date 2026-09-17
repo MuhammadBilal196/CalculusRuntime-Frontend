@@ -828,6 +828,16 @@ const formulaData = {
     color: "#2563eb",
     formulas: [
       {
+        name: "Inner Product and Induced Norm",
+        formula: "⟨u,v⟩ = uᵀv (standard);  ||v|| = √⟨v,v⟩;  |⟨u,v⟩| ≤ ||u|| ||v||",
+        note: "General inner products may be weighted, e.g. ⟨u,v⟩_W = uᵀWv for symmetric positive-definite W",
+      },
+      {
+        name: "Orthogonal Matrix",
+        formula: "QᵀQ = QQᵀ = I  ⟹  Q⁻¹ = Qᵀ;  ||Qx||₂ = ||x||₂;  det(Q) = ±1",
+        note: "Rows and columns form orthonormal bases; lengths, angles, and dot products are preserved",
+      },
+      {
         name: "Orthogonal Projection onto Subspace W",
         formula: "proj_W(y) = (y·u₁/u₁·u₁) u₁ + ... + (y·u_k/u_k·u_k) u_k",
         note: "For an orthogonal basis {u₁, ..., u_k} of subspace W",
@@ -843,9 +853,19 @@ const formulaData = {
         note: "Numerically stable foundation for least squares and eigenvalue algorithms",
       },
       {
+        name: "Orthogonal Projection Matrix",
+        formula: "P = A(AᵀA)⁻¹Aᵀ;  Pᵀ = P;  P² = P",
+        note: "For full-column-rank A, P projects onto Col(A) and I-P projects onto Nul(Aᵀ)",
+      },
+      {
         name: "Normal Equations for Least Squares",
-        formula: "AᵀA x̂ = Aᵀb  ⟹  x̂ = (AᵀA)⁻¹ Aᵀb",
-        note: "Minimizes Euclidean residual error ||Ax - b||² when Ax = b has no exact solution",
+        formula: "AᵀA x̂ = Aᵀb;  if rank(A)=n, x̂ = (AᵀA)⁻¹ Aᵀb",
+        note: "The residual b-Ax̂ is orthogonal to Col(A); the inverse formula requires full column rank",
+      },
+      {
+        name: "QR Least Squares",
+        formula: "A = QR  ⟹  R x̂ = Qᵀb",
+        note: "For full-column-rank A, solve the triangular system instead of explicitly forming AᵀA",
       },
     ],
   },
@@ -914,14 +934,29 @@ const formulaData = {
         note: "Square roots of the non-negative eigenvalues of the symmetric matrix AᵀA",
       },
       {
-        name: "Moore-Penrose Pseudoinverse",
-        formula: "A⁺ = V Σ⁺ Uᵀ",
-        note: "Provides minimum-norm least-squares solution x = A⁺ b for any linear system",
+        name: "Compact Rank-r SVD",
+        formula: "rank(A)=r  ⟹  A = U_r Σ_r V_rᵀ",
+        note: "U_r is m×r, Σ_r is r×r with positive singular values, and V_r is n×r",
       },
       {
-        name: "Low-Rank Matrix Approximation (Eckart-Young)",
-        formula: "A_k = Σ_{i=1}^k σ_i u_i v_iᵀ",
-        note: "Optimal rank-k approximation under Frobenius and spectral norms (PCA, compression)",
+        name: "SVD and Fundamental Subspaces",
+        formula: "Col(A)=span(u₁,…,u_r); Row(A)=span(v₁,…,v_r); Nul(A)=span(v_{r+1},…)",
+        note: "Remaining left singular vectors span Nul(Aᵀ)",
+      },
+      {
+        name: "Moore-Penrose Pseudoinverse",
+        formula: "A⁺ = V Σ⁺ Uᵀ;  x⁺ = A⁺b",
+        note: "Reciprocate nonzero singular values; x⁺ is the minimum-norm least-squares solution",
+      },
+      {
+        name: "Eckart-Young-Mirsky Errors",
+        formula: "A_k = Σ_{i=1}^k σ_i u_i v_iᵀ;  ||A-A_k||₂ = σ_{k+1};  ||A-A_k||_F = √(Σ_{i>k} σ_i²)",
+        note: "Truncated SVD is optimal among rank-k matrices in both spectral and Frobenius norms",
+      },
+      {
+        name: "2-Norm and Condition Number",
+        formula: "||A||₂ = σ₁;  κ₂(A)=σ_max/σ_min for nonsingular square A",
+        note: "If the smallest required singular value is zero, the matrix is singular and κ₂ is infinite",
       },
     ],
   },

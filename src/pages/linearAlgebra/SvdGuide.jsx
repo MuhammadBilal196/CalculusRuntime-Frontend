@@ -18,14 +18,14 @@ function SvdGuide({ part = 1 }) {
           <a className="sb-link" href="#la-s-proc2">Method</a>
           <a className="sb-link" href="#la-s-ex-p2">Examples</a>
           <a className="sb-link" href="#quiz-la-s-apps">Quiz</a>
-          <a className="sb-link" href="#la-s-lowrank">Low-rank Approx</a>
+          <a className="sb-link" href="#la-s-lowrank">Low-rank & pseudoinverse</a>
           <a className="sb-link" href="#quiz-la-s-lowrank">Quiz</a>
         </nav>
         <main className="main">
           <header className="ch-hdr">
             <div className="ch-eye">Linear Algebra · Part 2 of 2</div>
             <h1 className="ch-title">Singular Value Decomposition</h1>
-            <p className="ch-sub">Applications, low-rank approximation, and the pseudoinverse</p>
+            <p className="ch-sub">Conditioning, optimal low-rank approximation, and the Moore–Penrose pseudoinverse</p>
             <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
           </header>
 
@@ -64,7 +64,7 @@ function SvdGuide({ part = 1 }) {
 
           <section className="section" id="la-s-ex-p2">
             <div className="sec-badge">Large examples</div>
-            <h2 className="sec-title">Four detailed worked examples</h2>
+            <h2 className="sec-title">Five detailed worked examples</h2>
 
             <WorkedExample
               number={1}
@@ -115,6 +115,20 @@ function SvdGuide({ part = 1 }) {
               result={"Rank-$10$ approximation keeps $95\\%$ of the image energy using only about $20\\%$ of the original storage."}
               check={"$22\\%$ relative error is consistent with dropping $5\\%$ of squared energy ($\\sqrt{0.05}\\approx0.224$)."}
             />
+          
+            <WorkedExample
+              number={5}
+              title="Minimum-norm solution from the pseudoinverse"
+              setup={"Solve $Ax=b$ with minimum norm for $A=\\begin{pmatrix}1&1\\end{pmatrix}$ and $b=2$."}
+              steps={[
+                { text: "$A^+=A^T(AA^T)^{-1}=\\tfrac12(1,1)^T$ because A has full row rank.", why: "This is the full-row-rank pseudoinverse formula." },
+                { text: "$x^+=A^+b=(1,1)^T$.", why: "The pseudoinverse selects one solution among infinitely many." },
+                { text: "Every exact solution can be written $x=(1,1)^T+t(1,-1)^T$.", why: "$(1,-1)^T$ spans the null space of A." },
+                { text: "$\\|x\\|_2^2=2+2t^2$, minimized at $t=0$.", why: "The pseudoinverse solution is orthogonal to the null-space direction." },
+              ]}
+              result={"$x^+=(1,1)^T$ is the unique minimum-norm exact solution."}
+              check={"$Ax^+=2=b$ and any nonzero null-space component increases the norm."}
+            />
           </section>
 
           <LaMcqSection
@@ -161,6 +175,21 @@ function SvdGuide({ part = 1 }) {
                 {"The truncated SVD gives the optimal low-rank approximation. The pseudoinverse $A^+$ is obtained by taking the reciprocal of every nonzero singular value and transposing the factors appropriately. It yields the minimum-norm least-squares solution."}
               </p>
             </TheoryBox>
+            <TheoremBox title="Eckart–Young–Mirsky theorem">
+              <p>
+                {"If $A_k=\\sum_{i=1}^{k}\\sigma_i u_iv_i^T$, then among all matrices B with $\\operatorname{rank}(B)\\le k$, $A_k$ minimizes both the spectral and Frobenius errors. Precisely, $\\|A-A_k\\|_2=\\sigma_{k+1}$ and $\\|A-A_k\\|_F=\\sqrt{\\sum_{i>k}\\sigma_i^2}$."}
+              </p>
+            </TheoremBox>
+            <TheoryBox title="The four Moore–Penrose conditions">
+              <p>
+                {"The pseudoinverse is the unique matrix $A^+$ satisfying $AA^+A=A$, $A^+AA^+=A^+$, $(AA^+)^T=AA^+$, and $(A^+A)^T=A^+A$. From the SVD, $A^+=V\\Sigma^+U^T$, where every nonzero singular value is reciprocated and every zero remains zero."}
+              </p>
+            </TheoryBox>
+            <PracticalTheory title="Minimum-norm least squares and useful special cases">
+              <p>
+                {"For every b, $x^+=A^+b$ is a least-squares solution with minimum Euclidean norm. If A has full column rank, $A^+=(A^TA)^{-1}A^T$. If A has full row rank, $A^+=A^T(AA^T)^{-1}$. The SVD formula remains valid even when A is rank deficient."}
+              </p>
+            </PracticalTheory>
           </section>
 
           <LaMcqSection
@@ -215,7 +244,7 @@ function SvdGuide({ part = 1 }) {
     <StudyGuideShell guideClass="partial-derivatives-guide" title="Singular Value Decomposition (Part 1)">
       <nav className="sidebar">
         <div className="sb-brand"><div className="sb-title">SVD · Part 1</div></div>
-        <a className="sb-link" href="#la-s-intro">Definition</a>
+        <a className="sb-link" href="#la-s-intro">Definition & dimensions</a>
         <a className="sb-link" href="#la-s-proc1">Method</a>
         <a className="sb-link" href="#la-s-ex-p1">Examples</a>
         <a className="sb-link" href="#quiz-la-s-intro">Quiz</a>
@@ -226,7 +255,7 @@ function SvdGuide({ part = 1 }) {
         <header className="ch-hdr">
           <div className="ch-eye">Linear Algebra · Part 1 of 2</div>
           <h1 className="ch-title">Singular Value Decomposition</h1>
-          <p className="ch-sub">The most useful matrix factorization — definition and basic properties</p>
+          <p className="ch-sub">Full and compact SVD, singular vectors, subspaces, norms, and geometry</p>
           <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
         </header>
 
@@ -239,6 +268,16 @@ function SvdGuide({ part = 1 }) {
           <TheoryBox title="A = UΣVᵀ">
             <p>
               {"The diagonal entries of $\\Sigma$ are the singular values $\\sigma_1 \\ge \\sigma_2 \\ge \\cdots \\ge 0$. The columns of V are the right singular vectors; the columns of U are the left singular vectors. Singular values are the square roots of the eigenvalues of $A^TA$ (or $AA^T$)."}
+            </p>
+          </TheoryBox>
+          <TheoryBox title="Full SVD versus compact SVD">
+            <p>
+              {"For $A\\in\\mathbb{R}^{m\\times n}$, the full SVD uses $U\\in\\mathbb{R}^{m\\times m}$, $\\Sigma\\in\\mathbb{R}^{m\\times n}$, and $V\\in\\mathbb{R}^{n\\times n}$, with U and V orthogonal. If $\\operatorname{rank}(A)=r$, the compact SVD keeps only the nonzero singular triplets: $A=U_r\\Sigma_rV_r^T$, where $U_r$ is $m\\times r$, $\\Sigma_r$ is $r\\times r$, and $V_r$ is $n\\times r$."}
+            </p>
+          </TheoryBox>
+          <TheoryBox title="SVD reveals the four fundamental subspaces">
+            <p>
+              {"If $\\sigma_1\\ge\\cdots\\ge\\sigma_r>0$ are the nonzero singular values, then $u_1,\\ldots,u_r$ form an orthonormal basis for $\\operatorname{Col}(A)$ and $v_1,\\ldots,v_r$ form an orthonormal basis for $\\operatorname{Row}(A)$. The remaining right singular vectors span $\\operatorname{Nul}(A)$, and the remaining left singular vectors span $\\operatorname{Nul}(A^T)$."}
             </p>
           </TheoryBox>
           <TheoremBox title="Existence">
@@ -258,14 +297,16 @@ function SvdGuide({ part = 1 }) {
               { text: "Form $A^TA$ (or $AA^T$, whichever is smaller).", why: "Singular values are square roots of its eigenvalues." },
               { text: "Find the eigenvalues of that symmetric positive-semidefinite matrix.", why: "They are real and nonnegative." },
               { text: "Take square roots to obtain the singular values.", why: "By definition $\\sigma_i = \\sqrt{\\lambda_i(A^TA)}$." },
-              { text: "The corresponding eigenvectors of $A^TA$ become the right singular vectors (columns of V).", why: "This completes the thin SVD." }
+              { text: "Choose orthonormal eigenvectors $v_i$ of $A^TA$; these are the right singular vectors.", why: "The V factor diagonalizes $A^TA$." },
+              { text: "For each nonzero $\\sigma_i$, compute $u_i=Av_i/\\sigma_i$.", why: "These unit vectors form the corresponding left singular directions." },
+              { text: "For a full SVD, complete the nonzero singular vectors to orthonormal bases of the domain and codomain.", why: "Zero-singular-value directions supply the null-space and left-null-space components." }
             ]}
           />
         </section>
 
         <section className="section" id="la-s-ex-p1">
           <div className="sec-badge">Large examples</div>
-          <h2 className="sec-title">Four detailed worked examples</h2>
+          <h2 className="sec-title">Five detailed worked examples</h2>
 
           <WorkedExample
             number={1}
@@ -318,6 +359,20 @@ function SvdGuide({ part = 1 }) {
             result={"$A_1=\\begin{pmatrix}2&0\\\\0&0\\end{pmatrix}$, with approximation error $1$."}
             check={"Direct subtraction confirms $\\|A-A_1\\|_F=1=\\sigma_2$."}
           />
+        
+          <WorkedExample
+            number={5}
+            title="Read all four fundamental subspaces from an SVD"
+            setup={"Let $A=\\begin{pmatrix}3&0&0\\\\0&2&0\\end{pmatrix}$. Use its singular vectors to identify the four fundamental subspaces."}
+            steps={[
+              { text: "$\\sigma_1=3$, $\\sigma_2=2$, so $r=2$. The nonzero left singular vectors are $e_1,e_2$ in $\\mathbb{R}^2$.", why: "Nonzero left singular vectors span the column space." },
+              { text: "The corresponding right singular vectors are $e_1,e_2$ in $\\mathbb{R}^3$.", why: "They span the row space." },
+              { text: "The remaining right singular vector $e_3$ corresponds to singular value 0, so $\\operatorname{Nul}(A)=\\operatorname{span}(e_3)$.", why: "$Ae_3=0$." },
+              { text: "Because rank(A)=2 equals the number of rows, $\\operatorname{Nul}(A^T)=\\{0\\}$.", why: "The left-nullity is $m-r=2-2=0$." },
+            ]}
+            result={"$\\operatorname{Col}(A)=\\mathbb{R}^2$, $\\operatorname{Row}(A)=\\operatorname{span}(e_1,e_2)$, $\\operatorname{Nul}(A)=\\operatorname{span}(e_3)$, and $\\operatorname{Nul}(A^T)=\\{0\\}$."}
+            check={"Dimensions are 2, 2, 1, and 0, matching rank-nullity in the domain and codomain."}
+          />
         </section>
 
         <LaMcqSection
@@ -364,6 +419,11 @@ function SvdGuide({ part = 1 }) {
               {"The right singular vectors tell you which directions in the domain are stretched the most. The corresponding singular values are the stretch factors. The left singular vectors give the directions of those stretched axes in the codomain."}
             </p>
           </TheoryBox>
+          <TheoremBox title="Matrix 2-norm, Frobenius norm, and conditioning">
+            <p>
+              {"The induced matrix 2-norm is the maximum stretch, so $\\|A\\|_2=\\sigma_1$. The Frobenius norm satisfies $\\|A\\|_F^2=\\sum_i\\sigma_i^2$. For a nonsingular square matrix, $\\kappa_2(A)=\\|A\\|_2\\|A^{-1}\\|_2=\\sigma_{\\max}/\\sigma_{\\min}$. A zero smallest singular value means the matrix is singular and its 2-norm condition number is infinite."}
+            </p>
+          </TheoremBox>
         </section>
 
         <LaMcqSection
