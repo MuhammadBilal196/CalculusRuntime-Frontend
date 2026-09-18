@@ -91,6 +91,37 @@ export const LA_V_INTRO_QUIZ = [
     answer: "B",
     explanation: "The tip is the point with those coordinates.",
   },
+
+  {
+    prompt: "The vector $v=(3,-4)$ has Euclidean norm:",
+    options: ["$5$", "$7$", "$1$"],
+    answer: "A",
+    explanation: "$\\|v\\|=\\sqrt{3^2+(-4)^2}=5$.",
+  },
+  {
+    prompt: "The zero vector in $\\mathbb{R}^4$ has:",
+    options: ["No components", "Four zero components", "Norm equal to $4$"],
+    answer: "B",
+    explanation: "Vectors in $\\mathbb{R}^4$ have four components; the zero vector has each equal to zero.",
+  },
+  {
+    prompt: "If $v=(1,2,3)$, then $2v$ equals:",
+    options: ["$(3,4,5)$", "$(1,4,9)$", "$(2,4,6)$"],
+    answer: "C",
+    explanation: "Scalar multiplication multiplies every component by the scalar.",
+  },
+  {
+    prompt: "Vectors $(1,2)$ and $(2,4)$ are:",
+    options: ["Parallel", "Orthogonal", "Equal"],
+    answer: "A",
+    explanation: "The second vector is $2$ times the first.",
+  },
+  {
+    prompt: "The vector $(2,-1,5)$ belongs to:",
+    options: ["$\\mathbb{R}^2$", "$\\mathbb{R}^3$", "$\\mathbb{R}^5$"],
+    answer: "B",
+    explanation: "It has three real components.",
+  },
 ];
 
 export const LA_V_OPS_QUIZ = [
@@ -183,6 +214,37 @@ export const LA_V_OPS_QUIZ = [
     options: ["$\\langle -1,3,2\\rangle$", "$\\langle 1,-3,-2\\rangle$", "$\\langle -1,-3,2\\rangle$"],
     answer: "A",
     explanation: "$\\mathbf{i}((-1)(1)-2\\cdot 0)-\\mathbf{j}(1\\cdot 1-2\\cdot 2)+\\mathbf{k}(0-(-2))=\\langle -1,3,2\\rangle$.",
+  },
+
+  {
+    prompt: "For $u=(1,2)$ and $v=(3,4)$, $u\\cdot v$ is:",
+    options: ["$7$", "$11$", "$10$"],
+    answer: "B",
+    explanation: "$1(3)+2(4)=11$.",
+  },
+  {
+    prompt: "If $u\\cdot v=0$ for nonzero vectors, then $u$ and $v$ are:",
+    options: ["Parallel", "Equal", "Orthogonal"],
+    answer: "C",
+    explanation: "Zero dot product is the Euclidean orthogonality criterion.",
+  },
+  {
+    prompt: "For $u=(2,0)$, the unit vector in the direction of $u$ is:",
+    options: ["$(1,0)$", "$(2,0)$", "$(0,1)$"],
+    answer: "A",
+    explanation: "Divide by $\\|u\\|=2$.",
+  },
+  {
+    prompt: "The Cauchy–Schwarz inequality states:",
+    options: ["$|u\\cdot v|>\\|u\\|\\|v\\|$", "$|u\\cdot v|\\le \\|u\\|\\|v\\|$", "$u\\cdot v=\\|u\\|+\\|v\\|$"],
+    answer: "B",
+    explanation: "The absolute dot product cannot exceed the product of the norms.",
+  },
+  {
+    prompt: "If $u$ and $v$ are unit vectors with $u\\cdot v=1$, then they point:",
+    options: ["In perpendicular directions", "In opposite directions", "In the same direction"],
+    answer: "C",
+    explanation: "For unit vectors, $u\\cdot v=\\cos\\theta=1$, so $\\theta=0$.",
   },
 ];
 
@@ -277,6 +339,37 @@ export const LA_V_SPAN_QUIZ = [
     answer: "B",
     explanation: "$\\mathbf{v}=2\\mathbf{u}$, so both generate the same line.",
   },
+
+  {
+    prompt: "The span of a single nonzero vector in $\\mathbb{R}^3$ is:",
+    options: ["A plane not through the origin", "All of $\\mathbb{R}^3$", "A line through the origin"],
+    answer: "C",
+    explanation: "All scalar multiples of one nonzero vector form a line through the origin.",
+  },
+  {
+    prompt: "The vectors $(1,0)$ and $(0,1)$ span:",
+    options: ["$\\mathbb{R}^2$", "Only the x-axis", "Only the y-axis"],
+    answer: "A",
+    explanation: "Every $(a,b)$ equals $a(1,0)+b(0,1)$.",
+  },
+  {
+    prompt: "If $v$ is a linear combination of $v_1,v_2$, then $v$ belongs to:",
+    options: ["$\\ker(v_1)$", "$\\operatorname{span}\\{v_1,v_2\\}$", "No vector space"],
+    answer: "B",
+    explanation: "Span is exactly the set of all linear combinations.",
+  },
+  {
+    prompt: "Adding a vector already in a set's span will:",
+    options: ["Always increase its dimension", "Make the span empty", "Leave the span unchanged"],
+    answer: "C",
+    explanation: "A redundant vector contributes no new direction.",
+  },
+  {
+    prompt: "A basis for a subspace must both:",
+    options: ["Span the subspace and be linearly independent", "Contain the zero vector and span", "Contain every vector in the subspace"],
+    answer: "A",
+    explanation: "Basis vectors provide a nonredundant spanning set.",
+  },
 ];
 
 export const LA_V_INDEP_QUIZ = [
@@ -369,6 +462,37 @@ export const LA_V_INDEP_QUIZ = [
     options: ["$1$", "$2$", "$0$"],
     answer: "B",
     explanation: "Two independent columns give full rank.",
+  },
+
+  {
+    prompt: "Any set containing the zero vector is:",
+    options: ["Linearly dependent", "Always orthogonal", "Always a basis"],
+    answer: "A",
+    explanation: "The zero vector gives a nontrivial dependence relation immediately.",
+  },
+  {
+    prompt: "Two vectors are linearly dependent exactly when one is:",
+    options: ["Orthogonal to the other", "A scalar multiple of the other", "The same length as the other"],
+    answer: "B",
+    explanation: "For two vectors, dependence means they lie on the same line through the origin.",
+  },
+  {
+    prompt: "Three vectors in $\\mathbb{R}^2$ must be:",
+    options: ["Linearly independent", "Orthonormal", "Linearly dependent"],
+    answer: "C",
+    explanation: "At most two linearly independent vectors can exist in a two-dimensional space.",
+  },
+  {
+    prompt: "The columns of an invertible $3\\times3$ matrix are:",
+    options: ["Linearly independent", "Linearly dependent", "All zero"],
+    answer: "A",
+    explanation: "Invertibility is equivalent to having a pivot in every column.",
+  },
+  {
+    prompt: "A set of $n$ linearly independent vectors in $\\mathbb{R}^n$ is automatically:",
+    options: ["A proper subspace only", "A basis for $\\mathbb{R}^n$", "Linearly dependent"],
+    answer: "B",
+    explanation: "In an $n$-dimensional space, $n$ independent vectors also span the whole space.",
   },
 ];
 
@@ -463,6 +587,37 @@ export const LA_M_INTRO_QUIZ = [
     answer: "B",
     explanation: "Images of the standard basis form the columns of the matrix.",
   },
+
+  {
+    prompt: "A matrix with $3$ rows and $5$ columns has size:",
+    options: ["$5\\times3$", "$3\\times5$", "$15\\times1$"],
+    answer: "B",
+    explanation: "Matrix dimensions are listed as rows by columns.",
+  },
+  {
+    prompt: "In a $4\\times2$ matrix, the entry $a_{31}$ lies in:",
+    options: ["Row 1, column 3", "Row 3, column 2", "Row 3, column 1"],
+    answer: "C",
+    explanation: "The first subscript is the row and the second is the column.",
+  },
+  {
+    prompt: "A square matrix has:",
+    options: ["The same number of rows and columns", "Exactly one row", "Only zero entries"],
+    answer: "A",
+    explanation: "Square means dimensions $n\\times n$.",
+  },
+  {
+    prompt: "The $n\\times n$ identity matrix has:",
+    options: ["Zeros everywhere", "Ones on the main diagonal and zeros elsewhere", "Ones everywhere"],
+    answer: "B",
+    explanation: "The identity matrix leaves vectors unchanged under multiplication.",
+  },
+  {
+    prompt: "A column vector with four entries can be viewed as a:",
+    options: ["$1\\times4$ matrix", "$4\\times4$ matrix", "$4\\times1$ matrix"],
+    answer: "C",
+    explanation: "A column vector has one column.",
+  },
 ];
 
 export const LA_M_OPS_QUIZ = [
@@ -555,6 +710,37 @@ export const LA_M_OPS_QUIZ = [
     options: ["$\\begin{pmatrix}10\\end{pmatrix}$", "$\\begin{pmatrix}5\\end{pmatrix}$", "$\\begin{pmatrix}6&4\\end{pmatrix}$"],
     answer: "A",
     explanation: "$2\\cdot 3+1\\cdot 4=10$ as a $1\\times 1$ matrix.",
+  },
+
+  {
+    prompt: "If $A$ and $B$ are both $2\\times3$, then $A+B$ has size:",
+    options: ["$3\\times2$", "$2\\times2$", "$2\\times3$"],
+    answer: "C",
+    explanation: "Matrix addition is entrywise and preserves dimensions.",
+  },
+  {
+    prompt: "If $A$ is $2\\times3$ and $B$ is $3\\times4$, then $AB$ has size:",
+    options: ["$2\\times4$", "$3\\times3$", "$4\\times2$"],
+    answer: "A",
+    explanation: "The inner dimensions match and the outer dimensions remain.",
+  },
+  {
+    prompt: "For compatible matrices, matrix multiplication is generally:",
+    options: ["Always commutative", "Not commutative", "Undefined in both orders"],
+    answer: "B",
+    explanation: "In general $AB\\neq BA$, and one order may even be undefined.",
+  },
+  {
+    prompt: "The transpose of a $2\\times5$ matrix has size:",
+    options: ["$2\\times5$", "$5\\times5$", "$5\\times2$"],
+    answer: "C",
+    explanation: "Transposition swaps rows and columns.",
+  },
+  {
+    prompt: "For any compatible matrices $A,B$, $(AB)^T$ equals:",
+    options: ["$B^TA^T$", "$A^TB^T$", "$AB$"],
+    answer: "A",
+    explanation: "Transposition reverses the order of a product.",
   },
 ];
 
@@ -649,6 +835,37 @@ export const LA_M_DET_QUIZ = [
     answer: "C",
     explanation: "Absolute value of the determinant $1\\cdot 2\\cdot 3=6$.",
   },
+
+  {
+    prompt: "The determinant of $\\begin{pmatrix}2&1\\\\3&4\\end{pmatrix}$ is:",
+    options: ["$5$", "$11$", "$-5$"],
+    answer: "A",
+    explanation: "$2(4)-1(3)=5$.",
+  },
+  {
+    prompt: "If two rows of a square matrix are equal, its determinant is:",
+    options: ["$1$", "$0$", "Undefined"],
+    answer: "B",
+    explanation: "Equal rows make the rows linearly dependent.",
+  },
+  {
+    prompt: "Swapping two rows of a matrix changes the determinant by a factor of:",
+    options: ["$2$", "$0$", "$-1$"],
+    answer: "C",
+    explanation: "A single row swap reverses the determinant's sign.",
+  },
+  {
+    prompt: "For triangular matrix $A$, $\\det(A)$ equals:",
+    options: ["The product of its diagonal entries", "The sum of its diagonal entries", "Always $1$"],
+    answer: "A",
+    explanation: "The determinant of a triangular matrix is the diagonal product.",
+  },
+  {
+    prompt: "A square matrix is invertible exactly when its determinant is:",
+    options: ["Zero", "Nonzero", "Positive only"],
+    answer: "B",
+    explanation: "A nonzero determinant is equivalent to invertibility.",
+  },
 ];
 
 export const LA_M_INV_QUIZ = [
@@ -741,6 +958,37 @@ export const LA_M_INV_QUIZ = [
     options: ["$\\dfrac{1}{3}\\begin{pmatrix}4&-1\\\\-1&1\\end{pmatrix}$", "$\\begin{pmatrix}1&-1\\\\-1&4\\end{pmatrix}$", "$\\dfrac{1}{3}\\begin{pmatrix}1&-1\\\\-1&4\\end{pmatrix}$"],
     answer: "C",
     explanation: "$\\det=3$; adjugate formula gives $(1/3)\\begin{pmatrix}1&-1\\\\-1&4\\end{pmatrix}$.",
+  },
+
+  {
+    prompt: "The inverse of the identity matrix $I$ is:",
+    options: ["$0$", "$I$", "$-I$"],
+    answer: "B",
+    explanation: "$II=I$, so $I^{-1}=I$.",
+  },
+  {
+    prompt: "If $A^{-1}$ exists, then $AA^{-1}$ equals:",
+    options: ["$A$", "$0$", "$I$"],
+    answer: "C",
+    explanation: "The inverse is defined by multiplication to the identity.",
+  },
+  {
+    prompt: "If $A$ and $B$ are invertible, $(AB)^{-1}$ equals:",
+    options: ["$B^{-1}A^{-1}$", "$A^{-1}B^{-1}$", "$AB$"],
+    answer: "A",
+    explanation: "The inverse of a product reverses the multiplication order.",
+  },
+  {
+    prompt: "A singular square matrix has:",
+    options: ["Exactly two inverses", "No inverse", "Inverse equal to itself"],
+    answer: "B",
+    explanation: "Singular means noninvertible.",
+  },
+  {
+    prompt: "For an invertible $A$, the equation $Ax=b$ has solution:",
+    options: ["$x=Ab$", "$x=bA$", "$x=A^{-1}b$"],
+    answer: "C",
+    explanation: "Multiply the equation on the left by $A^{-1}$.",
   },
 ];
 
@@ -848,5 +1096,36 @@ export const LA_M_RANK_QUIZ = [
     ],
     answer: "A",
     explanation: "Multiplying can lose information but never create it, so the product's rank can't beat either factor's rank.",
+  },
+
+  {
+    prompt: "The rank of a matrix equals the number of:",
+    options: ["Rows only", "Zero entries", "Pivot positions"],
+    answer: "C",
+    explanation: "Row reduction reveals one pivot for each independent direction.",
+  },
+  {
+    prompt: "A $3\\times5$ matrix can have rank at most:",
+    options: ["$3$", "$5$", "$15$"],
+    answer: "A",
+    explanation: "Rank cannot exceed the smaller matrix dimension.",
+  },
+  {
+    prompt: "If a $4\\times4$ matrix has rank $4$, it is:",
+    options: ["Singular", "Invertible", "The zero matrix"],
+    answer: "B",
+    explanation: "Full rank in a square matrix is equivalent to invertibility.",
+  },
+  {
+    prompt: "A zero matrix has rank:",
+    options: ["$1$", "Equal to its number of rows", "$0$"],
+    answer: "C",
+    explanation: "There are no nonzero rows or pivot columns.",
+  },
+  {
+    prompt: "For an $m\\times n$ matrix, rank equals the dimension of its:",
+    options: ["Column space and row space", "Null space only", "Diagonal only"],
+    answer: "A",
+    explanation: "Row rank and column rank are equal.",
   },
 ];

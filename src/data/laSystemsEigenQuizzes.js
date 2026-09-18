@@ -91,6 +91,37 @@ export const LA_S_INTRO_QUIZ = [
     answer: "B",
     explanation: "A false statement $0=1$ appears.",
   },
+
+  {
+    prompt: "In the matrix equation $Ax=b$, the columns of $A$ are weighted by the entries of:",
+    options: ["$x$", "$b$", "The determinant"],
+    answer: "A",
+    explanation: "Matrix-vector multiplication forms a linear combination of the columns using the components of $x$.",
+  },
+  {
+    prompt: "A homogeneous system $Ax=0$ always has:",
+    options: ["No solution", "The trivial solution $x=0$", "Exactly two solutions"],
+    answer: "B",
+    explanation: "Substituting $x=0$ always satisfies the homogeneous system.",
+  },
+  {
+    prompt: "If $A$ is $5\\times3$, then $Ax=b$ represents:",
+    options: ["3 equations in 5 unknowns", "15 equations in 1 unknown", "5 equations in 3 unknowns"],
+    answer: "C",
+    explanation: "Rows correspond to equations and columns to unknowns.",
+  },
+  {
+    prompt: "A system is inconsistent when:",
+    options: ["No vector $x$ satisfies all equations", "There is exactly one solution", "There is a free variable"],
+    answer: "A",
+    explanation: "Inconsistency means the solution set is empty.",
+  },
+  {
+    prompt: "If $Ax=b$ has two distinct solutions, then it must have:",
+    options: ["Exactly two solutions", "Infinitely many solutions", "No other solutions"],
+    answer: "B",
+    explanation: "For a linear system, the line through two solutions in a nullspace direction yields infinitely many solutions.",
+  },
 ];
 
 export const LA_S_GAUSS_QUIZ = [
@@ -184,6 +215,37 @@ export const LA_S_GAUSS_QUIZ = [
     answer: "A",
     explanation: "Classic cubic complexity of Gaussian elimination.",
   },
+
+  {
+    prompt: "A pivot in echelon form is:",
+    options: ["Any zero below a row", "The leading nonzero entry of a nonzero row", "The rightmost entry only"],
+    answer: "B",
+    explanation: "Pivot positions organize elimination and identify basic variables.",
+  },
+  {
+    prompt: "In RREF, every pivot must equal:",
+    options: ["$0$", "The determinant", "$1$"],
+    answer: "C",
+    explanation: "Reduced row echelon form scales each pivot to one.",
+  },
+  {
+    prompt: "In RREF, a pivot is the only nonzero entry in its:",
+    options: ["Column", "Row", "Matrix"],
+    answer: "A",
+    explanation: "Entries above and below every pivot are zero.",
+  },
+  {
+    prompt: "A free variable corresponds to a column with:",
+    options: ["Two pivots", "No pivot", "A pivot in every row"],
+    answer: "B",
+    explanation: "Nonpivot variable columns correspond to free parameters.",
+  },
+  {
+    prompt: "Elementary row operations preserve the:",
+    options: ["Individual matrix entries", "Determinant exactly in every case", "Solution set of the associated system"],
+    answer: "C",
+    explanation: "They produce equivalent systems, though determinant may change under swaps/scaling.",
+  },
 ];
 
 export const LA_S_RANK_QUIZ = [
@@ -276,6 +338,37 @@ export const LA_S_RANK_QUIZ = [
     options: ["No solution for some $\\mathbf{b}$", "A unique solution for every $\\mathbf{b}$", "Infinitely many solutions always"],
     answer: "B",
     explanation: "Full rank square matrices are invertible.",
+  },
+
+  {
+    prompt: "A system $Ax=b$ is consistent exactly when:",
+    options: ["$\\operatorname{rank}(A)=0$", "$\\operatorname{rank}(A)>n$", "$\\operatorname{rank}(A)=\\operatorname{rank}([A\\mid b])$"],
+    answer: "C",
+    explanation: "The augmented column must not create an additional pivot.",
+  },
+  {
+    prompt: "For a consistent system with $n$ unknowns and rank $r$, the number of free variables is:",
+    options: ["$n-r$", "$r-n$", "$n+r$"],
+    answer: "A",
+    explanation: "Each nonpivot variable is free, giving nullity $n-r$.",
+  },
+  {
+    prompt: "If $A$ is $3\\times3$ with rank $2$, its nullity is:",
+    options: ["$2$", "$1$", "$3$"],
+    answer: "B",
+    explanation: "Rank-nullity gives $3=2+\\operatorname{nullity}(A)$.",
+  },
+  {
+    prompt: "If $\\operatorname{rank}(A)<\\operatorname{rank}([A\\mid b])$, then $Ax=b$ is:",
+    options: ["Uniquely solvable", "Homogeneous", "Inconsistent"],
+    answer: "C",
+    explanation: "The augmented matrix contains a contradiction pivot not present in $A$.",
+  },
+  {
+    prompt: "A square $n\\times n$ matrix has a unique solution for every $b$ exactly when its rank is:",
+    options: ["$n$", "$n-1$", "$0$"],
+    answer: "A",
+    explanation: "Full rank makes the square matrix invertible.",
   },
 ];
 
@@ -464,6 +557,37 @@ export const LA_S_GEO_QUIZ = [
     answer: "B",
     explanation: "Two independent directions span a plane.",
   },
+
+  {
+    prompt: "The solution set of a consistent homogeneous system is:",
+    options: ["An affine set never containing the origin", "A subspace through the origin", "Always a single point"],
+    answer: "B",
+    explanation: "Null spaces are subspaces and therefore contain the origin.",
+  },
+  {
+    prompt: "The solution set of a consistent nonhomogeneous system $Ax=b$ can be written as:",
+    options: ["$\\operatorname{Col}(A)+b$", "$A^{-1}$ even when $A$ is singular", "$x_p+\\operatorname{Nul}(A)$"],
+    answer: "C",
+    explanation: "Every solution differs from a particular solution by a nullspace vector.",
+  },
+  {
+    prompt: "If a consistent system in three unknowns has nullity $1$, its solution set is geometrically:",
+    options: ["An affine line", "An affine plane", "A single point"],
+    answer: "A",
+    explanation: "One free parameter traces a line.",
+  },
+  {
+    prompt: "If a consistent system in three unknowns has nullity $2$, its solution set is geometrically:",
+    options: ["An affine line", "An affine plane", "A single point"],
+    answer: "B",
+    explanation: "Two independent free parameters span a plane of directions.",
+  },
+  {
+    prompt: "A unique solution corresponds to nullity:",
+    options: ["$1$", "$n$", "$0$"],
+    answer: "C",
+    explanation: "No free directions remain when the null space contains only zero.",
+  },
 ];
 
 
@@ -583,6 +707,37 @@ export const LA_S_LU_QUIZ = [
     answer: "A",
     explanation: "The permutation matrix $P$ records the row reordering, giving $PA=LU$.",
   },
+
+  {
+    prompt: "In $A=LU$, the matrix $L$ is typically:",
+    options: ["Upper triangular", "Diagonal with zeros only", "Lower triangular"],
+    answer: "C",
+    explanation: "Gaussian elimination multipliers are stored below the diagonal in $L$.",
+  },
+  {
+    prompt: "In $A=LU$, the matrix $U$ is:",
+    options: ["Upper triangular", "Lower triangular", "Orthogonal in every case"],
+    answer: "A",
+    explanation: "$U$ is the echelon/upper-triangular factor produced by elimination.",
+  },
+  {
+    prompt: "To solve $Ax=b$ using $A=LU$, first solve:",
+    options: ["$Ux=b$", "$Ly=b$", "$Lx=U$"],
+    answer: "B",
+    explanation: "Forward substitution solves for the intermediate vector $y$.",
+  },
+  {
+    prompt: "After solving $Ly=b$, the second step is:",
+    options: ["$Lx=y$", "$Uy=L$", "$Ux=y$"],
+    answer: "C",
+    explanation: "Backward substitution then recovers $x$.",
+  },
+  {
+    prompt: "One advantage of LU factorization is that for many right-hand sides with the same $A$:",
+    options: ["The factorization can be reused", "The matrix must be refactored every time", "No substitutions are required"],
+    answer: "A",
+    explanation: "Factor $A$ once, then use forward/back substitution for each new right-hand side.",
+  },
 ];
 
 export const LA_E_INTRO_QUIZ = [
@@ -675,6 +830,37 @@ export const LA_E_INTRO_QUIZ = [
     options: ["Nilpotent", "A scalar multiple of $I$", "Singular"],
     answer: "B",
     explanation: "Only scalar matrices act by the same factor on every vector.",
+  },
+
+  {
+    prompt: "A nonzero vector $v$ is an eigenvector of $A$ when:",
+    options: ["$Av=\\lambda v$ for some scalar $\\lambda$", "$Av=0$ only", "$A+v=\\lambda$"],
+    answer: "A",
+    explanation: "An eigenvector keeps its direction under the transformation, up to scaling.",
+  },
+  {
+    prompt: "The zero vector is excluded from the definition of eigenvector because:",
+    options: ["It has norm one", "It would satisfy $A0=\\lambda0$ for every scalar $\\lambda$", "It cannot be multiplied by a matrix"],
+    answer: "B",
+    explanation: "Allowing zero would make every scalar look like an eigenvalue.",
+  },
+  {
+    prompt: "If $Av=3v$ with $v\\neq0$, then the eigenvalue associated with $v$ is:",
+    options: ["$v$", "$0$", "$3$"],
+    answer: "C",
+    explanation: "The scalar multiplying the unchanged direction is the eigenvalue.",
+  },
+  {
+    prompt: "Eigenvalues are defined directly for:",
+    options: ["Square matrices", "Only row vectors", "Any rectangular matrix without modification"],
+    answer: "A",
+    explanation: "The equation $Av=\\lambda v$ requires input and output vectors in the same space.",
+  },
+  {
+    prompt: "The eigenspace for eigenvalue $\\lambda$ is:",
+    options: ["$\\operatorname{Col}(A+\\lambda I)$", "$\\operatorname{Nul}(A-\\lambda I)$", "$\\operatorname{Row}(A)$"],
+    answer: "B",
+    explanation: "Eigenvectors satisfy $(A-\\lambda I)v=0$.",
   },
 ];
 
@@ -788,6 +974,19 @@ export const LA_E_CHAR_QUIZ = [
     explanation: "$2$ is a double root and its eigenspace is $\\operatorname{Span}\\{e_1,e_2\\}$.",
   },
 
+
+  {
+    prompt: "For a $2\\times2$ matrix, the characteristic polynomial has degree:",
+    options: ["$1$", "$2$", "$4$"],
+    answer: "B",
+    explanation: "The characteristic polynomial of an $n\\times n$ matrix has degree $n$.",
+  },
+  {
+    prompt: "For triangular matrix $A$, its eigenvalues are:",
+    options: ["Its row sums only", "Always zero", "Its diagonal entries"],
+    answer: "C",
+    explanation: "The characteristic determinant of a triangular matrix is the product of diagonal terms $a_{ii}-\\lambda$.",
+  },
 ];
 
 export const LA_E_DIAG_QUIZ = [
@@ -900,6 +1099,19 @@ export const LA_E_DIAG_QUIZ = [
     explanation: "Each eigenvalue weights the orthogonal projector $q_iq_i^T$ onto its eigenvector direction.",
   },
 
+
+  {
+    prompt: "A matrix $A$ is diagonalizable when it has:",
+    options: ["Only one eigenvalue", "Determinant zero", "$n$ linearly independent eigenvectors"],
+    answer: "C",
+    explanation: "Those eigenvectors form the columns of the change-of-basis matrix $P$.",
+  },
+  {
+    prompt: "If $A=PDP^{-1}$, then $A^k$ equals:",
+    options: ["$PD^kP^{-1}$", "$P^kDP^{-k}$", "$D^k$ in the original basis"],
+    answer: "A",
+    explanation: "Repeated factors $P^{-1}P$ cancel in powers of the diagonalization.",
+  },
 ];
 
 export const LA_E_APPS_QUIZ = [
@@ -992,5 +1204,36 @@ export const LA_E_APPS_QUIZ = [
     options: ["That $\\det A=1$", "That $A$ is orthogonal", "Asymptotic stability of $\\mathbf{x}\\mapsto A\\mathbf{x}$"],
     answer: "C",
     explanation: "All modes decay.",
+  },
+
+  {
+    prompt: "For the recurrence $x_{k+1}=Ax_k$, an eigenvector initial state $x_0=v$ evolves as:",
+    options: ["$x_k=\\lambda^k v$", "$x_k=kv$", "$x_k=A+kv$"],
+    answer: "A",
+    explanation: "Each application of $A$ multiplies the eigenvector by $\\lambda$.",
+  },
+  {
+    prompt: "In a discrete dynamical system, an eigenvalue with $|\\lambda|<1$ corresponds to a mode that:",
+    options: ["Grows without bound in magnitude", "Decays toward zero", "Never changes magnitude"],
+    answer: "B",
+    explanation: "Repeated powers $|\\lambda|^k$ tend to zero.",
+  },
+  {
+    prompt: "An eigenvalue with $|\\lambda|>1$ in a discrete iteration corresponds to a mode that:",
+    options: ["Always decays", "Is automatically zero", "Grows in magnitude"],
+    answer: "C",
+    explanation: "Repeated multiplication by a factor with magnitude greater than one amplifies that mode.",
+  },
+  {
+    prompt: "For a symmetric matrix, eigenvectors associated with distinct eigenvalues can be chosen:",
+    options: ["Orthogonal", "Parallel", "Nonreal only"],
+    answer: "A",
+    explanation: "The spectral theorem provides an orthonormal eigenbasis for real symmetric matrices.",
+  },
+  {
+    prompt: "Principal component analysis uses eigenvectors of a covariance matrix to identify:",
+    options: ["Only the sample mean", "Directions of greatest variance", "Random directions independent of the data"],
+    answer: "B",
+    explanation: "Eigenvectors order directions according to covariance eigenvalues, which measure variance along those directions.",
   },
 ];
