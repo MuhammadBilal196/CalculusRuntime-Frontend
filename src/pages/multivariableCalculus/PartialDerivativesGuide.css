@@ -1051,8 +1051,9 @@
 }
 
 [data-theme="dark"] .opening-note-box {
-  background: #f8fafc !important;
-  border-color: #e2e8f0 !important;
+      background: #0f172a !important;
+    border-color: #1e293b !important;
+    border-left-color: #38bdf8 !important;
 }
 
 [data-theme="dark"] .opening-note {
