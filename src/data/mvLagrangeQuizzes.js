@@ -2,10 +2,16 @@
 
 export const LAGRANGE_GEOMETRY_QUIZ = [
   {
-    prompt: "At a constrained optimum of $f$ on $g(x,y)=k$, the level curve of $f$ and the constraint are:",
-    options: ["Perpendicular to each other", "Tangent to each other", "Always parallel straight lines"],
+    prompt:
+      "At a constrained optimum of $f$ on $g(x,y)=k$, the level curve of $f$ and the constraint are:",
+    options: [
+      "Perpendicular to each other",
+      "Tangent to each other",
+      "Always parallel straight lines",
+    ],
     answer: "B",
-    explanation: "If they crossed transversally you could slide along the constraint and change $f$.",
+    explanation:
+      "If they crossed transversally you could slide along the constraint and change $f$.",
   },
   {
     prompt: "At such a tangency point, $\\nabla f$ and $\\nabla g$ are:",
@@ -15,25 +21,44 @@ export const LAGRANGE_GEOMETRY_QUIZ = [
   },
   {
     prompt: "The geometric content of $\\nabla f=\\lambda\\nabla g$ is that:",
-    options: ["Level curves of $f$ are circles", "$f$ equals $g$", "The gradients point along the same line"],
+    options: [
+      "Level curves of $f$ are circles",
+      "$f$ equals $g$",
+      "The gradients point along the same line",
+    ],
     answer: "C",
     explanation: "$\\lambda$ scales one normal onto the other.",
   },
   {
-    prompt: "If $\\nabla f$ is not parallel to $\\nabla g$ at a constraint point, then:",
-    options: ["The point must be a global max", "You can move along $g=k$ to change $f$ to first order", "$\\lambda$ must be infinite"],
+    prompt:
+      "If $\\nabla f$ is not parallel to $\\nabla g$ at a constraint point, then:",
+    options: [
+      "The point must be a global max",
+      "You can move along $g=k$ to change $f$ to first order",
+      "$\\lambda$ must be infinite",
+    ],
     answer: "B",
     explanation: "A nonzero tangential derivative of $f$ remains.",
   },
   {
-    prompt: "On a contour map, an optimum on a constraint curve occurs where a level curve of $f$:",
-    options: ["Crosses the constraint at $45^\\circ$", "Is farthest from the origin", "Just touches the constraint"],
+    prompt:
+      "On a contour map, an optimum on a constraint curve occurs where a level curve of $f$:",
+    options: [
+      "Crosses the constraint at $45^\\circ$",
+      "Is farthest from the origin",
+      "Just touches the constraint",
+    ],
     answer: "C",
     explanation: "Tangency is the geometric picture.",
   },
   {
-    prompt: "For $f(x,y)=x^2+y^2$ and constraint $x+y=2$, at the minimum the gradients are parallel to:",
-    options: ["$\\langle 1,1\\rangle$", "$\\langle 1,-1\\rangle$", "$\\langle 2,-1\\rangle$"],
+    prompt:
+      "For $f(x,y)=x^2+y^2$ and constraint $x+y=2$, at the minimum the gradients are parallel to:",
+    options: [
+      "$\\langle 1,1\\rangle$",
+      "$\\langle 1,-1\\rangle$",
+      "$\\langle 2,-1\\rangle$",
+    ],
     answer: "A",
     explanation: "$\\nabla g=\\langle 1,1\\rangle$; optimum at $(1,1)$.",
   },
@@ -44,8 +69,13 @@ export const LAGRANGE_GEOMETRY_QUIZ = [
     explanation: "Product level sets are rectangular hyperbolas.",
   },
   {
-    prompt: "Constraint $x^2+y^2=8$ is a circle; $\\nabla g$ at $(2,2)$ equals:",
-    options: ["$\\langle 1,0\\rangle$", "$\\langle 4,4\\rangle$", "$\\langle 2,2\\rangle$"],
+    prompt:
+      "Constraint $x^2+y^2=8$ is a circle; $\\nabla g$ at $(2,2)$ equals:",
+    options: [
+      "$\\langle 1,0\\rangle$",
+      "$\\langle 4,4\\rangle$",
+      "$\\langle 2,2\\rangle$",
+    ],
     answer: "B",
     explanation: "$g=x^2+y^2$, so $\\nabla g=\\langle 2x,2y\\rangle$.",
   },
@@ -56,70 +86,172 @@ export const LAGRANGE_GEOMETRY_QUIZ = [
     explanation: "Non-tangency means independent normals.",
   },
   {
-    prompt: "Steepest ascent of $f$ is along $\\nabla f$. Constrained motion must stay in the:",
-    options: ["Normal to $g=k$", "Tangent to $g=k$", "Direction of $\\nabla f$ only"],
+    prompt:
+      "Steepest ascent of $f$ is along $\\nabla f$. Constrained motion must stay in the:",
+    options: [
+      "Normal to $g=k$",
+      "Tangent to $g=k$",
+      "Direction of $\\nabla f$ only",
+    ],
     answer: "B",
     explanation: "Feasible directions are tangential to the constraint.",
   },
   {
     prompt: "For $f=x+2y$ on $x^2+y^2=5$, $\\nabla f$ is the constant vector:",
-    options: ["$\\langle 2,1\\rangle$", "$\\langle x,y\\rangle$", "$\\langle 1,2\\rangle$"],
+    options: [
+      "$\\langle 2,1\\rangle$",
+      "$\\langle x,y\\rangle$",
+      "$\\langle 1,2\\rangle$",
+    ],
     answer: "C",
     explanation: "Partial derivatives of a linear function.",
   },
   {
-    prompt: "A picture where every level curve of $f$ crosses $g=k$ transversally implies:",
-    options: ["No constrained critical point of Lagrange type", "Infinitely many optima", "$\\nabla g=\\mathbf 0$ everywhere"],
+    prompt:
+      "A picture where every level curve of $f$ crosses $g=k$ transversally implies:",
+    options: [
+      "No constrained critical point of Lagrange type",
+      "Infinitely many optima",
+      "$\\nabla g=\\mathbf 0$ everywhere",
+    ],
     answer: "A",
     explanation: "No tangency means the parallel-gradient condition fails.",
   },
   {
-    prompt: "At $(0,2)$ on $x^2+y^2=4$, a unit tangent to the circle is parallel to:",
-    options: ["$\\langle 0,1\\rangle$", "$\\langle 2,2\\rangle$", "$\\langle 1,0\\rangle$"],
+    prompt:
+      "At $(0,2)$ on $x^2+y^2=4$, a unit tangent to the circle is parallel to:",
+    options: [
+      "$\\langle 0,1\\rangle$",
+      "$\\langle 2,2\\rangle$",
+      "$\\langle 1,0\\rangle$",
+    ],
     answer: "C",
     explanation: "Radius is vertical, so tangent is horizontal.",
   },
   {
     prompt: "Why $\\lambda$ appears geometrically: it is the factor making:",
-    options: ["$\\nabla f$ a scalar multiple of $\\nabla g$", "The constraint linear", "$f=g$"],
+    options: [
+      "$\\nabla f$ a scalar multiple of $\\nabla g$",
+      "The constraint linear",
+      "$f=g$",
+    ],
     answer: "A",
     explanation: "Parallel normals differ by a scale factor.",
   },
   {
-    prompt: "For $f(x,y)=3x+4y$ and $g=x^2+y^2$, the point where level lines of $f$ are tangent to $g=25$ is:",
-    options: ["$(0,0)$", "$\\pm(3,4)$ scaled to the circle, i.e. $\\pm(3,4)$", "$(5,0)$ only"],
+    prompt:
+      "For $f(x,y)=3x+4y$ and $g=x^2+y^2$, the point where level lines of $f$ are tangent to $g=25$ is:",
+    options: [
+      "$(0,0)$",
+      "$\\pm(3,4)$ scaled to the circle, i.e. $\\pm(3,4)$",
+      "$(5,0)$ only",
+    ],
     answer: "B",
-    explanation: "$\\nabla f\\parallel\\nabla g$ gives $(x,y)$ parallel to $(3,4)$; on the circle of radius $5$ you get $\\pm(3,4)$.",
+    explanation:
+      "$\\nabla f\\parallel\\nabla g$ gives $(x,y)$ parallel to $(3,4)$; on the circle of radius $5$ you get $\\pm(3,4)$.",
+  },
+  {
+    prompt:
+      "Lagrange multipliers find extrema where the objective function's contour lines:",
+    options: [
+      "Do not cross the constraint boundary",
+      "Intersect the constraint perpendicularly",
+      "Form a saddle point",
+    ],
+    answer: "A",
+    explanation:
+      "If they crossed, you could increase/decrease $f$ by moving along the boundary. They must only touch (tangency).",
+  },
+  {
+    prompt:
+      "At a constrained minimum, the gradients $\\nabla f$ and $\\nabla g$:",
+    options: [
+      "Can point in opposite directions",
+      "Must point in the exact same direction",
+      "Must be orthogonal",
+    ],
+    answer: "A",
+    explanation:
+      "$\\nabla f = \\lambda \\nabla g$ allows $\\lambda$ to be negative, so they can be anti-parallel.",
+  },
+  {
+    prompt:
+      "If a constraint is $x^2 + y^2 \\le 4$, the problem requires checking:",
+    options: [
+      "Both the boundary (using Lagrange) and the interior ($\\nabla f = 0$)",
+      "Only the boundary",
+      "Only the interior",
+    ],
+    answer: "A",
+    explanation:
+      "Inequality constraints require checking open interiors and constrained edges.",
+  },
+  {
+    prompt: "A non-zero $\\lambda$ physically represents:",
+    options: [
+      "The marginal cost of tightening/relaxing the constraint",
+      "The absolute maximum value",
+      "A useless mathematical artifact",
+    ],
+    answer: "A",
+    explanation:
+      "$\\lambda$ is the shadow price; how much $f^*$ changes if $k$ changes.",
+  },
+  {
+    prompt:
+      "If $\\nabla g = \\mathbf{0}$ at an extremum on the constraint surface, the standard Lagrange method:",
+    options: [
+      "Fails because the gradient vectors cannot be equated meaningfully",
+      "Still works perfectly",
+      "Forces $\\lambda = 0$",
+    ],
+    answer: "A",
+    explanation: "This violates the constraint qualification.",
   },
 ];
 
 export const LAGRANGE_MATH_QUIZ = [
   {
     prompt: "The Lagrangian with constraint $g=k$ is often written:",
-    options: ["$\\mathcal{L}=f-\\lambda(g-k)$", "$\\mathcal{L}=\\nabla f\\cdot\\nabla g$", "$\\mathcal{L}=f+g$"],
+    options: [
+      "$\\mathcal{L}=f-\\lambda(g-k)$",
+      "$\\mathcal{L}=\\nabla f\\cdot\\nabla g$",
+      "$\\mathcal{L}=f+g$",
+    ],
     answer: "A",
-    explanation: "Stationarity of $\\mathcal{L}$ recovers Lagrange plus the constraint.",
+    explanation:
+      "Stationarity of $\\mathcal{L}$ recovers Lagrange plus the constraint.",
   },
   {
-    prompt: "The full Lagrange system in two variables with one constraint has how many scalar equations?",
+    prompt:
+      "The full Lagrange system in two variables with one constraint has how many scalar equations?",
     options: ["$2$", "$4$", "$3$"],
     answer: "C",
     explanation: "Two from $\\nabla f=\\lambda\\nabla g$ plus $g=k$.",
   },
   {
     prompt: "Unknowns in that 2D one-constraint problem are:",
-    options: ["Only $x$ and $y$", "$x$, $y$, and $\\lambda$", "Only $\\lambda$"],
+    options: [
+      "Only $x$ and $y$",
+      "$x$, $y$, and $\\lambda$",
+      "Only $\\lambda$",
+    ],
     answer: "B",
     explanation: "Point plus multiplier.",
   },
   {
     prompt: "A regularity condition needed for the basic method is:",
-    options: ["$\\lambda=1$", "$f=0$", "$\\nabla g\\ne\\mathbf 0$ at the point"],
+    options: [
+      "$\\lambda=1$",
+      "$f=0$",
+      "$\\nabla g\\ne\\mathbf 0$ at the point",
+    ],
     answer: "C",
     explanation: "Constraint qualification / nonvanishing gradient.",
   },
   {
-    prompt: "For $f(x,y)=xy$ and $g=x^2+y^2-8$, the equation $\\partial\\mathcal{L}/\\partial x=0$ reads:",
+    prompt:
+      "For $f(x,y)=xy$ and $g=x^2+y^2-8$, the equation $\\partial\\mathcal{L}/\\partial x=0$ reads:",
     options: ["$x=\\lambda(2y)$", "$y=\\lambda(2x)$", "$xy=8$"],
     answer: "B",
     explanation: "$f_x=\\lambda g_x$.",
@@ -131,50 +263,84 @@ export const LAGRANGE_MATH_QUIZ = [
     explanation: "$f_y=\\lambda g_y$.",
   },
   {
-    prompt: "From $f_x=\\lambda g_x$ and $f_y=\\lambda g_y$ with $\\nabla g\\ne\\mathbf 0$, one may eliminate $\\lambda$ by:",
-    options: ["Setting $\\lambda=0$ always", "Setting $f=g$", "Cross-multiplying $f_x g_y=f_y g_x$"],
+    prompt:
+      "From $f_x=\\lambda g_x$ and $f_y=\\lambda g_y$ with $\\nabla g\\ne\\mathbf 0$, one may eliminate $\\lambda$ by:",
+    options: [
+      "Setting $\\lambda=0$ always",
+      "Setting $f=g$",
+      "Cross-multiplying $f_x g_y=f_y g_x$",
+    ],
     answer: "C",
     explanation: "Parallel vectors satisfy that determinant condition.",
   },
   {
-    prompt: "If $f_x g_y-f_y g_x=0$ and $g=k$ hold at $P$ with $\\nabla g(P)\\ne\\mathbf 0$, then:",
-    options: ["$\\lambda$ cannot exist", "$P$ satisfies the Lagrange necessary condition", "$P$ is always a maximum"],
+    prompt:
+      "If $f_x g_y-f_y g_x=0$ and $g=k$ hold at $P$ with $\\nabla g(P)\\ne\\mathbf 0$, then:",
+    options: [
+      "$\\lambda$ cannot exist",
+      "$P$ satisfies the Lagrange necessary condition",
+      "$P$ is always a maximum",
+    ],
     answer: "B",
     explanation: "Equivalent to existence of some $\\lambda$.",
   },
   {
     prompt: "The multiplier $\\lambda$ has units/meaning as a sensitivity:",
-    options: ["Approximately $df^*/dk$", "The Hessian determinant", "Always the optimal $f$"],
+    options: [
+      "Approximately $df^*/dk$",
+      "The Hessian determinant",
+      "Always the optimal $f$",
+    ],
     answer: "A",
     explanation: "Shadow price / rate of change of optimal value.",
   },
   {
-    prompt: "If $\\nabla g(P)=\\mathbf 0$ while $g(P)=k$, the standard Lagrange equation:",
-    options: ["May miss a constrained critical point", "Always still works unchanged", "Forces $f$ constant"],
+    prompt:
+      "If $\\nabla g(P)=\\mathbf 0$ while $g(P)=k$, the standard Lagrange equation:",
+    options: [
+      "May miss a constrained critical point",
+      "Always still works unchanged",
+      "Forces $f$ constant",
+    ],
     answer: "A",
     explanation: "Need a separate check at singular constraint points.",
   },
   {
-    prompt: "Counting: three variables, one constraint $g=k$ gives how many equations?",
+    prompt:
+      "Counting: three variables, one constraint $g=k$ gives how many equations?",
     options: ["$3$", "$4$", "$6$"],
     answer: "B",
     explanation: "Three gradient components plus the constraint.",
   },
   {
-    prompt: "Sign of $\\lambda$: if increasing $k$ raises the optimal $f^*$, then typically:",
-    options: ["$\\lambda$ is undefined", "$\\lambda$ must be zero", "$\\lambda>0$ in the $f-\\lambda(g-k)$ convention used here"],
+    prompt:
+      "Sign of $\\lambda$: if increasing $k$ raises the optimal $f^*$, then typically:",
+    options: [
+      "$\\lambda$ is undefined",
+      "$\\lambda$ must be zero",
+      "$\\lambda>0$ in the $f-\\lambda(g-k)$ convention used here",
+    ],
     answer: "C",
     explanation: "Positive shadow price.",
   },
   {
     prompt: "Stationary points of $\\mathcal{L}(x,y,\\lambda)$ satisfy:",
-    options: ["Only $\\lambda=0$", "$\\nabla_{x,y}\\mathcal{L}=\\mathbf 0$ and $\\partial\\mathcal{L}/\\partial\\lambda=0$", "Only $f=0$"],
+    options: [
+      "Only $\\lambda=0$",
+      "$\\nabla_{x,y}\\mathcal{L}=\\mathbf 0$ and $\\partial\\mathcal{L}/\\partial\\lambda=0$",
+      "Only $f=0$",
+    ],
     answer: "B",
     explanation: "Critical-point conditions for the Lagrangian.",
   },
   {
-    prompt: "For linear $f(x,y)=ax+by$ on a smooth closed curve, optima occur where:",
-    options: ["The curve has a corner only", "$f=0$", "$\\langle a,b\\rangle$ is normal to the curve"],
+    prompt:
+      "For linear $f(x,y)=ax+by$ on a smooth closed curve, optima occur where:",
+    options: [
+      "The curve has a corner only",
+      "$f=0$",
+      "$\\langle a,b\\rangle$ is normal to the curve",
+    ],
     answer: "C",
     explanation: "Parallel to $\\nabla g$.",
   },
@@ -184,98 +350,231 @@ export const LAGRANGE_MATH_QUIZ = [
     answer: "A",
     explanation: "Constant $k$ disappears upon differentiating.",
   },
+  {
+    prompt: "Solving the Lagrange system requires finding roots of a:",
+    options: [
+      "Non-linear system of equations",
+      "Linear matrix",
+      "Single polynomial",
+    ],
+    answer: "A",
+    explanation:
+      "Because $g(x,y)$ and $f(x,y)$ can be arbitrary functions, the system is usually non-linear.",
+  },
+  {
+    prompt:
+      "If $f(x,y,z) = x^2+y^2+z^2$ and $g(x,y,z) = x+y+z=1$, the Lagrange system has how many variables?",
+    options: ["$4$ ($x,y,z,\\lambda$)", "$3$ ($x,y,z$)", "$2$"],
+    answer: "A",
+    explanation: "Three spatial variables plus one multiplier.",
+  },
+  {
+    prompt:
+      "A common algebra trick to solve $\\nabla f = \\lambda \\nabla g$ is to:",
+    options: [
+      "Solve for $\\lambda$ in each equation and set them equal",
+      "Add all equations together",
+      "Set $\\lambda = 1$ initially",
+    ],
+    answer: "A",
+    explanation:
+      "Isolating $\\lambda$ removes the multiplier and gives a geometric relation between variables.",
+  },
+  {
+    prompt:
+      "In the method of Lagrange Multipliers, dividing by a variable (e.g., $x$) requires:",
+    options: [
+      "Checking the $x=0$ case separately",
+      "No extra steps",
+      "$\\lambda$ to be positive",
+    ],
+    answer: "A",
+    explanation:
+      "You lose solutions if you divide by a variable that could be zero.",
+  },
+  {
+    prompt: "If $f_x = \\lambda g_x$ and $g_x = 0$, then:",
+    options: [
+      "$f_x$ must also be $0$",
+      "$\\lambda$ must be $0$",
+      "The system has no solution",
+    ],
+    answer: "A",
+    explanation: "If the right side is zero, the left side must be zero.",
+  },
 ];
 
 export const LAGRANGE_FIELDS_QUIZ = [
   {
-    prompt: "Maximize area $xy$ of a rectangle with perimeter $2x+2y=20$. Objective $f$ is:",
+    prompt:
+      "Maximize area $xy$ of a rectangle with perimeter $2x+2y=20$. Objective $f$ is:",
     options: ["$2x+2y$", "$xy$", "$x+y$"],
     answer: "B",
     explanation: "Area is the objective.",
   },
   {
     prompt: "In that problem the constraint function can be taken as:",
-    options: ["$g=x+y$ with $k=10$", "$g=xy$ with $k=20$", "$g=2x$ with $k=20$"],
+    options: [
+      "$g=x+y$ with $k=10$",
+      "$g=xy$ with $k=20$",
+      "$g=2x$ with $k=20$",
+    ],
     answer: "A",
     explanation: "Simplify $2x+2y=20$ to $x+y=10$.",
   },
   {
-    prompt: "Minimize distance from $(0,0)$ to the line $x+2y=4$. A valid objective is:",
+    prompt:
+      "Minimize distance from $(0,0)$ to the line $x+2y=4$. A valid objective is:",
     options: ["$f=x+2y$", "$f=4$", "$f=x^2+y^2$"],
     answer: "C",
     explanation: "Squared distance avoids a square root.",
   },
   {
-    prompt: "For budget $3x+5y=60$ maximizing utility $u=x^{1/2}y^{1/2}$, the constraint $g$ is:",
+    prompt:
+      "For budget $3x+5y=60$ maximizing utility $u=x^{1/2}y^{1/2}$, the constraint $g$ is:",
     options: ["$x^{1/2}y^{1/2}$", "$xy$", "$3x+5y$"],
     answer: "C",
     explanation: "Cost is constrained; utility is $f$.",
   },
   {
     prompt: "Compute $\\nabla f$ for $f(x,y)=x^2y$:",
-    options: ["$\\langle 2xy,x^2\\rangle$", "$\\langle 2x,1\\rangle$", "$\\langle x^2,y\\rangle$"],
+    options: [
+      "$\\langle 2xy,x^2\\rangle$",
+      "$\\langle 2x,1\\rangle$",
+      "$\\langle x^2,y\\rangle$",
+    ],
     answer: "A",
     explanation: "Product rule in each variable.",
   },
   {
     prompt: "Compute $\\nabla g$ for $g(x,y)=x^2+4y^2$:",
-    options: ["$\\langle 2x,4y\\rangle$", "$\\langle 2x,8y\\rangle$", "$\\langle x,4y\\rangle$"],
+    options: [
+      "$\\langle 2x,4y\\rangle$",
+      "$\\langle 2x,8y\\rangle$",
+      "$\\langle x,4y\\rangle$",
+    ],
     answer: "B",
     explanation: "Partials $2x$ and $8y$.",
   },
   {
-    prompt: "Word problem: \"cheapest mix of inputs $x,y$ costing $2x+3y$ to produce level $xy=12$\". Here $f$ is:",
+    prompt:
+      'Word problem: "cheapest mix of inputs $x,y$ costing $2x+3y$ to produce level $xy=12$". Here $f$ is:',
     options: ["$x+y$", "$xy$", "$2x+3y$"],
     answer: "C",
     explanation: "Minimize cost; production level is the constraint.",
   },
   {
-    prompt: "Mis-stated constraint: writing $x^2+y^2=8$ as $g=x^2+y^2-8$ with $k=0$ is:",
-    options: ["Valid and equivalent", "Invalid because $k$ must be $8$", "Invalid because $g$ must be linear"],
+    prompt:
+      "Mis-stated constraint: writing $x^2+y^2=8$ as $g=x^2+y^2-8$ with $k=0$ is:",
+    options: [
+      "Valid and equivalent",
+      "Invalid because $k$ must be $8$",
+      "Invalid because $g$ must be linear",
+    ],
     answer: "A",
     explanation: "Absorbing the constant into $g$ is fine.",
   },
   {
-    prompt: "For $f(x,y,z)=xyz$ and plane $x+y+z=6$, $\\nabla f$ at $(2,2,2)$ equals:",
-    options: ["$\\langle 2,2,2\\rangle$", "$\\langle 4,4,4\\rangle$", "$\\langle 1,1,1\\rangle$"],
+    prompt:
+      "For $f(x,y,z)=xyz$ and plane $x+y+z=6$, $\\nabla f$ at $(2,2,2)$ equals:",
+    options: [
+      "$\\langle 2,2,2\\rangle$",
+      "$\\langle 4,4,4\\rangle$",
+      "$\\langle 1,1,1\\rangle$",
+    ],
     answer: "B",
     explanation: "$\\langle yz,xz,xy\\rangle=\\langle 4,4,4\\rangle$.",
   },
   {
     prompt: "Same plane: $\\nabla g$ for $g=x+y+z$ equals:",
-    options: ["$\\langle 1,1,1\\rangle$", "$\\langle x,y,z\\rangle$", "$\\langle 2,2,2\\rangle$"],
+    options: [
+      "$\\langle 1,1,1\\rangle$",
+      "$\\langle x,y,z\\rangle$",
+      "$\\langle 2,2,2\\rangle$",
+    ],
     answer: "A",
     explanation: "Constant gradient.",
   },
   {
-    prompt: "Identify $f$ vs $g$: maximize $f=3x+4y$ on the ellipse $x^2/4+y^2/9=1$. Then $g$ is:",
+    prompt:
+      "Identify $f$ vs $g$: maximize $f=3x+4y$ on the ellipse $x^2/4+y^2/9=1$. Then $g$ is:",
     options: ["$3x+4y$", "$x^2/4+y^2/9$", "$xy$"],
     answer: "B",
     explanation: "Ellipse is the constraint.",
   },
   {
     prompt: "Compute $\\nabla(x^2/4+y^2/9)$:",
-    options: ["$\\langle 2x,2y\\rangle$", "$\\langle x/4,y/9\\rangle$", "$\\langle x/2,\\,2y/9\\rangle$"],
+    options: [
+      "$\\langle 2x,2y\\rangle$",
+      "$\\langle x/4,y/9\\rangle$",
+      "$\\langle x/2,\\,2y/9\\rangle$",
+    ],
     answer: "C",
     explanation: "Derivative of $x^2/4$ is $x/2$.",
   },
   {
-    prompt: "Fixed surface area $2(xy+xz+yz)=S$ for a box; to maximize volume, $f$ is:",
+    prompt:
+      "Fixed surface area $2(xy+xz+yz)=S$ for a box; to maximize volume, $f$ is:",
     options: ["$x+y+z$", "$xy+xz+yz$", "$xyz$"],
     answer: "C",
     explanation: "Volume is the objective.",
   },
   {
-    prompt: "Constraint $g(x,y)=e^{x}+e^{y}$ with $k=4$ means feasible points satisfy:",
+    prompt:
+      "Constraint $g(x,y)=e^{x}+e^{y}$ with $k=4$ means feasible points satisfy:",
     options: ["$e^{x}+e^{y}=4$", "$e^{x}+e^{y}=0$", "$xy=4$"],
     answer: "A",
     explanation: "Definition of $g=k$.",
   },
   {
     prompt: "For $f=\\ln(xy)$ on $x+y=4$ with $x,y>0$, $\\nabla f$ equals:",
-    options: ["$\\langle y,x\\rangle$", "$\\langle 1/x,\\,1/y\\rangle$", "$\\langle 1,1\\rangle$"],
+    options: [
+      "$\\langle y,x\\rangle$",
+      "$\\langle 1/x,\\,1/y\\rangle$",
+      "$\\langle 1,1\\rangle$",
+    ],
     answer: "B",
     explanation: "Derivative of $\\ln x+\\ln y$.",
+  },
+  {
+    prompt:
+      "To find the points on $x^2+y^2=1$ closest to $(2,2)$, the objective $f(x,y)$ is:",
+    options: ["$(x-2)^2 + (y-2)^2$", "$x^2+y^2$", "$2x+2y$"],
+    answer: "A",
+    explanation: "Minimize the squared distance to $(2,2)$.",
+  },
+  {
+    prompt:
+      "To maximize the volume of a cylinder given a fixed surface area $A_0$, the constraint $g$ is:",
+    options: [
+      "$2\\pi r^2 + 2\\pi rh = A_0$",
+      "$\\pi r^2 h = A_0$",
+      "$2\\pi r h = A_0$",
+    ],
+    answer: "A",
+    explanation:
+      "The sum of the top/bottom areas and the lateral area is fixed.",
+  },
+  {
+    prompt:
+      "To find the highest point on the curve of intersection of $z=x^2+y^2$ and $x+y=2$, $f$ is:",
+    options: ["$z$", "$x^2+y^2$", "$x+y$"],
+    answer: "A",
+    explanation: "Height is defined by the $z$-coordinate.",
+  },
+  {
+    prompt:
+      "If minimizing cost $C = 5x + 10y$ subject to hitting a production quota $Q = x^a y^b$, $f$ is:",
+    options: ["$5x + 10y$", "$x^a y^b$", "$5x+10y-Q$"],
+    answer: "A",
+    explanation: "The objective you want to minimize is the cost.",
+  },
+  {
+    prompt:
+      "To find the box of largest volume $xyz$ with sum of dimensions $x+y+z=12$, $g(x,y,z)$ is:",
+    options: ["$x+y+z$", "$xyz$", "$2(xy+xz+yz)$"],
+    answer: "A",
+    explanation: "The constraint is the sum of the linear dimensions.",
   },
 ];
 
@@ -284,7 +583,8 @@ export const LAGRANGE_CALC_QUIZ = [
     prompt: "Extremize $f=xy$ on $x^2+y^2=8$. A critical point is:",
     options: ["$(2,2)$", "$(0,\\sqrt{8})$", "$(1,1)$"],
     answer: "A",
-    explanation: "From $y=2\\lambda x$, $x=2\\lambda y$ get $x=\\pm y$; with $x^2+y^2=8$, $(2,2)$ works.",
+    explanation:
+      "From $y=2\\lambda x$, $x=2\\lambda y$ get $x=\\pm y$; with $x^2+y^2=8$, $(2,2)$ works.",
   },
   {
     prompt: "On $x^2+y^2=8$, the maximum of $xy$ equals:",
@@ -299,8 +599,13 @@ export const LAGRANGE_CALC_QUIZ = [
     explanation: "At $(2,-2)$ and $(-2,2)$.",
   },
   {
-    prompt: "Extremize $f=x+2y$ on $x^2+y^2=5$. Then $\\lambda$ satisfies $\\langle 1,2\\rangle=\\lambda\\langle 2x,2y\\rangle$, so $(x,y)$ is parallel to:",
-    options: ["$\\langle 2,1\\rangle$", "$\\langle 1,-2\\rangle$", "$\\langle 1,2\\rangle$"],
+    prompt:
+      "Extremize $f=x+2y$ on $x^2+y^2=5$. Then $\\lambda$ satisfies $\\langle 1,2\\rangle=\\lambda\\langle 2x,2y\\rangle$, so $(x,y)$ is parallel to:",
+    options: [
+      "$\\langle 2,1\\rangle$",
+      "$\\langle 1,-2\\rangle$",
+      "$\\langle 1,2\\rangle$",
+    ],
     answer: "C",
     explanation: "Gradient of $f$ fixed.",
   },
@@ -308,7 +613,8 @@ export const LAGRANGE_CALC_QUIZ = [
     prompt: "Maximum of $x+2y$ on $x^2+y^2=5$ equals:",
     options: ["$\\sqrt{10}$", "$5$", "$3$"],
     answer: "B",
-    explanation: "$|\\langle 1,2\\rangle|=\\sqrt{5}$ and radius $\\sqrt{5}$, so max is $5$.",
+    explanation:
+      "$|\\langle 1,2\\rangle|=\\sqrt{5}$ and radius $\\sqrt{5}$, so max is $5$.",
   },
   {
     prompt: "Minimum of $x+2y$ on $x^2+y^2=5$ equals:",
@@ -320,7 +626,8 @@ export const LAGRANGE_CALC_QUIZ = [
     prompt: "Minimize $f=x^2+y^2$ on $x+2y=4$. The closest point is:",
     options: ["$(4/5,\\,8/5)$", "$(2,1)$", "$(4,0)$"],
     answer: "A",
-    explanation: "$\\langle 2x,2y\\rangle=\\lambda\\langle 1,2\\rangle$ and $x+2y=4$ give that point.",
+    explanation:
+      "$\\langle 2x,2y\\rangle=\\lambda\\langle 1,2\\rangle$ and $x+2y=4$ give that point.",
   },
   {
     prompt: "Minimum distance squared from origin to $x+2y=4$ equals:",
@@ -329,7 +636,8 @@ export const LAGRANGE_CALC_QUIZ = [
     explanation: "$(4/5)^2+(8/5)^2=16/5$.",
   },
   {
-    prompt: "Maximize $f=xyz$ on $x+y+z=6$ with $x,y,z>0$. By symmetry the max occurs at:",
+    prompt:
+      "Maximize $f=xyz$ on $x+y+z=6$ with $x,y,z>0$. By symmetry the max occurs at:",
     options: ["$(6,0,0)$", "$(3,3,0)$", "$(2,2,2)$"],
     answer: "C",
     explanation: "Equal variables from $\\nabla f=\\lambda\\nabla g$.",
@@ -341,7 +649,8 @@ export const LAGRANGE_CALC_QUIZ = [
     explanation: "$2\\cdot 2\\cdot 2=8$.",
   },
   {
-    prompt: "For $f=xy$ on $x^2+y^2=8$ at $(2,2)$, the multiplier with $g=x^2+y^2$ satisfies $y=\\lambda 2x$, so $\\lambda$ equals:",
+    prompt:
+      "For $f=xy$ on $x^2+y^2=8$ at $(2,2)$, the multiplier with $g=x^2+y^2$ satisfies $y=\\lambda 2x$, so $\\lambda$ equals:",
     options: ["$1$", "$1/2$", "$2$"],
     answer: "B",
     explanation: "$2=\\lambda\\cdot 4\\Rightarrow\\lambda=1/2$.",
@@ -353,7 +662,8 @@ export const LAGRANGE_CALC_QUIZ = [
     explanation: "$|\\langle 3,4\\rangle|\\cdot 5=5\\cdot 5=25$.",
   },
   {
-    prompt: "A box with square base side $x$ and height $y$ has volume $x^2 y=100$. Minimize surface $S=x^2+4xy$. At the optimum, $y$ equals:",
+    prompt:
+      "A box with square base side $x$ and height $y$ has volume $x^2 y=100$. Minimize surface $S=x^2+4xy$. At the optimum, $y$ equals:",
     options: ["$2x$", "$x$", "$x/2$"],
     answer: "C",
     explanation: "Lagrange/substitution yields $y=x/2$.",
@@ -370,17 +680,55 @@ export const LAGRANGE_CALC_QUIZ = [
     answer: "B",
     explanation: "Largest when $|y|=1$: value $2$.",
   },
+  {
+    prompt: "Maximize $f=x+y$ on $x^2+y^2=2$. The maximum value is:",
+    options: ["$2$", "$\\sqrt{2}$", "$4$"],
+    answer: "A",
+    explanation:
+      "At $(1,1)$, $f=2$. Radius is $\\sqrt{2}$, dotting $\\langle 1,1 \\rangle$.",
+  },
+  {
+    prompt: "Minimize $f=x^2+y^2$ on $x+y=4$. The minimum value is:",
+    options: ["$8$", "$16$", "$4$"],
+    answer: "A",
+    explanation: "Occurs at $(2,2)$, so $2^2+2^2=8$.",
+  },
+  {
+    prompt: "Find extreme values of $f=xy$ on $x^2+y^2=1$. The max is:",
+    options: ["$1/2$", "$1$", "$2$"],
+    answer: "A",
+    explanation:
+      "Occurs at $(\\pm 1/\\sqrt{2}, \\pm 1/\\sqrt{2})$. Product is $1/2$.",
+  },
+  {
+    prompt: "Maximize $f=2x+3y$ on $x^2+y^2=13$. The max is:",
+    options: ["$13$", "$26$", "$5$"],
+    answer: "A",
+    explanation:
+      "$\\nabla f = \\langle 2,3 \\rangle$, magnitude $\\sqrt{13}$. Radius $\\sqrt{13}$. Max is $13$.",
+  },
+  {
+    prompt: "Minimize $f=x^2+y^2+z^2$ on $x+y+z=3$. The min is:",
+    options: ["$3$", "$1$", "$9$"],
+    answer: "A",
+    explanation: "Symmetry gives $(1,1,1)$, sum of squares is $3$.",
+  },
 ];
 
 export const LAGRANGE_MULTI_QUIZ = [
   {
     prompt: "With two constraints $g=a$ and $h=b$, the vector equation is:",
-    options: ["$\\nabla f=\\lambda\\nabla g+\\mu\\nabla h$", "$\\nabla f=\\lambda\\nabla g$ only", "$\\nabla f=\\mathbf 0$"],
+    options: [
+      "$\\nabla f=\\lambda\\nabla g+\\mu\\nabla h$",
+      "$\\nabla f=\\lambda\\nabla g$ only",
+      "$\\nabla f=\\mathbf 0$",
+    ],
     answer: "A",
     explanation: "Linear combination of both constraint normals.",
   },
   {
-    prompt: "In $\\mathbb{R}^3$ with two constraints, the full scalar system has how many equations?",
+    prompt:
+      "In $\\mathbb{R}^3$ with two constraints, the full scalar system has how many equations?",
     options: ["$3$", "$6$", "$5$"],
     answer: "C",
     explanation: "Three from the gradient relation plus two constraints.",
@@ -392,25 +740,37 @@ export const LAGRANGE_MULTI_QUIZ = [
     explanation: "Point plus two multipliers.",
   },
   {
-    prompt: "Extremize $f=x+y+z$ on $x+y=1$ and $x^2+y^2+z^2=1$. Feasible set is:",
-    options: ["The whole sphere", "Intersection of a plane and a sphere (a circle)", "A single point"],
+    prompt:
+      "Extremize $f=x+y+z$ on $x+y=1$ and $x^2+y^2+z^2=1$. Feasible set is:",
+    options: [
+      "The whole sphere",
+      "Intersection of a plane and a sphere (a circle)",
+      "A single point",
+    ],
     answer: "B",
     explanation: "Plane cut of the sphere.",
   },
   {
-    prompt: "On that set, $\\nabla f=\\langle 1,1,1\\rangle$. At an optimum, $\\langle 1,1,1\\rangle$ lies in the span of:",
-    options: ["Only $\\langle 0,0,1\\rangle$", "Only $\\langle 1,0,0\\rangle$", "$\\langle 1,1,0\\rangle$ and $\\langle 2x,2y,2z\\rangle$"],
+    prompt:
+      "On that set, $\\nabla f=\\langle 1,1,1\\rangle$. At an optimum, $\\langle 1,1,1\\rangle$ lies in the span of:",
+    options: [
+      "Only $\\langle 0,0,1\\rangle$",
+      "Only $\\langle 1,0,0\\rangle$",
+      "$\\langle 1,1,0\\rangle$ and $\\langle 2x,2y,2z\\rangle$",
+    ],
     answer: "C",
     explanation: "Normals to the two constraints.",
   },
   {
-    prompt: "For $f=z$ on $x^2+y^2=1$ and $z=0$ (unit circle in $xy$-plane), every point is critical and $f$ equals:",
+    prompt:
+      "For $f=z$ on $x^2+y^2=1$ and $z=0$ (unit circle in $xy$-plane), every point is critical and $f$ equals:",
     options: ["$0$", "$1$", "$-1$"],
     answer: "A",
     explanation: "Constraint forces $z=0$.",
   },
   {
-    prompt: "Optimize $f=x$ on the intersection of $x^2+y^2+z^2=4$ and $z=1$. Max $x$ equals:",
+    prompt:
+      "Optimize $f=x$ on the intersection of $x^2+y^2+z^2=4$ and $z=1$. Max $x$ equals:",
     options: ["$1$", "$2$", "$\\sqrt{3}$"],
     answer: "C",
     explanation: "Circle $x^2+y^2=3$, $z=1$; max $x=\\sqrt{3}$.",
@@ -422,14 +782,23 @@ export const LAGRANGE_MULTI_QUIZ = [
     explanation: "Opposite side of the circle.",
   },
   {
-    prompt: "If $\\nabla g$ and $\\nabla h$ are parallel at a feasible point, the two-constraint method:",
-    options: ["Always works", "May be invalid there (dependent constraints)", "Forces $f$ maximal"],
+    prompt:
+      "If $\\nabla g$ and $\\nabla h$ are parallel at a feasible point, the two-constraint method:",
+    options: [
+      "Always works",
+      "May be invalid there (dependent constraints)",
+      "Forces $f$ maximal",
+    ],
     answer: "B",
     explanation: "Need independent constraint gradients.",
   },
   {
     prompt: "Intersection of cylinder $x^2+y^2=1$ and plane $x+z=2$ is a:",
-    options: ["Pair of lines", "Closed curve (ellipse in the plane)", "Single point"],
+    options: [
+      "Pair of lines",
+      "Closed curve (ellipse in the plane)",
+      "Single point",
+    ],
     answer: "B",
     explanation: "Plane cuts the cylinder.",
   },
@@ -440,101 +809,205 @@ export const LAGRANGE_MULTI_QUIZ = [
     explanation: "Top of the unit circle.",
   },
   {
-    prompt: "System count check: two variables, two constraints generally gives:",
-    options: ["Isolated feasible points (0-dimensional)", "A curve of candidates", "A surface"],
+    prompt:
+      "System count check: two variables, two constraints generally gives:",
+    options: [
+      "Isolated feasible points (0-dimensional)",
+      "A curve of candidates",
+      "A surface",
+    ],
     answer: "A",
     explanation: "Two equations in two unknowns.",
   },
   {
-    prompt: "For $f=x^2+y^2+z^2$ on $x+y+z=3$ and $x+2y+3z=6$, the geometry is:",
-    options: ["Unconstrained in $\\mathbb{R}^3$", "Optimization on a sphere", "Nearest/farthest origin point on a line (plane∩plane)"],
+    prompt:
+      "For $f=x^2+y^2+z^2$ on $x+y+z=3$ and $x+2y+3z=6$, the geometry is:",
+    options: [
+      "Unconstrained in $\\mathbb{R}^3$",
+      "Optimization on a sphere",
+      "Nearest/farthest origin point on a line (plane∩plane)",
+    ],
     answer: "C",
     explanation: "Two planes meet in a line.",
   },
   {
-    prompt: "Multipliers $(\\lambda,\\mu)$ exist at a regular point iff $\\nabla f$ is in:",
-    options: ["$\\mathrm{span}\\{\\nabla g,\\nabla h\\}$", "The tangent plane only", "The $xy$-plane"],
+    prompt:
+      "Multipliers $(\\lambda,\\mu)$ exist at a regular point iff $\\nabla f$ is in:",
+    options: [
+      "$\\mathrm{span}\\{\\nabla g,\\nabla h\\}$",
+      "The tangent plane only",
+      "The $xy$-plane",
+    ],
     answer: "A",
     explanation: "Normal-space condition.",
   },
   {
-    prompt: "On $x^2+y^2+z^2=6$ and $x+y+z=0$, maximize $f=x$. With $y=z$ at the maximizer, $x$ equals:",
+    prompt:
+      "On $x^2+y^2+z^2=6$ and $x+y+z=0$, maximize $f=x$. With $y=z$ at the maximizer, $x$ equals:",
     options: ["$0$", "$2$", "$\\sqrt{2}$"],
     answer: "B",
     explanation: "$y=z=-x/2$ and $x^2+2(x^2/4)=6$ give $x^2=4$, so max $x=2$.",
+  },
+  {
+    prompt:
+      "If intersecting two spheres, the resulting constraint curve is typically a:",
+    options: ["Circle", "Straight line", "Point"],
+    answer: "A",
+    explanation:
+      "The intersection of two spherical shells in 3D is a circular ring.",
+  },
+  {
+    prompt:
+      "To optimize $f$ over a curve defined by $g=0, h=0$, the gradient $\\nabla f$ must lie in:",
+    options: [
+      "The plane spanned by $\\nabla g$ and $\\nabla h$",
+      "The line spanned by $\\nabla g$",
+      "The tangent plane of the curve",
+    ],
+    answer: "A",
+    explanation:
+      "$\\nabla f = \\lambda \\nabla g + \\mu \\nabla h$ defines a linear combination (plane).",
+  },
+  {
+    prompt:
+      "In a 3-variable, 2-constraint problem, how many independent variables are free to move?",
+    options: ["$1$", "$2$", "$3$"],
+    answer: "A",
+    explanation:
+      "$3$ variables minus $2$ constraints leaves $1$ degree of freedom (a 1D curve).",
+  },
+  {
+    prompt:
+      "If $\\nabla g$ and $\\nabla h$ are parallel at a point, the constraint curve is:",
+    options: [
+      "Singular or ill-defined at that point",
+      "A plane",
+      "Perfectly smooth",
+    ],
+    answer: "A",
+    explanation:
+      "The surfaces are tangent to each other, so their intersection is not a simple 1D curve.",
+  },
+  {
+    prompt:
+      "Minimizing distance to the origin subject to $x+y+z=1$ and $x-y=0$ gives $x$ equal to:",
+    options: ["$1/3$", "$1/2$", "$0$"],
+    answer: "A",
+    explanation:
+      "$x=y$. Then $2x+z=1$. Distance squared is $2x^2+z^2$. Minimum yields $x=y=z=1/3$.",
   },
 ];
 
 export const LAGRANGE_VERIFY_QUIZ = [
   {
-    prompt: "Candidates for $f=xy$ on $x^2+y^2=8$ give values $4$ and $-4$. Therefore the maximum is:",
+    prompt:
+      "Candidates for $f=xy$ on $x^2+y^2=8$ give values $4$ and $-4$. Therefore the maximum is:",
     options: ["$0$", "$-4$", "$4$"],
     answer: "C",
     explanation: "Compare candidate values.",
   },
   {
     prompt: "The second-derivative test for unconstrained critical points:",
-    options: ["Does not apply directly to Lagrange candidates", "Always classifies constrained points", "Replaces the constraint"],
+    options: [
+      "Does not apply directly to Lagrange candidates",
+      "Always classifies constrained points",
+      "Replaces the constraint",
+    ],
     answer: "A",
     explanation: "Need bordered Hessian or value comparison on a compact set.",
   },
   {
     prompt: "After solving Lagrange, you must still check:",
-    options: ["Only that $f=0$", "That each candidate satisfies $g=k$", "Only that $\\lambda>0$"],
+    options: [
+      "Only that $f=0$",
+      "That each candidate satisfies $g=k$",
+      "Only that $\\lambda>0$",
+    ],
     answer: "B",
     explanation: "Feasibility of the constraint.",
   },
   {
     prompt: "On a compact constraint set (closed bounded), continuous $f$:",
-    options: ["Need not attain either", "Attains both max and min", "Attains only a max"],
+    options: [
+      "Need not attain either",
+      "Attains both max and min",
+      "Attains only a max",
+    ],
     answer: "B",
     explanation: "Extreme Value Theorem.",
   },
   {
     prompt: "Constraint $xy=1$ in the plane is unbounded. For $f=x+y$:",
-    options: ["There is no global max; candidates need careful interpretation", "Only $\\lambda$ matters", "EVT guarantees a max"],
+    options: [
+      "There is no global max; candidates need careful interpretation",
+      "Only $\\lambda$ matters",
+      "EVT guarantees a max",
+    ],
     answer: "A",
     explanation: "Hyperbola is not compact.",
   },
   {
-    prompt: "Values $f(2,2)=4$ and $f(2,-2)=-4$ on the circle: the constrained minimum is:",
+    prompt:
+      "Values $f(2,2)=4$ and $f(2,-2)=-4$ on the circle: the constrained minimum is:",
     options: ["$2$", "$4$", "$-4$"],
     answer: "C",
     explanation: "Smaller candidate wins for min.",
   },
   {
-    prompt: "If two candidates give the same $f$ value on a connected constraint, that value:",
-    options: ["Must be a saddle in 3D", "May be both max and min only if $f$ is constant there", "Is never optimal"],
+    prompt:
+      "If two candidates give the same $f$ value on a connected constraint, that value:",
+    options: [
+      "Must be a saddle in 3D",
+      "May be both max and min only if $f$ is constant there",
+      "Is never optimal",
+    ],
     answer: "B",
     explanation: "Compare all critical values.",
   },
   {
-    prompt: "Point $(0,0)$ solves $\\nabla f=\\lambda\\nabla g$ for $f=x^2+y^2$, $g=x+y$ with $k=0$, but $g(0,0)=0$. Is it on $x+y=1$?",
+    prompt:
+      "Point $(0,0)$ solves $\\nabla f=\\lambda\\nabla g$ for $f=x^2+y^2$, $g=x+y$ with $k=0$, but $g(0,0)=0$. Is it on $x+y=1$?",
     options: ["No: constraint $k=1$ fails", "Only if $\\lambda=0$", "Yes"],
     answer: "A",
     explanation: "Check $g=k$ with the intended $k$.",
   },
   {
-    prompt: "For $f=x$ on the closed unit disk $x^2+y^2\\le 1$, Lagrange on the boundary finds endpoints; the interior critical points of $f$:",
-    options: ["Fill the disk", "Are at the origin", "Do not exist ($\\nabla f\\ne\\mathbf 0$)"],
+    prompt:
+      "For $f=x$ on the closed unit disk $x^2+y^2\\le 1$, Lagrange on the boundary finds endpoints; the interior critical points of $f$:",
+    options: [
+      "Fill the disk",
+      "Are at the origin",
+      "Do not exist ($\\nabla f\\ne\\mathbf 0$)",
+    ],
     answer: "C",
-    explanation: "$\\nabla f=\\langle 1,0\\rangle$ never zero; max on boundary.",
+    explanation:
+      "$\\nabla f=\\langle 1,0\\rangle$ never zero; max on boundary.",
   },
   {
-    prompt: "Comparing $f^*=5$ and $f^*=-5$ on a circle, the range of $f$ on that circle includes:",
+    prompt:
+      "Comparing $f^*=5$ and $f^*=-5$ on a circle, the range of $f$ on that circle includes:",
     options: ["Only the positive one", "Both extremes", "Neither"],
     answer: "B",
     explanation: "Compact connected image is an interval.",
   },
   {
     prompt: "A candidate with $\\nabla g=\\mathbf 0$ should be:",
-    options: ["Automatically discarded", "Always the global max", "Checked separately as a singular point"],
+    options: [
+      "Automatically discarded",
+      "Always the global max",
+      "Checked separately as a singular point",
+    ],
     answer: "C",
     explanation: "Constraint qualification failed.",
   },
   {
-    prompt: "If the constraint is a closed curve and you found exactly two critical values, typically:",
-    options: ["One is max and one is min", "Neither is extreme", "Both are maxima"],
+    prompt:
+      "If the constraint is a closed curve and you found exactly two critical values, typically:",
+    options: [
+      "One is max and one is min",
+      "Neither is extreme",
+      "Both are maxima",
+    ],
     answer: "A",
     explanation: "Generic Morse picture on a circle.",
   },
@@ -546,21 +1019,85 @@ export const LAGRANGE_VERIFY_QUIZ = [
   },
   {
     prompt: "Unbounded ray constraint $x\\ge 0$, $y=0$ for $f=-x$ has:",
-    options: ["Minimum at the origin", "No minimum (goes to $-\\infty$)", "Maximum at infinity"],
+    options: [
+      "Minimum at the origin",
+      "No minimum (goes to $-\\infty$)",
+      "Maximum at infinity",
+    ],
     answer: "B",
     explanation: "Not coercive on an unbounded set.",
   },
   {
-    prompt: "After listing candidates, classification by sorting $f$-values works when:",
-    options: ["The feasible set is compact (or you otherwise know extrema exist)", "$f$ is linear only", "$\\lambda$ is an integer"],
+    prompt:
+      "After listing candidates, classification by sorting $f$-values works when:",
+    options: [
+      "The feasible set is compact (or you otherwise know extrema exist)",
+      "$f$ is linear only",
+      "$\\lambda$ is an integer",
+    ],
     answer: "A",
     explanation: "Need existence before comparing.",
+  },
+  {
+    prompt:
+      "When Lagrange yields only one critical point on a closed curve, you should:",
+    options: [
+      "Recheck your algebra; typically there are at least two",
+      "Assume it's the maximum",
+      "Assume it's the minimum",
+    ],
+    answer: "A",
+    explanation:
+      "By the EVT, a compact set requires both an absolute max and min.",
+  },
+  {
+    prompt: "If the constraint curve is a hyperbola (not bounded), EVT:",
+    options: [
+      "Does not apply, and extrema might not exist",
+      "Still guarantees a max and a min",
+      "Guarantees a minimum only",
+    ],
+    answer: "A",
+    explanation:
+      "The Extreme Value Theorem requires the set to be closed and bounded.",
+  },
+  {
+    prompt:
+      "To prove a candidate on an unbounded constraint is a global minimum, one usually:",
+    options: [
+      "Examines the limits of $f$ as variables go to infinity",
+      "Uses the Hessian",
+      "Checks $\\lambda > 0$",
+    ],
+    answer: "A",
+    explanation:
+      "If $f \\to \\infty$ as the path escapes to infinity, the local minimum is global.",
+  },
+  {
+    prompt: "If a Lagrange multiplier $\\lambda = 0$, this means:",
+    options: [
+      "The constraint passes through an unconstrained critical point of $f$",
+      "The method failed",
+      "The point is invalid",
+    ],
+    answer: "A",
+    explanation:
+      "$\\nabla f = 0 \\cdot \\nabla g = 0$, so $\\nabla f=0$ exactly on the boundary.",
+  },
+  {
+    prompt:
+      "In $n$ dimensions, checking second-order conditions for Lagrange requires:",
+    options: ["The Bordered Hessian", "The standard Hessian", "The Jacobian"],
+    answer: "A",
+    explanation:
+      "The Bordered Hessian incorporates the constraint gradients into the second-derivative matrix.",
   },
 ];
 
 export const LAGRANGE_INDUSTRY_QUIZ = [
   {
-    prompt: "Utility $u=x^{1/2}y^{1/2}$ with budget $2x+2y=40$ dollars. At the optimum, $x$ equals:",
+    prompt:
+      "Utility $u=x^{1/2}y^{1/2}$ with budget $2x+2y=40$ dollars. At the optimum, $x$ equals:",
     options: ["$20$", "$10$", "$5$"],
     answer: "B",
     explanation: "Equal spending: $2x=2y=20$ so $x=y=10$.",
@@ -572,37 +1109,45 @@ export const LAGRANGE_INDUSTRY_QUIZ = [
     explanation: "$\\sqrt{10\\cdot 10}=10$.",
   },
   {
-    prompt: "Cobb-Douglas $f=x^{1/3}y^{2/3}$ with cost $x+4y=12$. Optimal $y$ equals:",
+    prompt:
+      "Cobb-Douglas $f=x^{1/3}y^{2/3}$ with cost $x+4y=12$. Optimal $y$ equals:",
     options: ["$2$", "$1$", "$3$"],
     answer: "A",
-    explanation: "Spend fraction $2/3$ of budget on $y$: $4y=8\\Rightarrow y=2$.",
+    explanation:
+      "Spend fraction $2/3$ of budget on $y$: $4y=8\\Rightarrow y=2$.",
   },
   {
-    prompt: "Minimize can surface area $2\\pi r h+2\\pi r^2$ for volume $\\pi r^2 h=16\\pi$. Optimal $h$ in terms of $r$ is:",
+    prompt:
+      "Minimize can surface area $2\\pi r h+2\\pi r^2$ for volume $\\pi r^2 h=16\\pi$. Optimal $h$ in terms of $r$ is:",
     options: ["$h=2r$", "$h=4r$", "$h=r$"],
     answer: "A",
     explanation: "Classic result $h=2r$ for a closed cylinder.",
   },
   {
-    prompt: "Least-cost inputs: minimize $3x+5y$ subject to $xy=15$. Optimal $x$ equals:",
+    prompt:
+      "Least-cost inputs: minimize $3x+5y$ subject to $xy=15$. Optimal $x$ equals:",
     options: ["$3$", "$15$", "$5$"],
     answer: "C",
-    explanation: "From $3=\\lambda y$, $5=\\lambda x$ get $3x=5y$; with $xy=15$, $x=5$, $y=3$.",
+    explanation:
+      "From $3=\\lambda y$, $5=\\lambda x$ get $3x=5y$; with $xy=15$, $x=5$, $y=3$.",
   },
   {
-    prompt: "Shadow price: if relaxing a resource constraint by one unit raises optimal profit by $7$ dollars, then $\\lambda$ is about:",
+    prompt:
+      "Shadow price: if relaxing a resource constraint by one unit raises optimal profit by $7$ dollars, then $\\lambda$ is about:",
     options: ["$0$", "$7$", "$1$"],
     answer: "B",
     explanation: "Interpretation of the multiplier.",
   },
   {
-    prompt: "Entropy-style: maximize $-p\\ln p-(1-p)\\ln(1-p)$ for $p\\in(0,1)$ with no further constraint. Critical point at:",
+    prompt:
+      "Entropy-style: maximize $-p\\ln p-(1-p)\\ln(1-p)$ for $p\\in(0,1)$ with no further constraint. Critical point at:",
     options: ["$p=1$", "$p=1/2$", "$p=0$"],
     answer: "B",
     explanation: "Binary entropy peaks at equal probabilities.",
   },
   {
-    prompt: "Production $q=\\min\\{2x,3y\\}$ is not smooth; on the ray $2x=3y=q$ with cost $x+y$ minimized for $q=6$, $x$ equals:",
+    prompt:
+      "Production $q=\\min\\{2x,3y\\}$ is not smooth; on the ray $2x=3y=q$ with cost $x+y$ minimized for $q=6$, $x$ equals:",
     options: ["$3$", "$6$", "$2$"],
     answer: "A",
     explanation: "$2x=6\\Rightarrow x=3$, and $y=2$.",
@@ -614,20 +1159,27 @@ export const LAGRANGE_INDUSTRY_QUIZ = [
     explanation: "Equal budget shares.",
   },
   {
-    prompt: "Material cost proportional to surface $4xy+2x^2$ for a lidless box volume $x^2 y=500$. At optimum $y$ equals:",
+    prompt:
+      "Material cost proportional to surface $4xy+2x^2$ for a lidless box volume $x^2 y=500$. At optimum $y$ equals:",
     options: ["$2x$", "$x/2$", "$x$"],
     answer: "C",
     explanation: "From Lagrange/substitution $y=x$.",
   },
   {
-    prompt: "Firm maximizes profit $\\pi=12q-c(q)$ with capacity $q\\le 10$. If unconstrained max is at $q=12$, the capacity constraint is:",
+    prompt:
+      "Firm maximizes profit $\\pi=12q-c(q)$ with capacity $q\\le 10$. If unconstrained max is at $q=12$, the capacity constraint is:",
     options: ["Impossible", "Active at $q=10$", "Inactive"],
     answer: "B",
     explanation: "Optimum pushed to the boundary.",
   },
   {
-    prompt: "Diet cost $2x+3y$ with protein $x+2y\\ge 10$. At a vertex optimum with both nutrients binding in equality form used by Lagrange, solve $x+2y=10$ with gradients — if only protein binds and fat is free, interior of edge uses:",
-    options: ["Ordinary one-constraint Lagrange on the binding nutrient", "No optimization", "Two free variables"],
+    prompt:
+      "Diet cost $2x+3y$ with protein $x+2y\\ge 10$. At a vertex optimum with both nutrients binding in equality form used by Lagrange, solve $x+2y=10$ with gradients — if only protein binds and fat is free, interior of edge uses:",
+    options: [
+      "Ordinary one-constraint Lagrange on the binding nutrient",
+      "No optimization",
+      "Two free variables",
+    ],
     answer: "A",
     explanation: "Active-set idea.",
   },
@@ -638,41 +1190,102 @@ export const LAGRANGE_INDUSTRY_QUIZ = [
     explanation: "$x=y=6$, product $36$.",
   },
   {
-    prompt: "Insurance: maximize expected utility with actuarially fair premium — Lagrange on the budget typically equalizes:",
-    options: ["Marginal utilities across states (up to probabilities)", "Only the premium", "Raw wealth in every state to zero"],
+    prompt:
+      "Insurance: maximize expected utility with actuarially fair premium — Lagrange on the budget typically equalizes:",
+    options: [
+      "Marginal utilities across states (up to probabilities)",
+      "Only the premium",
+      "Raw wealth in every state to zero",
+    ],
     answer: "A",
     explanation: "First-order conditions.",
   },
   {
-    prompt: "If a budget increases from $40$ to $41$ dollars and optimal utility rises by about $0.25$, the multiplier magnitude is near:",
+    prompt:
+      "If a budget increases from $40$ to $41$ dollars and optimal utility rises by about $0.25$, the multiplier magnitude is near:",
     options: ["$1$", "$40$", "$0.25$"],
     answer: "C",
     explanation: "$\\Delta u^*/\\Delta m\\approx\\lambda$.",
+  },
+  {
+    prompt:
+      "A 'shadow price' of $5$ means expanding the budget by $1$ yields an objective increase of:",
+    options: ["$5$", "$1/5$", "$0$"],
+    answer: "A",
+    explanation:
+      "The multiplier $\\lambda$ represents the marginal utility of the constraint resource.",
+  },
+  {
+    prompt:
+      "To design a cylindrical tank of volume $V$ with minimum material, the optimal ratio of height to radius is:",
+    options: ["$2:1$", "$1:1$", "$1:2$"],
+    answer: "A",
+    explanation: "$h = 2r$, so the height equals the diameter.",
+  },
+  {
+    prompt:
+      "In portfolio optimization, minimizing variance subject to a fixed return $R$ is formulated using:",
+    options: ["Lagrange multipliers", "Green's Theorem", "Divergence"],
+    answer: "A",
+    explanation:
+      "Markowitz portfolio theory is a direct application of constrained quadratic optimization.",
+  },
+  {
+    prompt:
+      "Maximizing entropy $-\\sum p_i \\ln p_i$ subject to $\\sum p_i = 1$ yields:",
+    options: ["A uniform distribution", "A normal distribution", "A power law"],
+    answer: "A",
+    explanation:
+      "Without other constraints, nature prefers all states to be equally likely.",
+  },
+  {
+    prompt:
+      "If a constraint is strictly an inequality (like a physical wall), optimization algorithms use:",
+    options: [
+      "Karush-Kuhn-Tucker (KKT) conditions",
+      "Standard Lagrange only",
+      "Newton's Method",
+    ],
+    answer: "A",
+    explanation:
+      "KKT is the generalization of Lagrange to inequality constraints.",
   },
 ];
 
 export const LAGRANGE_CHALLENGE_QUIZ = [
   {
-    prompt: "Sensitivity: if $f^*$ on $g=k$ has $\\lambda=3$ in $\\nabla f=\\lambda\\nabla g$, then $df^*/dk$ is approximately:",
+    prompt:
+      "Sensitivity: if $f^*$ on $g=k$ has $\\lambda=3$ in $\\nabla f=\\lambda\\nabla g$, then $df^*/dk$ is approximately:",
     options: ["$3$", "$-3$", "$0$"],
     answer: "A",
     explanation: "Envelope theorem / shadow price.",
   },
   {
-    prompt: "Inequality $g\\le k$ at an interior feasible point with $g<k$ means the multiplier for that inequality is:",
+    prompt:
+      "Inequality $g\\le k$ at an interior feasible point with $g<k$ means the multiplier for that inequality is:",
     options: ["Infinite", "Forced nonzero", "$0$ (inactive)"],
     answer: "C",
     explanation: "Complementary slackness.",
   },
   {
-    prompt: "Degenerate case: $g(x,y)=x^2+y^2$ at $(0,0)$ with $k=0$. Then $\\nabla g(0,0)$ equals:",
-    options: ["$\\langle 1,0\\rangle$", "$\\mathbf 0$", "$\\langle 1,1\\rangle$"],
+    prompt:
+      "Degenerate case: $g(x,y)=x^2+y^2$ at $(0,0)$ with $k=0$. Then $\\nabla g(0,0)$ equals:",
+    options: [
+      "$\\langle 1,0\\rangle$",
+      "$\\mathbf 0$",
+      "$\\langle 1,1\\rangle$",
+    ],
     answer: "B",
     explanation: "Singular constraint point.",
   },
   {
-    prompt: "Extremize $f=x^2+y^2+z^2$ on $x^4+y^4+z^4=1$. By symmetry a maximizer can be taken with:",
-    options: ["All coordinates equal only", "Two coordinates zero", "$x=1,y=1,z=1$"],
+    prompt:
+      "Extremize $f=x^2+y^2+z^2$ on $x^4+y^4+z^4=1$. By symmetry a maximizer can be taken with:",
+    options: [
+      "All coordinates equal only",
+      "Two coordinates zero",
+      "$x=1,y=1,z=1$",
+    ],
     answer: "B",
     explanation: "Max of $r^2$ on $L^4$ unit sphere occurs on axes.",
   },
@@ -686,10 +1299,12 @@ export const LAGRANGE_CHALLENGE_QUIZ = [
     prompt: "Minimum of $x^2+y^2+z^2$ on $x^4+y^4+z^4=1$ equals:",
     options: ["$3^{1/2}$", "$3$", "$1$"],
     answer: "A",
-    explanation: "Equal coordinates $|x|=3^{-1/4}$, sum of squares $3\\cdot 3^{-1/2}=3^{1/2}$.",
+    explanation:
+      "Equal coordinates $|x|=3^{-1/4}$, sum of squares $3\\cdot 3^{-1/2}=3^{1/2}$.",
   },
   {
-    prompt: "For $f=xy+yz+zx$ on $x+y+z=3$, the unconstrained-on-plane critical point is:",
+    prompt:
+      "For $f=xy+yz+zx$ on $x+y+z=3$, the unconstrained-on-plane critical point is:",
     options: ["$(3,0,0)$", "$(0,0,3)$", "$(1,1,1)$"],
     answer: "C",
     explanation: "Symmetry / Lagrange.",
@@ -701,14 +1316,20 @@ export const LAGRANGE_CHALLENGE_QUIZ = [
     explanation: "Three products of $1$.",
   },
   {
-    prompt: "Mix geometry: max $f=x$ on $x^2+y^2=1$ occurs where the vertical line is tangent to the circle, i.e. at:",
+    prompt:
+      "Mix geometry: max $f=x$ on $x^2+y^2=1$ occurs where the vertical line is tangent to the circle, i.e. at:",
     options: ["$(1,0)$", "$(1/\\sqrt{2},1/\\sqrt{2})$", "$(0,1)$"],
     answer: "A",
     explanation: "Rightmost point.",
   },
   {
-    prompt: "Active inequality: maximize $f=- (x^2+y^2)$ on $x\\ge 0$. Unconstrained max of $f$ is at origin; since origin is feasible,",
-    options: ["Must use $\\lambda\\ne 0$ on $x=0$ only", "No optimum", "The inequality is inactive and optimum is $(0,0)$"],
+    prompt:
+      "Active inequality: maximize $f=- (x^2+y^2)$ on $x\\ge 0$. Unconstrained max of $f$ is at origin; since origin is feasible,",
+    options: [
+      "Must use $\\lambda\\ne 0$ on $x=0$ only",
+      "No optimum",
+      "The inequality is inactive and optimum is $(0,0)$",
+    ],
     answer: "C",
     explanation: "Interior of the half-plane relative to the soft constraint.",
   },
@@ -716,30 +1337,98 @@ export const LAGRANGE_CHALLENGE_QUIZ = [
     prompt: "Three variables: $f=x+2y+3z$ on $x^2+y^2+z^2=14$. Max equals:",
     options: ["$14$", "$7$", "$\\sqrt{14}$"],
     answer: "A",
-    explanation: "$|\\langle 1,2,3\\rangle|=\\sqrt{14}$ and radius $\\sqrt{14}$, so max is $14$.",
+    explanation:
+      "$|\\langle 1,2,3\\rangle|=\\sqrt{14}$ and radius $\\sqrt{14}$, so max is $14$.",
   },
   {
-    prompt: "If $\\nabla g=\\mathbf 0$ only at points off the level $g=k$, then on $g=k$ the basic method:",
-    options: ["Needs three multipliers", "Applies at all feasible points (regular)", "Never applies"],
+    prompt:
+      "If $\\nabla g=\\mathbf 0$ only at points off the level $g=k$, then on $g=k$ the basic method:",
+    options: [
+      "Needs three multipliers",
+      "Applies at all feasible points (regular)",
+      "Never applies",
+    ],
     answer: "B",
     explanation: "Constraint qualification holds on the level set.",
   },
   {
-    prompt: "Symmetric collapse: $f=x^2+y^2$ on $(x-1)^2+(y-1)^2=1$. Closest point to origin lies on the line:",
+    prompt:
+      "Symmetric collapse: $f=x^2+y^2$ on $(x-1)^2+(y-1)^2=1$. Closest point to origin lies on the line:",
     options: ["$y=x$", "$y=0$", "$x=1$"],
     answer: "A",
     explanation: "Symmetry across $y=x$.",
   },
   {
-    prompt: "That minimum distance from origin to the circle center $(1,1)$ radius $1$ equals:",
+    prompt:
+      "That minimum distance from origin to the circle center $(1,1)$ radius $1$ equals:",
     options: ["$\\sqrt{2}$", "$\\sqrt{2}-1$", "$1$"],
     answer: "B",
     explanation: "Along the ray: $\\sqrt{2}-1$.",
   },
   {
-    prompt: "For $f^*=k^2$ on constraint radius related problem with $\\lambda=2k$, consistency with $df^*/dk=2k$ shows:",
-    options: ["$\\lambda$ must be $0$", "$\\lambda$ contradicts sensitivity", "$\\lambda$ matches the sensitivity"],
+    prompt:
+      "For $f^*=k^2$ on constraint radius related problem with $\\lambda=2k$, consistency with $df^*/dk=2k$ shows:",
+    options: [
+      "$\\lambda$ must be $0$",
+      "$\\lambda$ contradicts sensitivity",
+      "$\\lambda$ matches the sensitivity",
+    ],
     answer: "C",
     explanation: "Envelope check.",
+  },
+  {
+    prompt:
+      "If $f(x,y)=x$ and $g(x,y)=x^3-y^2=0$, Lagrange fails at $(0,0)$ because:",
+    options: [
+      "$\\nabla g(0,0) = \\mathbf{0}$",
+      "$f(0,0) = 0$",
+      "The curve is not closed",
+    ],
+    answer: "A",
+    explanation:
+      "The cusp at the origin violates the constraint qualification.",
+  },
+  {
+    prompt:
+      "Maximizing $f=x_1 x_2 \\dots x_n$ subject to $x_1+x_2+\\dots+x_n=S$ ($x_i>0$) proves:",
+    options: [
+      "The AM-GM inequality",
+      "The Cauchy-Schwarz inequality",
+      "The Triangle inequality",
+    ],
+    answer: "A",
+    explanation:
+      "The max occurs when all $x_i$ are equal, bounding the geometric mean by the arithmetic mean.",
+  },
+  {
+    prompt: "For $f=x^2 y$ on $x^2+y^2=3$, the maximum occurs at:",
+    options: [
+      "$y=1, x=\\pm \\sqrt{2}$",
+      "$y=\\sqrt{3}, x=0$",
+      "$x=\\pm \\sqrt{3}, y=0$",
+    ],
+    answer: "A",
+    explanation:
+      "Substitute $x^2 = 3-y^2$, maximize $(3-y^2)y = 3y-y^3$. Derivative $3-3y^2=0 \\Rightarrow y=1$.",
+  },
+  {
+    prompt:
+      "If the constraint surface is a sphere $x^2+y^2+z^2=R^2$ and $f=ax+by+cz$, the max value is:",
+    options: ["$R\\sqrt{a^2+b^2+c^2}$", "$R(a+b+c)$", "$R^2(a^2+b^2+c^2)$"],
+    answer: "A",
+    explanation:
+      "The dot product is maximized when the vector is aligned with $\\langle a,b,c \\rangle$.",
+  },
+  {
+    prompt:
+      "In eigenvalue problems, minimizing $\\mathbf{x}^T A \\mathbf{x}$ subject to $\\mathbf{x}^T \\mathbf{x} = 1$ yields:",
+    options: [
+      "The smallest eigenvalue of $A$",
+      "The determinant of $A$",
+      "The trace of $A$",
+    ],
+    answer: "A",
+    explanation:
+      "The Lagrange equation is $2A\\mathbf{x} = \\lambda 2\\mathbf{x}$, which is exactly the eigenvalue equation.",
   },
 ];
