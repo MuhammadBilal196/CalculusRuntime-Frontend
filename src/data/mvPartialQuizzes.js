@@ -3,9 +3,14 @@
 export const MV_141_QUIZ = [
   {
     prompt: "For $f(x,y)=\\ln(9-x^2-y^2)$, which points are in the domain?",
-    options: ["All $(x,y)$ with $x^2+y^2\\le 9$", "All $(x,y)$ with $x^2+y^2<9$", "All $(x,y)$ with $x^2+y^2>9$"],
+    options: [
+      "All $(x,y)$ with $x^2+y^2\\le 9$",
+      "All $(x,y)$ with $x^2+y^2<9$",
+      "All $(x,y)$ with $x^2+y^2>9$",
+    ],
     answer: "B",
-    explanation: "The logarithm needs a strictly positive argument, so $9-x^2-y^2>0$.",
+    explanation:
+      "The logarithm needs a strictly positive argument, so $9-x^2-y^2>0$.",
   },
   {
     prompt: "Evaluate $f(2,1)$ for $f(x,y)=x^2y-3y$.",
@@ -39,7 +44,11 @@ export const MV_141_QUIZ = [
   },
   {
     prompt: "The surface $z=x^2+y^2$ is a:",
-    options: ["Paraboloid opening upward", "Hyperboloid of one sheet", "Plane through the origin"],
+    options: [
+      "Paraboloid opening upward",
+      "Hyperboloid of one sheet",
+      "Plane through the origin",
+    ],
     answer: "A",
     explanation: "Circular paraboloid $z=r^2$.",
   },
@@ -51,7 +60,11 @@ export const MV_141_QUIZ = [
   },
   {
     prompt: "Level surfaces of $F(x,y,z)=x^2+y^2+z^2$ are:",
-    options: ["Cylinders along the $z$-axis", "Planes $x+y+z=c$", "Spheres centered at the origin"],
+    options: [
+      "Cylinders along the $z$-axis",
+      "Planes $x+y+z=c$",
+      "Spheres centered at the origin",
+    ],
     answer: "C",
     explanation: "$F=c$ gives $x^2+y^2+z^2=c$ for $c>0$.",
   },
@@ -63,7 +76,11 @@ export const MV_141_QUIZ = [
   },
   {
     prompt: "Contour map level sets of $f(x,y)=x+2y$ are:",
-    options: ["Circles centered at the origin", "Hyperbolas $xy=c$", "Parallel lines $x+2y=c$"],
+    options: [
+      "Circles centered at the origin",
+      "Hyperbolas $xy=c$",
+      "Parallel lines $x+2y=c$",
+    ],
     answer: "C",
     explanation: "Each fixed height is a straight line.",
   },
@@ -74,7 +91,8 @@ export const MV_141_QUIZ = [
     explanation: "$\\sin(\\pi/2)=1$.",
   },
   {
-    prompt: "The projection of the domain of $f(x,y)=\\sqrt{1-x^2-y^2}$ onto the $xy$-plane is:",
+    prompt:
+      "The projection of the domain of $f(x,y)=\\sqrt{1-x^2-y^2}$ onto the $xy$-plane is:",
     options: ["The open unit disk", "The entire plane", "The closed unit disk"],
     answer: "C",
     explanation: "$x^2+y^2\\le 1$.",
@@ -86,40 +104,90 @@ export const MV_141_QUIZ = [
     explanation: "$f(2,3)=6$.",
   },
   {
-    prompt: "A function of three variables $w=F(x,y,z)$ has level sets that are typically:",
-    options: ["Single points only", "Surfaces in $\\mathbb{R}^3$", "Curves in $\\mathbb{R}^2$"],
+    prompt:
+      "A function of three variables $w=F(x,y,z)$ has level sets that are typically:",
+    options: [
+      "Single points only",
+      "Surfaces in $\\mathbb{R}^3$",
+      "Curves in $\\mathbb{R}^2$",
+    ],
     answer: "B",
     explanation: "$F(x,y,z)=c$ is generally a surface.",
+  },
+  {
+    prompt: "Domain of $f(x,y)=\\sqrt{y-x^2}$ is:",
+    options: ["$y \\ge x^2$", "$y > x^2$", "All real numbers"],
+    answer: "A",
+    explanation: "Radicand must be nonnegative.",
+  },
+  {
+    prompt: "The level surfaces of $f(x,y,z)=x^2+y^2-z^2$ are:",
+    options: ["Hyperboloids and cones", "Spheres", "Ellipsoids"],
+    answer: "A",
+    explanation:
+      "Depends on whether the constant is positive, negative, or zero.",
+  },
+  {
+    prompt: "Range of $f(x,y)=\\sin(x^2+y^2)$ is:",
+    options: ["$[-1, 1]$", "$[0, 1]$", "$(0, \\infty)$"],
+    answer: "A",
+    explanation:
+      "The argument $x^2+y^2$ takes all values in $[0,\\infty)$, so sine covers its full $[-1,1]$ range.",
+  },
+  {
+    prompt: "A trace of $z=y^2-x^2$ in $z=1$ is a(n):",
+    options: ["Hyperbola", "Ellipse", "Parabola"],
+    answer: "A",
+    explanation: "$y^2-x^2=1$ represents a hyperbola.",
+  },
+  {
+    prompt: "Domain of $f(x,y)=\\ln(xy)$ requires:",
+    options: [
+      "$x$ and $y$ have the same sign",
+      "$x>0, y>0$",
+      "$x \\neq 0, y \\neq 0$",
+    ],
+    answer: "A",
+    explanation: "The product $xy$ must be strictly positive.",
   },
 ];
 
 export const MV_142_QUIZ = [
   {
-    prompt: "Along the path $y=0$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^2y}{x^4+y^2}$ equals:",
+    prompt:
+      "Along the path $y=0$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^2y}{x^4+y^2}$ equals:",
     options: ["$0$", "$1/2$", "$1$"],
     answer: "A",
     explanation: "On $y=0$ the quotient is $0$.",
   },
   {
-    prompt: "Along $y=x^2$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^2y}{x^4+y^2}$ equals:",
+    prompt:
+      "Along $y=x^2$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^2y}{x^4+y^2}$ equals:",
     options: ["$0$", "$1$", "$1/2$"],
     answer: "C",
     explanation: "Substitute $y=x^2$: $\\dfrac{x^4}{x^4+x^4}=1/2$.",
   },
   {
-    prompt: "Because those two path limits differ, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^2y}{x^4+y^2}$:",
+    prompt:
+      "Because those two path limits differ, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^2y}{x^4+y^2}$:",
     options: ["Equals $0$", "Does not exist", "Equals $1/2$"],
     answer: "B",
     explanation: "Different path limits imply the 2D limit fails.",
   },
   {
-    prompt: "In polar, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^2}{\\sqrt{x^2+y^2}}$ becomes:",
-    options: ["$\\lim_{r\\to 0}1/r$", "$\\lim_{r\\to 0}\\cos^2\\theta$", "$\\lim_{r\\to 0} r\\cos^2\\theta=0$"],
+    prompt:
+      "In polar, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^2}{\\sqrt{x^2+y^2}}$ becomes:",
+    options: [
+      "$\\lim_{r\\to 0}1/r$",
+      "$\\lim_{r\\to 0}\\cos^2\\theta$",
+      "$\\lim_{r\\to 0} r\\cos^2\\theta=0$",
+    ],
     answer: "C",
     explanation: "$x=r\\cos\\theta$ yields $r\\cos^2\\theta\\to 0$ uniformly.",
   },
   {
-    prompt: "If $0\\le |f(x,y)|\\le x^2+y^2$ near $(0,0)$, then $\\lim_{(x,y)\\to(0,0)}f(x,y)$ equals:",
+    prompt:
+      "If $0\\le |f(x,y)|\\le x^2+y^2$ near $(0,0)$, then $\\lim_{(x,y)\\to(0,0)}f(x,y)$ equals:",
     options: ["$1$", "$0$", "Need not exist"],
     answer: "B",
     explanation: "Squeeze with $x^2+y^2\\to 0$.",
@@ -131,13 +199,15 @@ export const MV_142_QUIZ = [
     explanation: "Polynomials are continuous: $3-2=1$.",
   },
   {
-    prompt: "Along $x=0$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{2xy}{x^2+2y^2}$ equals:",
+    prompt:
+      "Along $x=0$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{2xy}{x^2+2y^2}$ equals:",
     options: ["$1/2$", "$1$", "$0$"],
     answer: "C",
     explanation: "Numerator vanishes on $x=0$.",
   },
   {
-    prompt: "Along $y=x$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{2xy}{x^2+2y^2}$ equals:",
+    prompt:
+      "Along $y=x$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{2xy}{x^2+2y^2}$ equals:",
     options: ["$1$", "$2/3$", "$0$"],
     answer: "B",
     explanation: "$\\dfrac{2x^2}{x^2+2x^2}=2/3$.",
@@ -149,8 +219,13 @@ export const MV_142_QUIZ = [
     explanation: "Path disagreement.",
   },
   {
-    prompt: "$f(x,y)=\\begin{cases}\\dfrac{xy^2}{x^2+y^4}&(x,y)\\ne(0,0)\\\\0&(x,y)=(0,0)\\end{cases}$ fails continuity at the origin because:",
-    options: ["Some path limits disagree with $f(0,0)$", "All path limits equal $0$", "$f$ is a polynomial"],
+    prompt:
+      "$f(x,y)=\\begin{cases}\\dfrac{xy^2}{x^2+y^4}&(x,y)\\ne(0,0)\\\\0&(x,y)=(0,0)\\end{cases}$ fails continuity at the origin because:",
+    options: [
+      "Some path limits disagree with $f(0,0)$",
+      "All path limits equal $0$",
+      "$f$ is a polynomial",
+    ],
     answer: "A",
     explanation: "Along $x=y^2$ the limit is $1/2$, not $0$.",
   },
@@ -167,22 +242,60 @@ export const MV_142_QUIZ = [
     explanation: "By definition $r^2=x^2+y^2$.",
   },
   {
-    prompt: "If $|g(x,y)|\\le 5\\sqrt{x^2+y^2}$ near the origin, then $\\lim_{(x,y)\\to(0,0)}g(x,y)$ equals:",
+    prompt:
+      "If $|g(x,y)|\\le 5\\sqrt{x^2+y^2}$ near the origin, then $\\lim_{(x,y)\\to(0,0)}g(x,y)$ equals:",
     options: ["Need not exist", "$0$", "$5$"],
     answer: "B",
     explanation: "Squeeze: bound tends to $0$.",
   },
   {
-    prompt: "For continuous $f$ on $\\mathbb{R}^2$, $\\lim_{(x,y)\\to(a,b)}f(x,y)$ equals:",
+    prompt:
+      "For continuous $f$ on $\\mathbb{R}^2$, $\\lim_{(x,y)\\to(a,b)}f(x,y)$ equals:",
     options: ["$f_x(a,b)$", "$0$", "$f(a,b)$"],
     answer: "C",
     explanation: "Continuity definition.",
   },
   {
-    prompt: "Along $y=mx$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^3-y^3}{x^2+y^2}$ equals:",
+    prompt:
+      "Along $y=mx$, $\\lim_{(x,y)\\to(0,0)}\\dfrac{x^3-y^3}{x^2+y^2}$ equals:",
     options: ["$0$", "$m$", "$1-m$"],
     answer: "A",
     explanation: "The expression simplifies to $x\\dfrac{1-m^3}{1+m^2}\\to 0$.",
+  },
+  {
+    prompt: "$\\lim_{(x,y)\\to(0,0)} \\frac{\\sin(x^2+y^2)}{x^2+y^2}$ equals:",
+    options: ["$1$", "$0$", "Does not exist"],
+    answer: "A",
+    explanation: "Standard limit $\\sin(u)/u \\to 1$ as $u \\to 0$.",
+  },
+  {
+    prompt:
+      "If $\\lim_{(x,y)\\to(a,b)} f(x,y) = L$, then approaching $(a,b)$ along any path gives:",
+    options: ["Limit $L$", "Limit $0$", "A path-dependent limit"],
+    answer: "A",
+    explanation: "A 2D limit requires all paths to yield the same value.",
+  },
+  {
+    prompt: "$\\lim_{(x,y)\\to(0,0)} \\frac{x^2-y^2}{x^2+y^2}$:",
+    options: ["Does not exist", "$1$", "$0$"],
+    answer: "A",
+    explanation: "Along $x=0$ limit is $-1$; along $y=0$ limit is $1$.",
+  },
+  {
+    prompt: "A rational function is continuous:",
+    options: [
+      "Wherever its denominator is nonzero",
+      "Everywhere",
+      "Only at the origin",
+    ],
+    answer: "A",
+    explanation: "Standard continuity rule for rational functions.",
+  },
+  {
+    prompt: "$\\lim_{(x,y)\\to(1,1)} \\frac{x^2-y^2}{x-y}$ equals:",
+    options: ["$2$", "$0$", "Does not exist"],
+    answer: "A",
+    explanation: "Factor numerator to $(x-y)(x+y)$. The limit is $1+1=2$.",
   },
 ];
 
@@ -212,14 +325,19 @@ export const MV_143_QUIZ = [
     explanation: "$f_x=2xy^3$, then $f_{xy}=6xy^2$.",
   },
   {
-    prompt: "Clairaut's theorem says that if the second partials are continuous, then:",
+    prompt:
+      "Clairaut's theorem says that if the second partials are continuous, then:",
     options: ["$f_{xy}=f_{yx}$", "$f_x=f_y$", "$f_{xx}=f_{yy}$"],
     answer: "A",
     explanation: "Equality of mixed partials.",
   },
   {
     prompt: "For $u(x,y)=\\ln(x^2+y^2)$ with $(x,y)\\ne(0,0)$, $u_x$ equals:",
-    options: ["$\\dfrac{1}{x}$", "$\\dfrac{2x}{x^2+y^2}$", "$\\dfrac{x}{x^2+y^2}$"],
+    options: [
+      "$\\dfrac{1}{x}$",
+      "$\\dfrac{2x}{x^2+y^2}$",
+      "$\\dfrac{x}{x^2+y^2}$",
+    ],
     answer: "B",
     explanation: "Derivative of $\\ln(x^2+y^2)$ in $x$.",
   },
@@ -243,13 +361,21 @@ export const MV_143_QUIZ = [
   },
   {
     prompt: "Check Laplace $u_{xx}+u_{yy}=0$ for $u=x^3-3xy^2$:",
-    options: ["Holds: both sides $0$", "Fails: left side $6x$", "Fails: left side $6y$"],
+    options: [
+      "Holds: both sides $0$",
+      "Fails: left side $6x$",
+      "Fails: left side $6y$",
+    ],
     answer: "A",
     explanation: "$u_{xx}=6x$, $u_{yy}=-6x$, sum $0$.",
   },
   {
     prompt: "For $f(x,y)=\\arctan(y/x)$ with $x>0$, $f_y$ equals:",
-    options: ["$\\dfrac{y}{x^2+y^2}$", "$\\dfrac{x}{x^2+y^2}$", "$\\dfrac{1}{1+(y/x)^2}$"],
+    options: [
+      "$\\dfrac{y}{x^2+y^2}$",
+      "$\\dfrac{x}{x^2+y^2}$",
+      "$\\dfrac{1}{1+(y/x)^2}$",
+    ],
     answer: "B",
     explanation: "Chain rule yields $\\dfrac{x}{x^2+y^2}$.",
   },
@@ -261,7 +387,11 @@ export const MV_143_QUIZ = [
   },
   {
     prompt: "For $w=\\sqrt{x^2+y^2+z^2}$, $w_x$ equals:",
-    options: ["$x$", "$\\dfrac{1}{2\\sqrt{x^2+y^2+z^2}}$", "$\\dfrac{x}{\\sqrt{x^2+y^2+z^2}}$"],
+    options: [
+      "$x$",
+      "$\\dfrac{1}{2\\sqrt{x^2+y^2+z^2}}$",
+      "$\\dfrac{x}{\\sqrt{x^2+y^2+z^2}}$",
+    ],
     answer: "C",
     explanation: "Chain rule on the square root.",
   },
@@ -277,6 +407,39 @@ export const MV_143_QUIZ = [
     answer: "B",
     explanation: "$f_y=e^x\\cos y$, $f_{yy}=-e^x\\sin y$.",
   },
+  {
+    prompt: "For $f(x,y)=x^y$, $f_x$ equals:",
+    options: ["$y x^{y-1}$", "$x^y \\ln x$", "$x^{y-1}$"],
+    answer: "A",
+    explanation: "Power rule, treating $y$ as a constant exponent.",
+  },
+  {
+    prompt: "For $f(x,y)=x^y$, $f_y$ equals:",
+    options: ["$x^y \\ln x$", "$y x^{y-1}$", "$x^y$"],
+    answer: "A",
+    explanation: "Exponential rule, treating $x$ as a constant base.",
+  },
+  {
+    prompt: "The mixed partial $f_{xy}$ of $f(x,y)=e^x \\cos y$ is:",
+    options: ["$-e^x \\sin y$", "$e^x \\cos y$", "$-e^x \\cos y$"],
+    answer: "A",
+    explanation:
+      "$f_x = e^x \\cos y$, then $\\partial/\\partial y$ gives $-e^x \\sin y$.",
+  },
+  {
+    prompt: "If $f_x = 2x$ and $f_y = 3y^2$, then $f(x,y)$ could be:",
+    options: ["$x^2+y^3$", "$x^2 y^3$", "$2x+3y^2$"],
+    answer: "A",
+    explanation:
+      "Integrate $f_x$ with respect to $x$ and $f_y$ with respect to $y$.",
+  },
+  {
+    prompt: "For $u(x,y,z)=x^2 y^3 z^4$, $u_{xyz}$ equals:",
+    options: ["$24xy^2z^3$", "$12x^2y^2z^3$", "$24xyz$"],
+    answer: "A",
+    explanation:
+      "$u_x=2xy^3z^4 \\Rightarrow u_{xy}=6xy^2z^4 \\Rightarrow u_{xyz}=24xy^2z^3$.",
+  },
 ];
 
 export const MV_144_QUIZ = [
@@ -287,13 +450,15 @@ export const MV_144_QUIZ = [
     explanation: "$z_x=2x$, $z_y=2y$; $2(1)(1)+2(1)(2)=6$.",
   },
   {
-    prompt: "For $z=f(x,y)$ with $x=x(s,t)$, $y=y(s,t)$, $\\partial z/\\partial s$ equals:",
+    prompt:
+      "For $z=f(x,y)$ with $x=x(s,t)$, $y=y(s,t)$, $\\partial z/\\partial s$ equals:",
     options: ["$f_x x_t+f_y y_t$", "$f_x x_s+f_y y_s$", "$f_x+f_y$"],
     answer: "B",
     explanation: "Chain rule tree.",
   },
   {
-    prompt: "Let $z=xy$, $x=s+t$, $y=st$. Then $\\partial z/\\partial t$ equals:",
+    prompt:
+      "Let $z=xy$, $x=s+t$, $y=st$. Then $\\partial z/\\partial t$ equals:",
     options: ["$st$", "$s+t$", "$s^2+2st$"],
     answer: "C",
     explanation: "$z_x=y$, $z_y=x$; $y\\cdot 1+x\\cdot s=st+(s+t)s=s^2+2st$.",
@@ -305,7 +470,8 @@ export const MV_144_QUIZ = [
     explanation: "$-F_x/F_y=-2x/(2y)$.",
   },
   {
-    prompt: "Related rates: $z=x^2+y^2$, $dx/dt=3$, $dy/dt=4$ at $(1,2)$. Then $dz/dt$ equals:",
+    prompt:
+      "Related rates: $z=x^2+y^2$, $dx/dt=3$, $dy/dt=4$ at $(1,2)$. Then $dz/dt$ equals:",
     options: ["$14$", "$22$", "$7$"],
     answer: "B",
     explanation: "$2x(3)+2y(4)=6+16=22$.",
@@ -323,13 +489,15 @@ export const MV_144_QUIZ = [
     explanation: "At $t=0$: $z_x\\cdot 0+z_y\\cdot 1=-1$.",
   },
   {
-    prompt: "Tree diagram for $z=f(x(s,t),y(s,t))$ has how many first-generation edges from $z$?",
+    prompt:
+      "Tree diagram for $z=f(x(s,t),y(s,t))$ has how many first-generation edges from $z$?",
     options: ["$1$", "$2$", "$4$"],
     answer: "B",
     explanation: "Edges to the two intermediates $x$ and $y$.",
   },
   {
-    prompt: "If $x=r\\cos\\theta$, $y=r\\sin\\theta$, $z=x^2+y^2$, then $\\partial z/\\partial r$ equals:",
+    prompt:
+      "If $x=r\\cos\\theta$, $y=r\\sin\\theta$, $z=x^2+y^2$, then $\\partial z/\\partial r$ equals:",
     options: ["$0$", "$2$", "$2r$"],
     answer: "C",
     explanation: "$z=r^2$, so $z_r=2r$.",
@@ -341,14 +509,19 @@ export const MV_144_QUIZ = [
     explanation: "Nonvanishing denominator.",
   },
   {
-    prompt: "Let $u=x^2y$, $x=2s$, $y=s+t$. Then $\\partial u/\\partial s$ at $(s,t)=(1,0)$ equals:",
+    prompt:
+      "Let $u=x^2y$, $x=2s$, $y=s+t$. Then $\\partial u/\\partial s$ at $(s,t)=(1,0)$ equals:",
     options: ["$4$", "$12$", "$8$"],
     answer: "B",
     explanation: "At $x=2$, $y=1$: $u_x=4$, $u_y=4$; $4\\cdot 2+4\\cdot 1=12$.",
   },
   {
     prompt: "If $z=\\sin(x+2y)$, $x=t$, $y=t^2$, then $dz/dt$ equals:",
-    options: ["$\\cos(x+2y)\\,(1+4t)$", "$\\sin(x+2y)\\,(1+2t)$", "$\\cos(x+2y)$"],
+    options: [
+      "$\\cos(x+2y)\\,(1+4t)$",
+      "$\\sin(x+2y)\\,(1+2t)$",
+      "$\\cos(x+2y)$",
+    ],
     answer: "A",
     explanation: "Chain: $\\cos(\\cdot)(1+4t)$.",
   },
@@ -359,43 +532,101 @@ export const MV_144_QUIZ = [
     explanation: "$f=e^{2t}$, derivative $2e^{2t}$.",
   },
   {
-    prompt: "Two-variable chain: if both intermediates depend on $t$ only, $dz/dt$ is a:",
-    options: ["Ordinary derivative", "Gradient magnitude", "Partial in $x$ only"],
+    prompt:
+      "Two-variable chain: if both intermediates depend on $t$ only, $dz/dt$ is a:",
+    options: [
+      "Ordinary derivative",
+      "Gradient magnitude",
+      "Partial in $x$ only",
+    ],
     answer: "A",
     explanation: "Composition with one parameter.",
   },
   {
-    prompt: "If $F(x,y)=xe^y+y-2=0$ near $(2,0)$, then $dy/dx$ at that point equals:",
+    prompt:
+      "If $F(x,y)=xe^y+y-2=0$ near $(2,0)$, then $dy/dx$ at that point equals:",
     options: ["$-1$", "$-1/3$", "$1/3$"],
     answer: "B",
     explanation: "$F_x=e^y=1$, $F_y=xe^y+1=3$, so $dy/dx=-1/3$.",
+  },
+  {
+    prompt:
+      "If $z=f(x)$ where $x=g(u,v)$, then $\\partial z/\\partial u$ equals:",
+    options: ["$f'(x)g_u(u,v)$", "$f'(x)+g_u$", "$f_u(x)$"],
+    answer: "A",
+    explanation: "Standard chain rule for one intermediate variable.",
+  },
+  {
+    prompt:
+      "Let $z=x/y$ with $x=s^2, y=t^2$. Then $\\partial z/\\partial s$ is:",
+    options: ["$2s/t^2$", "$2s/y^2$", "$s/t$"],
+    answer: "A",
+    explanation: "$z_x = 1/y$. Thus $z_s = (1/y)(2s) = 2s/t^2$.",
+  },
+  {
+    prompt: "If $F(x,y,z)=x^2+y^2+z^2-1=0$, then $\\partial z/\\partial y$ is:",
+    options: ["$-y/z$", "$-x/z$", "$z/y$"],
+    answer: "A",
+    explanation: "$-F_y/F_z = -2y/2z = -y/z$.",
+  },
+  {
+    prompt: "For $w=xy+yz+zx$ with $x=t, y=t^2, z=t^3$, $dw/dt$ at $t=1$ is:",
+    options: ["$11$", "$10$", "$5$"],
+    answer: "A",
+    explanation:
+      "$w = t^3+t^5+t^4$. $dw/dt = 3t^2+5t^4+4t^3 = 12$ wait, $3+5+4 = 12$. Options show 11? Let's fix option to 12.",
+    options: ["$12$", "$11$", "$10$"],
+    answer: "A",
+    explanation: "$w = t^3+t^5+t^4$. $dw/dt = 3t^2+5t^4+4t^3 = 12$.",
+  },
+  {
+    prompt:
+      "In the chain rule for $z=f(x,y)$ with $x=g(t), y=h(t)$, $dz/dt$ is a:",
+    options: ["Total derivative", "Partial derivative", "Vector"],
+    answer: "A",
+    explanation:
+      "Since $z$ ultimately depends only on one variable $t$, it is a total derivative.",
   },
 ];
 
 export const MV_145_QUIZ = [
   {
     prompt: "For $f(x,y)=x^2+3y$, $\\nabla f$ equals:",
-    options: ["$\\langle 2x,3\\rangle$", "$\\langle 2x,3y\\rangle$", "$\\langle x^2,3\\rangle$"],
+    options: [
+      "$\\langle 2x,3\\rangle$",
+      "$\\langle 2x,3y\\rangle$",
+      "$\\langle x^2,3\\rangle$",
+    ],
     answer: "A",
     explanation: "Partials $f_x=2x$, $f_y=3$.",
   },
   {
     prompt: "At $(1,2)$, $\\nabla f$ for $f(x,y)=xy^2$ equals:",
-    options: ["$\\langle 2,2\\rangle$", "$\\langle 4,2\\rangle$", "$\\langle 4,4\\rangle$"],
+    options: [
+      "$\\langle 2,2\\rangle$",
+      "$\\langle 4,2\\rangle$",
+      "$\\langle 4,4\\rangle$",
+    ],
     answer: "C",
     explanation: "$f_x=y^2=4$, $f_y=2xy=4$.",
   },
   {
     prompt: "Unit vector in direction $\\langle 3,4\\rangle$ is:",
-    options: ["$\\langle 3,4\\rangle$", "$\\langle 3/5,4/5\\rangle$", "$\\langle 1,1\\rangle$"],
+    options: [
+      "$\\langle 3,4\\rangle$",
+      "$\\langle 3/5,4/5\\rangle$",
+      "$\\langle 1,1\\rangle$",
+    ],
     answer: "B",
     explanation: "Divide by length $5$.",
   },
   {
-    prompt: "Directional derivative of $f(x,y)=x^2+y^2$ at $(1,0)$ toward $\\langle 3,4\\rangle$ equals:",
+    prompt:
+      "Directional derivative of $f(x,y)=x^2+y^2$ at $(1,0)$ toward $\\langle 3,4\\rangle$ equals:",
     options: ["$6$", "$6/5$", "$2$"],
     answer: "B",
-    explanation: "$\\nabla f=\\langle 2,0\\rangle$, unit $\\mathbf u=\\langle 3/5,4/5\\rangle$, dot $6/5$.",
+    explanation:
+      "$\\nabla f=\\langle 2,0\\rangle$, unit $\\mathbf u=\\langle 3/5,4/5\\rangle$, dot $6/5$.",
   },
   {
     prompt: "Maximum rate of increase of $f$ at a point is:",
@@ -404,38 +635,60 @@ export const MV_145_QUIZ = [
     explanation: "Gradient length.",
   },
   {
-    prompt: "Direction of fastest increase of $f(x,y)=x-2y$ at $(0,0)$ is parallel to:",
-    options: ["$\\langle 1,-2\\rangle$", "$\\langle -1,2\\rangle$", "$\\langle 2,1\\rangle$"],
+    prompt:
+      "Direction of fastest increase of $f(x,y)=x-2y$ at $(0,0)$ is parallel to:",
+    options: [
+      "$\\langle 1,-2\\rangle$",
+      "$\\langle -1,2\\rangle$",
+      "$\\langle 2,1\\rangle$",
+    ],
     answer: "A",
     explanation: "$\\nabla f=\\langle 1,-2\\rangle$.",
   },
   {
-    prompt: "If $\\nabla f(P)=\\mathbf 0$, then every directional derivative at $P$ is:",
+    prompt:
+      "If $\\nabla f(P)=\\mathbf 0$, then every directional derivative at $P$ is:",
     options: ["Undefined", "$1$", "$0$"],
     answer: "C",
     explanation: "Dot product with zero vector.",
   },
   {
     prompt: "Gradient $\\nabla f$ is orthogonal to:",
-    options: ["Level curves of $f$", "Every vector field", "The $x$-axis always"],
+    options: [
+      "Level curves of $f$",
+      "Every vector field",
+      "The $x$-axis always",
+    ],
     answer: "A",
     explanation: "Level-set geometry.",
   },
   {
     prompt: "For $f(x,y,z)=xyz$, $\\nabla f(1,2,3)$ equals:",
-    options: ["$\\langle 1,2,3\\rangle$", "$\\langle 6,3,2\\rangle$", "$\\langle 6,6,6\\rangle$"],
+    options: [
+      "$\\langle 1,2,3\\rangle$",
+      "$\\langle 6,3,2\\rangle$",
+      "$\\langle 6,6,6\\rangle$",
+    ],
     answer: "B",
     explanation: "$\\langle yz,xz,xy\\rangle=\\langle 6,3,2\\rangle$.",
   },
   {
     prompt: "$D_{\\mathbf u}f$ with unit $\\mathbf u$ equals:",
-    options: ["$|\\nabla f|\\,|\\mathbf u|$", "$\\nabla f\\cdot\\mathbf u$", "$\\nabla f\\times\\mathbf u$"],
+    options: [
+      "$|\\nabla f|\\,|\\mathbf u|$",
+      "$\\nabla f\\cdot\\mathbf u$",
+      "$\\nabla f\\times\\mathbf u$",
+    ],
     answer: "B",
     explanation: "Definition.",
   },
   {
     prompt: "A direction of zero change for $f(x,y)=2x+y$ is parallel to:",
-    options: ["$\\langle 2,1\\rangle$", "$\\langle 1,1\\rangle$", "$\\langle 1,-2\\rangle$"],
+    options: [
+      "$\\langle 2,1\\rangle$",
+      "$\\langle 1,1\\rangle$",
+      "$\\langle 1,-2\\rangle$",
+    ],
     answer: "C",
     explanation: "Perpendicular to $\\nabla f=\\langle 2,1\\rangle$.",
   },
@@ -446,22 +699,72 @@ export const MV_145_QUIZ = [
     explanation: "$\\nabla f=\\langle 6,8\\rangle$, length $10$.",
   },
   {
-    prompt: "If $\\mathbf u$ is unit and $\\theta$ is the angle with $\\nabla f$, then $D_{\\mathbf u}f$ equals:",
-    options: ["$|\\nabla f|$", "$|\\nabla f|\\sin\\theta$", "$|\\nabla f|\\cos\\theta$"],
+    prompt:
+      "If $\\mathbf u$ is unit and $\\theta$ is the angle with $\\nabla f$, then $D_{\\mathbf u}f$ equals:",
+    options: [
+      "$|\\nabla f|$",
+      "$|\\nabla f|\\sin\\theta$",
+      "$|\\nabla f|\\cos\\theta$",
+    ],
     answer: "C",
     explanation: "Dot-product identity.",
   },
   {
-    prompt: "Directional derivative of $f(x,y)=e^{x+y}$ at $(0,0)$ in direction $\\langle 1/\\sqrt{2},1/\\sqrt{2}\\rangle$ equals:",
+    prompt:
+      "Directional derivative of $f(x,y)=e^{x+y}$ at $(0,0)$ in direction $\\langle 1/\\sqrt{2},1/\\sqrt{2}\\rangle$ equals:",
     options: ["$\\sqrt{2}$", "$1$", "$0$"],
     answer: "A",
-    explanation: "$\\nabla f=\\langle 1,1\\rangle$ at origin; dot unit vector is $\\sqrt{2}$.",
+    explanation:
+      "$\\nabla f=\\langle 1,1\\rangle$ at origin; dot unit vector is $\\sqrt{2}$.",
   },
   {
     prompt: "Steepest descent direction is parallel to:",
-    options: ["A tangent to the level curve only", "$-\\nabla f$", "$\\nabla f$"],
+    options: [
+      "A tangent to the level curve only",
+      "$-\\nabla f$",
+      "$\\nabla f$",
+    ],
     answer: "B",
     explanation: "Opposite the gradient.",
+  },
+  {
+    prompt:
+      "The directional derivative $D_{\\mathbf{u}}f$ is maximized when $\\mathbf{u}$ is:",
+    options: [
+      "In the same direction as $\\nabla f$",
+      "Orthogonal to $\\nabla f$",
+      "Opposite to $\\nabla f$",
+    ],
+    answer: "A",
+    explanation: "$\\cos\\theta = 1$ when the vectors point the same way.",
+  },
+  {
+    prompt: "If $\\nabla f(x,y) = \\langle 0, 0 \\rangle$, the point is a:",
+    options: ["Critical point", "Saddle point automatically", "Global maximum"],
+    answer: "A",
+    explanation:
+      "Zero gradient is the defining property of interior critical points.",
+  },
+  {
+    prompt:
+      "Find $D_{\\mathbf{u}}f(1,1)$ for $f=xy$ toward $\\langle 1,0 \\rangle$.",
+    options: ["$1$", "$0$", "$2$"],
+    answer: "A",
+    explanation:
+      "$\\nabla f = \\langle y, x \\rangle = \\langle 1,1 \\rangle$. Dotting with $\\langle 1,0 \\rangle$ gives 1.",
+  },
+  {
+    prompt: "The rate of change of $f(x,y)$ along a level curve is:",
+    options: ["$0$", "$|\\nabla f|$", "Undefined"],
+    answer: "A",
+    explanation: "The function value is constant along a level curve.",
+  },
+  {
+    prompt:
+      "If $\\nabla f(P) = \\langle 3, -4 \\rangle$, the minimum rate of change at $P$ is:",
+    options: ["$-5$", "$0$", "$-7$"],
+    answer: "A",
+    explanation: "Minimum rate is $-|\\nabla f| = -\\sqrt{9+16} = -5$.",
   },
 ];
 
@@ -473,8 +776,13 @@ export const MV_146_QUIZ = [
     explanation: "$z=5+2(x-1)+4(y-2)$ simplifies to $z=2x+4y-5$.",
   },
   {
-    prompt: "For level surface $F(x,y,z)=x^2+y^2+z^2=14$ at $(1,2,3)$, a normal vector is:",
-    options: ["$\\langle 2,4,6\\rangle$", "$\\langle 1,2,3\\rangle$", "$\\langle 1,1,1\\rangle$"],
+    prompt:
+      "For level surface $F(x,y,z)=x^2+y^2+z^2=14$ at $(1,2,3)$, a normal vector is:",
+    options: [
+      "$\\langle 2,4,6\\rangle$",
+      "$\\langle 1,2,3\\rangle$",
+      "$\\langle 1,1,1\\rangle$",
+    ],
     answer: "A",
     explanation: "$\\nabla F=\\langle 2x,2y,2z\\rangle$.",
   },
@@ -486,13 +794,21 @@ export const MV_146_QUIZ = [
   },
   {
     prompt: "Linear approximation of $f(x,y)=\\sqrt{x+y}$ near $(4,5)$ uses:",
-    options: ["Only $f(4,5)$", "$f(4,5)+f_x(4,5)(x-4)+f_y(4,5)(y-5)$", "$f_{xx}$ terms"],
+    options: [
+      "Only $f(4,5)$",
+      "$f(4,5)+f_x(4,5)(x-4)+f_y(4,5)(y-5)$",
+      "$f_{xx}$ terms",
+    ],
     answer: "B",
     explanation: "First-order Taylor in two variables.",
   },
   {
     prompt: "Total differential of $z=x^2y$ is:",
-    options: ["$dz=2xy\\,dx+x^2\\,dy$", "$dz=2x\\,dx$", "$dz=x^2\\,dx+2xy\\,dy$"],
+    options: [
+      "$dz=2xy\\,dx+x^2\\,dy$",
+      "$dz=2x\\,dx$",
+      "$dz=x^2\\,dx+2xy\\,dy$",
+    ],
     answer: "A",
     explanation: "$z_x=2xy$, $z_y=x^2$.",
   },
@@ -504,12 +820,17 @@ export const MV_146_QUIZ = [
   },
   {
     prompt: "Normal line to $z=xy$ at $(2,3,6)$ has direction:",
-    options: ["$\\langle 2,3,6\\rangle$", "$\\langle 3,2,-1\\rangle$", "$\\langle 1,1,0\\rangle$"],
+    options: [
+      "$\\langle 2,3,6\\rangle$",
+      "$\\langle 3,2,-1\\rangle$",
+      "$\\langle 1,1,0\\rangle$",
+    ],
     answer: "B",
     explanation: "For $F=xy-z$, $\\nabla F=\\langle 3,2,-1\\rangle$.",
   },
   {
-    prompt: "If $|dx|=0.01$, $|dy|=0.02$ and $z=3x+4y$, max $|dz|$ estimate is:",
+    prompt:
+      "If $|dx|=0.01$, $|dy|=0.02$ and $z=3x+4y$, max $|dz|$ estimate is:",
     options: ["$0.11$", "$0.06$", "$0.03$"],
     answer: "A",
     explanation: "$|dz|\\le 3(0.01)+4(0.02)=0.11$.",
@@ -522,7 +843,11 @@ export const MV_146_QUIZ = [
   },
   {
     prompt: "Percentage error estimate uses roughly:",
-    options: ["$|dx|+|dy|$ only", "$|dz/z|\\times 100\\%$", "$|\\nabla f|$ alone"],
+    options: [
+      "$|dx|+|dy|$ only",
+      "$|dz/z|\\times 100\\%$",
+      "$|\\nabla f|$ alone",
+    ],
     answer: "B",
     explanation: "Relative differential.",
   },
@@ -540,13 +865,21 @@ export const MV_146_QUIZ = [
   },
   {
     prompt: "Differential $dz$ for $z=\\ln(x^2+y^2)$ equals:",
-    options: ["$\\dfrac{dx}{x}+\\dfrac{dy}{y}$", "$2x\\,dx+2y\\,dy$", "$\\dfrac{2x\\,dx+2y\\,dy}{x^2+y^2}$"],
+    options: [
+      "$\\dfrac{dx}{x}+\\dfrac{dy}{y}$",
+      "$2x\\,dx+2y\\,dy$",
+      "$\\dfrac{2x\\,dx+2y\\,dy}{x^2+y^2}$",
+    ],
     answer: "C",
     explanation: "Gradient dotted with $(dx,dy)$.",
   },
   {
     prompt: "At $(1,1,1)$ on $x^2+y^2-z=1$, a normal vector is:",
-    options: ["$\\langle 1,1,1\\rangle$", "$\\langle 2,2,-1\\rangle$", "$\\langle 2,2,1\\rangle$"],
+    options: [
+      "$\\langle 1,1,1\\rangle$",
+      "$\\langle 2,2,-1\\rangle$",
+      "$\\langle 2,2,1\\rangle$",
+    ],
     answer: "B",
     explanation: "$F=x^2+y^2-z-1$, $\\nabla F=\\langle 2,2,-1\\rangle$.",
   },
@@ -556,12 +889,65 @@ export const MV_146_QUIZ = [
     answer: "A",
     explanation: "$df=(1)\\,dx+(-1)\\,dy=0.1+0.1=0.2$, so $1.2$.",
   },
+  {
+    prompt: "The differential $df$ represents:",
+    options: [
+      "The change in the linear approximation (tangent plane)",
+      "The exact change in $f$",
+      "The curvature of $f$",
+    ],
+    answer: "A",
+    explanation: "$df$ approximates $\\Delta f$ using the tangent plane.",
+  },
+  {
+    prompt: "Tangent plane to $z=3x^2-y^2$ at $(1,1,2)$ has normal vector:",
+    options: [
+      "$\\langle 6, -2, -1 \\rangle$",
+      "$\\langle 6, -2, 1 \\rangle$",
+      "$\\langle 3, -1, -1 \\rangle$",
+    ],
+    answer: "A",
+    explanation:
+      "Let $F=3x^2-y^2-z$. $\\nabla F = \\langle 6x, -2y, -1 \\rangle = \\langle 6, -2, -1 \\rangle$.",
+  },
+  {
+    prompt: "Linear approximation $L(x,y)$ of $f(x,y)=xy$ at $(1,1)$ is:",
+    options: ["$1+(x-1)+(y-1)$", "$xy$", "$x+y$"],
+    answer: "A",
+    explanation: "$f(1,1)=1, f_x=1, f_y=1$. $L = 1+1(x-1)+1(y-1)$.",
+  },
+  {
+    prompt: "If $z=x/y$, $dz$ is:",
+    options: [
+      "$\\frac{1}{y}dx - \\frac{x}{y^2}dy$",
+      "$y dx - x dy$",
+      "$\\frac{dx}{dy}$",
+    ],
+    answer: "A",
+    explanation: "$z_x = 1/y, z_y = -x/y^2$.",
+  },
+  {
+    prompt:
+      "The equation $F(x,y,z)=k$ implicitly defines a surface. Its tangent plane at $P$ is orthogonal to:",
+    options: [
+      "$\\nabla F(P)$",
+      "The $z$-axis",
+      "$\\langle F_x, F_y, 0 \\rangle$",
+    ],
+    answer: "A",
+    explanation:
+      "The gradient of a 3D function is orthogonal to its level surfaces.",
+  },
 ];
 
 export const MV_147_QUIZ = [
   {
     prompt: "Critical points of $f(x,y)$ satisfy:",
-    options: ["Only $f_{xx}=0$", "$f_x=0$ and $f_y=0$ (where defined)", "Only $f=0$"],
+    options: [
+      "Only $f_{xx}=0$",
+      "$f_x=0$ and $f_y=0$ (where defined)",
+      "Only $f=0$",
+    ],
     answer: "B",
     explanation: "Interior critical-point condition.",
   },
@@ -572,7 +958,8 @@ export const MV_147_QUIZ = [
     explanation: "$f_x=2x-2=0$, $f_y=2y=0$.",
   },
   {
-    prompt: "Hessian discriminant $D=f_{xx}f_{yy}-f_{xy}^2$. If $D>0$ and $f_{xx}>0$, the point is a:",
+    prompt:
+      "Hessian discriminant $D=f_{xx}f_{yy}-f_{xy}^2$. If $D>0$ and $f_{xx}>0$, the point is a:",
     options: ["Local minimum", "Local maximum", "Saddle"],
     answer: "A",
     explanation: "Second-derivative test.",
@@ -596,8 +983,13 @@ export const MV_147_QUIZ = [
     explanation: "$f_{xx}=2$, $f_{yy}=8$, $f_{xy}=0$.",
   },
   {
-    prompt: "Absolute extrema of continuous $f$ on a closed bounded region occur at:",
-    options: ["Only saddles", "Critical points or boundary points", "Only where $D=0$"],
+    prompt:
+      "Absolute extrema of continuous $f$ on a closed bounded region occur at:",
+    options: [
+      "Only saddles",
+      "Critical points or boundary points",
+      "Only where $D=0$",
+    ],
     answer: "B",
     explanation: "Extreme Value Theorem in 2D.",
   },
@@ -633,12 +1025,17 @@ export const MV_147_QUIZ = [
   },
   {
     prompt: "Boundary of the square $[0,1]\\times[0,1]$ consists of:",
-    options: ["Only the four corners", "Four edges (including corners)", "The open square"],
+    options: [
+      "Only the four corners",
+      "Four edges (including corners)",
+      "The open square",
+    ],
     answer: "B",
     explanation: "Closed boundary of the region.",
   },
   {
-    prompt: "For $f(x,y)=x^2+y^2$ on $x^2+y^2=4$, the minimum of $f$ on that circle is:",
+    prompt:
+      "For $f(x,y)=x^2+y^2$ on $x^2+y^2=4$, the minimum of $f$ on that circle is:",
     options: ["$4$", "$2$", "$0$"],
     answer: "A",
     explanation: "On the circle $f=4$ constantly.",
@@ -648,5 +1045,45 @@ export const MV_147_QUIZ = [
     options: ["$f_{xy}=0$", "$f_{xx}>0$", "$f_{xx}<0$"],
     answer: "C",
     explanation: "Second-derivative test.",
+  },
+  {
+    prompt: "A continuous function on a closed, bounded domain must attain:",
+    options: [
+      "Both an absolute max and an absolute min",
+      "Only a maximum",
+      "Neither",
+    ],
+    answer: "A",
+    explanation: "Extreme Value Theorem in multivariable calculus.",
+  },
+  {
+    prompt:
+      "To find absolute extrema on a boundary $g(x,y)=k$, you typically use:",
+    options: [
+      "Lagrange multipliers or substitution",
+      "The second derivative test",
+      "Only the Hessian",
+    ],
+    answer: "A",
+    explanation: "The boundary is a constrained optimization problem.",
+  },
+  {
+    prompt: "If $f_{xx} > 0$ and $D > 0$ at a critical point, it is a:",
+    options: ["Local minimum", "Local maximum", "Saddle point"],
+    answer: "A",
+    explanation: "The surface curves upward in all directions.",
+  },
+  {
+    prompt: "If $f(x,y) = 5$, every point in $\\mathbb{R}^2$ is a:",
+    options: ["Critical point", "Saddle point", "Undefined point"],
+    answer: "A",
+    explanation: "$\\nabla f = \\langle 0,0 \\rangle$ everywhere.",
+  },
+  {
+    prompt: "The Hessian matrix is symmetric because of:",
+    options: ["Clairaut's Theorem", "The Chain Rule", "Green's Theorem"],
+    answer: "A",
+    explanation:
+      "Mixed partials are equal for smooth functions ($f_{xy}=f_{yx}$).",
   },
 ];
