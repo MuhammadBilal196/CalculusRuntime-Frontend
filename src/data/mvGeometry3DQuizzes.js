@@ -1,6 +1,7 @@
-/** Study-guide quiz banks for the Multivariable "3D Analytical Geometry & Quadric Surfaces" guide — 8 MCQs per section. */
+/** Study-guide quiz banks for the Multivariable "3D Analytical Geometry & Quadric Surfaces" guide — 20 MCQs per section. */
 
 export const MV_GEO_DIRCOS_QUIZ = [
+  // Original 8 Questions[cite: 7]
   {
     prompt: "For the vector $\\mathbf{v}=(3,4,12)$, the direction cosine $n$ (with the $z$-axis) is:",
     options: ["$12/13$", "$12/19$", "$3/13$"],
@@ -61,9 +62,83 @@ export const MV_GEO_DIRCOS_QUIZ = [
     answer: "A",
     explanation: "$(0,0,1)$ is the unit vector along the $z$-axis.",
   },
+  // New 12 Questions
+  {
+    prompt: "If a vector makes angles $\\alpha = 60^\\circ$ and $\\beta = 60^\\circ$ with the $x$ and $y$ axes, what is a possible value for $\\gamma$?",
+    options: ["$45^\\circ$", "$90^\\circ$", "$30^\\circ$"],
+    answer: "A",
+    explanation: "$\\cos^2(60^\\circ) + \\cos^2(60^\\circ) + \\cos^2\\gamma = 1 \\Rightarrow 1/4 + 1/4 + \\cos^2\\gamma = 1 \\Rightarrow \\cos\\gamma = \\pm 1/\\sqrt{2}$. Thus, $45^\\circ$ is possible.",
+  },
+  {
+    prompt: "The direction cosines of the vector $\\mathbf{v}=(-1, 2, -2)$ are:",
+    options: ["$\\left(-\\tfrac13, \\tfrac23, -\\tfrac23\\right)$", "$\\left(-1, 2, -2\\right)$", "$\\left(-\\tfrac{1}{9}, \\tfrac{2}{9}, -\\tfrac{2}{9}\\right)$"],
+    answer: "A",
+    explanation: "Magnitude is $\\sqrt{1+4+4} = 3$. Dividing each component by 3 yields the direction cosines.",
+  },
+  {
+    prompt: "Which of the following triples can represent direction ratios for a line parallel to the $y$-axis?",
+    options: ["$(0, 5, 0)$", "$(1, 1, 0)$", "$(0, 0, 1)$"],
+    answer: "A",
+    explanation: "A line parallel to the $y$-axis has direction vector $(0, y, 0)$ for any nonzero $y$.",
+  },
+  {
+    prompt: "If the direction cosines of a line are $(l, m, n)$, then $(-l, -m, -n)$ represents:",
+    options: ["The same line, pointing in the opposite direction", "A perpendicular line", "A line rotated by $90^\\circ$"],
+    answer: "A",
+    explanation: "Negating the direction cosines flips the vector $180^\\circ$ along the exact same line of action.",
+  },
+  {
+    prompt: "What is the sum of the squares of the direction ratios $(a, b, c)$?",
+    options: ["$a^2 + b^2 + c^2$", "$1$", "$0$"],
+    answer: "A",
+    explanation: "Unlike direction cosines, direction ratios are unnormalized, so their squares sum to the square of the vector's magnitude, not necessarily 1.",
+  },
+  {
+    prompt: "For a line equally inclined to all three positive coordinate axes, the direction cosines are:",
+    options: ["$\\left(\\tfrac{1}{\\sqrt3}, \\tfrac{1}{\\sqrt3}, \\tfrac{1}{\\sqrt3}\\right)$", "$\\left(1, 1, 1\\right)$", "$\\left(\\tfrac13, \\tfrac13, \\tfrac13\\right)$"],
+    answer: "A",
+    explanation: "If $\\alpha=\\beta=\\gamma$, then $3\\cos^2\\alpha = 1 \\Rightarrow \\cos\\alpha = 1/\\sqrt{3}$.",
+  },
+  {
+    prompt: "If $l^2 + m^2 = 1$, what must $n$ be?",
+    options: ["$0$", "$1$", "$-1$"],
+    answer: "A",
+    explanation: "Since $l^2 + m^2 + n^2 = 1$, if the first two sum to $1$, then $n^2 = 0$, so $n=0$.",
+  },
+  {
+    prompt: "The direction ratios of the vector from $(5, -1, 4)$ to $(5, -1, 8)$ are:",
+    options: ["$(0, 0, 4)$", "$(10, -2, 12)$", "$(0, 0, 12)$"],
+    answer: "A",
+    explanation: "Subtracting initial from final: $(5-5, -1-(-1), 8-4) = (0, 0, 4)$.",
+  },
+  {
+    prompt: "Are $(2, 4, -6)$ and $(1, 2, -3)$ direction ratios for the same line?",
+    options: ["Yes, they are proportional", "No, they have different magnitudes", "Yes, because they sum to 0"],
+    answer: "A",
+    explanation: "Any scalar multiple of a set of direction ratios describes the same parallel direction in 3D space.",
+  },
+  {
+    prompt: "The vector $\\mathbf{v}=4\\mathbf{i} - 3\\mathbf{k}$ has direction cosines:",
+    options: ["$\\left(\\tfrac45, 0, -\\tfrac35\\right)$", "$\\left(\\tfrac45, -\\tfrac35, 0\\right)$", "$\\left(4, 0, -3\\right)$"],
+    answer: "A",
+    explanation: "The vector is $(4, 0, -3)$. Magnitude is $\\sqrt{16+0+9} = 5$. Dividing by 5 yields the answer.",
+  },
+  {
+    prompt: "If a line lies entirely within the $xy$-plane, its direction cosine $n$ is:",
+    options: ["$0$", "$1$", "Undefined"],
+    answer: "A",
+    explanation: "A line in the $xy$-plane has no $z$-component, making its angle with the $z$-axis $90^\\circ$. Thus, $n = \\cos(90^\\circ) = 0$.",
+  },
+  {
+    prompt: "Can a vector have direction angles $\\alpha=30^\\circ, \\beta=45^\\circ$?",
+    options: ["No, $\\cos^2(30^\\circ) + \\cos^2(45^\\circ) > 1$", "Yes, if $\\gamma = 60^\\circ$", "Yes, if $\\gamma = 90^\\circ$"],
+    answer: "A",
+    explanation: "$\\cos^2(30^\\circ) = 3/4$ and $\\cos^2(45^\\circ) = 1/2$. Summing these gives $1.25$, which exceeds $1$. Thus, no such vector exists.",
+  }
 ];
 
 export const MV_GEO_ANGLE3D_QUIZ = [
+  // Original 8 Questions[cite: 7]
   {
     prompt: "Lines with direction ratios $(1,1,1)$ and $(1,-1,0)$ meet at an angle $\\theta$ with:",
     options: ["$\\cos\\theta=0$ ($\\theta=90^\\circ$)", "$\\cos\\theta=1$", "$\\cos\\theta=1/\\sqrt6$"],
@@ -120,9 +195,84 @@ export const MV_GEO_ANGLE3D_QUIZ = [
     answer: "A",
     explanation: "A vector dotted with itself over its own magnitude squared gives $\\cos\\theta=1$.",
   },
+  // New 12 Questions
+  {
+    prompt: "If the dot product of two direction vectors is negative, the angle $\\theta$ between the lines is:",
+    options: ["Obtuse ($>90^\\circ$)", "Acute ($<90^\\circ$)", "Exactly $180^\\circ$"],
+    answer: "A",
+    explanation: "A negative dot product means $\\cos\\theta < 0$, which occurs when the angle is obtuse.",
+  },
+  {
+    prompt: "The angle between the $x$-axis and the line with direction ratios $(1, 1, \\sqrt{2})$ is:",
+    options: ["$60^\\circ$", "$45^\\circ$", "$30^\\circ$"],
+    answer: "A",
+    explanation: "The $x$-axis has direction $(1,0,0)$. The dot product is $1$. The magnitude of the second vector is $\\sqrt{1+1+2} = 2$. $\\cos\\theta = 1/2 \\Rightarrow \\theta = 60^\\circ$.",
+  },
+  {
+    prompt: "If two lines have direction ratios $(k, 2, 3)$ and $(1, -1, 2)$ and are perpendicular, what is $k$?",
+    options: ["$-4$", "$4$", "$0$"],
+    answer: "A",
+    explanation: "The dot product must be $0$: $k(1) + 2(-1) + 3(2) = 0 \\Rightarrow k - 2 + 6 = 0 \\Rightarrow k = -4$.",
+  },
+  {
+    prompt: "Lines with direction ratios $(1, -2, 1)$ and $(2, 4, 6)$ are:",
+    options: ["Perpendicular", "Parallel", "Neither"],
+    answer: "B",
+    explanation: "Wait, $(2, 4, 6)$ is NOT a multiple. Let's check dot product: $2 - 8 + 6 = 0$. They are perpendicular. Option A is correct. (Setting Answer to A).",
+    answer: "A"
+  },
+  {
+    prompt: "What is the angle between the lines $\\mathbf{r}_1(t) = (t, -t, 0)$ and $\\mathbf{r}_2(s) = (0, s, s)$?",
+    options: ["$120^\\circ$ or $60^\\circ$", "$90^\\circ$", "$45^\\circ$"],
+    answer: "A",
+    explanation: "Directions are $(1, -1, 0)$ and $(0, 1, 1)$. Dot product is $-1$. Magnitudes are $\\sqrt{2}$ and $\\sqrt{2}$. $\\cos\\theta = -1/2$, so $\\theta = 120^\\circ$ (or $60^\\circ$ for the intersecting lines).",
+  },
+  {
+    prompt: "If the direction cosines of line 1 are $(l, m, n)$ and line 2 are $(m, n, l)$, and they are perpendicular, then:",
+    options: ["$lm + mn + nl = 0$", "$l+m+n=0$", "$l^2+m^2+n^2=0$"],
+    answer: "A",
+    explanation: "The dot product of the direction cosines must be zero: $l(m) + m(n) + n(l) = 0$.",
+  },
+  {
+    prompt: "The angle between the diagonals of a cube is:",
+    options: ["$\\cos^{-1}(1/3)$", "$\\cos^{-1}(1/\\sqrt{3})$", "$90^\\circ$"],
+    answer: "A",
+    explanation: "Using vertices $(0,0,0)$ to $(1,1,1)$ and $(1,0,0)$ to $(0,1,1)$, directions are $(1,1,1)$ and $(-1,1,1)$. Dot product is $1$. Magnitudes are $\\sqrt{3}$. $\\cos\\theta = 1/3$.",
+  },
+  {
+    prompt: "If two lines have proportional direction ratios, their cross product is:",
+    options: ["The zero vector $\\mathbf{0}$", "A unit vector", "A scalar"],
+    answer: "A",
+    explanation: "Parallel vectors have a cross product of $\\mathbf{0}$.",
+  },
+  {
+    prompt: "Two intersecting lines uniquely define:",
+    options: ["A plane", "A sphere", "A skew surface"],
+    answer: "A",
+    explanation: "Any two intersecting lines define a single unique plane containing both.",
+  },
+  {
+    prompt: "The maximum possible angle defined between two un-oriented 3D lines is:",
+    options: ["$90^\\circ$", "$180^\\circ$", "$360^\\circ$"],
+    answer: "A",
+    explanation: "When considering lines (not oriented vectors), the angle between them is typically taken as the acute or right angle, capping at $90^\\circ$.",
+  },
+  {
+    prompt: "Find the cosine of the angle between $(2, -1, 2)$ and $(4, 3, 0)$:",
+    options: ["$1/3$", "$2/3$", "$0$"],
+    answer: "A",
+    explanation: "Dot product: $8 - 3 + 0 = 5$. Magnitudes: $\\sqrt{9}=3$ and $\\sqrt{25}=5$. $\\cos\\theta = 5 / (3 \\times 5) = 1/3$.",
+  },
+  {
+    prompt: "If $\\mathbf{v}_1 \\cdot \\mathbf{v}_2 = |\\mathbf{v}_1||\\mathbf{v}_2|$, the lines are:",
+    options: ["Parallel", "Perpendicular", "Skew"],
+    answer: "A",
+    explanation: "This means $\\cos\\theta = 1$, so the angle is $0^\\circ$ and the lines are parallel.",
+  }
 ];
 
 export const MV_GEO_PLANE_QUIZ = [
+  // Original 8 Questions[cite: 7]
   {
     prompt: "The point-normal equation of the plane through $(1,2,3)$ with normal $(1,1,1)$ is:",
     options: ["$x+y+z=6$", "$x+y+z=0$", "$x-y+z=2$"],
@@ -183,9 +333,83 @@ export const MV_GEO_PLANE_QUIZ = [
     answer: "A",
     explanation: "$\\mathbf{r}_0$ is the position vector of a fixed point already known to be on the plane.",
   },
+  // New 12 Questions
+  {
+    prompt: "What is the $z$-intercept of the plane $2x + 3y + 4z = 12$?",
+    options: ["$3$", "$4$", "$12$"],
+    answer: "A",
+    explanation: "Set $x=0$ and $y=0$. Then $4z = 12$, yielding $z=3$.",
+  },
+  {
+    prompt: "A plane is horizontal. Its normal vector must be parallel to:",
+    options: ["The $z$-axis", "The $x$-axis", "The $y$-axis"],
+    answer: "A",
+    explanation: "A horizontal plane (like $z=c$) has a normal pointing straight up or down, parallel to $(0,0,1)$.",
+  },
+  {
+    prompt: "To find the normal to a plane containing points P, Q, and R, you can compute:",
+    options: ["$\\vec{PQ} \\times \\vec{PR}$", "$\\vec{PQ} \\cdot \\vec{PR}$", "$\\vec{P} + \\vec{Q} + \\vec{R}$"],
+    answer: "A",
+    explanation: "The cross product of two vectors embedded in the plane yields a vector orthogonal to the plane.",
+  },
+  {
+    prompt: "Are the planes $x-2y+z=4$ and $2x-4y+2z=7$ parallel?",
+    options: ["Yes, their normals are proportional", "No, they intersect", "Yes, they are the exact same plane"],
+    answer: "A",
+    explanation: "The normals $(1,-2,1)$ and $(2,-4,2)$ are proportional, but $4 \\times 2 \\neq 7$, so they are distinct parallel planes.",
+  },
+  {
+    prompt: "The equation of the $xz$-plane is:",
+    options: ["$y=0$", "$x=0$", "$z=0$"],
+    answer: "A",
+    explanation: "Any point on the $xz$-plane has a $y$-coordinate of 0.",
+  },
+  {
+    prompt: "The normal to a plane is $\\mathbf{n} = (0, 5, 0)$. This plane is parallel to:",
+    options: ["The $xz$-plane", "The $yz$-plane", "The $xy$-plane"],
+    answer: "A",
+    explanation: "The normal is along the $y$-axis, so the plane must be perpendicular to the $y$-axis, making it parallel to the $xz$-plane.",
+  },
+  {
+    prompt: "Find the equation of the plane passing through $(2, -1, 3)$ with normal $(0, 0, 1)$.",
+    options: ["$z=3$", "$x=2$", "$y=-1$"],
+    answer: "A",
+    explanation: "Using the point-normal form: $0(x-2) + 0(y+1) + 1(z-3) = 0 \\Rightarrow z=3$.",
+  },
+  {
+    prompt: "If a plane has equation $Ax + By = D$ (where $C=0$), it is:",
+    options: ["Parallel to the $z$-axis", "Perpendicular to the $z$-axis", "Passing through the origin"],
+    answer: "A",
+    explanation: "The missing $z$-variable means the surface doesn't change as $z$ changes; it forms a vertical plane parallel to the $z$-axis.",
+  },
+  {
+    prompt: "Two planes are orthogonal if:",
+    options: ["The dot product of their normals is zero", "Their normals are cross-multiplied to zero", "They share two points"],
+    answer: "A",
+    explanation: "The angle between planes is the angle between their normals. If $\\mathbf{n}_1 \\cdot \\mathbf{n}_2 = 0$, they are orthogonal.",
+  },
+  {
+    prompt: "What is the normal to the plane defined by $\\mathbf{r}(u,v) = \\mathbf{r}_0 + u\\mathbf{a} + v\\mathbf{b}$?",
+    options: ["$\\mathbf{a} \\times \\mathbf{b}$", "$\\mathbf{a} \\cdot \\mathbf{b}$", "$\\mathbf{r}_0$"],
+    answer: "A",
+    explanation: "The vectors $\\mathbf{a}$ and $\\mathbf{b}$ lie in the plane, so their cross product provides the normal.",
+  },
+  {
+    prompt: "The plane $x/a + y/b + z/c = 1$ intersects the axes at:",
+    options: ["$(a,0,0), (0,b,0), (0,0,c)$", "$(1,1,1)$", "$(a,b,c)$"],
+    answer: "A",
+    explanation: "Setting any two variables to zero solves the remaining variable as the denominator, representing the axis intercepts.",
+  },
+  {
+    prompt: "The plane $0x + 0y + 0z = 5$ represents:",
+    options: ["The empty set (no points satisfy this)", "The entire 3D space", "The origin"],
+    answer: "A",
+    explanation: "There are no $(x,y,z)$ coordinates that can satisfy $0 = 5$.",
+  }
 ];
 
 export const MV_GEO_PTPLANE_QUIZ = [
+  // Original 8 Questions[cite: 7]
   {
     prompt: "The distance from $(1,1,1)$ to the plane $x+y+z-6=0$ is:",
     options: ["$\\sqrt3$", "$3$", "$6/\\sqrt3$"],
@@ -246,9 +470,83 @@ export const MV_GEO_PTPLANE_QUIZ = [
     answer: "A",
     explanation: "Plugging a point on one side of the plane gives a negative signed value; the absolute value converts it to an actual (nonnegative) distance.",
   },
+  // New 12 Questions
+  {
+    prompt: "Distance from $(0, 2, 0)$ to the plane $3x + 4y + 12z = 0$ is:",
+    options: ["$8/13$", "$2/13$", "$0$"],
+    answer: "A",
+    explanation: "Numerator: $|3(0) + 4(2) + 12(0)| = 8$. Denominator: $\\sqrt{9 + 16 + 144} = 13$. Distance is $8/13$.",
+  },
+  {
+    prompt: "The formula $d = \\dfrac{|D_1 - D_2|}{\\sqrt{A^2+B^2+C^2}}$ calculates:",
+    options: ["Distance between two parallel planes $Ax+By+Cz=D_1$ and $Ax+By+Cz=D_2$", "Distance from origin to a plane", "Distance between skew lines"],
+    answer: "A",
+    explanation: "Since the normals are identical, the difference in constants over the normal's magnitude yields the exact gap between the parallel planes.",
+  },
+  {
+    prompt: "What is the distance from the point $(1, -1, 1)$ to the $xy$-plane?",
+    options: ["$1$", "$-1$", "$0$"],
+    answer: "A",
+    explanation: "The equation of the $xy$-plane is $z=0$. The perpendicular distance is simply the absolute value of the $z$-coordinate: $|1| = 1$.",
+  },
+  {
+    prompt: "If a point gives a positive value when plugged into $Ax+By+Cz+D$, and another point gives a negative value, this means:",
+    options: ["They lie on opposite sides of the plane", "One of them is the origin", "They are equidistant from the plane"],
+    answer: "A",
+    explanation: "The plane equation $Ax+By+Cz+D=0$ splits space into a positive half-space and a negative half-space.",
+  },
+  {
+    prompt: "Find the distance from $(2, 3, -1)$ to the plane $y = 7$.",
+    options: ["$4$", "$7$", "$10$"],
+    answer: "A",
+    explanation: "The plane is $y-7=0$. Distance is $|3-7|/\\sqrt{1^2} = 4$.",
+  },
+  {
+    prompt: "Distance between parallel planes $x-2y+2z=4$ and $2x-4y+4z=14$ is:",
+    options: ["$1$", "$2$", "$5/3$"],
+    answer: "A",
+    explanation: "First, scale the first equation to match normals: $2x-4y+4z=8$. $d = |14 - 8| / \\sqrt{4+16+16} = 6/6 = 1$.",
+  },
+  {
+    prompt: "To find the point on a plane closest to the origin, you should drop a perpendicular line from the origin. The direction of this line is:",
+    options: ["The normal vector of the plane", "A vector parallel to the plane", "The $z$-axis"],
+    answer: "A",
+    explanation: "The shortest path from a point to a plane always follows the plane's normal vector.",
+  },
+  {
+    prompt: "If the plane passes through the point you are measuring from, the distance formula evaluates to:",
+    options: ["$0/\\sqrt{A^2+B^2+C^2}$", "Undefined", "$1$"],
+    answer: "A",
+    explanation: "The numerator represents evaluating the plane equation at that point. If it's on the plane, the result is zero.",
+  },
+  {
+    prompt: "Distance from $(-1, -1, -1)$ to $x+y+z=3$ is:",
+    options: ["$2\\sqrt{3}$", "$6/\\sqrt{3}$", "$\\sqrt{3}$"],
+    answer: "A",
+    explanation: "Plane is $x+y+z-3=0$. Numerator is $|-1-1-1-3| = |-6| = 6$. Denominator is $\\sqrt{3}$. Distance $= 6/\\sqrt{3} = 2\\sqrt{3}$.",
+  },
+  {
+    prompt: "Is the distance from $(1,2,3)$ to $2x+y-2z=0$ zero?",
+    options: ["No, it evaluates to $2/3$", "Yes", "No, it evaluates to $-2/3$"],
+    answer: "A",
+    explanation: "Numerator: $|2(1) + 2 - 2(3)| = |2+2-6| = |-2| = 2$. Denominator: $\\sqrt{4+1+4} = 3$. Distance is $2/3$.",
+  },
+  {
+    prompt: "The sign of $D$ in $Ax+By+Cz+D=0$ dictates:",
+    options: ["The signed distance from the origin scaled by the normal's magnitude", "Which quadrant the plane is in", "The slope of the plane"],
+    answer: "A",
+    explanation: "Since distance to origin is $|D|/|\\mathbf{n}|$, the value $D$ determines how far the plane is shifted from the origin along its normal.",
+  },
+  {
+    prompt: "A point moves such that its distance to $x=0$ equals its distance to $y=0$. It traces:",
+    options: ["Two intersecting planes $y=x$ and $y=-x$", "A cylinder", "A single line"],
+    answer: "A",
+    explanation: "$|x| = |y|$, which means $y = x$ or $y = -x$. These form two diagonal planes in 3D space.",
+  }
 ];
 
 export const MV_GEO_LINE3D_QUIZ = [
+  // Original 8 Questions[cite: 7]
   {
     prompt: "The parametric equations of the line through $(1,0,-1)$ with direction $(2,3,-1)$ are:",
     options: [
@@ -321,9 +619,85 @@ export const MV_GEO_LINE3D_QUIZ = [
     answer: "A",
     explanation: "This is exactly the vector (parametric) definition of a 3D line.",
   },
+  // New 12 Questions
+  {
+    prompt: "The symmetric equations $\\dfrac{x-2}{3} = \\dfrac{y+1}{-2} = z-4$ describe a line through which point?",
+    options: ["$(2, -1, 4)$", "$(-2, 1, -4)$", "$(3, -2, 1)$"],
+    answer: "A",
+    explanation: "Reading directly from $x-x_0, y-y_0, z-z_0$, the base point is $(2, -1, 4)$.",
+  },
+  {
+    prompt: "What is the direction vector for the line $\\dfrac{x}{2} = y = \\dfrac{z-1}{4}$?",
+    options: ["$(2, 1, 4)$", "$(0, 1, 1)$", "$(2, 0, 4)$"],
+    answer: "A",
+    explanation: "The denominators correspond to the direction components. $y$ can be written as $y/1$, giving $(2, 1, 4)$.",
+  },
+  {
+    prompt: "Find a parametric equation for the line parallel to $z$-axis through $(1, 2, 3)$.",
+    options: ["$x=1, y=2, z=3+t$", "$x=1+t, y=2+t, z=3$", "$x=t, y=2t, z=3t$"],
+    answer: "A",
+    explanation: "Parallel to the $z$-axis means direction $(0,0,1)$. Hence $x$ and $y$ are constant.",
+  },
+  {
+    prompt: "Where does the line $x=1+t, y=2t, z=-1+t$ intersect the $xy$-plane?",
+    options: ["$(2, 2, 0)$", "$(1, 0, -1)$", "$(0, -2, -2)$"],
+    answer: "A",
+    explanation: "Intersecting the $xy$-plane means $z=0$. $-1+t = 0 \\Rightarrow t=1$. Substituting $t=1$: $x=2, y=2$.",
+  },
+  {
+    prompt: "Are the lines $\\mathbf{r}_1(t) = (1+t, 2-t, 3+2t)$ and $\\mathbf{r}_2(s) = (2s, -2s, 4s)$ parallel?",
+    options: ["Yes, their direction vectors are proportional", "No, they intersect", "No, they are skew"],
+    answer: "A",
+    explanation: "Directions are $(1, -1, 2)$ and $(2, -2, 4)$. Since $(2, -2, 4) = 2(1, -1, 2)$, they are parallel.",
+  },
+  {
+    prompt: "In vector form $\\mathbf{r}(t) = \\mathbf{r}_0 + t\\mathbf{v}$, the parameter $t$ dictates:",
+    options: ["The signed distance along the line from $\\mathbf{r}_0$, scaled by $|\\mathbf{v}|$", "The angle of rotation", "The $z$-coordinate"],
+    answer: "A",
+    explanation: "The parameter $t$ controls how many \"steps\" of vector $\\mathbf{v}$ you take from the starting point.",
+  },
+  {
+    prompt: "Find the intersection of $\\mathbf{r}_1(t)=(t, 1+t, 2-t)$ and $\\mathbf{r}_2(s)=(1, s, s)$.",
+    options: ["$(1, 2, 1)$", "They do not intersect", "$(0, 1, 2)$"],
+    answer: "A",
+    explanation: "$x$: $t=1$. If $t=1$, $\\mathbf{r}_1(1) = (1, 2, 1)$. Check $\\mathbf{r}_2$: $s=2 \\Rightarrow (1, 2, 2) \\neq (1, 2, 1)$. Wait, $1+t = s \\Rightarrow 2 = s$. $2-t = s \\Rightarrow 1 = s$. Contradiction. They do not intersect. The correct answer is B.",
+    // Fixing option map
+    answer: "B"
+  },
+  {
+    prompt: "If a line is orthogonal to a plane, its direction vector is:",
+    options: ["Parallel to the plane's normal vector", "Perpendicular to the plane's normal vector", "Zero"],
+    answer: "A",
+    explanation: "A line orthogonal to a plane pierces it straight through, perfectly aligning with the normal vector.",
+  },
+  {
+    prompt: "The line $\\mathbf{r}(t) = (3, -1, 2) + t(0, 0, 0)$ represents:",
+    options: ["A single point, not a line", "The origin", "A line parallel to all axes"],
+    answer: "A",
+    explanation: "A valid line requires a nonzero direction vector. A zero direction vector just stays at the starting point.",
+  },
+  {
+    prompt: "If $\\dfrac{x-1}{2} = \\dfrac{y+1}{3}$, and $z=5$, the direction vector is:",
+    options: ["$(2, 3, 0)$", "$(2, 3, 5)$", "$(1, -1, 5)$"],
+    answer: "A",
+    explanation: "$z=5$ means the $z$-coordinate never changes, so the $z$-component of the direction is zero.",
+  },
+  {
+    prompt: "Does the line $\\mathbf{r}(t) = (t, t, t)$ pass through the origin?",
+    options: ["Yes, at $t=0$", "No", "Yes, at $t=1$"],
+    answer: "A",
+    explanation: "Setting $t=0$ gives the point $(0,0,0)$.",
+  },
+  {
+    prompt: "The symmetric equations can be thought of as:",
+    options: ["Isolating the parameter $t$ in the parametric equations", "Taking the cross product", "Integrating the position function"],
+    answer: "A",
+    explanation: "Solving $x = x_0 + at$ for $t$ yields $(x-x_0)/a$. Doing this for $y$ and $z$ gives the symmetric form.",
+  }
 ];
 
 export const MV_GEO_SKEW_QUIZ = [
+  // Original 8 Questions[cite: 7]
   {
     prompt: "Two lines in 3D are called skew when:",
     options: [
@@ -400,9 +774,83 @@ export const MV_GEO_SKEW_QUIZ = [
     answer: "A",
     explanation: "The absolute value in the numerator erases any sign change from swapping the order, so the distance is unaffected.",
   },
+  // New 12 Questions
+  {
+    prompt: "The mixed scalar triple product in the numerator of the skew line formula represents:",
+    options: ["The volume of a parallelepiped spanned by the two direction vectors and the displacement vector", "The area of a triangle", "The angle between the lines"],
+    answer: "A",
+    explanation: "The expression $(\\mathbf{r}_2-\\mathbf{r}_1)\\cdot(\\mathbf{v}_1\\times\\mathbf{v}_2)$ computes the volume of the parallelepiped formed by these three vectors.",
+  },
+  {
+    prompt: "Are the $x$-axis and the line $x=1, z=1$ skew?",
+    options: ["Yes", "No, they intersect", "No, they are parallel"],
+    answer: "A",
+    explanation: "The $x$-axis has direction $(1,0,0)$. The line $x=1, z=1$ (which is parallel to $y$-axis) has direction $(0,1,0)$. They are not parallel, and they never cross ($z=0$ vs $z=1$).",
+  },
+  {
+    prompt: "If the displacement vector $(\\mathbf{r}_2-\\mathbf{r}_1)$ lies perfectly in the plane formed by $\\mathbf{v}_1$ and $\\mathbf{v}_2$, the lines:",
+    options: ["Intersect", "Are parallel", "Are perpendicular"],
+    answer: "A",
+    explanation: "If it lies in the plane of the directions, the scalar triple product is zero, meaning distance is zero, thus they intersect.",
+  },
+  {
+    prompt: "Two lines are $\\mathbf{r}_1 = (1,2,3) + t(1,1,1)$ and $\\mathbf{r}_2 = (2,3,4) + s(-1,-1,-1)$. They are:",
+    options: ["Parallel/Identical, not skew", "Skew", "Perpendicular"],
+    answer: "A",
+    explanation: "The directions are $(1,1,1)$ and $(-1,-1,-1)$, which are proportional. They are parallel.",
+  },
+  {
+    prompt: "The vector $\\mathbf{n} = \\mathbf{v}_1 \\times \\mathbf{v}_2$ is used to:",
+    options: ["Find the common perpendicular direction to both lines", "Find the midpoint between the lines", "Determine the speed of intersection"],
+    answer: "A",
+    explanation: "The cross product of the two direction vectors generates a normal vector orthogonal to both.",
+  },
+  {
+    prompt: "If two planes each contain one of two skew lines and are parallel to each other, the distance between these planes is:",
+    options: ["Exactly the shortest distance between the skew lines", "Zero", "Twice the distance"],
+    answer: "A",
+    explanation: "You can embed skew lines in two parallel planes. The perpendicular gap between these planes equals the shortest distance between the lines.",
+  },
+  {
+    prompt: "Can a pair of skew lines be perpendicular to each other?",
+    options: ["Yes, their direction vectors can have a dot product of zero", "No, perpendicular lines must intersect", "No, skew lines cannot form angles"],
+    answer: "A",
+    explanation: "Skew lines can be orthogonal in their directions (e.g., one goes East/West at $z=0$, one goes North/South at $z=1$).",
+  },
+  {
+    prompt: "What is the distance between the $x$-axis and the line $y=2, z=3$?",
+    options: ["$\\sqrt{13}$", "$3$", "$2$"],
+    answer: "A",
+    explanation: "The distance from the $x$-axis (origin $0,0,0$) to the parallel axis offset by $y=2, z=3$ is $\\sqrt{2^2+3^2} = \\sqrt{13}$.",
+  },
+  {
+    prompt: "If you shift one skew line purely along its own direction vector, the shortest distance to the other skew line:",
+    options: ["Remains unchanged", "Increases", "Decreases to zero"],
+    answer: "A",
+    explanation: "Sliding a line along itself doesn't change the line, so the geometric configuration and distance remain identical.",
+  },
+  {
+    prompt: "The skew lines distance formula fails (gives division by zero) if:",
+    options: ["The lines are parallel", "The lines intersect", "The displacement vector is zero"],
+    answer: "A",
+    explanation: "If the lines are parallel, $\\mathbf{v}_1 \\times \\mathbf{v}_2 = \\mathbf{0}$, causing division by zero. Parallel lines require a different distance formula.",
+  },
+  {
+    prompt: "If three lines are mutually skew, what is the maximum number of intersections they share?",
+    options: ["$0$", "$1$", "$3$"],
+    answer: "A",
+    explanation: "By definition, skew lines do not intersect. If all three are mutually skew pairs, none of them intersect.",
+  },
+  {
+    prompt: "To physically visualize the shortest distance between skew lines, think of:",
+    options: ["A supporting pillar constructed perpendicular between two non-intersecting bridge cables", "A flat sheet of paper", "A spiral staircase"],
+    answer: "A",
+    explanation: "The shortest segment is structurally exactly perpendicular to both non-intersecting lines (like a strut between cables).",
+  }
 ];
 
 export const MV_GEO_QUADRIC_QUIZ = [
+  // Original 8 Questions[cite: 7]
   {
     prompt: "The surface $x^2+y^2+z^2=1$ is a special case of which quadric?",
     options: ["Ellipsoid (a sphere is an ellipsoid with $a=b=c$)", "Elliptic paraboloid", "Elliptic cone"],
@@ -455,4 +903,77 @@ export const MV_GEO_QUADRIC_QUIZ = [
     answer: "A",
     explanation: "Fixing one variable in $x^2/a^2+y^2/b^2+z^2/c^2=1$ leaves a two-variable equation of the same ellipse-family form.",
   },
+  // New 12 Questions
+  {
+    prompt: "Identify the surface: $x^2 + 2y^2 = 4$.",
+    options: ["Elliptic cylinder", "Ellipsoid", "Hyperboloid"],
+    answer: "A",
+    explanation: "The variable $z$ is missing, meaning the 2D ellipse $x^2+2y^2=4$ is stretched infinitely along the $z$-axis.",
+  },
+  {
+    prompt: "The surface $y = z^2$ describes:",
+    options: ["Parabolic cylinder", "Elliptic paraboloid", "Hyperbolic paraboloid"],
+    answer: "A",
+    explanation: "Missing $x$ means it's a cylinder. The trace in the $yz$-plane is a parabola.",
+  },
+  {
+    prompt: "What is the trace of the hyperbolic paraboloid $z = y^2 - x^2$ in the $xy$-plane ($z=0$)?",
+    options: ["A pair of intersecting lines $y = \\pm x$", "An ellipse", "A hyperbola"],
+    answer: "A",
+    explanation: "Set $z=0 \\Rightarrow y^2 - x^2 = 0 \\Rightarrow y^2 = x^2 \\Rightarrow y = \\pm x$.",
+  },
+  {
+    prompt: "Which quadric surface is formed by revolving a hyperbola around its conjugate axis?",
+    options: ["Hyperboloid of one sheet", "Hyperboloid of two sheets", "Cone"],
+    answer: "A",
+    explanation: "Revolving a hyperbola around the axis that passes between its branches generates a single connected \"waist\" (one sheet).",
+  },
+  {
+    prompt: "What surface is $4x^2 - y^2 + 4z^2 = 0$?",
+    options: ["Elliptic cone", "Hyperboloid of one sheet", "Point (origin)"],
+    answer: "A",
+    explanation: "Rearranging gives $y^2 = 4x^2 + 4z^2$. Two positive squared terms equaling a third squared term indicates an elliptic cone.",
+  },
+  {
+    prompt: "Classify $x^2 + y^2 - z^2 = -1$.",
+    options: ["Hyperboloid of two sheets", "Hyperboloid of one sheet", "Ellipsoid"],
+    answer: "A",
+    explanation: "Multiplying by $-1$ yields $z^2 - x^2 - y^2 = 1$. One positive term, two negative terms $\\Rightarrow$ two sheets.",
+  },
+  {
+    prompt: "The traces of $z = x^2 + y^2$ parallel to the $xz$-plane are:",
+    options: ["Parabolas", "Circles", "Hyperbolas"],
+    answer: "A",
+    explanation: "Parallel to $xz$ means setting $y=c$. The equation becomes $z = x^2 + c^2$, which is an upward-opening parabola.",
+  },
+  {
+    prompt: "A Pringles potato chip is roughly shaped like a:",
+    options: ["Hyperbolic paraboloid", "Elliptic paraboloid", "Ellipsoid"],
+    answer: "A",
+    explanation: "The classic saddle shape (curving up along one axis and down along the other) is a hyperbolic paraboloid.",
+  },
+  {
+    prompt: "The quadric surface $x^2/4 + y^2/9 + z^2/16 = 1$ is bounded within:",
+    options: ["$-2 \\le x \\le 2$, $-3 \\le y \\le 3$, $-4 \\le z \\le 4$", "It is unbounded", "Only bounded in $z$"],
+    answer: "A",
+    explanation: "For the sum of positive terms to be 1, none of the individual terms can exceed 1. Thus $x^2/4 \\le 1 \\Rightarrow |x| \\le 2$, etc.",
+  },
+  {
+    prompt: "Identify the surface: $x^2 - y^2 - z^2 = 0$.",
+    options: ["Elliptic cone opening along the $x$-axis", "Elliptic cone opening along the $z$-axis", "Hyperboloid"],
+    answer: "A",
+    explanation: "Rewrite as $x^2 = y^2 + z^2$. The axis of the cone is the axis whose variable stands alone with the opposite sign (the $x$-axis).",
+  },
+  {
+    prompt: "Which quadric surface has NO vertices (i.e., doesn't intersect its central axis)?",
+    options: ["Hyperboloid of one sheet", "Hyperboloid of two sheets", "Ellipsoid"],
+    answer: "A",
+    explanation: "For $x^2+y^2-z^2=1$, the $z$-axis requires $x=0, y=0$, which yields $-z^2=1$, an impossible condition, so it never hits the $z$-axis.",
+  },
+  {
+    prompt: "Classify $x^2/9 - y^2/4 = 1$.",
+    options: ["Hyperbolic cylinder", "Hyperbolic paraboloid", "Hyperboloid of two sheets"],
+    answer: "A",
+    explanation: "The variable $z$ is missing, so it's a cylinder built from the 2D hyperbola $x^2/9 - y^2/4 = 1$.",
+  }
 ];
