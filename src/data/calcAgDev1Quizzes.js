@@ -5,7 +5,7 @@
  *   - Module B: F.Sc Part 2 (Ch. 6) + Math-101 (Sem 1)
  *   - Module C: F.Sc Part 2 (Ch. 1-3) + Math-101 Calculus I
  *   - Module D: F.Sc Part 2 (Ch. 3) + Math-201 Differential Equations
- * 15 rigorous MCQs per section with detailed step-by-step explanations.
+ * 20 rigorous MCQs per section with detailed step-by-step explanations.
  */
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -132,7 +132,62 @@ export const LINES_P1_QUIZ = [
     options: ["$(8, 9)$", "$(4, 5)$", "$(10, 11)$", "$(7, 8)$"],
     answer: "A",
     explanation: "External division ratio $3 : 1$ uses $k_2 = -1$: $x = \\frac{3(6) - 1(2)}{3 - 1} = \\frac{18 - 2}{2} = 8$, and $y = \\frac{3(7) - 1(3)}{3 - 1} = \\frac{21 - 3}{2} = 9$. Thus $P = (8, 9)$."
-  }
+  },
+  {
+    prompt: "The lines $2x - 3y + 1 = 0$, $x + y - 2 = 0$, and $3x - 4y + k = 0$ are concurrent if $k$ equals:",
+    options: [
+      "$1$",
+      "$2$",
+      "$-1$",
+      "$0$"
+    ],
+    answer: "A",
+    explanation: "Solving the first two lines gives $x = 1, y = 1$. Substituting into the third line: $3(1) - 4(1) + k = 0 \\implies -1 + k = 0 \\implies k = 1$."
+  },
+  {
+    prompt: "What is the reflection of the point $(1, 2)$ across the line $x - y = 0$?",
+    options: [
+      "$(2, 1)$",
+      "$(-1, -2)$",
+      "$(1, -2)$",
+      "$(-2, -1)$"
+    ],
+    answer: "A",
+    explanation: "Reflection of $(x_1, y_1)$ across $y = x$ simply swaps coordinates to $(y_1, x_1) = (2, 1)$."
+  },
+  {
+    prompt: "The foot of the perpendicular from the origin $(0, 0)$ to the line $3x + 4y - 25 = 0$ is:",
+    options: [
+      "$(3, 4)$",
+      "$(4, 3)$",
+      "$(3, -4)$",
+      "$(6, 8)$"
+    ],
+    answer: "A",
+    explanation: "Using foot formula $(h, k) = \\left(-\\frac{Ac}{A^2+B^2}, -\\frac{Bc}{A^2+B^2}\\right) = \\left(-\\frac{3(-25)}{25}, -\\frac{4(-25)}{25}\\right) = (3, 4)$."
+  },
+  {
+    prompt: "The area of the triangle bounded by the coordinate axes and the line $3x + 2y - 12 = 0$ is:",
+    options: [
+      "$12$",
+      "$24$",
+      "$6$",
+      "$18$"
+    ],
+    answer: "A",
+    explanation: "$x$-intercept is $(4, 0)$ and $y$-intercept is $(0, 6)$. Area is $\\frac{1}{2} \\times 4 \\times 6 = 12$."
+  },
+  {
+    prompt: "The equation of the line passing through $(1, 1)$ and parallel to $4x - 5y + 7 = 0$ is:",
+    options: [
+      "$4x - 5y + 1 = 0$",
+      "$4x - 5y - 1 = 0$",
+      "$5x + 4y - 9 = 0$",
+      "$4x + 5y - 9 = 0$"
+    ],
+    answer: "A",
+    explanation: "The family of parallel lines is $4x - 5y + c = 0$. Plugging in $(1, 1)$ gives $4(1) - 5(1) + c = 0 \\implies c = 1$."
+  },
 ];
 
 export const LINES_P2_QUIZ = [
@@ -280,7 +335,62 @@ export const LINES_P2_QUIZ = [
     ],
     answer: "A",
     explanation: "This follows from substituting $m = -1/m'$ into the characteristic quadratic equations and taking the resultant."
-  }
+  },
+  {
+    prompt: "If the lines represented by $ax^2 + 2hxy + by^2 = 0$ are perpendicular, which relationship holds?",
+    options: [
+      "$a + b = 0$",
+      "$a - b = 0$",
+      "$h^2 - ab = 0$",
+      "$ab = 1$"
+    ],
+    answer: "A",
+    explanation: "The product of the slopes is $m_1 m_2 = a/b$. For perpendicular lines, $m_1 m_2 = -1 \\implies a/b = -1 \\implies a + b = 0$."
+  },
+  {
+    prompt: "The condition for $ax^2 + 2hxy + by^2 = 0$ to represent two real, distinct lines through the origin is:",
+    options: [
+      "$h^2 - ab > 0$",
+      "$h^2 - ab = 0$",
+      "$h^2 - ab < 0$",
+      "$a + b = 0$"
+    ],
+    answer: "A",
+    explanation: "The discriminant governing the real distinctness of the two slopes is $h^2 - ab > 0$."
+  },
+  {
+    prompt: "Find the angle between the pair of lines $2x^2 - 5xy + 2y^2 = 0$:",
+    options: [
+      "$\\arctan(3/4)$",
+      "$\\pi/2$",
+      "$\\pi/4$",
+      "$\\arctan(4/3)$"
+    ],
+    answer: "A",
+    explanation: "$a = 2, b = 2, 2h = -5 \\implies h = -5/2$. $\\tan\\theta = \\frac{2\\sqrt{h^2 - ab}}{a+b} = \\frac{2\\sqrt{25/4 - 4}}{4} = \\frac{2(3/2)}{4} = \\frac{3}{4}$."
+  },
+  {
+    prompt: "The joint equation of the pair of lines passing through the origin and perpendicular to $x^2 - 3xy + 2y^2 = 0$ is:",
+    options: [
+      "$2x^2 + 3xy + y^2 = 0$",
+      "$2x^2 - 3xy + y^2 = 0$",
+      "$x^2 + 3xy + 2y^2 = 0$",
+      "$y^2 - 3xy + 2x^2 = 0$"
+    ],
+    answer: "A",
+    explanation: "Replacing slopes $m$ by $-1/m$ swaps the coefficients of $x^2$ and $y^2$ and flips the sign of $xy$: $bx^2 - 2hxy + ay^2 = 0 \\implies 2x^2 + 3xy + y^2 = 0$."
+  },
+  {
+    prompt: "The distance between the parallel lines given by $x^2 + 4xy + 4y^2 + 3x + 6y - 4 = 0$ is:",
+    options: [
+      "$\\sqrt{5}$",
+      "$2\\sqrt{5}$",
+      "$5$",
+      "$1$"
+    ],
+    answer: "A",
+    explanation: "Factor as $(x + 2y)^2 + 3(x + 2y) - 4 = 0 \\implies (x + 2y + 4)(x + 2y - 1) = 0$. Distance is $\\frac{|4 - (-1)|}{\\sqrt{1^2 + 2^2}} = \\frac{5}{\\sqrt{5}} = \\sqrt{5}$."
+  },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -427,7 +537,62 @@ export const CIRCLES_P1_QUIZ = [
     options: ["$\\pi$ ($180^\\circ$)", "$0$", "$\\pi/2$", "$3\\pi/2$"],
     answer: "A",
     explanation: "$x = r\\cos\\theta = -r \\implies \\cos\\theta = -1$, and $y = r\\sin\\theta = 0 \\implies \\sin\\theta = 0$. Hence $\\theta = \\pi$."
-  }
+  },
+  {
+    prompt: "The length of the tangent from the point $P(5, 4)$ to the circle $x^2 + y^2 = 9$ is:",
+    options: [
+      "$4\\sqrt{2}$",
+      "$5$",
+      "$3\\sqrt{2}$",
+      "$6$"
+    ],
+    answer: "A",
+    explanation: "Length $L = \\sqrt{S_1} = \\sqrt{5^2 + 4^2 - 9} = \\sqrt{25 + 16 - 9} = \\sqrt{32} = 4\\sqrt{2}$."
+  },
+  {
+    prompt: "The radical axis of the circles $x^2 + y^2 + 4x + 6y - 3 = 0$ and $x^2 + y^2 - 2x + 4y + 1 = 0$ is:",
+    options: [
+      "$3x + y - 2 = 0$",
+      "$6x + 2y - 4 = 0$",
+      "$2x + 2y - 4 = 0$",
+      "$6x - 2y + 4 = 0$"
+    ],
+    answer: "A",
+    explanation: "Subtract equations $S - S' = 0$: $(4 - (-2))x + (6 - 4)y + (-3 - 1) = 6x + 2y - 4 = 0 \\implies 3x + y - 2 = 0$."
+  },
+  {
+    prompt: "Two circles $x^2 + y^2 + 2g_1 x + 2f_1 y + c_1 = 0$ and $x^2 + y^2 + 2g_2 x + 2f_2 y + c_2 = 0$ intersect orthogonally when:",
+    options: [
+      "$2g_1 g_2 + 2f_1 f_2 = c_1 + c_2$",
+      "$g_1 g_2 + f_1 f_2 = c_1 c_2$",
+      "$g_1 g_2 = f_1 f_2$",
+      "$2g_1 g_2 - 2f_1 f_2 = c_1 - c_2$"
+    ],
+    answer: "A",
+    explanation: "The condition for orthogonality derived from the Pythagorean theorem on radii and center distance is $2g_1 g_2 + 2f_1 f_2 = c_1 + c_2$."
+  },
+  {
+    prompt: "The parametric equations of the circle $(x - 2)^2 + (y + 3)^2 = 16$ are:",
+    options: [
+      "$x = 2 + 4\\cos\\theta,\\; y = -3 + 4\\sin\\theta$",
+      "$x = -2 + 4\\cos\\theta,\\; y = 3 + 4\\sin\\theta$",
+      "$x = 4 + 2\\cos\\theta,\\; y = 4 - 3\\sin\\theta$",
+      "$x = 2 + 16\\cos\\theta,\\; y = -3 + 16\\sin\\theta$"
+    ],
+    answer: "A",
+    explanation: "Center $(h, k) = (2, -3)$ and radius $r = 4$ give $x = 2 + 4\\cos\\theta$ and $y = -3 + 4\\sin\\theta$."
+  },
+  {
+    prompt: "The point $(3, -2)$ lies ___ the circle $x^2 + y^2 - 4x + 6y - 12 = 0$:",
+    options: [
+      "Inside",
+      "On",
+      "Outside",
+      "At the center"
+    ],
+    answer: "A",
+    explanation: "Evaluate $S_1 = 3^2 + (-2)^2 - 4(3) + 6(-2) - 12 = 9 + 4 - 12 - 12 - 12 = -23 < 0$. Since $S_1 < 0$, the point lies inside."
+  },
 ];
 
 export const CIRCLES_P2_QUIZ = [
@@ -560,7 +725,62 @@ export const CIRCLES_P2_QUIZ = [
     ],
     answer: "A",
     explanation: "For a hyperbola $\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$, the director circle is $x^2 + y^2 = a^2 - b^2$. Here $a^2 = 25, b^2 = 9$, so $x^2 + y^2 = 25 - 9 = 16$."
-  }
+  },
+  {
+    prompt: "The director circle of the ellipse $\\dfrac{x^2}{16} + \\dfrac{y^2}{9} = 1$ is:",
+    options: [
+      "$x^2 + y^2 = 25$",
+      "$x^2 + y^2 = 7$",
+      "$x^2 + y^2 = 16$",
+      "$x^2 + y^2 = 9$"
+    ],
+    answer: "A",
+    explanation: "The director circle (locus of points from which perpendicular tangents can be drawn) for an ellipse is $x^2 + y^2 = a^2 + b^2 = 16 + 9 = 25$."
+  },
+  {
+    prompt: "The equation of the tangent to the parabola $y^2 = 8x$ with slope $m = 2$ is:",
+    options: [
+      "$y = 2x + 1$",
+      "$y = 2x + 2$",
+      "$y = 2x + 4$",
+      "$y = 2x - 1$"
+    ],
+    answer: "A",
+    explanation: "For $y^2 = 4ax$, $4a = 8 \\implies a = 2$. Tangent with slope $m$ is $y = mx + a/m = 2x + 2/2 = 2x + 1$."
+  },
+  {
+    prompt: "The chord of contact of tangents drawn from $(x_1, y_1)$ to the circle $x^2 + y^2 = a^2$ has equation:",
+    options: [
+      "$xx_1 + yy_1 = a^2$",
+      "$xx_1 - yy_1 = a^2$",
+      "$x_1 x + y_1 y = 0$",
+      "$x/x_1 + y/y_1 = a^2$"
+    ],
+    answer: "A",
+    explanation: "The chord of contact has the standard $T = 0$ linear form $xx_1 + yy_1 = a^2$."
+  },
+  {
+    prompt: "The length of the subnormal at any point on the parabola $y^2 = 4ax$ is:",
+    options: [
+      "Constant and equal to $2a$",
+      "Constant and equal to $a$",
+      "Proportional to $y$",
+      "Proportional to $x$"
+    ],
+    answer: "A",
+    explanation: "Subnormal is $|y\\,dy/dx|$. Since $2y\\,y' = 4a \\implies y' = 2a/y$, the subnormal is $|y(2a/y)| = 2a$ (constant)."
+  },
+  {
+    prompt: "The director circle of the hyperbola $\\dfrac{x^2}{25} - \\dfrac{y^2}{9} = 1$ is:",
+    options: [
+      "$x^2 + y^2 = 16$",
+      "$x^2 + y^2 = 34$",
+      "$x^2 + y^2 = 25$",
+      "$x^2 + y^2 = 9$"
+    ],
+    answer: "A",
+    explanation: "For a hyperbola $x^2/a^2 - y^2/b^2 = 1$, the director circle is $x^2 + y^2 = a^2 - b^2 = 25 - 9 = 16$."
+  },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -702,7 +922,62 @@ export const ADVCALC_P1_QUIZ = [
     ],
     answer: "A",
     explanation: "Cauchy's MVT (the foundation for proving L'Hopital's rule) states that $\\frac{f'(c)}{g'(c)} = \\frac{f(b) - f(a)}{g(b) - g(a)}$ for some $c \\in (a, b)$."
-  }
+  },
+  {
+    prompt: "The function $f(x) = \\dfrac{\\sin x}{x}$ has what type of discontinuity at $x = 0$?",
+    options: [
+      "Removable",
+      "Jump",
+      "Essential infinite",
+      "Oscillatory"
+    ],
+    answer: "A",
+    explanation: "$\\lim_{x\\to 0} \\frac{\\sin x}{x} = 1$, which is finite. Defining $f(0) = 1$ removes the discontinuity."
+  },
+  {
+    prompt: "By Cauchy's Mean Value Theorem for $f(x) = x^2$ and $g(x) = x$ on $[1, 3]$, the value of $c$ is:",
+    options: [
+      "$2$",
+      "$1.5$",
+      "$2.5$",
+      "$\\sqrt{3}$"
+    ],
+    answer: "A",
+    explanation: "$\\frac{f'(c)}{g'(c)} = \\frac{f(3)-f(1)}{g(3)-g(1)} \\implies \\frac{2c}{1} = \\frac{9-1}{3-1} = \\frac{8}{2} = 4 \\implies c = 2$."
+  },
+  {
+    prompt: "Using the Leibniz Integral Rule, $\\dfrac{d}{dx}\\int_0^x e^{-t^2}\\,dt$ equals:",
+    options: [
+      "$e^{-x^2}$",
+      "$-2x e^{-x^2}$",
+      "$e^{-x^2} - 1$",
+      "$\\frac{1}{2}e^{-x^2}$"
+    ],
+    answer: "A",
+    explanation: "By the Fundamental Theorem of Calculus / Leibniz rule, the derivative with respect to the upper limit is simply the integrand evaluated at $x$."
+  },
+  {
+    prompt: "$\\dfrac{d}{dx}\\cosh(3x)$ equals:",
+    options: [
+      "$3\\sinh(3x)$",
+      "$-3\\sinh(3x)$",
+      "$\\sinh(3x)$",
+      "$3\\cosh(3x)$"
+    ],
+    answer: "A",
+    explanation: "The derivative of $\\cosh u$ is $\\sinh u \\, du/dx$ (with positive sign, unlike circular trig)."
+  },
+  {
+    prompt: "The radius of curvature $\\rho$ of a curve at a point with curvature $\\kappa = 1/4$ is:",
+    options: [
+      "$4$",
+      "$1/4$",
+      "$16$",
+      "$2$"
+    ],
+    answer: "A",
+    explanation: "Radius of curvature is the reciprocal of curvature: $\\rho = 1/\\kappa = 1/(1/4) = 4$."
+  },
 ];
 
 export const ADVCALC_P2_QUIZ = [
@@ -825,7 +1100,62 @@ export const ADVCALC_P2_QUIZ = [
     options: ["$1/r$", "$r$", "$r^2$", "$0$"],
     answer: "A",
     explanation: "$x' = -r\\sin t, x'' = -r\\cos t$, $y' = r\\cos t, y'' = -r\\sin t$. Numerator: $|(-r\\sin t)(-r\\sin t) - (r\\cos t)(-r\\cos t)| = r^2(\\sin^2 t + \\cos^2 t) = r^2$. Denominator: $(r^2\\sin^2 t + r^2\\cos^2 t)^{3/2} = (r^2)^{3/2} = r^3$. $\\kappa = r^2 / r^3 = 1/r$."
-  }
+  },
+  {
+    prompt: "The curvature $\\kappa$ of the parabola $y = x^2$ at its vertex $(0, 0)$ is:",
+    options: [
+      "$2$",
+      "$1$",
+      "$0$",
+      "$1/2$"
+    ],
+    answer: "A",
+    explanation: "$y' = 2x = 0$ and $y'' = 2$ at $(0, 0)$. $\\kappa = \\frac{|y''|}{(1+(y')^2)^{3/2}} = \\frac{2}{(1+0)^{3/2}} = 2$."
+  },
+  {
+    prompt: "The arc length of a parametric curve with $x(t) = \\cos t, y(t) = \\sin t$ from $t = 0$ to $t = \\pi$ is:",
+    options: [
+      "$\\pi$",
+      "$2\\pi$",
+      "$1$",
+      "$2$"
+    ],
+    answer: "A",
+    explanation: "$\\sqrt{(x')^2 + (y')^2} = \\sqrt{(-\\sin t)^2 + (\\cos t)^2} = 1$. $\\int_0^\\pi 1\\,dt = \\pi$."
+  },
+  {
+    prompt: "The surface area generated by rotating $y = x$ from $x = 0$ to $x = 1$ about the $x$-axis is:",
+    options: [
+      "$\\pi\\sqrt{2}$",
+      "$2\\pi\\sqrt{2}$",
+      "$\\pi$",
+      "$\\frac{\\pi}{\\sqrt{2}}$"
+    ],
+    answer: "A",
+    explanation: "$S = 2\\pi \\int_0^1 x\\sqrt{1 + 1^2}\\,dx = 2\\pi\\sqrt{2}[x^2/2]_0^1 = \\pi\\sqrt{2}$."
+  },
+  {
+    prompt: "According to Pappus's First Centroid Theorem, the surface area of a torus formed by revolving a circle of radius $r$ centered at distance $R > r$ is:",
+    options: [
+      "$4\\pi^2 R r$",
+      "$2\\pi^2 R r$",
+      "$4\\pi R r^2$",
+      "$2\\pi R^2 r$"
+    ],
+    answer: "A",
+    explanation: "Surface area is circumference of circle ($2\\pi r$) multiplied by the distance traveled by its centroid ($2\\pi R$), yielding $4\\pi^2 R r$."
+  },
+  {
+    prompt: "In the Taylor polynomial remainder $R_n(x) = \\dfrac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$, the point $c$ lies:",
+    options: [
+      "Strictly between $a$ and $x$",
+      "Always at $a$",
+      "Always at $x$",
+      "At $(a+x)/2$"
+    ],
+    answer: "A",
+    explanation: "By Lagrange's form of the remainder, $c$ is guaranteed to lie strictly in the open interval between $a$ and $x$."
+  },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -957,7 +1287,62 @@ export const ODES_P1_QUIZ = [
     ],
     answer: "A",
     explanation: "Differentiate $y = cx^2 \\implies y' = 2cx = 2(y/x^2)x = \\frac{2y}{x}$. For orthogonal trajectories, replace $y'$ by $-1/y'$: $-\\frac{1}{y'} = \\frac{2y}{x} \\implies \\frac{dy}{dx} = -\\frac{x}{2y}$, which integrates to ellipses $x^2 + 2y^2 = K$."
-  }
+  },
+  {
+    prompt: "The differential equation $\\dfrac{dy}{dx} = \\dfrac{x + y}{x}$ is classified as:",
+    options: [
+      "Homogeneous of degree 0",
+      "Linear non-homogeneous only",
+      "Exact",
+      "Second order"
+    ],
+    answer: "A",
+    explanation: "Dividing through gives $1 + y/x$, which is a homogeneous function of degree $0$, solvable via $y = vx$."
+  },
+  {
+    prompt: "An integrating factor for the first-order linear ODE $\\dfrac{dy}{dx} + \\dfrac{2}{x}y = 4x$ is:",
+    options: [
+      "$x^2$",
+      "$2\\ln x$",
+      "$x$",
+      "$e^{2x}$"
+    ],
+    answer: "A",
+    explanation: "$\\mu(x) = e^{\\int (2/x)dx} = e^{2\\ln x} = e^{\\ln(x^2)} = x^2$."
+  },
+  {
+    prompt: "The orthogonal trajectories to the family of circles $x^2 + y^2 = C$ are:",
+    options: [
+      "Straight lines through the origin $y = kx$",
+      "Concentric circles",
+      "Parabolas $y = kx^2$",
+      "Hyperbolas $xy = C$"
+    ],
+    answer: "A",
+    explanation: "Differentiating $x^2+y^2=C$ gives $2x + 2y\\,y'=0 \\implies y' = -x/y$. Orthogonal slope is $dy/dx = y/x \\implies \\ln y = \\ln x + c \\implies y = kx$."
+  },
+  {
+    prompt: "If a radioactive isotope with decay rate $\\dfrac{dN}{dt} = -kN$ has half-life $T$, the decay constant $k$ equals:",
+    options: [
+      "$\\dfrac{\\ln 2}{T}$",
+      "$\\dfrac{T}{\\ln 2}$",
+      "$T\\ln 2$",
+      "$\\dfrac{1}{2T}$"
+    ],
+    answer: "A",
+    explanation: "$N(T) = N_0 e^{-kT} = N_0/2 \\implies e^{-kT} = 1/2 \\implies -kT = -\\ln 2 \\implies k = \\frac{\\ln 2}{T}$."
+  },
+  {
+    prompt: "Newton's Law of Cooling states $\\dfrac{dT}{dt} = -k(T - T_m)$. If $T_m = 20^\\circ\\text{C}$ and $T(0) = 100^\\circ\\text{C}$, the temperature $T(t)$ is:",
+    options: [
+      "$20 + 80e^{-kt}$",
+      "$100e^{-kt}$",
+      "$20 + 100e^{-kt}$",
+      "$80 + 20e^{-kt}$"
+    ],
+    answer: "A",
+    explanation: "Separating variables gives $T(t) - 20 = Ce^{-kt}$. At $t=0$, $100 - 20 = C = 80 \\implies T(t) = 20 + 80e^{-kt}$."
+  },
 ];
 
 export const ODES_P2_QUIZ = [
@@ -1110,5 +1495,60 @@ export const ODES_P2_QUIZ = [
     ],
     answer: "A",
     explanation: "Setting state variables $x_1 = y$ and $x_2 = y'$ converts $y'' + py' + qy = 0$ directly into $\\begin{pmatrix} x_1' \\\\ x_2' \\end{pmatrix} = \\begin{pmatrix} 0 & 1 \\\\ -q & -p \\end{pmatrix}\\begin{pmatrix} x_1 \\\\ x_2 \\end{pmatrix}$, connecting ODEs to matrix eigenvalues under Linear Algebra."
-  }
+  },
+  {
+    prompt: "The Bernoulli differential equation $\\dfrac{dy}{dx} + P(x)y = Q(x)y^n$ is linearized using the substitution:",
+    options: [
+      "$v = y^{1-n}$",
+      "$v = y^n$",
+      "$v = y^{n-1}$",
+      "$v = y/x$"
+    ],
+    answer: "A",
+    explanation: "Multiplying by $y^{-n}$ and letting $v = y^{1-n}$ transforms the equation into a linear ODE in $v$."
+  },
+  {
+    prompt: "The differential equation $(2xy + 3)dx + (x^2 - 1)dy = 0$ is exact because:",
+    options: [
+      "$\\dfrac{\\partial M}{\\partial y} = \\dfrac{\\partial N}{\\partial x} = 2x$",
+      "$\\dfrac{\\partial M}{\\partial x} = \\dfrac{\\partial N}{\\partial y} = 2y$",
+      "$\\dfrac{\\partial M}{\\partial y} = 0$",
+      "$M = N$"
+    ],
+    answer: "A",
+    explanation: "Here $M = 2xy + 3 \\implies \\partial M/\\partial y = 2x$, and $N = x^2 - 1 \\implies \\partial N/\\partial x = 2x$. Since they match, the ODE is exact."
+  },
+  {
+    prompt: "The general solution to the homogeneous ODE $y'' - 6y' + 9y = 0$ with repeated characteristic root $r = 3$ is:",
+    options: [
+      "$y = (c_1 + c_2 x)e^{3x}$",
+      "$y = c_1 e^{3x} + c_2 e^{-3x}$",
+      "$y = c_1 e^{3x}$",
+      "$y = c_1 \\cos(3x) + c_2 \\sin(3x)$"
+    ],
+    answer: "A",
+    explanation: "For a repeated root $r_1 = r_2 = 3$, the linearly independent solutions are $e^{3x}$ and $xe^{3x}$."
+  },
+  {
+    prompt: "The Wronskian $W(y_1, y_2)$ of $y_1 = \\cos(2x)$ and $y_2 = \\sin(2x)$ is:",
+    options: [
+      "$2$",
+      "$1$",
+      "$-2$",
+      "$0$"
+    ],
+    answer: "A",
+    explanation: "$W = y_1 y_2' - y_1' y_2 = \\cos(2x)(2\\cos(2x)) - (-2\\sin(2x))(\\sin(2x)) = 2(\\cos^2(2x) + \\sin^2(2x)) = 2$."
+  },
+  {
+    prompt: "For $y'' + 4y = \\cos(2x)$, what is the appropriate trial form for the particular solution $y_p$ to avoid resonance overlap with $y_c$?",
+    options: [
+      "$x(A\\cos(2x) + B\\sin(2x))$",
+      "$A\\cos(2x) + B\\sin(2x)$",
+      "$A x^2\\cos(2x)$",
+      "$A e^{2x}\\cos(2x)$"
+    ],
+    answer: "A",
+    explanation: "Because $\\cos(2x)$ is already in the complementary solution $y_c = c_1\\cos(2x)+c_2\\sin(2x)$, we must multiply the standard trial form by $x$."
+  },
 ];

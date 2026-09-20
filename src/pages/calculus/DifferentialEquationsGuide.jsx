@@ -50,7 +50,7 @@ export default function DifferentialEquationsGuide({ part = 1 }) {
           <a className="sb-link" href="#ode-systems-link">Bridge to Linear ODE Systems</a>
           <a className="sb-link" href="#ode-proc2">2nd-Order Solving Protocol</a>
           <a className="sb-link" href="#ode-ex-p2">Lengthy Certificate Examples (8)</a>
-          <a className="sb-link" href="#quiz-ode-p2">Interactive Mastery Quiz · 15 Qs</a>
+          <a className="sb-link" href="#quiz-ode-p2">Interactive Mastery Quiz · 20 Qs</a>
           <a className="sb-link" href="#ode-life2">Mechanical Vibrations &amp; RLC Circuits</a>
         </nav>
         <main className="main">
@@ -262,7 +262,7 @@ export default function DifferentialEquationsGuide({ part = 1 }) {
             <GuideMcqSection
               id="quiz-ode-p2"
               badge="Section 2 Mastery"
-              title="Exact, Bernoulli &amp; Second-Order ODEs (15 Questions)"
+              title="Exact, Bernoulli &amp; Second-Order ODEs (20 Questions)"
               scoreId="scoreode-2"
               section="ode-2"
               questions={ODES_P2_QUIZ}
@@ -295,7 +295,7 @@ export default function DifferentialEquationsGuide({ part = 1 }) {
         <a className="sb-link" href="#ode-linear-first">First-Order Linear &amp; Integrating Factor</a>
         <a className="sb-link" href="#ode-proc1">First-Order Solution Decision Tree</a>
         <a className="sb-link" href="#ode-ex-p1">Lengthy Certificate Examples (8)</a>
-        <a className="sb-link" href="#quiz-ode-p1">Interactive Mastery Quiz · 15 Qs</a>
+        <a className="sb-link" href="#quiz-ode-p1">Interactive Mastery Quiz · 20 Qs</a>
         <a className="sb-link" href="#ode-life1">RC Circuits &amp; Dynamic Systems</a>
       </nav>
       <main className="main">
@@ -436,7 +436,7 @@ export default function DifferentialEquationsGuide({ part = 1 }) {
           <GuideMcqSection
             id="quiz-ode-p1"
             badge="Section 1 Mastery"
-            title="First-Order Ordinary Differential Equations (15 Questions)"
+            title="First-Order Ordinary Differential Equations (20 Questions)"
             scoreId="scoreode-1"
             section="ode-1"
             questions={ODES_P1_QUIZ}

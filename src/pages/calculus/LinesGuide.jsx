@@ -47,7 +47,7 @@ export default function LinesGuide({ part = 1 }) {
           <a className="sb-link" href="#lines-bisectors">Angle Bisectors &amp; Distance</a>
           <a className="sb-link" href="#lines-proc2">Methodology</a>
           <a className="sb-link" href="#lines-ex-p2">Lengthy Examples (8)</a>
-          <a className="sb-link" href="#quiz-lines-p2">Interactive Quiz · 15 Qs</a>
+          <a className="sb-link" href="#quiz-lines-p2">Interactive Quiz · 20 Qs</a>
           <a className="sb-link" href="#lines-life2">Real-World Engineering</a>
         </nav>
         <main className="main">
@@ -167,7 +167,7 @@ export default function LinesGuide({ part = 1 }) {
           <GuideMcqSection
             id="quiz-lines-p2"
             badge="Quiz"
-            title="Pairs of Lines & Second-Degree Systems (15 Questions)"
+            title="Pairs of Lines & Second-Degree Systems (20 Questions)"
             scoreId="scorelines-2"
             section="lines-2"
             questions={LINES_P2_QUIZ}
@@ -198,7 +198,7 @@ export default function LinesGuide({ part = 1 }) {
         <a className="sb-link" href="#lines-concur">Concurrency (3×3 Det)</a>
         <a className="sb-link" href="#lines-proc1">Methodology</a>
         <a className="sb-link" href="#lines-ex-p1">Lengthy Examples (8)</a>
-        <a className="sb-link" href="#quiz-lines-p1">Interactive Quiz · 15 Qs</a>
+        <a className="sb-link" href="#quiz-lines-p1">Interactive Quiz · 20 Qs</a>
         <a className="sb-link" href="#lines-life1">Real-World Engineering</a>
       </nav>
       <main className="main">
@@ -334,7 +334,7 @@ export default function LinesGuide({ part = 1 }) {
         <GuideMcqSection
           id="quiz-lines-p1"
           badge="Quiz"
-          title="2D Analytical Geometry & Standard Lines (15 Questions)"
+          title="2D Analytical Geometry & Standard Lines (20 Questions)"
           scoreId="scorelines-1"
           section="lines-1"
           questions={LINES_P1_QUIZ}

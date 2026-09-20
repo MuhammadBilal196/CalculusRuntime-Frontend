@@ -92,7 +92,7 @@ export default function IntegrationGuide({ part = 1 }) {
           <a className="sb-link" href="#int-apps">Improper & Apps</a>
           <a className="sb-link" href="#int-proc2">Method</a>
           <a className="sb-link" href="#int-ex-p2">Examples (8)</a>
-          <a className="sb-link" href="#quiz-int-tech">Quiz 1 - 15 Qs</a>
+          <a className="sb-link" href="#quiz-int-tech">Quiz 1 - 20 Qs</a>
           <a className="sb-link" href="#int-life2">Real-life use</a>
         </nav>
         <main className="main">
@@ -153,7 +153,7 @@ export default function IntegrationGuide({ part = 1 }) {
           <LaMcqSection
             id="quiz-int-tech"
             badge="Quiz 1"
-            title="Techniques (15 questions)"
+            title="Techniques (20 questions)"
             scoreId="score-int-tech"
             section="int-tech"
             questions={INT_TECH_QUIZ}
@@ -180,7 +180,7 @@ export default function IntegrationGuide({ part = 1 }) {
         <a className="sb-link" href="#int-theory">Theory</a>
         <a className="sb-link" href="#int-proc1">Method</a>
         <a className="sb-link" href="#int-ex-p1">Examples (8)</a>
-        <a className="sb-link" href="#quiz-int-fund">Quiz 1 - 15 Qs</a>
+        <a className="sb-link" href="#quiz-int-fund">Quiz 1 - 20 Qs</a>
         <a className="sb-link" href="#int-life1">Real-life use</a>
       </nav>
       <main className="main">
@@ -210,6 +210,11 @@ export default function IntegrationGuide({ part = 1 }) {
               {`Translate first ("net displacement", "total mass"), then reverse differentiation rules. Always differentiate your antiderivative as a one-line check.`}
             </p>
           </PracticalTheory>
+          <TheoryBox title="Average Value of a Function">
+            <p>
+              {`The average (mean) value of an integrable function $f$ over $[a, b]$ is $f_{\\text{avg}} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx$. By the Mean Value Theorem for Definite Integrals, if $f$ is continuous, there is some $c \\in [a, b]$ where $f(c) = f_{\\text{avg}}$.`}
+            </p>
+          </TheoryBox>
           <RealLifeUse>
             The FTC is why a flow meter's rate curve can be turned into total volume delivered - the
             same move as "integrate velocity to get net displacement."
@@ -241,7 +246,7 @@ export default function IntegrationGuide({ part = 1 }) {
         <LaMcqSection
           id="quiz-int-fund"
           badge="Quiz 1"
-          title="Foundations (15 questions)"
+          title="Foundations (20 questions)"
           scoreId="score-int-fund"
           section="int-fund"
           questions={INT_FUND_QUIZ}

@@ -49,7 +49,7 @@ export default function CirclesTangentsGuide({ part = 1 }) {
           <a className="sb-link" href="#circ-director">Director Circle &amp; Chord of Contact</a>
           <a className="sb-link" href="#circ-proc2">Systematic Tangency Workflow</a>
           <a className="sb-link" href="#circ-ex-p2">Lengthy Certificate Examples (8)</a>
-          <a className="sb-link" href="#quiz-circ-p2">Interactive Mastery Quiz · 15 Qs</a>
+          <a className="sb-link" href="#quiz-circ-p2">Interactive Mastery Quiz · 20 Qs</a>
           <a className="sb-link" href="#circ-life2">Real-World Aerospace &amp; Optics</a>
         </nav>
         <main className="main">
@@ -249,7 +249,7 @@ export default function CirclesTangentsGuide({ part = 1 }) {
             <GuideMcqSection
               id="quiz-circ-p2"
               badge="Section 2 Mastery"
-              title="Conic Tangents, Normals &amp; Loci (15 Questions)"
+              title="Conic Tangents, Normals &amp; Loci (20 Questions)"
               scoreId="scorecircles-2"
               section="circles-2"
               questions={CIRCLES_P2_QUIZ}
@@ -288,7 +288,7 @@ export default function CirclesTangentsGuide({ part = 1 }) {
         <a className="sb-link" href="#circ-point-pos">Point Position S₁ &amp; Concentricity</a>
         <a className="sb-link" href="#circ-proc1">Algorithmic Solver Workflow</a>
         <a className="sb-link" href="#circ-ex-p1">Lengthy Certificate Examples (8)</a>
-        <a className="sb-link" href="#quiz-circ-p1">Interactive Mastery Quiz · 15 Qs</a>
+        <a className="sb-link" href="#quiz-circ-p1">Interactive Mastery Quiz · 20 Qs</a>
         <a className="sb-link" href="#circ-life1">Engineering Trilateration &amp; GPS</a>
       </nav>
       <main className="main">
@@ -467,7 +467,7 @@ export default function CirclesTangentsGuide({ part = 1 }) {
           <GuideMcqSection
             id="quiz-circ-p1"
             badge="Section 1 Mastery"
-            title="Circle Analytic Geometry &amp; Loci (15 Questions)"
+            title="Circle Analytic Geometry &amp; Loci (20 Questions)"
             scoreId="scorecircles-1"
             section="circles-1"
             questions={CIRCLES_P1_QUIZ}
