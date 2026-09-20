@@ -48,7 +48,7 @@ export default function AdvancedCalculusGuide({ part = 1 }) {
           <a className="sb-link" href="#adv-surface-work">Surface Area, Work &amp; Hydrostatics</a>
           <a className="sb-link" href="#adv-proc2">Integration &amp; Analysis Workflow</a>
           <a className="sb-link" href="#adv-ex-p2">Lengthy Certificate Examples (8)</a>
-          <a className="sb-link" href="#quiz-adv-p2">Interactive Mastery Quiz · 15 Qs</a>
+          <a className="sb-link" href="#quiz-adv-p2">Interactive Mastery Quiz · 20 Qs</a>
           <a className="sb-link" href="#adv-life2">Civil, Marine &amp; Robotics Engineering</a>
         </nav>
         <main className="main">
@@ -209,7 +209,7 @@ export default function AdvancedCalculusGuide({ part = 1 }) {
             <GuideMcqSection
               id="quiz-adv-p2"
               badge="Section 2 Mastery"
-              title="Hyperbolic Functions, Curvature &amp; Applied Integrals (15 Questions)"
+              title="Hyperbolic Functions, Curvature &amp; Applied Integrals (20 Questions)"
               scoreId="scoreadvcalc-2"
               section="advcalc-2"
               questions={ADVCALC_P2_QUIZ}
@@ -245,7 +245,7 @@ export default function AdvancedCalculusGuide({ part = 1 }) {
         <a className="sb-link" href="#adv-diff-methods">Logarithmic &amp; Parametric Derivatives</a>
         <a className="sb-link" href="#adv-proc1">Rigorous Limit Proof Protocol</a>
         <a className="sb-link" href="#adv-ex-p1">Lengthy Certificate Examples (8)</a>
-        <a className="sb-link" href="#quiz-adv-p1">Interactive Mastery Quiz · 15 Qs</a>
+        <a className="sb-link" href="#quiz-adv-p1">Interactive Mastery Quiz · 20 Qs</a>
         <a className="sb-link" href="#adv-life1">Control Engineering &amp; Stability</a>
       </nav>
       <main className="main">
@@ -422,7 +422,7 @@ export default function AdvancedCalculusGuide({ part = 1 }) {
           <GuideMcqSection
             id="quiz-adv-p1"
             badge="Section 1 Mastery"
-            title="Limits, Theorems &amp; Advanced Differentiation (15 Questions)"
+            title="Limits, Theorems &amp; Advanced Differentiation (20 Questions)"
             scoreId="scoreadvcalc-1"
             section="advcalc-1"
             questions={ADVCALC_P1_QUIZ}
