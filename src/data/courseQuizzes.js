@@ -73,7 +73,20 @@ export const COURSE_QUIZZES = {
       { q: "Triple integrals are typically used to compute:", options: ["Arc length", "Volume (or mass with density)", "Slope", "Curvature"], correct: 1 },
       { q: "∯ F·n dS over a closed surface equals ∭ div F dV by the:", options: ["Green's Theorem", "Stokes' Theorem", "Divergence Theorem", "Fundamental Theorem"], correct: 2 },
       { q: "The directional derivative D_u f equals:", options: ["∇f + u", "∇f · u", "∇f × u", "|∇f|"], correct: 1 },
+      // Module E: 3D Analytical Geometry & Quadric Surfaces
+      { q: "The sum of the squares of the direction cosines (cos²α + cos²β + cos²γ) for any 3D line equals:", options: ["0", "1", "π", "Depends on the line"], correct: 1 },
+      { q: "What is the perpendicular distance from the origin to the plane 2x - 2y + z = 6?", options: ["2", "6", "3", "1"], correct: 0 },
+      { q: "Two lines in 3D space are classified as 'skew' if they:", options: ["Are parallel but distinct", "Intersect at exactly one perpendicular point", "Are non-parallel and do not intersect", "Lie within the same plane"], correct: 2 },
+      { q: "Which quadric surface is characterized by the equation z = y² - x²?", options: ["Elliptic paraboloid", "Hyperbolic paraboloid (saddle)", "Hyperboloid of one sheet", "Ellipsoid"], correct: 1 },
+      { q: "The equation x² - y² + z² = 1 represents which standard quadric surface?", options: ["Hyperboloid of one sheet", "Hyperboloid of two sheets", "Elliptic cone", "Hyperbolic paraboloid"], correct: 0 },
+      // Module F: Space Curves, TNB Frame & Jacobians
+      { q: "Find the exact arc length of the helix r(t) = ⟨cos t, sin t, t⟩ from t = 0 to t = 2π.", options: ["2π", "2π√2", "4π", "π√2"], correct: 1 },
+      { q: "In the Frenet-Serret (TNB) frame for a space curve, the binormal vector B is defined as the cross product of:", options: ["T × N", "N × T", "T' × N'", "r' × r''"], correct: 0 },
+      { q: "The curvature κ of a smooth space curve r(t) physically measures:", options: ["The rate of change of the unit tangent vector with respect to arc length", "The twisting of the curve out of the osculating plane", "The magnitude of the velocity vector", "The area swept by the position vector"], correct: 0 },
+      { q: "In multiple integration, the absolute value of the Jacobian determinant |∂(x,y)/∂(u,v)| is used to:", options: ["Compute the dot product of orthogonal gradients", "Scale the differential area/volume element during a change of variables", "Find the curl of a 2D vector mapping", "Determine if a multivariable field is conservative"], correct: 1 },
+      { q: "For the standard transformation into cylindrical coordinates (x = r cos θ, y = r sin θ, z = z), the absolute value of the Jacobian determinant is:", options: ["1", "r", "r² sin θ", "r cos θ"], correct: 1 }
     ],
+    
   },
 
   "quiz-linear-algebra": {
