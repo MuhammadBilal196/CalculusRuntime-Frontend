@@ -109,6 +109,42 @@ export const COURSE_QUIZZES = {
       { q: "A square matrix with determinant zero is called:", options: ["Invertible", "Singular", "Diagonal", "Orthogonal"], correct: 1 },
       { q: "Gaussian elimination transforms a matrix into:", options: ["Diagonal form only", "Row echelon form", "Its inverse", "A symmetric matrix"], correct: 1 },
       { q: "For a 2×2 matrix [[a,b],[c,d]], the inverse exists when:", options: ["a + d ≠ 0", "ad − bc ≠ 0", "a = d", "b = c"], correct: 1 },
+      // --- Advanced certification extension: Modules H, I, J (30 questions) ---
+      // Medium-Hard (8): H x3, I x2, J x3
+      { q: "A is a 5×7 matrix with rank 4. What are dim Nul(A) and dim Nul(Aᵀ), respectively?", options: ["3 and 1", "1 and 3", "4 and 3", "3 and 4"], correct: 0 },
+      { q: "Suppose y ≠ 0 satisfies Aᵀy = 0 and yᵀb = 5. What follows about Ax = b?", options: ["It has a unique solution", "It is inconsistent", "It has infinitely many solutions", "Its solution is x = y"], correct: 1 },
+      { q: "After row-reducing A, pivot columns occur in columns 1, 3, and 5. A basis for Col(A) should be taken from:", options: ["Columns 1, 3, and 5 of the original A", "Columns 1, 3, and 5 of the RREF", "The nonzero rows of the original A", "Any three columns of A"], correct: 0 },
+      { q: "An eigenvalue λ of a 4×4 matrix has algebraic multiplicity 3 but geometric multiplicity 2. Which conclusion is forced?", options: ["The matrix is not diagonalizable", "The matrix is orthogonal", "λ must equal 0", "The matrix must be symmetric"], correct: 0 },
+      { q: "A is a real symmetric matrix with a repeated eigenvalue. Which statement is guaranteed by the Spectral Theorem?", options: ["A is orthogonally diagonalizable", "A is defective", "A has only positive eigenvalues", "A has determinant 1"], correct: 0 },
+      { q: "If Q is orthogonal, which identity is true for every pair of vectors x and y?", options: ["(Qx)ᵀ(Qy) = xᵀy", "Qx = x for every x", "det(Q) = 1 only", "QᵀQ = 0"], correct: 0 },
+      { q: "In Gram–Schmidt, after setting u₁ = a₁, which expression correctly removes the u₁-component from a₂?", options: ["u₂ = a₂ − ((a₂·u₁)/(u₁·u₁))u₁", "u₂ = a₂ + ((a₂·u₁)/(u₁·u₁))u₁", "u₂ = ((u₁·u₁)/(a₂·u₁))a₂", "u₂ = a₂ − (u₁·u₁)a₁"], correct: 0 },
+      { q: "For a least-squares solution x̂ of Ax ≈ b, the residual r = b − Ax̂ must satisfy:", options: ["Aᵀr = 0", "Ar = 0", "r = 0 in every problem", "AᵀA = 0"], correct: 0 },
+
+      // Hard (16): H x3, I x6, J x7
+      { q: "A is a 4×6 matrix of rank 3, and Ax = b is consistent. What is the dimension of its solution set?", options: ["3", "1", "4", "6"], correct: 0 },
+      { q: "If rank(A) = 3 but rank([A|b]) = 4, what is the correct classification of Ax = b?", options: ["No solution", "Unique solution", "Exactly four solutions", "Infinitely many solutions"], correct: 0 },
+      { q: "A is a 3×5 matrix with rank 3. Which combination is correct?", options: ["Col(A)=R³, dim Nul(A)=2, and Nul(Aᵀ)={0}", "Col(A)=R⁵, dim Nul(A)=3, and dim Nul(Aᵀ)=2", "dim Col(A)=2, dim Nul(A)=3, and Nul(Aᵀ)=R³", "Col(A) is 3-dimensional, dim Nul(A)=0, and dim Nul(Aᵀ)=2"], correct: 0 },
+      { q: "A diagonalizable matrix has eigenvalues 2, −1, and 1/2. What are the eigenvalues of A⁴?", options: ["16, 1, 1/16", "8, −1, 1/8", "16, −1, 1/16", "4, 1, 1/4"], correct: 0 },
+      { q: "Let v₁ and v₂ be eigenvectors with Av₁ = 3v₁ and Av₂ = v₂. If x = 2v₁ − v₂, then A⁴x equals:", options: ["162v₁ − v₂", "81v₁ − v₂", "6v₁ − 4v₂", "162v₁ + v₂"], correct: 0 },
+      { q: "A 4×4 matrix has eigenvalues 3, 3, −2, and 1, counted with algebraic multiplicity. What are tr(A) and det(A)?", options: ["5 and −18", "5 and 18", "9 and −6", "3 and −18"], correct: 0 },
+      { q: "Assume the characteristic polynomial of an n×n matrix splits. Which condition is equivalent to diagonalizability?", options: ["The sum of the eigenspace dimensions is n", "Every eigenvalue is distinct", "det(A) ≠ 0", "A is symmetric"], correct: 0 },
+      { q: "If A = QΛQᵀ is a real symmetric invertible matrix, which formula gives A⁻¹?", options: ["QΛ⁻¹Qᵀ", "QᵀΛQ", "QΛQᵀ", "Λ⁻¹QᵀQ"], correct: 0 },
+      { q: "For an orthonormal eigenbasis {qᵢ} of a real symmetric matrix A, which spectral decomposition is correct?", options: ["A = Σ λᵢ qᵢqᵢᵀ", "A = Σ qᵢqᵢᵀ without eigenvalues", "A = Σ λᵢ qᵢᵀqᵢ", "A = QᵀΛQ only"], correct: 0 },
+      { q: "For least squares, A = QR with R = [[2,1],[0,3]] and Qᵀb = [5,6]ᵀ. What is x̂?", options: ["[3/2, 2]ᵀ", "[5/2, 2]ᵀ", "[1, 2]ᵀ", "[2, 3/2]ᵀ"], correct: 0 },
+      { q: "An orthogonal projection matrix P satisfies P²=P and Pᵀ=P. Which set contains all possible eigenvalues of P?", options: ["{0,1}", "{−1,1}", "All positive real numbers", "All complex numbers of modulus 1"], correct: 0 },
+      { q: "The singular values of diag(4,2,0) are 4,2,0. What is the rank of the matrix?", options: ["2", "3", "1", "0"], correct: 0 },
+      { q: "A is 5×3 with rank 2. In its compact SVD A = UᵣΣᵣVᵣᵀ, what are the dimensions of Uᵣ, Σᵣ, and Vᵣ?", options: ["5×2, 2×2, 3×2", "5×3, 3×3, 3×3", "2×5, 2×2, 2×3", "5×2, 5×3, 3×2"], correct: 0 },
+      { q: "If A has singular values 9, 3, and 0, which singular values appear in A⁺?", options: ["1/9, 1/3, and 0", "9, 3, and 0", "1/9, 1/3, and ∞", "1/81, 1/9, and 0"], correct: 0 },
+      { q: "Suppose σ₁≥σ₂≥σ₃≥σ₄ are singular values. For the best rank-2 approximation A₂, what is ||A−A₂||₂?", options: ["σ₃", "σ₂", "σ₃+σ₄", "√(σ₃²+σ₄²)"], correct: 0 },
+      { q: "A full-rank matrix has largest singular value 12 and smallest singular value 0.03. What is κ₂(A)?", options: ["400", "40", "360", "0.0025"], correct: 0 },
+
+      // Very Hard / Integrative (6): H x1, I x2, J x3
+      { q: "A is 4×6 with rank 3. If b∈Col(A) and xₚ is one solution of Ax=b, which description of all solutions is correct?", options: ["xₚ + Nul(A), a 3-dimensional affine subset of R⁶", "xₚ + Col(A), a 3-dimensional affine subset of R⁴", "Nul(Aᵀ), a 1-dimensional subspace of R⁴", "A unique point because b lies in Col(A)"], correct: 0 },
+      { q: "A 3×3 matrix has characteristic polynomial (λ−2)²(λ+1). If dim Nul(A−2I)=1 and dim Nul(A+I)=1, what is the strongest conclusion?", options: ["A is not diagonalizable because it has only two independent eigenvector directions", "A is diagonalizable because it has two distinct eigenvalues", "A is orthogonally diagonalizable", "A is invertible and therefore diagonalizable"], correct: 0 },
+      { q: "A is diagonalizable with eigenvalues 1, 2, and −1. Let B=A³−2A+I. What is det(B)?", options: ["0", "10", "−10", "5"], correct: 0 },
+      { q: "For a rank-deficient least-squares problem Ax≈b, which vector is selected by x=A⁺b?", options: ["The minimum-Euclidean-norm vector among all least-squares solutions", "An arbitrary exact solution of Ax=b", "The eigenvector associated with the largest singular value", "The residual vector b−Ax"], correct: 0 },
+      { q: "Q is 5×2 with orthonormal columns spanning Col(A), and c=Qᵀb. Which pair correctly gives the projection p and residual r?", options: ["p=Qc=QQᵀb and r=b−p with Qᵀr=0", "p=Qᵀc and r=b−p with Qr=0", "p=QRb and r=0 for every b", "p=(QᵀQ)⁻¹b and r=Qᵀb"], correct: 0 },
+      { q: "A is a 6×4 matrix with rank 3 and full SVD A=UΣVᵀ. Which statement is correct?", options: ["One right singular direction spans Nul(A), while three left singular directions span Nul(Aᵀ)", "Three right singular directions span Nul(A), while one left singular direction spans Nul(Aᵀ)", "Nul(A) and Nul(Aᵀ) are both one-dimensional", "All singular directions correspond to nonzero singular values because rank(A)=3"], correct: 0 },
     ],
   },
 
