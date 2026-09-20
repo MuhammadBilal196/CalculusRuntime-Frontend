@@ -1,47 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { Sun, Moon, Menu, X } from "lucide-react";
+import { Sun, Moon, Menu, X, ChevronDown, Award, Trophy } from "lucide-react";
 
-const navLinks = [
-  {
-    to: "/courses/calculus-analytical-geometry",
-    label: "Calc & Geometry",
-    type: "Course",
-    match: "/courses/calculus-analytical-geometry",
-  },
-  {
-    to: "/courses/multivariable-calculus",
-    label: "Multivariable",
-    type: "Course",
-    match: "/courses/multivariable-calculus",
-  },
-  {
-    to: "/courses/linear-algebra",
-    label: "Linear Algebra",
-    type: "Course",
-    match: "/courses/linear-algebra",
-  },
-  {
-    to: "/courses/probability-statistics",
-    label: "Prob & Stats",
-    type: "Course",
-    match: "/courses/probability-statistics",
-  },
-  // General (site-wide) tools
-  { to: "/simple-concepts", label: "Concepts",    type: "General" },
-  { to: "/ai-solver",       label: "AI Solver",   type: "General" },
+const courseLinks = [
+  { to: "/courses/calculus-analytical-geometry", label: "Calc & Geometry" },
+  { to: "/courses/multivariable-calculus", label: "Multivariable" },
+  { to: "/courses/linear-algebra", label: "Linear Algebra" },
+  { to: "/courses/probability-statistics", label: "Prob & Stats" },
+];
 
-  { to: "/cheatsheet",      label: "Cheat Sheet", type: "General" },
-  { to: "/practice",        label: "Practice",    type: "General" },
-  { to: "/saved",           label: "Saved",       type: "General" },
-  { to: "/leaderboard",     label: "Leaderboard", type: "General" },
-  {
-    to: "/certificates",
-    label: "Certificates",
-    type: "General",
-    match: "/certificate",
-  },
+const toolLinks = [
+  { to: "/simple-concepts", label: "Concepts" },
+  { to: "/ai-solver", label: "AI Solver" },
+  { to: "/cheatsheet", label: "Cheat Sheet" },
+  { to: "/practice", label: "Practice" },
+  { to: "/saved", label: "Saved" },
 ];
 
 function Header({ darkMode, onToggleDark }) {
@@ -78,7 +52,6 @@ function Header({ darkMode, onToggleDark }) {
 
   return (
     <header className="site-header" ref={headerRef}>
-
       {/* Brand */}
       <NavLink className="site-brand" to="/" onClick={() => setMenuOpen(false)}>
         <span className="brand-mark" aria-hidden="true">∂</span>
@@ -88,24 +61,41 @@ function Header({ darkMode, onToggleDark }) {
         </span>
       </NavLink>
 
-      {/* Desktop nav */}
+      {/* Desktop nav - Centered */}
       <nav className="site-nav" aria-label="Primary navigation">
-        {navLinks.map(({ to, label, type, match }) => {
-          const active = match
-            ? location.pathname.startsWith(match)
-            : location.pathname === to;
-          return (
-            <NavLink
-              key={to}
-              to={to}
-              title={type}
-              className={active ? "active" : undefined}
-              aria-current={active ? "page" : undefined}
-            >
-              <span>{label}</span>
-            </NavLink>
-          );
-        })}
+        <div className="nav-dropdown">
+          <button className="dropdown-trigger">
+            Courses <ChevronDown size={14} strokeWidth={2.5} />
+          </button>
+          <div className="dropdown-content">
+            {courseLinks.map(({ to, label }) => (
+              <NavLink key={to} to={to} className={({ isActive }) => (isActive ? "active" : "")}>
+                {label}
+              </NavLink>
+            ))}
+          </div>
+        </div>
+
+        <div className="nav-dropdown">
+          <button className="dropdown-trigger">
+            Tools & Resources <ChevronDown size={14} strokeWidth={2.5} />
+          </button>
+          <div className="dropdown-content">
+            {toolLinks.map(({ to, label }) => (
+              <NavLink key={to} to={to} className={({ isActive }) => (isActive ? "active" : "")}>
+                {label}
+              </NavLink>
+            ))}
+          </div>
+        </div>
+
+        <NavLink to="/leaderboard" className={({ isActive }) => (isActive ? "active" : "")}>
+          <Trophy size={14} strokeWidth={2.5} /> Leaderboard
+        </NavLink>
+        
+        <NavLink to="/certificates" className={({ isActive }) => (isActive ? "active" : "")}>
+          <Award size={14} strokeWidth={2.5} /> Certificates
+        </NavLink>
       </nav>
 
       {/* Controls: theme toggle + auth + hamburger */}
@@ -136,10 +126,7 @@ function Header({ darkMode, onToggleDark }) {
           </div>
         ) : (
           <div className="header-auth">
-            <Link
-              to="/signup"
-              className="header-auth-btn"
-            >
+            <Link to="/signup" className="header-auth-btn">
               Log in / Sign up
             </Link>
           </div>
@@ -163,52 +150,38 @@ function Header({ darkMode, onToggleDark }) {
         aria-label="Mobile navigation"
         aria-hidden={!menuOpen}
       >
-        {navLinks.map(({ to, label, match }) => {
-          const active = match
-            ? location.pathname.startsWith(match)
-            : location.pathname === to;
-          return (
-            <NavLink
-              key={to}
-              to={to}
-              className={active ? "active" : undefined}
-              aria-current={active ? "page" : undefined}
-              onClick={() => setMenuOpen(false)}
-            >
-              {label}
-            </NavLink>
-          );
-        })}
+        <div className="mobile-nav-group-title">Courses</div>
+        {courseLinks.map(({ to, label }) => (
+          <NavLink key={to} to={to} onClick={() => setMenuOpen(false)}>
+            {label}
+          </NavLink>
+        ))}
 
         <div className="mobile-nav-divider" />
+        <div className="mobile-nav-group-title">Tools & Resources</div>
+        {toolLinks.map(({ to, label }) => (
+          <NavLink key={to} to={to} onClick={() => setMenuOpen(false)}>
+            {label}
+          </NavLink>
+        ))}
 
+        <div className="mobile-nav-divider" />
+        <NavLink to="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</NavLink>
+        <NavLink to="/certificates" onClick={() => setMenuOpen(false)}>Certificates</NavLink>
+
+        <div className="mobile-nav-divider" />
         {user ? (
           <>
-            <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
-              Dashboard
-            </Link>
-            <button className="mobile-nav-logout" onClick={handleLogout}>
-              Sign out
-            </button>
+            <Link to="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+            <button className="mobile-nav-logout" onClick={handleLogout}>Sign out</button>
           </>
         ) : (
           <>
-            <Link
-              to="/login"
-              onClick={() => setMenuOpen(false)}
-            >
-              Sign in
-            </Link>
-            <Link
-              to="/signup"
-              onClick={() => setMenuOpen(false)}
-            >
-              Sign up
-            </Link>
+            <Link to="/login" onClick={() => setMenuOpen(false)}>Sign in</Link>
+            <Link to="/signup" onClick={() => setMenuOpen(false)}>Sign up</Link>
           </>
         )}
       </nav>
-
     </header>
   );
 }
