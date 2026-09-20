@@ -176,70 +176,126 @@ select {
   flex-shrink: 0;
 }
 
-/* ── Desktop nav ────────────────────────────────────────────────────────── */
+/* ── Desktop nav (Centered & Modern) ────────────────────────────────────── */
+@media (min-width: 921px) {
+  .site-brand { flex: 1; }
+  .header-controls { flex: 1; justify-content: flex-end; }
+}
+.site-header {
+  overflow: visible !important;
+  z-index: 999 !important;
+}
+
 .site-nav {
   display: flex;
   flex-wrap: nowrap;
-  gap: 0.3rem;
-  margin-left: auto;
+  gap: 0.5rem;
   align-items: center;
-  flex: 1 1 auto;
-  min-width: 0; /* allow shrink so Sign In stays visible */
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(56, 189, 248, 0.45) transparent;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
+  justify-content: center; 
+  flex: 2; 
+  overflow: visible !important; /* CRITICAL: Must be visible to stop the clipping */
 }
 
-.site-nav::-webkit-scrollbar {
-  height: 6px;
-}
-
-.site-nav::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.45);
-  border-radius: 999px;
-}
-
-.site-nav::-webkit-scrollbar-track {
+.site-nav > a,
+.dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.45rem 0.9rem;
   background: transparent;
-}
-
-.site-nav a {
-  display: inline-block;
-  padding: 0.46rem 0.65rem;
   border: 1px solid transparent;
-  border-radius: 6px;
-  color: rgba(255, 250, 241, 0.76);
-  font-size: 0.83rem;
-  font-weight: 700;
+  border-radius: 999px; /* Attractive Pill Shape */
+  color: rgba(255, 250, 241, 0.85);
+  font-size: 0.86rem;
+  font-weight: 600;
   text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
   white-space: nowrap;
-  position: relative;
-  transition:
-    background 0.18s,
-    border-color 0.18s,
-    color 0.18s;
 }
 
-.site-nav a:hover,
-.site-nav a.active {
+.site-nav > a:hover,
+.site-nav > a.active,
+.dropdown-trigger:hover {
   background: rgba(56, 189, 248, 0.12);
-  border-color: rgba(56, 189, 248, 0.18);
-  color: var(--gold-2);
+  border-color: rgba(56, 189, 248, 0.25);
+  color: #38bdf8;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.1);
 }
 
-.site-nav a.active::after {
-  content: "";
+/* ── Navbar Dropdowns ── */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Invisible bridge so mouse doesn't fall off when moving down */
+.nav-dropdown::after {
+  content: '';
   position: absolute;
-  inset: auto 0.65rem -4px;
-  height: 3px;
-  background: var(--gold-2);
-  border-radius: 999px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 12px;
 }
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%); /* Centers dropdown under the button */
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  min-width: 200px;
+  padding: 0.4rem;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+  z-index: 400;
+}
+
+.nav-dropdown:hover .dropdown-content {
+  display: flex !important;
+  flex-direction: column !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: dropFadeIn 0.2s ease forwards;
+}
+
+@keyframes dropFadeIn {
+  from { opacity: 0; transform: translate(-50%, -8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.site-nav .dropdown-content a {
+  color: var(--ink);
+  background: transparent;
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+}
+
+.site-nav .dropdown-content a:hover {
+  background: var(--paper-2);
+  color: var(--blue);
+  transform: scale(1.02);
+}
+
+/* Dropdown styling fixes for Light Theme */
+[data-site-theme="default"] .site-nav > a,
+[data-site-theme="default"] .dropdown-trigger {
+  color: #94a3b8;
+}
+
+[data-site-theme="default"] .site-nav > a:hover,
+[data-site-theme="default"] .site-nav > a.active,
+[data-site-theme="default"] .dropdown-trigger:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
 /* ── Header controls (theme toggle + hamburger) ─────────────────────────── */
 .header-controls {
   display: flex;
@@ -368,6 +424,15 @@ select {
   background: rgba(56, 189, 248, 0.08);
   border-left-color: var(--gold-2);
   color: var(--gold-2);
+}
+/* ── Mobile Nav Group Titles ── */
+.mobile-nav-group-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding: 1.2rem clamp(1rem, 4vw, 3rem) 0.3rem;
+  font-weight: 800;
 }
 
 /* ── Header auth controls ───────────────────────────────────────────────── */
@@ -1509,7 +1574,7 @@ select {
   flex: 1 1 auto;
   min-width: 0;
   overflow-x: auto;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   scrollbar-width: none;
 }
 
