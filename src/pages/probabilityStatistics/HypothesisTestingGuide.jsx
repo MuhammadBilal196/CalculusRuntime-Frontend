@@ -27,6 +27,7 @@ function HypothesisTestingGuide({ part = 1 }) {
           <a className="sb-link" href="#quiz-ps-h-pval">Quiz</a>
           <a className="sb-link" href="#ps-h-errors">Errors &amp; power</a>
           <a className="sb-link" href="#quiz-ps-h-errors">Quiz</a>
+          <a className="sb-link" href="#ps-h-multisample">Two-sample &amp; paired t</a>
           <a className="sb-link" href="#ps-h-anova">ANOVA (One &amp; Two-Way)</a>
           <a className="sb-link" href="#ps-h-chisquare">Chi-Square tests</a>
           <a className="sb-link" href="#ps-cert-hypothesis-p2">Eight examples</a>
@@ -196,6 +197,38 @@ function HypothesisTestingGuide({ part = 1 }) {
           />
 
           <Divider />
+          <section className="section" id="ps-h-multisample">
+            <div className="sec-badge">Section 4.4A</div>
+            <h2 className="sec-title">Two-sample and paired t-tests</h2>
+            <TheoryBox title="Independent samples versus matched pairs">
+              <p>
+                {"For two independent groups, Welch's statistic is $t=(\\bar X_1-\\bar X_2-\\Delta_0)/\\sqrt{s_1^2/n_1+s_2^2/n_2}$, with Welch-Satterthwaite degrees of freedom. For paired data, first form within-pair differences $D_i$ and then run a one-sample t-test on the mean difference: $t=(\\bar D-\\mu_{D,0})/(s_D/\\sqrt n)$. Pairing changes the analysis because dependence within each pair is used rather than ignored."}
+              </p>
+            </TheoryBox>
+            <ProcedureBox
+              title="Choose the correct t-test"
+              steps={[
+                { text: "Use a one-sample t-test for one quantitative sample with unknown population standard deviation." },
+                { text: "Use a two-sample t-test for two independent groups; Welch's version does not assume equal population variances." },
+                { text: "Use a paired t-test when measurements are naturally matched or taken before/after on the same units." },
+                { text: "For paired data, analyze the differences, not the two raw samples as independent groups." },
+              ]}
+            />
+            <WorkedExample
+              number={5}
+              title="Paired data become one sample of differences"
+              setup={"Five subjects have before-minus-after differences $2,1,3,0,4$. State the test statistic for $H_0:\\mu_D=0$."}
+              steps={[
+                { text: "$\\bar D=(2+1+3+0+4)/5=2$." },
+                { text: "The squared deviations from 2 sum to $10$, so $s_D^2=10/4=2.5$ and $s_D=\\sqrt{2.5}$." },
+                { text: "$t=2/(\\sqrt{2.5}/\\sqrt5)=2/\\sqrt{0.5}\\approx2.83$ with $4$ df." },
+              ]}
+              result={"$t\\approx2.83$, $df=4$."}
+              check={"The sample size for the paired test is the number of pairs, here 5."}
+            />
+          </section>
+
+          <Divider />
           <section className="section" id="ps-h-anova">
             <div className="sec-badge">Section 4.5</div>
             <h2 className="sec-title">Analysis of Variance (ANOVA): One-Way &amp; Two-Way</h2>
@@ -292,6 +325,8 @@ function HypothesisTestingGuide({ part = 1 }) {
         <a className="sb-link" href="#quiz-ps-h-framework">Quiz</a>
         <a className="sb-link" href="#ps-h-tests">Common tests</a>
         <a className="sb-link" href="#quiz-ps-h-tests">Quiz</a>
+        <a className="sb-link" href="#ps-h-estimation">Estimation</a>
+        <a className="sb-link" href="#ps-h-sampling">Sampling distributions</a>
         <a className="sb-link" href="#ps-cert-hypothesis-p1">Eight examples</a>
       </nav>
       <main className="main">
@@ -415,6 +450,71 @@ function HypothesisTestingGuide({ part = 1 }) {
           section="ps-h-tests"
           questions={PS_H_TESTS_QUIZ}
         />
+
+        <Divider />
+        <section className="section" id="ps-h-estimation">
+          <div className="sec-badge">Section 4.2A</div>
+          <h2 className="sec-title">Maximum likelihood, method of moments, bias and MSE</h2>
+          <TheoryBox title="Maximum likelihood estimation">
+            <p>
+              {"For observed data $x_1,\\ldots,x_n$ from a model with parameter $\\theta$, the likelihood is $L(\\theta)=\\prod_i f(x_i;\\theta)$. The MLE $\\hat\\theta_{MLE}$ maximizes this function, usually by maximizing the log-likelihood $\\ell(\\theta)=\\sum_i\\log f(x_i;\\theta)$. The score equation $\\ell'(\\theta)=0$ gives candidates, but endpoints and second-order behavior must still be checked."}
+            </p>
+          </TheoryBox>
+          <TheoryBox title="Method of moments">
+            <p>
+              {"The method of moments equates sample moments to their theoretical counterparts. For a one-parameter model, a common first equation is $\\bar X=E_{\\theta}[X]$; with several parameters, match additional raw moments such as $n^{-1}\\sum X_i^2$ to $E_{\\theta}[X^2]$."}
+            </p>
+          </TheoryBox>
+          <TheoremBox title="Bias, variance and mean squared error">
+            <p>
+              {"An estimator T has bias $\\operatorname{Bias}(T)=E[T]-\\theta$. Its mean squared error is $\\operatorname{MSE}(T)=E[(T-\\theta)^2]=\\operatorname{Var}(T)+\\operatorname{Bias}(T)^2$. Unbiasedness is desirable, but an estimator with small bias can still have lower MSE if its variance is substantially smaller."}
+            </p>
+          </TheoremBox>
+          <WorkedExample
+            number={5}
+            title="MLE of a Bernoulli probability"
+            setup={"In n Bernoulli trials, x successes are observed. Find the MLE of p."}
+            steps={[
+              { text: "$L(p)=p^x(1-p)^{n-x}$ for $0\\le p\\le1$." },
+              { text: "$\\ell(p)=x\\log p+(n-x)\\log(1-p)$." },
+              { text: "Set $\\ell'(p)=x/p-(n-x)/(1-p)=0$ and solve to get $\\hat p=x/n$." },
+            ]}
+            result={"$\\hat p_{MLE}=x/n$."}
+            check={"The estimate is the observed sample proportion, which lies in the parameter space $[0,1]$."}
+          />
+          <WorkedExample
+            number={6}
+            title="Bias-variance trade-off through MSE"
+            setup={"Estimator A has variance $4$ and bias $1$; estimator B has variance $6$ and bias $0$. Which has smaller MSE?"}
+            steps={[
+              { text: "$MSE(A)=4+1^2=5$." },
+              { text: "$MSE(B)=6+0^2=6$." },
+            ]}
+            result={"Estimator A has the smaller MSE, despite being biased."}
+            check={"MSE compares total squared estimation error, not bias alone."}
+          />
+        </section>
+
+        <Divider />
+        <section className="section" id="ps-h-sampling">
+          <div className="sec-badge">Section 4.2B</div>
+          <h2 className="sec-title">Sampling distributions: Student's t, Chi-square and F</h2>
+          <TheoryBox title="Student's t distribution">
+            <p>
+              {"If $X_1,\\ldots,X_n$ are i.i.d. normal with unknown variance, then $T=(\\bar X-\\mu)/(S/\\sqrt n)\\sim t_{n-1}$. The t distribution has heavier tails than the standard normal because $\\sigma$ has been replaced by the random estimate S; as the degrees of freedom increase, t approaches $N(0,1)$."}
+            </p>
+          </TheoryBox>
+          <TheoryBox title="Chi-square and F distributions">
+            <p>
+              {"For a normal sample, $(n-1)S^2/\\sigma^2\\sim\\chi^2_{n-1}$, which drives inference for a population variance. If $U_1\\sim\\chi^2_{\\nu_1}$ and $U_2\\sim\\chi^2_{\\nu_2}$ are independent, then $(U_1/\\nu_1)/(U_2/\\nu_2)\\sim F_{\\nu_1,\\nu_2}$. F ratios appear in variance comparisons and ANOVA."}
+            </p>
+          </TheoryBox>
+          <PracticalTheory title="Match the sampling distribution to the statistic">
+            <p>
+              {"Unknown-variance mean problems naturally produce t statistics; variance problems produce Chi-square statistics; ratios of independent variance estimates produce F statistics. The degrees of freedom are part of the distribution and must be carried through the calculation."}
+            </p>
+          </PracticalTheory>
+        </section>
 
         <Divider />
         <PsCertificateBoost topic="hypothesis" part={1} />

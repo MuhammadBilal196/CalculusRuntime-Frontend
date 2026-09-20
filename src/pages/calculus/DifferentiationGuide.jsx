@@ -71,6 +71,11 @@ function SectionAdvancedDiff() {
           {"**Logarithmic Differentiation**: Useful for functions like $y = x^x$ or complex products/quotients. Take the natural logarithm $\\ln$ of both sides, simplify using log properties, differentiate implicitly, and solve for $y'$."}
         </p>
       </TheoryBox>
+      <TheoryBox title="Derivative of an Inverse Function">
+        <p>
+          {"If $f$ is strictly monotonic and differentiable with $f'(f^{-1}(b)) \\neq 0$, then the derivative of the inverse function satisfies $(f^{-1})'(b) = \\frac{1}{f'(f^{-1}(b))}$. Geometrically, the tangent slopes of reciprocal reflections across $y = x$ are reciprocals."}
+        </p>
+      </TheoryBox>
       <PracticalTheory title="Derivatives of Inverse Trig Functions">
         <p>
           {"Using implicit differentiation and trig identities, we find:"}<br/>
@@ -121,9 +126,9 @@ export default function DifferentiationGuide({ part = 1 }) {
           <a className="sb-link" href="#diff-adv-methods">Adv. Methods</a>
           <a className="sb-link" href="#diff-trig-derive">Trig Proofs</a>
           <a className="sb-link" href="#diff-ex-p2">Examples (8)</a>
-          <a className="sb-link" href="#quiz-diff-apps">Quiz 1 - 15 Qs</a>
+          <a className="sb-link" href="#quiz-diff-apps">Quiz 1 - 20 Qs</a>
           <a className="sb-link" href="#diff-advanced">MVT (Old)</a>
-          <a className="sb-link" href="#quiz-diff-adv">Quiz 2 - 15 Qs</a>
+          <a className="sb-link" href="#quiz-diff-adv">Quiz 2 - 20 Qs</a>
           <a className="sb-link" href="#diff-life2">Real-life use</a>
         </nav>
         <main className="main">
@@ -187,7 +192,7 @@ export default function DifferentiationGuide({ part = 1 }) {
           <LaMcqSection
             id="quiz-diff-apps"
             badge="Quiz 1"
-            title="Applications (15 questions - harder items unlock last)"
+            title="Applications (20 questions - harder items unlock last)"
             scoreId="score-diff-apps"
             section="diff-apps"
             questions={DIFF_APPS_QUIZ}
@@ -217,7 +222,7 @@ export default function DifferentiationGuide({ part = 1 }) {
           <LaMcqSection
             id="quiz-diff-adv"
             badge="Quiz 2"
-            title="Advanced tools (15 questions)"
+            title="Advanced tools (20 questions)"
             scoreId="score-diff-adv"
             section="diff-adv"
             questions={DIFF_ADV_QUIZ}
@@ -246,7 +251,7 @@ export default function DifferentiationGuide({ part = 1 }) {
         <a className="sb-link" href="#diff-proofs">The Big Proofs</a>
         <a className="sb-link" href="#diff-proc1">Method</a>
         <a className="sb-link" href="#diff-ex-p1">Examples (8)</a>
-        <a className="sb-link" href="#quiz-diff-rules">Quiz 1 - 15 Qs</a>
+        <a className="sb-link" href="#quiz-diff-rules">Quiz 1 - 20 Qs</a>
         <a className="sb-link" href="#diff-life1">Real-life use</a>
       </nav>
       <main className="main">
@@ -311,7 +316,7 @@ export default function DifferentiationGuide({ part = 1 }) {
         <LaMcqSection
           id="quiz-diff-rules"
           badge="Quiz 1"
-          title="Differentiation rules (15 questions)"
+          title="Differentiation rules (20 questions)"
           scoreId="score-diff-rules"
           section="diff-rules"
           questions={DIFF_RULES_QUIZ}

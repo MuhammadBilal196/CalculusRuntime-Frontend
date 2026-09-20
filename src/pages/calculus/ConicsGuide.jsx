@@ -33,7 +33,7 @@ export default function ConicsGuide({ part = 1 }) {
           <a className="sb-link" href="#con-class">Classification &amp; applications</a>
           <a className="sb-link" href="#con-proc2">Method</a>
           <a className="sb-link" href="#con-ex-p2">Examples (8)</a>
-          <a className="sb-link" href="#quiz-con-p2">Quiz · 15 Qs</a>
+          <a className="sb-link" href="#quiz-con-p2">Quiz · 20 Qs</a>
           <a className="sb-link" href="#con-life2">Real-life use</a>
         </nav>
         <main className="main">
@@ -63,6 +63,11 @@ export default function ConicsGuide({ part = 1 }) {
             <TheoryBox title="Discriminant and applications">
               <p>
                 {"For $Ax^2+Bxy+Cy^2+Dx+Ey+F=0$, the invariant $B^2-4AC$ classifies the nondegenerate type: $<0$ ellipse, $=0$ parabola, $>0$ hyperbola. An $xy$ term is removed by rotating through $\\theta$ with $\\cot 2\\theta=(A-C)/B$. Reflection properties of the parabola, the string property of the ellipse, and the difference property of the hyperbola power dishes, gardens, and LORAN-style navigation. Inverse-square gravity yields conic orbits with a focus at the sun."}
+              </p>
+            </TheoryBox>
+            <TheoryBox title="Polar Form of Conic Sections">
+              <p>
+                {"With a focus at the pole (origin), every conic has the standard polar representation $r = \\frac{ed}{1 \\pm e\\cos\\theta}$ (vertical directrix at $x = \\pm d$) or $r = \\frac{ed}{1 \\pm e\\sin\\theta}$ (horizontal directrix at $y = \\pm d$). The geometric type is unified completely by eccentricity: $e < 1$ is an ellipse, $e = 1$ is a parabola, and $e > 1$ is a hyperbola."}
               </p>
             </TheoryBox>
             <PracticalTheory title="Exam / design workflow">
@@ -99,7 +104,7 @@ export default function ConicsGuide({ part = 1 }) {
           <LaMcqSection
             id="quiz-con-p2"
             badge="Quiz"
-            title="General conics & applications (15 questions)"
+            title="General conics & applications (20 questions)"
             scoreId="score-con-p2"
             section="con-p2"
             questions={CONICS_P2_QUIZ}
@@ -127,7 +132,7 @@ export default function ConicsGuide({ part = 1 }) {
         <a className="sb-link" href="#con-theory">Lines, circles, conics</a>
         <a className="sb-link" href="#con-proc1">Method</a>
         <a className="sb-link" href="#con-ex-p1">Examples (8)</a>
-        <a className="sb-link" href="#quiz-con-p1">Quiz · 15 Qs</a>
+        <a className="sb-link" href="#quiz-con-p1">Quiz · 20 Qs</a>
         <a className="sb-link" href="#con-life1">Real-life use</a>
       </nav>
       <main className="main">
@@ -192,7 +197,7 @@ export default function ConicsGuide({ part = 1 }) {
         <LaMcqSection
           id="quiz-con-p1"
           badge="Quiz"
-          title="Distance, circles & standard conics (15 questions)"
+          title="Distance, circles & standard conics (20 questions)"
           scoreId="score-con-p1"
           section="con-p1"
           questions={CONICS_P1_QUIZ}

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import StudyGuideShell from "../courses/StudyGuideShell";
 import "../multivariableCalculus/PartialDerivativesGuide.css";
 import { LaMcqSection } from "./LaMcq";
+import LaCertificateBoost from "./LaCertificateBoost";
 import { TheoryBox, TheoremBox, ProcedureBox, WorkedExample, PracticalTheory, RealLifeUse } from "./LaBlocks";
 
 function Divider() {
@@ -20,6 +21,7 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
           <a className="sb-link" href="#quiz-la-o-proj">Quiz</a>
           <a className="sb-link" href="#la-o-apps">Applications</a>
           <a className="sb-link" href="#quiz-la-o-apps">Quiz</a>
+          <a className="sb-link" href="#la-cert-orthogonality">Certificate Examples</a>
         </nav>
         <main className="main">
           <header className="ch-hdr">
@@ -432,6 +434,9 @@ function OrthoLeastSquaresGuide({ part = 1 }) {
               },
             ]}
           />
+
+          <Divider />
+          <LaCertificateBoost topic="orthogonality" part={2} />
 
           <Divider />
           <section className="section" id="summary">
