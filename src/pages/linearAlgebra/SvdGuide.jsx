@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import StudyGuideShell from "../courses/StudyGuideShell";
 import "../multivariableCalculus/PartialDerivativesGuide.css";
 import { LaMcqSection } from "./LaMcq";
+import LaCertificateBoost from "./LaCertificateBoost";
 import { TheoryBox, TheoremBox, ProcedureBox, WorkedExample, PracticalTheory, RealLifeUse } from "./LaBlocks";
 
 function Divider() {
@@ -20,6 +21,7 @@ function SvdGuide({ part = 1 }) {
           <a className="sb-link" href="#quiz-la-s-apps">Quiz</a>
           <a className="sb-link" href="#la-s-lowrank">Low-rank & pseudoinverse</a>
           <a className="sb-link" href="#quiz-la-s-lowrank">Quiz</a>
+          <a className="sb-link" href="#la-cert-svd">Certificate Examples</a>
         </nav>
         <main className="main">
           <header className="ch-hdr">
@@ -417,6 +419,9 @@ function SvdGuide({ part = 1 }) {
               },
             ]}
           />
+
+          <Divider />
+          <LaCertificateBoost topic="svd" part={2} />
 
           <Divider />
           <section className="section" id="summary">
