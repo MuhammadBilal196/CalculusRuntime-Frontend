@@ -2397,5 +2397,32 @@ body.dark,
 [data-theme="dark"] textarea::placeholder {
   color: #94a3b8 !important;
 }
+/* Fix for invisible text on selected quiz options */
+[data-theme="dark"] .correct,
+[data-theme="dark"] .wrong,
+[data-theme="dark"] .correct-option,
+[data-theme="dark"] .wrong-option,
+[data-theme="dark"] .correct *,
+[data-theme="dark"] .wrong * {
+  color: #0f172a !important; /* Forces dark ink text for readability */
+}
+[data-theme="dark"] .bg-green-100,
+[data-theme="dark"] .bg-red-100,
+[data-theme="dark"] .bg-green-100 *,
+[data-theme="dark"] .bg-red-100 * {
+  color: #0f172a !important;
+}
+/* High-specificity override for partial derivatives guide MCQs */
+[data-theme="dark"] .partial-derivatives-guide .mcq-opt.correct {
+  background: rgba(16, 185, 129, 0.22) !important;
+  border-color: #10b981 !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .partial-derivatives-guide .mcq-opt.wrong {
+  background: rgba(239, 68, 68, 0.22) !important;
+  border-color: #ef4444 !important;
+  color: #f8fafc !important;
+}
 
 
