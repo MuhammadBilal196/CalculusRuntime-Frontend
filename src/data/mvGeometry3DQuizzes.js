@@ -217,9 +217,9 @@ export const MV_GEO_ANGLE3D_QUIZ = [
   {
     prompt: "Lines with direction ratios $(1, -2, 1)$ and $(2, 4, 6)$ are:",
     options: ["Perpendicular", "Parallel", "Neither"],
-    answer: "B",
+    answer: "A",
     explanation: "Wait, $(2, 4, 6)$ is NOT a multiple. Let's check dot product: $2 - 8 + 6 = 0$. They are perpendicular. Option A is correct. (Setting Answer to A).",
-    answer: "A"
+   
   },
   {
     prompt: "What is the angle between the lines $\\mathbf{r}_1(t) = (t, -t, 0)$ and $\\mathbf{r}_2(s) = (0, s, s)$?",
@@ -659,10 +659,10 @@ export const MV_GEO_LINE3D_QUIZ = [
   {
     prompt: "Find the intersection of $\\mathbf{r}_1(t)=(t, 1+t, 2-t)$ and $\\mathbf{r}_2(s)=(1, s, s)$.",
     options: ["$(1, 2, 1)$", "They do not intersect", "$(0, 1, 2)$"],
-    answer: "A",
+    answer: "B",
     explanation: "$x$: $t=1$. If $t=1$, $\\mathbf{r}_1(1) = (1, 2, 1)$. Check $\\mathbf{r}_2$: $s=2 \\Rightarrow (1, 2, 2) \\neq (1, 2, 1)$. Wait, $1+t = s \\Rightarrow 2 = s$. $2-t = s \\Rightarrow 1 = s$. Contradiction. They do not intersect. The correct answer is B.",
     // Fixing option map
-    answer: "B"
+    
   },
   {
     prompt: "If a line is orthogonal to a plane, its direction vector is:",
