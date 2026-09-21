@@ -571,10 +571,6 @@ export const MV_144_QUIZ = [
   },
   {
     prompt: "For $w=xy+yz+zx$ with $x=t, y=t^2, z=t^3$, $dw/dt$ at $t=1$ is:",
-    options: ["$11$", "$10$", "$5$"],
-    answer: "A",
-    explanation:
-      "$w = t^3+t^5+t^4$. $dw/dt = 3t^2+5t^4+4t^3 = 12$ wait, $3+5+4 = 12$. Options show 11? Let's fix option to 12.",
     options: ["$12$", "$11$", "$10$"],
     answer: "A",
     explanation: "$w = t^3+t^5+t^4$. $dw/dt = 3t^2+5t^4+4t^3 = 12$.",
