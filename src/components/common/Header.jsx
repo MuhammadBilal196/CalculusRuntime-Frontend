@@ -20,7 +20,7 @@ const toolLinks = [
 
 function Header({ darkMode, onToggleDark }) {
   const { user, logout } = useAuth();
-  const location = useLocation();
+  
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef(null);
 
