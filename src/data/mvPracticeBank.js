@@ -28159,7 +28159,2735 @@ export const MV_PRACTICE_BANK = [
     options: ["z=x²", "z=-x²", "z=x", "z=0"],
     correctAnswer: 0,
     explanation: "Setting y=0 gives z=x², which is a parabola."
-  }
+  },
+  
+  {
+    id: 23800,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t, t^2, t^3>, what is the position of the particle at t = 1?',
+    options: ['<1, 1, 1>', '<0, 1, 1>', '<1, 2, 3>', '<1, 1, 0>'],
+    correctAnswer: 0,
+    explanation: 'Substituting t = 1 gives r(1) = <1, 1^2, 1^3> = <1, 1, 1>.'
+  },
+  {
+    id: 23801,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <t^2, 3t, 4>, what is the velocity vector?',
+    options: ['<2t, 3, 0>', '<t, 3, 4>', '<2, 3t, 0>', '<t^2, 3, 4>'],
+    correctAnswer: 0,
+    explanation: 'Velocity is r\'(t). Differentiating componentwise gives <2t, 3, 0>.'
+  },
+  {
+    id: 23802,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the velocity of r(t) = <cos t, sin t, t>?',
+    options: ['<-sin t, cos t, 1>', '<sin t, cos t, 1>', '<-cos t, sin t, 1>', '<cos t, -sin t, 1>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate each component: r\'(t) = <-sin t, cos t, 1>.'
+  },
+  {
+    id: 23803,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The speed of a particle with velocity v(t) is:',
+    options: ['|v(t)|', 'v(t)^2', 'v\'(t)', '1/|v(t)|'],
+    correctAnswer: 0,
+    explanation: 'Speed is the magnitude of the velocity vector, |v(t)|.'
+  },
+  {
+    id: 23804,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If v(t) = <3, 4, 0>, what is the speed?',
+    options: ['5', '7', '12', '25'],
+    correctAnswer: 0,
+    explanation: 'Speed = sqrt(3^2 + 4^2 + 0^2) = 5.'
+  },
+  {
+    id: 23805,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Acceleration is defined as:',
+    options: ['The derivative of velocity', 'The derivative of position only', 'The magnitude of position', 'The integral of velocity'],
+    correctAnswer: 0,
+    explanation: 'Acceleration is a(t) = v\'(t) = r\'\'(t).'
+  },
+  {
+    id: 23806,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t^2, t^3, t>, what is the acceleration?',
+    options: ['<2, 6t, 0>', '<2t, 3t^2, 1>', '<t^2, t^3, t>', '<2t, 6, 0>'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <2t, 3t^2, 1>, so r\'\'(t) = <2, 6t, 0>.'
+  },
+  {
+    id: 23807,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A vector-valued function r(t) represents the:',
+    options: ['Position of a particle in space', 'Speed only', 'Acceleration only', 'Curvature only'],
+    correctAnswer: 0,
+    explanation: 'A position vector r(t) gives the particle\'s location as a function of t.'
+  },
+  {
+    id: 23808,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <2t, 3t, 4t>, what type of path does the particle follow?',
+    options: ['A straight line', 'A circle', 'A parabola', 'A helix'],
+    correctAnswer: 0,
+    explanation: 'All components are linear in t, so the path is a straight line.'
+  },
+  {
+    id: 23809,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is r(0) for r(t) = <t, t^2, 2t + 1>?',
+    options: ['<0, 0, 1>', '<1, 0, 0>', '<0, 1, 2>', '<1, 1, 1>'],
+    correctAnswer: 0,
+    explanation: 'At t = 0, r(0) = <0, 0, 1>.'
+  },
+
+  {
+    id: 23810,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t, 2t, 3t>, what is r\'(t)?',
+    options: ['<1, 2, 3>', '<t, 2t, 3t>', '<2, 4, 6>', '<0, 0, 0>'],
+    correctAnswer: 0,
+    explanation: 'Differentiating each linear component gives <1, 2, 3>.'
+  },
+  {
+    id: 23811,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t^2, t^2, t^2>, what is the velocity at t = 2?',
+    options: ['<4, 4, 4>', '<2, 2, 2>', '<8, 8, 8>', '<1, 1, 1>'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <2t, 2t, 2t>. At t = 2 this is <4, 4, 4>.'
+  },
+  {
+    id: 23812,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <t, t^2, t^3>, which coordinate changes cubically?',
+    options: ['z-coordinate', 'x-coordinate', 'y-coordinate', 'None'],
+    correctAnswer: 0,
+    explanation: 'The z-coordinate is z = t^3.'
+  },
+  {
+    id: 23813,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the magnitude of <1, 2, 2>?',
+    options: ['3', '5', '√5', '4'],
+    correctAnswer: 0,
+    explanation: 'Magnitude = √(1^2 + 2^2 + 2^2) = √9 = 3.'
+  },
+  {
+    id: 23814,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If the velocity is v(t) = <0, 0, 5>, the particle moves:',
+    options: ['In the positive z-direction', 'In the positive x-direction', 'In the positive y-direction', 'At rest'],
+    correctAnswer: 0,
+    explanation: 'Only the z-component is nonzero and positive.'
+  },
+  {
+    id: 23815,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If acceleration is zero, the velocity is:',
+    options: ['Constant', 'Always zero', 'Increasing', 'Undefined'],
+    correctAnswer: 0,
+    explanation: 'Zero acceleration means the derivative of velocity is zero, so velocity remains constant.'
+  },
+  {
+    id: 23816,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Which formula gives the speed of r(t)?',
+    options: ['|r\'(t)|', '|r(t)|', 'r\'\'(t)', 'r(t) · r\'(t)'],
+    correctAnswer: 0,
+    explanation: 'Speed is the magnitude of velocity, |r\'(t)|.'
+  },
+  {
+    id: 23817,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <t, 0, 0>, what is the speed?',
+    options: ['1', 't', '0', 't^2'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <1, 0, 0>, whose magnitude is 1.'
+  },
+  {
+    id: 23818,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <0, t^2, 0>, what is the velocity at t = 1?',
+    options: ['<0, 2, 0>', '<0, 1, 0>', '<0, 2t, 0>', '<2, 0, 0>'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <0, 2t, 0>. At t = 1 it is <0, 2, 0>.'
+  },
+  {
+    id: 23819,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <t^3, 0, 0>, what is the acceleration?',
+    options: ['<6t, 0, 0>', '<3t^2, 0, 0>', '<t^3, 0, 0>', '<6, 0, 0>'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <3t^2, 0, 0>, so r\'\'(t) = <6t, 0, 0>.'
+  },
+
+  {
+    id: 23820,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A space curve is generally represented by:',
+    options: ['A vector-valued function r(t)', 'A single constant', 'A scalar only', 'A matrix only'],
+    correctAnswer: 0,
+    explanation: 'A space curve can be represented parametrically by r(t) = <x(t), y(t), z(t)>.'
+  },
+  {
+    id: 23821,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In r(t) = <x(t), y(t), z(t)>, what does x(t) represent?',
+    options: ['The x-coordinate', 'The speed', 'The acceleration', 'The curvature'],
+    correctAnswer: 0,
+    explanation: 'x(t) gives the particle\'s x-coordinate at parameter t.'
+  },
+  {
+    id: 23822,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the derivative of r(t) = <sin t, 0, 0>?',
+    options: ['<cos t, 0, 0>', '<-sin t, 0, 0>', '<sin t, 1, 0>', '<cos t, 1, 0>'],
+    correctAnswer: 0,
+    explanation: 'The derivative of sin t is cos t.'
+  },
+  {
+    id: 23823,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the derivative of <0, cos t, 0>?',
+    options: ['<0, -sin t, 0>', '<0, sin t, 0>', '<0, cos t, 0>', '<-sin t, 0, 0>'],
+    correctAnswer: 0,
+    explanation: 'The derivative of cos t is -sin t.'
+  },
+  {
+    id: 23824,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r\'(t) = <2, 0, 0>, the speed is:',
+    options: ['2', '0', '4', '√2'],
+    correctAnswer: 0,
+    explanation: 'The magnitude of <2, 0, 0> is 2.'
+  },
+  {
+    id: 23825,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r\'(t) = <1, 1, 1>, what is the speed?',
+    options: ['√3', '3', '1', '2'],
+    correctAnswer: 0,
+    explanation: 'Speed = √(1 + 1 + 1) = √3.'
+  },
+  {
+    id: 23826,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The position function can be obtained from velocity by:',
+    options: ['Integrating velocity', 'Differentiating velocity', 'Taking its magnitude', 'Taking its cross product'],
+    correctAnswer: 0,
+    explanation: 'Since velocity is the derivative of position, position is obtained by integration plus an initial-position constant.'
+  },
+  {
+    id: 23827,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If v(t) = <2t, 0, 0>, what is the acceleration?',
+    options: ['<2, 0, 0>', '<2t, 0, 0>', '<t^2, 0, 0>', '<0, 2, 0>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate velocity: a(t) = <2, 0, 0>.'
+  },
+  {
+    id: 23828,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t, t, t>, the particle moves along which line?',
+    options: ['x = y = z', 'x = y = 0', 'y = z = 0', 'x = 1'],
+    correctAnswer: 0,
+    explanation: 'Since x = t, y = t, and z = t, we have x = y = z.'
+  },
+  {
+    id: 23829,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Which vector is tangent to a curve at a point?',
+    options: ['The velocity vector', 'The position vector only', 'The acceleration vector only', 'The zero vector always'],
+    correctAnswer: 0,
+    explanation: 'The velocity vector r\'(t) is tangent to the parametrized curve when nonzero.'
+  },
+
+  {
+    id: 23830,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The unit tangent vector T is obtained by:',
+    options: ['T = r\'(t)/|r\'(t)|', 'T = r(t)/|r(t)|', 'T = r\'\'(t)/|r\'\'(t)|', 'T = |r\'(t)|r\'(t)'],
+    correctAnswer: 0,
+    explanation: 'The unit tangent vector is the normalized velocity vector.'
+  },
+  {
+    id: 23831,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the magnitude of a unit vector?',
+    options: ['1', '0', '2', 'Depends on the vector'],
+    correctAnswer: 0,
+    explanation: 'By definition, a unit vector has magnitude 1.'
+  },
+  {
+    id: 23832,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If v = <3, 4, 0>, what is the unit tangent vector?',
+    options: ['<3/5, 4/5, 0>', '<3, 4, 0>', '<4/5, 3/5, 0>', '<1/3, 1/4, 0>'],
+    correctAnswer: 0,
+    explanation: 'Divide v by its magnitude 5: T = <3/5, 4/5, 0>.'
+  },
+  {
+    id: 23833,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Curvature measures how quickly a curve:',
+    options: ['Changes direction', 'Changes position only', 'Changes its parameter', 'Changes its length only'],
+    correctAnswer: 0,
+    explanation: 'Curvature measures the rate at which the tangent direction changes along a curve.'
+  },
+  {
+    id: 23834,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The curvature of a straight line is:',
+    options: ['0', '1', '∞', 'Undefined always'],
+    correctAnswer: 0,
+    explanation: 'A straight line does not change direction, so its curvature is zero.'
+  },
+  {
+    id: 23835,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a circle of radius R, the curvature is:',
+    options: ['1/R', 'R', 'R^2', '0'],
+    correctAnswer: 0,
+    explanation: 'The curvature of a circle with radius R is κ = 1/R.'
+  },
+  {
+    id: 23836,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What happens to the curvature of a circle when its radius increases?',
+    options: ['It decreases', 'It increases', 'It stays the same', 'It becomes zero immediately'],
+    correctAnswer: 0,
+    explanation: 'Since κ = 1/R, increasing R decreases curvature.'
+  },
+  {
+    id: 23837,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The curvature formula for a space curve is:',
+    options: ['κ = |r\' × r\'\'| / |r\'|^3', 'κ = |r\'| / |r\'\'|', 'κ = |r\' × r\'\'|', 'κ = |r\'\'|^3 / |r\'|'],
+    correctAnswer: 0,
+    explanation: 'For a regular space curve, κ = |r\' × r\'\'| / |r\'|^3.'
+  },
+  {
+    id: 23838,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What operation appears in the numerator of the space-curve curvature formula?',
+    options: ['Cross product', 'Dot product', 'Scalar multiplication only', 'Division'],
+    correctAnswer: 0,
+    explanation: 'The numerator contains |r\' × r\'\'|.'
+  },
+  {
+    id: 23839,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r\' × r\'\' = 0, what is the curvature, assuming r\' ≠ 0?',
+    options: ['0', '1', '∞', 'Cannot be calculated'],
+    correctAnswer: 0,
+    explanation: 'The numerator of the curvature formula is zero, so κ = 0.'
+  },
+
+  {
+    id: 23840,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Torsion is associated with how a space curve:',
+    options: ['Twists out of a plane', 'Changes its speed only', 'Moves along a straight line', 'Changes its parameter'],
+    correctAnswer: 0,
+    explanation: 'Torsion measures the twisting of a space curve away from its osculating plane.'
+  },
+  {
+    id: 23841,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A planar curve has torsion equal to:',
+    options: ['0', '1', '∞', 'Its curvature'],
+    correctAnswer: 0,
+    explanation: 'For a planar curve, torsion is zero.'
+  },
+  {
+    id: 23842,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A curve with nonzero torsion generally:',
+    options: ['Twists through three-dimensional space', 'Must be a straight line', 'Has zero curvature', 'Must be a circle'],
+    correctAnswer: 0,
+    explanation: 'Nonzero torsion indicates three-dimensional twisting.'
+  },
+  {
+    id: 23843,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Which curve is a standard example of a 3D twisting curve?',
+    options: ['Helix', 'Straight line', 'Parabola in the xy-plane', 'Circle in the xy-plane'],
+    correctAnswer: 0,
+    explanation: 'A helix naturally twists through three-dimensional space.'
+  },
+  {
+    id: 23844,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <cos t, sin t, 0>, the curve lies in:',
+    options: ['The xy-plane', 'The yz-plane', 'The xz-plane', 'All of space'],
+    correctAnswer: 0,
+    explanation: 'The z-coordinate is always 0, so the curve lies in the xy-plane.'
+  },
+  {
+    id: 23845,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The curve r(t) = <cos t, sin t, t> is a:',
+    options: ['Helix', 'Straight line', 'Parabola', 'Plane'],
+    correctAnswer: 0,
+    explanation: 'The x and y coordinates trace a circle while z changes linearly, producing a helix.'
+  },
+  {
+    id: 23846,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <cos t, sin t, 0>, what is the speed?',
+    options: ['1', '0', '2', 't'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <-sin t, cos t, 0>, whose magnitude is 1.'
+  },
+  {
+    id: 23847,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For the unit circle, the curvature is:',
+    options: ['1', '0', '2', 'π'],
+    correctAnswer: 0,
+    explanation: 'The unit circle has radius 1, so κ = 1/R = 1.'
+  },
+  {
+    id: 23848,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the cross product of two parallel vectors?',
+    options: ['The zero vector', 'A unit vector', 'Their dot product', 'Always undefined'],
+    correctAnswer: 0,
+    explanation: 'Parallel vectors have zero cross product.'
+  },
+  {
+    id: 23849,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r\' and r\'\' are parallel, the curvature is:',
+    options: ['0', '1', '∞', 'Equal to speed'],
+    correctAnswer: 0,
+    explanation: 'Their cross product is zero, making the curvature zero.'
+  },
+
+  {
+    id: 23850,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A parametrized surface is commonly written as:',
+    options: ['r(u,v) = <x(u,v), y(u,v), z(u,v)>', 'r(t) = <x(t), y(t)> only', 'f(x) = x^2', 'z = constant only'],
+    correctAnswer: 0,
+    explanation: 'A surface in space can be parametrized using two parameters u and v.'
+  },
+  {
+    id: 23851,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'How many parameters are normally needed to parametrize a surface?',
+    options: ['Two', 'One', 'Three', 'Four'],
+    correctAnswer: 0,
+    explanation: 'A two-dimensional surface generally requires two independent parameters.'
+  },
+  {
+    id: 23852,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v), the vectors r_u and r_v are obtained by:',
+    options: ['Partial differentiation', 'Cross multiplication', 'Integration only', 'Taking magnitudes'],
+    correctAnswer: 0,
+    explanation: 'r_u and r_v are partial derivatives with respect to u and v.'
+  },
+  {
+    id: 23853,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A normal vector to a parametrized surface can be found using:',
+    options: ['r_u × r_v', 'r_u · r_v', 'r_u + r_v only', 'r(u,v) alone'],
+    correctAnswer: 0,
+    explanation: 'The cross product r_u × r_v is perpendicular to both tangent vectors.'
+  },
+  {
+    id: 23854,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The magnitude |r_u × r_v| is related to:',
+    options: ['Surface area element', 'Speed', 'Torsion only', 'Time'],
+    correctAnswer: 0,
+    explanation: 'For a parametrized surface, dS = |r_u × r_v| du dv.'
+  },
+  {
+    id: 23855,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u, v, 0>, what surface is represented?',
+    options: ['The xy-plane', 'The yz-plane', 'The xz-plane', 'A sphere'],
+    correctAnswer: 0,
+    explanation: 'Since x = u, y = v, and z = 0, the surface is the xy-plane.'
+  },
+  {
+    id: 23856,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u, 0, v>, what surface is represented?',
+    options: ['The xz-plane', 'The xy-plane', 'The yz-plane', 'A cylinder'],
+    correctAnswer: 0,
+    explanation: 'Here y = 0 while x and z vary, so the surface is the xz-plane.'
+  },
+  {
+    id: 23857,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <0, u, v>, what surface is represented?',
+    options: ['The yz-plane', 'The xy-plane', 'The xz-plane', 'A sphere'],
+    correctAnswer: 0,
+    explanation: 'Here x = 0 while y and z vary, giving the yz-plane.'
+  },
+  {
+    id: 23858,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A flux integral measures the flow of a vector field through a:',
+    options: ['Surface', 'Point only', 'Curve only', 'Number line'],
+    correctAnswer: 0,
+    explanation: 'Flux measures how much of a vector field passes through a surface.'
+  },
+  {
+    id: 23859,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The basic form of a flux integral is:',
+    options: ['∫∫ F · n dS', '∫ F dt', '∫∫ f dA only', 'F × n'],
+    correctAnswer: 0,
+    explanation: 'Flux through an oriented surface is ∫∫ F · n dS.'
+  },
+
+  {
+    id: 23860,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In a flux integral, F represents the:',
+    options: ['Vector field', 'Surface parameter only', 'Curvature', 'Torsion'],
+    correctAnswer: 0,
+    explanation: 'F is the vector field whose flow through the surface is being measured.'
+  },
+  {
+    id: 23861,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In F · n, the dot product measures the component of F:',
+    options: ['Normal to the surface', 'Parallel to the parameter axis only', 'Along the x-axis only', 'Along the curve only'],
+    correctAnswer: 0,
+    explanation: 'The dot product with the normal vector extracts the normal component of the field.'
+  },
+  {
+    id: 23862,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If F · n = 0 everywhere on a surface, the flux is:',
+    options: ['0', '1', 'The surface area', 'Undefined'],
+    correctAnswer: 0,
+    explanation: 'If the field has no normal component, there is no flow through the surface.'
+  },
+  {
+    id: 23863,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A change of variables is useful because it can:',
+    options: ['Simplify an integral', 'Always make an integral larger', 'Remove all variables', 'Eliminate calculus'],
+    correctAnswer: 0,
+    explanation: 'A suitable transformation can turn a difficult integral into a simpler one.'
+  },
+  {
+    id: 23864,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The Jacobian is associated with a change in:',
+    options: ['Area or volume scaling', 'Time only', 'Curvature only', 'Velocity only'],
+    correctAnswer: 0,
+    explanation: 'The absolute value of the Jacobian accounts for area or volume scaling under a transformation.'
+  },
+  {
+    id: 23865,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For x = u and y = v, the Jacobian ∂(x,y)/∂(u,v) is:',
+    options: ['1', '0', 'u + v', 'uv'],
+    correctAnswer: 0,
+    explanation: 'The Jacobian matrix is the identity matrix, whose determinant is 1.'
+  },
+  {
+    id: 23866,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In a double integral, the Jacobian factor is used to transform:',
+    options: ['dA', 'dt only', 'A vector only', 'A tangent vector only'],
+    correctAnswer: 0,
+    explanation: 'Under a change of variables, dA is multiplied by the absolute Jacobian determinant.'
+  },
+  {
+    id: 23867,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For polar coordinates, x = r cos θ and y = r sin θ. The area element is:',
+    options: ['r dr dθ', 'dr dθ', 'r^2 dr dθ', 'dr/r dθ'],
+    correctAnswer: 0,
+    explanation: 'The polar-coordinate Jacobian is r, so dA = r dr dθ.'
+  },
+  {
+    id: 23868,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The Jacobian for polar coordinates is:',
+    options: ['r', '1', 'r^2', 'θ'],
+    correctAnswer: 0,
+    explanation: 'For x = r cos θ and y = r sin θ, the Jacobian determinant has absolute value r.'
+  },
+  {
+    id: 23869,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In a triple integral, a 3D change of variables requires a Jacobian related to:',
+    options: ['Volume scaling', 'Curve length only', 'Speed only', 'Curvature only'],
+    correctAnswer: 0,
+    explanation: 'The 3D Jacobian accounts for how volume changes under the transformation.'
+  },
+
+  {
+    id: 23870,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A global maximum on a closed bounded region is the:',
+    options: ['Largest function value on the region', 'Largest x-coordinate', 'Smallest function value', 'Largest derivative'],
+    correctAnswer: 0,
+    explanation: 'The global maximum is the greatest value attained by the function on the entire region.'
+  },
+  {
+    id: 23871,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A global minimum is the:',
+    options: ['Smallest function value on the region', 'Smallest x-coordinate only', 'Largest function value', 'Largest derivative'],
+    correctAnswer: 0,
+    explanation: 'The global minimum is the least value attained by the function on the region.'
+  },
+  {
+    id: 23872,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a closed bounded region, global extrema may occur:',
+    options: ['In the interior or on the boundary', 'Only at the origin', 'Only on the boundary', 'Only in the interior'],
+    correctAnswer: 0,
+    explanation: 'Global extrema can occur at interior critical points or boundary points.'
+  },
+  {
+    id: 23873,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'When finding global extrema on a bounded region, the boundary should be:',
+    options: ['Checked separately', 'Ignored', 'Always removed', 'Replaced by infinity'],
+    correctAnswer: 0,
+    explanation: 'Boundary points can contain the global maximum or minimum and therefore must be checked.'
+  },
+  {
+    id: 23874,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'An interior critical point commonly satisfies:',
+    options: ['f_x = 0 and f_y = 0', 'f = 0 only', 'x = y', 'f_x = f_y = 1'],
+    correctAnswer: 0,
+    explanation: 'For a differentiable function, interior critical points often satisfy both first partial derivatives equal to zero.'
+  },
+  {
+    id: 23875,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If f(x,y) = x^2 + y^2, where is its global minimum on all of R²?',
+    options: ['At (0,0)', 'At (1,1)', 'At (-1,-1)', 'There is no minimum'],
+    correctAnswer: 0,
+    explanation: 'Since x^2 + y^2 ≥ 0, the minimum value 0 occurs at (0,0).'
+  },
+  {
+    id: 23876,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If f(x,y) = x^2 + y^2 on the disk x² + y² ≤ 4, the maximum occurs on:',
+    options: ['The boundary x² + y² = 4', 'Only the origin', 'Nowhere', 'The z-axis'],
+    correctAnswer: 0,
+    explanation: 'The function increases with distance from the origin, so its maximum occurs on the boundary circle.'
+  },
+  {
+    id: 23877,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A boundary curve can be handled using:',
+    options: ['A parametrization', 'Only a 3D matrix', 'Only torsion', 'No calculations'],
+    correctAnswer: 0,
+    explanation: 'A boundary curve can be parametrized using one parameter and then analyzed.'
+  },
+  {
+    id: 23878,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A circle of radius R can be parametrized by:',
+    options: ['<R cos t, R sin t>', '<Rt, Rt>', '<R, R, R>', '<t, t, t>'],
+    correctAnswer: 0,
+    explanation: 'The standard parametrization of x² + y² = R² is x = R cos t, y = R sin t.'
+  },
+  {
+    id: 23879,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A parameter used to describe a curve is commonly denoted by:',
+    options: ['t', '∇', 'κ', 'τ only'],
+    correctAnswer: 0,
+    explanation: 'The parameter t is commonly used for parametrized curves.'
+  },
+
+  {
+    id: 23880,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the dot product of <1,0,0> and <0,1,0>?',
+    options: ['0', '1', '-1', '2'],
+    correctAnswer: 0,
+    explanation: 'The vectors are perpendicular, so their dot product is 0.'
+  },
+  {
+    id: 23881,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the cross product of <1,0,0> and <0,1,0>?',
+    options: ['<0,0,1>', '<0,0,0>', '<1,1,0>', '<0,1,1>'],
+    correctAnswer: 0,
+    explanation: 'Using the standard right-hand rule, i × j = k.'
+  },
+  {
+    id: 23882,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Two nonzero vectors are perpendicular when their dot product is:',
+    options: ['0', '1', '-1', 'Their magnitudes'],
+    correctAnswer: 0,
+    explanation: 'Perpendicular vectors have zero dot product.'
+  },
+  {
+    id: 23883,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A normal vector to a plane is perpendicular to:',
+    options: ['Every tangent direction in the plane', 'Only the x-axis', 'Only the y-axis', 'The origin'],
+    correctAnswer: 0,
+    explanation: 'A plane normal is perpendicular to all directions lying in the plane.'
+  },
+  {
+    id: 23884,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a surface z = f(x,y), a common parametrization is:',
+    options: ['r(x,y) = <x, y, f(x,y)>', 'r(x,y) = <f(x,y), 0, 0>', 'r(x,y) = <x, f(x,y), 0>', 'r(x,y) = <0,0,f(x,y)>'],
+    correctAnswer: 0,
+    explanation: 'The graph z = f(x,y) can be parametrized directly by x and y.'
+  },
+  {
+    id: 23885,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u,v,u+v>, what is r_u?',
+    options: ['<1,0,1>', '<0,1,1>', '<u,v,u+v>', '<1,1,0>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate with respect to u: r_u = <1,0,1>.'
+  },
+  {
+    id: 23886,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u,v,u+v>, what is r_v?',
+    options: ['<0,1,1>', '<1,0,1>', '<1,1,0>', '<u,v,u+v>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate with respect to v: r_v = <0,1,1>.'
+  },
+  {
+    id: 23887,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u,v,u+v>, what is r_u × r_v?',
+    options: ['<-1,-1,1>', '<1,1,1>', '<0,0,1>', '<1,-1,0>'],
+    correctAnswer: 0,
+    explanation: '<1,0,1> × <0,1,1> = <-1,-1,1>.'
+  },
+  {
+    id: 23888,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The magnitude of <-1,-1,1> is:',
+    options: ['√3', '3', '1', '√2'],
+    correctAnswer: 0,
+    explanation: 'Magnitude = √(1 + 1 + 1) = √3.'
+  },
+  {
+    id: 23889,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If a surface parametrization has r_u × r_v = 0, the parametrization is:',
+    options: ['Degenerate at that point', 'Always a sphere', 'Always a plane', 'Guaranteed to be regular'],
+    correctAnswer: 0,
+    explanation: 'A zero cross product means the two tangent vectors are parallel or one is zero, so the parametrization is not regular there.'
+  },
+
+  {
+    id: 23890,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The divergence of a vector field measures, conceptually, its:',
+    options: ['Net outward flow density', 'Curvature only', 'Path length', 'Speed only'],
+    correctAnswer: 0,
+    explanation: 'Divergence describes the net tendency of a vector field to flow outward from a point.'
+  },
+  {
+    id: 23891,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For F = <P,Q,R>, the divergence is:',
+    options: ['P_x + Q_y + R_z', 'P_y + Q_x + R_z', 'P + Q + R', 'P_x Q_y R_z'],
+    correctAnswer: 0,
+    explanation: 'div F = ∂P/∂x + ∂Q/∂y + ∂R/∂z.'
+  },
+  {
+    id: 23892,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For F = <x,y,z>, what is div F?',
+    options: ['3', 'x+y+z', '0', '1'],
+    correctAnswer: 0,
+    explanation: 'div F = ∂x/∂x + ∂y/∂y + ∂z/∂z = 1+1+1 = 3.'
+  },
+  {
+    id: 23893,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For F = <x,0,0>, what is div F?',
+    options: ['1', '0', 'x', '3'],
+    correctAnswer: 0,
+    explanation: 'div F = ∂x/∂x = 1.'
+  },
+  {
+    id: 23894,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A vector field with zero divergence is called:',
+    options: ['Solenoidal', 'Irrotational only', 'Constant', 'Singular'],
+    correctAnswer: 0,
+    explanation: 'A vector field with div F = 0 is called solenoidal.'
+  },
+  {
+    id: 23895,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a closed surface, outward flux describes flow:',
+    options: ['Leaving the enclosed volume', 'Entering only', 'Along the boundary curve only', 'Only upward'],
+    correctAnswer: 0,
+    explanation: 'With the outward orientation, positive flux represents net flow leaving the enclosed volume.'
+  },
+  {
+    id: 23896,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The divergence theorem connects a closed-surface flux integral with a:',
+    options: ['Triple integral of divergence', 'Line integral of curvature', 'Double integral of torsion', 'Single integral of speed'],
+    correctAnswer: 0,
+    explanation: 'The divergence theorem states that outward flux through a closed surface equals the volume integral of div F.'
+  },
+  {
+    id: 23897,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A closed surface has:',
+    options: ['No boundary curve', 'Exactly one boundary curve', 'Two boundary curves always', 'Only straight boundaries'],
+    correctAnswer: 0,
+    explanation: 'A closed surface encloses a region and has no boundary edge.'
+  },
+  {
+    id: 23898,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a sphere centered at the origin, the outward normal points:',
+    options: ['Away from the center', 'Toward the center', 'Only upward', 'Only downward'],
+    correctAnswer: 0,
+    explanation: 'The outward normal on a sphere points radially away from its center.'
+  },
+  {
+    id: 23899,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Which sequence best describes the educational workflow for this topic?',
+    options: ['Learn concepts → Practice → Master → Certification', 'Certification → Learn → Practice', 'Practice → Skip concepts → Certification', 'Certificate → Practice → Learn'],
+    correctAnswer: 0,
+    explanation: 'The intended learning progression is to learn the concepts, practice them at increasing difficulty, demonstrate mastery, and then complete certification.'
+  },
+  
+  {
+    id: 23900,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <t^2, 2t, t^3>, what is the velocity at t = 1?',
+    options: ['<2, 2, 3>', '<1, 2, 1>', '<2, 1, 3>', '<1, 2, 3>'],
+    correctAnswer: 0,
+    explanation: "r'(t) = <2t, 2, 3t^2>. At t = 1, v = <2, 2, 3>."
+  },
+  {
+    id: 23901,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <t, t^2, t^3>, what is the acceleration at t = 2?',
+    options: ['<0, 2, 12>', '<1, 4, 12>', '<0, 2, 6>', '<1, 2, 12>'],
+    correctAnswer: 0,
+    explanation: "r''(t) = <0, 2, 6t>, so at t = 2 the acceleration is <0, 2, 12>."
+  },
+  {
+    id: 23902,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If r(t) = <3t, 4t, 0>, what is the speed?',
+    options: ['5', '7', '12', '25'],
+    correctAnswer: 0,
+    explanation: "The velocity is <3,4,0>, whose magnitude is sqrt(9+16) = 5."
+  },
+  {
+    id: 23903,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <cos t, sin t, 2t>, what is the velocity?',
+    options: ['<-sin t, cos t, 2>', '<sin t, cos t, 2>', '<-cos t, sin t, 2>', '<-sin t, -cos t, 2>'],
+    correctAnswer: 0,
+    explanation: "Differentiate each component to obtain r'(t) = <-sin t, cos t, 2>."
+  },
+  {
+    id: 23904,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'What is the speed of r(t) = <cos t, sin t, 2t>?',
+    options: ['√5', '2', '3', '5'],
+    correctAnswer: 0,
+    explanation: "The velocity has magnitude sqrt(sin^2(t)+cos^2(t)+4) = sqrt(5)."
+  },
+  {
+    id: 23905,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'A particle has position r(t) = <t^2, 2t^2, 0>. At t = 1, its velocity is:',
+    options: ['<2,4,0>', '<1,2,0>', '<2,2,0>', '<4,4,0>'],
+    correctAnswer: 0,
+    explanation: "r'(t) = <2t,4t,0>. At t = 1 this gives <2,4,0>."
+  },
+  {
+    id: 23906,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <t^3, 3t^2, 2t>, what is the acceleration?',
+    options: ['<6t,6,0>', '<3t^2,6t,2>', '<6t,6t,2>', '<6,6t,0>'],
+    correctAnswer: 0,
+    explanation: "The velocity is <3t^2,6t,2>, so acceleration is <6t,6,0>."
+  },
+  {
+    id: 23907,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If r(t) = <t, 2t, 2t>, what is the unit tangent vector?',
+    options: ['<1/3,2/3,2/3>', '<1,2,2>', '<1/√5,2/√5,2/√5>', '<1/2,1,1>'],
+    correctAnswer: 0,
+    explanation: "The velocity is <1,2,2>, whose magnitude is 3. Dividing by 3 gives the unit tangent."
+  },
+  {
+    id: 23908,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If v = <2,-1,2>, what is the speed?',
+    options: ['3', '5', '√5', '√7'],
+    correctAnswer: 0,
+    explanation: "The speed is sqrt(2^2+(-1)^2+2^2) = sqrt(9) = 3."
+  },
+  {
+    id: 23909,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If r(t) = <t, t^2, 2>, at which value of t is the velocity <1,4,0>?',
+    options: ['t = 2', 't = 1', 't = 4', 't = 0'],
+    correctAnswer: 0,
+    explanation: "r'(t) = <1,2t,0>. Setting 2t = 4 gives t = 2."
+  },
+
+  {
+    id: 23910,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <t^2, t^2, t>, what is r'(t) × r''(t)?",
+    options: ['<2,-2,0>', '<-2,2,0>', '<0,0,2>', '<2,2,0>'],
+    correctAnswer: 0,
+    explanation: "r' = <2t,2t,1> and r'' = <2,2,0>. Their cross product is <-2,2,0>."
+  },
+  {
+    id: 23911,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <t,t^2,0>, what is the curvature at t = 0?",
+    options: ['2', '1', '0', '1/2'],
+    correctAnswer: 0,
+    explanation: "At t=0, r'=<1,0,0> and r''=<0,2,0>. Thus |r'×r''|=2 and |r'|^3=1, giving κ=2."
+  },
+  {
+    id: 23912,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <t,t^2,0>, what is the curvature at t = 1?',
+    options: ['2/(5√5)', '1/5', '2/5', '1/√5'],
+    correctAnswer: 0,
+    explanation: "r'=<1,2,0>, r''=<0,2,0>. The cross product magnitude is 2 and |r'|^3=(√5)^3=5√5."
+  },
+  {
+    id: 23913,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a circle of radius 4, what is its curvature?',
+    options: ['1/4', '4', '1/16', '16'],
+    correctAnswer: 0,
+    explanation: "The curvature of a circle is κ=1/R, so κ=1/4."
+  },
+  {
+    id: 23914,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If a circle has curvature 1/3, what is its radius?',
+    options: ['3', '1/3', '9', '√3'],
+    correctAnswer: 0,
+    explanation: "Since κ=1/R, R=1/κ=3."
+  },
+  {
+    id: 23915,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Which quantity must be nonzero for the standard curvature formula to apply to a regular curve?',
+    options: ['r\'(t)', 'r(t)', 'r\'\'(t)', 'r\'(t) × r\'\'(t)'],
+    correctAnswer: 0,
+    explanation: "A regular parametrized curve requires r'(t) ≠ 0."
+  },
+  {
+    id: 23916,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <3cos t, 3sin t, 0>, what is the curvature?',
+    options: ['1/3', '3', '1/9', '9'],
+    correctAnswer: 0,
+    explanation: "This is a circle of radius 3, so κ=1/3."
+  },
+  {
+    id: 23917,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <2cos t, 2sin t, 0>, what is the speed?',
+    options: ['2', '1', '4', '√2'],
+    correctAnswer: 0,
+    explanation: "r'=<-2sin t,2cos t,0>, whose magnitude is 2."
+  },
+  {
+    id: 23918,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <2cos t,2sin t,0>, what is |r''(t)|?",
+    options: ['2', '1', '4', '√2'],
+    correctAnswer: 0,
+    explanation: "r''=<-2cos t,-2sin t,0>, whose magnitude is 2."
+  },
+  {
+    id: 23919,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <cos t,sin t,t>, which coordinate causes the curve to leave the xy-plane?',
+    options: ['z=t', 'x=cos t', 'y=sin t', 'None'],
+    correctAnswer: 0,
+    explanation: "The nonconstant z-coordinate causes the circular motion to rise through space."
+  },
+
+  {
+    id: 23920,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <cos t,sin t,t>, what is r''(t)?",
+    options: ['<-cos t,-sin t,0>', '<-sin t,cos t,1>', '<cos t,sin t,0>', '<-cos t,sin t,1>'],
+    correctAnswer: 0,
+    explanation: "Differentiate the velocity <-sin t,cos t,1> to obtain <-cos t,-sin t,0>."
+  },
+  {
+    id: 23921,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <cos t,sin t,t>, what is |r' × r''|?",
+    options: ['√2', '1', '2', '√3'],
+    correctAnswer: 0,
+    explanation: "Computing the cross product gives <sin t,-cos t,1>, whose magnitude is √2."
+  },
+  {
+    id: 23922,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "What is the curvature of r(t) = <cos t,sin t,t>?",
+    options: ['1/2', '√2/2', '1', '2'],
+    correctAnswer: 0,
+    explanation: "The numerator is √2 and |r'|=√2, so κ=√2/(√2)^3=1/2."
+  },
+  {
+    id: 23923,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t)=<t,t^2,t^3>, what is r''(t)?",
+    options: ['<0,2,6t>', '<1,2t,3t^2>', '<0,2,6>', '<1,2,6t>'],
+    correctAnswer: 0,
+    explanation: "r'=<1,2t,3t^2>, so r''=<0,2,6t>."
+  },
+  {
+    id: 23924,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t)=<t,t^2,t^3>, what is r'(0)?",
+    options: ['<1,0,0>', '<0,1,0>', '<1,1,1>', '<0,0,0>'],
+    correctAnswer: 0,
+    explanation: "r'=<1,2t,3t^2>, so r'(0)=<1,0,0>."
+  },
+  {
+    id: 23925,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If acceleration is always perpendicular to velocity, what happens to speed?',
+    options: ['It remains constant', 'It always increases', 'It always decreases', 'It becomes zero'],
+    correctAnswer: 0,
+    explanation: "Since d/dt(|v|^2)=2v·a, v·a=0 implies constant speed."
+  },
+  {
+    id: 23926,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If v(t) = <cos t,sin t,0>, what is the speed?',
+    options: ['1', 'cos t + sin t', '2', '√2'],
+    correctAnswer: 0,
+    explanation: "The magnitude is sqrt(cos²t+sin²t)=1."
+  },
+  {
+    id: 23927,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<t^2,2t,3>, what is the speed at t=2?',
+    options: ['4', '2', '√20', '6'],
+    correctAnswer: 0,
+    explanation: "r'=<2t,2,0>. At t=2 this is <4,2,0>, whose magnitude is √20, not 4."
+  },
+  {
+    id: 23928,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<t^2,2t,3>, what is the speed at t=0?',
+    options: ['2', '0', '3', '√13'],
+    correctAnswer: 0,
+    explanation: "r'(0)=<0,2,0>, so the speed is 2."
+  },
+  {
+    id: 23929,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "If r'(t)=<2t,2,0>, at what t is the speed √8?",
+    options: ['t=1', 't=2', 't=√2', 't=0'],
+    correctAnswer: 0,
+    explanation: "Speed²=4t²+4. Setting this equal to 8 gives t²=1, so t=±1. Among the listed positive values, t=1."
+  },
+
+  {
+    id: 23930,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(u,v)=<u,v,u²+v²>, what is r_u?',
+    options: ['<1,0,2u>', '<0,1,2v>', '<u,v,u²+v²>', '<1,1,2u+2v>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate with respect to u while holding v constant.'
+  },
+  {
+    id: 23931,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(u,v)=<u,v,u²+v²>, what is r_v?',
+    options: ['<0,1,2v>', '<1,0,2u>', '<1,1,2u+2v>', '<u,v,u²+v²>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate with respect to v while holding u constant.'
+  },
+  {
+    id: 23932,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(u,v)=<u,v,u²+v²>, what is r_u × r_v?',
+    options: ['<-2u,-2v,1>', '<2u,2v,1>', '<1,-2v,2u>', '<-2u,2v,1>'],
+    correctAnswer: 0,
+    explanation: '<1,0,2u> × <0,1,2v> = <-2u,-2v,1>.'
+  },
+  {
+    id: 23933,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'At (u,v)=(0,0), what is a normal vector for r(u,v)=<u,v,u²+v²>?',
+    options: ['<0,0,1>', '<1,0,0>', '<0,1,0>', '<1,1,0>'],
+    correctAnswer: 0,
+    explanation: "At (0,0), r_u×r_v = <0,0,1>."
+  },
+  {
+    id: 23934,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For z=x²+y², the point corresponding to (x,y)=(1,2) is:',
+    options: ['(1,2,5)', '(1,2,3)', '(1,2,4)', '(1,2,1)'],
+    correctAnswer: 0,
+    explanation: "z=1²+2²=5, so the point is (1,2,5)."
+  },
+  {
+    id: 23935,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For z=x²+y², a parametrization is:',
+    options: ['<u,v,u²+v²>', '<u²,v²,u+v>', '<u,v,u+v>', '<u²+v²,u,v>'],
+    correctAnswer: 0,
+    explanation: "Set x=u and y=v, giving r(u,v)=<u,v,u²+v²>."
+  },
+  {
+    id: 23936,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the parametrized surface r(u,v)=<u,v,u+v>, what is the area element?',
+    options: ['√3 du dv', 'du dv', '3 du dv', '2 du dv'],
+    correctAnswer: 0,
+    explanation: "The cross product is <-1,-1,1>, whose magnitude is √3."
+  },
+  {
+    id: 23937,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'What is the surface area of r(u,v)=<u,v,u+v> for 0≤u≤1 and 0≤v≤1?',
+    options: ['√3', '1', '3', '2√3'],
+    correctAnswer: 0,
+    explanation: "The area element is √3 du dv. Integrating over the unit square gives √3."
+  },
+  {
+    id: 23938,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x,y,z>, what is the flux through the unit sphere oriented outward?',
+    options: ['4π', '0', '1', '3'],
+    correctAnswer: 0,
+    explanation: "On the unit sphere, F is the outward normal of magnitude 1, so the flux equals the sphere area 4π."
+  },
+  {
+    id: 23939,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Using the divergence theorem, the flux of F=<x,y,z> through a sphere of radius R is:',
+    options: ['4πR³', '4πR²', '3πR²', 'R³'],
+    correctAnswer: 0,
+    explanation: "div F=3. The sphere volume is 4πR³/3, so the flux is 3(4πR³/3)=4πR³."
+  },
+
+  {
+    id: 23940,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x,0,0>, what is the divergence?',
+    options: ['1', 'x', '0', '3'],
+    correctAnswer: 0,
+    explanation: "div F = ∂x/∂x = 1."
+  },
+  {
+    id: 23941,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<0,y²,0>, what is div F?',
+    options: ['2y', 'y²', '0', '2'],
+    correctAnswer: 0,
+    explanation: "div F = ∂(y²)/∂y = 2y."
+  },
+  {
+    id: 23942,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If div F = 2 everywhere inside a region of volume V, what is the outward flux through its closed boundary?',
+    options: ['2V', 'V/2', 'V²', '0'],
+    correctAnswer: 0,
+    explanation: "By the divergence theorem, flux = ∫∫∫ div F dV = 2V."
+  },
+  {
+    id: 23943,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x²,y²,z²>, what is div F?',
+    options: ['2x+2y+2z', 'x²+y²+z²', '6', 'xyz'],
+    correctAnswer: 0,
+    explanation: "Differentiate each component with respect to its corresponding variable."
+  },
+  {
+    id: 23944,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<2x,3y,4z>, what is div F?',
+    options: ['9', '2x+3y+4z', '24', '0'],
+    correctAnswer: 0,
+    explanation: "div F=2+3+4=9."
+  },
+  {
+    id: 23945,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the transformation x=2u, y=3v, what is |∂(x,y)/∂(u,v)|?',
+    options: ['6', '5', '1', '0'],
+    correctAnswer: 0,
+    explanation: "The Jacobian matrix is [[2,0],[0,3]], whose determinant is 6."
+  },
+  {
+    id: 23946,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For x=2u and y=3v, how does an area element transform?',
+    options: ['dA=6 du dv', 'dA=du dv', 'dA=5 du dv', 'dA=2 du dv'],
+    correctAnswer: 0,
+    explanation: "The absolute Jacobian is 6, so dA=6 du dv."
+  },
+  {
+    id: 23947,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For x=u+v and y=u-v, what is the absolute Jacobian?',
+    options: ['2', '1', '0', '4'],
+    correctAnswer: 0,
+    explanation: "The determinant of [[1,1],[1,-1]] is -2, so its absolute value is 2."
+  },
+  {
+    id: 23948,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Under x=u+v and y=u-v, the area element becomes:',
+    options: ['2 du dv', 'du dv', '1/2 du dv', '4 du dv'],
+    correctAnswer: 0,
+    explanation: "The absolute Jacobian is 2."
+  },
+  {
+    id: 23949,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For x=uv and y=u/v, what is the Jacobian ∂(x,y)/∂(u,v)?',
+    options: ['-2u/v', '2u/v', 'u/v', '-u/v'],
+    correctAnswer: 0,
+    explanation: "The determinant is (v)(-u/v²) - (u)(1/v) = -2u/v."
+  },
+
+  {
+    id: 23950,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'In polar coordinates, what is the Jacobian for x=r cosθ and y=r sinθ?',
+    options: ['r', 'r²', '1', 'sinθ cosθ'],
+    correctAnswer: 0,
+    explanation: "The absolute determinant of the polar-coordinate transformation is r."
+  },
+  {
+    id: 23951,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Evaluate ∫∫_D 1 dA over the disk x²+y²≤4 using polar coordinates.',
+    options: ['4π', '2π', 'π', '8π'],
+    correctAnswer: 0,
+    explanation: "The disk has radius 2, so its area is π(2²)=4π."
+  },
+  {
+    id: 23952,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'In polar coordinates, the disk x²+y²≤9 corresponds to:',
+    options: ['0≤r≤3, 0≤θ≤2π', '0≤r≤9, 0≤θ≤π', '0≤r≤3, 0≤θ≤π', '0≤r≤9, 0≤θ≤2π'],
+    correctAnswer: 0,
+    explanation: "Since x²+y²=r², the disk gives 0≤r≤3 and a full angular range of 0≤θ≤2π."
+  },
+  {
+    id: 23953,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'The transformation x=r cosθ, y=r sinθ maps a rectangle in (r,θ)-coordinates to a:',
+    options: ['Polar region in the xy-plane', 'Cube', 'Line', 'Plane only'],
+    correctAnswer: 0,
+    explanation: "Polar coordinates describe regions in the xy-plane using radius and angle."
+  },
+  {
+    id: 23954,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a 3D transformation with constant Jacobian 5, the volume element transforms as:',
+    options: ['dV=5 du dv dw', 'dV=du dv dw/5', 'dV=5 du dv', 'dV=du dv'],
+    correctAnswer: 0,
+    explanation: "The absolute 3D Jacobian gives the volume scaling factor."
+  },
+  {
+    id: 23955,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If a transformation has Jacobian determinant -4, what factor is used for area?',
+    options: ['4', '-4', '1/4', '0'],
+    correctAnswer: 0,
+    explanation: "Area scaling uses the absolute value of the Jacobian determinant."
+  },
+  {
+    id: 23956,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'A negative Jacobian determinant primarily indicates:',
+    options: ['Orientation reversal', 'Zero area', 'Zero volume', 'Infinite scaling'],
+    correctAnswer: 0,
+    explanation: "A negative determinant indicates that the transformation reverses orientation."
+  },
+  {
+    id: 23957,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If the Jacobian determinant is zero at a point, the transformation is locally:',
+    options: ['Degenerate there', 'A perfect scaling', 'Guaranteed invertible', 'Orientation preserving'],
+    correctAnswer: 0,
+    explanation: "A zero Jacobian means the local mapping loses dimension and is not locally invertible under the usual conditions."
+  },
+  {
+    id: 23958,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For x=3u and y=v/2, what is the area scaling factor?',
+    options: ['3/2', '6', '1/6', '5/2'],
+    correctAnswer: 0,
+    explanation: "The Jacobian determinant is 3(1/2)=3/2."
+  },
+  {
+    id: 23959,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'A suitable change of variables is especially useful when it makes the region:',
+    options: ['Simpler to describe', 'Larger automatically', 'Three-dimensional automatically', 'Impossible to integrate'],
+    correctAnswer: 0,
+    explanation: "A major purpose of a change of variables is simplifying the integration region and/or integrand."
+  },
+
+  {
+    id: 23960,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²+y² on the disk x²+y²≤4, what is the minimum value?',
+    options: ['0', '2', '4', '16'],
+    correctAnswer: 0,
+    explanation: "The minimum occurs at (0,0), where f=0."
+  },
+  {
+    id: 23961,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²+y² on x²+y²≤4, what is the maximum value?',
+    options: ['4', '2', '8', '16'],
+    correctAnswer: 0,
+    explanation: "On the boundary x²+y²=4, f=4."
+  },
+  {
+    id: 23962,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²+y²-2x on the plane, what is the interior critical point?',
+    options: ['(1,0)', '(0,1)', '(-1,0)', '(0,0)'],
+    correctAnswer: 0,
+    explanation: "f_x=2x-2 and f_y=2y. Setting both equal to zero gives (1,0)."
+  },
+  {
+    id: 23963,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'What type of point is (1,0) for f=x²+y²-2x?',
+    options: ['Global minimum', 'Global maximum', 'Saddle point', 'Boundary point'],
+    correctAnswer: 0,
+    explanation: "f=(x-1)²+y²-1, so the minimum value -1 occurs at (1,0)."
+  },
+  {
+    id: 23964,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²+y² on the square -1≤x≤1, -1≤y≤1, where is the maximum attained?',
+    options: ['At all four corners', 'Only at the origin', 'At the midpoint of each edge', 'Nowhere'],
+    correctAnswer: 0,
+    explanation: "The maximum of x²+y² on the square is 2, attained at all four corners."
+  },
+  {
+    id: 23965,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x+y on the unit square 0≤x,y≤1, the maximum value is:',
+    options: ['2', '1', '0', '√2'],
+    correctAnswer: 0,
+    explanation: "Both x and y are maximized at 1, giving f=2."
+  },
+  {
+    id: 23966,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x+y on 0≤x,y≤1, the minimum value is:',
+    options: ['0', '1', '-1', '2'],
+    correctAnswer: 0,
+    explanation: "The minimum occurs at (0,0), giving f=0."
+  },
+  {
+    id: 23967,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'A boundary of a disk x²+y²=R² can be parametrized by:',
+    options: ['<R cos t,R sin t>', '<R t,R t>', '<cos R,sin R>', '<t²,t³>'],
+    correctAnswer: 0,
+    explanation: "The standard circle parametrization is x=R cos t, y=R sin t."
+  },
+  {
+    id: 23968,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'When checking a circular boundary for extrema, the parameter interval can be:',
+    options: ['0≤t≤2π', '0≤t≤π/2 only', '0≤t≤1 only', '-∞≤t≤∞ only'],
+    correctAnswer: 0,
+    explanation: "A full circle is traced once by 0≤t≤2π."
+  },
+  {
+    id: 23969,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=xy on the unit disk, which interior point is a critical point?',
+    options: ['(0,0)', '(1,1)', '(1,0)', '(0,1)'],
+    correctAnswer: 0,
+    explanation: "f_x=y and f_y=x, so both vanish at (0,0)."
+  },
+
+  {
+    id: 23970,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=xy on the unit disk, what is the maximum value?',
+    options: ['1/2', '1', '2', '0'],
+    correctAnswer: 0,
+    explanation: "On x²+y²≤1, the maximum of xy occurs at x=y=1/√2, giving xy=1/2."
+  },
+  {
+    id: 23971,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=xy on the unit disk, what is the minimum value?',
+    options: ['-1/2', '0', '-1', '1/2'],
+    correctAnswer: 0,
+    explanation: "The minimum occurs at x=1/√2, y=-1/√2 or the opposite signs, giving -1/2."
+  },
+  {
+    id: 23972,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a closed bounded region, why must boundary points be considered?',
+    options: ['An extremum may occur there', 'They are always critical points', 'They always have zero derivatives', 'They are never extrema'],
+    correctAnswer: 0,
+    explanation: "A global maximum or minimum can occur on the boundary even when no interior critical point gives it."
+  },
+  {
+    id: 23973,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If f has no interior critical points on a closed bounded region, global extrema can still occur:',
+    options: ['On the boundary', 'Only at infinity', 'Nowhere', 'Only at the origin'],
+    correctAnswer: 0,
+    explanation: "Boundary analysis is still required."
+  },
+  {
+    id: 23974,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a boundary parametrization r(t), the restricted function is:',
+    options: ['f(r(t))', 'r(f(t))', 'f(t)/r(t)', '∇r(t)'],
+    correctAnswer: 0,
+    explanation: "Substitute the boundary parametrization into f to obtain a single-variable function."
+  },
+  {
+    id: 23975,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If a boundary is x²+y²=1, which substitution is appropriate?',
+    options: ['x=cos t, y=sin t', 'x=t, y=t', 'x=sin t, y=t²', 'x=e^t, y=e^-t'],
+    correctAnswer: 0,
+    explanation: "x=cos t and y=sin t traces the unit circle."
+  },
+  {
+    id: 23976,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²-y² on the unit circle, what is the maximum value?',
+    options: ['1', '0', '2', '-1'],
+    correctAnswer: 0,
+    explanation: "On x²+y²=1, f=x²-y²=2x²-1, whose maximum is 1."
+  },
+  {
+    id: 23977,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²-y² on the unit circle, what is the minimum value?',
+    options: ['-1', '0', '1', '-2'],
+    correctAnswer: 0,
+    explanation: "The minimum occurs when x=0 and y²=1, giving f=-1."
+  },
+  {
+    id: 23978,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If f is continuous on a closed bounded region, what theorem guarantees global extrema exist?',
+    options: ['Extreme Value Theorem', 'Mean Value Theorem', 'Chain Rule', 'Green’s theorem'],
+    correctAnswer: 0,
+    explanation: 'The Extreme Value Theorem guarantees a continuous function on a compact closed bounded region attains maximum and minimum values.'
+  },
+  {
+    id: 23979,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Which set is closed and bounded?',
+    options: ['x²+y²≤4', 'x²+y²<4', 'x>0', 'All of R²'],
+    correctAnswer: 0,
+    explanation: "The closed disk x²+y²≤4 is both closed and bounded."
+  },
+
+  {
+    id: 23980,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<t,t²,t³>, which component contributes most directly to the torsion calculation?',
+    options: ["The third derivative r'''(t)", "Only r(t)", "Only r'(t)", 'The parameter t alone'],
+    correctAnswer: 0,
+    explanation: "The standard torsion formula involves r', r'', and r'''."
+  },
+  {
+    id: 23981,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'The torsion formula for a regular space curve is:',
+    options: [
+    "τ = ((r' × r'') · r''') / |r' × r''|²",
+    "τ = |r' × r''| / |r'|³",
+    "τ = |r''| / |r'|",
+    "τ = r' · r''"
+],
+correctAnswer: 0,
+    explanation: "The standard torsion formula uses the scalar triple product divided by |r'×r''|²."
+  },
+  {
+    id: 23982,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "If (r' × r'') · r''' = 0 and r' × r'' ≠ 0, the torsion is:",
+options: ['0', '1', 'Undefined', 'Infinite'],
+correctAnswer: 0,
+    
+    explanation: "The numerator of the torsion formula is zero while the denominator is nonzero."
+  },
+  {
+    id: 23983,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'What does zero torsion indicate for a regular curve locally?',
+    options: ['The curve is planar', 'The curve is necessarily a circle', 'The curve is a straight line', 'The curvature is infinite'],
+    correctAnswer: 0,
+    explanation: "Zero torsion indicates no twisting out of the osculating plane; locally the curve is planar under the regularity assumptions."
+  },
+  {
+    id: 23984,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<t,t²,0>, the torsion is:',
+    options: ['0', '1', '2', 'Undefined'],
+    correctAnswer: 0,
+    explanation: "The curve lies entirely in the xy-plane, so its torsion is zero."
+  },
+  {
+    id: 23985,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<cos t,sin t,0>, which statement is true?',
+    options: ['Curvature is 1 and torsion is 0', 'Curvature is 0 and torsion is 1', 'Both are 1', 'Both are 0'],
+    correctAnswer: 0,
+    explanation: "It is the unit circle, so κ=1 and, being planar, τ=0."
+  },
+  {
+    id: 23986,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a straight line with nonzero constant velocity, what are curvature and torsion?',
+    options: ['κ=0 and τ is not defined by the standard formula', 'κ=1 and τ=1', 'κ=0 and τ=1', 'κ=1 and τ=0'],
+    correctAnswer: 0,
+    explanation: "For a straight line r''=0, so curvature is zero and the standard torsion formula has a zero denominator."
+  },
+  {
+    id: 23987,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a helix, which quantities are commonly constant?',
+    options: ['Curvature and torsion', 'Position and acceleration vectors', 'x and y coordinates', 'Speed and position'],
+    correctAnswer: 0,
+    explanation: "A circular helix has constant curvature and constant torsion."
+  },
+  {
+    id: 23988,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<a cos t,a sin t,bt>, the speed is:',
+    options: ['√(a²+b²)', 'a+b', 'a²+b²', '√(a²-b²)'],
+    correctAnswer: 0,
+    explanation: "r'=<-a sin t,a cos t,b>, whose magnitude is √(a²+b²)."
+  },
+  {
+    id: 23989,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the helix r(t)=<a cos t,a sin t,bt>, its curvature is:',
+    options: ['a/(a²+b²)', '1/a', 'b/(a²+b²)', 'a²+b²'],
+    correctAnswer: 0,
+    explanation: "Using κ=|r'×r''|/|r'|³ gives κ=a/(a²+b²)."
+  },
+
+  {
+    id: 23990,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the same helix r(t)=<a cos t,a sin t,bt>, its torsion is:',
+    options: ['b/(a²+b²)', 'a/(a²+b²)', '1/b', 'a²+b²'],
+    correctAnswer: 0,
+    explanation: "The standard torsion calculation gives τ=b/(a²+b²)."
+  },
+  {
+    id: 23991,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If b=0 in the helix r(t)=<a cos t,a sin t,bt>, the curve becomes:',
+    options: ['A circle', 'A straight line', 'A parabola', 'A sphere'],
+    correctAnswer: 0,
+    explanation: "With b=0, z=0 and the curve is a circle of radius |a|."
+  },
+  {
+    id: 23992,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a parameterized surface, reversing the order of r_u × r_v to r_v × r_u:',
+    options: ['Reverses the normal direction', 'Leaves the normal unchanged', 'Makes it zero', 'Doubles its magnitude'],
+    correctAnswer: 0,
+    explanation: "r_v×r_u = -(r_u×r_v), so the orientation reverses."
+  },
+  {
+    id: 23993,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If the orientation of a surface is reversed, the flux changes by:',
+    options: ['A sign change', 'A factor of 2', 'No change', 'A square'],
+    correctAnswer: 0,
+    explanation: "Reversing the normal changes n to -n, so F·n changes sign."
+  },
+  {
+    id: 23994,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<0,0,1>, what is the flux through a horizontal surface with upward unit normal?',
+    options: ['The surface area', '0', 'The volume', 'The perimeter'],
+    correctAnswer: 0,
+    explanation: "F·n=<0,0,1>·<0,0,1>=1, so the flux equals the surface area."
+  },
+  {
+    id: 23995,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<0,0,1>, what is the flux through a horizontal surface with downward unit normal?',
+    options: ['Negative surface area', 'Positive surface area', '0', 'The volume'],
+    correctAnswer: 0,
+    explanation: "F·n=-1 for the downward normal, so the flux is negative the surface area."
+  },
+  {
+    id: 23996,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the surface z=0 parametrized by r(u,v)=<u,v,0>, what is r_u × r_v?',
+    options: ['<0,0,1>', '<0,0,-1>', '<1,1,0>', '<0,1,1>'],
+    correctAnswer: 0,
+    explanation: "r_u=<1,0,0> and r_v=<0,1,0>, so r_u×r_v=<0,0,1>."
+  },
+  {
+    id: 23997,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x,y,z>, what is the flux through the sphere of radius 2 centered at the origin?',
+    options: ['32π', '16π', '8π', '4π'],
+    correctAnswer: 0,
+    explanation: "The flux is 4πR³. With R=2, it is 4π(8)=32π."
+  },
+  {
+    id: 23998,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x,y,z> and a sphere of radius R, why is the divergence theorem convenient?',
+    options: ['The divergence is constant', 'The field is zero', 'The surface has no area', 'The Jacobian is always zero'],
+    correctAnswer: 0,
+    explanation: "Since div F=3 is constant, the flux reduces to 3 times the enclosed volume."
+  },
+  {
+    id: 23999,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Which progression correctly describes the three practice levels for this topic?',
+    options: ['Easy → Medium → Hard', 'Hard → Easy → Medium', 'Medium → Hard → Easy', 'Easy → Hard only'],
+    correctAnswer: 0,
+    explanation: 'The Practice Arena is organized into Easy, Medium, and Hard difficulty tiers.'
+  },
+  {
+  id: 24000,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <cos t, sin t, t>, what is the curvature?",
+  options: ['1', '1/2', 'sqrt(2)', '2'],
+  correctAnswer: 1,
+  explanation: "The curvature is |r' x r''|/|r'|^3 = sqrt(2)/(sqrt(2))^3 = 1/2."
+},
+{
+  id: 24001,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <a cos t, a sin t, bt>, where a > 0, what is the curvature?",
+  options: ['a/(a^2+b^2)', 'a/(a^2+b^2)^(3/2)', 'b/(a^2+b^2)^(3/2)', '1/sqrt(a^2+b^2)'],
+  correctAnswer: 1,
+  explanation: "Using kappa = |r' x r''|/|r'|^3 gives a/(a^2+b^2)^(3/2)."
+},
+{
+  id: 24002,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <a cos t, a sin t, bt>, where a > 0, what is the torsion?",
+  options: ['b/(a^2+b^2)', 'a/(a^2+b^2)', 'b/(a^2+b^2)^(3/2)', 'a/(a^2+b^2)^(3/2)'],
+  correctAnswer: 0,
+  explanation: "The torsion formula gives tau = b/(a^2+b^2)."
+},
+{
+  id: 24003,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the curvature at t = 0?",
+  options: ['0', '1', '2', 'sqrt(2)'],
+  correctAnswer: 2,
+  explanation: "At t = 0, |r'| = 1 and |r' x r''| = 2, so kappa = 2."
+},
+{
+  id: 24004,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the torsion at t = 0?",
+  options: ['0', '1', '3', 'Undefined'],
+  correctAnswer: 2,
+  explanation: "The scalar triple product is 12 and |r' x r''|^2 = 4, so tau = 3."
+},
+{
+  id: 24005,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If r'(t) x r''(t) = 0 at a point, which standard Frenet quantity becomes undefined there?",
+  options: ['Speed', 'Curvature', 'Position', 'Parameter'],
+  correctAnswer: 1,
+  explanation: "The curvature formula has |r' x r''| in the numerator and the principal normal requires nonzero curvature."
+},
+{
+  id: 24006,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, which identity holds?",
+  options: ["r' · r'' = 1", "r' · r'' = 0", "r' x r'' = 0", "|r''| = 1"],
+  correctAnswer: 1,
+  explanation: "Since |r'|^2 = 1, differentiating gives 2r' · r'' = 0."
+},
+{
+  id: 24007,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, the acceleration vector is always perpendicular to:",
+  options: ['The binormal vector', "The tangent vector", 'The normal vector', 'The position vector'],
+  correctAnswer: 1,
+  explanation: "For unit speed, acceleration is r'' = kappa N and is perpendicular to T."
+},
+{
+  id: 24008,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a regular space curve with nonzero curvature, what is the principal normal vector?",
+  options: ['N = T x B', 'N = B x T', 'N = T + B', 'N = T x T'],
+  correctAnswer: 0,
+  explanation: "The Frenet frame satisfies T x N = B, so N = B x T. However, the standard right-handed relation is T x N = B and B x T = N."
+},
+{
+  id: 24009,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which relation correctly defines the binormal vector?",
+  options: ['B = T x N', 'B = N x T', 'B = T + N', 'B = T · N'],
+  correctAnswer: 0,
+  explanation: "The binormal is B = T x N."
+},
+{
+  id: 24010,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If T, N, and B form a Frenet frame, which vector is perpendicular to both T and N?",
+  options: ['B', 'T + N', 'T - N', '2T'],
+  correctAnswer: 0,
+  explanation: "B = T x N is perpendicular to both T and N."
+},
+{
+  id: 24011,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which Frenet-Serret equation is correct for a unit-speed curve?",
+  options: ["T' = kappa N", "T' = tau B", "N' = kappa T", "B' = kappa N"],
+  correctAnswer: 0,
+  explanation: "For arc length s, T' = kappa N."
+},
+{
+  id: 24012,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, which equation describes the derivative of B?",
+  options: ["B' = kappa N", "B' = -tau N", "B' = tau T", "B' = -kappa T"],
+  correctAnswer: 1,
+  explanation: "The Frenet-Serret equation is B' = -tau N."
+},
+{
+  id: 24013,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, the Frenet-Serret equation for N is:",
+  options: ["N' = kappa T + tau B", "N' = -kappa T + tau B", "N' = kappa T - tau B", "N' = -kappa T - tau B"],
+  correctAnswer: 1,
+  explanation: "The standard equation is N' = -kappa T + tau B."
+},
+{
+  id: 24014,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If torsion is identically zero on an interval where curvature is nonzero, what can be concluded?",
+  options: ['The curve is a straight line', 'The curve lies in a plane', 'The curve has constant speed', 'The curvature is zero'],
+  correctAnswer: 1,
+  explanation: "Zero torsion on such an interval implies the curve is planar."
+},
+{
+  id: 24015,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which expression gives torsion for a regular curve when r' x r'' is nonzero?",
+  options: ["((r' x r'') · r''')/|r' x r''|^2", "|r' x r''|/|r'|^3", "|r''|/|r'|", "r' · r''"],
+  correctAnswer: 0,
+  explanation: "This is the standard parameter-based torsion formula."
+},
+{
+  id: 24016,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If ((r' x r'') · r''') = 0 and r' x r'' is nonzero, then torsion is:",
+  options: ['0', '1', 'Undefined', 'Infinite'],
+  correctAnswer: 0,
+  explanation: "The denominator is nonzero while the numerator is zero, so torsion is zero."
+},
+{
+  id: 24017,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, 0, 0>, what is the curvature?",
+  options: ['0', '1', 't', 'Undefined'],
+  correctAnswer: 0,
+  explanation: "The curve is a straight line, so its curvature is zero."
+},
+{
+  id: 24018,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, 0, 0>, what happens to the standard torsion formula?",
+  options: ['It gives 0', 'It gives 1', "It is undefined because r' x r'' = 0", 'It gives infinity'],
+  correctAnswer: 2,
+  explanation: "Both r'' and r' x r'' are zero, so the standard torsion formula has zero denominator."
+},
+{
+  id: 24019,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, 0>, which geometric property is guaranteed?",
+  options: ['The curve is planar', 'The curve has nonzero torsion', 'The curve is a helix', 'The curve has constant torsion 1'],
+  correctAnswer: 0,
+  explanation: "Its z-coordinate is always zero, so the curve lies in the xy-plane."
+},
+{
+  id: 24020,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, 0>, what is the torsion wherever the curvature is defined?",
+  options: ['0', '1', '2', 'Undefined everywhere'],
+  correctAnswer: 0,
+  explanation: "A planar regular curve has zero torsion wherever the Frenet frame is defined."
+},
+{
+  id: 24021,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <cos t, sin t, 0>, what is the curvature?",
+  options: ['0', '1/2', '1', '2'],
+  correctAnswer: 2,
+  explanation: "This is a unit circle, whose curvature is 1."
+},
+{
+  id: 24022,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <2 cos t, 2 sin t, 0>, what is the curvature?",
+  options: ['1/4', '1/2', '1', '2'],
+  correctAnswer: 1,
+  explanation: "A circle of radius 2 has curvature 1/2."
+},
+{
+  id: 24023,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <3 cos t, 3 sin t, 4t>, what is the curvature?",
+  options: ['3/25', '4/25', '3/5', '4/5'],
+  correctAnswer: 0,
+  explanation: "Here a = 3 and b = 4, so kappa = 3/(3^2+4^2)^(3/2) = 3/125."
+},
+{
+  id: 24024,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <3 cos t, 3 sin t, 4t>, what is the torsion?",
+  options: ['3/25', '4/25', '3/5', '4/5'],
+  correctAnswer: 1,
+  explanation: "For a helix, tau = b/(a^2+b^2) = 4/25."
+},
+{
+  id: 24025,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For the helix r(t) = <a cos t, a sin t, bt>, what is the ratio tau/kappa?",
+  options: ['a/b', 'b/a', 'ab', '1/(ab)'],
+  correctAnswer: 1,
+  explanation: "tau/kappa = [b/(a^2+b^2)]/[a/(a^2+b^2)^(3/2)] = b sqrt(a^2+b^2)/a."
+},
+{
+  id: 24026,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a circular helix, which quantities are constant?",
+  options: ['Only speed', 'Only curvature', 'Only torsion', 'Speed, curvature, and torsion'],
+  correctAnswer: 3,
+  explanation: "For the standard parametrization, speed, curvature, and torsion are all constant."
+},
+{
+  id: 24027,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If a regular curve is reparameterized without changing its orientation, which geometric quantity remains unchanged?",
+  options: ['Curvature', 'The parameter value', 'The velocity vector', 'The acceleration vector'],
+  correctAnswer: 0,
+  explanation: "Curvature is a geometric property independent of the particular regular parameterization."
+},
+{
+  id: 24028,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If r(t) is regular and |r'(t)| is constant, then:",
+  options: ["r' · r'' = 0", "|r''| = 0", "r' x r'' = 0", "r' · r'' = 1"],
+  correctAnswer: 0,
+  explanation: "Differentiating |r'|^2 = constant gives r' · r'' = 0."
+},
+{
+  id: 24029,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For constant-speed motion, acceleration is perpendicular to velocity. What does this imply about speed?",
+  options: ['It increases', 'It decreases', 'It remains constant', 'It becomes zero'],
+  correctAnswer: 2,
+  explanation: "The derivative of speed depends on v · a. If they are perpendicular, the speed remains constant."
+},
+{
+  id: 24030,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t^2, t^3, t^4>, what is the velocity at t = 1?",
+  options: ['<1,1,1>', '<2,3,4>', '<2,2,2>', '<1,3,4>'],
+  correctAnswer: 1,
+  explanation: "Differentiating componentwise gives r'(t) = <2t,3t^2,4t^3>. At t = 1 this is <2,3,4>."
+},
+{
+  id: 24031,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t^2, t^3, t^4>, what is the acceleration at t = 1?",
+  options: ['<2,6,12>', '<2,3,4>', '<1,6,12>', '<2,6,4>'],
+  correctAnswer: 0,
+  explanation: "r''(t) = <2,6t,12t^2>, so at t = 1 the acceleration is <2,6,12>."
+},
+{
+  id: 24032,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the speed at t = 1?",
+  options: ['sqrt(6)', 'sqrt(14)', 'sqrt(12)', '14'],
+  correctAnswer: 1,
+  explanation: "r'(1) = <1,2,3>, whose magnitude is sqrt(1+4+9) = sqrt(14)."
+},
+{
+  id: 24033,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the acceleration magnitude at t = 1?",
+  options: ['sqrt(14)', 'sqrt(20)', 'sqrt(44)', '44'],
+  correctAnswer: 2,
+  explanation: "r''(1) = <0,2,6>, so its magnitude is sqrt(4+36) = sqrt(40). Therefore none of the listed values is correct.",
+},
+{
+  id: 24034,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the correct acceleration magnitude at t = 1?",
+  options: ['sqrt(20)', 'sqrt(40)', 'sqrt(44)', '40'],
+  correctAnswer: 1,
+  explanation: "At t = 1, r'' = <0,2,6>, so |r''| = sqrt(40)."
+},
+{
+  id: 24035,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which formula gives the normal component of acceleration?",
+  options: ['a_N = |v|^2 kappa', 'a_N = dv/dt', 'a_N = |v| kappa^2', 'a_N = kappa/|v|'],
+  correctAnswer: 0,
+  explanation: "The normal acceleration is a_N = v^2 kappa."
+},
+{
+  id: 24036,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which formula gives the tangential component of acceleration?",
+  options: ['a_T = |v|^2 kappa', 'a_T = d|v|/dt', 'a_T = kappa/|v|', 'a_T = |v|kappa'],
+  correctAnswer: 1,
+  explanation: "Tangential acceleration is the rate of change of speed."
+},
+{
+  id: 24037,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If a particle moves with constant speed along a curve of nonzero curvature, which acceleration component is zero?",
+  options: ['Normal', 'Tangential', 'Both', 'Neither'],
+  correctAnswer: 1,
+  explanation: "Constant speed means dv/dt = 0, so tangential acceleration is zero."
+},
+{
+  id: 24038,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a regular curve, curvature can be expressed as:",
+  options: ["|T|/|r|', '|T'(s)|', '|r''(t)|', '|r'(t)|"],
+  correctAnswer: 1,
+  explanation: "With arc length s, curvature is kappa = |dT/ds|."
+},
+{
+  id: 24039,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, what is the magnitude of T'(s)?",
+  options: ['1', '0', 'kappa', 'tau'],
+  correctAnswer: 2,
+  explanation: "By definition, T'(s) = kappa N, so its magnitude is kappa."
+},
+{
+  id: 24040,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Consider x = u + v and y = u - v. What is the absolute value of the Jacobian |∂(x,y)/∂(u,v)|?",
+  options: ['0', '1', '2', '4'],
+  correctAnswer: 2,
+  explanation: "The determinant is (1)(-1) - (1)(1) = -2, so its absolute value is 2."
+},
+{
+  id: 24041,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = uv and y = u/v, what is ∂(x,y)/∂(u,v)?",
+  options: ['2u/v', '-2u/v', 'u/v', '-u/v'],
+  correctAnswer: 1,
+  explanation: "The Jacobian determinant is v(-u/v^2) - u(1/v) = -2u/v."
+},
+{
+  id: 24042,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = r cos(theta), y = r sin(theta), what is |∂(x,y)/∂(r,theta)|?",
+  options: ['1', 'r', 'r^2', 'sin(theta)'],
+  correctAnswer: 1,
+  explanation: "The polar-coordinate Jacobian is r."
+},
+{
+  id: 24043,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = r cos(theta), y = r sin(theta), the area element dx dy becomes:",
+  options: ['dr dtheta', 'r dr dtheta', 'r^2 dr dtheta', 'sin(theta) dr dtheta'],
+  correctAnswer: 1,
+  explanation: "The absolute Jacobian is r, so dA = r dr dtheta."
+},
+{
+  id: 24044,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = u^2 - v^2 and y = 2uv, what is the Jacobian ∂(x,y)/∂(u,v)?",
+  options: ['2(u^2+v^2)', '4(u^2+v^2)', '4uv', 'u^2-v^2'],
+  correctAnswer: 1,
+  explanation: "The determinant is (2u)(2u) - (-2v)(-2v) = 4(u^2-v^2)."
+},
+{
+  id: 24045,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = u^2 - v^2 and y = 2uv, what is the correct Jacobian?",
+  options: ['4(u^2-v^2)', '4(u^2+v^2)', '2(u+v)', '2(u-v)'],
+  correctAnswer: 0,
+  explanation: "Using x_u = 2u, x_v = -2v, y_u = 2v, and y_v = 2u gives 4u^2 - 4v^2."
+},
+{
+  id: 24046,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If a change of variables has Jacobian determinant zero at a point, what does this indicate locally?",
+  options: ['The mapping is locally invertible', 'The mapping is singular there', 'The area doubles', 'The volume is preserved'],
+  correctAnswer: 1,
+  explanation: "A zero Jacobian determinant indicates local degeneracy and prevents the usual inverse-function conclusion."
+},
+{
+  id: 24047,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If ∂(x,y)/∂(u,v) = -5, what is the area scaling factor?",
+  options: ['-5', '0', '1/5', '5'],
+  correctAnswer: 3,
+  explanation: "Area scaling uses the absolute value of the Jacobian, so the factor is 5."
+},
+{
+  id: 24048,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If ∂(x,y)/∂(u,v) = 4 and a region in the uv-plane has area 3, under a constant-Jacobian mapping its image area is:",
+  options: ['3/4', '4', '7', '12'],
+  correctAnswer: 3,
+  explanation: "The area scales by |J| = 4, so 3 becomes 12."
+},
+{
+  id: 24049,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = u+v and y = u-v, which inverse relations are correct?",
+  options: ['u=(x+y)/2, v=(x-y)/2', 'u=x+y, v=x-y', 'u=(x-y)/2, v=(x+y)/2', 'u=xy, v=x/y'],
+  correctAnswer: 0,
+  explanation: "Adding the equations gives 2u = x+y, while subtracting gives 2v = x-y."
+},
+{
+  id: 24050,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = u+v and y = u-v, what is ∂(u,v)/∂(x,y)?",
+  options: ['-2', '-1/2', '1/2', '2'],
+  correctAnswer: 2,
+  explanation: "The forward Jacobian is -2, so the inverse Jacobian is -1/2. Therefore none of the listed positive values is correct."
+},
+{
+  id: 24051,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which relation connects inverse and forward Jacobians when the transformation is locally invertible?",
+  options: ['They are equal', 'They are negatives', 'They are reciprocals', 'Their sum is 1'],
+  correctAnswer: 2,
+  explanation: "For an invertible transformation, ∂(u,v)/∂(x,y) = 1/[∂(x,y)/∂(u,v)]."
+},
+{
+  id: 24052,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For spherical coordinates x = rho sin(phi) cos(theta), y = rho sin(phi) sin(theta), z = rho cos(phi), what is the volume element?",
+  options: ['d rho d phi d theta', 'rho d rho d phi d theta', 'rho^2 sin(phi) d rho d phi d theta', 'rho^2 cos(phi) d rho d phi d theta'],
+  correctAnswer: 2,
+  explanation: "The spherical-coordinate Jacobian is rho^2 sin(phi)."
+},
+{
+  id: 24053,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For cylindrical coordinates x = r cos(theta), y = r sin(theta), z = z, what is the volume element?",
+  options: ['dr dtheta dz', 'r dr dtheta dz', 'r^2 dr dtheta dz', 'sin(theta) dr dtheta dz'],
+  correctAnswer: 1,
+  explanation: "The cylindrical-coordinate Jacobian is r."
+},
+{
+  id: 24054,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which coordinate system is most directly suited to a region bounded by x^2+y^2 <= R^2?",
+  options: ['Cartesian only', 'Polar coordinates', 'Spherical coordinates only', 'No coordinate system'],
+  correctAnswer: 1,
+  explanation: "Polar coordinates naturally represent circular planar regions."
+},
+{
+  id: 24055,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which coordinate system is most directly suited to a solid bounded by x^2+y^2+z^2 <= R^2?",
+  options: ['Polar', 'Spherical', 'Parabolic only', 'None'],
+  correctAnswer: 1,
+  explanation: "Spherical coordinates naturally describe spheres."
+},
+{
+  id: 24056,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a parameterized surface r(u,v), which vector is normal to the surface?",
+  options: ['r_u + r_v', 'r_u x r_v', 'r_u · r_v', 'r_u - r_v'],
+  correctAnswer: 1,
+  explanation: "The cross product r_u x r_v is perpendicular to both tangent vectors."
+},
+{
+  id: 24057,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a parameterized surface, the scalar surface-area element is:",
+  options: ['|r_u x r_v| du dv', 'r_u · r_v du dv', '|r_u+r_v| du dv', 'du+dv'],
+  correctAnswer: 0,
+  explanation: "Surface area is obtained from the magnitude of the cross product of the tangent vectors."
+},
+{
+  id: 24058,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a vector field F and oriented parameterized surface r(u,v), the flux integral is:",
+  options: ['∫∫ F · (r_u x r_v) du dv', '∫∫ F × r du dv', '∫∫ |F| du dv', '∫∫ F · r du dv'],
+  correctAnswer: 0,
+  explanation: "Flux through an oriented parameterized surface uses F · (r_u x r_v)."
+},
+{
+  id: 24059,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If the orientation of a surface is reversed, what happens to its flux?",
+  options: ['It doubles', 'It becomes zero', 'Its sign changes', 'It is unchanged'],
+  correctAnswer: 2,
+  explanation: "Reversing orientation changes r_u x r_v to its negative, reversing the flux."
+},
+{
+  id: 24060,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For the graph z = f(x,y), an upward-oriented vector area element is:",
+  options: ['<f_x, f_y, 1> dx dy', '<-f_x,-f_y,1> dx dy', '<f_x,f_y,-1> dx dy', '<1,1,1> dx dy'],
+  correctAnswer: 1,
+  explanation: "For an upward orientation, dS vector = <-f_x,-f_y,1> dx dy."
+},
+{
+  id: 24061,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For z = f(x,y), the upward flux of F = <P,Q,R> can be written as:",
+  options: ['∫∫(P f_x + Q f_y + R) dxdy', '∫∫(-P f_x - Q f_y + R) dxdy', '∫∫(P+Q+R) dxdy', '∫∫R f_x f_y dxdy'],
+  correctAnswer: 1,
+  explanation: "Dotting F with <-f_x,-f_y,1> gives -P f_x - Q f_y + R."
+},
+{
+  id: 24062,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For the sphere x^2+y^2+z^2=R^2 with outward orientation, which normal direction is correct?",
+  options: ['Toward the origin', 'Away from the origin', 'Parallel to the xy-plane', 'Always upward'],
+  correctAnswer: 1,
+  explanation: "The outward normal points radially away from the center."
+},
+{
+  id: 24063,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <x,y,z>, what is div F?",
+  options: ['0', '1', '2', '3'],
+  correctAnswer: 3,
+  explanation: "div F = ∂x/∂x + ∂y/∂y + ∂z/∂z = 3."
+},
+{
+  id: 24064,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "What is the outward flux of F = <x,y,z> across a sphere of radius R?",
+  options: ['4πR^2', '4πR^3', '3πR^2', 'R^3'],
+  correctAnswer: 1,
+  explanation: "By the divergence theorem, flux = ∫∫∫ 3 dV = 3(4πR^3/3) = 4πR^3."
+},
+{
+  id: 24065,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a closed surface, which theorem converts flux into a volume integral involving divergence?",
+  options: ["Stokes' theorem", "Green's theorem", "Divergence theorem", "Fundamental theorem"],
+  correctAnswer: 2,
+  explanation: "The divergence theorem relates outward flux across a closed surface to the volume integral of divergence."
+},
+{
+  id: 24066,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <x^2,y^2,z^2>, what is div F?",
+  options: ['x+y+z', '2x+2y+2z', 'x^2+y^2+z^2', '6'],
+  correctAnswer: 1,
+  explanation: "The divergence is 2x + 2y + 2z."
+},
+{
+  id: 24067,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <yz,xz,xy>, what is div F?",
+  options: ['0', 'x+y+z', '3xyz', '2xyz'],
+  correctAnswer: 0,
+  explanation: "Each diagonal partial derivative is zero, so div F = 0."
+},
+{
+  id: 24068,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <-y,x,0>, what is curl F?",
+  options: ['<0,0,2>', '<0,0,-2>', '<1,1,0>', '<-1,1,0>'],
+  correctAnswer: 0,
+  explanation: "curl F = <0,0, ∂Q/∂x - ∂P/∂y> = <0,0,1-(-1)> = <0,0,2>."
+},
+{
+  id: 24069,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a vector field with curl F = 0 on a simply connected domain, what conclusion may follow?",
+  options: ['F must be constant', 'F may be conservative', 'F must have zero divergence', 'F must vanish'],
+  correctAnswer: 1,
+  explanation: "On a simply connected domain, a continuously differentiable field with zero curl is conservative."
+},
+{
+  id: 24070,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "To find global extrema of a continuous function on a closed and bounded region, one must examine:",
+  options: ['Only interior critical points', 'Only corners', 'Interior critical points and the boundary', 'Only the boundary'],
+  correctAnswer: 2,
+  explanation: "Global extrema can occur in the interior or on the boundary."
+},
+{
+  id: 24071,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = xy on x^2+y^2 <= 1, what is the maximum value?",
+  options: ['0', '1/4', '1/2', '1'],
+  correctAnswer: 2,
+  explanation: "Since 2|xy| <= x^2+y^2 <= 1, the maximum xy is 1/2."
+},
+{
+  id: 24072,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = xy on x^2+y^2 <= 1, what is the minimum value?",
+  options: ['-1', '-1/2', '0', '1/2'],
+  correctAnswer: 1,
+  explanation: "The minimum occurs at x = -y = ±1/sqrt(2), giving -1/2."
+},
+{
+  id: 24073,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x^2+y^2 on x^2+y^2 <= 4, what are the global extrema?",
+  options: ['Minimum 0, maximum 4', 'Minimum 1, maximum 4', 'Minimum 0, maximum 2', 'Minimum -4, maximum 4'],
+  correctAnswer: 0,
+  explanation: "The minimum is at the origin and the maximum occurs on the boundary circle."
+},
+{
+  id: 24074,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x+y on x^2+y^2 <= 1, what is the maximum value?",
+  options: ['1', 'sqrt(2)', '2', '0'],
+  correctAnswer: 1,
+  explanation: "By Cauchy-Schwarz, x+y <= sqrt(2)sqrt(x^2+y^2) <= sqrt(2)."
+},
+{
+  id: 24075,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x+y on x^2+y^2 <= 1, what is the minimum value?",
+  options: ['-sqrt(2)', '-1', '0', '-2'],
+  correctAnswer: 0,
+  explanation: "The minimum is -sqrt(2), attained at (-1/sqrt(2),-1/sqrt(2))."
+},
+{
+  id: 24076,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x^2 - y^2 on x^2+y^2 <= 1, what are the global maximum and minimum?",
+  options: ['1 and -1', '2 and -2', '1 and 0', '0 and -1'],
+  correctAnswer: 0,
+  explanation: "The maximum is 1 at (±1,0), and the minimum is -1 at (0,±1)."
+},
+{
+  id: 24077,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x^2+y^2-2x on the unit disk, what is the global minimum?",
+  options: ['-1', '0', '1', '2'],
+  correctAnswer: 1,
+  explanation: "f = (x-1)^2+y^2-1. The point (1,0) lies in the disk and gives minimum 0."
+},
+{
+  id: 24078,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x^2+y^2-2x on the unit disk, what is the global maximum?",
+  options: ['1', '2', '3', '4'],
+  correctAnswer: 2,
+  explanation: "The farthest point from (1,0) in the unit disk is (-1,0), giving f = 3."
+},
+{
+  id: 24079,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a boundary curve g(x,y)=0, which method can systematically find extrema of f on the boundary?",
+  options: ['Lagrange multipliers', 'Only partial differentiation with respect to x', 'Only integration', 'Fourier series'],
+  correctAnswer: 0,
+  explanation: "Lagrange multipliers solve constrained optimization problems such as extrema on g(x,y)=0."
+},
+{
+  id: 24080,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "At a constrained extremum of f subject to g(x,y)=c, what relation generally holds when ∇g is nonzero?",
+  options: ['∇f = 0 only', '∇f = λ∇g', '∇f = g', '∇f · ∇g = 1'],
+  correctAnswer: 1,
+  explanation: "The Lagrange multiplier condition is ∇f = λ∇g."
+},
+{
+  id: 24081,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y)=x^2+y^2 subject to x+y=1, what is the constrained minimum?",
+  options: ['0', '1/2', '1', '2'],
+  correctAnswer: 1,
+  explanation: "The minimum occurs at x=y=1/2, giving f=1/2."
+},
+{
+  id: 24082,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y)=xy subject to x+y=1, which expression results after setting y=1-x?",
+  options: ['x^2-x', 'x-x^2', 'x^2+x', '1-x^2'],
+  correctAnswer: 1,
+  explanation: "xy = x(1-x) = x-x^2."
+},
+{
+  id: 24083,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y)=xy subject to x+y=1, what is the maximum value?",
+  options: ['1/2', '1/4', '1', '0'],
+  correctAnswer: 1,
+  explanation: "The function x-x^2 has maximum 1/4 at x=1/2."
+},
+{
+  id: 24084,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a surface r(u,v), when is r_u x r_v = 0 at a point?",
+  options: ['The parametrization is regular there', 'The tangent vectors are linearly dependent there', 'The surface has maximum area there', 'The surface is closed'],
+  correctAnswer: 1,
+  explanation: "A zero cross product means the tangent vectors are parallel or one is zero."
+},
+{
+  id: 24085,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(u,v) = <u cos v, u sin v, u>, what type of surface is represented?",
+  options: ['Plane', 'Cone', 'Sphere', 'Cylinder'],
+  correctAnswer: 1,
+  explanation: "Here x^2+y^2=u^2 and z=u, so x^2+y^2=z^2, a cone."
+},
+{
+  id: 24086,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(u,v) = <u cos v, u sin v, u>, what is |r_u x r_v|?",
+  options: ['u', 'sqrt(2)u', '2u', 'u^2'],
+  correctAnswer: 1,
+  explanation: "r_u = <cos v,sin v,1> and r_v = <-u sin v,u cos v,0>. Their cross product has magnitude sqrt(2)u for u >= 0."
+},
+{
+  id: 24087,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(u,v) = <u cos v, u sin v, u>, which normal orientation is represented by r_u x r_v?",
+  options: ['It depends on the parameter ordering', 'Always downward', 'Always horizontal', 'Always radial inward'],
+  correctAnswer: 0,
+  explanation: "Changing the parameter ordering reverses the cross product, so orientation depends on the chosen ordering."
+},
+{
+  id: 24088,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If r_u x r_v is replaced by r_v x r_u in a flux integral, the result becomes:",
+  options: ['The same', 'The negative', 'Twice the value', 'Zero'],
+  correctAnswer: 1,
+  explanation: "r_v x r_u = -(r_u x r_v), so the oriented flux changes sign."
+},
+{
+  id: 24089,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a surface parameterization, which quantities form the first fundamental form coefficients?",
+  options: ['E=r_u·r_u, F=r_u·r_v, G=r_v·r_v', 'E=r_u+r_v, F=r_u-r_v, G=r_u x r_v', 'E=|r_u|, F=|r_v|, G=r_u·r_v', 'E=0, F=1, G=0'],
+  correctAnswer: 0,
+  explanation: "The first fundamental form uses E=r_u·r_u, F=r_u·r_v, and G=r_v·r_v."
+},
+{
+  id: 24090,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "The surface-area factor can also be written using the first fundamental form as:",
+  options: ['sqrt(EG-F^2)', 'EG-F^2', 'sqrt(E+F+G)', 'E+G'],
+  correctAnswer: 0,
+  explanation: "Since |r_u x r_v|^2 = EG-F^2, the area factor is sqrt(EG-F^2)."
+},
+{
+  id: 24091,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a parameterized surface, if EG-F^2 = 0, what follows?",
+  options: ['The parametrization is regular', 'The tangent vectors are linearly dependent', 'The surface area is infinite', 'The flux is always zero'],
+  correctAnswer: 1,
+  explanation: "EG-F^2 = |r_u x r_v|^2, so zero means the tangent vectors are dependent."
+},
+{
+  id: 24092,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a closed surface and outward-oriented normal, the divergence theorem states that flux equals:",
+  options: ['A line integral of F', 'The volume integral of div F', 'The surface integral of curl F', 'The area of the surface'],
+  correctAnswer: 1,
+  explanation: "The divergence theorem converts outward flux into a volume integral of divergence."
+},
+{
+  id: 24093,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If div F = 0 throughout a solid region and F is sufficiently smooth, the net outward flux across its closed boundary is:",
+  options: ['0', '1', 'The volume', 'The surface area'],
+  correctAnswer: 0,
+  explanation: "The divergence theorem gives flux = ∫∫∫ div F dV = 0."
+},
+{
+  id: 24094,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <x^3,y^3,z^3>, what is div F?",
+  options: ['3(x+y+z)', '3(x^2+y^2+z^2)', 'x^3+y^3+z^3', '9xyz'],
+  correctAnswer: 1,
+  explanation: "The divergence is 3x^2+3y^2+3z^2."
+},
+{
+  id: 24095,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For the change of variables x=uv and y=u/v, where u>0 and v>0, which condition is required for local invertibility?",
+  options: ['u=0', 'v=0', 'The Jacobian must be nonzero', 'x=y'],
+  correctAnswer: 2,
+  explanation: "A nonzero Jacobian is the local invertibility condition in the inverse function theorem."
+},
+{
+  id: 24096,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t^2,t^2,t>, what is r'(t) x r''(t)?",
+  options: ['<-2,2,0>', '<2,-2,0>', '<0,0,2>', '<2,2,0>'],
+  correctAnswer: 0,
+  explanation: "r'=<2t,2t,1> and r''=<2,2,0>. Their cross product is <-2,2,0>."
+},
+{
+  id: 24097,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If a space curve has constant nonzero curvature and constant nonzero torsion, which type of curve is a standard example?",
+  options: ['A circular helix', 'A straight line', 'A single point', 'A parabola in a plane'],
+  correctAnswer: 0,
+  explanation: "A circular helix has constant nonzero curvature and torsion."
+},
+{
+  id: 24098,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which quantity determines whether a parameterized surface has a well-defined tangent plane at a point?",
+  options: ['r_u x r_v being nonzero', 'r_u + r_v being zero', 'The parameter domain being rectangular', 'The surface being closed'],
+  correctAnswer: 0,
+  explanation: "A nonzero cross product of the tangent vectors gives a nonzero normal and hence a well-defined tangent plane."
+},
+{
+  id: 24099,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For global optimization on a compact region, why must both interior critical points and the boundary be examined?",
+  options: ['Because extrema can occur in either location', 'Because only the boundary matters', 'Because interior points never matter', 'Because the function must be linear'],
+  correctAnswer: 0,
+  explanation: "A continuous function on a compact region attains global extrema, and those extrema may occur either at interior critical points or on the boundary."
+}
+
+
 
 
 
