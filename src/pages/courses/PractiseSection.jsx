@@ -28,6 +28,7 @@ const TOPICS = [
   'Integration',
   'Sequences and Infinite Series',
   'Conic Sections and Analytic Geometry',
+  '3D Analytic Geometry & Vectors',
   '2D Lines & Systems of Lines',
   'Circles & Conic Tangents',
   'Advanced Single-Variable Calculus',
@@ -48,12 +49,27 @@ const TOPICS = [
   'Regression & Correlation',
 ];
 
+const TOPIC_ALIASES = {
+  'Limits & Continuity': 'Limits and Continuity',
+  'Differentiation & Applications': 'Differentiation',
+  'Integration & Techniques': 'Integration',
+  'Sequences, Series & Taylor': 'Sequences and Infinite Series',
+  'Conics & 2D Analytic Geometry': 'Conic Sections and Analytic Geometry',
+  '3D Analytic Geometry & Vectors': '3D Analytic Geometry & Vectors',
+};
+
 const TOPIC_BANK = {
   'Limits and Continuity': 'calcAg',
+  'Limits & Continuity': 'calcAg',
   Differentiation: 'calcAg',
+  'Differentiation & Applications': 'calcAg',
   Integration: 'calcAg',
+  'Integration & Techniques': 'calcAg',
   'Sequences and Infinite Series': 'calcAg',
+  'Sequences, Series & Taylor': 'calcAg',
   'Conic Sections and Analytic Geometry': 'calcAg',
+  'Conics & 2D Analytic Geometry': 'calcAg',
+  '3D Analytic Geometry & Vectors': 'calcAg',
   '2D Lines & Systems of Lines': 'calcAg',
   'Circles & Conic Tangents': 'calcAg',
   'Advanced Single-Variable Calculus': 'calcAg',
@@ -147,13 +163,14 @@ export default function PractiseSection() {
     Promise.resolve(loader ? loader() : [])
       .then((bank) => {
         if (cancelled) return;
+        const canonicalTopic = TOPIC_ALIASES[chosenTopic] || chosenTopic;
         const filtered = bank.filter((p) => {
           if (p.difficulty !== chosenDifficulty) return false;
-          if (p.topic === chosenTopic) return true;
+          if (p.topic === chosenTopic || p.topic === canonicalTopic) return true;
           if (
-            (chosenTopic === 'Taylor Series for Multivariable Functions' ||
-              chosenTopic === 'Taylor & Maclaurin Series' ||
-              chosenTopic === 'Maclaurin Series') &&
+            (canonicalTopic === 'Taylor Series for Multivariable Functions' ||
+              canonicalTopic === 'Taylor & Maclaurin Series' ||
+              canonicalTopic === 'Maclaurin Series') &&
             (p.topic === 'Taylor Series for Multivariable Functions' ||
               p.topic === 'Taylor & Maclaurin Series' ||
               p.topic === 'Maclaurin Series')
