@@ -31,3 +31,5 @@ test("getStreak counts consecutive days",()=>{localStorage.clear();const today=n
 test("getStreak stops after a missed day",()=>{localStorage.clear();const today=new Date();const old=new Date(today);old.setDate(today.getDate()-2);localStorage.setItem("calculus-study-days",JSON.stringify([today.toDateString(),old.toDateString()]));expect(getStreak()).toBe(1);});
 
 test("recordActivityDay stores an ISO-independent date string",()=>{localStorage.clear();recordActivityDay();const [value]=JSON.parse(localStorage.getItem("calculus-study-days"));expect(value).toBe(new Date().toDateString());});
+
+test("formatRelativeCompletion uses the singular day label",()=>{jest.useFakeTimers();jest.setSystemTime(new Date(2026,8,27,12));expect(formatRelativeCompletion(new Date(2026,8,26,12).getTime())).toBe("Completed 1 day ago");jest.useRealTimers();});
