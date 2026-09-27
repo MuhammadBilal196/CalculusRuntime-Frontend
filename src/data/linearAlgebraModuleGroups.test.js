@@ -29,3 +29,5 @@ test("part lookup returns parent module",()=>{expect(getLinearAlgebraModulePart(
 test("part lookup returns requested part",()=>{expect(getLinearAlgebraModulePart("module-b-2").part.id).toBe("module-b-2");});
 
 test("each module has metadata",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>{expect(module.description).toBeTruthy();expect(module.meta).toBeTruthy();});});
+
+test("each part has metadata",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>{expect(part.title).toBeTruthy();expect(part.description).toBeTruthy();}));});
