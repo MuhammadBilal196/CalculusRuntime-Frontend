@@ -37,6 +37,7 @@ import DivergencePart2 from "./pages/multivariableCalculus/DivergencePart2";
 import Geometry3DPart1 from "./pages/multivariableCalculus/Geometry3DPart1";
 import Geometry3DPart2 from "./pages/multivariableCalculus/Geometry3DPart2";
 import SpaceCurvesGuide from "./pages/multivariableCalculus/SpaceCurvesGuideNew";
+import JacobiansGuide from "./pages/multivariableCalculus/JacobiansGuide";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -95,7 +96,7 @@ import {
   PrincipalComponentAnalysisPart1,
   PrincipalComponentAnalysisPart2,
   MarkovChainsPart1,
-  MarkovChainsPart2
+  MarkovChainsPart2,
 } from "./pages/linearAlgebra";
 import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
@@ -337,6 +338,16 @@ function App() {
                   path="/multiple-integrals/2"
                   element={<Layout body={<IntegralsPart2 />} />}
                 />
+                {/* <Route
+                  path="/jacobians-change-of-variables"
+                  element={
+                    <Navigate to="/jacobians-change-of-variables/1" replace />
+                  }
+                /> */}
+                <Route
+  path="/jacobians-change-of-variables/1"
+  element={<Layout body={<JacobiansGuide />} />}
+/>
 
                 {/* Taylor Series */}
                 <Route
