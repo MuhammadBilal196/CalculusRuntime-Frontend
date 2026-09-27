@@ -61,3 +61,5 @@ test("module C part one starts with orthogonality",()=>{expect(getLinearAlgebraM
 test("module C part one contains SVD",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[0].topics[1].id).toBe("singular-value-decomposition");});
 
 test("module C part two starts with PCA",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[1].topics[0].id).toBe("principal-component-analysis");});
+
+test("module C part two ends with Markov chains",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[1].topics[1].id).toBe("markov-chains-steady-states");});
