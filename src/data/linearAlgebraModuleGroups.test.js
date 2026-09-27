@@ -37,3 +37,5 @@ test("topic paths are unique",()=>{const paths=LINEAR_ALGEBRA_MODULE_GROUPS.flat
 test("module A has two topics per part",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts.map((part)=>part.topics.length)).toEqual([2,2]);});
 
 test("module B has two topics per part",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts.map((part)=>part.topics.length)).toEqual([2,2]);});
+
+test("module C has two topics per part",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts.map((part)=>part.topics.length)).toEqual([2,2]);});
