@@ -67,3 +67,5 @@ test("module C part two ends with Markov chains",()=>{expect(getLinearAlgebraMod
 test("all grouped modules expose two ordered parts",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>expect(module.parts.map((part)=>part.title)).toEqual(["Part 1","Part 2"]));});
 
 test("module A topic routes point to existing topic pages",()=>{getLinearAlgebraModuleGroup("module-a").parts.flatMap((part)=>part.topics).forEach((topic)=>expect(topic.path).toMatch(/\/1$/));});
+
+test("module B topic routes point to existing topic pages",()=>{getLinearAlgebraModuleGroup("module-b").parts.flatMap((part)=>part.topics).forEach((topic)=>expect(topic.path).toMatch(/\/1$/));});
