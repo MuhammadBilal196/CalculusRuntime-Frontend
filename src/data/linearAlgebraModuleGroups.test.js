@@ -83,3 +83,5 @@ test("grouped module count remains three",()=>{expect(LINEAR_ALGEBRA_MODULE_GROU
 test("all grouped topics have descriptions",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>part.topics.forEach((topic)=>expect(topic.description).toBeTruthy())));});
 
 test("all grouped topics have stable ids",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>part.topics.forEach((topic)=>expect(topic.id).toMatch(/^[a-z0-9-]+$/))));});
+
+test("lookup preserves the module object identity",()=>{const module=getLinearAlgebraModuleGroup("module-c");const part=getLinearAlgebraModulePart("module-c-1");expect(part.module).toBe(module);});
