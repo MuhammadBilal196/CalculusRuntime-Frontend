@@ -601,6 +601,15 @@ export const COURSES = [
         logo: <span className="math-logo">Pπ = π</span>,
       },
       {
+        title: "Linear Programming: The Simplex Method",
+        description:
+          "Model linear objectives and constraints, convert inequalities to standard form, and follow simplex pivots to an optimality certificate.",
+        path: "/linear-algebra/linear-programming-simplex/1",
+        meta: "2 parts · 20-question checkpoint",
+        icon: "LP",
+        logo: <span className="math-logo">max cᵀx</span>,
+      },
+      {
         title: "Practice Arena",
         description:
           "MCQ drills for Linear Algebra topics with leaderboard submit.",
