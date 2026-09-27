@@ -39,6 +39,7 @@ import Geometry3DPart2 from "./pages/multivariableCalculus/Geometry3DPart2";
 import SpaceCurvesGuide from "./pages/multivariableCalculus/SpaceCurvesGuideNew";
 import JacobiansGuide from "./pages/multivariableCalculus/JacobiansGuide";
 import CurvilinearCoordinatesGuide from "./pages/multivariableCalculus/CurvilinearCoordinatesGuide";
+import ParametrizedSurfaceAreaGuide from "./pages/multivariableCalculus/ParametrizedSurfaceAreaGuide";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -359,6 +360,17 @@ function App() {
                 <Route
                   path="/curvilinear-coordinate-systems/1"
                   element={<Layout body={<CurvilinearCoordinatesGuide />} />}
+                />
+                <Route
+                  path="/parametrized-surface-area"
+                  element={
+                    <Navigate to="/parametrized-surface-area/2" replace />
+                  }
+                />
+
+                <Route
+                  path="/parametrized-surface-area/2"
+                  element={<Layout body={<ParametrizedSurfaceAreaGuide />} />}
                 />
                 {/* Taylor Series */}
                 <Route
