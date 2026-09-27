@@ -2013,3 +2013,226 @@ export const LA_PCA_QUIZ = [
     "explanation": "The mean and covariance are sensitive to extreme values, which can rotate the leading eigendirections."
   }
 ];
+
+export const LA_MARKOV_QUIZ = [
+  {
+    "prompt": "With column probability vectors and the update $p_{n+1}=Pp_n$, what condition makes $P$ column-stochastic?",
+    "options": [
+      "Each column has nonnegative entries summing to one",
+      "Each row has nonnegative entries summing to zero",
+      "The matrix is symmetric",
+      "Every diagonal entry equals one"
+    ],
+    "answer": "A",
+    "explanation": "Column $j$ gives the probabilities of leaving state $j$ for each destination, so it must be nonnegative and sum to one."
+  },
+  {
+    "prompt": "For $P=\\begin{pmatrix}0.8&0.3\\\\0.2&0.7\\end{pmatrix}$ and $p_0=(1,0)^T$, what is $p_1=Pp_0$?",
+    "options": [
+      "$(0.2,0.8)^T$",
+      "$(0.8,0.2)^T$",
+      "$(0.3,0.7)^T$",
+      "$(1,1)^T$"
+    ],
+    "answer": "B",
+    "explanation": "Multiplication by $p_0=e_1$ selects the first column of $P$, giving $(0.8,0.2)^T$."
+  },
+  {
+    "prompt": "Under the column-vector convention, which equation defines a stationary distribution $\\pi$?",
+    "options": [
+      "$P\\pi=0$",
+      "$P^T\\pi=-\\pi$",
+      "$P\\pi=\\pi$",
+      "$\\pi^T\\pi=1$"
+    ],
+    "answer": "C",
+    "explanation": "A stationary distribution is unchanged by one transition, so it is a fixed vector of $P$."
+  },
+  {
+    "prompt": "Which eigenvalue is associated with a nonzero stationary vector of a stochastic matrix?",
+    "options": [
+      "$0$",
+      "$-1$",
+      "$\\det(P)$",
+      "$1$"
+    ],
+    "answer": "D",
+    "explanation": "The equation $P\\pi=\\pi$ is the eigenvector equation with eigenvalue $1$."
+  },
+  {
+    "prompt": "For $P=\\begin{pmatrix}0.8&0.3\\\\0.2&0.7\\end{pmatrix}$, what is its stationary distribution?",
+    "options": [
+      "$(0.6,0.4)^T$",
+      "$(0.5,0.5)^T$",
+      "$(0.4,0.6)^T$",
+      "$(0.8,0.2)^T$"
+    ],
+    "answer": "A",
+    "explanation": "Solving $0.2x=0.3y$ with $x+y=1$ gives $x=0.6$ and $y=0.4$."
+  },
+  {
+    "prompt": "For a row-stochastic matrix $Q$ and row probability vector $r_n^T$, how is the next distribution written?",
+    "options": [
+      "$r_{n+1}^T=Qr_n^T$",
+      "$r_{n+1}^T=r_n^TQ$",
+      "$r_{n+1}^T=Q^Tr_n^TQ$",
+      "$r_{n+1}^T=r_n^T+Q$"
+    ],
+    "answer": "B",
+    "explanation": "The row-vector convention multiplies the row distribution on the right by the row-stochastic transition matrix."
+  },
+  {
+    "prompt": "Besides satisfying $P\\pi=\\pi$, what makes $\\pi$ a probability distribution?",
+    "options": [
+      "Its entries are all distinct",
+      "It is an eigenvector of $P^T$ for eigenvalue $0$",
+      "Its entries are nonnegative and sum to one",
+      "Its Euclidean norm must exceed one"
+    ],
+    "answer": "C",
+    "explanation": "A stationary probability vector must be nonnegative and normalized to total probability one."
+  },
+  {
+    "prompt": "Why does a column-stochastic matrix preserve the total sum of a column distribution?",
+    "options": [
+      "Because $P$ is always invertible",
+      "Because $P$ has trace one",
+      "Because every row of $P$ is identical",
+      "Because $\\mathbf{1}^TP=\\mathbf{1}^T$"
+    ],
+    "answer": "D",
+    "explanation": "Then $\\mathbf{1}^TPp=\\mathbf{1}^Tp$, so the entries of the distribution keep the same total."
+  },
+  {
+    "prompt": "What does $P^np_0$ represent in the column-vector model?",
+    "options": [
+      "The state distribution after $n$ transitions",
+      "The eigenvalues of the initial distribution",
+      "The transition matrix after deleting transient states",
+      "The stationary distribution for every possible chain"
+    ],
+    "answer": "A",
+    "explanation": "Applying the same one-step transition $n$ times gives $p_n=P^np_0$."
+  },
+  {
+    "prompt": "For a finite irreducible Markov chain, which statement is guaranteed?",
+    "options": [
+      "Every state is absorbing",
+      "There is a unique stationary distribution",
+      "Every eigenvalue is positive",
+      "The transition matrix is symmetric"
+    ],
+    "answer": "B",
+    "explanation": "Irreducibility guarantees a unique stationary distribution for a finite chain, though convergence also needs aperiodicity."
+  },
+  {
+    "prompt": "For a finite irreducible and aperiodic chain, what happens to $P^np_0$?",
+    "options": [
+      "It becomes the zero vector",
+      "It is unchanged for every $p_0$",
+      "It converges to the unique stationary distribution",
+      "It must alternate between two states"
+    ],
+    "answer": "C",
+    "explanation": "Irreducibility and aperiodicity together imply convergence to the unique stationary distribution from any initial distribution."
+  },
+  {
+    "prompt": "For $P=\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$ and $p_0=(1,0)^T$, which statement is correct?",
+    "options": [
+      "No stationary distribution exists",
+      "The unique stationary distribution is $(1,0)^T$",
+      "$P^np_0$ converges to $(1/2,1/2)^T$ at every step",
+      "$(1/2,1/2)^T$ is stationary, but the iterates alternate"
+    ],
+    "answer": "D",
+    "explanation": "The equal mixture is fixed, but starting from the first state the distributions switch between $(1,0)^T$ and $(0,1)^T$."
+  },
+  {
+    "prompt": "If $P=I_2$, which vectors are stationary probability distributions?",
+    "options": [
+      "Every vector $(t,1-t)^T$ with $0\\le t\\le1$",
+      "Only $(1/2,1/2)^T$",
+      "Only $(1,0)^T$",
+      "No probability vector"
+    ],
+    "answer": "A",
+    "explanation": "Since $I_2\\pi=\\pi$, every probability vector is fixed; the stationary distribution is not unique."
+  },
+  {
+    "prompt": "A numerical method returns a nonzero vector $v$ satisfying $Pv=v$. What must be done before treating it as a stationary distribution?",
+    "options": [
+      "Set its largest entry to zero",
+      "Normalize it to sum to one and verify nonnegativity",
+      "Square every entry",
+      "Subtract the mean of its entries"
+    ],
+    "answer": "B",
+    "explanation": "An eigenvector can be scaled arbitrarily; a stationary probability vector must be normalized and nonnegative."
+  },
+  {
+    "prompt": "For $P=\\begin{pmatrix}0.6&0.2\\\\0.4&0.8\\end{pmatrix}$, find the stationary distribution.",
+    "options": [
+      "$(0.2,0.8)^T$",
+      "$(0.5,0.5)^T$",
+      "$(1/3,2/3)^T$",
+      "$(2/3,1/3)^T$"
+    ],
+    "answer": "C",
+    "explanation": "The first stationary equation gives $0.4x=0.2y$, so $y=2x$; normalization gives $(x,y)=(1/3,2/3)$."
+  },
+  {
+    "prompt": "What is true about every eigenvalue $\\lambda$ of a finite stochastic matrix?",
+    "options": [
+      "$\\lambda$ must equal one",
+      "$\\lambda$ must be an integer",
+      "$\\lambda$ must be negative",
+      "$|\\lambda|\\le1$"
+    ],
+    "answer": "D",
+    "explanation": "A stochastic matrix is nonexpansive in the appropriate probability norm, so its eigenvalues lie in the closed unit disk."
+  },
+  {
+    "prompt": "When solving $(P-I)\\pi=0$ with $\\mathbf{1}^T\\pi=1$, why can one equation from $(P-I)\\pi=0$ be replaced?",
+    "options": [
+      "The stationary equations are linearly dependent",
+      "The normalization equation is always redundant",
+      "$P-I$ is always the identity matrix",
+      "The stationary vector must have a zero entry"
+    ],
+    "answer": "A",
+    "explanation": "Because $1$ is an eigenvalue, $P-I$ is singular; its stationary equations contain a dependency, while normalization fixes the scale."
+  },
+  {
+    "prompt": "If $p_0=\\pi$ is stationary, what is the distribution after any number $n$ of transitions?",
+    "options": [
+      "$P^n\\pi=0$",
+      "$P^n\\pi=\\pi$",
+      "$P^n\\pi=n\\pi$",
+      "$P^n\\pi=P$"
+    ],
+    "answer": "B",
+    "explanation": "Since $P\\pi=\\pi$, repeated multiplication leaves the same vector unchanged."
+  },
+  {
+    "prompt": "If $P$ is column-stochastic and $Q=P^T$, which row-vector equation corresponds to $P\\pi=\\pi$?",
+    "options": [
+      "$\\pi^TQ=0$",
+      "$Q\\pi^T=\\pi^T$",
+      "$\\pi^TQ=\\pi^T$",
+      "$Q^T\\pi^T=0$"
+    ],
+    "answer": "C",
+    "explanation": "Transposing $P\\pi=\\pi$ gives $\\pi^TP^T=\\pi^T$, and $Q=P^T$."
+  },
+  {
+    "prompt": "Which condition is sufficient to guarantee a unique stationary distribution and convergence for a finite chain?",
+    "options": [
+      "The matrix has at least one zero entry",
+      "The matrix is diagonal",
+      "The matrix has determinant one",
+      "Every entry of the transition matrix is strictly positive"
+    ],
+    "answer": "D",
+    "explanation": "A strictly positive finite stochastic matrix is irreducible and aperiodic, so it has a unique stationary distribution and its iterates converge to it."
+  }
+];
