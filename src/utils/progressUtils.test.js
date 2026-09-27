@@ -33,3 +33,5 @@ test("getStreak stops after a missed day",()=>{localStorage.clear();const today=
 test("recordActivityDay stores an ISO-independent date string",()=>{localStorage.clear();recordActivityDay();const [value]=JSON.parse(localStorage.getItem("calculus-study-days"));expect(value).toBe(new Date().toDateString());});
 
 test("formatRelativeCompletion uses the singular day label",()=>{jest.useFakeTimers();jest.setSystemTime(new Date(2026,8,27,12));expect(formatRelativeCompletion(new Date(2026,8,26,12).getTime())).toBe("Completed 1 day ago");jest.useRealTimers();});
+
+test("formatRelativeCompletion uses the plural day label",()=>{jest.useFakeTimers();jest.setSystemTime(new Date(2026,8,27,12));expect(formatRelativeCompletion(new Date(2026,8,25,12).getTime())).toBe("Completed 2 days ago");jest.useRealTimers();});
