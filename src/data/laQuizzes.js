@@ -2236,3 +2236,226 @@ export const LA_MARKOV_QUIZ = [
     "explanation": "A strictly positive finite stochastic matrix is irreducible and aperiodic, so it has a unique stationary distribution and its iterates converge to it."
   }
 ];
+
+export const LA_LINEAR_PROGRAMMING_QUIZ = [
+  {
+    "prompt": "In a linear-programming model, what should a decision variable represent?",
+    "options": [
+      "The quantity of an activity the model chooses",
+      "A constraint that must always be zero",
+      "The final objective value before optimization",
+      "A label for a tableau row"
+    ],
+    "answer": "A",
+    "explanation": "Decision variables encode controllable quantities; the objective and constraints are written in terms of them."
+  },
+  {
+    "prompt": "For $x_1+2x_2\\leq8$, which equation uses a slack variable for unused capacity?",
+    "options": [
+      "$x_1+2x_2-s=8$, $s\\geq0$",
+      "$x_1+2x_2+s=8$, $s\\geq0$",
+      "$x_1+2x_2=8+s$, $s\\geq0$",
+      "$x_1+2x_2+s\\leq8$, $s=0$"
+    ],
+    "answer": "B",
+    "explanation": "Add a nonnegative slack variable to a ≤ constraint to make an equality."
+  },
+  {
+    "prompt": "A point is feasible for a linear program when it:",
+    "options": [
+      "maximizes the objective, even if a constraint fails",
+      "satisfies only the tightest constraint",
+      "satisfies every constraint and variable bound",
+      "makes every inequality strict"
+    ],
+    "answer": "C",
+    "explanation": "Feasibility means all constraints and bounds hold at once; it does not require optimality."
+  },
+  {
+    "prompt": "For $\\max z=3x+2y$ with $x+y\\leq4$, $x\\leq2$, $y\\leq3$, $x,y\\geq0$, what is $z$ at $(2,2)$?",
+    "options": [
+      "$5$",
+      "$8$",
+      "$9$",
+      "$10$"
+    ],
+    "answer": "D",
+    "explanation": "Substitution gives $3(2)+2(2)=10$, and the point satisfies all constraints."
+  },
+  {
+    "prompt": "For a nonempty bounded feasible polyhedron, which statement is true?",
+    "options": [
+      "At least one optimum occurs at an extreme point (vertex)",
+      "Every feasible point has the same objective value",
+      "The optimum must lie strictly inside the region",
+      "An optimum exists only if simplex is run"
+    ],
+    "answer": "A",
+    "explanation": "A linear objective on a nonempty bounded polyhedron attains an optimum at an extreme point."
+  },
+  {
+    "prompt": "How do you convert $2x_1+x_2\\leq9$ to equality for simplex?",
+    "options": [
+      "Subtract a nonnegative slack variable",
+      "Add $s\\geq0$: $2x_1+x_2+s=9$",
+      "Add an unrestricted variable to the RHS",
+      "Replace it with $2x_1+x_2=0$"
+    ],
+    "answer": "B",
+    "explanation": "Adding $s\\geq0$ gives equality and records unused capacity."
+  },
+  {
+    "prompt": "For $x_1+x_2\\geq5$, what is the usual surplus conversion?",
+    "options": [
+      "Add $s\\geq0$ to the left",
+      "Add $s\\leq0$ to the right",
+      "Subtract $s\\geq0$ from the left",
+      "Replace with $x_1+x_2+s=0$"
+    ],
+    "answer": "C",
+    "explanation": "A ≥ constraint becomes $x_1+x_2-s=5$ with $s\\geq0$."
+  },
+  {
+    "prompt": "Under tableau convention $z-c^Tx=0$ for maximization, which nonbasic variable is a common entering choice?",
+    "options": [
+      "One with a positive objective-row coefficient",
+      "The variable with the largest RHS",
+      "A variable whose column is already basic",
+      "One with a negative objective-row reduced-cost coefficient"
+    ],
+    "answer": "D",
+    "explanation": "Under this convention, a negative coefficient gives an improving direction."
+  },
+  {
+    "prompt": "In the minimum-ratio test, which rows are eligible?",
+    "options": [
+      "Rows with positive entering-column entries; compare RHS divided by entry",
+      "Rows with negative entries; compare entry divided by RHS",
+      "Every row, including zero entries",
+      "Only the row with the largest RHS"
+    ],
+    "answer": "A",
+    "explanation": "Positive pivot-column entries limit the increase; choose the smallest nonnegative RHS-to-entry ratio."
+  },
+  {
+    "prompt": "An improving entering column has no positive entries in the constraint rows. What does this indicate?",
+    "options": [
+      "The current point is necessarily infeasible",
+      "The objective can increase without bound along that direction",
+      "The problem has a unique finite optimum",
+      "An artificial variable must be removed"
+    ],
+    "answer": "B",
+    "explanation": "No positive entries means the ratio test cannot limit the improving variable, so the objective is unbounded."
+  },
+  {
+    "prompt": "What characterizes a basic-variable column in a canonical tableau?",
+    "options": [
+      "It contains only negative entries",
+      "Its entries sum to the RHS",
+      "It is a unit column: one 1 and otherwise 0",
+      "It contains zeros in every constraint row"
+    ],
+    "answer": "C",
+    "explanation": "A basic variable has a unit vector column in canonical form."
+  },
+  {
+    "prompt": "A basic feasible solution is degenerate when:",
+    "options": [
+      "There are multiple optimal vertices",
+      "The feasible region is unbounded",
+      "All decision variables are positive",
+      "At least one basic variable is zero"
+    ],
+    "answer": "D",
+    "explanation": "A zero-valued basic variable is degeneracy; a pivot may keep the same vertex."
+  },
+  {
+    "prompt": "Which description defines the feasible set?",
+    "options": [
+      "The intersection of constraint regions and variable bounds",
+      "Only points with the largest objective value",
+      "The collection of basic variables",
+      "Constraints that have zero slack"
+    ],
+    "answer": "A",
+    "explanation": "Intersect all half-spaces and hyperplanes with the variable bounds."
+  },
+  {
+    "prompt": "Why might simplex need an artificial variable for a $\\geq$ row?",
+    "options": [
+      "To make the objective linear",
+      "A surplus column alone may not provide an initial basic unit column",
+      "To turn maximization into minimization",
+      "To force the constraint to be redundant"
+    ],
+    "answer": "B",
+    "explanation": "Subtracting a surplus variable produces a negative column entry, not a basic unit column."
+  },
+  {
+    "prompt": "In two-phase simplex, a positive optimal Phase I objective (minimum artificial-variable sum) proves:",
+    "options": [
+      "The original objective is unbounded",
+      "The original problem has infinitely many optima",
+      "The original constraints are infeasible",
+      "The original objective value is zero"
+    ],
+    "answer": "C",
+    "explanation": "If the minimum artificial-variable sum stays positive, no point satisfies all original constraints."
+  },
+  {
+    "prompt": "With $z-c^Tx=0$ in a maximization tableau, when is a feasible tableau optimal for its nonbasic variables?",
+    "options": [
+      "When every RHS is negative",
+      "When every objective coefficient is negative",
+      "When at least one objective coefficient is negative",
+      "When no nonbasic objective-row coefficient is negative"
+    ],
+    "answer": "D",
+    "explanation": "A negative reduced cost offers an improving pivot under this convention; none remaining certifies optimality."
+  },
+  {
+    "prompt": "At an optimal tableau, a zero reduced cost for a nonbasic variable can mean:",
+    "options": [
+      "There may be another optimum on an adjacent feasible edge",
+      "The current solution is infeasible",
+      "The objective is unbounded",
+      "The constraints are inconsistent"
+    ],
+    "answer": "A",
+    "explanation": "A feasible pivot with zero reduced cost can produce another solution with the same objective."
+  },
+  {
+    "prompt": "What is Bland's rule designed to do?",
+    "options": [
+      "Choose the largest objective coefficient as the leaving variable",
+      "Break ties by a fixed variable order to prevent cycling",
+      "Make every LP bounded",
+      "Avoid all slack variables"
+    ],
+    "answer": "B",
+    "explanation": "A consistent index ordering for eligible pivots prevents cycling, including in degenerate cases."
+  },
+  {
+    "prompt": "A shadow price commonly measures:",
+    "options": [
+      "The number of pivots needed",
+      "Slack at every feasible point",
+      "Local change in optimum per unit change of a constraint RHS",
+      "The entering variable's objective coefficient"
+    ],
+    "answer": "C",
+    "explanation": "While the current basis remains optimal, the dual value estimates marginal objective change per RHS unit."
+  },
+  {
+    "prompt": "What is the central geometric idea behind simplex?",
+    "options": [
+      "Search every feasible point simultaneously",
+      "Replace inequalities with equalities and stop",
+      "Move randomly through the interior",
+      "Move between adjacent basic feasible solutions while improving the objective"
+    ],
+    "answer": "D",
+    "explanation": "Simplex traverses neighboring vertices, pivoting until no improving move remains."
+  }
+];
