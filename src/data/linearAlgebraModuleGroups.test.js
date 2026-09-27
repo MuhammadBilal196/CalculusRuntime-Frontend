@@ -45,3 +45,5 @@ test("module A title is stable",()=>{expect(getLinearAlgebraModuleGroup("module-
 test("module B title is stable",()=>{expect(getLinearAlgebraModuleGroup("module-b").title).toBe("Advanced Vector & Matrix Structure");});
 
 test("module A has the expected first topic",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts[0].topics[0].id).toBe("lu-decomposition");});
+
+test("module A has the expected second topic",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts[0].topics[1].id).toBe("cholesky-decomposition");});
