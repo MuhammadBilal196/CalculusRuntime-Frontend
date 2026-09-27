@@ -92,7 +92,9 @@ import {
   AffineTransformationsPart1,
   AffineTransformationsPart2,
   PrincipalComponentAnalysisPart1,
-  PrincipalComponentAnalysisPart2
+  PrincipalComponentAnalysisPart2,
+  MarkovChainsPart1,
+  MarkovChainsPart2
 } from "./pages/linearAlgebra";
 import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
@@ -320,6 +322,9 @@ function App() {
               <Route path="/linear-algebra/principal-component-analysis" element={<Navigate to="/linear-algebra/principal-component-analysis/1" replace />} />
               <Route path="/linear-algebra/principal-component-analysis/1" element={<Layout body={<PrincipalComponentAnalysisPart1 />} />} />
               <Route path="/linear-algebra/principal-component-analysis/2" element={<Layout body={<PrincipalComponentAnalysisPart2 />} />} />
+              <Route path="/linear-algebra/markov-chains-steady-states" element={<Navigate to="/linear-algebra/markov-chains-steady-states/1" replace />} />
+              <Route path="/linear-algebra/markov-chains-steady-states/1" element={<Layout body={<MarkovChainsPart1 />} />} />
+              <Route path="/linear-algebra/markov-chains-steady-states/2" element={<Layout body={<MarkovChainsPart2 />} />} />
               <Route path="/linear-algebra/matrix-norms-conditioning" element={<Navigate to="/linear-algebra/matrix-norms-conditioning/1" replace />} />
               <Route path="/linear-algebra/matrix-norms-conditioning/1" element={<Layout body={<MatrixNormsPart1 />} />} />
               <Route path="/linear-algebra/matrix-norms-conditioning/2" element={<Layout body={<MatrixNormsPart2 />} />} />
