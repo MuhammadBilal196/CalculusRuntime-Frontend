@@ -17,3 +17,5 @@ test("every topic has a route",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module
 test("module A contains four topics",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts.flatMap((part)=>part.topics)).toHaveLength(4);});
 
 test("module B contains four topics",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts.flatMap((part)=>part.topics)).toHaveLength(4);});
+
+test("module C contains four topics",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts.flatMap((part)=>part.topics)).toHaveLength(4);});
