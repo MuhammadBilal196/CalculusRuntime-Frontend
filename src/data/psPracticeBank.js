@@ -2,6 +2,7 @@
  *  Every question is unique across the entire site and requires real work to solve.
  *  Regenerate with: python _pgen_build.py
  */
+import { PS_MODULE_KL_PRACTICE_BANK } from "./psModuleKL_PracticeBank";
 export const PS_PRACTICE_BANK = [
   {
     "id": 30000,
@@ -21323,3 +21324,5 @@ PS_PRACTICE_BANK.push(
   {"id": 74298, "topic": "Regression & Correlation", "difficulty": "Hard", "question": "A simple OLS regression with intercept has n=10, SST=90, and SSE=40. Find adjusted R².", "options": ["3/4", "1/4", "1/2", "5/9"], "correctAnswer": 2, "explanation": "Adjusted R²=1-[SSE/(n-2)]/[SST/(n-1)]=1-5/10=1/2."},
   {"id": 74299, "topic": "Regression & Correlation", "difficulty": "Hard", "question": "When is the usual constant-variance OLS standard-error formula unreliable even if coefficients remain unbiased?", "options": ["When the intercept is nonzero", "When the response has units", "When the predictor mean differs from zero", "When errors are heteroscedastic but have conditional mean zero"], "correctAnswer": 3, "explanation": "Conditional mean zero supports unbiasedness, but heteroscedasticity invalidates the usual homoscedastic covariance formula."},
 );
+
+PS_PRACTICE_BANK.push(...PS_MODULE_KL_PRACTICE_BANK);

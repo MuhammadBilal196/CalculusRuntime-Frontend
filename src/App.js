@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ProgressProvider } from "./pages/courses/ProgressContext";
@@ -54,6 +55,7 @@ import VerifyCertificate from "./pages/certificates/VerifyCertificate";
 import SavedForLater from "./pages/dashboard/SavedForLater";
 import Chatbot from "./components/Chatbot/Chatbot";
 import BackToTop from "./components/common/BackToTop";
+import LoadingSpinner from "./components/common/LoadingSpinner";
 
 import {
   LinearEquationsPart1,
@@ -73,6 +75,28 @@ import {
   SvdPart1,
   SvdPart2,
 } from "./pages/linearAlgebra/LaParts";
+import {
+  LUDecompositionPart1,
+  LUDecompositionPart2,
+  CholeskyDecompositionPart1,
+  CholeskyDecompositionPart2,
+  JordanNormalFormPart1,
+  JordanNormalFormPart2,
+  MatrixNormsPart1,
+  MatrixNormsPart2,
+  ComplexVectorSpacesPart1,
+  ComplexVectorSpacesPart2,
+  QuadraticFormsPart1,
+  QuadraticFormsPart2,
+  ChangeOfBasisPart1,
+  ChangeOfBasisPart2,
+  AffineTransformationsPart1,
+  AffineTransformationsPart2,
+  PrincipalComponentAnalysisPart1,
+  PrincipalComponentAnalysisPart2,
+  MarkovChainsPart1,
+  MarkovChainsPart2
+} from "./pages/linearAlgebra";
 import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
 import CalculusOverview from "./pages/calculus/CalculusOverview";
@@ -112,6 +136,9 @@ import {
   OdePart1,
   OdePart2,
 } from "./pages/calculus/CalcParts";
+
+// three.js is large, so the 3D explorer loads in its own chunk only when visited.
+const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
 
 function App() {
   return (

@@ -49,6 +49,8 @@ const TOPICS = [
   'Descriptive Statistics',
   'Hypothesis Testing',
   'Regression & Correlation',
+  'Probability Theory & Random Variables',
+  'Mathematical Statistics & Inference',
 ];
 
 const TOPIC_ALIASES = {
@@ -100,6 +102,8 @@ const TOPIC_BANK = {
   'Descriptive Statistics': 'ps',
   'Hypothesis Testing': 'ps',
   'Regression & Correlation': 'ps',
+  'Probability Theory & Random Variables': 'ps',
+  'Mathematical Statistics & Inference': 'ps',
 };
 
 function shuffled(list) {

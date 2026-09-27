@@ -11,6 +11,7 @@ const ROUTE_MAP = [
   { match: /\/vector-calculus\/1/, topic: "Vector Calculus Part 1", detail: "vector fields, line integrals, gradient, flux" },
   { match: /\/vector-calculus/, topic: "Vector Calculus", detail: "vector calculus topics" },
   { match: /\/vectorfield/, topic: "Vector Field Visualizer", detail: "visualizing 2D vector fields, direction and magnitude of field vectors" },
+  { match: /\/surface-explorer/, topic: "3D Surface Explorer", detail: "graphing surfaces z = f(x, y) in 3D with six axis directions, partial derivatives and tangent planes" },
   { match: /\/limits-continuity\/2/, topic: "Limits and Continuity Part 2", detail: "continuity of multivariable functions, continuity on regions" },
   { match: /\/limits-continuity\/1/, topic: "Limits and Continuity Part 1", detail: "limits of multivariable functions, path-dependent limits" },
   { match: /\/limits-continuity/, topic: "Limits and Continuity", detail: "limits and continuity for multivariable functions" },

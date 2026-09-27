@@ -39,6 +39,12 @@ const toolLinks = [
     desc: "Evaluate double integrals with full step-by-step",
   },
   {
+    label: "3D Surface Explorer",
+    path: "/surface-explorer",
+    icon: "⛰",
+    desc: "Rotate, animate and probe z = f(x, y) on six-direction 3D axes",
+  },
+  {
     label: "AI Calculus Solver",
     path: "/ai-solver",
     icon: "🤖",

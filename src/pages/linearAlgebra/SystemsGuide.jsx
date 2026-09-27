@@ -1160,7 +1160,7 @@ function SystemsGuide({ part = 1 }) {
                 why: "Row-reduce and read pivots, free variables, and consistency from the echelon form.",
               },
               {
-                text: "For each elimination step, record the multiplier used (with its sign flipped) in the matching position of $L$.",
+                text: "For each elimination step $R_i \u2190 R_i-mR_k$, record the multiplier $m$ (not its negative) in the matching position of $L$.",
                 why: "$L$ stores exactly the steps elimination already performed.",
               },
               {
@@ -1176,7 +1176,7 @@ function SystemsGuide({ part = 1 }) {
                 why: "Confirm with a second method or by substituting back.",
               },
               {
-                text: "To solve $Ax=b$: forward-substitute $Ly=b$, then back-substitute $Ux=y$.",
+                text: "To solve $Ax=b$ after $PA=LU$: forward-substitute $Ly=Pb$, then back-substitute $Ux=y$. If no swaps occurred, $P=I$.",
                 why: "Two cheap triangular solves replace full elimination for every new $b$.",
               },
             ]}
@@ -1204,7 +1204,7 @@ function SystemsGuide({ part = 1 }) {
                 why: "$L$ stores exactly the steps elimination already performed.",
               },
               {
-                text: "Check: $L\\times U=\\begin{pmatrix}4&3\\\\6&4.5-6\\end{pmatrix}=\\begin{pmatrix}4&3\\\\6&3\\end{pmatrix}=A$.",
+                text: "Check: $L\\times U=\\begin{pmatrix}4&3\\\\6&4.5-1.5\\end{pmatrix}=\\begin{pmatrix}4&3\\\\6&3\\end{pmatrix}=A$.",
                 why: "Confirm with a second method or by substituting back.",
               },
             ]}

@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
+import { mixedMathToHtml } from "../../utils/mixedMath";
 
-export function GuideMcqSection({ id, badge, title, scoreId, section, questions }) {
+export function GuideMcqSection({ id, badge, title, scoreId, section, questions, onComplete }) {
   const count = questions.length;
+  // Opt-in assessed attempts: existing callers retain their mastery-style behavior.
+  const checkpointMode = typeof onComplete === "function";
+  const attemptsRef = useRef({});
+  const [saveError, setSaveError] = useState(false);
+  const formatText = (text) => checkpointMode ? mixedMathToHtml(text) : text;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -13,11 +19,12 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
 
   // Load saved progress
   useEffect(() => {
+    if (checkpointMode) return;
     const savedUnlocked = localStorage.getItem(`${scoreId}-unlocked`);
     const savedScore = localStorage.getItem(`${scoreId}-score`);
     if (savedUnlocked) setUnlockedIndex(parseInt(savedUnlocked, 10));
     if (savedScore) setScore(parseInt(savedScore, 10));
-  }, [scoreId]);
+  }, [scoreId, checkpointMode]);
 
   // Observer to show/hide the floating side bar when quiz is on screen
   useEffect(() => {
@@ -42,6 +49,28 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
     if (!isSubmitted) setSelectedOption(idx);
   };
 
+  const persistAttempt = (result) => {
+    setSaveError(false);
+    Promise.resolve().then(() => onComplete(result, count)).catch(() => setSaveError(true));
+  };
+
+  const revisit = (index) => {
+    setCurrentIndex(index);
+    const previous = checkpointMode ? attemptsRef.current[index] : undefined;
+    setSelectedOption(previous?.selected ?? null);
+    setIsSubmitted(Boolean(previous));
+  };
+
+  const restartAttempt = () => {
+    attemptsRef.current = {};
+    setCurrentIndex(0);
+    setSelectedOption(null);
+    setIsSubmitted(false);
+    setUnlockedIndex(0);
+    setScore(0);
+    setSaveError(false);
+  };
+
   const handleSubmit = () => {
     if (selectedOption === null || isSubmitted) return;
     
@@ -49,6 +78,17 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
     
     const isCorrect = letterLabels[selectedOption] === currentQ.answer;
     
+    if (checkpointMode) {
+      if (attemptsRef.current[currentIndex]) return;
+      const next = { ...attemptsRef.current, [currentIndex]: { selected: selectedOption, correct: isCorrect } };
+      attemptsRef.current = next;
+      const result = Object.values(next).filter((answer) => answer.correct).length;
+      setScore(result);
+      setUnlockedIndex(Math.min(currentIndex + 1, count - 1));
+      if (Object.keys(next).length === count) persistAttempt(result);
+      return;
+    }
+
     if (isCorrect && currentIndex === unlockedIndex) {
       const newUnlocked = Math.min(unlockedIndex + 1, count - 1);
       const newScore = score + 1;
@@ -62,27 +102,18 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
   };
 
   const handleNext = () => {
-    if (currentIndex < unlockedIndex || (isSubmitted && letterLabels[selectedOption] === currentQ.answer && currentIndex < count - 1)) {
-      setCurrentIndex((prev) => prev + 1);
-      setSelectedOption(null);
-      setIsSubmitted(false);
+    if (currentIndex < count - 1 && (currentIndex < unlockedIndex ||
+        (isSubmitted && (checkpointMode || letterLabels[selectedOption] === currentQ.answer)))) {
+      revisit(currentIndex + 1);
     }
   };
 
   const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-      setSelectedOption(null);
-      setIsSubmitted(false);
-    }
+    if (currentIndex > 0) revisit(currentIndex - 1);
   };
 
   const jumpToQuestion = (index) => {
-    if (index <= unlockedIndex) {
-      setCurrentIndex(index);
-      setSelectedOption(null);
-      setIsSubmitted(false);
-    }
+    if (index <= unlockedIndex) revisit(index);
   };
 
   return (
@@ -137,7 +168,7 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
         <div className="la-q-number">{currentIndex + 1}</div>
         <div 
           className="la-q-prompt" 
-          dangerouslySetInnerHTML={{ __html: currentQ.prompt }} 
+          dangerouslySetInnerHTML={{ __html: formatText(currentQ.prompt) }}
         />
 
         <div className="la-options-list">
@@ -161,7 +192,7 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
                 disabled={isSubmitted}
               >
                 <span className="la-opt-letter">{letter}</span>
-                <span className="la-opt-text" dangerouslySetInnerHTML={{ __html: opt }} />
+                <span className="la-opt-text" dangerouslySetInnerHTML={{ __html: formatText(opt) }} />
               </button>
             );
           })}
@@ -181,7 +212,7 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
           <div className={`la-explanation-box ${letterLabels[selectedOption] === currentQ.answer ? "success" : "error"}`}>
             <strong>{letterLabels[selectedOption] === currentQ.answer ? "Correct!" : "Incorrect."}</strong> 
             {" "}Option {currentQ.answer} is the right answer.
-            <div className="la-explanation-text" dangerouslySetInnerHTML={{ __html: currentQ.explanation }} />
+            <div className="la-explanation-text" dangerouslySetInnerHTML={{ __html: formatText(currentQ.explanation) }} />
           </div>
         )}
       </div>
@@ -203,11 +234,24 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions 
           type="button"
           className="la-nav-btn"
           onClick={handleNext}
-          disabled={currentIndex >= unlockedIndex && !(isSubmitted && letterLabels[selectedOption] === currentQ.answer)}
+          disabled={currentIndex >= count - 1 || (currentIndex >= unlockedIndex && !(isSubmitted && (checkpointMode || letterLabels[selectedOption] === currentQ.answer)))}
         >
           NEXT &rsaquo;
         </button>
       </div>
+
+      {checkpointMode && Object.keys(attemptsRef.current).length === count && (
+        <div>
+          <p className="la-quiz-progress-text" role="status">
+            Attempt complete: {score}/{count} ({Math.round(score / count * 100)}%).
+            {score / count >= 0.8 ? " Checkpoint passed." : " Score at least 80% to pass. Review the explanations and try again."}
+          </p>
+          {saveError && (
+            <p role="alert">Your result could not be saved. <button type="button" className="la-nav-btn" onClick={() => persistAttempt(score)}>Save result again</button></p>
+          )}
+          <button type="button" className="la-nav-btn" onClick={restartAttempt}>Retake checkpoint</button>
+        </div>
+      )}
 
       {/* Linear Algebra Module Style Definitions */}
       <style>{`

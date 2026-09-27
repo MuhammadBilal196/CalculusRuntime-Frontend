@@ -73,6 +73,29 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "la-eigen-1": ["la-e-intro", "la-e-char"],
   "la-eigen-2": ["la-e-diag", "la-e-apps"],
 
+  "la-quadratic-1": [],
+  "la-quadratic-2": ["la-quadratic-checkpoint"],
+  "la-change-basis-1": [],
+  "la-change-basis-2": ["la-change-basis-checkpoint"],
+  "la-affine-1": [],
+  "la-affine-2": ["la-affine-checkpoint"],
+  "la-pca-1": [],
+  "la-pca-2": ["la-pca-checkpoint"],
+  "la-markov-1": [],
+  "la-markov-2": ["la-markov-checkpoint"],
+
+  "la-complex-1": [],
+  "la-complex-2": ["la-complex-checkpoint"],
+  // Module A: Part 1 is reading; each Part 2 has one 20-question checkpoint.
+  "la-a-lu-1": [],
+  "la-a-lu-2": ["la-a-lu-checkpoint"],
+  "la-a-cholesky-1": [],
+  "la-a-cholesky-2": ["la-a-cholesky-checkpoint"],
+  "la-a-jordan-1": [],
+  "la-a-jordan-2": ["la-a-jordan-checkpoint"],
+  "la-a-norms-1": [],
+  "la-a-norms-2": ["la-a-norms-checkpoint"],
+
   // Probability & Statistics
   "ps-basics-1": ["ps-b-intro", "ps-b-combo"],
   "ps-basics-2": ["ps-b-cond", "ps-b-bayes"],

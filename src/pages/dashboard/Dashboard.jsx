@@ -335,6 +335,7 @@ const TOOLS = [
   { label: "Volume Calculator", path: "/volumecalculator", icon: "∬" },
   { label: "AI Calculus Solver", path: "/ai-solver", icon: "🤖" },
   { label: "Vector Field Visualizer", path: "/vectorfield", icon: "∇" },
+  { label: "3D Surface Explorer", path: "/surface-explorer", icon: "⛰" },
   { label: "Matrix Sandbox", path: "/linear-algebra/matrix-sandbox", icon: "▦" },
   { label: "Practice Section", path: "/practice", icon: "✎" },
   { label: "Leaderboard", path: "/leaderboard", icon: "🏆" },
