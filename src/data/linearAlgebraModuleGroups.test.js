@@ -63,3 +63,5 @@ test("module C part one contains SVD",()=>{expect(getLinearAlgebraModuleGroup("m
 test("module C part two starts with PCA",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[1].topics[0].id).toBe("principal-component-analysis");});
 
 test("module C part two ends with Markov chains",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[1].topics[1].id).toBe("markov-chains-steady-states");});
+
+test("all grouped modules expose two ordered parts",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>expect(module.parts.map((part)=>part.title)).toEqual(["Part 1","Part 2"]));});
