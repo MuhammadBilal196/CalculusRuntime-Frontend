@@ -35,6 +35,7 @@ import DivergencePart1 from "./pages/multivariableCalculus/DivergencePart1";
 import DivergencePart2 from "./pages/multivariableCalculus/DivergencePart2";
 import Geometry3DPart1 from "./pages/multivariableCalculus/Geometry3DPart1";
 import Geometry3DPart2 from "./pages/multivariableCalculus/Geometry3DPart2";
+import SpaceCurvesGuide from "./pages/multivariableCalculus/SpaceCurvesGuideNew";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -117,212 +118,624 @@ function App() {
     <ThemeProvider>
       <AuthProvider>
         <ProgressProvider>
-        <BrowserRouter>
-          <ErrorBoundary>
-            <ScrollToTop />
-            <SiteThemeManager />
-            <Routes>
-              {/* Home */}
-              <Route path="/" element={<Layout body={<Home />} />} />
+          <BrowserRouter>
+            <ErrorBoundary>
+              <ScrollToTop />
+              <SiteThemeManager />
+              <Routes>
+                {/* Home */}
+                <Route path="/" element={<Layout body={<Home />} />} />
 
-              {/* Auth */}
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/dashboard" element={<Layout body={<Dashboard />} />} />
-              <Route path="/saved" element={<Layout body={<SavedForLater />} />} />
+                {/* Auth */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route
+                  path="/dashboard"
+                  element={<Layout body={<Dashboard />} />}
+                />
+                <Route
+                  path="/saved"
+                  element={<Layout body={<SavedForLater />} />}
+                />
 
-              {/* Course hubs */}
-              <Route path="/courses/:courseId" element={<Layout body={<CourseHub />} />} />
+                {/* Course hubs */}
+                <Route
+                  path="/courses/:courseId"
+                  element={<Layout body={<CourseHub />} />}
+                />
 
-              {/* Simple Concepts */}
-              <Route path="/simple-concepts" element={<Layout body={<SimpleConcepts />} />} />
-              <Route path="/simple-concepts/:slug" element={<Layout body={<ConceptExplore />} />} />
+                {/* Simple Concepts */}
+                <Route
+                  path="/simple-concepts"
+                  element={<Layout body={<SimpleConcepts />} />}
+                />
+                <Route
+                  path="/simple-concepts/:slug"
+                  element={<Layout body={<ConceptExplore />} />}
+                />
 
-              {/* AI Solver */}
-              <Route path="/ai-solver" element={<Layout body={<AISolver />} />} />
+                {/* AI Solver */}
+                <Route
+                  path="/ai-solver"
+                  element={<Layout body={<AISolver />} />}
+                />
 
-              {/* Multivariable Calculus Overview */}
-              <Route path="/multivariable-calculus/overview" element={<Layout body={<MultivariableOverview />} />} />
-              <Route path="/courses/multivariable-calculus/overview" element={<Layout body={<MultivariableOverview />} />} />
+                {/* Multivariable Calculus Overview */}
+                <Route
+                  path="/multivariable-calculus/overview"
+                  element={<Layout body={<MultivariableOverview />} />}
+                />
+                <Route
+                  path="/courses/multivariable-calculus/overview"
+                  element={<Layout body={<MultivariableOverview />} />}
+                />
 
-              {/* Partial Derivatives */}
-              <Route path="/partial-derivatives" element={<Navigate to="/partial-derivatives/1" replace />} />
-              <Route path="/partial-derivatives/1" element={<Layout body={<PartialPart1 />} />} />
-              <Route path="/partial-derivatives/2" element={<Layout body={<PartialPart2 />} />} />
+                {/* Partial Derivatives */}
+                <Route
+                  path="/partial-derivatives"
+                  element={<Navigate to="/partial-derivatives/1" replace />}
+                />
+                <Route
+                  path="/partial-derivatives/1"
+                  element={<Layout body={<PartialPart1 />} />}
+                />
+                <Route
+                  path="/partial-derivatives/2"
+                  element={<Layout body={<PartialPart2 />} />}
+                />
 
-              {/* Vector Calculus */}
-              <Route path="/vector-calculus" element={<Navigate to="/vector-calculus/1" replace />} />
-              <Route path="/vector-calculus/1" element={<Layout body={<VectorPart1 />} />} />
-              <Route path="/vector-calculus/2" element={<Layout body={<VectorPart2 />} />} />
-              <Route path="/vectorfield" element={<Layout body={<VectorFieldVisualizer />} />} />
+                {/* Vector Calculus */}
+                <Route
+                  path="/vector-calculus"
+                  element={<Navigate to="/vector-calculus/1" replace />}
+                />
+                <Route
+                  path="/vector-calculus/1"
+                  element={<Layout body={<VectorPart1 />} />}
+                />
+                <Route
+                  path="/vector-calculus/2"
+                  element={<Layout body={<VectorPart2 />} />}
+                />
+                <Route
+                  path="/vectorfield"
+                  element={<Layout body={<VectorFieldVisualizer />} />}
+                />
 
-              {/* Calculus & Analytical Geometry Overview */}
-              <Route path="/calculus/overview" element={<Layout body={<CalculusOverview />} />} />
-              <Route path="/courses/calculus-analytical-geometry/overview" element={<Layout body={<CalculusOverview />} />} />
+                {/* Calculus & Analytical Geometry Overview */}
+                <Route
+                  path="/calculus/overview"
+                  element={<Layout body={<CalculusOverview />} />}
+                />
+                <Route
+                  path="/courses/calculus-analytical-geometry/overview"
+                  element={<Layout body={<CalculusOverview />} />}
+                />
+                {/* Space Curves & Advanced Multivariable Mappings */}
+                <Route
+                  path="/space-curves"
+                  element={<Navigate to="/space-curves/1" replace />}
+                />
 
-              {/* Limits & Continuity */}
-              <Route path="/limits-continuity" element={<Navigate to="/limits-continuity/1" replace />} />
-              <Route path="/limits-continuity/1" element={<Layout body={<LimitsPart1 />} />} />
-              <Route path="/limits-continuity/2" element={<Layout body={<LimitsPart2 />} />} />
+                <Route
+                  path="/space-curves/1"
+                  element={<Layout body={<SpaceCurvesGuide part={1} />} />}
+                />
 
-              {/* Differentiation (Calculus certificate) */}
-              <Route path="/differentiation" element={<Navigate to="/differentiation/1" replace />} />
-              <Route path="/differentiation/1" element={<Layout body={<DiffPart1 />} />} />
-              <Route path="/differentiation/2" element={<Layout body={<DiffPart2 />} />} />
+                <Route
+                  path="/space-curves/2"
+                  element={<Layout body={<SpaceCurvesGuide part={2} />} />}
+                />
 
-              {/* Integration (Calculus certificate) */}
-              <Route path="/integration" element={<Navigate to="/integration/1" replace />} />
-              <Route path="/integration/1" element={<Layout body={<IntPart1 />} />} />
-              <Route path="/integration/2" element={<Layout body={<IntPart2 />} />} />
+                {/* Limits & Continuity */}
+                <Route
+                  path="/limits-continuity"
+                  element={<Navigate to="/limits-continuity/1" replace />}
+                />
+                <Route
+                  path="/limits-continuity/1"
+                  element={<Layout body={<LimitsPart1 />} />}
+                />
+                <Route
+                  path="/limits-continuity/2"
+                  element={<Layout body={<LimitsPart2 />} />}
+                />
 
-              {/* Sequences & Series */}
-              <Route path="/sequences-series" element={<Navigate to="/sequences-series/1" replace />} />
-              <Route path="/sequences-series/1" element={<Layout body={<SeriesPart1 />} />} />
-              <Route path="/sequences-series/2" element={<Layout body={<SeriesPart2 />} />} />
+                {/* Differentiation (Calculus certificate) */}
+                <Route
+                  path="/differentiation"
+                  element={<Navigate to="/differentiation/1" replace />}
+                />
+                <Route
+                  path="/differentiation/1"
+                  element={<Layout body={<DiffPart1 />} />}
+                />
+                <Route
+                  path="/differentiation/2"
+                  element={<Layout body={<DiffPart2 />} />}
+                />
 
-              {/* Conic Sections */}
-              <Route path="/conic-sections" element={<Navigate to="/conic-sections/1" replace />} />
-              <Route path="/conic-sections/1" element={<Layout body={<ConicsPart1 />} />} />
-              <Route path="/conic-sections/2" element={<Layout body={<ConicsPart2 />} />} />
+                {/* Integration (Calculus certificate) */}
+                <Route
+                  path="/integration"
+                  element={<Navigate to="/integration/1" replace />}
+                />
+                <Route
+                  path="/integration/1"
+                  element={<Layout body={<IntPart1 />} />}
+                />
+                <Route
+                  path="/integration/2"
+                  element={<Layout body={<IntPart2 />} />}
+                />
 
-              {/* Multiple Integrals */}
-              <Route path="/multiple-integrals" element={<Navigate to="/multiple-integrals/1" replace />} />
-              <Route path="/multiple-integrals/1" element={<Layout body={<IntegralsPart1 />} />} />
-              <Route path="/multiple-integrals/2" element={<Layout body={<IntegralsPart2 />} />} />
+                {/* Sequences & Series */}
+                <Route
+                  path="/sequences-series"
+                  element={<Navigate to="/sequences-series/1" replace />}
+                />
+                <Route
+                  path="/sequences-series/1"
+                  element={<Layout body={<SeriesPart1 />} />}
+                />
+                <Route
+                  path="/sequences-series/2"
+                  element={<Layout body={<SeriesPart2 />} />}
+                />
 
-              {/* Taylor Series */}
-              <Route path="/taylor-series" element={<Navigate to="/taylor-series/1" replace />} />
-              <Route path="/taylor-series/1" element={<Layout body={<TaylorPart1 />} />} />
-              <Route path="/taylor-series/2" element={<Layout body={<TaylorPart2 />} />} />
+                {/* Conic Sections */}
+                <Route
+                  path="/conic-sections"
+                  element={<Navigate to="/conic-sections/1" replace />}
+                />
+                <Route
+                  path="/conic-sections/1"
+                  element={<Layout body={<ConicsPart1 />} />}
+                />
+                <Route
+                  path="/conic-sections/2"
+                  element={<Layout body={<ConicsPart2 />} />}
+                />
 
-              {/* Module A: Lines & Analytical Geometry */}
-              <Route path="/lines-geometry" element={<Navigate to="/lines-geometry/1" replace />} />
-              <Route path="/lines-geometry/1" element={<Layout body={<LinesPart1 />} />} />
-              <Route path="/lines-geometry/2" element={<Layout body={<LinesPart2 />} />} />
+                {/* Multiple Integrals */}
+                <Route
+                  path="/multiple-integrals"
+                  element={<Navigate to="/multiple-integrals/1" replace />}
+                />
+                <Route
+                  path="/multiple-integrals/1"
+                  element={<Layout body={<IntegralsPart1 />} />}
+                />
+                <Route
+                  path="/multiple-integrals/2"
+                  element={<Layout body={<IntegralsPart2 />} />}
+                />
 
-              {/* Module B: Circle & Conic Tangents */}
-              <Route path="/circles-tangents" element={<Navigate to="/circles-tangents/1" replace />} />
-              <Route path="/circles-tangents/1" element={<Layout body={<CirclesPart1 />} />} />
-              <Route path="/circles-tangents/2" element={<Layout body={<CirclesPart2 />} />} />
+                {/* Taylor Series */}
+                <Route
+                  path="/taylor-series"
+                  element={<Navigate to="/taylor-series/1" replace />}
+                />
+                <Route
+                  path="/taylor-series/1"
+                  element={<Layout body={<TaylorPart1 />} />}
+                />
+                <Route
+                  path="/taylor-series/2"
+                  element={<Layout body={<TaylorPart2 />} />}
+                />
 
-              {/* Module C: Advanced Single-Variable Calculus */}
-              <Route path="/advanced-calculus" element={<Navigate to="/advanced-calculus/1" replace />} />
-              <Route path="/advanced-calculus/1" element={<Layout body={<AdvCalcPart1 />} />} />
-              <Route path="/advanced-calculus/2" element={<Layout body={<AdvCalcPart2 />} />} />
+                {/* Module A: Lines & Analytical Geometry */}
+                <Route
+                  path="/lines-geometry"
+                  element={<Navigate to="/lines-geometry/1" replace />}
+                />
+                <Route
+                  path="/lines-geometry/1"
+                  element={<Layout body={<LinesPart1 />} />}
+                />
+                <Route
+                  path="/lines-geometry/2"
+                  element={<Layout body={<LinesPart2 />} />}
+                />
 
-              {/* Module D: Ordinary Differential Equations */}
-              <Route path="/differential-equations" element={<Navigate to="/differential-equations/1" replace />} />
-              <Route path="/differential-equations/1" element={<Layout body={<OdePart1 />} />} />
-              <Route path="/differential-equations/2" element={<Layout body={<OdePart2 />} />} />
+                {/* Module B: Circle & Conic Tangents */}
+                <Route
+                  path="/circles-tangents"
+                  element={<Navigate to="/circles-tangents/1" replace />}
+                />
+                <Route
+                  path="/circles-tangents/1"
+                  element={<Layout body={<CirclesPart1 />} />}
+                />
+                <Route
+                  path="/circles-tangents/2"
+                  element={<Layout body={<CirclesPart2 />} />}
+                />
 
-              <Route path="/certificates" element={<Layout body={<MyCertificates />} />} />
-              <Route path="/my-certificates" element={<Navigate to="/certificates" replace />} />
-              <Route path="/verify" element={<Layout body={<VerifyCertificate />} />} />
-              <Route path="/certificate/:courseId" element={<Layout body={<Certificate />} />} />
-              <Route path="/quiz/:courseId" element={<Layout body={<CourseQuiz />} />} />
+                {/* Module C: Advanced Single-Variable Calculus */}
+                <Route
+                  path="/advanced-calculus"
+                  element={<Navigate to="/advanced-calculus/1" replace />}
+                />
+                <Route
+                  path="/advanced-calculus/1"
+                  element={<Layout body={<AdvCalcPart1 />} />}
+                />
+                <Route
+                  path="/advanced-calculus/2"
+                  element={<Layout body={<AdvCalcPart2 />} />}
+                />
 
-              {/* Lagrange Multipliers */}
-              <Route path="/lagrange-multipliers" element={<Navigate to="/lagrange-multipliers/1" replace />} />
-              <Route path="/lagrange-multipliers/1" element={<Layout body={<LagrangePart1 />} />} />
-              <Route path="/lagrange-multipliers/2" element={<Layout body={<LagrangePart2 />} />} />
+                {/* Module D: Ordinary Differential Equations */}
+                <Route
+                  path="/differential-equations"
+                  element={<Navigate to="/differential-equations/1" replace />}
+                />
+                <Route
+                  path="/differential-equations/1"
+                  element={<Layout body={<OdePart1 />} />}
+                />
+                <Route
+                  path="/differential-equations/2"
+                  element={<Layout body={<OdePart2 />} />}
+                />
 
-              {/* 3D Analytical Geometry & Quadric Surfaces */}
-              <Route path="/3d-geometry" element={<Navigate to="/3d-geometry/1" replace />} />
-              <Route path="/3d-geometry/1" element={<Layout body={<Geometry3DPart1 />} />} />
-              <Route path="/3d-geometry/2" element={<Layout body={<Geometry3DPart2 />} />} />
+                <Route
+                  path="/certificates"
+                  element={<Layout body={<MyCertificates />} />}
+                />
+                <Route
+                  path="/my-certificates"
+                  element={<Navigate to="/certificates" replace />}
+                />
+                <Route
+                  path="/verify"
+                  element={<Layout body={<VerifyCertificate />} />}
+                />
+                <Route
+                  path="/certificate/:courseId"
+                  element={<Layout body={<Certificate />} />}
+                />
+                <Route
+                  path="/quiz/:courseId"
+                  element={<Layout body={<CourseQuiz />} />}
+                />
 
-              {/* Stokes Theorem */}
-              <Route path="/stokes-theorem" element={<Navigate to="/stokes-theorem/1" replace />} />
-              <Route path="/stokes-theorem/1" element={<Layout body={<StokesPart1 />} />} />
-              <Route path="/stokes-theorem/2" element={<Layout body={<StokesPart2 />} />} />
+                {/* Lagrange Multipliers */}
+                <Route
+                  path="/lagrange-multipliers"
+                  element={<Navigate to="/lagrange-multipliers/1" replace />}
+                />
+                <Route
+                  path="/lagrange-multipliers/1"
+                  element={<Layout body={<LagrangePart1 />} />}
+                />
+                <Route
+                  path="/lagrange-multipliers/2"
+                  element={<Layout body={<LagrangePart2 />} />}
+                />
 
-              {/* Divergence and Curl */}
-              <Route path="/divergence-curl" element={<Navigate to="/divergence-curl/1" replace />} />
-              <Route path="/divergence-curl/1" element={<Layout body={<DivergencePart1 />} />} />
-              <Route path="/divergence-curl/2" element={<Layout body={<DivergencePart2 />} />} />
+                {/* 3D Analytical Geometry & Quadric Surfaces */}
+                <Route
+                  path="/3d-geometry"
+                  element={<Navigate to="/3d-geometry/1" replace />}
+                />
+                <Route
+                  path="/3d-geometry/1"
+                  element={<Layout body={<Geometry3DPart1 />} />}
+                />
+                <Route
+                  path="/3d-geometry/2"
+                  element={<Layout body={<Geometry3DPart2 />} />}
+                />
 
-              {/* Linear Algebra */}
-              <Route path="/linear-algebra/overview" element={<Layout body={<LinearAlgebraOverview />} />} />
-              <Route path="/courses/linear-algebra/overview" element={<Layout body={<LinearAlgebraOverview />} />} />
-              <Route path="/linear-algebra/linear-equations" element={<Navigate to="/linear-algebra/linear-equations/1" replace />} />
-              <Route path="/linear-algebra/linear-equations/1" element={<Layout body={<LinearEquationsPart1 />} />} />
-              <Route path="/linear-algebra/linear-equations/2" element={<Layout body={<LinearEquationsPart2 />} />} />
-              <Route path="/linear-algebra/vectors" element={<Navigate to="/linear-algebra/vectors/1" replace />} />
-              <Route path="/linear-algebra/vectors/1" element={<Layout body={<VectorsPart1 />} />} />
-              <Route path="/linear-algebra/vectors/2" element={<Layout body={<VectorsPart2 />} />} />
-              <Route path="/linear-algebra/matrices" element={<Navigate to="/linear-algebra/matrices/1" replace />} />
-              <Route path="/linear-algebra/matrices/1" element={<Layout body={<MatricesPart1 />} />} />
-              <Route path="/linear-algebra/matrices/2" element={<Layout body={<MatricesPart2 />} />} />
-              <Route path="/linear-algebra/systems" element={<Navigate to="/linear-algebra/systems/1" replace />} />
-              <Route path="/linear-algebra/systems/1" element={<Layout body={<SystemsPart1 />} />} />
-              <Route path="/linear-algebra/systems/2" element={<Layout body={<SystemsPart2 />} />} />
-              <Route path="/linear-algebra/eigen" element={<Navigate to="/linear-algebra/eigen/1" replace />} />
-              <Route path="/linear-algebra/eigen/1" element={<Layout body={<EigenPart1 />} />} />
-              <Route path="/linear-algebra/eigen/2" element={<Layout body={<EigenPart2 />} />} />
-              {/* Linear Transformations */}
-              <Route path="/linear-algebra/transformations" element={<Navigate to="/linear-algebra/transformations/1" replace />} />
-              <Route path="/linear-algebra/transformations/1" element={<Layout body={<TransformPart1 />} />} />
-              <Route path="/linear-algebra/transformations/2" element={<Layout body={<TransformPart2 />} />} />
+                {/* Stokes Theorem */}
+                <Route
+                  path="/stokes-theorem"
+                  element={<Navigate to="/stokes-theorem/1" replace />}
+                />
+                <Route
+                  path="/stokes-theorem/1"
+                  element={<Layout body={<StokesPart1 />} />}
+                />
+                <Route
+                  path="/stokes-theorem/2"
+                  element={<Layout body={<StokesPart2 />} />}
+                />
 
-              {/* Orthogonality & Least Squares */}
-              <Route path="/linear-algebra/orthogonality" element={<Navigate to="/linear-algebra/orthogonality/1" replace />} />
-              <Route path="/linear-algebra/orthogonality/1" element={<Layout body={<OrthoPart1 />} />} />
-              <Route path="/linear-algebra/orthogonality/2" element={<Layout body={<OrthoPart2 />} />} />
+                {/* Divergence and Curl */}
+                <Route
+                  path="/divergence-curl"
+                  element={<Navigate to="/divergence-curl/1" replace />}
+                />
+                <Route
+                  path="/divergence-curl/1"
+                  element={<Layout body={<DivergencePart1 />} />}
+                />
+                <Route
+                  path="/divergence-curl/2"
+                  element={<Layout body={<DivergencePart2 />} />}
+                />
 
-              {/* Singular Value Decomposition */}
-              <Route path="/linear-algebra/svd" element={<Navigate to="/linear-algebra/svd/1" replace />} />
-              <Route path="/linear-algebra/svd/1" element={<Layout body={<SvdPart1 />} />} />
-              <Route path="/linear-algebra/svd/2" element={<Layout body={<SvdPart2 />} />} />
-              <Route path="/linear-algebra/matrix-sandbox" element={<Layout body={<MatrixSandbox />} />} />
+                {/* Linear Algebra */}
+                <Route
+                  path="/linear-algebra/overview"
+                  element={<Layout body={<LinearAlgebraOverview />} />}
+                />
+                <Route
+                  path="/courses/linear-algebra/overview"
+                  element={<Layout body={<LinearAlgebraOverview />} />}
+                />
+                <Route
+                  path="/linear-algebra/linear-equations"
+                  element={
+                    <Navigate to="/linear-algebra/linear-equations/1" replace />
+                  }
+                />
+                <Route
+                  path="/linear-algebra/linear-equations/1"
+                  element={<Layout body={<LinearEquationsPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/linear-equations/2"
+                  element={<Layout body={<LinearEquationsPart2 />} />}
+                />
+                <Route
+                  path="/linear-algebra/vectors"
+                  element={<Navigate to="/linear-algebra/vectors/1" replace />}
+                />
+                <Route
+                  path="/linear-algebra/vectors/1"
+                  element={<Layout body={<VectorsPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/vectors/2"
+                  element={<Layout body={<VectorsPart2 />} />}
+                />
+                <Route
+                  path="/linear-algebra/matrices"
+                  element={<Navigate to="/linear-algebra/matrices/1" replace />}
+                />
+                <Route
+                  path="/linear-algebra/matrices/1"
+                  element={<Layout body={<MatricesPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/matrices/2"
+                  element={<Layout body={<MatricesPart2 />} />}
+                />
+                <Route
+                  path="/linear-algebra/systems"
+                  element={<Navigate to="/linear-algebra/systems/1" replace />}
+                />
+                <Route
+                  path="/linear-algebra/systems/1"
+                  element={<Layout body={<SystemsPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/systems/2"
+                  element={<Layout body={<SystemsPart2 />} />}
+                />
+                <Route
+                  path="/linear-algebra/eigen"
+                  element={<Navigate to="/linear-algebra/eigen/1" replace />}
+                />
+                <Route
+                  path="/linear-algebra/eigen/1"
+                  element={<Layout body={<EigenPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/eigen/2"
+                  element={<Layout body={<EigenPart2 />} />}
+                />
+                {/* Linear Transformations */}
+                <Route
+                  path="/linear-algebra/transformations"
+                  element={
+                    <Navigate to="/linear-algebra/transformations/1" replace />
+                  }
+                />
+                <Route
+                  path="/linear-algebra/transformations/1"
+                  element={<Layout body={<TransformPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/transformations/2"
+                  element={<Layout body={<TransformPart2 />} />}
+                />
 
-              {/* Probability & Statistics */}
-              <Route path="/probability-statistics/overview" element={<Layout body={<ProbabilityStatisticsOverview />} />} />
-              <Route path="/courses/probability-statistics/overview" element={<Layout body={<ProbabilityStatisticsOverview />} />} />
-              <Route path="/probability-statistics/probability-basics" element={<Navigate to="/probability-statistics/probability-basics/1" replace />} />
-              <Route path="/probability-statistics/probability-basics/1" element={<Layout body={<ProbBasicsPart1 />} />} />
-              <Route path="/probability-statistics/probability-basics/2" element={<Layout body={<ProbBasicsPart2 />} />} />
-              <Route path="/probability-statistics/bayes-lab" element={<Layout body={<BayesLab />} />} />
-              <Route path="/probability-statistics/random-variables" element={<Navigate to="/probability-statistics/random-variables/1" replace />} />
-              <Route path="/probability-statistics/random-variables/1" element={<Layout body={<RandomVarsPart1 />} />} />
-              <Route path="/probability-statistics/random-variables/2" element={<Layout body={<RandomVarsPart2 />} />} />
-              <Route path="/probability-statistics/descriptive-statistics" element={<Navigate to="/probability-statistics/descriptive-statistics/1" replace />} />
-              <Route path="/probability-statistics/descriptive-statistics/1" element={<Layout body={<DescriptivePart1 />} />} />
-              <Route path="/probability-statistics/descriptive-statistics/2" element={<Layout body={<DescriptivePart2 />} />} />
-              <Route path="/probability-statistics/hypothesis-testing" element={<Navigate to="/probability-statistics/hypothesis-testing/1" replace />} />
-              <Route path="/probability-statistics/hypothesis-testing/1" element={<Layout body={<HypothesisPart1 />} />} />
-              <Route path="/probability-statistics/hypothesis-testing/2" element={<Layout body={<HypothesisPart2 />} />} />
-              <Route path="/probability-statistics/regression-correlation" element={<Navigate to="/probability-statistics/regression-correlation/1" replace />} />
-              <Route path="/probability-statistics/regression-correlation/1" element={<Layout body={<RegressionPart1 />} />} />
-              <Route path="/probability-statistics/regression-correlation/2" element={<Layout body={<RegressionPart2 />} />} />
+                {/* Orthogonality & Least Squares */}
+                <Route
+                  path="/linear-algebra/orthogonality"
+                  element={
+                    <Navigate to="/linear-algebra/orthogonality/1" replace />
+                  }
+                />
+                <Route
+                  path="/linear-algebra/orthogonality/1"
+                  element={<Layout body={<OrthoPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/orthogonality/2"
+                  element={<Layout body={<OrthoPart2 />} />}
+                />
 
-              {/* Tools */}
-              <Route path="/test" element={<Layout body={<ContinuityFinder />} />} />
-              <Route path="/extreme" element={<Layout body={<ExtremeValueFunction />} />} />
-              <Route path="/volumecalculator" element={<Layout body={<VolumeCalculator />} />} />
-              <Route path="/analytic-vector-lab" element={<Layout body={<AnalyticVectorLab />} />} />
-              <Route path="/derivative-visualizer" element={<Navigate to="/taylorx" replace />} />
+                {/* Singular Value Decomposition */}
+                <Route
+                  path="/linear-algebra/svd"
+                  element={<Navigate to="/linear-algebra/svd/1" replace />}
+                />
+                <Route
+                  path="/linear-algebra/svd/1"
+                  element={<Layout body={<SvdPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/svd/2"
+                  element={<Layout body={<SvdPart2 />} />}
+                />
+                <Route
+                  path="/linear-algebra/matrix-sandbox"
+                  element={<Layout body={<MatrixSandbox />} />}
+                />
 
-              <Route path="/taylorx" element={<Layout body={<DerivativeTool />} />} />
-              <Route path="/cheatsheet" element={<Layout body={<CheatSheet />} />} />
+                {/* Probability & Statistics */}
+                <Route
+                  path="/probability-statistics/overview"
+                  element={<Layout body={<ProbabilityStatisticsOverview />} />}
+                />
+                <Route
+                  path="/courses/probability-statistics/overview"
+                  element={<Layout body={<ProbabilityStatisticsOverview />} />}
+                />
+                <Route
+                  path="/probability-statistics/probability-basics"
+                  element={
+                    <Navigate
+                      to="/probability-statistics/probability-basics/1"
+                      replace
+                    />
+                  }
+                />
+                <Route
+                  path="/probability-statistics/probability-basics/1"
+                  element={<Layout body={<ProbBasicsPart1 />} />}
+                />
+                <Route
+                  path="/probability-statistics/probability-basics/2"
+                  element={<Layout body={<ProbBasicsPart2 />} />}
+                />
+                <Route
+                  path="/probability-statistics/bayes-lab"
+                  element={<Layout body={<BayesLab />} />}
+                />
+                <Route
+                  path="/probability-statistics/random-variables"
+                  element={
+                    <Navigate
+                      to="/probability-statistics/random-variables/1"
+                      replace
+                    />
+                  }
+                />
+                <Route
+                  path="/probability-statistics/random-variables/1"
+                  element={<Layout body={<RandomVarsPart1 />} />}
+                />
+                <Route
+                  path="/probability-statistics/random-variables/2"
+                  element={<Layout body={<RandomVarsPart2 />} />}
+                />
+                <Route
+                  path="/probability-statistics/descriptive-statistics"
+                  element={
+                    <Navigate
+                      to="/probability-statistics/descriptive-statistics/1"
+                      replace
+                    />
+                  }
+                />
+                <Route
+                  path="/probability-statistics/descriptive-statistics/1"
+                  element={<Layout body={<DescriptivePart1 />} />}
+                />
+                <Route
+                  path="/probability-statistics/descriptive-statistics/2"
+                  element={<Layout body={<DescriptivePart2 />} />}
+                />
+                <Route
+                  path="/probability-statistics/hypothesis-testing"
+                  element={
+                    <Navigate
+                      to="/probability-statistics/hypothesis-testing/1"
+                      replace
+                    />
+                  }
+                />
+                <Route
+                  path="/probability-statistics/hypothesis-testing/1"
+                  element={<Layout body={<HypothesisPart1 />} />}
+                />
+                <Route
+                  path="/probability-statistics/hypothesis-testing/2"
+                  element={<Layout body={<HypothesisPart2 />} />}
+                />
+                <Route
+                  path="/probability-statistics/regression-correlation"
+                  element={
+                    <Navigate
+                      to="/probability-statistics/regression-correlation/1"
+                      replace
+                    />
+                  }
+                />
+                <Route
+                  path="/probability-statistics/regression-correlation/1"
+                  element={<Layout body={<RegressionPart1 />} />}
+                />
+                <Route
+                  path="/probability-statistics/regression-correlation/2"
+                  element={<Layout body={<RegressionPart2 />} />}
+                />
 
-              {/* Practice Section */}
-              <Route path="/practice" element={<Layout body={<PractiseSection />} />} />
+                {/* Tools */}
+                <Route
+                  path="/test"
+                  element={<Layout body={<ContinuityFinder />} />}
+                />
+                <Route
+                  path="/extreme"
+                  element={<Layout body={<ExtremeValueFunction />} />}
+                />
+                <Route
+                  path="/volumecalculator"
+                  element={<Layout body={<VolumeCalculator />} />}
+                />
+                <Route
+                  path="/analytic-vector-lab"
+                  element={<Layout body={<AnalyticVectorLab />} />}
+                />
+                <Route
+                  path="/derivative-visualizer"
+                  element={<Navigate to="/taylorx" replace />}
+                />
 
-              {/* AI Personalized Study Plan */}
-              <Route path="/study-plan" element={<Layout body={<PersonalizedStudyPlan />} />} />
+                <Route
+                  path="/taylorx"
+                  element={<Layout body={<DerivativeTool />} />}
+                />
+                <Route
+                  path="/cheatsheet"
+                  element={<Layout body={<CheatSheet />} />}
+                />
 
-              {/* Peer Leaderboard */}
-              <Route path="/leaderboard" element={<Layout body={<Leaderboard />} />} />
+                {/* Practice Section */}
+                <Route
+                  path="/practice"
+                  element={<Layout body={<PractiseSection />} />}
+                />
 
-              {/* Catch-all */}
-              <Route path="*" element={<Layout body={<NotFound />} />} />
-            </Routes>
-            <Chatbot />
-            <BackToTop />
-          </ErrorBoundary>
-        </BrowserRouter>
-      </ProgressProvider>
-    </AuthProvider>
+                {/* AI Personalized Study Plan */}
+                <Route
+                  path="/study-plan"
+                  element={<Layout body={<PersonalizedStudyPlan />} />}
+                />
+
+                {/* Peer Leaderboard */}
+                <Route
+                  path="/leaderboard"
+                  element={<Layout body={<Leaderboard />} />}
+                />
+
+                {/* Catch-all */}
+                <Route path="*" element={<Layout body={<NotFound />} />} />
+              </Routes>
+              <Chatbot />
+              <BackToTop />
+            </ErrorBoundary>
+          </BrowserRouter>
+        </ProgressProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
