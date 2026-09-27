@@ -79,6 +79,7 @@ import {
   SvdPart1,
   SvdPart2,
 } from "./pages/linearAlgebra/LaParts";
+
 import {
   LUDecompositionPart1,
   LUDecompositionPart2,
@@ -100,7 +101,10 @@ import {
   PrincipalComponentAnalysisPart2,
   MarkovChainsPart1,
   MarkovChainsPart2,
+  LinearProgrammingPart1,
+  LinearProgrammingPart2,
 } from "./pages/linearAlgebra";
+
 import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
 import CalculusOverview from "./pages/calculus/CalculusOverview";
@@ -242,6 +246,7 @@ function App() {
                   path="/courses/calculus-analytical-geometry/overview"
                   element={<Layout body={<CalculusOverview />} />}
                 />
+
                 {/* Space Curves & Advanced Multivariable Mappings */}
                 <Route
                   path="/space-curves"
@@ -341,6 +346,7 @@ function App() {
                   path="/multiple-integrals/2"
                   element={<Layout body={<IntegralsPart2 />} />}
                 />
+
                 {/* <Route
                   path="/jacobians-change-of-variables"
                   element={
@@ -376,7 +382,10 @@ function App() {
                 <Route
                   path="/flux-integrals-general-surfaces"
                   element={
-                    <Navigate to="/flux-integrals-general-surfaces/2" replace />
+                    <Navigate
+                      to="/flux-integrals-general-surfaces/2"
+                      replace
+                    />
                   }
                 />
 
@@ -386,6 +395,7 @@ function App() {
                     <Layout body={<FluxIntegralsGeneralSurfacesGuide />} />
                   }
                 />
+
                 {/* Taylor Series */}
                 <Route
                   path="/taylor-series"
@@ -545,7 +555,10 @@ function App() {
                 <Route
                   path="/linear-algebra/linear-equations"
                   element={
-                    <Navigate to="/linear-algebra/linear-equations/1" replace />
+                    <Navigate
+                      to="/linear-algebra/linear-equations/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -604,11 +617,15 @@ function App() {
                   path="/linear-algebra/eigen/2"
                   element={<Layout body={<EigenPart2 />} />}
                 />
+
                 {/* Linear Transformations */}
                 <Route
                   path="/linear-algebra/transformations"
                   element={
-                    <Navigate to="/linear-algebra/transformations/1" replace />
+                    <Navigate
+                      to="/linear-algebra/transformations/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -624,7 +641,10 @@ function App() {
                 <Route
                   path="/linear-algebra/orthogonality"
                   element={
-                    <Navigate to="/linear-algebra/orthogonality/1" replace />
+                    <Navigate
+                      to="/linear-algebra/orthogonality/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -634,6 +654,25 @@ function App() {
                 <Route
                   path="/linear-algebra/orthogonality/2"
                   element={<Layout body={<OrthoPart2 />} />}
+                />
+
+                {/* Linear Programming */}
+                <Route
+                  path="/linear-algebra/linear-programming-simplex"
+                  element={
+                    <Navigate
+                      to="/linear-algebra/linear-programming-simplex/1"
+                      replace
+                    />
+                  }
+                />
+                <Route
+                  path="/linear-algebra/linear-programming-simplex/1"
+                  element={<Layout body={<LinearProgrammingPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/linear-programming-simplex/2"
+                  element={<Layout body={<LinearProgrammingPart2 />} />}
                 />
 
                 {/* Singular Value Decomposition */}
