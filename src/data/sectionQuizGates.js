@@ -88,6 +88,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "la-pca-2": ["la-pca-checkpoint"],
   "la-markov-1": [],
   "la-markov-2": ["la-markov-checkpoint"],
+  "la-linear-programming-1": [],
+  "la-linear-programming-2": ["la-linear-programming-checkpoint"],
 
   "la-complex-1": [],
   "la-complex-2": ["la-complex-checkpoint"],
