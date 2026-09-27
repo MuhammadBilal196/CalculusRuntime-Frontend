@@ -77,3 +77,5 @@ test("module A part order is stable",()=>{expect(getLinearAlgebraModuleGroup("mo
 test("module B part order is stable",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts.map((part)=>part.id)).toEqual(["module-b-1","module-b-2"]);});
 
 test("module C part order is stable",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts.map((part)=>part.id)).toEqual(["module-c-1","module-c-2"]);});
+
+test("grouped module count remains three",()=>{expect(LINEAR_ALGEBRA_MODULE_GROUPS.map((module)=>module.id)).toEqual(["module-a","module-b","module-c"]);});
