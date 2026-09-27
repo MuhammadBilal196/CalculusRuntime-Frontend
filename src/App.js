@@ -97,7 +97,15 @@ import {
   MarkovChainsPart1,
   MarkovChainsPart2
 } from "./pages/linearAlgebra";
-import {\n  LinearAlgebraModuleAPart1,\n  LinearAlgebraModuleAPart2,\n  LinearAlgebraModuleBPart1,\n  LinearAlgebraModuleBPart2,\n  LinearAlgebraModuleCPart1,\n  LinearAlgebraModuleCPart2,\n} from "./pages/linearAlgebra/LaModuleParts";\nimport MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
+import {
+  LinearAlgebraModuleAPart1,
+  LinearAlgebraModuleAPart2,
+  LinearAlgebraModuleBPart1,
+  LinearAlgebraModuleBPart2,
+  LinearAlgebraModuleCPart1,
+  LinearAlgebraModuleCPart2,
+} from "./pages/linearAlgebra/LaModuleParts";
+import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
 import CalculusOverview from "./pages/calculus/CalculusOverview";
 import MultivariableOverview from "./pages/multivariableCalculus/MultivariableOverview";
