@@ -11,3 +11,5 @@ test("part ids are unique",()=>{const ids=LINEAR_ALGEBRA_MODULE_GROUPS.flatMap((
 test("topic ids are unique",()=>{const ids=LINEAR_ALGEBRA_MODULE_GROUPS.flatMap((module)=>module.parts.flatMap((part)=>part.topics.map((topic)=>topic.id)));expect(new Set(ids).size).toBe(ids.length);});
 
 test("every topic has a title",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>part.topics.forEach((topic)=>expect(topic.title).toBeTruthy())));});
+
+test("every topic has a route",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>part.topics.forEach((topic)=>expect(topic.path).toMatch(/^\/linear-algebra\//))));});
