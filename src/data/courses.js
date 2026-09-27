@@ -382,9 +382,9 @@ export const COURSES = [
       {
         title: "Coordinate Transformations & Surfaces",
         description:
-          " Jacobians and change of variables, curvilinear coordinate systems, parametrized surface area, and flux integrals over general parameterized surfaces.",
+          "Jacobians & Change of Variables, Curvilinear Coordinate Systems, Parametrized Surface Area, and Flux Integrals over General Parameterized Surfaces.",
         path: "/jacobians-change-of-variables/1",
-        meta: " 4 topics · 20-question checkpoint per topic",
+        meta: "4 topics · 20-question checkpoint per topic",
         icon: "J",
         logo: <span className="math-logo">∂(x,y) / ∂(u,v)</span>,
       },

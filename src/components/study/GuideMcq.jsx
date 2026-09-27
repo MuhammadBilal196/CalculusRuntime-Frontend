@@ -102,8 +102,10 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
   };
 
   const handleNext = () => {
-    if (currentIndex < count - 1 && (currentIndex < unlockedIndex ||
-        (isSubmitted && (checkpointMode || letterLabels[selectedOption] === currentQ.answer)))) {
+    if (
+      currentIndex < count - 1 &&
+      (currentIndex < unlockedIndex || isSubmitted)
+    ) {
       revisit(currentIndex + 1);
     }
   };
@@ -234,7 +236,10 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
           type="button"
           className="la-nav-btn"
           onClick={handleNext}
-          disabled={currentIndex >= count - 1 || (currentIndex >= unlockedIndex && !(isSubmitted && (checkpointMode || letterLabels[selectedOption] === currentQ.answer)))}
+          disabled={
+            currentIndex >= count - 1 ||
+            (currentIndex >= unlockedIndex && !isSubmitted)
+          }
         >
           NEXT &rsaquo;
         </button>
