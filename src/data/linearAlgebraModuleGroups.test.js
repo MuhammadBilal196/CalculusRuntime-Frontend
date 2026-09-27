@@ -55,3 +55,5 @@ test("module A part two ends with conditioning",()=>{expect(getLinearAlgebraModu
 test("module B part one starts with complex spaces",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts[0].topics[0].id).toBe("complex-vector-spaces");});
 
 test("module B part two contains affine transformations",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts[1].topics[1].id).toBe("affine-homogeneous");});
+
+test("module C part one starts with orthogonality",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[0].topics[0].id).toBe("orthogonality-least-squares");});
