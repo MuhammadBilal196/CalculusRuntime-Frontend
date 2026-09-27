@@ -23,3 +23,5 @@ test("module C contains four topics",()=>{expect(getLinearAlgebraModuleGroup("mo
 test("unknown module lookup returns null",()=>{expect(getLinearAlgebraModuleGroup("missing")).toBeNull();});
 
 test("unknown part lookup returns null",()=>{expect(getLinearAlgebraModulePart("missing")).toBeNull();});
+
+test("part lookup returns parent module",()=>{expect(getLinearAlgebraModulePart("module-a-1").module.id).toBe("module-a");});
