@@ -15,3 +15,5 @@ test("every topic has a title",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module
 test("every topic has a route",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>part.topics.forEach((topic)=>expect(topic.path).toMatch(/^\/linear-algebra\//))));});
 
 test("module A contains four topics",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts.flatMap((part)=>part.topics)).toHaveLength(4);});
+
+test("module B contains four topics",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts.flatMap((part)=>part.topics)).toHaveLength(4);});
