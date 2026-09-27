@@ -31,3 +31,5 @@ test("part lookup returns requested part",()=>{expect(getLinearAlgebraModulePart
 test("each module has metadata",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>{expect(module.description).toBeTruthy();expect(module.meta).toBeTruthy();});});
 
 test("each part has metadata",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>{expect(part.title).toBeTruthy();expect(part.description).toBeTruthy();}));});
+
+test("topic paths are unique",()=>{const paths=LINEAR_ALGEBRA_MODULE_GROUPS.flatMap((module)=>module.parts.flatMap((part)=>part.topics.map((topic)=>topic.path)));expect(new Set(paths).size).toBe(paths.length);});
