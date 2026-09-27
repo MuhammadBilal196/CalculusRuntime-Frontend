@@ -19,3 +19,5 @@ test("normalizeTimestamp accepts numeric strings",()=>{expect(normalizeTimestamp
 test("normalizeTimestamp accepts numeric millisecond strings",()=>{expect(normalizeTimestamp("1700000000000")).toBe(1700000000000);});
 
 test("normalizeTimestamp accepts Date parseable strings",()=>{expect(normalizeTimestamp("2024-02-01")).toBe(Date.parse("2024-02-01"));});
+
+test("formatRelativeCompletion handles null",()=>{expect(formatRelativeCompletion(null)).toBe("Completed recently");});
