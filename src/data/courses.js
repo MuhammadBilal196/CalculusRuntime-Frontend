@@ -271,7 +271,8 @@ export const COURSES = [
       },
       {
         title: "3D Surface Explorer",
-        description: "Rotate, animate and probe surfaces z = f(x, y) with tangent planes.",
+        description:
+          "Rotate, animate and probe surfaces z = f(x, y) with tangent planes.",
         path: "/surface-explorer",
         meta: "Interactive tool",
         icon: "⛰",
@@ -378,6 +379,16 @@ export const COURSES = [
         icon: "∿",
         logo: <span className="math-logo">∇f · dS</span>,
       },
+      {
+        title: "Coordinate Transformations & Surfaces",
+        description:
+          "Jacobian determinants and change of variables, followed by curvilinear coordinates, parametrized surface area, and general surface flux.",
+        path: "/jacobians-change-of-variables/1",
+        meta: "4 topics · 20-question checkpoint per topic",
+        icon: "J",
+        logo: <span className="math-logo">∂(x,y) / ∂(u,v)</span>,
+      },
+
       {
         title: "Certification Quiz",
         description:
@@ -516,7 +527,8 @@ export const COURSES = [
       },
       {
         title: "Matrix Decompositions & Factorizations",
-        description: "LU, Cholesky, Jordan normal form, and vector/matrix norms with conditioning. Four topics, worked examples, and 20 MCQs per topic.",
+        description:
+          "LU, Cholesky, Jordan normal form, and vector/matrix norms with conditioning. Four topics, worked examples, and 20 MCQs per topic.",
         path: "/linear-algebra/lu-decomposition/1",
         meta: "4 topics · 80 checkpoint MCQs",
         icon: "A",
@@ -524,7 +536,8 @@ export const COURSES = [
       },
       {
         title: "Complex Vector Spaces",
-        description: "Complex scalars, inner products, Hermitian and unitary matrices, with worked examples and a 20-question quiz.",
+        description:
+          "Complex scalars, inner products, Hermitian and unitary matrices, with worked examples and a 20-question quiz.",
         path: "/linear-algebra/complex-vector-spaces/1",
         meta: "2 parts · 20 quiz questions",
         icon: "ℂ",
@@ -532,23 +545,34 @@ export const COURSES = [
       },
       {
         title: "Quadratic Forms & Definiteness",
-        description: "Quadratic forms, eigenvalue and principal-minor tests, completing squares, congruence, inertia, and Hessian classification. Includes worked examples and a 20-question checkpoint.",
+        description:
+          "Quadratic forms, eigenvalue and principal-minor tests, completing squares, congruence, inertia, and Hessian classification. Includes worked examples and a 20-question checkpoint.",
         path: "/linear-algebra/quadratic-forms-definiteness/1",
         meta: "2 parts · 20-question checkpoint",
         icon: "Q",
-        logo: <span className="math-logo">x<sup>T</sup>Ax</span>,
+        logo: (
+          <span className="math-logo">
+            x<sup>T</sup>Ax
+          </span>
+        ),
       },
       {
         title: "Change of Basis & Similarity Transformations",
-        description: "Coordinate vectors, transition matrices, operator representations, similarity invariants, and diagonalization, with worked examples and a 20-question checkpoint.",
+        description:
+          "Coordinate vectors, transition matrices, operator representations, similarity invariants, and diagonalization, with worked examples and a 20-question checkpoint.",
         path: "/linear-algebra/change-of-basis-similarity/1",
         meta: "2 parts · 20-question checkpoint",
         icon: "P",
-        logo: <span className="math-logo">P<sup>-1</sup>AP</span>,
+        logo: (
+          <span className="math-logo">
+            P<sup>-1</sup>AP
+          </span>
+        ),
       },
       {
         title: "Affine Transformations & Homogeneous Coordinates",
-        description: "Affine maps, homogeneous-coordinate matrices, transformations about arbitrary points, compositions, inverses, and geometry with worked examples and a 20-question checkpoint.",
+        description:
+          "Affine maps, homogeneous-coordinate matrices, transformations about arbitrary points, compositions, inverses, and geometry with worked examples and a 20-question checkpoint.",
         path: "/linear-algebra/affine-homogeneous/1",
         meta: "2 parts · 20-question checkpoint",
         icon: "T",
@@ -556,15 +580,21 @@ export const COURSES = [
       },
       {
         title: "Principal Component Analysis (PCA)",
-        description: "Center and transform multivariate data into orthogonal directions ranked by variance, with worked examples and a 20-question checkpoint.",
+        description:
+          "Center and transform multivariate data into orthogonal directions ranked by variance, with worked examples and a 20-question checkpoint.",
         path: "/linear-algebra/principal-component-analysis/1",
         meta: "2 parts · 20-question checkpoint",
         icon: "P",
-        logo: <span className="math-logo">X<sup>T</sup>X</span>,
+        logo: (
+          <span className="math-logo">
+            X<sup>T</sup>X
+          </span>
+        ),
       },
       {
         title: "Markov Chains & Steady States",
-        description: "Model state transitions with stochastic matrices, solve for stationary distributions as eigenvectors, and distinguish fixed states from convergence.",
+        description:
+          "Model state transitions with stochastic matrices, solve for stationary distributions as eigenvectors, and distinguish fixed states from convergence.",
         path: "/linear-algebra/markov-chains-steady-states/1",
         meta: "2 parts · 20-question checkpoint",
         icon: "π",
