@@ -81,3 +81,5 @@ test("module C part order is stable",()=>{expect(getLinearAlgebraModuleGroup("mo
 test("grouped module count remains three",()=>{expect(LINEAR_ALGEBRA_MODULE_GROUPS.map((module)=>module.id)).toEqual(["module-a","module-b","module-c"]);});
 
 test("all grouped topics have descriptions",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>part.topics.forEach((topic)=>expect(topic.description).toBeTruthy())));});
+
+test("all grouped topics have stable ids",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>module.parts.forEach((part)=>part.topics.forEach((topic)=>expect(topic.id).toMatch(/^[a-z0-9-]+$/))));});
