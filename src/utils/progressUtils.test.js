@@ -27,3 +27,5 @@ test("formatCompletionDate handles null",()=>{expect(formatCompletionDate(null))
 test("getStreak returns zero with no stored days",()=>{localStorage.clear();expect(getStreak()).toBe(0);});
 
 test("getStreak counts consecutive days",()=>{localStorage.clear();const today=new Date();const yesterday=new Date(today);yesterday.setDate(today.getDate()-1);localStorage.setItem("calculus-study-days",JSON.stringify([today.toDateString(),yesterday.toDateString()]));expect(getStreak()).toBe(2);});
+
+test("getStreak stops after a missed day",()=>{localStorage.clear();const today=new Date();const old=new Date(today);old.setDate(today.getDate()-2);localStorage.setItem("calculus-study-days",JSON.stringify([today.toDateString(),old.toDateString()]));expect(getStreak()).toBe(1);});
