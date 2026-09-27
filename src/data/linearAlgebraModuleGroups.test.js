@@ -53,3 +53,5 @@ test("module A part two starts with Jordan form",()=>{expect(getLinearAlgebraMod
 test("module A part two ends with conditioning",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts[1].topics[1].id).toBe("matrix-norms-conditioning");});
 
 test("module B part one starts with complex spaces",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts[0].topics[0].id).toBe("complex-vector-spaces");});
+
+test("module B part two contains affine transformations",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts[1].topics[1].id).toBe("affine-homogeneous");});
