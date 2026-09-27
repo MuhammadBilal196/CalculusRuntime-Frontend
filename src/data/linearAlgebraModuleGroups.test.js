@@ -65,3 +65,5 @@ test("module C part two starts with PCA",()=>{expect(getLinearAlgebraModuleGroup
 test("module C part two ends with Markov chains",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[1].topics[1].id).toBe("markov-chains-steady-states");});
 
 test("all grouped modules expose two ordered parts",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)=>expect(module.parts.map((part)=>part.title)).toEqual(["Part 1","Part 2"]));});
+
+test("module A topic routes point to existing topic pages",()=>{getLinearAlgebraModuleGroup("module-a").parts.flatMap((part)=>part.topics).forEach((topic)=>expect(topic.path).toMatch(/\/1$/));});
