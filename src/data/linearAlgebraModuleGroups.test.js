@@ -39,3 +39,5 @@ test("module A has two topics per part",()=>{expect(getLinearAlgebraModuleGroup(
 test("module B has two topics per part",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts.map((part)=>part.topics.length)).toEqual([2,2]);});
 
 test("module C has two topics per part",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts.map((part)=>part.topics.length)).toEqual([2,2]);});
+
+test("module A title is stable",()=>{expect(getLinearAlgebraModuleGroup("module-a").title).toBe("Matrix Decompositions & Factorizations");});
