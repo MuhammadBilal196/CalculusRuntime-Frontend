@@ -59,3 +59,5 @@ test("module B part two contains affine transformations",()=>{expect(getLinearAl
 test("module C part one starts with orthogonality",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[0].topics[0].id).toBe("orthogonality-least-squares");});
 
 test("module C part one contains SVD",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[0].topics[1].id).toBe("singular-value-decomposition");});
+
+test("module C part two starts with PCA",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[1].topics[0].id).toBe("principal-component-analysis");});
