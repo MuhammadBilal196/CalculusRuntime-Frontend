@@ -1,6 +1,6 @@
 import StudyGuideShell from "../courses/StudyGuideShell";
 import { GuideMcqSection } from "../../components/GuideMcq";
-import { MV_JACOBIANS_QUIZ } from "../../data/mvJacobiansQuiz";
+import { MV_JACOBIANS_QUIZ } from "../../data/mvCoordinateTransformationsQuiz";
 import "./PartialDerivativesGuide.css";
 import { RealLifeUse } from "../calculus/CalcBlocks";
 
@@ -697,7 +697,16 @@ function GuideFooter() {
   return (
     <div className="pg-foot">
       <p>End of Jacobians &amp; Change of Variables.</p>
+      <div className="guide-navigation">
+  <a
+    href="/curvilinear-coordinate-systems/1"
+    className="guide-nav-button"
+  >
+    Next Topic: Curvilinear Coordinate Systems →
+  </a>
+</div>
     </div>
+    
   );
 }
 
