@@ -35,3 +35,5 @@ test("each part has metadata",()=>{LINEAR_ALGEBRA_MODULE_GROUPS.forEach((module)
 test("topic paths are unique",()=>{const paths=LINEAR_ALGEBRA_MODULE_GROUPS.flatMap((module)=>module.parts.flatMap((part)=>part.topics.map((topic)=>topic.path)));expect(new Set(paths).size).toBe(paths.length);});
 
 test("module A has two topics per part",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts.map((part)=>part.topics.length)).toEqual([2,2]);});
+
+test("module B has two topics per part",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts.map((part)=>part.topics.length)).toEqual([2,2]);});
