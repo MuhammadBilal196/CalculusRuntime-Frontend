@@ -424,169 +424,31 @@ export const COURSES = [
     },
     modules: [
       {
-        title: "Overview",
+        title: "Module A · Matrix Decompositions & Factorizations",
         description:
-          "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
-        path: "/linear-algebra/overview",
-        meta: "Start here",
-        icon: "★",
-        logo: (
-          <span className="math-logo">
-            ℝ<sup>n</sup> Toolkit
-          </span>
-        ),
-        start: true,
-      },
-      {
-        title: "Linear Equations",
-        description:
-          "General form in 2, 3, and n variables, graphing with intercepts, systems, and solving techniques.",
-        path: "/linear-algebra/linear-equations/1",
-        meta: "2 parts · MCQ practice",
-        icon: "=",
-        logo: <span className="math-logo">a₁x₁ + ... + aₙxₙ = b</span>,
-      },
-      {
-        title: "Vectors & Vector Spaces",
-        description: "Vectors, span, basis, and linear independence.",
-        path: "/linear-algebra/vectors/1",
-        meta: "2 parts · MCQ practice",
-        icon: "v",
-        logo: <span className="math-logo">span&#123;v₁, ..., vₖ&#125;</span>,
-      },
-      {
-        title: "Matrices & Determinants",
-        description: "Matrix operations, inverses, and determinants.",
-        path: "/linear-algebra/matrices/1",
-        meta: "2 parts · MCQ practice",
-        icon: "M",
-        logo: <span className="math-logo">det(A) ≠ 0</span>,
-      },
-      {
-        title: "Systems of Linear Equations",
-        description: "Row reduction, rank, and consistency of linear systems.",
-        path: "/linear-algebra/systems/1",
-        meta: "2 parts · MCQ practice",
-        icon: "Σ",
-        logo: <span className="math-logo">[A | b] → [I | x]</span>,
-      },
-      {
-        title: "Eigenvalues & Eigenvectors",
-        description:
-          "Characteristic polynomials, eigenspaces, algebraic vs geometric multiplicity, diagonalization, matrix powers, and the Spectral Theorem.",
-        path: "/linear-algebra/eigen/1",
-        meta: "2 parts · MCQ practice",
-        icon: "λ",
-        logo: <span className="math-logo">Av = λv</span>,
-      },
-      {
-        title: "Linear Transformations",
-        description:
-          "Standard matrices, kernel & image, composition, and invertibility.",
-        path: "/linear-algebra/transformations/1",
-        meta: "2 parts · MCQ practice",
-        icon: "T",
-        logo: <span className="math-logo">T(u + v) = Tu + Tv</span>,
-      },
-      {
-        title: "Orthogonality & Least Squares",
-        description:
-          "Inner products, norms, orthogonal matrices, Gram–Schmidt, QR, projections, and least-squares solutions.",
-        path: "/linear-algebra/orthogonality/1",
-        meta: "2 parts · MCQ practice",
-        icon: "⊥",
-        logo: (
-          <span className="math-logo">
-            Q<sup>T</sup>Q = I
-          </span>
-        ),
-      },
-      {
-        title: "Singular Value Decomposition",
-        description:
-          "Full and compact SVD, singular values, fundamental subspaces, conditioning, low-rank approximation, and the pseudoinverse.",
-        path: "/linear-algebra/svd/1",
-        meta: "2 parts · MCQ practice",
-        icon: "Σ",
-        logo: (
-          <span className="math-logo">
-            A = U Σ V<sup>T</sup>
-          </span>
-        ),
-      },
-      {
-        title: "Matrix Decompositions & Factorizations",
-        description: "LU, Cholesky, Jordan normal form, and vector/matrix norms with conditioning. Four topics, worked examples, and 20 MCQs per topic.",
-        path: "/linear-algebra/lu-decomposition/1",
-        meta: "4 topics · 80 checkpoint MCQs",
+          "Four topics grouped into two parts: LU, Cholesky, Jordan normal form, and vector/matrix norms with conditioning.",
+        path: "/linear-algebra/module-a/1",
+        meta: "4 topics · 2 parts",
         icon: "A",
         logo: <span className="math-logo">A = LU</span>,
       },
       {
-        title: "Complex Vector Spaces",
-        description: "Complex scalars, inner products, Hermitian and unitary matrices, with worked examples and a 20-question quiz.",
-        path: "/linear-algebra/complex-vector-spaces/1",
-        meta: "2 parts · 20 quiz questions",
-        icon: "ℂ",
-        logo: <span className="math-logo">U*U = I</span>,
-      },
-      {
-        title: "Quadratic Forms & Definiteness",
-        description: "Quadratic forms, eigenvalue and principal-minor tests, completing squares, congruence, inertia, and Hessian classification. Includes worked examples and a 20-question checkpoint.",
-        path: "/linear-algebra/quadratic-forms-definiteness/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "Q",
-        logo: <span className="math-logo">x<sup>T</sup>Ax</span>,
-      },
-      {
-        title: "Change of Basis & Similarity Transformations",
-        description: "Coordinate vectors, transition matrices, operator representations, similarity invariants, and diagonalization, with worked examples and a 20-question checkpoint.",
-        path: "/linear-algebra/change-of-basis-similarity/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "P",
-        logo: <span className="math-logo">P<sup>-1</sup>AP</span>,
-      },
-      {
-        title: "Affine Transformations & Homogeneous Coordinates",
-        description: "Affine maps, homogeneous-coordinate matrices, transformations about arbitrary points, compositions, inverses, and geometry with worked examples and a 20-question checkpoint.",
-        path: "/linear-algebra/affine-homogeneous/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "T",
-        logo: <span className="math-logo">Ax + b</span>,
-      },
-      {
-        title: "Principal Component Analysis (PCA)",
-        description: "Center and transform multivariate data into orthogonal directions ranked by variance, with worked examples and a 20-question checkpoint.",
-        path: "/linear-algebra/principal-component-analysis/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "P",
-        logo: <span className="math-logo">X<sup>T</sup>X</span>,
-      },
-      {
-        title: "Markov Chains & Steady States",
-        description: "Model state transitions with stochastic matrices, solve for stationary distributions as eigenvectors, and distinguish fixed states from convergence.",
-        path: "/linear-algebra/markov-chains-steady-states/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "π",
-        logo: <span className="math-logo">Pπ = π</span>,
-      },
-      {
-        title: "Practice Arena",
+        title: "Module B · Advanced Vector & Matrix Structure",
         description:
-          "MCQ drills for Linear Algebra topics with leaderboard submit.",
-        path: "/practice",
-        meta: "Interactive · Difficulty tiers",
-        icon: "✎",
-        logo: <span className="math-logo">✎ Drill Arena</span>,
+          "Four topics grouped into two parts: complex vector spaces, quadratic forms, change of basis, and affine transformations.",
+        path: "/linear-algebra/module-b/1",
+        meta: "4 topics · 2 parts",
+        icon: "B",
+        logo: <span className="math-logo">ℂ · P⁻¹AP</span>,
       },
       {
-        title: "Certification Quiz",
+        title: "Module C · Data, Orthogonality & Singular Structure",
         description:
-          "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
-        path: "/quiz/linear-algebra",
-        meta: "30 questions · 80% to pass",
-        icon: "✓",
-        logo: <span className="math-logo">✓ 30 MCQs · 80%</span>,
+          "Four topics grouped into two parts: orthogonality, SVD, PCA, and Markov chains.",
+        path: "/linear-algebra/module-c/1",
+        meta: "4 topics · 2 parts",
+        icon: "C",
+        logo: <span className="math-logo">UΣVᵀ</span>,
       },
     ],
   },
