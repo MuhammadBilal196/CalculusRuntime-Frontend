@@ -51,3 +51,5 @@ test("module A has the expected second topic",()=>{expect(getLinearAlgebraModule
 test("module A part two starts with Jordan form",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts[1].topics[0].id).toBe("jordan-normal-form");});
 
 test("module A part two ends with conditioning",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts[1].topics[1].id).toBe("matrix-norms-conditioning");});
+
+test("module B part one starts with complex spaces",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts[0].topics[0].id).toBe("complex-vector-spaces");});
