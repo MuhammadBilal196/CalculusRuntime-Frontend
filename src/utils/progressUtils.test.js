@@ -29,3 +29,5 @@ test("getStreak returns zero with no stored days",()=>{localStorage.clear();expe
 test("getStreak counts consecutive days",()=>{localStorage.clear();const today=new Date();const yesterday=new Date(today);yesterday.setDate(today.getDate()-1);localStorage.setItem("calculus-study-days",JSON.stringify([today.toDateString(),yesterday.toDateString()]));expect(getStreak()).toBe(2);});
 
 test("getStreak stops after a missed day",()=>{localStorage.clear();const today=new Date();const old=new Date(today);old.setDate(today.getDate()-2);localStorage.setItem("calculus-study-days",JSON.stringify([today.toDateString(),old.toDateString()]));expect(getStreak()).toBe(1);});
+
+test("recordActivityDay stores an ISO-independent date string",()=>{localStorage.clear();recordActivityDay();const [value]=JSON.parse(localStorage.getItem("calculus-study-days"));expect(value).toBe(new Date().toDateString());});
