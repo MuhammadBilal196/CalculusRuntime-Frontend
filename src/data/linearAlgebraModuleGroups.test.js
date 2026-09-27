@@ -19,3 +19,5 @@ test("module A contains four topics",()=>{expect(getLinearAlgebraModuleGroup("mo
 test("module B contains four topics",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts.flatMap((part)=>part.topics)).toHaveLength(4);});
 
 test("module C contains four topics",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts.flatMap((part)=>part.topics)).toHaveLength(4);});
+
+test("unknown module lookup returns null",()=>{expect(getLinearAlgebraModuleGroup("missing")).toBeNull();});
