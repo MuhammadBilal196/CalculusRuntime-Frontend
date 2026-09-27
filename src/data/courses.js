@@ -443,6 +443,14 @@ export const COURSES = [
         logo: <span className="math-logo">Ax + b</span>,
       },
       {
+        title: "Principal Component Analysis (PCA)",
+        description: "Center and transform multivariate data into orthogonal directions ranked by variance, with worked examples and a 20-question checkpoint.",
+        path: "/linear-algebra/principal-component-analysis/1",
+        meta: "2 parts · 20-question checkpoint",
+        icon: "P",
+        logo: <span className="math-logo">X<sup>T</sup>X</span>,
+      },
+      {
         title: "Practice Arena",
         description: "MCQ drills for Linear Algebra topics with leaderboard submit.",
         path: "/practice",

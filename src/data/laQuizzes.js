@@ -1789,3 +1789,227 @@ export const LA_AFFINE_HOMOGENEOUS_QUIZ = [
     "explanation": "An affine point is represented with final coordinate 1; a nonzero w can be normalized by division."
   }
 ];
+
+// Principal Component Analysis checkpoint (20 questions).
+export const LA_PCA_QUIZ = [
+  {
+    "prompt": "Why are feature means subtracted before covariance-based PCA?",
+    "options": [
+      "To measure variation around the feature means rather than around the origin",
+      "To make every covariance equal to one",
+      "To force every principal component to have a positive score",
+      "To remove the need to choose a number of components"
+    ],
+    "answer": "A",
+    "explanation": "Centering makes PCA describe variation about the data's mean. Scaling to unit variance is a separate choice."
+  },
+  {
+    "prompt": "If rows are observations and columns are features, what is the shape of a data matrix with n observations and p features?",
+    "options": [
+      "p by n",
+      "n by p",
+      "n by n regardless of p",
+      "p by p regardless of n"
+    ],
+    "answer": "B",
+    "explanation": "Each of the n observations contributes one row, and each of the p features contributes one column."
+  },
+  {
+    "prompt": "For n centered observations stored as rows of X_c, what is their sample covariance matrix?",
+    "options": [
+      "$X_cX_c^T/(n-1)$",
+      "$X_c^TX_c/n$",
+      "$X_c^TX_c/(n-1)$",
+      "$X_c/(n-1)$"
+    ],
+    "answer": "C",
+    "explanation": "The p by p sample covariance of column features is $X_c^TX_c/(n-1)$."
+  },
+  {
+    "prompt": "Which optimization problem defines the first principal direction for covariance matrix S?",
+    "options": [
+      "Minimize $u^TSu$ subject to $u=0$",
+      "Maximize $\\det(S)$ over all vectors u",
+      "Minimize $\\|Su\\|$ subject to $\\|u\\|=1$",
+      "Maximize $u^TSu$ subject to $\\|u\\|=1$"
+    ],
+    "answer": "D",
+    "explanation": "The unit vector with greatest projected sample variance maximizes the Rayleigh quotient $u^TSu$."
+  },
+  {
+    "prompt": "Which eigenvector of S gives the first principal direction?",
+    "options": [
+      "A unit eigenvector paired with the largest eigenvalue",
+      "An eigenvector paired with the smallest eigenvalue",
+      "Any vector parallel to the feature-mean vector",
+      "A vector whose entries sum to one"
+    ],
+    "answer": "A",
+    "explanation": "The largest covariance eigenvalue is the greatest variance attainable along a unit direction."
+  },
+  {
+    "prompt": "What does an eigenvalue $\\lambda_j$ of the sample covariance represent for its unit eigenvector $v_j$?",
+    "options": [
+      "The number of observations",
+      "The sample variance of the data projected onto $v_j$",
+      "The mean of the original feature columns",
+      "The reconstruction error for every observation"
+    ],
+    "answer": "B",
+    "explanation": "Projection onto a covariance eigenvector has sample variance equal to its eigenvalue."
+  },
+  {
+    "prompt": "How are the scores on the first k principal directions computed from centered rows X_c and loading matrix V_k?",
+    "options": [
+      "$V_k^TX_c$",
+      "$X_c+V_k$",
+      "$X_cV_k$",
+      "$X_cV_k^{-1}$"
+    ],
+    "answer": "C",
+    "explanation": "Each centered observation row is projected onto the loading columns by the matrix product $X_cV_k$."
+  },
+  {
+    "prompt": "If the ordered covariance eigenvalues are $\\lambda_1,\\ldots,\\lambda_p$, what fraction of total variance is explained by the first component?",
+    "options": [
+      "$\\lambda_1-\\sum_j\\lambda_j$",
+      "$\\sum_j\\lambda_j/\\lambda_1$",
+      "$\\lambda_1^2/\\sum_j\\lambda_j$",
+      "$\\lambda_1/\\sum_j\\lambda_j$"
+    ],
+    "answer": "D",
+    "explanation": "Divide the first component's variance by total variance, the sum of all covariance eigenvalues."
+  },
+  {
+    "prompt": "How are distinct principal directions selected in standard covariance PCA?",
+    "options": [
+      "As an orthonormal set of covariance eigenvectors",
+      "As parallel vectors so each score has the same sign",
+      "As the original feature axes in every data set",
+      "As eigenvectors of the feature-mean vector"
+    ],
+    "answer": "A",
+    "explanation": "The covariance matrix is symmetric, so its eigenvectors can be chosen orthonormal."
+  },
+  {
+    "prompt": "When is standardizing features to unit variance often appropriate before PCA?",
+    "options": [
+      "Whenever the covariance matrix is already diagonal",
+      "When feature units or scales differ and comparable influence is intended",
+      "Only when every feature has zero variance",
+      "Whenever the observations have already been centered"
+    ],
+    "answer": "B",
+    "explanation": "Standardization prevents measurement units alone from dominating, but it should match the analysis goal."
+  },
+  {
+    "prompt": "If a covariance matrix has a repeated eigenvalue, what is true about its principal directions in that eigenspace?",
+    "options": [
+      "They must equal the standard coordinate axes",
+      "They are uniquely fixed including their signs",
+      "An orthonormal basis can be chosen, but individual directions in the tied eigenspace are not unique",
+      "The repeated eigenvalue must be zero"
+    ],
+    "answer": "C",
+    "explanation": "Any orthonormal basis of a repeated-eigenvalue eigenspace spans the same PCA subspace."
+  },
+  {
+    "prompt": "For an SVD $X_c=U\\Sigma V^T$, which vectors give the principal directions?",
+    "options": [
+      "Columns of U only",
+      "Rows of U",
+      "Columns of $\\Sigma$",
+      "Columns of V"
+    ],
+    "answer": "D",
+    "explanation": "The right singular vectors in V are eigenvectors of $X_c^TX_c$ and therefore are feature-space principal directions."
+  },
+  {
+    "prompt": "After centering n observations, what is an upper bound on the number of nonzero principal components?",
+    "options": [
+      "$\\min(n-1,p)$",
+      "$n+p$",
+      "$np$",
+      "Exactly n, even if p is smaller"
+    ],
+    "answer": "A",
+    "explanation": "The centered matrix has rank at most $\\min(n-1,p)$, so its covariance has no more nonzero eigenvalues."
+  },
+  {
+    "prompt": "For centered row data X_c and loading matrix V_k, what is the rank-k reconstruction before restoring the feature means?",
+    "options": [
+      "$V_kX_cV_k^T$",
+      "$X_cV_kV_k^T$",
+      "$X_c+V_kV_k^T$",
+      "$V_k^TX_cV_k$"
+    ],
+    "answer": "B",
+    "explanation": "First compute the scores $X_cV_k$, then map them back to feature space by multiplying by $V_k^T$."
+  },
+  {
+    "prompt": "To avoid data leakage when evaluating a predictive model that uses PCA, what should be done?",
+    "options": [
+      "Fit PCA once using training and test rows together",
+      "Recompute a different PCA basis for every test row",
+      "Fit means, scales, and loadings on training data, then reuse them on held-out data",
+      "Use outcome labels to center each test feature"
+    ],
+    "answer": "C",
+    "explanation": "All preprocessing and PCA parameters must be learned from training data only and then applied unchanged to held-out observations."
+  },
+  {
+    "prompt": "Does ordinary PCA require outcome labels?",
+    "options": [
+      "Yes, it needs one class label for every component",
+      "Only when the covariance matrix is symmetric",
+      "Yes, labels determine the feature means",
+      "No; ordinary PCA is an unsupervised transformation of the feature data"
+    ],
+    "answer": "D",
+    "explanation": "Ordinary PCA uses the feature matrix and its variance structure, not response labels."
+  },
+  {
+    "prompt": "What can be concluded from PCA scores having zero sample covariance?",
+    "options": [
+      "The scores are uncorrelated, but they need not be statistically independent",
+      "The scores are always statistically independent",
+      "Every score has unit variance",
+      "The original features were independent"
+    ],
+    "answer": "A",
+    "explanation": "Orthogonal covariance directions give uncorrelated scores; independence requires additional assumptions, such as a suitable joint Gaussian model."
+  },
+  {
+    "prompt": "A centered data set has ordered covariance eigenvalues 7, 2, and 1. How many components reach at least 90% cumulative explained variance?",
+    "options": [
+      "One, because the largest eigenvalue is 7",
+      "Two, because $(7+2)/(7+2+1)=90\\%$",
+      "Three, because cumulative variance cannot be computed from eigenvalues",
+      "Zero, because PCA requires equal eigenvalues"
+    ],
+    "answer": "B",
+    "explanation": "The total is 10; the first two eigenvalues sum to 9, giving exactly 90%."
+  },
+  {
+    "prompt": "Which objective does ordinary PCA optimize directly?",
+    "options": [
+      "Classification accuracy",
+      "The number of available labels",
+      "Variance retained in the projected feature data",
+      "The number of original features"
+    ],
+    "answer": "C",
+    "explanation": "PCA preserves directions of large input variance; high variance does not guarantee usefulness for a prediction target."
+  },
+  {
+    "prompt": "Why can a few extreme observations substantially change PCA directions?",
+    "options": [
+      "PCA discards the covariance matrix when outliers appear",
+      "Every eigenvector must contain a zero",
+      "Extreme observations always have zero centered scores",
+      "They can strongly shift the mean and covariance used to find the directions"
+    ],
+    "answer": "D",
+    "explanation": "The mean and covariance are sensitive to extreme values, which can rotate the leading eigendirections."
+  }
+];

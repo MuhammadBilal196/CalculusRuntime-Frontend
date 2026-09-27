@@ -44,3 +44,7 @@ export { default as ChangeOfBasisPart2 } from "./ChangeOfBasisPart2";
 export { default as AffineTransformationsGuide } from "./AffineTransformationsGuide";
 export { default as AffineTransformationsPart1 } from "./AffineTransformationsPart1";
 export { default as AffineTransformationsPart2 } from "./AffineTransformationsPart2";
+
+export { default as PrincipalComponentAnalysisGuide } from "./PrincipalComponentAnalysisGuide";
+export { default as PrincipalComponentAnalysisPart1 } from "./PrincipalComponentAnalysisPart1";
+export { default as PrincipalComponentAnalysisPart2 } from "./PrincipalComponentAnalysisPart2";

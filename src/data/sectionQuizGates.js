@@ -79,6 +79,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "la-change-basis-2": ["la-change-basis-checkpoint"],
   "la-affine-1": [],
   "la-affine-2": ["la-affine-checkpoint"],
+  "la-pca-1": [],
+  "la-pca-2": ["la-pca-checkpoint"],
 
   "la-complex-1": [],
   "la-complex-2": ["la-complex-checkpoint"],
