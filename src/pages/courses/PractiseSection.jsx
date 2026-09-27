@@ -3,8 +3,8 @@ import SubmitToLeaderboard from "../../components/SubmitToLeaderboard";
 import "../dashboard/Leaderboard.css";
 import "./PractiseSection.css";
 
-// Each bank holds 100 Easy + 100 Medium + 100 Hard questions per topic, so they
-// are fetched on demand instead of shipping ~2 MB of questions in the main bundle.
+// Practice banks are fetched on demand so the full question library does not ship
+// in the main bundle. Available question counts vary by topic.
 const BANK_LOADERS = {
   calcAg: () => import('../../data/calcAgPracticeBank').then((m) => m.CALC_AG_PRACTICE_BANK),
   mv: () => import('../../data/mvPracticeBank').then((m) => m.MV_PRACTICE_BANK),
@@ -18,6 +18,7 @@ const TOPICS = [
   'Lagrange Multipliers',
   'Divergence & Curl',
   "Stokes' Theorem",
+  "Green's Theorem",
   'Taylor & Maclaurin Series',
   'Maclaurin Series',
   'Taylor Series for Multivariable Functions',
@@ -28,10 +29,17 @@ const TOPICS = [
   'Integration',
   'Sequences and Infinite Series',
   'Conic Sections and Analytic Geometry',
+  '3D Analytic Geometry & Vectors',
+  'Space Curves & Advanced Multivariable Mappings',
+  '2D Lines & Systems of Lines',
+  'Circles & Conic Tangents',
+  'Advanced Single-Variable Calculus',
+  'Ordinary Differential Equations (ODEs)',
   'Multiple Integrals',
   'Vectors & Vector Spaces',
   'Matrices & Determinants',
   'Systems of Linear Equations',
+  'Fundamental Subspaces & Rank-Nullity',
   'Eigenvalues & Eigenvectors',
   'Linear Transformations',
   'Orthogonality & Least Squares',
@@ -41,14 +49,35 @@ const TOPICS = [
   'Descriptive Statistics',
   'Hypothesis Testing',
   'Regression & Correlation',
+  'Probability Theory & Random Variables',
+  'Mathematical Statistics & Inference',
 ];
+
+const TOPIC_ALIASES = {
+  'Limits & Continuity': 'Limits and Continuity',
+  'Differentiation & Applications': 'Differentiation',
+  'Integration & Techniques': 'Integration',
+  'Sequences, Series & Taylor': 'Sequences and Infinite Series',
+  'Conics & 2D Analytic Geometry': 'Conic Sections and Analytic Geometry',
+  '3D Analytic Geometry & Vectors': '3D Analytic Geometry & Vectors',
+};
 
 const TOPIC_BANK = {
   'Limits and Continuity': 'calcAg',
+  'Limits & Continuity': 'calcAg',
   Differentiation: 'calcAg',
+  'Differentiation & Applications': 'calcAg',
   Integration: 'calcAg',
+  'Integration & Techniques': 'calcAg',
   'Sequences and Infinite Series': 'calcAg',
+  'Sequences, Series & Taylor': 'calcAg',
   'Conic Sections and Analytic Geometry': 'calcAg',
+  'Conics & 2D Analytic Geometry': 'calcAg',
+  '3D Analytic Geometry & Vectors': 'calcAg',
+  '2D Lines & Systems of Lines': 'calcAg',
+  'Circles & Conic Tangents': 'calcAg',
+  'Advanced Single-Variable Calculus': 'calcAg',
+  'Ordinary Differential Equations (ODEs)': 'calcAg',
   'Taylor Series for Multivariable Functions': 'calcAg',
   'Taylor & Maclaurin Series': 'calcAg',
   'Maclaurin Series': 'calcAg',
@@ -58,9 +87,12 @@ const TOPIC_BANK = {
   'Lagrange Multipliers': 'mv',
   'Divergence & Curl': 'mv',
   "Stokes' Theorem": 'mv',
+  "Green's Theorem": 'mv',
+  'Space Curves & Advanced Multivariable Mappings': 'mv',
   'Vectors & Vector Spaces': 'la',
   'Matrices & Determinants': 'la',
   'Systems of Linear Equations': 'la',
+  'Fundamental Subspaces & Rank-Nullity': 'la',
   'Eigenvalues & Eigenvectors': 'la',
   'Linear Transformations': 'la',
   'Orthogonality & Least Squares': 'la',
@@ -70,6 +102,8 @@ const TOPIC_BANK = {
   'Descriptive Statistics': 'ps',
   'Hypothesis Testing': 'ps',
   'Regression & Correlation': 'ps',
+  'Probability Theory & Random Variables': 'ps',
+  'Mathematical Statistics & Inference': 'ps',
 };
 
 function shuffled(list) {
@@ -79,6 +113,21 @@ function shuffled(list) {
     [out[i], out[j]] = [out[j], out[i]];
   }
   return out;
+}
+
+function shuffleQuestionOptions(question) {
+  const choices = question.options.map((option, originalIndex) => ({
+    option,
+    originalIndex,
+  }));
+  const randomizedChoices = shuffled(choices);
+  return {
+    ...question,
+    options: randomizedChoices.map((choice) => choice.option),
+    correctAnswer: randomizedChoices.findIndex(
+      (choice) => choice.originalIndex === question.correctAnswer
+    ),
+  };
 }
 
 export default function PractiseSection() {
@@ -122,13 +171,14 @@ export default function PractiseSection() {
     Promise.resolve(loader ? loader() : [])
       .then((bank) => {
         if (cancelled) return;
+        const canonicalTopic = TOPIC_ALIASES[chosenTopic] || chosenTopic;
         const filtered = bank.filter((p) => {
           if (p.difficulty !== chosenDifficulty) return false;
-          if (p.topic === chosenTopic) return true;
+          if (p.topic === chosenTopic || p.topic === canonicalTopic) return true;
           if (
-            (chosenTopic === 'Taylor Series for Multivariable Functions' ||
-              chosenTopic === 'Taylor & Maclaurin Series' ||
-              chosenTopic === 'Maclaurin Series') &&
+            (canonicalTopic === 'Taylor Series for Multivariable Functions' ||
+              canonicalTopic === 'Taylor & Maclaurin Series' ||
+              canonicalTopic === 'Maclaurin Series') &&
             (p.topic === 'Taylor Series for Multivariable Functions' ||
               p.topic === 'Taylor & Maclaurin Series' ||
               p.topic === 'Maclaurin Series')
@@ -137,9 +187,10 @@ export default function PractiseSection() {
           }
           return false;
         });
-        setPoolProblems(shuffled(filtered));
+        setPoolProblems(shuffled(filtered).map(shuffleQuestionOptions));
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error("Failed to load practice question bank:", error);
         if (!cancelled) setPoolProblems([]);
       })
       .finally(() => {

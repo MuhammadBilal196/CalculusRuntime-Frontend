@@ -16,6 +16,14 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "calc-series-2": ["ser-p2"],
   "calc-conics-1": ["con-p1"],
   "calc-conics-2": ["con-p2"],
+  "lines-1": ["lines-p1"],
+  "lines-2": ["lines-p2"],
+  "circles-1": ["circles-p1"],
+  "circles-2": ["circles-p2"],
+  "advcalc-1": ["advcalc-p1"],
+  "advcalc-2": ["advcalc-p2"],
+  "ode-1": ["ode-p1"],
+  "ode-2": ["ode-p2"],
   "taylor-1": ["taylor-concept", "taylor-formula", "maclaurin-core"],
   "taylor-2": [
     "taylor-catalog",
@@ -28,8 +36,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   // Multivariable Calculus
   "partial-1": ["141", "142", "143"],
   "partial-2": ["144", "145", "146", "147"],
-  "vector-1": [],
-  "vector-2": [],
+  "vector-1": ["vector-p1"],
+  "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
   "integrals-2": ["integrals-p2"],
   "lagrange-1": ["lagrange-geometry", "lagrange-math", "lagrange-fields"],
@@ -50,6 +58,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   ],
   "stokes-1": ["stokes-f"],
   "stokes-2": ["stokes-a"],
+  "geo3d-1": ["geo-dircos", "geo-angle3d", "geo-plane", "geo-ptplane"],
+  "geo3d-2": ["geo-line3d", "geo-skew", "geo-quadric"],
 
   // Linear Algebra
   "la-lineq-1": ["la-le-forms", "la-le-graph"],
@@ -62,6 +72,25 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "la-systems-2": ["la-s-rank", "la-s-geo"],
   "la-eigen-1": ["la-e-intro", "la-e-char"],
   "la-eigen-2": ["la-e-diag", "la-e-apps"],
+
+  "la-quadratic-1": [],
+  "la-quadratic-2": ["la-quadratic-checkpoint"],
+  "la-change-basis-1": [],
+  "la-change-basis-2": ["la-change-basis-checkpoint"],
+  "la-affine-1": [],
+  "la-affine-2": ["la-affine-checkpoint"],
+
+  "la-complex-1": [],
+  "la-complex-2": ["la-complex-checkpoint"],
+  // Module A: Part 1 is reading; each Part 2 has one 20-question checkpoint.
+  "la-a-lu-1": [],
+  "la-a-lu-2": ["la-a-lu-checkpoint"],
+  "la-a-cholesky-1": [],
+  "la-a-cholesky-2": ["la-a-cholesky-checkpoint"],
+  "la-a-jordan-1": [],
+  "la-a-jordan-2": ["la-a-jordan-checkpoint"],
+  "la-a-norms-1": [],
+  "la-a-norms-2": ["la-a-norms-checkpoint"],
 
   // Probability & Statistics
   "ps-basics-1": ["ps-b-intro", "ps-b-combo"],

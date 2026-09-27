@@ -91,6 +91,37 @@ export const PS_B_INTRO_QUIZ = [
     answer: "B",
     explanation: "Probability bounds from the axioms.",
   },
+
+  {
+    prompt: "A fair die is rolled. What is $P(\\text{result}<3)$?",
+    options: ["$1/3$", "$1/2$", "$2/3$"],
+    answer: "A",
+    explanation: "The favorable outcomes are $1,2$, so the probability is $2/6=1/3$.",
+  },
+  {
+    prompt: "If $P(A)=0.65$, then $P(A^c)$ is:",
+    options: ["$0.65$", "$0.35$", "$1.65$"],
+    answer: "B",
+    explanation: "Complement rule: $1-0.65=0.35$.",
+  },
+  {
+    prompt: "If $A$ and $B$ are disjoint with probabilities $0.25$ and $0.40$, then $P(A\\cup B)$ is:",
+    options: ["$0.10$", "$0.15$", "$0.65$"],
+    answer: "C",
+    explanation: "For disjoint events, add the probabilities.",
+  },
+  {
+    prompt: "For any sample space $S$, $P(S)$ equals:",
+    options: ["$1$", "$0$", "$1/2$"],
+    answer: "A",
+    explanation: "Normalization is one of the probability axioms.",
+  },
+  {
+    prompt: "If $A\\subseteq B$, which inequality must hold?",
+    options: ["$P(A)>P(B)$", "$P(A)\\le P(B)$", "$P(A)+P(B)=0$"],
+    answer: "B",
+    explanation: "Probability is monotone with respect to set inclusion.",
+  },
 ];
 
 export const PS_B_COMBO_QUIZ = [
@@ -183,6 +214,37 @@ export const PS_B_COMBO_QUIZ = [
     options: ["$P(8,2)=56$", "$\\binom{8}{2}=28$", "$8$"],
     answer: "A",
     explanation: "Order of roles matters.",
+  },
+
+  {
+    prompt: "The number of ways to arrange $4$ distinct books is:",
+    options: ["$16$", "$24$", "$4$"],
+    answer: "B",
+    explanation: "$4!=24$.",
+  },
+  {
+    prompt: "The number of ways to choose $3$ students from $7$ is:",
+    options: ["$21$", "$210$", "$35$"],
+    answer: "C",
+    explanation: "$\\binom{7}{3}=35$.",
+  },
+  {
+    prompt: "How many ordered pairs of distinct items can be chosen from $6$ items?",
+    options: ["$30$", "$15$", "$36$"],
+    answer: "A",
+    explanation: "$P(6,2)=6\\cdot5=30$.",
+  },
+  {
+    prompt: "How many binary strings of length $5$ are possible?",
+    options: ["$10$", "$32$", "$25$"],
+    answer: "B",
+    explanation: "Each position has $2$ choices, so $2^5=32$.",
+  },
+  {
+    prompt: "The number of distinct permutations of AABC is:",
+    options: ["$24$", "$6$", "$12$"],
+    answer: "C",
+    explanation: "$4!/2!=12$ because A repeats twice.",
   },
 ];
 
@@ -277,6 +339,37 @@ export const PS_B_COND_QUIZ = [
     answer: "B",
     explanation: "$0.2\\cdot 1/2+0.5\\cdot 1/2=0.35$.",
   },
+
+  {
+    prompt: "If $P(A\\cap B)=0.2$ and $P(B)=0.5$, then $P(A\\mid B)$ is:",
+    options: ["$0.1$", "$0.7$", "$0.4$"],
+    answer: "C",
+    explanation: "$P(A|B)=P(A\\cap B)/P(B)=0.2/0.5=0.4$.",
+  },
+  {
+    prompt: "Events $A$ and $B$ are independent when:",
+    options: ["$P(A\\cap B)=P(A)P(B)$", "$P(A\\cap B)=0$ always", "$P(A)=P(B)$"],
+    answer: "A",
+    explanation: "This product rule is the standard independence criterion.",
+  },
+  {
+    prompt: "If $P(A)=0.3$ and $P(B)=0.4$ are independent, $P(A\\cap B)$ is:",
+    options: ["$0.7$", "$0.12$", "$0.1$"],
+    answer: "B",
+    explanation: "Multiply: $0.3\\times0.4=0.12$.",
+  },
+  {
+    prompt: "If $A$ and $B$ are independent and $P(B)>0$, then $P(A\\mid B)$ equals:",
+    options: ["$P(B)$", "$0$", "$P(A)$"],
+    answer: "C",
+    explanation: "Knowing $B$ occurred does not change the probability of $A$.",
+  },
+  {
+    prompt: "Two disjoint events with positive probabilities are:",
+    options: ["Not independent", "Always independent", "Always complements"],
+    answer: "A",
+    explanation: "Disjointness gives intersection probability zero, but independence would require a positive product.",
+  },
 ];
 
 export const PS_B_BAYES_QUIZ = [
@@ -369,6 +462,37 @@ export const PS_B_BAYES_QUIZ = [
     options: ["Zero", "The prior", "One"],
     answer: "B",
     explanation: "Uninformative evidence leaves beliefs unchanged.",
+  },
+
+  {
+    prompt: "Bayes' theorem computes $P(A\\mid B)$ from:",
+    options: ["$P(B\\mid A)P(A)/P(B)$", "$P(A)P(B)$", "$P(B)-P(A)$"],
+    answer: "A",
+    explanation: "Bayes reverses the conditioning direction.",
+  },
+  {
+    prompt: "If $P(D)=0.1$, $P(+|D)=0.9$, and $P(+)=0.2$, then $P(D|+)$ is:",
+    options: ["$0.18$", "$0.45$", "$0.90$"],
+    answer: "B",
+    explanation: "Bayes gives $0.9(0.1)/0.2=0.45$.",
+  },
+  {
+    prompt: "For a partition $A_1,\\ldots,A_k$, the law of total probability gives $P(B)$ as:",
+    options: ["$\\prod_i P(B|A_i)$", "$P(B|A_1)$ only", "$\\sum_i P(B|A_i)P(A_i)$"],
+    answer: "C",
+    explanation: "Sum the contributions from mutually exclusive exhaustive cases.",
+  },
+  {
+    prompt: "A prior probability in Bayesian reasoning is the probability:",
+    options: ["Before observing the new evidence", "After conditioning on the evidence", "That must equal one"],
+    answer: "A",
+    explanation: "The prior encodes belief before the current evidence is incorporated.",
+  },
+  {
+    prompt: "A posterior probability is obtained:",
+    options: ["Before any evidence", "After updating with observed evidence", "By ignoring the likelihood"],
+    answer: "B",
+    explanation: "Bayes' theorem combines prior information with the likelihood to produce the posterior.",
   },
 ];
 
@@ -463,6 +587,37 @@ export const PS_RV_INTRO_QUIZ = [
     answer: "B",
     explanation: "Faces $5,6$ of six.",
   },
+
+  {
+    prompt: "A discrete random variable is described by a PMF $p(x)$ satisfying:",
+    options: ["$p(x)<0$ for some $x$", "$p(x)\\ge0$ and $\\sum_xp(x)=1$", "$\\sum_xp(x)=0$"],
+    answer: "B",
+    explanation: "Probabilities must be nonnegative and total one.",
+  },
+  {
+    prompt: "The CDF is defined by:",
+    options: ["$F(x)=P(X=x)$ only", "$F(x)=E[X]$", "$F(x)=P(X\\le x)$"],
+    answer: "C",
+    explanation: "The cumulative distribution function accumulates probability up to $x$.",
+  },
+  {
+    prompt: "Every CDF is:",
+    options: ["Nondecreasing", "Strictly decreasing", "Allowed to exceed one"],
+    answer: "A",
+    explanation: "Events $\\{X\\le x\\}$ grow as $x$ increases.",
+  },
+  {
+    prompt: "For a discrete random variable, $E[X]$ equals:",
+    options: ["$\\sum_x p(x)$", "$\\sum_x x p(x)$", "$\\prod_x xp(x)$"],
+    answer: "B",
+    explanation: "Expectation is the probability-weighted average of possible values.",
+  },
+  {
+    prompt: "If $X$ is constant with value $c$, then $E[X]$ is:",
+    options: ["$0$", "$c^2$", "$c$"],
+    answer: "C",
+    explanation: "A constant random variable always takes the value $c$.",
+  },
 ];
 
 export const PS_RV_MOMENTS_QUIZ = [
@@ -555,6 +710,37 @@ export const PS_RV_MOMENTS_QUIZ = [
     options: ["$8$", "$4$", "$2$"],
     answer: "A",
     explanation: "$0+16\\cdot 1/2=8$.",
+  },
+
+  {
+    prompt: "Variance can be computed as:",
+    options: ["$E[X^2]+(E[X])^2$", "$E[X]$", "$E[X^2]-(E[X])^2$"],
+    answer: "C",
+    explanation: "This identity follows from expanding $E[(X-\\mu)^2]$.",
+  },
+  {
+    prompt: "The standard deviation of $X$ is:",
+    options: ["$\\sqrt{\\operatorname{Var}(X)}$", "$\\operatorname{Var}(X)^2$", "$E[X]^2$"],
+    answer: "A",
+    explanation: "Standard deviation is the square root of variance.",
+  },
+  {
+    prompt: "For constants $a,b$, $E[aX+b]$ equals:",
+    options: ["$a^2E[X]+b$", "$aE[X]+b$", "$E[X]+ab$"],
+    answer: "B",
+    explanation: "Expectation is linear.",
+  },
+  {
+    prompt: "For constants $a,b$, $\\operatorname{Var}(aX+b)$ equals:",
+    options: ["$a\\operatorname{Var}(X)+b$", "$\\operatorname{Var}(X)+b^2$", "$a^2\\operatorname{Var}(X)$"],
+    answer: "C",
+    explanation: "Shifts do not affect spread; scaling by $a$ scales variance by $a^2$.",
+  },
+  {
+    prompt: "The moment generating function is defined by:",
+    options: ["$M_X(t)=E[e^{tX}]$", "$E[X^t]$", "$E[tX]$"],
+    answer: "A",
+    explanation: "The MGF encodes moments through derivatives at zero when it exists.",
   },
 ];
 
@@ -649,6 +835,37 @@ export const PS_RV_CONT_QUIZ = [
     answer: "C",
     explanation: "$e^{-m}=1/2$.",
   },
+
+  {
+    prompt: "For a continuous PDF $f(x)$, total area satisfies:",
+    options: ["$\\int_{-\\infty}^{\\infty}f(x)dx=1$", "$0$", "$f(x)=1$ for all $x$"],
+    answer: "A",
+    explanation: "A density integrates to total probability one.",
+  },
+  {
+    prompt: "For a continuous random variable, $P(X=x_0)$ is:",
+    options: ["$1$", "$0$", "$f(x_0)$ always"],
+    answer: "B",
+    explanation: "A single point has zero area under a continuous density.",
+  },
+  {
+    prompt: "For continuous $X$, $P(a<X<b)$ equals:",
+    options: ["$f(b)-f(a)$", "$f(a)f(b)$", "$\\int_a^b f(x)dx$"],
+    answer: "C",
+    explanation: "Interval probability is area under the PDF.",
+  },
+  {
+    prompt: "If $F$ is differentiable, the PDF is obtained from the CDF by:",
+    options: ["$f(x)=F'(x)$", "$f(x)=1/F(x)$", "$f(x)=F(x)^2$"],
+    answer: "A",
+    explanation: "Differentiating the cumulative probability recovers the density.",
+  },
+  {
+    prompt: "For continuous $X$, $E[X]$ is:",
+    options: ["$\\int f(x)^2dx$", "$\\int_{-\\infty}^{\\infty}x f(x)dx$", "$F(0)$"],
+    answer: "B",
+    explanation: "Expectation is the density-weighted integral of the variable.",
+  },
 ];
 
 export const PS_RV_NAMED_QUIZ = [
@@ -741,5 +958,36 @@ export const PS_RV_NAMED_QUIZ = [
     options: ["Uniform continuous on $[0,1]$ only", "Exponential", "Binomial"],
     answer: "C",
     explanation: "Classic Bernoulli-sum model.",
+  },
+
+  {
+    prompt: "A Binomial random variable counts:",
+    options: ["Waiting time between Poisson events", "Successes in a fixed number of independent Bernoulli trials", "Any continuous measurement"],
+    answer: "B",
+    explanation: "Binomial$(n,p)$ counts successes across $n$ independent trials with common success probability $p$.",
+  },
+  {
+    prompt: "For $X\\sim\\operatorname{Bin}(n,p)$, $E[X]$ is:",
+    options: ["$n/p$", "$p/n$", "$np$"],
+    answer: "C",
+    explanation: "The binomial mean is $np$.",
+  },
+  {
+    prompt: "For $X\\sim\\operatorname{Poisson}(\\lambda)$, both mean and variance are:",
+    options: ["$\\lambda$", "$\\lambda^2$", "$1/\\lambda$"],
+    answer: "A",
+    explanation: "Poisson mean and variance both equal the rate parameter.",
+  },
+  {
+    prompt: "The exponential distribution is memoryless, meaning:",
+    options: ["$P(X>s+t)=0$", "$P(X>s+t|X>s)=P(X>t)$", "$E[X]=0$"],
+    answer: "B",
+    explanation: "Remaining waiting time does not depend on time already waited.",
+  },
+  {
+    prompt: "A standard normal random variable has mean and variance:",
+    options: ["$1$ and $0$", "$0$ and $0$", "$0$ and $1$"],
+    answer: "C",
+    explanation: "The standard normal is $N(0,1)$.",
   },
 ];

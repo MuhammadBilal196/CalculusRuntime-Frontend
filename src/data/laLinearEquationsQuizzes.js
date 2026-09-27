@@ -49,6 +49,79 @@ export const LA_LE_FORMS_QUIZ = [
     answer: "A",
     explanation: "$-2y=10-5x \\Rightarrow y=\\tfrac{5}{2}x-5$.",
   },
+
+  {
+    prompt: "Which equation is linear in $x$ and $y$?",
+    options: ["$4x-3y=7$", "$x^2+y=7$", "$xy=7$"],
+    answer: "A",
+    explanation: "A linear equation contains variables only to the first power and no products of variables.",
+  },
+  {
+    prompt: "In $7x-2y=9$, the coefficient of $y$ is:",
+    options: ["$2$", "$-2$", "$9$"],
+    answer: "B",
+    explanation: "The coefficient is the signed number multiplying the variable.",
+  },
+  {
+    prompt: "Which point satisfies $2x+y=7$?",
+    options: ["$(1,3)$", "$(3,3)$", "$(2,3)$"],
+    answer: "C",
+    explanation: "Substitution gives $2(2)+3=7$.",
+  },
+  {
+    prompt: "The equation $3x+4y-12=0$ written as $Ax+By=C$ is:",
+    options: ["$3x+4y=12$", "$3x+4y=-12$", "$3x-4y=12$"],
+    answer: "A",
+    explanation: "Move the constant term to the right-hand side.",
+  },
+  {
+    prompt: "A nontrivial linear equation in four variables describes a:",
+    options: ["Single point", "Hyperplane in $\\mathbb{R}^4$", "Parabola"],
+    answer: "B",
+    explanation: "One independent linear equation removes one degree of freedom, leaving a hyperplane.",
+  },
+  {
+    prompt: "Which expression can appear in a linear equation?",
+    options: ["$z^2$", "$xz$", "$5z$"],
+    answer: "C",
+    explanation: "A linear term is a constant multiple of one variable.",
+  },
+  {
+    prompt: "If $A=0$ in $Ax+By=C$ and $B\\neq0$, the graph is:",
+    options: ["A horizontal line", "A vertical line", "A parabola"],
+    answer: "A",
+    explanation: "Then $By=C$, so $y=C/B$ is constant.",
+  },
+  {
+    prompt: "If $B=0$ in $Ax+By=C$ and $A\\neq0$, the graph is:",
+    options: ["A horizontal line", "A vertical line", "A circle"],
+    answer: "B",
+    explanation: "Then $Ax=C$, so $x=C/A$ is constant.",
+  },
+  {
+    prompt: "Which equation is linear in $x,y,z$?",
+    options: ["$x+y+z^2=1$", "$xy+z=1$", "$x-2y+5z=1$"],
+    answer: "C",
+    explanation: "Every variable appears only to the first power and is multiplied by a constant.",
+  },
+  {
+    prompt: "For $a_1x_1+\\cdots+a_nx_n=b$, the vector of coefficients is commonly written:",
+    options: ["$(a_1,\\ldots,a_n)$", "$(x_1,\\ldots,x_n)$", "$(b,b,\\ldots,b)$"],
+    answer: "A",
+    explanation: "The coefficients are the scalars multiplying the unknowns.",
+  },
+  {
+    prompt: "The equation $0x+0y=5$ has:",
+    options: ["Every point as a solution", "No solution", "Exactly one solution"],
+    answer: "B",
+    explanation: "It reduces to the false statement $0=5$.",
+  },
+  {
+    prompt: "The equation $0x+0y=0$ has:",
+    options: ["No solution", "Exactly one solution", "Every point in $\\mathbb{R}^2$ as a solution"],
+    answer: "C",
+    explanation: "It reduces to the identity $0=0$.",
+  },
 ];
 
 export const LA_LE_GRAPH_QUIZ = [
@@ -99,6 +172,79 @@ export const LA_LE_GRAPH_QUIZ = [
     options: ["Only a y-intercept", "Only an x-intercept (unless it passes through the origin)", "Infinitely many x-intercepts"],
     answer: "B",
     explanation: "It never crosses the y-axis (unless the line is $x=0$), but it crosses the x-axis once.",
+  },
+
+  {
+    prompt: "The slope of $y=-3x+5$ is:",
+    options: ["$3$", "$-3$", "$5$"],
+    answer: "B",
+    explanation: "In slope-intercept form $y=mx+b$, the slope is $m$.",
+  },
+  {
+    prompt: "The y-intercept of $y=2x-7$ is:",
+    options: ["$(-7,0)$", "$(0,2)$", "$(0,-7)$"],
+    answer: "C",
+    explanation: "Set $x=0$ to obtain the y-intercept.",
+  },
+  {
+    prompt: "The x-intercept of $3x+2y=12$ is:",
+    options: ["$(4,0)$", "$(0,6)$", "$(6,0)$"],
+    answer: "A",
+    explanation: "Set $y=0$: $3x=12$, so $x=4$.",
+  },
+  {
+    prompt: "A line parallel to $y=4x+1$ must have slope:",
+    options: ["$-4$", "$4$", "$1/4$"],
+    answer: "B",
+    explanation: "Distinct parallel nonvertical lines have equal slopes.",
+  },
+  {
+    prompt: "A line perpendicular to $y=2x+3$ has slope:",
+    options: ["$2$", "$1/2$", "$-1/2$"],
+    answer: "C",
+    explanation: "Perpendicular nonvertical slopes are negative reciprocals.",
+  },
+  {
+    prompt: "The line through $(0,2)$ and $(3,8)$ has slope:",
+    options: ["$2$", "$3$", "$6$"],
+    answer: "A",
+    explanation: "$m=(8-2)/(3-0)=2$.",
+  },
+  {
+    prompt: "Which equation represents a horizontal line?",
+    options: ["$x=-4$", "$y=-4$", "$y=-4x$"],
+    answer: "B",
+    explanation: "A horizontal line has a constant y-coordinate.",
+  },
+  {
+    prompt: "Which equation represents a vertical line?",
+    options: ["$y=6$", "$y=6x$", "$x=6$"],
+    answer: "C",
+    explanation: "A vertical line has a constant x-coordinate.",
+  },
+  {
+    prompt: "The slope of $2x+5y=10$ is:",
+    options: ["$-2/5$", "$2/5$", "$-5/2$"],
+    answer: "A",
+    explanation: "Solve for $y$: $y=-(2/5)x+2$.",
+  },
+  {
+    prompt: "The line with slope $3$ through $(1,2)$ is:",
+    options: ["$y-1=2(x-3)$", "$y-2=3(x-1)$", "$y+2=3(x+1)$"],
+    answer: "B",
+    explanation: "Point-slope form is $y-y_1=m(x-x_1)$.",
+  },
+  {
+    prompt: "If a line has x-intercept $4$ and y-intercept $2$, its intercept form is:",
+    options: ["$x/2+y/4=1$", "$4x+2y=1$", "$x/4+y/2=1$"],
+    answer: "C",
+    explanation: "Intercept form is $x/a+y/b=1$.",
+  },
+  {
+    prompt: "Two nonvertical lines with slopes $m_1$ and $m_2$ are perpendicular when:",
+    options: ["$m_1m_2=-1$", "$m_1=m_2$", "$m_1+m_2=0$"],
+    answer: "A",
+    explanation: "Perpendicular slopes are negative reciprocals, so their product is $-1$.",
   },
 ];
 
@@ -159,6 +305,79 @@ export const LA_LE_SYS_QUIZ = [
     answer: "B",
     explanation: "Indefinite systems leave at least one variable free, producing a whole family of solutions.",
   },
+
+  {
+    prompt: "The system $x+y=4$, $x-y=2$ has solution:",
+    options: ["$(1,3)$", "$(2,2)$", "$(3,1)$"],
+    answer: "C",
+    explanation: "Adding the equations gives $2x=6$, so $x=3$ and then $y=1$.",
+  },
+  {
+    prompt: "The system $x+y=2$, $2x+2y=4$ has:",
+    options: ["Infinitely many solutions", "No solution", "Exactly one solution"],
+    answer: "A",
+    explanation: "The second equation is twice the first, so both describe the same line.",
+  },
+  {
+    prompt: "The system $x+y=2$, $2x+2y=5$ has:",
+    options: ["Infinitely many solutions", "No solution", "Exactly one solution"],
+    answer: "B",
+    explanation: "The left sides are proportional but the constants are not, so the lines are parallel and distinct.",
+  },
+  {
+    prompt: "For a $2\\times2$ coefficient matrix $A$, $\\det(A)\\neq0$ guarantees:",
+    options: ["No solution", "Infinitely many solutions", "A unique solution for every right-hand side"],
+    answer: "C",
+    explanation: "A nonzero determinant means $A$ is invertible.",
+  },
+  {
+    prompt: "If a consistent system has at least one free variable, it has:",
+    options: ["Infinitely many solutions", "No solution", "Exactly two solutions"],
+    answer: "A",
+    explanation: "Each free variable can vary continuously, generating infinitely many solutions.",
+  },
+  {
+    prompt: "A system $A\\mathbf{x}=\\mathbf{b}$ is homogeneous when:",
+    options: ["$A=0$", "$\\mathbf{b}=0$", "$\\mathbf{x}=0$ is forbidden"],
+    answer: "B",
+    explanation: "A homogeneous linear system has zero right-hand side.",
+  },
+  {
+    prompt: "Every homogeneous linear system is:",
+    options: ["Inconsistent", "Guaranteed to have only nonzero solutions", "Consistent"],
+    answer: "C",
+    explanation: "The zero vector always satisfies $A\\mathbf{x}=0$.",
+  },
+  {
+    prompt: "A square system with an invertible coefficient matrix has:",
+    options: ["Exactly one solution", "No solution", "Infinitely many solutions"],
+    answer: "A",
+    explanation: "Multiplying by $A^{-1}$ gives $\\mathbf{x}=A^{-1}\\mathbf{b}$.",
+  },
+  {
+    prompt: "If two equations in two unknowns represent distinct parallel lines, the system is:",
+    options: ["Dependent", "Inconsistent", "Uniquely solvable"],
+    answer: "B",
+    explanation: "Distinct parallel lines never intersect.",
+  },
+  {
+    prompt: "If three planes in $\\mathbb{R}^3$ intersect in exactly one point, the system has:",
+    options: ["No solution", "Infinitely many solutions", "A unique solution"],
+    answer: "C",
+    explanation: "The common intersection point is the single solution triple.",
+  },
+  {
+    prompt: "In $A\\mathbf{x}=\\mathbf{b}$ with $A$ of size $m\\times n$, the vector $\\mathbf{x}$ has:",
+    options: ["$n$ entries", "$m$ entries", "$m+n$ entries"],
+    answer: "A",
+    explanation: "The number of columns of $A$ equals the number of unknowns.",
+  },
+  {
+    prompt: "In $A\\mathbf{x}=\\mathbf{b}$ with $A$ of size $m\\times n$, the vector $\\mathbf{b}$ has:",
+    options: ["$n$ entries", "$m$ entries", "$mn$ entries"],
+    answer: "B",
+    explanation: "The number of rows of $A$ equals the number of equations and entries of $\\mathbf{b}$.",
+  },
 ];
 
 export const LA_LE_SOLVE_QUIZ = [
@@ -217,5 +436,78 @@ export const LA_LE_SOLVE_QUIZ = [
     options: ["$(x,y,z)=(1,2,3)$", "$(x,y,z)=(3,2,1)$", "$(x,y,z)=(2,1,3)$"],
     answer: "A",
     explanation: "Check: $1+2+3=6$, $2(1)-2+3=3$, $1+2(2)-3=2$ — all three equations hold.",
+  },
+
+  {
+    prompt: "Using substitution on $x+y=5$ and $x-y=1$, the solution is:",
+    options: ["$(3,2)$", "$(2,3)$", "$(4,1)$"],
+    answer: "A",
+    explanation: "Adding the equations gives $2x=6$, hence $x=3$ and $y=2$.",
+  },
+  {
+    prompt: "Eliminating $y$ from $2x+y=7$ and $x-y=2$ gives:",
+    options: ["$x=9$", "$3x=9$", "$3y=9$"],
+    answer: "B",
+    explanation: "Adding the equations cancels $y$ and gives $3x=9$.",
+  },
+  {
+    prompt: "The solution of $2x+y=8$ and $x+y=5$ is:",
+    options: ["$(2,3)$", "$(4,1)$", "$(3,2)$"],
+    answer: "C",
+    explanation: "Subtract the second equation from the first: $x=3$, then $y=2$.",
+  },
+  {
+    prompt: "If a row operation produces $0=4$, the system is:",
+    options: ["Inconsistent", "Dependent", "Guaranteed unique"],
+    answer: "A",
+    explanation: "A false equation signals that no vector can satisfy all equations.",
+  },
+  {
+    prompt: "If row reduction produces a zero row $0=0$, that row:",
+    options: ["Makes the system inconsistent", "Adds no new constraint", "Forces every variable to zero"],
+    answer: "B",
+    explanation: "The identity $0=0$ is redundant.",
+  },
+  {
+    prompt: "When solving by elimination, multiplying a row by $-2$ is:",
+    options: ["Invalid because the factor is negative", "Valid only for homogeneous systems", "A valid elementary row operation"],
+    answer: "C",
+    explanation: "Any nonzero scalar multiple of a row preserves the solution set.",
+  },
+  {
+    prompt: "The solution of $x+2y=7$ and $3x-2y=5$ is:",
+    options: ["$(3,2)$", "$(2,3)$", "$(4,1)$"],
+    answer: "A",
+    explanation: "Adding gives $4x=12$, so $x=3$ and then $y=2$.",
+  },
+  {
+    prompt: "To eliminate $x$ from $x+y=4$ and $2x-y=5$, a useful operation is:",
+    options: ["$R_2\\leftarrow 2R_2$", "$R_2\\leftarrow R_2-2R_1$", "$R_1\\leftarrow R_1+R_2$"],
+    answer: "B",
+    explanation: "Subtracting twice the first equation makes the x-coefficient in the second row zero.",
+  },
+  {
+    prompt: "Back-substitution is normally performed after obtaining:",
+    options: ["A determinant only", "A graph only", "Row echelon form"],
+    answer: "C",
+    explanation: "An echelon system can be solved from the last pivot equation upward.",
+  },
+  {
+    prompt: "Gauss–Jordan elimination continues Gaussian elimination until the matrix is in:",
+    options: ["Reduced row echelon form", "Diagonal form only for every matrix", "Upper triangular form with arbitrary pivot values"],
+    answer: "A",
+    explanation: "Gauss–Jordan clears entries above and below pivots and scales pivots to $1$.",
+  },
+  {
+    prompt: "The solution of $3x=12$ is:",
+    options: ["$x=3$", "$x=4$", "$x=36$"],
+    answer: "B",
+    explanation: "Divide both sides by the nonzero coefficient $3$.",
+  },
+  {
+    prompt: "Why must a row-scaling factor be nonzero?",
+    options: ["Negative factors are forbidden", "Fractions are forbidden", "Scaling by zero would destroy information and is not reversible"],
+    answer: "C",
+    explanation: "Elementary row operations must be reversible to preserve the solution set.",
   },
 ];

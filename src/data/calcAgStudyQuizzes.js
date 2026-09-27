@@ -1,4 +1,4 @@
-/** Study-guide quiz banks for Calculus & Analytical Geometry — 15 MCQs per section. */
+/** Study-guide quiz banks for Calculus & Analytical Geometry — 20 MCQs per section. */
 
 export const DIFF_RULES_QUIZ = [
   {
@@ -90,6 +90,36 @@ export const DIFF_RULES_QUIZ = [
     options: ["$-\\sec x$", "$-\\tan x$", "$\\tan x$"],
     answer: "B",
     explanation: "$(1/\\cos x)\\cdot(-\\sin x)=-\\tan x$.",
+  },
+  {
+    prompt: "$\\dfrac{d}{dx}\\sec(2x)$ equals:",
+    options: ["$2\\sec(2x)\\tan(2x)$", "$\\sec(2x)\\tan(2x)$", "$2\\tan^2(2x)$"],
+    answer: "A",
+    explanation: "Chain rule with $\\frac{d}{du}\\sec u = \\sec u \\tan u$ and $u=2x$ gives $2\\sec(2x)\\tan(2x)$.",
+  },
+  {
+    prompt: "If $y = x^{\\sqrt{x}}$ for $x > 0$, logarithmic differentiation yields $\\dfrac{dy}{dx}$ equal to:",
+    options: ["$\\sqrt{x}\\,x^{\\sqrt{x}-1}$", "$x^{\\sqrt{x}}\\left(\\dfrac{\\ln x + 2}{2\\sqrt{x}}\\right)$", "$x^{\\sqrt{x}}\\left(\\dfrac{\\ln x}{\\sqrt{x}}\\right)$"],
+    answer: "B",
+    explanation: "Taking logs: $\\ln y = \\sqrt{x}\\ln x$. Differentiating gives $\\frac{y'}{y} = \\frac{\\ln x}{2\\sqrt{x}} + \\frac{\\sqrt{x}}{x} = \\frac{\\ln x + 2}{2\\sqrt{x}}$.",
+  },
+  {
+    prompt: "$\\dfrac{d}{dx}\\arcsin(3x)$ for $|x| < 1/3$ equals:",
+    options: ["$\\dfrac{1}{\\sqrt{1-9x^2}}$", "$\\dfrac{3}{1+9x^2}$", "$\\dfrac{3}{\\sqrt{1-9x^2}}$"],
+    answer: "C",
+    explanation: "Standard inverse sine derivative with chain rule factor of $3$ in the numerator.",
+  },
+  {
+    prompt: "$\\dfrac{d}{dx} e^{\\cos(x^2)}$ equals:",
+    options: ["$-2x\\sin(x^2)e^{\\cos(x^2)}$", "$-\\sin(x^2)e^{\\cos(x^2)}$", "$2x\\cos(x^2)e^{\\cos(x^2)}$"],
+    answer: "A",
+    explanation: "Chain rule through exponential, cosine, and inner quadratic: $e^{\\cos(x^2)} \\cdot (-\\sin(x^2)) \\cdot 2x$.",
+  },
+  {
+    prompt: "$\\dfrac{d}{dx}\\ln|\\sec x + \\tan x|$ simplifies to:",
+    options: ["$\\tan x$", "$\\sec x$", "$\\sec x \\tan x$"],
+    answer: "B",
+    explanation: "$\\frac{\\sec x \\tan x + \\sec^2 x}{\\sec x + \\tan x} = \\frac{\\sec x(\\tan x + \\sec x)}{\\sec x + \\tan x} = \\sec x$.",
   },
 ];
 
@@ -184,6 +214,36 @@ export const DIFF_APPS_QUIZ = [
     answer: "A",
     explanation: "L'Hôpital: $(1/x)/1\\to 0$.",
   },
+  {
+    prompt: "Water flows into an inverted conical tank of radius $4\\text{ m}$ and height $8\\text{ m}$ at $3\\text{ m}^3/\\text{min}$. When water depth is $h = 4\\text{ m}$, the rate of rise $dh/dt$ is:",
+    options: ["$\\dfrac{3}{4\\pi}\\text{ m/min}$", "$\\dfrac{3}{\\pi}\\text{ m/min}$", "$\\dfrac{3}{16\\pi}\\text{ m/min}$"],
+    answer: "A",
+    explanation: "Radius $r = h/2$, so volume $V = \\frac{\\pi}{12}h^3$. Then $dV/dt = \\frac{\\pi}{4}h^2 \\, dh/dt$. Substituting $h=4$ and $dV/dt=3$ gives $3 = 4\\pi \\, dh/dt \\implies dh/dt = \\frac{3}{4\\pi}$.",
+  },
+  {
+    prompt: "The inflection point of $f(x) = x^3 - 6x^2 + 9x + 2$ is located at:",
+    options: ["$(1, 6)$", "$(2, 4)$", "$(3, 2)$"],
+    answer: "B",
+    explanation: "$f'(x)=3x^2-12x+9$ and $f''(x)=6x-12=0 \\implies x=2$. Evaluating $f(2)=8-24+18+2=4$.",
+  },
+  {
+    prompt: "Evaluate $\\lim_{x\\to 0}\\dfrac{e^x - 1 - x}{x^2}$ using L'Hôpital's Rule:",
+    options: ["$0$", "$1$", "$\\dfrac{1}{2}$"],
+    answer: "C",
+    explanation: "First derivative gives $(e^x - 1)/(2x)$, second derivative gives $e^x/2 \\to 1/2$.",
+  },
+  {
+    prompt: "Find the maximum area of a rectangle with perimeter $60\\text{ cm}$:",
+    options: ["$225\\text{ cm}^2$", "$200\\text{ cm}^2$", "$250\\text{ cm}^2$"],
+    answer: "A",
+    explanation: "For a fixed perimeter, area is maximized when the rectangle is a square with side $s = 60/4 = 15$, yielding $15^2 = 225$.",
+  },
+  {
+    prompt: "On which interval is $f(x) = 2x^3 - 3x^2 - 12x + 5$ strictly decreasing?",
+    options: ["$(-\\infty, -1)$", "$(-1, 2)$", "$(2, \\infty)$"],
+    answer: "B",
+    explanation: "$f'(x) = 6x^2 - 6x - 12 = 6(x-2)(x+1) < 0$ when $-1 < x < 2$.",
+  },
 ];
 
 export const DIFF_ADV_QUIZ = [
@@ -276,6 +336,36 @@ export const DIFF_ADV_QUIZ = [
     options: ["$f''=0$ somewhere", "Some $c$ with $f'(c)=0$", "$f$ constant everywhere"],
     answer: "B",
     explanation: "Rolle conclusion.",
+  },
+  {
+    prompt: "Find the slope of the tangent line to the circle $x^2 + y^2 = 25$ at the point $(3, -4)$:",
+    options: ["$-\\dfrac{3}{4}$", "$\\dfrac{4}{3}$", "$\\dfrac{3}{4}$"],
+    answer: "C",
+    explanation: "Implicit differentiation gives $2x + 2y\\,y' = 0 \\implies y' = -x/y$. At $(3, -4)$, $y' = -3/(-4) = 3/4$.",
+  },
+  {
+    prompt: "For $x^2 - y^2 = 4$, $\\dfrac{d^2y}{dx^2}$ in terms of $y$ simplifies to:",
+    options: ["$-\\dfrac{4}{y^3}$", "$\\dfrac{4}{y^3}$", "$\\dfrac{1}{y}$"],
+    answer: "A",
+    explanation: "$y' = x/y$, so $y'' = \\frac{y - x y'}{y^2} = \\frac{y - x(x/y)}{y^2} = \\frac{y^2 - x^2}{y^3} = \\frac{-4}{y^3}$.",
+  },
+  {
+    prompt: "If $f(1)=2$, $f(3)=10$, and $f$ is differentiable on $(1,3)$, the Mean Value Theorem guarantees a point $c$ where $f'(c)$ equals:",
+    options: ["$4$", "$5$", "$8$"],
+    answer: "A",
+    explanation: "$f'(c) = \\frac{f(3)-f(1)}{3-1} = \\frac{10-2}{2} = 4$.",
+  },
+  {
+    prompt: "Using linear approximation for $f(x) = \\sqrt{x}$ centered at $a = 16$, the estimate for $\\sqrt{16.8}$ is:",
+    options: ["$4.08$", "$4.10$", "$4.12$"],
+    answer: "B",
+    explanation: "$L(x) = f(16) + f'(16)(x-16) = 4 + \\frac{1}{8}(0.8) = 4 + 0.10 = 4.10$.",
+  },
+  {
+    prompt: "If $f(x) = x^3 + 2x - 1$, then $(f^{-1})'(2)$ equals:",
+    options: ["$1/5$", "$5$", "$1/14$"],
+    answer: "A",
+    explanation: "Note $f(1) = 1 + 2 - 1 = 2$, so $f^{-1}(2) = 1$. Since $f'(x) = 3x^2 + 2$, $(f^{-1})'(2) = 1/f'(1) = 1/(3+2) = 1/5$.",
   },
 ];
 
@@ -370,6 +460,36 @@ export const INT_FUND_QUIZ = [
     answer: "B",
     explanation: "Termwise antiderivatives.",
   },
+  {
+    prompt: "By FTC Part 1, $\\dfrac{d}{dx}\\int_1^{x^2} \\cos(t)\\,dt$ equals:",
+    options: ["$\\cos(x^2)$", "$2x\\cos(x^2)$", "$-2x\\sin(x^2)$"],
+    answer: "B",
+    explanation: "Chain rule with variable upper limit: $\\cos(x^2) \\cdot \\frac{d}{dx}(x^2) = 2x\\cos(x^2)$.",
+  },
+  {
+    prompt: "The average value of $f(x) = 3x^2 - 2x$ on the interval $[0, 2]$ is:",
+    options: ["$2$", "$4$", "$3$"],
+    answer: "A",
+    explanation: "$\\frac{1}{2-0}\\int_0^2 (3x^2 - 2x)dx = \\frac{1}{2}[x^3 - x^2]_0^2 = \\frac{1}{2}(8 - 4) = 2$.",
+  },
+  {
+    prompt: "Evaluate $\\int_{-2}^2 (x^5 + x^3\\cos x + 4)\\,dx$:",
+    options: ["$0$", "$8$", "$16$"],
+    answer: "C",
+    explanation: "By symmetry, the odd integrand terms integrate to zero over $[-2, 2]$, leaving $\\int_{-2}^2 4\\,dx = 4(4) = 16$.",
+  },
+  {
+    prompt: "The area between $y = x^2$ and $y = 2x$ is:",
+    options: ["$\\dfrac{4}{3}$", "$\\dfrac{2}{3}$", "$2$"],
+    answer: "A",
+    explanation: "Curves intersect at $x=0$ and $x=2$. $\\int_0^2 (2x - x^2)dx = [x^2 - x^3/3]_0^2 = 4 - 8/3 = 4/3$.",
+  },
+  {
+    prompt: "A particle moves with velocity $v(t) = 3t^2 - 12$. Its net displacement from $t = 0$ to $t = 3$ is:",
+    options: ["$9$", "$-9$", "$-27$"],
+    answer: "B",
+    explanation: "Displacement is $\\int_0^3 (3t^2 - 12)dt = [t^3 - 12t]_0^3 = 27 - 36 = -9$.",
+  },
 ];
 
 export const INT_TECH_QUIZ = [
@@ -462,6 +582,36 @@ export const INT_TECH_QUIZ = [
     options: ["$-\\csc x+C$", "$\\sec x+C$", "$\\tan x+C$"],
     answer: "B",
     explanation: "Standard.",
+  },
+  {
+    prompt: "Evaluating $\\int x^2 e^x\\,dx$ using tabular integration by parts yields:",
+    options: ["$e^x(x^2 - 2x + 2) + C$", "$e^x(x^2 + 2x + 2) + C$", "$e^x(x^2 - 2x) + C$"],
+    answer: "A",
+    explanation: "Alternating signs give $x^2 e^x - 2x e^x + 2e^x + C = e^x(x^2 - 2x + 2) + C$.",
+  },
+  {
+    prompt: "To evaluate $\\int \\dfrac{1}{x^2\\sqrt{x^2+9}}\\,dx$, the trigonometric substitution is:",
+    options: ["$x = 3\\sin\\theta$", "$x = 3\\sec\\theta$", "$x = 3\\tan\\theta$"],
+    answer: "C",
+    explanation: "Sum of squares $x^2+a^2$ uses the tangent substitution $x = a\\tan\\theta$ with $a = 3$.",
+  },
+  {
+    prompt: "The partial fraction decomposition of $\\dfrac{3x+5}{(x-1)(x+2)}$ has the form:",
+    options: ["$\\dfrac{8/3}{x-1} + \\dfrac{1/3}{x+2}$", "$\\dfrac{1}{x-1} + \\dfrac{2}{x+2}$", "$\\dfrac{2}{x-1} + \\dfrac{1}{x+2}$"],
+    answer: "A",
+    explanation: "Multiply by denominator: $3x+5 = A(x+2) + B(x-1)$. Setting $x=1$ gives $8 = 3A \\implies A=8/3$. Setting $x=-2$ gives $-1 = -3B \\implies B=1/3$.",
+  },
+  {
+    prompt: "The arc length of $y = \\dfrac{2}{3}x^{3/2}$ from $x = 0$ to $x = 3$ equals:",
+    options: ["$\\dfrac{14}{3}$", "$\\dfrac{16}{3}$", "$7$"],
+    answer: "A",
+    explanation: "$y' = x^{1/2}$, so $1 + (y')^2 = 1 + x$. Length is $\\int_0^3 \\sqrt{1+x}\\,dx = [\\frac{2}{3}(1+x)^{3/2}]_0^3 = \\frac{2}{3}(8 - 1) = \\frac{14}{3}$.",
+  },
+  {
+    prompt: "The improper integral $\\int_0^1 \\dfrac{1}{\\sqrt{x}}\\,dx$:",
+    options: ["Diverges", "Converges to $1$", "Converges to $2$"],
+    answer: "C",
+    explanation: "$\\lim_{t\\to 0^+} [2\\sqrt{x}]_t^1 = \\lim_{t\\to 0^+} (2 - 2\\sqrt{t}) = 2$.",
   },
 ];
 
@@ -556,6 +706,36 @@ export const LIMITS_P1_QUIZ = [
     answer: "A",
     explanation: "Sum rule for limits.",
   },
+  {
+    prompt: "Evaluate $\\lim_{x\\to 0} \\dfrac{\\sqrt{4+x} - 2}{x}$:",
+    options: ["$\\dfrac{1}{4}$", "$\\dfrac{1}{2}$", "$0$"],
+    answer: "A",
+    explanation: "Multiply numerator and denominator by conjugate $(\\sqrt{4+x}+2)$ to cancel $x$, leaving $1/(\\sqrt{4+x}+2) \\to 1/4$.",
+  },
+  {
+    prompt: "The one-sided limit $\\lim_{x\\to 3^+} \\dfrac{2x}{x-3}$ equals:",
+    options: ["$-\\infty$", "$\\infty$", "$6$"],
+    answer: "B",
+    explanation: "The numerator approaches $6 > 0$ while the denominator approaches $0$ through positive values, yielding $\\infty$.",
+  },
+  {
+    prompt: "Evaluate $\\lim_{x\\to 2^-} \\dfrac{|x-2|}{x-2}$:",
+    options: ["$1$", "$-1$", "$0$"],
+    answer: "B",
+    explanation: "For $x < 2$, $|x-2| = -(x-2)$, so the quotient is constantly $-1$.",
+  },
+  {
+    prompt: "For $f(x) = \\begin{cases} x^2 + c & x \\le 2 \\\\ 3x - 1 & x > 2 \\end{cases}$, find $c$ so that $f$ is continuous everywhere:",
+    options: ["$1$", "$2$", "$-1$"],
+    answer: "A",
+    explanation: "Match one-sided limits at $x=2$: $2^2 + c = 3(2) - 1 \\implies 4 + c = 5 \\implies c = 1$.",
+  },
+  {
+    prompt: "If $2 - x^2 \\le g(x) \\le 2\\cos x$ for all $x$, the Squeeze Theorem implies $\\lim_{x\\to 0} g(x)$ equals:",
+    options: ["$0$", "$1$", "$2$"],
+    answer: "C",
+    explanation: "Both bounding functions converge to $2$ as $x\\to 0$, forcing $\\lim_{x\\to 0}g(x) = 2$.",
+  },
 ];
 
 export const LIMITS_P2_QUIZ = [
@@ -648,6 +828,36 @@ export const LIMITS_P2_QUIZ = [
     options: ["Nowhere necessarily", "Only at an endpoint", "$(0,1)$"],
     answer: "C",
     explanation: "IVT applies.",
+  },
+  {
+    prompt: "Find the slant asymptote of $f(x) = \\dfrac{2x^2 + 3x - 1}{x + 1}$:",
+    options: ["$y = 2x + 1$", "$y = 2x - 1$", "$y = 2x$"],
+    answer: "A",
+    explanation: "Polynomial division gives $2x + 1 - \\frac{2}{x+1}$, so as $x\\to\\pm\\infty$ the curve approaches the line $y = 2x + 1$.",
+  },
+  {
+    prompt: "Evaluate $\\lim_{x\\to\\infty} x\\sin\\left(\\dfrac{1}{x}\\right)$:",
+    options: ["$0$", "$1$", "$\\infty$"],
+    answer: "B",
+    explanation: "Let $u = 1/x$; as $x\\to\\infty$, $u\\to 0^+$, so the limit becomes $\\lim_{u\\to 0}\\frac{\\sin u}{u} = 1$.",
+  },
+  {
+    prompt: "Evaluate $\\lim_{x\\to 0} (1 + 3x)^{1/x}$:",
+    options: ["$e^3$", "$3e$", "$1$"],
+    answer: "A",
+    explanation: "Standard exponential limit identity $\\lim_{t\\to 0}(1+kt)^{1/t} = e^k$ with $k=3$.",
+  },
+  {
+    prompt: "The Intermediate Value Theorem guarantees that $f(x) = x^3 - 3x - 1$ has a real root on:",
+    options: ["$[0, 1]$", "$[1, 2]$", "$[-1, 0]$"],
+    answer: "B",
+    explanation: "Evaluating endpoints: $f(1) = 1 - 3 - 1 = -3 < 0$ and $f(2) = 8 - 6 - 1 = 1 > 0$. By IVT, a root exists in $(1, 2)$.",
+  },
+  {
+    prompt: "Evaluate $\\lim_{x\\to\\infty} \\left(\\sqrt{x^2 + 4x} - x\\right)$:",
+    options: ["$0$", "$2$", "$4$"],
+    answer: "B",
+    explanation: "Multiply by conjugate: $\\frac{(x^2+4x) - x^2}{\\sqrt{x^2+4x}+x} = \\frac{4x}{x\\sqrt{1+4/x}+x} = \\frac{4}{\\sqrt{1+4/x}+1} \\to \\frac{4}{2} = 2$.",
   },
 ];
 
@@ -742,6 +952,36 @@ export const SERIES_P1_QUIZ = [
     answer: "C",
     explanation: "Monotone convergence theorem.",
   },
+  {
+    prompt: "The telescoping series $\\sum_{n=1}^\\infty \\dfrac{1}{n(n+1)}$ converges to:",
+    options: ["$1/2$", "$1$", "$2$"],
+    answer: "B",
+    explanation: "Partial fractions: $\\frac{1}{n} - \\frac{1}{n+1}$. Partial sum $S_N = 1 - \\frac{1}{N+1} \\to 1$.",
+  },
+  {
+    prompt: "The geometric series $\\sum_{n=0}^\\infty 3\\left(\\dfrac{2}{5}\\right)^n$ sums to:",
+    options: ["$5$", "$3$", "$\\dfrac{15}{2}$"],
+    answer: "A",
+    explanation: "First term $a = 3$, ratio $r = 2/5$. Sum $S = \\frac{a}{1-r} = \\frac{3}{1 - 2/5} = \\frac{3}{3/5} = 5$.",
+  },
+  {
+    prompt: "Which statement regarding the sequence $a_n = \\dfrac{3n^2 - 1}{2n^2 + 5n}$ is true?",
+    options: ["Diverges to $\\infty$", "Converges to $3/2$", "Converges to $0$"],
+    answer: "B",
+    explanation: "Divide numerator and denominator by $n^2$: $\\frac{3 - 1/n^2}{2 + 5/n} \\to \\frac{3}{2}$.",
+  },
+  {
+    prompt: "The $p$-series $\\sum_{n=1}^\\infty \\dfrac{1}{n^{2p-1}}$ converges if and only if:",
+    options: ["$p > 1$", "$p > 1/2$", "$p \\ge 1$"],
+    answer: "A",
+    explanation: "A $p$-series requires exponent $> 1$. Here $2p - 1 > 1 \\implies 2p > 2 \\implies p > 1$.",
+  },
+  {
+    prompt: "By the Monotone Convergence Theorem, a sequence $(a_n)$ is guaranteed to converge if it is:",
+    options: ["Unbounded and increasing", "Bounded and monotonic", "Alternating in sign"],
+    answer: "B",
+    explanation: "Completeness of the real numbers guarantees that every bounded monotonic sequence has a finite limit.",
+  },
 ];
 
 export const SERIES_P2_QUIZ = [
@@ -834,6 +1074,36 @@ export const SERIES_P2_QUIZ = [
     options: ["May diverge", "Converges", "Oscillates"],
     answer: "B",
     explanation: "Absolute implies ordinary convergence.",
+  },
+  {
+    prompt: "Using the Alternating Series Estimation Theorem on $\\sum_{n=1}^\\infty \\dfrac{(-1)^{n+1}}{n^2}$, the error in approximating the sum by $S_4$ is at most:",
+    options: ["$1/16$", "$1/25$", "$1/36$"],
+    answer: "B",
+    explanation: "Error $|S - S_4| \\le b_5 = \\frac{1}{5^2} = \\frac{1}{25}$.",
+  },
+  {
+    prompt: "Find the radius of convergence $R$ of the power series $\\sum_{n=1}^\\infty \\dfrac{(3x)^n}{n}$:",
+    options: ["$R = 1/3$", "$R = 3$", "$R = 1$"],
+    answer: "A",
+    explanation: "Ratio test: $\\lim |\\frac{(3x)^{n+1}}{n+1} \\frac{n}{(3x)^n}| = 3|x| < 1 \\implies |x| < 1/3$.",
+  },
+  {
+    prompt: "The series $\\sum_{n=1}^\\infty \\dfrac{(-1)^{n+1}}{\\sqrt{n}}$ is:",
+    options: ["Absolutely convergent", "Conditionally convergent", "Divergent"],
+    answer: "B",
+    explanation: "Converges by AST because $1/\\sqrt{n}$ decreases to $0$. However, $\\sum 1/\\sqrt{n}$ is a $p$-series with $p=1/2 \\le 1$, which diverges.",
+  },
+  {
+    prompt: "Applying the Root Test to $\\sum_{n=1}^\\infty \\left(\\dfrac{2n+1}{3n-1}\\right)^n$ gives $L$ equal to:",
+    options: ["$2/3$ (converges)", "$1$ (inconclusive)", "$3/2$ (diverges)"],
+    answer: "A",
+    explanation: "$L = \\lim \\sqrt[n]{|a_n|} = \\lim \\frac{2n+1}{3n-1} = \\frac{2}{3} < 1$, so the series converges.",
+  },
+  {
+    prompt: "The interval of convergence for $\\sum_{n=1}^\\infty \\dfrac{(x-2)^n}{n}$ is:",
+    options: ["$(1, 3)$", "$[1, 3)$", "$[1, 3]$"],
+    answer: "B",
+    explanation: "Radius $R = 1$, centered at $2$, so test endpoints $x=1$ and $x=3$. At $x=1$, $\\sum (-1)^n/n$ converges (alternating harmonic). At $x=3$, $\\sum 1/n$ diverges (harmonic). Hence $[1, 3)$.",
   },
 ];
 
@@ -928,6 +1198,36 @@ export const CONICS_P1_QUIZ = [
     answer: "B",
     explanation: "Focus-directrix definition.",
   },
+  {
+    prompt: "The directrix of the parabola $y^2 = -12x$ is the vertical line:",
+    options: ["$x = 3$", "$x = -3$", "$y = 3$"],
+    answer: "A",
+    explanation: "$4p = 12 \\implies p = 3$. Opening left, the focus is $(-3, 0)$ and the directrix is $x = p = 3$.",
+  },
+  {
+    prompt: "For the ellipse $\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$, the distance from center to each directrix is:",
+    options: ["$25/4$", "$4$", "$5/4$"],
+    answer: "A",
+    explanation: "$a = 5, b = 3 \\implies c = \\sqrt{25 - 9} = 4$. Eccentricity $e = c/a = 4/5$. Directrix distance $d = a/e = 5 / (4/5) = 25/4$.",
+  },
+  {
+    prompt: "The asymptotes of the hyperbola $\\dfrac{x^2}{16} - \\dfrac{y^2}{9} = 1$ are given by:",
+    options: ["$y = \\pm \\dfrac{3}{4}x$", "$y = \\pm \\dfrac{4}{3}x$", "$y = \\pm \\dfrac{9}{16}x$"],
+    answer: "A",
+    explanation: "Standard horizontal hyperbola asymptotes are $y = \\pm (b/a)x = \\pm (3/4)x$.",
+  },
+  {
+    prompt: "The focal length of the ellipse $9x^2 + 25y^2 = 225$ (distance between the two foci $2c$) is:",
+    options: ["$4$", "$8$", "$10$"],
+    answer: "B",
+    explanation: "Standard form $\\frac{x^2}{25} + \\frac{y^2}{9} = 1 \\implies a^2=25, b^2=9 \\implies c = \\sqrt{25-9} = 4$. Distance between foci is $2c = 8$.",
+  },
+  {
+    prompt: "The eccentricity of a rectangular (equilateral) hyperbola $x^2 - y^2 = a^2$ is always:",
+    options: ["$\\sqrt{2}$", "$2$", "$1$"],
+    answer: "A",
+    explanation: "$b = a \\implies c = \\sqrt{a^2 + b^2} = \\sqrt{2a^2} = a\\sqrt{2}$. Therefore $e = c/a = \\sqrt{2}$.",
+  },
 ];
 
 export const CONICS_P2_QUIZ = [
@@ -1020,5 +1320,35 @@ export const CONICS_P2_QUIZ = [
     options: ["Ellipse two-foci property only", "Parabola focus property", "Hyperbola asymptotes"],
     answer: "B",
     explanation: "Parallel rays to focus.",
+  },
+  {
+    prompt: "To remove the $xy$-term from $x^2 + 2\\sqrt{3}xy + 3y^2 - 4x = 0$, the acute rotation angle $\\theta$ is:",
+    options: ["$\\theta = 30^\\circ$", "$\\theta = 45^\\circ$", "$\\theta = 60^\\circ$"],
+    answer: "A",
+    explanation: "$\\cot(2\\theta) = \\frac{A-C}{B} = \\frac{1-3}{2\\sqrt{3}} = -\\frac{1}{\\sqrt{3}} \\implies 2\\theta = 120^\\circ \\text{ (or acute principal angle } -60^\\circ), \\text{ so } \\theta = 30^\\circ$ or $60^\\circ$ aligns with the principal axes.",
+  },
+  {
+    prompt: "The polar equation $r = \\dfrac{6}{2 - 2\\cos\\theta} = \\dfrac{3}{1 - \\cos\\theta}$ represents:",
+    options: ["A parabola ($e = 1$)", "An ellipse ($e = 1/2$)", "A hyperbola ($e = 2$)"],
+    answer: "A",
+    explanation: "Matches standard polar conic form $r = \\frac{ed}{1 - e\\cos\\theta}$ with eccentricity $e = 1$, which is a parabola.",
+  },
+  {
+    prompt: "In the general quadratic $4x^2 - 4xy + y^2 - 8x - 6y + 5 = 0$, the discriminant $B^2 - 4AC$ equals:",
+    options: ["$0$ (parabola)", "$-16$ (ellipse)", "$32$ (hyperbola)"],
+    answer: "A",
+    explanation: "$B = -4, A = 4, C = 1 \\implies B^2 - 4AC = (-4)^2 - 4(4)(1) = 16 - 16 = 0$.",
+  },
+  {
+    prompt: "A satellite reflector reflects parallel rays from an incoming distant source directly to:",
+    options: ["The directrix", "The vertex", "The focus"],
+    answer: "C",
+    explanation: "The reflective property of a parabolic mirror directs all incoming parallel rays to its geometric focus.",
+  },
+  {
+    prompt: "For a hyperbolic celestial orbit around the Sun with perihelion distance $r_p = 2\\text{ AU}$ and eccentricity $e = 1.5$, the semi-major axis $a$ equals:",
+    options: ["$4\\text{ AU}$", "$3\\text{ AU}$", "$2\\text{ AU}$"],
+    answer: "A",
+    explanation: "Perihelion distance for a hyperbola is $r_p = a(e - 1)$. Thus $2 = a(1.5 - 1) = 0.5a \\implies a = 4\\text{ AU}$.",
   },
 ];

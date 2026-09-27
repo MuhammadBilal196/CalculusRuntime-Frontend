@@ -25202,5 +25202,5693 @@ export const MV_PRACTICE_BANK = [
     ],
     "correctAnswer": 1,
     "explanation": "curl F = 12k and the area is 9, so the circulation is 108."
-  }
+  },
+  
+  {
+    id: 23500,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Easy",
+    question: "What are the coordinates of a point in three-dimensional space?",
+    options: ["(x, y)", "(x, y, z)", "(x, z)", "(y, z)"],
+    correctAnswer: 1,
+    explanation: "A point in 3D space is represented by three coordinates (x, y, z)."
+  },
+  {
+    id: 23501,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Easy",
+    question: "Which coordinate represents the vertical axis in 3D Cartesian coordinates?",
+    options: ["x", "y", "z", "w"],
+    correctAnswer: 2,
+    explanation: "The z-coordinate commonly represents the vertical axis."
+  },
+  {
+    id: 23502,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Easy",
+    question: "What is the distance between (0, 0, 0) and (3, 4, 0)?",
+    options: ["3", "4", "5", "7"],
+    correctAnswer: 2,
+    explanation: "Distance = √(3² + 4²) = 5."
+  },
+  {
+    id: 23503,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Easy",
+    question: "What is the distance between (0, 0, 0) and (1, 2, 2)?",
+    options: ["2", "3", "4", "5"],
+    correctAnswer: 1,
+    explanation: "Distance = √(1² + 2² + 2²) = √9 = 3."
+  },
+  {
+    id: 23504,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Easy",
+    question: "What is the midpoint of (0, 0, 0) and (2, 4, 6)?",
+    options: ["(1, 2, 3)", "(2, 2, 2)", "(1, 4, 3)", "(2, 4, 6)"],
+    correctAnswer: 0,
+    explanation: "Midpoint = ((0+2)/2, (0+4)/2, (0+6)/2) = (1, 2, 3)."
+  },
+  {
+    id: 23505,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Easy",
+    question: "What is the distance between two identical points?",
+    options: ["0", "1", "2", "Cannot be determined"],
+    correctAnswer: 0,
+    explanation: "The distance between identical points is zero."
+  },
+  {
+    id: 23506,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is the magnitude of vector <3, 4, 0>?",
+    options: ["3", "4", "5", "7"],
+    correctAnswer: 2,
+    explanation: "|v| = √(3² + 4² + 0²) = 5."
+  },
+  {
+    id: 23507,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is the magnitude of vector <1, 2, 2>?",
+    options: ["2", "3", "4", "5"],
+    correctAnswer: 1,
+    explanation: "|v| = √(1 + 4 + 4) = 3."
+  },
+  {
+    id: 23508,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "Which vector is the zero vector?",
+    options: ["<1, 0, 0>", "<0, 1, 0>", "<0, 0, 0>", "<1, 1, 1>"],
+    correctAnswer: 2,
+    explanation: "The zero vector has all components equal to zero."
+  },
+  {
+    id: 23509,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is the magnitude of the zero vector?",
+    options: ["0", "1", "-1", "3"],
+    correctAnswer: 0,
+    explanation: "The magnitude of <0,0,0> is 0."
+  },
+  {
+    id: 23510,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "Which vector is parallel to <1, 2, 3>?",
+    options: ["<2, 4, 6>", "<1, 2, 4>", "<2, 3, 4>", "<3, 2, 1>"],
+    correctAnswer: 0,
+    explanation: "<2,4,6> is 2 times <1,2,3>, so the vectors are parallel."
+  },
+  {
+    id: 23511,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is the dot product of <1, 0, 0> and <0, 1, 0>?",
+    options: ["0", "1", "2", "-1"],
+    correctAnswer: 0,
+    explanation: "1(0) + 0(1) + 0(0) = 0."
+  },
+  {
+    id: 23512,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What does a dot product of zero indicate for two nonzero vectors?",
+    options: ["They are parallel", "They are perpendicular", "They are identical", "They have equal length"],
+    correctAnswer: 1,
+    explanation: "Two nonzero vectors with dot product zero are perpendicular."
+  },
+  {
+    id: 23513,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is <1, 2, 3> · <2, 1, 0>?",
+    options: ["2", "4", "6", "8"],
+    correctAnswer: 1,
+    explanation: "1(2) + 2(1) + 3(0) = 4."
+  },
+  {
+    id: 23514,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is the cross product of two parallel vectors?",
+    options: ["A zero vector", "A unit vector", "A scalar", "A nonzero vector always"],
+    correctAnswer: 0,
+    explanation: "The cross product of parallel vectors is the zero vector."
+  },
+  {
+    id: 23515,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What type of quantity is a vector?",
+    options: ["Magnitude only", "Direction only", "Magnitude and direction", "Neither"],
+    correctAnswer: 2,
+    explanation: "A vector has both magnitude and direction."
+  },
+  {
+    id: 23516,
+    topic: "Lines in 3D",
+    difficulty: "Easy",
+    question: "What information is needed to define a line in 3D?",
+    options: ["One point only", "A point and a direction vector", "A scalar only", "A plane only"],
+    correctAnswer: 1,
+    explanation: "A line can be defined using a point and a direction vector."
+  },
+  {
+    id: 23517,
+    topic: "Lines in 3D",
+    difficulty: "Easy",
+    question: "Which is a vector equation of a line?",
+    options: ["r = a + tb", "x² + y² = 1", "ax + by = c", "z = x + y"],
+    correctAnswer: 0,
+    explanation: "The vector equation of a line is r = a + tb."
+  },
+  {
+    id: 23518,
+    topic: "Lines in 3D",
+    difficulty: "Easy",
+    question: "In r = a + tb, what does t represent?",
+    options: ["A constant coordinate", "A parameter", "A direction vector", "A point"],
+    correctAnswer: 1,
+    explanation: "t is the parameter that generates points on the line."
+  },
+  {
+    id: 23519,
+    topic: "Lines in 3D",
+    difficulty: "Easy",
+    question: "Which vector gives the direction of the line x=1+t, y=2+2t, z=3+4t?",
+    options: ["<1, 2, 4>", "<1, 1, 1>", "<2, 4, 1>", "<1, 2, 3>"],
+    correctAnswer: 0,
+    explanation: "The coefficients of t form the direction vector <1,2,4>."
+  },
+  {
+    id: 23520,
+    topic: "Lines in 3D",
+    difficulty: "Easy",
+    question: "What is the direction vector of x=2+3t, y=4−t, z=5+2t?",
+    options: ["<2,4,5>", "<3,-1,2>", "<3,1,2>", "<2,-1,5>"],
+    correctAnswer: 1,
+    explanation: "The coefficients of t are <3,-1,2>."
+  },
+  {
+    id: 23521,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "What is the general equation of a plane?",
+    options: ["ax + by + cz = d", "x²+y²+z²=1", "y=mx+b", "r=a+tb"],
+    correctAnswer: 0,
+    explanation: "A plane can be written as ax + by + cz = d."
+  },
+  {
+    id: 23522,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "In the plane equation ax + by + cz = d, what is <a,b,c>?",
+    options: ["A point", "A normal vector", "A parameter", "A radius"],
+    correctAnswer: 1,
+    explanation: "<a,b,c> is a normal vector to the plane."
+  },
+  {
+    id: 23523,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "Which vector is normal to the plane 2x + 3y + 4z = 5?",
+    options: ["<2,3,4>", "<5,3,2>", "<2,4,3>", "<1,1,1>"],
+    correctAnswer: 0,
+    explanation: "The coefficients of x, y and z form a normal vector."
+  },
+  {
+    id: 23524,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "What is the equation of the xy-plane?",
+    options: ["x=0", "y=0", "z=0", "x+y=0"],
+    correctAnswer: 2,
+    explanation: "Every point on the xy-plane has z=0."
+  },
+  {
+    id: 23525,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "What is the equation of the yz-plane?",
+    options: ["x=0", "y=0", "z=0", "x=y"],
+    correctAnswer: 0,
+    explanation: "Every point on the yz-plane has x=0."
+  },
+  {
+    id: 23526,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "What is the equation of the xz-plane?",
+    options: ["x=0", "y=0", "z=0", "x+z=0"],
+    correctAnswer: 1,
+    explanation: "Every point on the xz-plane has y=0."
+  },
+  {
+    id: 23527,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "Which point lies on the plane z=0?",
+    options: ["(1,2,0)", "(1,0,3)", "(0,2,4)", "(2,3,5)"],
+    correctAnswer: 0,
+    explanation: "The point (1,2,0) has z=0."
+  },
+  {
+    id: 23528,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "Which point lies on the plane x=0?",
+    options: ["(1,2,3)", "(0,2,3)", "(2,0,3)", "(2,3,0)"],
+    correctAnswer: 1,
+    explanation: "The point (0,2,3) has x=0."
+  },
+  {
+    id: 23529,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "Which point lies on the plane y=0?",
+    options: ["(1,0,3)", "(0,2,3)", "(1,2,0)", "(1,2,3)"],
+    correctAnswer: 0,
+    explanation: "The point (1,0,3) has y=0."
+  },
+  {
+    id: 23530,
+    topic: "Sphere",
+    difficulty: "Easy",
+    question: "What is the standard equation of a sphere centered at the origin?",
+    options: ["x²+y²+z²=r²", "x+y+z=r", "x²+y²=z²", "x+y+z=0"],
+    correctAnswer: 0,
+    explanation: "A sphere centered at the origin has equation x²+y²+z²=r²."
+  },
+  {
+    id: 23531,
+    topic: "Sphere",
+    difficulty: "Easy",
+    question: "What is the radius of x²+y²+z²=25?",
+    options: ["5", "25", "10", "√25/2"],
+    correctAnswer: 0,
+    explanation: "r²=25, so r=5."
+  },
+  {
+    id: 23532,
+    topic: "Sphere",
+    difficulty: "Easy",
+    question: "What is the center of x²+y²+z²=16?",
+    options: ["(4,4,4)", "(0,0,0)", "(1,1,1)", "(-4,-4,-4)"],
+    correctAnswer: 1,
+    explanation: "There are no shifted terms, so the center is the origin."
+  },
+  {
+    id: 23533,
+    topic: "Sphere",
+    difficulty: "Easy",
+    question: "What is the radius of a sphere with equation x²+y²+z²=49?",
+    options: ["7", "49", "14", "√7"],
+    correctAnswer: 0,
+    explanation: "r²=49, therefore r=7."
+  },
+  {
+    id: 23534,
+    topic: "Sphere",
+    difficulty: "Easy",
+    question: "What is the equation of a sphere centered at (1,2,3) with radius 4?",
+    options: [
+      "(x−1)²+(y−2)²+(z−3)²=16",
+      "(x+1)²+(y+2)²+(z+3)²=16",
+      "x²+y²+z²=4",
+      "(x−1)²+(y−2)²+(z−3)²=4"
+    ],
+    correctAnswer: 0,
+    explanation: "The standard form is (x−h)²+(y−k)²+(z−l)²=r²."
+  },
+  {
+    id: 23535,
+    topic: "Sphere",
+    difficulty: "Easy",
+    question: "What is the center of (x−2)²+(y+3)²+(z−1)²=9?",
+    options: ["(2,-3,1)", "(-2,3,-1)", "(2,3,1)", "(-2,-3,1)"],
+    correctAnswer: 0,
+    explanation: "The center is (2,-3,1)."
+  },
+  {
+    id: 23536,
+    topic: "Sphere",
+    difficulty: "Easy",
+    question: "What is the radius of (x−2)²+(y+3)²+(z−1)²=9?",
+    options: ["3", "9", "6", "√3"],
+    correctAnswer: 0,
+    explanation: "r²=9, so r=3."
+  },
+  {
+    id: 23537,
+    topic: "Sphere",
+    difficulty: "Easy",
+    question: "Which surface has a constant distance from a fixed point?",
+    options: ["Plane", "Sphere", "Paraboloid", "Cylinder"],
+    correctAnswer: 1,
+    explanation: "A sphere consists of points at a constant distance from its center."
+  },
+  {
+    id: 23538,
+    topic: "Quadric Surfaces",
+    difficulty: "Easy",
+    question: "Which of the following is a quadric surface?",
+    options: ["Sphere", "Line", "Point", "Ray"],
+    correctAnswer: 0,
+    explanation: "A sphere is one of the standard quadric surfaces."
+  },
+  {
+    id: 23539,
+    topic: "Quadric Surfaces",
+    difficulty: "Easy",
+    question: "Which surface has the equation x²+y²+z²=1?",
+    options: ["Ellipsoid", "Sphere", "Plane", "Cone"],
+    correctAnswer: 1,
+    explanation: "This is the unit sphere centered at the origin."
+  },
+  {
+    id: 23540,
+    topic: "Ellipsoid",
+    difficulty: "Easy",
+    question: "Which equation represents an ellipsoid?",
+    options: [
+      "x²/4 + y²/9 + z²/16 = 1",
+      "x²+y²−z²=1",
+      "z=x²+y²",
+      "x²+y²=1"
+    ],
+    correctAnswer: 0,
+    explanation: "An ellipsoid has positive squared terms divided by positive constants."
+  },
+  {
+    id: 23541,
+    topic: "Ellipsoid",
+    difficulty: "Easy",
+    question: "What is the center of x²/4+y²/9+z²/16=1?",
+    options: ["(1,1,1)", "(0,0,0)", "(2,3,4)", "(-2,-3,-4)"],
+    correctAnswer: 1,
+    explanation: "Since there are no shifted terms, the center is the origin."
+  },
+  {
+    id: 23542,
+    topic: "Ellipsoid",
+    difficulty: "Easy",
+    question: "For x²/4+y²/9+z²/16=1, what is the semi-axis along x?",
+    options: ["2", "4", "3", "16"],
+    correctAnswer: 0,
+    explanation: "The denominator 4 is 2², so the x semi-axis is 2."
+  },
+  {
+    id: 23543,
+    topic: "Ellipsoid",
+    difficulty: "Easy",
+    question: "For x²/4+y²/9+z²/16=1, what is the semi-axis along y?",
+    options: ["2", "3", "4", "9"],
+    correctAnswer: 1,
+    explanation: "The denominator 9 is 3², so the y semi-axis is 3."
+  },
+  {
+    id: 23544,
+    topic: "Ellipsoid",
+    difficulty: "Easy",
+    question: "For x²/4+y²/9+z²/16=1, what is the semi-axis along z?",
+    options: ["2", "3", "4", "16"],
+    correctAnswer: 2,
+    explanation: "The denominator 16 is 4², so the z semi-axis is 4."
+  },
+  {
+    id: 23545,
+    topic: "Ellipsoid",
+    difficulty: "Easy",
+    question: "An ellipsoid is a 3D analogue of which 2D shape?",
+    options: ["Triangle", "Ellipse", "Line", "Parabola"],
+    correctAnswer: 1,
+    explanation: "An ellipsoid is the three-dimensional counterpart of an ellipse."
+  },
+  {
+    id: 23546,
+    topic: "Paraboloid",
+    difficulty: "Easy",
+    question: "Which equation represents an elliptic paraboloid?",
+    options: [
+      "z=x²+y²",
+      "x²+y²+z²=1",
+      "x²+y²−z²=1",
+      "x²−y²=1"
+    ],
+    correctAnswer: 0,
+    explanation: "z=x²+y² is the standard elliptic paraboloid."
+  },
+  {
+    id: 23547,
+    topic: "Paraboloid",
+    difficulty: "Easy",
+    question: "What shape are the horizontal traces of z=x²+y²?",
+    options: ["Circles", "Lines", "Hyperbolas", "Triangles"],
+    correctAnswer: 0,
+    explanation: "For z=c, x²+y²=c, which is a circle."
+  },
+  {
+    id: 23548,
+    topic: "Paraboloid",
+    difficulty: "Easy",
+    question: "In z=x²+y², in which direction does the paraboloid open?",
+    options: ["Positive z-direction", "Negative z-direction", "Positive x-direction", "Positive y-direction"],
+    correctAnswer: 0,
+    explanation: "Since z is nonnegative, the surface opens upward along the positive z-axis."
+  },
+  {
+    id: 23549,
+    topic: "Paraboloid",
+    difficulty: "Easy",
+    question: "What is the vertex of z=x²+y²?",
+    options: ["(1,1,1)", "(0,0,0)", "(0,1,0)", "(1,0,0)"],
+    correctAnswer: 1,
+    explanation: "The minimum value occurs at x=y=0, giving vertex (0,0,0)."
+  },
+  {
+    id: 23550,
+    topic: "Paraboloid",
+    difficulty: "Easy",
+    question: "Which equation represents a downward-opening paraboloid?",
+    options: ["z=x²+y²", "z=−x²−y²", "z=x+y", "x²+y²=z²"],
+    correctAnswer: 1,
+    explanation: "The negative signs make z decrease as x²+y² increases."
+  },
+  {
+    id: 23551,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Easy",
+    question: "Which equation represents a hyperbolic paraboloid?",
+    options: [
+      "z=x²−y²",
+      "z=x²+y²",
+      "x²+y²+z²=1",
+      "x²+y²=z²"
+    ],
+    correctAnswer: 0,
+    explanation: "z=x²−y² is the standard saddle-shaped hyperbolic paraboloid."
+  },
+  {
+    id: 23552,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Easy",
+    question: "What is another common name for a hyperbolic paraboloid?",
+    options: ["Sphere", "Saddle surface", "Cylinder", "Cone"],
+    correctAnswer: 1,
+    explanation: "A hyperbolic paraboloid has a characteristic saddle shape."
+  },
+  {
+    id: 23553,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Easy",
+    question: "What is the vertex-like central point of z=x²−y²?",
+    options: ["(0,0,0)", "(1,1,1)", "(0,1,0)", "(1,0,0)"],
+    correctAnswer: 0,
+    explanation: "The central saddle point is at the origin."
+  },
+  {
+    id: 23554,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Easy",
+    question: "What type of traces does z=x²−y² have when x or y is held constant?",
+    options: ["Parabolas", "Circles", "Planes", "Spheres"],
+    correctAnswer: 0,
+    explanation: "Holding one variable constant produces a parabola."
+  },
+  {
+    id: 23555,
+    topic: "Cone",
+    difficulty: "Easy",
+    question: "Which equation represents a circular cone?",
+    options: [
+      "x²+y²=z²",
+      "x²+y²+z²=1",
+      "z=x²+y²",
+      "x²/4+y²/9+z²/16=1"
+    ],
+    correctAnswer: 0,
+    explanation: "x²+y²=z² represents a double circular cone."
+  },
+  {
+    id: 23556,
+    topic: "Cone",
+    difficulty: "Easy",
+    question: "Where is the vertex of x²+y²=z²?",
+    options: ["(1,1,1)", "(0,0,0)", "(0,0,1)", "(1,0,0)"],
+    correctAnswer: 1,
+    explanation: "The cone has its vertex at the origin."
+  },
+  {
+    id: 23557,
+    topic: "Cone",
+    difficulty: "Easy",
+    question: "What is the shape of the horizontal traces of x²+y²=z²?",
+    options: ["Circles", "Parabolas", "Lines", "Ellipses"],
+    correctAnswer: 0,
+    explanation: "For z=c, x²+y²=c², which is a circle."
+  },
+  {
+    id: 23558,
+    topic: "Cone",
+    difficulty: "Easy",
+    question: "A cone with equation x²+y²=z² has how many nappes?",
+    options: ["One", "Two", "Three", "Four"],
+    correctAnswer: 1,
+    explanation: "Because z can be positive or negative, the cone has two nappes."
+  },
+  {
+    id: 23559,
+    topic: "Cylinder",
+    difficulty: "Easy",
+    question: "Which equation represents a circular cylinder parallel to the z-axis?",
+    options: [
+      "x²+y²=4",
+      "x²+z²=4",
+      "y²+z²=4",
+      "x²+y²+z²=4"
+    ],
+    correctAnswer: 0,
+    explanation: "x²+y²=4 does not contain z, so it extends parallel to the z-axis."
+  },
+  {
+    id: 23560,
+    topic: "Cylinder",
+    difficulty: "Easy",
+    question: "What is the radius of x²+y²=25?",
+    options: ["5", "25", "10", "√5"],
+    correctAnswer: 0,
+    explanation: "x²+y²=r², so r=5."
+  },
+  {
+    id: 23561,
+    topic: "Cylinder",
+    difficulty: "Easy",
+    question: "Which variable is unrestricted in x²+y²=9?",
+    options: ["x", "y", "z", "None"],
+    correctAnswer: 2,
+    explanation: "The equation does not contain z, so z can take any value."
+  },
+  {
+    id: 23562,
+    topic: "Cylinder",
+    difficulty: "Easy",
+    question: "What type of surface is x²+y²=9?",
+    options: ["Sphere", "Cylinder", "Cone", "Plane"],
+    correctAnswer: 1,
+    explanation: "It represents a circular cylinder of radius 3 along the z-axis."
+  },
+  {
+    id: 23563,
+    topic: "Cylinder",
+    difficulty: "Easy",
+    question: "Which equation represents a cylinder parallel to the x-axis?",
+    options: [
+      "y²+z²=4",
+      "x²+z²=4",
+      "x²+y²=4",
+      "x+y+z=4"
+    ],
+    correctAnswer: 0,
+    explanation: "The x variable is absent, so the cylinder extends along the x-axis."
+  },
+  {
+    id: 23564,
+    topic: "Cylinder",
+    difficulty: "Easy",
+    question: "Which equation represents a cylinder parallel to the y-axis?",
+    options: [
+      "x²+z²=9",
+      "x²+y²=9",
+      "y²+z²=9",
+      "x+y=9"
+    ],
+    correctAnswer: 0,
+    explanation: "The y variable is absent, so the cylinder extends along the y-axis."
+  },
+  {
+    id: 23565,
+    topic: "Traces",
+    difficulty: "Easy",
+    question: "What is a trace of a surface?",
+    options: [
+      "Its intersection with a plane",
+      "Its center",
+      "Its radius only",
+      "Its normal vector"
+    ],
+    correctAnswer: 0,
+    explanation: "A trace is the curve formed when a surface intersects a plane."
+  },
+  {
+    id: 23566,
+    topic: "Traces",
+    difficulty: "Easy",
+    question: "To find a horizontal trace, which variable is commonly held constant?",
+    options: ["x", "y", "z", "t"],
+    correctAnswer: 2,
+    explanation: "Horizontal planes are usually written as z=c."
+  },
+  {
+    id: 23567,
+    topic: "Traces",
+    difficulty: "Easy",
+    question: "What is the xy-trace obtained by setting z equal to?",
+    options: ["1", "0", "x", "y"],
+    correctAnswer: 1,
+    explanation: "The xy-plane is z=0."
+  },
+  {
+    id: 23568,
+    topic: "Traces",
+    difficulty: "Easy",
+    question: "For z=x²+y², what is the trace at z=4?",
+    options: [
+      "x²+y²=4",
+      "x²+y²=16",
+      "x+y=4",
+      "x²−y²=4"
+    ],
+    correctAnswer: 0,
+    explanation: "Substituting z=4 gives x²+y²=4."
+  },
+  {
+    id: 23569,
+    topic: "Traces",
+    difficulty: "Easy",
+    question: "For z=x²−y², what is the trace at z=0?",
+    options: [
+      "x²+y²=0",
+      "x²−y²=0",
+      "x+y=0",
+      "x²+y²=1"
+    ],
+    correctAnswer: 1,
+    explanation: "Setting z=0 gives x²−y²=0."
+  },
+  {
+    id: 23570,
+    topic: "Quadratic Surfaces",
+    difficulty: "Easy",
+    question: "Which surface is shaped like a ball?",
+    options: ["Sphere", "Cone", "Hyperbolic paraboloid", "Plane"],
+    correctAnswer: 0,
+    explanation: "A sphere is the standard ball-shaped quadric surface."
+  },
+  {
+    id: 23571,
+    topic: "Quadratic Surfaces",
+    difficulty: "Easy",
+    question: "Which surface is shaped like a saddle?",
+    options: ["Sphere", "Cylinder", "Hyperbolic paraboloid", "Ellipsoid"],
+    correctAnswer: 2,
+    explanation: "The hyperbolic paraboloid has a saddle shape."
+  },
+  {
+    id: 23572,
+    topic: "Quadratic Surfaces",
+    difficulty: "Easy",
+    question: "Which surface has a bowl shape?",
+    options: ["Elliptic paraboloid", "Cone", "Plane", "Cylinder"],
+    correctAnswer: 0,
+    explanation: "An elliptic paraboloid has a bowl-like shape."
+  },
+  {
+    id: 23573,
+    topic: "Quadratic Surfaces",
+    difficulty: "Easy",
+    question: "Which surface can have two separate nappes?",
+    options: ["Cone", "Sphere", "Ellipsoid", "Cylinder"],
+    correctAnswer: 0,
+    explanation: "A double cone consists of two nappes meeting at the vertex."
+  },
+  {
+    id: 23574,
+    topic: "Quadratic Surfaces",
+    difficulty: "Easy",
+    question: "Which surface extends infinitely in one direction while having circular cross-sections?",
+    options: ["Sphere", "Cylinder", "Ellipsoid", "Paraboloid"],
+    correctAnswer: 1,
+    explanation: "A cylinder extends infinitely along its axis."
+  },
+  {
+    id: 23575,
+    topic: "Coordinate Planes",
+    difficulty: "Easy",
+    question: "Which plane contains the x- and y-axes?",
+    options: ["xy-plane", "yz-plane", "xz-plane", "None"],
+    correctAnswer: 0,
+    explanation: "The xy-plane contains both x and y axes."
+  },
+  {
+    id: 23576,
+    topic: "Coordinate Planes",
+    difficulty: "Easy",
+    question: "Which plane contains the y- and z-axes?",
+    options: ["xy-plane", "yz-plane", "xz-plane", "None"],
+    correctAnswer: 1,
+    explanation: "The yz-plane contains the y and z axes."
+  },
+  {
+    id: 23577,
+    topic: "Coordinate Planes",
+    difficulty: "Easy",
+    question: "Which plane contains the x- and z-axes?",
+    options: ["xy-plane", "yz-plane", "xz-plane", "None"],
+    correctAnswer: 2,
+    explanation: "The xz-plane contains the x and z axes."
+  },
+  {
+    id: 23578,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Easy",
+    question: "What is the distance formula between (x1,y1,z1) and (x2,y2,z2)?",
+    options: [
+      "√((x2−x1)²+(y2−y1)²+(z2−z1)²)",
+      "(x2−x1)+(y2−y1)+(z2−z1)",
+      "x1x2+y1y2+z1z2",
+      "√(x1²+y1²)"
+    ],
+    correctAnswer: 0,
+    explanation: "The 3D distance formula uses the squared differences of all three coordinates."
+  },
+  {
+    id: 23579,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Easy",
+    question: "What is the midpoint formula in 3D?",
+    options: [
+      "((x1+x2)/2,(y1+y2)/2,(z1+z2)/2)",
+      "(x1+x2,y1+y2,z1+z2)",
+      "(x1x2,y1y2,z1z2)",
+      "(x1/2,y1/2,z1/2)"
+    ],
+    correctAnswer: 0,
+    explanation: "Each coordinate of the midpoint is the average of the corresponding coordinates."
+  },
+  {
+    id: 23580,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "What is the normal vector of the plane x+2y+3z=6?",
+    options: ["<1,2,3>", "<6,2,3>", "<1,6,3>", "<3,2,1>"],
+    correctAnswer: 0,
+    explanation: "The coefficients of x, y and z form the normal vector."
+  },
+  {
+    id: 23581,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "Which condition indicates two planes are parallel?",
+    options: [
+      "Their normal vectors are parallel",
+      "Their normal vectors are perpendicular",
+      "Their equations are identical only",
+      "Their constants are equal"
+    ],
+    correctAnswer: 0,
+    explanation: "Parallel planes have parallel normal vectors."
+  },
+  {
+    id: 23582,
+    topic: "Planes in 3D",
+    difficulty: "Easy",
+    question: "Which condition indicates two planes are perpendicular?",
+    options: [
+      "Their normal vectors are perpendicular",
+      "Their normal vectors are parallel",
+      "Their constants are equal",
+      "They have the same equation"
+    ],
+    correctAnswer: 0,
+    explanation: "Two planes are perpendicular when their normal vectors are perpendicular."
+  },
+  {
+    id: 23583,
+    topic: "Lines and Planes",
+    difficulty: "Easy",
+    question: "A line is perpendicular to a plane when its direction vector is what?",
+    options: [
+      "Parallel to the plane's normal vector",
+      "Perpendicular to the plane's normal vector",
+      "Zero",
+      "Equal to the plane constant"
+    ],
+    correctAnswer: 0,
+    explanation: "A line perpendicular to a plane has a direction parallel to the plane's normal."
+  },
+  {
+    id: 23584,
+    topic: "Lines and Planes",
+    difficulty: "Easy",
+    question: "A line is parallel to a plane if its direction vector is what?",
+    options: [
+      "Perpendicular to the plane",
+      "Orthogonal to the plane's normal vector",
+      "Zero",
+      "Equal to the plane equation"
+    ],
+    correctAnswer: 1,
+    explanation: "A line parallel to a plane has a direction vector perpendicular to the plane's normal."
+  },
+  {
+    id: 23585,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is the dot product formula for vectors a and b?",
+    options: [
+      "a·b = |a||b|cosθ",
+      "a·b = |a||b|sinθ",
+      "a·b = |a|+|b|",
+      "a·b = |a|−|b|"
+    ],
+    correctAnswer: 0,
+    explanation: "The dot product is |a||b|cosθ."
+  },
+  {
+    id: 23586,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is the magnitude of <0,3,4>?",
+    options: ["3", "4", "5", "7"],
+    correctAnswer: 2,
+    explanation: "√(0²+3²+4²)=5."
+  },
+  {
+    id: 23587,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is <2,3,4> + <1,1,1>?",
+    options: ["<3,4,5>", "<2,3,5>", "<1,2,3>", "<3,3,3>"],
+    correctAnswer: 0,
+    explanation: "Add corresponding components: <2+1,3+1,4+1>=<3,4,5>."
+  },
+  {
+    id: 23588,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is 2<1,2,3>?",
+    options: ["<2,4,6>", "<1,4,6>", "<2,2,3>", "<3,4,5>"],
+    correctAnswer: 0,
+    explanation: "Multiply every component by 2."
+  },
+  {
+    id: 23589,
+    topic: "Vectors in 3D",
+    difficulty: "Easy",
+    question: "What is <1,2,3>−<1,1,1>?",
+    options: ["<0,1,2>", "<2,3,4>", "<1,1,1>", "<0,0,0>"],
+    correctAnswer: 0,
+    explanation: "Subtract corresponding components."
+  },
+  {
+    id: 23590,
+    topic: "Quadric Surfaces",
+    difficulty: "Easy",
+    question: "Which equation represents a sphere centered at (0,0,0) with radius 3?",
+    options: [
+      "x²+y²+z²=9",
+      "x²+y²+z²=3",
+      "x²+y²+z²=27",
+      "x+y+z=3"
+    ],
+    correctAnswer: 0,
+    explanation: "For radius 3, r²=9."
+  },
+  {
+    id: 23591,
+    topic: "Quadric Surfaces",
+    difficulty: "Easy",
+    question: "Which equation represents an elliptic paraboloid opening in the positive z-direction?",
+    options: [
+      "z=x²+y²",
+      "z=−x²−y²",
+      "z=x²−y²",
+      "x²+y²=z²"
+    ],
+    correctAnswer: 0,
+    explanation: "Positive x² and y² terms produce an upward-opening elliptic paraboloid."
+  },
+  {
+    id: 23592,
+    topic: "Quadric Surfaces",
+    difficulty: "Easy",
+    question: "Which equation represents a hyperbolic paraboloid?",
+    options: [
+      "z=x²−y²",
+      "z=x²+y²",
+      "x²+y²+z²=1",
+      "x²+y²=4"
+    ],
+    correctAnswer: 0,
+    explanation: "Opposite signs on the squared terms give a hyperbolic paraboloid."
+  },
+  {
+    id: 23593,
+    topic: "Quadric Surfaces",
+    difficulty: "Easy",
+    question: "Which equation represents an ellipsoid centered at the origin?",
+    options: [
+      "x²/9+y²/16+z²/25=1",
+      "x²+y²=z²",
+      "z=x²+y²",
+      "x²+y²=9"
+    ],
+    correctAnswer: 0,
+    explanation: "All three squared terms have positive coefficients in normalized ellipsoid form."
+  },
+  {
+    id: 23594,
+    topic: "Quadric Surfaces",
+    difficulty: "Easy",
+    question: "Which surface has the equation x²+y²−z²=0?",
+    options: ["Cone", "Sphere", "Ellipsoid", "Cylinder"],
+    correctAnswer: 0,
+    explanation: "x²+y²=z² is a double cone."
+  },
+  {
+    id: 23595,
+    topic: "Quadric Surfaces",
+    difficulty: "Easy",
+    question: "If a variable is missing from a quadric equation, what does this often indicate?",
+    options: [
+      "The surface extends along that variable's axis",
+      "The surface is always a sphere",
+      "The equation has no solution",
+      "The variable must equal zero"
+    ],
+    correctAnswer: 0,
+    explanation: "For example, x²+y²=9 has no z term and extends along the z-axis."
+  },
+  {
+    id: 23596,
+    topic: "3D Geometry",
+    difficulty: "Easy",
+    question: "What is the origin in 3D coordinate space?",
+    options: ["(1,1,1)", "(0,0,0)", "(0,1,0)", "(1,0,0)"],
+    correctAnswer: 1,
+    explanation: "The origin is the point where all three coordinate axes meet."
+  },
+  {
+    id: 23597,
+    topic: "3D Geometry",
+    difficulty: "Easy",
+    question: "How many coordinate axes are there in standard 3D Cartesian space?",
+    options: ["1", "2", "3", "4"],
+    correctAnswer: 2,
+    explanation: "The three axes are x, y and z."
+  },
+  {
+    id: 23598,
+    topic: "3D Geometry",
+    difficulty: "Easy",
+    question: "How many coordinate planes are there in 3D Cartesian space?",
+    options: ["1", "2", "3", "4"],
+    correctAnswer: 2,
+    explanation: "The coordinate planes are xy, yz and xz."
+  },
+  {
+    id: 23599,
+    topic: "3D Geometry",
+    difficulty: "Easy",
+    question: "Which of the following is NOT one of the standard coordinate planes?",
+    options: ["xy-plane", "yz-plane", "xz-plane", "xyz-plane"],
+    correctAnswer: 3,
+    explanation: "There are three coordinate planes: xy, yz and xz. There is no xyz-plane."
+  },
+  
+  {
+    id: 23600,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Medium",
+    question: "Find the distance between P(1,2,3) and Q(4,6,3).",
+    options: ["3", "4", "5", "6"],
+    correctAnswer: 2,
+    explanation: "Distance = √[(4−1)²+(6−2)²+(3−3)²] = √25 = 5."
+  },
+  {
+    id: 23601,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Medium",
+    question: "Find the midpoint of A(2,−4,6) and B(8,2,−2).",
+    options: ["(5,−1,2)", "(6,−2,4)", "(3,−1,2)", "(5,1,2)"],
+    correctAnswer: 0,
+    explanation: "Midpoint = ((2+8)/2, (−4+2)/2, (6−2)/2) = (5,−1,2)."
+  },
+  {
+    id: 23602,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Medium",
+    question: "Find the point dividing the segment from A(0,0,0) to B(6,9,12) in the ratio 1:2 internally.",
+    options: ["(2,3,4)", "(3,3,4)", "(4,6,8)", "(1,2,3)"],
+    correctAnswer: 0,
+    explanation: "The point is one-third of the way from A: (6/3,9/3,12/3)=(2,3,4)."
+  },
+  {
+    id: 23603,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find the magnitude of v=<2,−3,6>.",
+    options: ["5", "6", "7", "8"],
+    correctAnswer: 2,
+    explanation: "|v|=√(4+9+36)=√49=7."
+  },
+  {
+    id: 23604,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find the unit vector in the direction of <3,4,0>.",
+    options: ["<3/5,4/5,0>", "<3,4,0>", "<4/5,3/5,0>", "<1,1,0>"],
+    correctAnswer: 0,
+    explanation: "The magnitude is 5, so divide each component by 5."
+  },
+  {
+    id: 23605,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find a unit vector in the direction of <2,−1,2>.",
+    options: [
+      "<2/3,−1/3,2/3>",
+      "<2,−1,2>",
+      "<1/2,−1,1/2>",
+      "<1,−1,1>"
+    ],
+    correctAnswer: 0,
+    explanation: "Magnitude = 3, so the unit vector is <2/3,−1/3,2/3>."
+  },
+  {
+    id: 23606,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find a·b if a=<2,1,−1> and b=<3,−2,4>.",
+    options: ["0", "4", "6", "8"],
+    correctAnswer: 0,
+    explanation: "2(3)+1(−2)+(−1)(4)=6−2−4=0."
+  },
+  {
+    id: 23607,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "What is the angle between vectors <1,0,0> and <1,1,0>?",
+    options: ["30°", "45°", "60°", "90°"],
+    correctAnswer: 1,
+    explanation: "cosθ=1/(1·√2)=1/√2, so θ=45°."
+  },
+  {
+    id: 23608,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "What is the angle between <1,1,0> and <1,−1,0>?",
+    options: ["0°", "45°", "90°", "180°"],
+    correctAnswer: 2,
+    explanation: "Their dot product is 1−1=0, so they are perpendicular."
+  },
+  {
+    id: 23609,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find the scalar projection of a=<3,4,0> onto b=<1,0,0>.",
+    options: ["1", "3", "4", "5"],
+    correctAnswer: 1,
+    explanation: "Scalar projection = a·b/|b| = 3."
+  },
+  {
+    id: 23610,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find a×b for a=<1,0,0> and b=<0,1,0>.",
+    options: ["<0,0,1>", "<0,1,0>", "<1,0,0>", "<0,0,−1>"],
+    correctAnswer: 0,
+    explanation: "Using the right-hand rule, i×j=k."
+  },
+  {
+    id: 23611,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find |a×b| if |a|=3, |b|=4 and the vectors are perpendicular.",
+    options: ["7", "12", "1", "24"],
+    correctAnswer: 1,
+    explanation: "|a×b|=|a||b|sin90°=3·4=12."
+  },
+  {
+    id: 23612,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Which vector is perpendicular to both <1,0,0> and <0,0,1>?",
+    options: ["<1,0,0>", "<0,1,0>", "<0,0,1>", "<1,1,1>"],
+    correctAnswer: 1,
+    explanation: "The y-direction is perpendicular to both x- and z-directions."
+  },
+  {
+    id: 23613,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find the cross product <1,2,0>×<0,1,3>.",
+    options: ["<6,−3,1>", "<3,−3,1>", "<6,3,−1>", "<−6,3,1>"],
+    correctAnswer: 0,
+    explanation: "The determinant gives <2·3−0, −(1·3−0), 1·1−2·0>=<6,−3,1>."
+  },
+  {
+    id: 23614,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "If a×b=0 and neither vector is zero, what can be concluded?",
+    options: ["They are perpendicular", "They are parallel", "They have equal magnitude", "They are unit vectors"],
+    correctAnswer: 1,
+    explanation: "A zero cross product for nonzero vectors means they are parallel."
+  },
+  {
+    id: 23615,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "Find the vector equation of the line through (1,2,3) with direction <2,−1,4>.",
+    options: [
+      "r=<1,2,3>+t<2,−1,4>",
+      "r=<2,−1,4>+t<1,2,3>",
+      "r=<1,2,4>+t<2,−1,3>",
+      "r=<1,−2,3>+t<2,1,4>"
+    ],
+    correctAnswer: 0,
+    explanation: "A line is r=r0+tv, where r0 is a point and v is its direction."
+  },
+  {
+    id: 23616,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "Which point lies on r=<1,2,3>+t<2,1,−1> when t=2?",
+    options: ["(3,4,1)", "(5,4,1)", "(5,3,1)", "(4,4,2)"],
+    correctAnswer: 1,
+    explanation: "Substitute t=2: (1+4,2+2,3−2)=(5,4,1)."
+  },
+  {
+    id: 23617,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "Find the symmetric equations for x=1+2t, y=3−t, z=4+3t.",
+    options: [
+      "(x−1)/2=(y−3)/(−1)=(z−4)/3",
+      "(x+1)/2=(y+3)= (z+4)/3",
+      "(x−1)=(y−3)=(z−4)",
+      "x/2=(y−3)=(z−4)/3"
+    ],
+    correctAnswer: 0,
+    explanation: "Eliminating t gives the standard symmetric form."
+  },
+  {
+    id: 23618,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "Find the direction vector of (x−2)/3=(y+1)/4=(z−5)/2.",
+    options: ["<2,3,4>", "<3,4,2>", "<3,−1,5>", "<2,4,3>"],
+    correctAnswer: 1,
+    explanation: "The denominators give the direction vector <3,4,2>."
+  },
+  {
+    id: 23619,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "Are the lines with direction vectors <1,2,3> and <2,4,6> parallel?",
+    options: ["Yes", "No", "Only at the origin", "Cannot determine"],
+    correctAnswer: 0,
+    explanation: "The second vector is twice the first."
+  },
+  {
+    id: 23620,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "Find the point where x=1+t, y=2+t, z=3+t intersects the plane x+y+z=12.",
+    options: ["(2,3,4)", "(3,4,5)", "(4,5,6)", "(1,2,3)"],
+    correctAnswer: 2,
+    explanation: "3+3t=12 gives t=3, producing (4,5,6), so the correct answer is (4,5,6).",
+  },
+  {
+    id: 23621,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "For the line x=1+t, y=2+t, z=3+t, what is the value of t at the point (4,5,6)?",
+    options: ["1", "2", "3", "4"],
+    correctAnswer: 2,
+    explanation: "From x=1+t=4, t=3."
+  },
+  {
+    id: 23622,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Find the plane through (1,2,3) with normal vector <2,3,4>.",
+    options: [
+      "2x+3y+4z=20",
+      "2x+3y+4z=14",
+      "x+2y+3z=14",
+      "2x+3y+4z=10"
+    ],
+    correctAnswer: 0,
+    explanation: "2(1)+3(2)+4(3)=20, so the correct constant is 20, making option 0 correct."
+  },
+  {
+    id: 23623,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Find the plane through the origin with normal vector <1,2,3>.",
+    options: ["x+2y+3z=0", "x+2y+3z=1", "x+y+z=3", "x+2y−3z=0"],
+    correctAnswer: 0,
+    explanation: "Using n·(r−r0)=0 and r0=(0,0,0) gives x+2y+3z=0."
+  },
+  {
+    id: 23624,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Which plane is parallel to 2x+3y+4z=7?",
+    options: [
+      "4x+6y+8z=1",
+      "2x+3y−4z=1",
+      "x+3y+4z=1",
+      "2x−3y+4z=1"
+    ],
+    correctAnswer: 0,
+    explanation: "Its normal vector <4,6,8> is a multiple of <2,3,4>."
+  },
+  {
+    id: 23625,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Which plane is perpendicular to x+2y+3z=4?",
+    options: [
+      "2x+4y+6z=1",
+      "2x−y=5",
+      "x+2y+3z=7",
+      "2x+4y+6z=9"
+    ],
+    correctAnswer: 1,
+    explanation: "The normal <2,−1,0> has dot product 2−2=0 with <1,2,3>."
+  },
+  {
+    id: 23626,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Find the angle between planes with normals n1=<1,0,0> and n2=<1,1,0>.",
+    options: ["30°", "45°", "60°", "90°"],
+    correctAnswer: 1,
+    explanation: "The angle between planes equals the acute angle between their normals: 45°."
+  },
+  {
+    id: 23627,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Find the distance from point (1,2,3) to plane x+2y+2z=9.",
+    options: ["1/3", "2/3", "1", "2"],
+    correctAnswer: 1,
+    explanation: "Distance=|1+4+6−9|/√(1+4+4)=2/3, so option 1 is correct."
+  },
+  {
+    id: 23628,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Find the distance from (0,0,0) to plane 2x−2y+z=6.",
+    options: ["2", "3", "6/3", "6/√9"],
+    correctAnswer: 0,
+    explanation: "Distance=6/√(4+4+1)=6/3=2, so option 0 is correct."
+  },
+  {
+    id: 23629,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Which point lies on the plane 2x+y−z=5?",
+    options: ["(1,2,−1)", "(2,1,0)", "(1,1,1)", "(2,2,1)"],
+    correctAnswer: 0,
+    explanation: "2(1)+2−(−1)=5."
+  },
+  {
+    id: 23630,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "Find the center of x²+y²+z²−4x+6y−2z=11.",
+    options: ["(2,−3,1)", "(−2,3,−1)", "(4,−6,2)", "(2,3,−1)"],
+    correctAnswer: 0,
+    explanation: "Complete squares: (x−2)²+(y+3)²+(z−1)²=25."
+  },
+  {
+    id: 23631,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "What is the radius of x²+y²+z²−4x+6y−2z=11?",
+    options: ["3", "4", "5", "25"],
+    correctAnswer: 2,
+    explanation: "Completing squares gives radius²=25, so r=5."
+  },
+  {
+    id: 23632,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "Which is the standard form of x²+y²+z²−2x−4y−6z=11?",
+    options: [
+      "(x−1)²+(y−2)²+(z−3)²=25",
+      "(x+1)²+(y+2)²+(z+3)²=25",
+      "(x−1)²+(y−2)²+(z−3)²=11",
+      "(x−2)²+(y−4)²+(z−6)²=25"
+    ],
+    correctAnswer: 0,
+    explanation: "Completing squares gives (x−1)²+(y−2)²+(z−3)²=25."
+  },
+  {
+    id: 23633,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "Does the point (1,2,3) lie on the sphere centered at (0,0,0) with radius √14?",
+    options: ["Yes", "No", "Only if z=0", "Cannot determine"],
+    correctAnswer: 0,
+    explanation: "Distance²=1²+2²+3²=14, so the distance is √14."
+  },
+  {
+    id: 23634,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "Find the equation of the sphere with center (2,−1,3) passing through (5,−1,3).",
+    options: [
+      "(x−2)²+(y+1)²+(z−3)²=9",
+      "(x+2)²+(y−1)²+(z+3)²=9",
+      "(x−2)²+(y+1)²+(z−3)²=3",
+      "x²+y²+z²=9"
+    ],
+    correctAnswer: 0,
+    explanation: "The radius is the distance between the two points, which is 3."
+  },
+  {
+    id: 23635,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "What is the intersection of a sphere and a plane when the plane cuts through the sphere?",
+    options: ["A circle", "A line", "A point only", "A parabola"],
+    correctAnswer: 0,
+    explanation: "A plane section through a sphere is a circle."
+  },
+  {
+    id: 23636,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "A plane tangent to a sphere intersects it in what?",
+    options: ["A circle", "A point", "A line", "An ellipse"],
+    correctAnswer: 1,
+    explanation: "A tangent plane touches the sphere at exactly one point."
+  },
+  {
+    id: 23637,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "What condition makes a plane tangent to a sphere?",
+    options: [
+      "Distance from center equals radius",
+      "Distance from center is zero",
+      "Distance from center is greater than radius",
+      "Distance from center is less than radius"
+    ],
+    correctAnswer: 0,
+    explanation: "Tangency occurs when the perpendicular distance from the center equals the radius."
+  },
+  {
+    id: 23638,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "Find the radius of x²+y²+z²=100.",
+    options: ["5", "10", "20", "100"],
+    correctAnswer: 1,
+    explanation: "r=√100=10."
+  },
+  {
+    id: 23639,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "Which point is inside the sphere x²+y²+z²=25?",
+    options: ["(3,3,0)", "(4,0,0)", "(0,0,5)", "(0,4,3)"],
+    correctAnswer: 0,
+    explanation: "For (3,3,0), distance²=18<25, so it lies inside."
+  },
+  {
+    id: 23640,
+    topic: "Ellipsoid",
+    difficulty: "Medium",
+    question: "Find the semi-axes of x²/9+y²/16+z²/25=1.",
+    options: [
+      "3,4,5",
+      "9,16,25",
+      "2,3,4",
+      "1/3,1/4,1/5"
+    ],
+    correctAnswer: 0,
+    explanation: "The semi-axes are the square roots of the denominators."
+  },
+  {
+    id: 23641,
+    topic: "Ellipsoid",
+    difficulty: "Medium",
+    question: "Which coordinate axis has the largest semi-axis for x²/4+y²/9+z²/16=1?",
+    options: ["x-axis", "y-axis", "z-axis", "All equal"],
+    correctAnswer: 2,
+    explanation: "The semi-axes are 2,3,4, so z has the largest."
+  },
+  {
+    id: 23642,
+    topic: "Ellipsoid",
+    difficulty: "Medium",
+    question: "What is the volume of x²/4+y²/9+z²/16=1?",
+    options: ["24π", "32π", "48π", "64π"],
+    correctAnswer: 1,
+    explanation: "V=4πabc/3=4π(2)(3)(4)/3=32π, so option 1 is correct."
+  },
+  {
+    id: 23643,
+    topic: "Ellipsoid",
+    difficulty: "Medium",
+    question: "What is the center of (x−2)²/9+(y+1)²/4+(z−3)²/16=1?",
+    options: ["(2,−1,3)", "(−2,1,−3)", "(3,4,16)", "(2,1,3)"],
+    correctAnswer: 0,
+    explanation: "The center is obtained from the shifted terms."
+  },
+  {
+    id: 23644,
+    topic: "Ellipsoid",
+    difficulty: "Medium",
+    question: "What is the x semi-axis of (x−2)²/25+(y+1)²/9+(z−3)²/16=1?",
+    options: ["5", "25", "3", "4"],
+    correctAnswer: 0,
+    explanation: "√25=5."
+  },
+  {
+    id: 23645,
+    topic: "Elliptic Paraboloid",
+    difficulty: "Medium",
+    question: "What is the vertex of z=x²/4+y²/9?",
+    options: ["(0,0,0)", "(4,9,0)", "(0,0,1)", "(2,3,0)"],
+    correctAnswer: 0,
+    explanation: "The minimum occurs at x=y=0, giving vertex (0,0,0)."
+  },
+  {
+    id: 23646,
+    topic: "Elliptic Paraboloid",
+    difficulty: "Medium",
+    question: "In z=x²/4+y²/9, which direction does the surface open?",
+    options: ["Positive z", "Negative z", "Positive x", "Positive y"],
+    correctAnswer: 0,
+    explanation: "z is nonnegative and increases as x² or y² increases."
+  },
+  {
+    id: 23647,
+    topic: "Elliptic Paraboloid",
+    difficulty: "Medium",
+    question: "What is the trace of z=x²/4+y²/9 at z=4?",
+    options: [
+      "x²/16+y²/36=1",
+      "x²/4+y²/9=4",
+      "x²+y²=4",
+      "x²/4−y²/9=1"
+    ],
+    correctAnswer: 0,
+    explanation: "Set z=4: x²/4+y²/9=4, which becomes x²/16+y²/36=1."
+  },
+  {
+    id: 23648,
+    topic: "Elliptic Paraboloid",
+    difficulty: "Medium",
+    question: "What type of horizontal trace does an elliptic paraboloid produce?",
+    options: ["Ellipse", "Hyperbola", "Line", "Parabola"],
+    correctAnswer: 0,
+    explanation: "Setting z=c>0 gives an ellipse."
+  },
+  {
+    id: 23649,
+    topic: "Elliptic Paraboloid",
+    difficulty: "Medium",
+    question: "What is the trace of z=x²+y² in the xz-plane?",
+    options: ["z=x²", "z=y²", "x²+y²=1", "z=x+y"],
+    correctAnswer: 0,
+    explanation: "In the xz-plane y=0, giving z=x²."
+  },
+  {
+    id: 23650,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Medium",
+    question: "What is the trace of z=x²−y² in the xz-plane?",
+    options: ["z=x²", "z=−y²", "x²+y²=0", "z=x²+y²"],
+    correctAnswer: 0,
+    explanation: "Set y=0, giving z=x²."
+  },
+  {
+    id: 23651,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Medium",
+    question: "What is the trace of z=x²−y² in the yz-plane?",
+    options: ["z=y²", "z=−y²", "z=x²", "y²=x²"],
+    correctAnswer: 1,
+    explanation: "Set x=0, giving z=−y²."
+  },
+  {
+    id: 23652,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Medium",
+    question: "What is the trace of z=x²−y² in the xy-plane?",
+    options: ["x²+y²=0", "x²−y²=0", "x²+y²=1", "z=x²−y²"],
+    correctAnswer: 1,
+    explanation: "Set z=0, giving x²−y²=0."
+  },
+  {
+    id: 23653,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Medium",
+    question: "What shape does x²−y²=1 represent?",
+    options: ["Circle", "Ellipse", "Hyperbola", "Parabola"],
+    correctAnswer: 2,
+    explanation: "The standard equation x²−y²=1 is a hyperbola."
+  },
+  {
+    id: 23654,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Medium",
+    question: "Which equation represents a saddle surface opening upward in one direction and downward in another?",
+    options: ["z=x²+y²", "z=x²−y²", "x²+y²+z²=1", "x²+y²=4"],
+    correctAnswer: 1,
+    explanation: "z=x²−y² curves upward in x and downward in y."
+  },
+  {
+    id: 23655,
+    topic: "Cone",
+    difficulty: "Medium",
+    question: "What is the trace of x²+y²=z² at z=3?",
+    options: ["x²+y²=3", "x²+y²=9", "x+y=3", "x²−y²=9"],
+    correctAnswer: 1,
+    explanation: "Substitute z=3: x²+y²=9."
+  },
+  {
+    id: 23656,
+    topic: "Cone",
+    difficulty: "Medium",
+    question: "What is the trace of x²+y²=z² at z=0?",
+    options: ["x²+y²=1", "x²+y²=0", "x+y=0", "x²−y²=0"],
+    correctAnswer: 1,
+    explanation: "At z=0, x²+y²=0, which gives only the origin."
+  },
+  {
+    id: 23657,
+    topic: "Cone",
+    difficulty: "Medium",
+    question: "Which equation represents a cone whose axis is the z-axis?",
+    options: [
+      "x²+y²=4z²",
+      "y²+z²=4x²",
+      "x²+z²=4y²",
+      "z=x²+y²"
+    ],
+    correctAnswer: 0,
+    explanation: "The x and y variables are symmetric around the z-axis."
+  },
+  {
+    id: 23658,
+    topic: "Cone",
+    difficulty: "Medium",
+    question: "For x²+y²=4z², what is the radius of the horizontal cross-section at z=2?",
+    options: ["2", "4", "8", "16"],
+    correctAnswer: 1,
+    explanation: "At z=2, x²+y²=16, so radius=4. Thus option 1 is correct."
+  },
+  {
+    id: 23659,
+    topic: "Cone",
+    difficulty: "Medium",
+    question: "What is the vertex of x²+y²=9z²?",
+    options: ["(0,0,0)", "(0,0,3)", "(3,0,0)", "(0,3,0)"],
+    correctAnswer: 0,
+    explanation: "The two nappes meet at the origin."
+  },
+  {
+    id: 23660,
+    topic: "Cylinder",
+    difficulty: "Medium",
+    question: "What is the radius of the cylinder (x−2)²+(y+1)²=16?",
+    options: ["2", "4", "8", "16"],
+    correctAnswer: 1,
+    explanation: "r²=16, so r=4."
+  },
+  {
+    id: 23661,
+    topic: "Cylinder",
+    difficulty: "Medium",
+    question: "What is the axis of the cylinder (x−2)²+(y+1)²=16?",
+    options: [
+      "Line x=2, y=−1 parallel to z-axis",
+      "Line z=16",
+      "x=−2, y=1",
+      "z-axis only"
+    ],
+    correctAnswer: 0,
+    explanation: "The center of each circular cross-section is (2,−1), and z is unrestricted."
+  },
+  {
+    id: 23662,
+    topic: "Cylinder",
+    difficulty: "Medium",
+    question: "Which equation represents a cylinder parallel to the y-axis?",
+    options: [
+      "(x−1)²+(z+2)²=9",
+      "(x−1)²+(y+2)²=9",
+      "(y−1)²+(z+2)²=9",
+      "x²+y²+z²=9"
+    ],
+    correctAnswer: 0,
+    explanation: "The y variable is absent, so the cylinder extends along the y-axis."
+  },
+  {
+    id: 23663,
+    topic: "Cylinder",
+    difficulty: "Medium",
+    question: "Which surface is represented by x²+z²=25?",
+    options: ["Cylinder along y-axis", "Cylinder along z-axis", "Sphere", "Cone"],
+    correctAnswer: 0,
+    explanation: "Since y is absent, the cylinder extends along the y-axis."
+  },
+  {
+    id: 23664,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which surface has two positive squared terms and one negative squared term equal to 1?",
+    options: ["Ellipsoid", "Hyperboloid of one sheet", "Hyperboloid of two sheets", "Elliptic paraboloid"],
+    correctAnswer: 1,
+    explanation: "A form such as x²/a²+y²/b²−z²/c²=1 is a hyperboloid of one sheet."
+  },
+  {
+    id: 23665,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which surface has one positive squared term and two negative squared terms equal to 1?",
+    options: ["Hyperboloid of one sheet", "Hyperboloid of two sheets", "Ellipsoid", "Cone"],
+    correctAnswer: 1,
+    explanation: "A form such as z²/c²−x²/a²−y²/b²=1 is a hyperboloid of two sheets."
+  },
+  {
+    id: 23666,
+    topic: "Hyperboloid",
+    difficulty: "Medium",
+    question: "Which equation represents a hyperboloid of one sheet?",
+    options: [
+      "x²+y²−z²=1",
+      "z²−x²−y²=1",
+      "x²+y²+z²=1",
+      "z=x²+y²"
+    ],
+    correctAnswer: 0,
+    explanation: "Two positive squared terms and one negative term equal to 1 give a hyperboloid of one sheet."
+  },
+  {
+    id: 23667,
+    topic: "Hyperboloid",
+    difficulty: "Medium",
+    question: "Which equation represents a hyperboloid of two sheets?",
+    options: [
+      "x²+y²−z²=1",
+      "z²−x²−y²=1",
+      "x²+y²+z²=1",
+      "x²+y²=z²"
+    ],
+    correctAnswer: 1,
+    explanation: "One positive squared term and two negative terms equal to 1 gives two sheets."
+  },
+  {
+    id: 23668,
+    topic: "Hyperboloid",
+    difficulty: "Medium",
+    question: "Along which axis does x²+y²−z²=1 have its main axis?",
+    options: ["x-axis", "y-axis", "z-axis", "All axes"],
+    correctAnswer: 2,
+    explanation: "The negative squared term identifies the z-axis as the axis of the one-sheet hyperboloid."
+  },
+  {
+    id: 23669,
+    topic: "Hyperboloid",
+    difficulty: "Medium",
+    question: "Along which axis does z²−x²−y²=1 have its main axis?",
+    options: ["x-axis", "y-axis", "z-axis", "None"],
+    correctAnswer: 2,
+    explanation: "The positive squared term identifies the z-axis."
+  },
+  {
+    id: 23670,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "What is the horizontal trace of x²+y²−z²=1 at z=0?",
+    options: ["x²+y²=1", "x²−y²=1", "x²+y²=0", "x+y=1"],
+    correctAnswer: 0,
+    explanation: "Setting z=0 gives x²+y²=1."
+  },
+  {
+    id: 23671,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "What is the horizontal trace of x²+y²−z²=1 at z=2?",
+    options: [
+      "x²+y²=5",
+      "x²+y²=3",
+      "x²+y²=4",
+      "x²+y²=1"
+    ],
+    correctAnswer: 0,
+    explanation: "x²+y²−4=1, so x²+y²=5."
+  },
+  {
+    id: 23672,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "What type of horizontal traces does a hyperboloid of one sheet have?",
+    options: ["Circles or ellipses", "Parabolas", "Lines only", "No traces"],
+    correctAnswer: 0,
+    explanation: "Horizontal sections are ellipses that expand away from the center."
+  },
+  {
+    id: 23673,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "What type of horizontal traces does a hyperboloid of two sheets have?",
+    options: ["Ellipses where the surface exists", "Circles only", "Parabolas", "Always lines"],
+    correctAnswer: 0,
+    explanation: "For allowable values of the axial coordinate, horizontal sections are ellipses."
+  },
+  {
+    id: 23674,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which surface has a single connected component and a narrow waist?",
+    options: ["Hyperboloid of one sheet", "Hyperboloid of two sheets", "Ellipsoid", "Cone"],
+    correctAnswer: 0,
+    explanation: "A hyperboloid of one sheet is connected and has a characteristic waist."
+  },
+  {
+    id: 23675,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which surface consists of two disconnected components?",
+    options: ["Ellipsoid", "Hyperboloid of one sheet", "Hyperboloid of two sheets", "Cylinder"],
+    correctAnswer: 2,
+    explanation: "A hyperboloid of two sheets has two separate components."
+  },
+  {
+    id: 23676,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which equation is an elliptic cylinder?",
+    options: [
+      "x²/4+y²/9=1",
+      "x²+y²+z²=1",
+      "x²−y²=z",
+      "x²+y²=z²"
+    ],
+    correctAnswer: 0,
+    explanation: "The equation contains x and y but not z, producing an elliptic cylinder parallel to the z-axis."
+  },
+  {
+    id: 23677,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "What is the axis direction of x²/4+z²/9=1?",
+    options: ["x-axis", "y-axis", "z-axis", "No axis"],
+    correctAnswer: 1,
+    explanation: "The y variable is absent, so the cylinder extends along the y-axis."
+  },
+  {
+    id: 23678,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which surface is described by x²+y²+z²−6x+4y−8z=0?",
+    options: ["Sphere", "Cone", "Cylinder", "Paraboloid"],
+    correctAnswer: 0,
+    explanation: "Completing squares produces a sphere."
+  },
+  {
+    id: 23679,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Find the center of x²+y²+z²−6x+4y−8z=0.",
+    options: ["(3,−2,4)", "(−3,2,−4)", "(6,−4,8)", "(3,2,4)"],
+    correctAnswer: 0,
+    explanation: "The completed squares are (x−3)²+(y+2)²+(z−4)²=29."
+  },
+  {
+    id: 23680,
+    topic: "3D Geometry",
+    difficulty: "Medium",
+    question: "Find the distance between P(2,−1,4) and Q(5,3,4).",
+    options: ["4", "5", "6", "7"],
+    correctAnswer: 1,
+    explanation: "Distance=√(3²+4²+0²)=5."
+  },
+  {
+    id: 23681,
+    topic: "3D Geometry",
+    difficulty: "Medium",
+    question: "Find the midpoint of P(−2,4,6) and Q(4,−2,8).",
+    options: ["(1,1,7)", "(2,2,7)", "(1,−1,7)", "(−1,1,7)"],
+    correctAnswer: 0,
+    explanation: "Midpoint=((−2+4)/2,(4−2)/2,(6+8)/2)=(1,1,7)."
+  },
+  {
+    id: 23682,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "If |a|=5, |b|=6 and the angle between them is 60°, find a·b.",
+    options: ["15", "30", "60", "11"],
+    correctAnswer: 1,
+    explanation: "a·b=5·6·cos60°=15, so option 0 is correct."
+  },
+  {
+    id: 23683,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "If |a|=4, |b|=5 and they are perpendicular, what is |a+b|?",
+    options: ["1", "√41", "9", "20"],
+    correctAnswer: 1,
+    explanation: "|a+b|²=|a|²+|b|²=16+25=41."
+  },
+  {
+    id: 23684,
+    topic: "Vectors in 3D",
+    difficulty: "Medium",
+    question: "Find the angle between <2,2,1> and <1,−1,0>.",
+    options: ["0°", "45°", "90°", "180°"],
+    correctAnswer: 2,
+    explanation: "Dot product=2−2+0=0, so the vectors are perpendicular."
+  },
+  {
+    id: 23685,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "Find the direction vector of the line through P(1,2,3) and Q(4,6,8).",
+    options: ["<3,4,5>", "<5,6,7>", "<1,2,3>", "<4,6,8>"],
+    correctAnswer: 0,
+    explanation: "Q−P=<4−1,6−2,8−3>=<3,4,5>."
+  },
+  {
+    id: 23686,
+    topic: "Lines in 3D",
+    difficulty: "Medium",
+    question: "Are the lines r=<1,0,2>+t<2,4,6> and r=<0,1,1>+s<1,2,3> parallel?",
+    options: ["Yes", "No", "Only at t=0", "Cannot determine"],
+    correctAnswer: 0,
+    explanation: "<2,4,6>=2<1,2,3>, so their directions are parallel."
+  },
+  {
+    id: 23687,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Find the normal vector of 3x−2y+5z=8.",
+    options: ["<3,−2,5>", "<8,−2,5>", "<3,8,5>", "<5,−2,3>"],
+    correctAnswer: 0,
+    explanation: "The coefficients of x,y,z form the normal vector."
+  },
+  {
+    id: 23688,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "Find the plane through (2,1,−1) parallel to 3x−2y+z=5.",
+    options: [
+      "3x−2y+z=3",
+      "3x−2y+z=5",
+      "3x+2y+z=3",
+      "3x−2y−z=3"
+    ],
+    correctAnswer: 0,
+    explanation: "Substitute (2,1,−1): 6−2−1=3."
+  },
+  {
+    id: 23689,
+    topic: "Planes in 3D",
+    difficulty: "Medium",
+    question: "What is the angle between planes x+y=2 and x−y=3?",
+    options: ["0°", "45°", "90°", "60°"],
+    correctAnswer: 2,
+    explanation: "Normals <1,1,0> and <1,−1,0> have dot product zero."
+  },
+  {
+    id: 23690,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "Find the radius of (x−1)²+(y+2)²+(z−3)²=36.",
+    options: ["3", "6", "12", "36"],
+    correctAnswer: 1,
+    explanation: "r²=36, so r=6."
+  },
+  {
+    id: 23691,
+    topic: "Sphere",
+    difficulty: "Medium",
+    question: "Does the point (1,2,3) lie on (x−1)²+(y−2)²+(z−3)²=9?",
+    options: ["Yes", "No", "Only if x=0", "Cannot determine"],
+    correctAnswer: 1,
+    explanation: "The left side is 0, not 9, so the point is the center and is not on the sphere."
+  },
+  {
+    id: 23692,
+    topic: "Ellipsoid",
+    difficulty: "Medium",
+    question: "Which point lies on x²/4+y²/9+z²/16=1?",
+    options: ["(2,0,0)", "(0,3,0)", "(0,0,4)", "All of these"],
+    correctAnswer: 3,
+    explanation: "Each listed point satisfies the equation, so all lie on the ellipsoid."
+  },
+  {
+    id: 23693,
+    topic: "Elliptic Paraboloid",
+    difficulty: "Medium",
+    question: "Which surface is represented by z=4x²+y²?",
+    options: ["Elliptic paraboloid", "Sphere", "Cone", "Hyperboloid"],
+    correctAnswer: 0,
+    explanation: "Both squared terms have positive coefficients, producing an elliptic paraboloid."
+  },
+  {
+    id: 23694,
+    topic: "Hyperbolic Paraboloid",
+    difficulty: "Medium",
+    question: "Which equation represents a hyperbolic paraboloid opening upward along x and downward along y?",
+    options: [
+      "z=2x²−3y²",
+      "z=2x²+3y²",
+      "z=−2x²−3y²",
+      "z=2x−3y"
+    ],
+    correctAnswer: 0,
+    explanation: "Opposite signs on x² and y² produce the saddle shape."
+  },
+  {
+    id: 23695,
+    topic: "Cylinder",
+    difficulty: "Medium",
+    question: "What is the radius of (x+3)²+(z−2)²=49?",
+    options: ["3", "7", "14", "49"],
+    correctAnswer: 1,
+    explanation: "r²=49, so r=7."
+  },
+  {
+    id: 23696,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which equation represents a sphere?",
+    options: [
+      "x²+y²+z²−4x+2y−6z=0",
+      "x²+y²−z²=1",
+      "z=x²+y²",
+      "x²+y²=4"
+    ],
+    correctAnswer: 0,
+    explanation: "All three squared variables have the same positive coefficient, allowing completion of squares to form a sphere."
+  },
+  {
+    id: 23697,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which surface is obtained when x is absent from an equation involving y and z quadratically?",
+    options: ["A cylinder parallel to the x-axis", "A sphere only", "A plane only", "A line only"],
+    correctAnswer: 0,
+    explanation: "If x is absent, the surface generally extends freely along the x-axis."
+  },
+  {
+    id: 23698,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which equation represents a paraboloid with vertex at (0,0,2)?",
+    options: [
+      "z−2=x²+y²",
+      "z+2=x²+y²",
+      "z=x²+y²",
+      "z−2=x²−y²"
+    ],
+    correctAnswer: 0,
+    explanation: "z−2=x²+y² has vertex (0,0,2) and opens in the positive z-direction."
+  },
+  {
+    id: 23699,
+    topic: "Quadric Surfaces",
+    difficulty: "Medium",
+    question: "Which equation represents a hyperbolic paraboloid with central point at (1,2,3)?",
+    options: [
+      "z−3=(x−1)²−(y−2)²",
+      "z−3=(x−1)²+(y−2)²",
+      "z+3=(x+1)²−(y+2)²",
+      "(z−3)²=(x−1)²+(y−2)²"
+    ],
+    correctAnswer: 0,
+    explanation: "Opposite squared terms give a hyperbolic paraboloid centered at the translated point (1,2,3)."
+  },
+  
+  {
+    id: 23700,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Hard",
+    question: "Find the value of k if the points A(1,2,3), B(3,4,7), and C(5,6,k) are collinear.",
+    options: ["9", "11", "13", "15"],
+    correctAnswer: 1,
+    explanation: "AB=(2,2,4). Since AC=(4,4,k-3) must equal 2AB, k-3=8, so k=11."
+  },
+  {
+    id: 23701,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Hard",
+    question: "Find the point dividing A(2,-1,4) and B(8,5,-2) internally in the ratio 2:1.",
+    options: ["(6,3,0)", "(4,1,2)", "(5,2,1)", "(7,4,-1)"],
+    correctAnswer: 0,
+    explanation: "Using P=(2B+A)/3 gives P=(6,3,0)."
+  },
+  {
+    id: 23702,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Hard",
+    question: "Find the values of k for which the distance between (1,2,3) and (4,k,9) is sqrt(61).",
+    options: ["k=-2 or 6", "k=-4 or 8", "k=0 or 4", "k=2 or 6"],
+    correctAnswer: 0,
+    explanation: "Distance squared is 9+(k-2)^2+36=61. Thus (k-2)^2=16, giving k=-2 or 6."
+  },
+  {
+    id: 23703,
+    topic: "3D Coordinate Geometry",
+    difficulty: "Hard",
+    question: "The midpoint of AB is M(2,-3,5). If A=(-4,7,1), find B.",
+    options: ["(8,-13,9)", "(6,-13,9)", "(8,-11,9)", "(6,-11,9)"],
+    correctAnswer: 0,
+    explanation: "B=2M-A=(4,-6,10)-(-4,7,1)=(8,-13,9)."
+  },
+  {
+    id: 23704,
+    topic: "Vectors",
+    difficulty: "Hard",
+    question: "If a=(2,-1,3) and b=(1,4,-2), find |a×b|.",
+    options: ["sqrt(230)", "sqrt(294)", "7sqrt(6)", "14sqrt(3)"],
+    correctAnswer: 0,
+    explanation: "a×b=(-10,7,9). Therefore |a×b|=sqrt(100+49+81)=sqrt(230)."
+  },
+  {
+    id: 23705,
+    topic: "Vectors",
+    difficulty: "Hard",
+    question: "Find the scalar projection of a=(3,4,-2) onto b=(2,-1,2).",
+    options: ["-2/3", "2/3", "4/3", "2"],
+    correctAnswer: 0,
+    explanation: "a·b=6-4-4=-2 and |b|=3. Scalar projection=(a·b)/|b|=-2/3."
+  },
+  {
+    id: 23706,
+    topic: "Vectors",
+    difficulty: "Hard",
+    question: "If a=(1,2,3), b=(2,-1,1), and c=(3,0,2), find a·(b×c).",
+    options: ["3", "5", "7", "9"],
+    correctAnswer: 1,
+    explanation: "b×c=(-2,-1,3). Thus a·(b×c)=-2-2+9=5."
+  },
+  {
+    id: 23707,
+    topic: "Vectors",
+    difficulty: "Hard",
+    question: "Find k such that vectors (1,2,k) and (2,-1,3) are perpendicular.",
+    options: ["-4", "0", "4", "6"],
+    correctAnswer: 1,
+    explanation: "Their dot product is 2-2+3k=3k. Hence k=0."
+  },
+  {
+    id: 23708,
+    topic: "Vectors",
+    difficulty: "Hard",
+    question: "Find k such that vectors (k,2,1) and (2,1,-2) are perpendicular.",
+    options: ["-2", "0", "2", "4"],
+    correctAnswer: 1,
+    explanation: "Their dot product is 2k+2-2=2k. Hence k=0."
+  },
+  {
+    id: 23709,
+    topic: "Vectors",
+    difficulty: "Hard",
+    question: "Find the area of the parallelogram generated by a=(1,2,2) and b=(3,0,1).",
+    options: ["sqrt(65)", "sqrt(35)", "5", "7"],
+    correctAnswer: 0,
+    explanation: "a×b=(2,5,-6). Its magnitude is sqrt(4+25+36)=sqrt(65), which is the parallelogram area."
+  },
+
+  {
+    id: 23710,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Find the direction vector of the line passing through (1,2,3) and (4,-2,9).",
+    options: ["(3,-4,6)", "(2,-4,6)", "(3,4,6)", "(4,-2,9)"],
+    correctAnswer: 0,
+    explanation: "Subtracting the points gives (4-1,-2-2,9-3)=(3,-4,6)."
+  },
+  {
+    id: 23711,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Which line is parallel to r=(1,2,3)+t(2,-1,4)?",
+    options: [
+      "r=(3,1,0)+s(4,-2,8)",
+      "r=(3,1,0)+s(2,1,4)",
+      "r=(3,1,0)+s(1,-2,4)",
+      "r=(3,1,0)+s(2,-1,-4)"
+    ],
+    correctAnswer: 0,
+    explanation: "(4,-2,8)=2(2,-1,4), so the first line is parallel."
+  },
+  {
+    id: 23712,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Find the intersection of x=1+2t, y=2-t, z=3+t with the plane 2x+y-z=5.",
+    options: ["(1,2,3)", "(3,1,4)", "(5,0,5)", "(2,1,3)"],
+    correctAnswer: 2,
+    explanation: "Substitution gives 2(1+2t)+(2-t)-(3+t)=5, so 1+2t=5 and t=2. The point is (5,0,5)."
+  },
+  {
+    id: 23713,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Find the point where x=2+t, y=1+2t, z=4-t intersects the plane x+y+z=12.",
+    options: ["(4,5,2)", "(9/2,6,3/2)", "(5,7,1)", "(6,9,0)"],
+    correctAnswer: 1,
+    explanation: "Substitution gives 7+2t=12, so t=5/2. The point is (9/2,6,3/2)."
+  },
+  {
+    id: 23714,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Determine whether the lines r=(1,2,3)+t(2,1,-1) and r=(3,4,1)+s(4,2,-2) are parallel.",
+    options: ["Yes, because direction vectors are scalar multiples", "No, because they intersect", "No, because directions are perpendicular", "Yes, because they have the same point"],
+    correctAnswer: 0,
+    explanation: "(4,2,-2)=2(2,1,-1), so the lines have parallel direction vectors."
+  },
+  {
+    id: 23715,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Find the shortest distance from P(1,2,3) to the line r=(2,0,1)+t(1,2,2).",
+    options: ["4sqrt(2)/3", "sqrt(5)", "sqrt(6)", "3"],
+    correctAnswer: 0,
+    explanation: "Using d=|(P-A)×v|/|v| gives d=4sqrt(2)/3."
+  },
+  {
+    id: 23716,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Find the direction ratios of a line perpendicular to both a=(1,2,3) and b=(2,-1,1).",
+    options: ["(5,5,-5)", "(5,-5,5)", "(-5,5,5)", "(1,1,1)"],
+    correctAnswer: 0,
+    explanation: "a×b=(5,5,-5), which is perpendicular to both vectors."
+  },
+  {
+    id: 23717,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Find the angle between the lines with direction vectors (1,2,2) and (2,1,-2).",
+    options: ["30°", "45°", "60°", "90°"],
+    correctAnswer: 3,
+    explanation: "Their dot product is 2+2-4=0, so the lines are perpendicular and the angle is 90°."
+  },
+  {
+    id: 23718,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Find the distance between the parallel lines r=(1,0,2)+t(1,2,1) and r=(2,1,4)+s(1,2,1).",
+    options: ["sqrt(11/6)", "sqrt(2)/3", "sqrt(3)/2", "1"],
+    correctAnswer: 0,
+    explanation: "Using d=|(B-A)×v|/|v| gives sqrt(11)/sqrt(6)=sqrt(11/6)."
+  },
+  {
+    id: 23719,
+    topic: "Lines in 3D",
+    difficulty: "Hard",
+    question: "Determine whether the lines r=(1,2,3)+t(1,0,2) and r=(2,1,0)+s(0,1,1) intersect.",
+    options: ["Yes at (2,2,5)", "Yes at (1,2,3)", "No, they are skew", "They are parallel"],
+    correctAnswer: 2,
+    explanation: "Equating coordinates gives t=1 and s=1, but the z-coordinates become 5 and 1. Therefore they do not intersect and are skew."
+  },
+
+  {
+    id: 23720,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find the plane through (1,2,3) with normal vector (2,-1,4).",
+    options: ["2x-y+4z=12", "2x-y+4z=14", "2x+y+4z=12", "x-2y+4z=14"],
+    correctAnswer: 0,
+    explanation: "Using 2(x-1)-(y-2)+4(z-3)=0 gives 2x-y+4z=12."
+  },
+  {
+    id: 23721,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find the plane through A(1,0,2), B(2,1,3), and C(0,2,1).",
+    options: ["x-z=-1", "x+z=3", "x-y+z=1", "2x-y+z=3"],
+    correctAnswer: 0,
+    explanation: "AB=(1,1,1), AC=(-1,2,-1). Their cross product is (-3,0,3), giving a normal proportional to (1,0,-1). Using A gives x-z=-1."
+  },
+  {
+    id: 23722,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find k so that planes 2x+3y+kz=5 and 4x+6y+8z=10 are parallel.",
+    options: ["2", "4", "6", "8"],
+    correctAnswer: 1,
+    explanation: "The second normal is (4,6,8)=2(2,3,4), so k=4."
+  },
+  {
+    id: 23723,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find k so that planes x+2y+3z=4 and 2x+ky+6z=7 are parallel.",
+    options: ["2", "3", "4", "6"],
+    correctAnswer: 2,
+    explanation: "For parallel normals, (2,k,6)=2(1,2,3), giving k=4."
+  },
+  {
+    id: 23724,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find the angle between planes 2x-y+2z=5 and x+2y+2z=7.",
+    options: ["cos^-1(4/9)", "30°", "45°", "90°"],
+    correctAnswer: 0,
+    explanation: "The normals are (2,-1,2) and (1,2,2). Their dot product is 4 and each has magnitude 3, so cos(theta)=4/9."
+  },
+  {
+    id: 23725,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find the distance from P(2,-1,3) to the plane 2x-y+2z-6=0.",
+    options: ["2/3", "4/3", "5/3", "2"],
+    correctAnswer: 2,
+    explanation: "Distance=|2(2)-(-1)+2(3)-6|/sqrt(4+1+4)=5/3."
+  },
+  {
+    id: 23726,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find the distance between planes 2x-y+2z=5 and 4x-2y+4z=18.",
+    options: ["1/3", "4/3", "1", "3/2"],
+    correctAnswer: 1,
+    explanation: "The second plane becomes 2x-y+2z=9. Distance=|9-5|/3=4/3."
+  },
+  {
+    id: 23727,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Which plane is perpendicular to 2x-y+2z=4?",
+    options: ["x+z=5", "2x-y+2z=7", "4x-2y+4z=1", "x-2y+z=3"],
+    correctAnswer: 0,
+    explanation: "The normal of the given plane is (2,-1,2). The normal (1,0,-1) of x+z=5 has dot product 2-2=0, so the planes are perpendicular."
+  },
+  {
+    id: 23728,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find the line of intersection of planes x+y+z=6 and x-y+z=2.",
+    options: ["r=(4,2,0)+t(1,0,-1)", "r=(4,1,1)+t(1,0,-1)", "r=(2,2,2)+t(1,1,-1)", "r=(3,1,2)+t(1,0,1)"],
+    correctAnswer: 0,
+    explanation: "Subtracting the equations gives y=2. Then x+z=4. Taking z=-t gives x=4+t, so a direction vector is (1,0,-1)."
+  },
+  {
+    id: 23729,
+    topic: "Planes in 3D",
+    difficulty: "Hard",
+    question: "Find the normal vector to the plane containing direction vectors (1,2,-1) and (2,-1,3).",
+    options: ["(5,-5,-5)", "(5,5,-5)", "(-5,5,5)", "(1,1,1)"],
+    correctAnswer: 0,
+    explanation: "Their cross product is (5,-5,-5), which is normal to the plane."
+  },
+
+  {
+  id: 23730,
+  topic: "Sphere",
+  difficulty: "Hard",
+  question: "Find the center and radius of x²+y²+z²-4x+6y-8z+19=0.",
+  options: [
+    "(2,-3,4), radius=sqrt(10)",
+    "(-2,3,-4), radius=sqrt(10)",
+    "(2,-3,4), radius=10",
+    "(2,3,-4), radius=sqrt(10)"
+  ],
+  correctAnswer: 0,
+  explanation: "Completing squares gives (x-2)²+(y+3)²+(z-4)²=10. Therefore the center is (2,-3,4) and the radius is sqrt(10)."
+},
+  {
+    id: 23731,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "Find the equation of the sphere with center (2,-1,3) passing through (5,3,3).",
+    options: ["(x-2)²+(y+1)²+(z-3)²=25", "(x-2)²+(y-1)²+(z-3)²=25", "(x+2)²+(y+1)²+(z+3)²=25", "(x-2)²+(y+1)²+(z-3)²=16"],
+    correctAnswer: 0,
+    explanation: "The radius squared is (5-2)²+(3+1)²+(3-3)²=25."
+  },
+  {
+    id: 23732,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "Find the value of k for which x²+y²+z²-2x+4y-6z+k=0 represents a sphere of radius 5.",
+    options: ["-11", "-5", "5", "11"],
+    correctAnswer: 0,
+    explanation: "The center is (1,-2,3). Radius squared is 14-k. Setting it equal to 25 gives k=-11."
+  },
+  {
+    id: 23733,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "Determine the position of P(1,2,3) relative to the sphere centered at the origin with radius sqrt(14).",
+    options: ["Inside", "On the sphere", "Outside", "Cannot be determined"],
+    correctAnswer: 1,
+    explanation: "OP²=1²+2²+3²=14, equal to r². Therefore P lies on the sphere."
+  },
+  {
+    id: 23734,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "Find the tangent plane to x²+y²+z²=14 at P(1,2,3).",
+    options: ["x+2y+3z=14", "x+2y+3z=7", "2x+y+3z=14", "x+2y-z=14"],
+    correctAnswer: 0,
+    explanation: "The tangent plane at (1,2,3) is xx1+yy1+zz1=14, giving x+2y+3z=14."
+  },
+  {
+    id: 23735,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "Find the radius of the sphere x²+y²+z²+6x-8y+4z-15=0.",
+    options: ["sqrt(44)", "sqrt(54)", "sqrt(40)", "5"],
+    correctAnswer: 0,
+    explanation: "The center is (-3,4,-2). Radius squared=9+16+4+15=44, so r=sqrt(44)."
+  },
+  {
+    id: 23736,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "A sphere has center C(1,-2,3) and is tangent to the plane x+2y+2z=10. Find its radius.",
+    options: ["7/3", "2/3", "4/3", "2"],
+    correctAnswer: 0,
+    explanation: "Radius equals the distance from C to the plane: |1-4+6-10|/sqrt(1+4+4)=7/3."
+  },
+  {
+    id: 23737,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "Find the sphere centered at the origin tangent to the plane 2x-y+2z=6.",
+    options: ["x²+y²+z²=4", "x²+y²+z²=9/4", "x²+y²+z²=36", "x²+y²+z²=6"],
+    correctAnswer: 0,
+    explanation: "Distance from the origin to the plane is 6/3=2, so r²=4."
+  },
+  {
+    id: 23738,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "Find the sphere whose diameter endpoints are A(1,2,3) and B(5,4,7).",
+    options: [
+      "(x-3)²+(y-3)²+(z-5)²=9",
+      "(x-3)²+(y-3)²+(z-5)²=13",
+      "(x-2)²+(y-3)²+(z-4)²=13",
+      "(x-3)²+(y-2)²+(z-5)²=9"
+    ],
+    correctAnswer: 0,
+    explanation: "The midpoint is (3,3,5). AB²=16+4+16=36, so radius²=9."
+  },
+  {
+    id: 23739,
+    topic: "Sphere",
+    difficulty: "Hard",
+    question: "Find the radius of the intersection circle of x²+y²+z²=25 and z=4.",
+    options: ["2", "3", "4", "5"],
+    correctAnswer: 1,
+    explanation: "Substituting z=4 gives x²+y²=25-16=9, so the circle radius is 3."
+  },
+
+  {
+    id: 23740,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "Find the semi-axis lengths of x²/9+y²/16+z²/25=1.",
+    options: ["(3,4,5)", "(9,16,25)", "(3,16,5)", "(9,4,25)"],
+    correctAnswer: 0,
+    explanation: "The semi-axis lengths are the square roots of the denominators: 3, 4, and 5."
+  },
+  {
+    id: 23741,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "Find the volume of x²/4+y²/9+z²/16=1.",
+    options: ["24π", "32π", "48π", "64π"],
+    correctAnswer: 1,
+    explanation: "The semi-axes are 2, 3, and 4. Volume=(4/3)π(2)(3)(4)=32π."
+  },
+  {
+    id: 23742,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "Which point lies on x²/4+y²/9+z²/16=1?",
+    options: ["(1,1,1)", "(2,1,0)", "(0,0,4)", "(3,0,0)"],
+    correctAnswer: 2,
+    explanation: "For (0,0,4), the left side is 16/16=1. The other listed points do not satisfy the equation."
+  },
+  {
+    id: 23743,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "Find the maximum value of z on x²/9+y²/16+z²/25=1.",
+    options: ["3", "4", "5", "25"],
+    correctAnswer: 2,
+    explanation: "The z semi-axis is sqrt(25)=5, so the maximum value of z is 5."
+  },
+  {
+    id: 23744,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "What is the trace of x²/9+y²/16+z²/25=1 in the plane z=0?",
+    options: ["x²/9+y²/16=1", "x²/9+y²/25=1", "y²/16+z²/25=1", "x²/16+y²/9=1"],
+    correctAnswer: 0,
+    explanation: "Setting z=0 leaves x²/9+y²/16=1."
+  },
+  {
+    id: 23745,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "Find the volume of the ellipsoid x²/25+y²/9+z²/4=1.",
+    options: ["20π", "30π", "40π", "60π"],
+    correctAnswer: 2,
+    explanation: "The semi-axes are 5, 3, and 2. Volume=(4/3)π(5)(3)(2)=40π."
+  },
+  {
+    id: 23746,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "For x²/16+y²/25+z²/36=1, which axis is the major axis?",
+    options: ["x-axis", "y-axis", "z-axis", "All axes are equal"],
+    correctAnswer: 2,
+    explanation: "The largest denominator is 36, giving the largest semi-axis 6 along the z-axis."
+  },
+  {
+    id: 23747,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "Find the center of (x-2)²/9+(y+3)²/16+(z-4)²/25=1.",
+    options: ["(2,-3,4)", "(-2,3,-4)", "(2,3,4)", "(-2,-3,4)"],
+    correctAnswer: 0,
+    explanation: "The shifts show the center is (2,-3,4)."
+  },
+  {
+    id: 23748,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "If x²/a²+y²/b²+z²/c²=1 has volume 100π/3, and a=2,b=5, find c.",
+    options: ["2", "3", "5", "10"],
+    correctAnswer: 0,
+    explanation: "Volume=(4/3)πabc. Thus abc=25. Since ab=10, c=2."
+  },
+  {
+    id: 23749,
+    topic: "Ellipsoid",
+    difficulty: "Hard",
+    question: "Which surface is represented by x²/9+y²/4+z²/16=1?",
+    options: ["Ellipsoid", "Elliptic paraboloid", "Hyperboloid", "Cone"],
+    correctAnswer: 0,
+    explanation: "Three positive squared terms equal to 1 represent an ellipsoid."
+  },
+
+  {
+    id: 23750,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "Identify z=x²/4+y²/9.",
+    options: ["Elliptic paraboloid", "Hyperbolic paraboloid", "Ellipsoid", "Cone"],
+    correctAnswer: 0,
+    explanation: "Both squared terms have positive signs, so the surface is an elliptic paraboloid opening in the positive z-direction."
+  },
+  {
+    id: 23751,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "Identify z=x²/4-y²/9.",
+    options: ["Elliptic paraboloid", "Hyperbolic paraboloid", "Hyperboloid of one sheet", "Cone"],
+    correctAnswer: 1,
+    explanation: "The opposite signs of x² and y² produce a hyperbolic paraboloid."
+  },
+  {
+    id: 23752,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "What is the vertex of z=(x-2)²/4+(y+3)²/9+5?",
+    options: ["(2,-3,5)", "(-2,3,5)", "(2,3,-5)", "(-2,-3,5)"],
+    correctAnswer: 0,
+    explanation: "Both squared terms vanish at x=2 and y=-3, giving vertex (2,-3,5)."
+  },
+  {
+    id: 23753,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "In which direction does z=-(x²/4+y²/9) open?",
+    options: ["Positive z-axis", "Negative z-axis", "Positive x-axis", "Positive y-axis"],
+    correctAnswer: 1,
+    explanation: "The negative sign means z decreases as x and y move away from the vertex, so it opens in the negative z-direction."
+  },
+  {
+    id: 23754,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "What is the trace of z=x²/4+y²/9 at z=4?",
+    options: ["x²/4+y²/9=4", "x²/16+y²/36=1", "x²/4+y²/9=1", "x²/16+y²/9=1"],
+    correctAnswer: 0,
+    explanation: "Substituting z=4 gives x²/4+y²/9=4."
+  },
+  {
+    id: 23755,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "Find the trace of z=x²-y² in the plane x=2.",
+    options: ["z=4-y²", "z=y²-4", "z=4+y²", "z=x²-y²"],
+    correctAnswer: 0,
+    explanation: "Setting x=2 gives z=4-y²."
+  },
+  {
+    id: 23756,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "Which trace of z=x²+y² is obtained in the plane y=0?",
+    options: ["z=x²", "z=y²", "z=x", "z=0"],
+    correctAnswer: 0,
+    explanation: "Substituting y=0 gives z=x²."
+  },
+  {
+    id: 23757,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "For z=(x-1)²+(y+2)², what is the axis of the paraboloid?",
+    options: ["The z-axis through (1,-2)", "The x-axis", "The y-axis", "The line y=x"],
+    correctAnswer: 0,
+    explanation: "The vertex is (1,-2,0), and the axis is the line x=1, y=-2 parallel to the z-axis."
+  },
+  {
+    id: 23758,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "For z=x²/9+y²/4, which direction has the wider opening?",
+    options: ["x-direction", "y-direction", "Both equally", "z-direction"],
+    correctAnswer: 0,
+    explanation: "The larger denominator 9 means the paraboloid extends farther in the x-direction for the same z value."
+  },
+  {
+    id: 23759,
+    topic: "Paraboloids",
+    difficulty: "Hard",
+    question: "Identify 4x²+9y²=16z.",
+    options: ["Elliptic paraboloid", "Hyperbolic paraboloid", "Cone", "Ellipsoid"],
+    correctAnswer: 0,
+    explanation: "Rearranging gives z=x²/4+9y²/16. Both squared terms are positive, so it is an elliptic paraboloid."
+  },
+
+  {
+    id: 23760,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "Identify x²/9+y²/4-z²/16=1.",
+    options: ["Hyperboloid of one sheet", "Hyperboloid of two sheets", "Ellipsoid", "Elliptic paraboloid"],
+    correctAnswer: 0,
+    explanation: "Two positive squared terms and one negative squared term equal to 1 represent a hyperboloid of one sheet."
+  },
+  {
+    id: 23761,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "Identify -x²/9-y²/4+z²/16=1.",
+    options: ["Hyperboloid of one sheet", "Hyperboloid of two sheets", "Elliptic paraboloid", "Cone"],
+    correctAnswer: 1,
+    explanation: "One positive squared term and two negative squared terms equal to 1 represent a hyperboloid of two sheets."
+  },
+  {
+    id: 23762,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "What is the axis of x²/4+y²/9-z²/16=1?",
+    options: ["x-axis", "y-axis", "z-axis", "No axis"],
+    correctAnswer: 2,
+    explanation: "The negative z² term identifies the z-axis as the axis of the hyperboloid of one sheet."
+  },
+  {
+    id: 23763,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "Find the minimum possible value of |z| on x²/9+y²/4-z²/16=1.",
+    options: ["0", "2", "4", "16"],
+    correctAnswer: 0,
+    explanation: "At z=0, the equation becomes x²/9+y²/4=1, which has real points. Therefore the minimum |z| is 0."
+  },
+  {
+    id: 23764,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "What is the trace of x²/9+y²/4-z²/16=1 at z=0?",
+    options: ["x²/9+y²/4=1", "x²/9-y²/4=1", "x²/9+y²/4=0", "x²/9+y²/16=1"],
+    correctAnswer: 0,
+    explanation: "Setting z=0 gives x²/9+y²/4=1."
+  },
+  {
+    id: 23765,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "What type of trace does x²/9+y²/4-z²/16=1 have in the plane x=0?",
+    options: ["Ellipse", "Hyperbola", "Parabola", "Circle"],
+    correctAnswer: 1,
+    explanation: "At x=0, y²/4-z²/16=1, which is a hyperbola."
+  },
+  {
+    id: 23766,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "Which equation represents a hyperboloid of two sheets along the x-axis?",
+    options: ["x²/9-y²/4-z²/16=1", "-x²/9+y²/4+z²/16=1", "x²/9+y²/4-z²/16=1", "x²/9+y²/4+z²/16=1"],
+    correctAnswer: 0,
+    explanation: "The x² term is positive while y² and z² are negative, so the two sheets open along the x-axis."
+  },
+  {
+    id: 23767,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "Find the vertices of x²/25+y²/9-z²/16=1.",
+    options: ["(±5,0,0)", "(0,±3,0)", "(0,0,±4)", "(±25,0,0)"],
+    correctAnswer: 0,
+    explanation: "Setting y=z=0 gives x²/25=1, so x=±5."
+  },
+  {
+    id: 23768,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "Find the vertices of -x²/25-y²/9+z²/16=1.",
+    options: ["(±5,0,0)", "(0,±3,0)", "(0,0,±4)", "(0,0,±16)"],
+    correctAnswer: 2,
+    explanation: "Setting x=y=0 gives z²/16=1, so z=±4."
+  },
+  {
+    id: 23769,
+    topic: "Hyperboloids",
+    difficulty: "Hard",
+    question: "Which equation represents a hyperboloid of one sheet with axis along y?",
+    options: ["x²/4-y²/9+z²/16=1", "-x²/4+y²/9-z²/16=1", "x²/4+y²/9-z²/16=1", "x²/4+y²/9+z²/16=1"],
+    correctAnswer: 0,
+    explanation: "The y² term is the only negative term, identifying the y-axis as the axis of the one-sheet hyperboloid."
+  },
+
+  {
+    id: 23770,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "Identify x²/4+y²/9-z²/16=0.",
+    options: ["Ellipsoid", "Cone", "Hyperboloid", "Paraboloid"],
+    correctAnswer: 1,
+    explanation: "A homogeneous quadratic equation with mixed signs equal to zero represents a cone."
+  },
+  {
+    id: 23771,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "What is the vertex of x²/4+y²/9-z²/16=0?",
+    options: ["(0,0,0)", "(2,3,4)", "(4,9,16)", "No vertex"],
+    correctAnswer: 0,
+    explanation: "The standard cone is centered at the origin and has vertex (0,0,0)."
+  },
+  {
+    id: 23772,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "Which equation represents a circular cone?",
+    options: ["x²+y²=z²", "x²/4+y²/9=z²/16", "x²+y²+z²=1", "x²-y²=z"],
+    correctAnswer: 0,
+    explanation: "Equal coefficients of x² and y² give circular cross-sections, so x²+y²=z² is a circular cone."
+  },
+  {
+    id: 23773,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "Find the angle between the z-axis and a generator of the cone x²+y²=3z².",
+    options: ["30°", "45°", "90°", "60°"],
+    correctAnswer: 3,
+    explanation: "For a cone x²+y²=z²tan²θ. Since tan²θ=3, θ=60°."
+  },
+  {
+    id: 23774,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "Which axis is the axis of x²/9+y²/4=z²/16?",
+    options: ["x-axis", "y-axis", "z-axis", "No axis"],
+    correctAnswer: 2,
+    explanation: "The z variable is the axial variable, so the cone's axis is the z-axis."
+  },
+  {
+    id: 23775,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "Find the trace of x²/9+y²/4=z²/16 in the plane z=4.",
+    options: ["x²/9+y²/4=1", "x²/9+y²/4=4", "x²/9+y²/4=16", "x²/9-y²/4=1"],
+    correctAnswer: 0,
+    explanation: "At z=4, z²/16=1, so x²/9+y²/4=1."
+  },
+  {
+    id: 23776,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "For x²+y²=4z², what is the radius of the circular trace at z=3?",
+    options: ["3", "4", "6", "12"],
+    correctAnswer: 2,
+    explanation: "At z=3, x²+y²=4(9)=36, so the radius is 6."
+  },
+  {
+    id: 23777,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "Which trace of x²+y²=z² is obtained in the plane x=0?",
+    options: ["y²=z²", "y=z²", "y²+z²=1", "y+z=0"],
+    correctAnswer: 0,
+    explanation: "Setting x=0 gives y²=z², representing two intersecting lines."
+  },
+  {
+    id: 23778,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "The equation 4x²+9y²=36z² can be written as:",
+    options: ["x²/9+y²/4=z²", "x²/4+y²/9=z²", "x²/36+y²/36=z²", "x²+y²=36z²"],
+    correctAnswer: 0,
+    explanation: "Dividing by 36 gives x²/9+y²/4=z²."
+  },
+  {
+    id: 23779,
+    topic: "Cones",
+    difficulty: "Hard",
+    question: "How does the radius of a circular cross-section of a cone change as |z| increases?",
+    options: ["It remains constant", "It decreases", "It increases linearly with |z|", "It increases quadratically with |z|"],
+    correctAnswer: 2,
+    explanation: "For a cone, the cross-sectional radius is proportional to the distance from the vertex, so it increases linearly with |z|."
+  },
+
+  {
+    id: 23780,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "Identify x²/9+y²/4=1.",
+    options: ["Elliptic cylinder", "Ellipsoid", "Cone", "Paraboloid"],
+    correctAnswer: 0,
+    explanation: "The absence of z means the ellipse extends parallel to the z-axis, forming an elliptic cylinder."
+  },
+  {
+    id: 23781,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "Which equation represents a circular cylinder parallel to the z-axis with radius 5?",
+    options: ["x²+y²=25", "x²+z²=25", "y²+z²=25", "x²+y²+z²=25"],
+    correctAnswer: 0,
+    explanation: "The equation x²+y²=25 is a circle in the xy-plane extended parallel to the z-axis."
+  },
+  {
+    id: 23782,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "What is the axis of the cylinder y²+z²=16?",
+    options: ["x-axis", "y-axis", "z-axis", "Line y=z"],
+    correctAnswer: 0,
+    explanation: "The x variable is absent, so the cylinder extends parallel to the x-axis."
+  },
+  {
+    id: 23783,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "Identify x²-z²=9.",
+    options: ["Elliptic cylinder", "Hyperbolic cylinder", "Cone", "Hyperboloid"],
+    correctAnswer: 1,
+    explanation: "The xz cross-section is a hyperbola and the surface extends parallel to the y-axis."
+  },
+  {
+    id: 23784,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "What surface is represented by y=x²?",
+    options: ["Parabolic cylinder", "Elliptic cylinder", "Cone", "Paraboloid"],
+    correctAnswer: 0,
+    explanation: "The parabola y=x² extends parallel to the z-axis because z is absent."
+  },
+  {
+    id: 23785,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "What is the axis direction of y=x²?",
+    options: ["x-axis", "y-axis", "z-axis", "The line y=x"],
+    correctAnswer: 2,
+    explanation: "Since z does not occur, the parabolic cylinder extends parallel to the z-axis."
+  },
+  {
+    id: 23786,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "Find the radius of x²+y²-6x+8y=0.",
+    options: ["3", "4", "5", "6"],
+    correctAnswer: 2,
+    explanation: "Completing squares gives (x-3)²+(y+4)²=25, so the radius is 5."
+  },
+  {
+    id: 23787,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "Find the axis of (x-2)²+(y+3)²=16.",
+    options: ["z-axis through (2,-3)", "x-axis through (2,-3)", "y-axis through (2,-3)", "z-axis through (-2,3)"],
+    correctAnswer: 0,
+    explanation: "The cross-section has center (2,-3), and the cylinder extends parallel to the z-axis."
+  },
+  {
+    id: 23788,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "What type of cylinder is represented by x²/16-y²/9=1?",
+    options: ["Circular", "Elliptic", "Hyperbolic", "Parabolic"],
+    correctAnswer: 2,
+    explanation: "The cross-section is a hyperbola, so the surface is a hyperbolic cylinder."
+  },
+  {
+    id: 23789,
+    topic: "Cylinders",
+    difficulty: "Hard",
+    question: "What is the trace of x²+y²=9 in the plane z=5?",
+    options: ["A circle of radius 3", "A circle of radius 5", "An ellipse", "A point"],
+    correctAnswer: 0,
+    explanation: "The equation does not depend on z, so the trace at z=5 is the circle x²+y²=9 with radius 3."
+  },
+
+  {
+    id: 23790,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "Which quadric has all three squared terms positive and equals 1?",
+    options: ["Ellipsoid", "Cone", "Hyperboloid of one sheet", "Hyperboloid of two sheets"],
+    correctAnswer: 0,
+    explanation: "An equation with three positive squared terms equal to 1 represents an ellipsoid."
+  },
+  {
+    id: 23791,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "Which quadric has two positive squared terms, one negative squared term, and equals 1?",
+    options: ["Ellipsoid", "Hyperboloid of one sheet", "Hyperboloid of two sheets", "Cone"],
+    correctAnswer: 1,
+    explanation: "Two positive and one negative squared terms equal to 1 represent a hyperboloid of one sheet."
+  },
+  {
+    id: 23792,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "Which quadric has one positive squared term, two negative squared terms, and equals 1?",
+    options: ["Ellipsoid", "Hyperboloid of one sheet", "Hyperboloid of two sheets", "Elliptic paraboloid"],
+    correctAnswer: 2,
+    explanation: "One positive and two negative squared terms equal to 1 represent a hyperboloid of two sheets."
+  },
+  {
+    id: 23793,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "Which quadric has a linear variable and two squared variables with the same sign?",
+    options: ["Elliptic paraboloid", "Cone", "Ellipsoid", "Hyperboloid"],
+    correctAnswer: 0,
+    explanation: "A form such as z=x²/a²+y²/b² is an elliptic paraboloid."
+  },
+  {
+    id: 23794,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "Which quadric has two squared variables with opposite signs and one linear variable?",
+    options: ["Elliptic paraboloid", "Hyperbolic paraboloid", "Ellipsoid", "Cylinder"],
+    correctAnswer: 1,
+    explanation: "A form such as z=x²/a²-y²/b² is a hyperbolic paraboloid."
+  },
+  {
+    id: 23795,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "Which surface is represented by x²/4+y²/9-z²/16=0?",
+    options: ["Ellipsoid", "Cone", "Hyperboloid of one sheet", "Elliptic paraboloid"],
+    correctAnswer: 1,
+    explanation: "A homogeneous quadratic equation with mixed signs equal to zero represents a cone."
+  },
+  {
+    id: 23796,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "A quadric has no z term and its xy-trace is an ellipse. What type of surface is it?",
+    options: ["Elliptic cylinder", "Ellipsoid", "Elliptic paraboloid", "Cone"],
+    correctAnswer: 0,
+    explanation: "Because z is absent, the ellipse extends parallel to the z-axis, forming an elliptic cylinder."
+  },
+  {
+    id: 23797,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "For the ellipsoid x²/25+y²/16+z²/9=1, what is the maximum value of x²+y²+z²?",
+    options: ["9", "16", "25", "50"],
+    correctAnswer: 2,
+    explanation: "The largest semi-axis is 5 along the x-axis. At (±5,0,0), x²+y²+z²=25, which is the maximum."
+  },
+  {
+    id: 23798,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "For z=x²+y², what curve is obtained by intersecting the surface with the plane x=y?",
+    options: ["z=2x²", "z=x²", "z=4x²", "z=2x"],
+    correctAnswer: 0,
+    explanation: "Substitute y=x into z=x²+y² to obtain z=2x²."
+  },
+  {
+    id: 23799,
+    topic: "Quadric Surfaces",
+    difficulty: "Hard",
+    question: "For z=x²-y², what curve is obtained when y=0?",
+    options: ["z=x²", "z=-x²", "z=x", "z=0"],
+    correctAnswer: 0,
+    explanation: "Setting y=0 gives z=x², which is a parabola."
+  },
+  
+  {
+    id: 23800,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t, t^2, t^3>, what is the position of the particle at t = 1?',
+    options: ['<1, 1, 1>', '<0, 1, 1>', '<1, 2, 3>', '<1, 1, 0>'],
+    correctAnswer: 0,
+    explanation: 'Substituting t = 1 gives r(1) = <1, 1^2, 1^3> = <1, 1, 1>.'
+  },
+  {
+    id: 23801,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <t^2, 3t, 4>, what is the velocity vector?',
+    options: ['<2t, 3, 0>', '<t, 3, 4>', '<2, 3t, 0>', '<t^2, 3, 4>'],
+    correctAnswer: 0,
+    explanation: 'Velocity is r\'(t). Differentiating componentwise gives <2t, 3, 0>.'
+  },
+  {
+    id: 23802,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the velocity of r(t) = <cos t, sin t, t>?',
+    options: ['<-sin t, cos t, 1>', '<sin t, cos t, 1>', '<-cos t, sin t, 1>', '<cos t, -sin t, 1>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate each component: r\'(t) = <-sin t, cos t, 1>.'
+  },
+  {
+    id: 23803,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The speed of a particle with velocity v(t) is:',
+    options: ['|v(t)|', 'v(t)^2', 'v\'(t)', '1/|v(t)|'],
+    correctAnswer: 0,
+    explanation: 'Speed is the magnitude of the velocity vector, |v(t)|.'
+  },
+  {
+    id: 23804,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If v(t) = <3, 4, 0>, what is the speed?',
+    options: ['5', '7', '12', '25'],
+    correctAnswer: 0,
+    explanation: 'Speed = sqrt(3^2 + 4^2 + 0^2) = 5.'
+  },
+  {
+    id: 23805,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Acceleration is defined as:',
+    options: ['The derivative of velocity', 'The derivative of position only', 'The magnitude of position', 'The integral of velocity'],
+    correctAnswer: 0,
+    explanation: 'Acceleration is a(t) = v\'(t) = r\'\'(t).'
+  },
+  {
+    id: 23806,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t^2, t^3, t>, what is the acceleration?',
+    options: ['<2, 6t, 0>', '<2t, 3t^2, 1>', '<t^2, t^3, t>', '<2t, 6, 0>'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <2t, 3t^2, 1>, so r\'\'(t) = <2, 6t, 0>.'
+  },
+  {
+    id: 23807,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A vector-valued function r(t) represents the:',
+    options: ['Position of a particle in space', 'Speed only', 'Acceleration only', 'Curvature only'],
+    correctAnswer: 0,
+    explanation: 'A position vector r(t) gives the particle\'s location as a function of t.'
+  },
+  {
+    id: 23808,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <2t, 3t, 4t>, what type of path does the particle follow?',
+    options: ['A straight line', 'A circle', 'A parabola', 'A helix'],
+    correctAnswer: 0,
+    explanation: 'All components are linear in t, so the path is a straight line.'
+  },
+  {
+    id: 23809,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is r(0) for r(t) = <t, t^2, 2t + 1>?',
+    options: ['<0, 0, 1>', '<1, 0, 0>', '<0, 1, 2>', '<1, 1, 1>'],
+    correctAnswer: 0,
+    explanation: 'At t = 0, r(0) = <0, 0, 1>.'
+  },
+
+  {
+    id: 23810,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t, 2t, 3t>, what is r\'(t)?',
+    options: ['<1, 2, 3>', '<t, 2t, 3t>', '<2, 4, 6>', '<0, 0, 0>'],
+    correctAnswer: 0,
+    explanation: 'Differentiating each linear component gives <1, 2, 3>.'
+  },
+  {
+    id: 23811,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t^2, t^2, t^2>, what is the velocity at t = 2?',
+    options: ['<4, 4, 4>', '<2, 2, 2>', '<8, 8, 8>', '<1, 1, 1>'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <2t, 2t, 2t>. At t = 2 this is <4, 4, 4>.'
+  },
+  {
+    id: 23812,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <t, t^2, t^3>, which coordinate changes cubically?',
+    options: ['z-coordinate', 'x-coordinate', 'y-coordinate', 'None'],
+    correctAnswer: 0,
+    explanation: 'The z-coordinate is z = t^3.'
+  },
+  {
+    id: 23813,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the magnitude of <1, 2, 2>?',
+    options: ['3', '5', '√5', '4'],
+    correctAnswer: 0,
+    explanation: 'Magnitude = √(1^2 + 2^2 + 2^2) = √9 = 3.'
+  },
+  {
+    id: 23814,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If the velocity is v(t) = <0, 0, 5>, the particle moves:',
+    options: ['In the positive z-direction', 'In the positive x-direction', 'In the positive y-direction', 'At rest'],
+    correctAnswer: 0,
+    explanation: 'Only the z-component is nonzero and positive.'
+  },
+  {
+    id: 23815,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If acceleration is zero, the velocity is:',
+    options: ['Constant', 'Always zero', 'Increasing', 'Undefined'],
+    correctAnswer: 0,
+    explanation: 'Zero acceleration means the derivative of velocity is zero, so velocity remains constant.'
+  },
+  {
+    id: 23816,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Which formula gives the speed of r(t)?',
+    options: ['|r\'(t)|', '|r(t)|', 'r\'\'(t)', 'r(t) · r\'(t)'],
+    correctAnswer: 0,
+    explanation: 'Speed is the magnitude of velocity, |r\'(t)|.'
+  },
+  {
+    id: 23817,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <t, 0, 0>, what is the speed?',
+    options: ['1', 't', '0', 't^2'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <1, 0, 0>, whose magnitude is 1.'
+  },
+  {
+    id: 23818,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <0, t^2, 0>, what is the velocity at t = 1?',
+    options: ['<0, 2, 0>', '<0, 1, 0>', '<0, 2t, 0>', '<2, 0, 0>'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <0, 2t, 0>. At t = 1 it is <0, 2, 0>.'
+  },
+  {
+    id: 23819,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <t^3, 0, 0>, what is the acceleration?',
+    options: ['<6t, 0, 0>', '<3t^2, 0, 0>', '<t^3, 0, 0>', '<6, 0, 0>'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <3t^2, 0, 0>, so r\'\'(t) = <6t, 0, 0>.'
+  },
+
+  {
+    id: 23820,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A space curve is generally represented by:',
+    options: ['A vector-valued function r(t)', 'A single constant', 'A scalar only', 'A matrix only'],
+    correctAnswer: 0,
+    explanation: 'A space curve can be represented parametrically by r(t) = <x(t), y(t), z(t)>.'
+  },
+  {
+    id: 23821,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In r(t) = <x(t), y(t), z(t)>, what does x(t) represent?',
+    options: ['The x-coordinate', 'The speed', 'The acceleration', 'The curvature'],
+    correctAnswer: 0,
+    explanation: 'x(t) gives the particle\'s x-coordinate at parameter t.'
+  },
+  {
+    id: 23822,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the derivative of r(t) = <sin t, 0, 0>?',
+    options: ['<cos t, 0, 0>', '<-sin t, 0, 0>', '<sin t, 1, 0>', '<cos t, 1, 0>'],
+    correctAnswer: 0,
+    explanation: 'The derivative of sin t is cos t.'
+  },
+  {
+    id: 23823,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the derivative of <0, cos t, 0>?',
+    options: ['<0, -sin t, 0>', '<0, sin t, 0>', '<0, cos t, 0>', '<-sin t, 0, 0>'],
+    correctAnswer: 0,
+    explanation: 'The derivative of cos t is -sin t.'
+  },
+  {
+    id: 23824,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r\'(t) = <2, 0, 0>, the speed is:',
+    options: ['2', '0', '4', '√2'],
+    correctAnswer: 0,
+    explanation: 'The magnitude of <2, 0, 0> is 2.'
+  },
+  {
+    id: 23825,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r\'(t) = <1, 1, 1>, what is the speed?',
+    options: ['√3', '3', '1', '2'],
+    correctAnswer: 0,
+    explanation: 'Speed = √(1 + 1 + 1) = √3.'
+  },
+  {
+    id: 23826,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The position function can be obtained from velocity by:',
+    options: ['Integrating velocity', 'Differentiating velocity', 'Taking its magnitude', 'Taking its cross product'],
+    correctAnswer: 0,
+    explanation: 'Since velocity is the derivative of position, position is obtained by integration plus an initial-position constant.'
+  },
+  {
+    id: 23827,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If v(t) = <2t, 0, 0>, what is the acceleration?',
+    options: ['<2, 0, 0>', '<2t, 0, 0>', '<t^2, 0, 0>', '<0, 2, 0>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate velocity: a(t) = <2, 0, 0>.'
+  },
+  {
+    id: 23828,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r(t) = <t, t, t>, the particle moves along which line?',
+    options: ['x = y = z', 'x = y = 0', 'y = z = 0', 'x = 1'],
+    correctAnswer: 0,
+    explanation: 'Since x = t, y = t, and z = t, we have x = y = z.'
+  },
+  {
+    id: 23829,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Which vector is tangent to a curve at a point?',
+    options: ['The velocity vector', 'The position vector only', 'The acceleration vector only', 'The zero vector always'],
+    correctAnswer: 0,
+    explanation: 'The velocity vector r\'(t) is tangent to the parametrized curve when nonzero.'
+  },
+
+  {
+    id: 23830,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The unit tangent vector T is obtained by:',
+    options: ['T = r\'(t)/|r\'(t)|', 'T = r(t)/|r(t)|', 'T = r\'\'(t)/|r\'\'(t)|', 'T = |r\'(t)|r\'(t)'],
+    correctAnswer: 0,
+    explanation: 'The unit tangent vector is the normalized velocity vector.'
+  },
+  {
+    id: 23831,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the magnitude of a unit vector?',
+    options: ['1', '0', '2', 'Depends on the vector'],
+    correctAnswer: 0,
+    explanation: 'By definition, a unit vector has magnitude 1.'
+  },
+  {
+    id: 23832,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If v = <3, 4, 0>, what is the unit tangent vector?',
+    options: ['<3/5, 4/5, 0>', '<3, 4, 0>', '<4/5, 3/5, 0>', '<1/3, 1/4, 0>'],
+    correctAnswer: 0,
+    explanation: 'Divide v by its magnitude 5: T = <3/5, 4/5, 0>.'
+  },
+  {
+    id: 23833,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Curvature measures how quickly a curve:',
+    options: ['Changes direction', 'Changes position only', 'Changes its parameter', 'Changes its length only'],
+    correctAnswer: 0,
+    explanation: 'Curvature measures the rate at which the tangent direction changes along a curve.'
+  },
+  {
+    id: 23834,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The curvature of a straight line is:',
+    options: ['0', '1', '∞', 'Undefined always'],
+    correctAnswer: 0,
+    explanation: 'A straight line does not change direction, so its curvature is zero.'
+  },
+  {
+    id: 23835,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a circle of radius R, the curvature is:',
+    options: ['1/R', 'R', 'R^2', '0'],
+    correctAnswer: 0,
+    explanation: 'The curvature of a circle with radius R is κ = 1/R.'
+  },
+  {
+    id: 23836,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What happens to the curvature of a circle when its radius increases?',
+    options: ['It decreases', 'It increases', 'It stays the same', 'It becomes zero immediately'],
+    correctAnswer: 0,
+    explanation: 'Since κ = 1/R, increasing R decreases curvature.'
+  },
+  {
+    id: 23837,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The curvature formula for a space curve is:',
+    options: ['κ = |r\' × r\'\'| / |r\'|^3', 'κ = |r\'| / |r\'\'|', 'κ = |r\' × r\'\'|', 'κ = |r\'\'|^3 / |r\'|'],
+    correctAnswer: 0,
+    explanation: 'For a regular space curve, κ = |r\' × r\'\'| / |r\'|^3.'
+  },
+  {
+    id: 23838,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What operation appears in the numerator of the space-curve curvature formula?',
+    options: ['Cross product', 'Dot product', 'Scalar multiplication only', 'Division'],
+    correctAnswer: 0,
+    explanation: 'The numerator contains |r\' × r\'\'|.'
+  },
+  {
+    id: 23839,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r\' × r\'\' = 0, what is the curvature, assuming r\' ≠ 0?',
+    options: ['0', '1', '∞', 'Cannot be calculated'],
+    correctAnswer: 0,
+    explanation: 'The numerator of the curvature formula is zero, so κ = 0.'
+  },
+
+  {
+    id: 23840,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Torsion is associated with how a space curve:',
+    options: ['Twists out of a plane', 'Changes its speed only', 'Moves along a straight line', 'Changes its parameter'],
+    correctAnswer: 0,
+    explanation: 'Torsion measures the twisting of a space curve away from its osculating plane.'
+  },
+  {
+    id: 23841,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A planar curve has torsion equal to:',
+    options: ['0', '1', '∞', 'Its curvature'],
+    correctAnswer: 0,
+    explanation: 'For a planar curve, torsion is zero.'
+  },
+  {
+    id: 23842,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A curve with nonzero torsion generally:',
+    options: ['Twists through three-dimensional space', 'Must be a straight line', 'Has zero curvature', 'Must be a circle'],
+    correctAnswer: 0,
+    explanation: 'Nonzero torsion indicates three-dimensional twisting.'
+  },
+  {
+    id: 23843,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Which curve is a standard example of a 3D twisting curve?',
+    options: ['Helix', 'Straight line', 'Parabola in the xy-plane', 'Circle in the xy-plane'],
+    correctAnswer: 0,
+    explanation: 'A helix naturally twists through three-dimensional space.'
+  },
+  {
+    id: 23844,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <cos t, sin t, 0>, the curve lies in:',
+    options: ['The xy-plane', 'The yz-plane', 'The xz-plane', 'All of space'],
+    correctAnswer: 0,
+    explanation: 'The z-coordinate is always 0, so the curve lies in the xy-plane.'
+  },
+  {
+    id: 23845,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The curve r(t) = <cos t, sin t, t> is a:',
+    options: ['Helix', 'Straight line', 'Parabola', 'Plane'],
+    correctAnswer: 0,
+    explanation: 'The x and y coordinates trace a circle while z changes linearly, producing a helix.'
+  },
+  {
+    id: 23846,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(t) = <cos t, sin t, 0>, what is the speed?',
+    options: ['1', '0', '2', 't'],
+    correctAnswer: 0,
+    explanation: 'r\'(t) = <-sin t, cos t, 0>, whose magnitude is 1.'
+  },
+  {
+    id: 23847,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For the unit circle, the curvature is:',
+    options: ['1', '0', '2', 'π'],
+    correctAnswer: 0,
+    explanation: 'The unit circle has radius 1, so κ = 1/R = 1.'
+  },
+  {
+    id: 23848,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the cross product of two parallel vectors?',
+    options: ['The zero vector', 'A unit vector', 'Their dot product', 'Always undefined'],
+    correctAnswer: 0,
+    explanation: 'Parallel vectors have zero cross product.'
+  },
+  {
+    id: 23849,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If r\' and r\'\' are parallel, the curvature is:',
+    options: ['0', '1', '∞', 'Equal to speed'],
+    correctAnswer: 0,
+    explanation: 'Their cross product is zero, making the curvature zero.'
+  },
+
+  {
+    id: 23850,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A parametrized surface is commonly written as:',
+    options: ['r(u,v) = <x(u,v), y(u,v), z(u,v)>', 'r(t) = <x(t), y(t)> only', 'f(x) = x^2', 'z = constant only'],
+    correctAnswer: 0,
+    explanation: 'A surface in space can be parametrized using two parameters u and v.'
+  },
+  {
+    id: 23851,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'How many parameters are normally needed to parametrize a surface?',
+    options: ['Two', 'One', 'Three', 'Four'],
+    correctAnswer: 0,
+    explanation: 'A two-dimensional surface generally requires two independent parameters.'
+  },
+  {
+    id: 23852,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v), the vectors r_u and r_v are obtained by:',
+    options: ['Partial differentiation', 'Cross multiplication', 'Integration only', 'Taking magnitudes'],
+    correctAnswer: 0,
+    explanation: 'r_u and r_v are partial derivatives with respect to u and v.'
+  },
+  {
+    id: 23853,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A normal vector to a parametrized surface can be found using:',
+    options: ['r_u × r_v', 'r_u · r_v', 'r_u + r_v only', 'r(u,v) alone'],
+    correctAnswer: 0,
+    explanation: 'The cross product r_u × r_v is perpendicular to both tangent vectors.'
+  },
+  {
+    id: 23854,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The magnitude |r_u × r_v| is related to:',
+    options: ['Surface area element', 'Speed', 'Torsion only', 'Time'],
+    correctAnswer: 0,
+    explanation: 'For a parametrized surface, dS = |r_u × r_v| du dv.'
+  },
+  {
+    id: 23855,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u, v, 0>, what surface is represented?',
+    options: ['The xy-plane', 'The yz-plane', 'The xz-plane', 'A sphere'],
+    correctAnswer: 0,
+    explanation: 'Since x = u, y = v, and z = 0, the surface is the xy-plane.'
+  },
+  {
+    id: 23856,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u, 0, v>, what surface is represented?',
+    options: ['The xz-plane', 'The xy-plane', 'The yz-plane', 'A cylinder'],
+    correctAnswer: 0,
+    explanation: 'Here y = 0 while x and z vary, so the surface is the xz-plane.'
+  },
+  {
+    id: 23857,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <0, u, v>, what surface is represented?',
+    options: ['The yz-plane', 'The xy-plane', 'The xz-plane', 'A sphere'],
+    correctAnswer: 0,
+    explanation: 'Here x = 0 while y and z vary, giving the yz-plane.'
+  },
+  {
+    id: 23858,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A flux integral measures the flow of a vector field through a:',
+    options: ['Surface', 'Point only', 'Curve only', 'Number line'],
+    correctAnswer: 0,
+    explanation: 'Flux measures how much of a vector field passes through a surface.'
+  },
+  {
+    id: 23859,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The basic form of a flux integral is:',
+    options: ['∫∫ F · n dS', '∫ F dt', '∫∫ f dA only', 'F × n'],
+    correctAnswer: 0,
+    explanation: 'Flux through an oriented surface is ∫∫ F · n dS.'
+  },
+
+  {
+    id: 23860,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In a flux integral, F represents the:',
+    options: ['Vector field', 'Surface parameter only', 'Curvature', 'Torsion'],
+    correctAnswer: 0,
+    explanation: 'F is the vector field whose flow through the surface is being measured.'
+  },
+  {
+    id: 23861,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In F · n, the dot product measures the component of F:',
+    options: ['Normal to the surface', 'Parallel to the parameter axis only', 'Along the x-axis only', 'Along the curve only'],
+    correctAnswer: 0,
+    explanation: 'The dot product with the normal vector extracts the normal component of the field.'
+  },
+  {
+    id: 23862,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If F · n = 0 everywhere on a surface, the flux is:',
+    options: ['0', '1', 'The surface area', 'Undefined'],
+    correctAnswer: 0,
+    explanation: 'If the field has no normal component, there is no flow through the surface.'
+  },
+  {
+    id: 23863,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A change of variables is useful because it can:',
+    options: ['Simplify an integral', 'Always make an integral larger', 'Remove all variables', 'Eliminate calculus'],
+    correctAnswer: 0,
+    explanation: 'A suitable transformation can turn a difficult integral into a simpler one.'
+  },
+  {
+    id: 23864,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The Jacobian is associated with a change in:',
+    options: ['Area or volume scaling', 'Time only', 'Curvature only', 'Velocity only'],
+    correctAnswer: 0,
+    explanation: 'The absolute value of the Jacobian accounts for area or volume scaling under a transformation.'
+  },
+  {
+    id: 23865,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For x = u and y = v, the Jacobian ∂(x,y)/∂(u,v) is:',
+    options: ['1', '0', 'u + v', 'uv'],
+    correctAnswer: 0,
+    explanation: 'The Jacobian matrix is the identity matrix, whose determinant is 1.'
+  },
+  {
+    id: 23866,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In a double integral, the Jacobian factor is used to transform:',
+    options: ['dA', 'dt only', 'A vector only', 'A tangent vector only'],
+    correctAnswer: 0,
+    explanation: 'Under a change of variables, dA is multiplied by the absolute Jacobian determinant.'
+  },
+  {
+    id: 23867,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For polar coordinates, x = r cos θ and y = r sin θ. The area element is:',
+    options: ['r dr dθ', 'dr dθ', 'r^2 dr dθ', 'dr/r dθ'],
+    correctAnswer: 0,
+    explanation: 'The polar-coordinate Jacobian is r, so dA = r dr dθ.'
+  },
+  {
+    id: 23868,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The Jacobian for polar coordinates is:',
+    options: ['r', '1', 'r^2', 'θ'],
+    correctAnswer: 0,
+    explanation: 'For x = r cos θ and y = r sin θ, the Jacobian determinant has absolute value r.'
+  },
+  {
+    id: 23869,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'In a triple integral, a 3D change of variables requires a Jacobian related to:',
+    options: ['Volume scaling', 'Curve length only', 'Speed only', 'Curvature only'],
+    correctAnswer: 0,
+    explanation: 'The 3D Jacobian accounts for how volume changes under the transformation.'
+  },
+
+  {
+    id: 23870,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A global maximum on a closed bounded region is the:',
+    options: ['Largest function value on the region', 'Largest x-coordinate', 'Smallest function value', 'Largest derivative'],
+    correctAnswer: 0,
+    explanation: 'The global maximum is the greatest value attained by the function on the entire region.'
+  },
+  {
+    id: 23871,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A global minimum is the:',
+    options: ['Smallest function value on the region', 'Smallest x-coordinate only', 'Largest function value', 'Largest derivative'],
+    correctAnswer: 0,
+    explanation: 'The global minimum is the least value attained by the function on the region.'
+  },
+  {
+    id: 23872,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a closed bounded region, global extrema may occur:',
+    options: ['In the interior or on the boundary', 'Only at the origin', 'Only on the boundary', 'Only in the interior'],
+    correctAnswer: 0,
+    explanation: 'Global extrema can occur at interior critical points or boundary points.'
+  },
+  {
+    id: 23873,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'When finding global extrema on a bounded region, the boundary should be:',
+    options: ['Checked separately', 'Ignored', 'Always removed', 'Replaced by infinity'],
+    correctAnswer: 0,
+    explanation: 'Boundary points can contain the global maximum or minimum and therefore must be checked.'
+  },
+  {
+    id: 23874,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'An interior critical point commonly satisfies:',
+    options: ['f_x = 0 and f_y = 0', 'f = 0 only', 'x = y', 'f_x = f_y = 1'],
+    correctAnswer: 0,
+    explanation: 'For a differentiable function, interior critical points often satisfy both first partial derivatives equal to zero.'
+  },
+  {
+    id: 23875,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If f(x,y) = x^2 + y^2, where is its global minimum on all of R²?',
+    options: ['At (0,0)', 'At (1,1)', 'At (-1,-1)', 'There is no minimum'],
+    correctAnswer: 0,
+    explanation: 'Since x^2 + y^2 ≥ 0, the minimum value 0 occurs at (0,0).'
+  },
+  {
+    id: 23876,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If f(x,y) = x^2 + y^2 on the disk x² + y² ≤ 4, the maximum occurs on:',
+    options: ['The boundary x² + y² = 4', 'Only the origin', 'Nowhere', 'The z-axis'],
+    correctAnswer: 0,
+    explanation: 'The function increases with distance from the origin, so its maximum occurs on the boundary circle.'
+  },
+  {
+    id: 23877,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A boundary curve can be handled using:',
+    options: ['A parametrization', 'Only a 3D matrix', 'Only torsion', 'No calculations'],
+    correctAnswer: 0,
+    explanation: 'A boundary curve can be parametrized using one parameter and then analyzed.'
+  },
+  {
+    id: 23878,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A circle of radius R can be parametrized by:',
+    options: ['<R cos t, R sin t>', '<Rt, Rt>', '<R, R, R>', '<t, t, t>'],
+    correctAnswer: 0,
+    explanation: 'The standard parametrization of x² + y² = R² is x = R cos t, y = R sin t.'
+  },
+  {
+    id: 23879,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A parameter used to describe a curve is commonly denoted by:',
+    options: ['t', '∇', 'κ', 'τ only'],
+    correctAnswer: 0,
+    explanation: 'The parameter t is commonly used for parametrized curves.'
+  },
+
+  {
+    id: 23880,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the dot product of <1,0,0> and <0,1,0>?',
+    options: ['0', '1', '-1', '2'],
+    correctAnswer: 0,
+    explanation: 'The vectors are perpendicular, so their dot product is 0.'
+  },
+  {
+    id: 23881,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'What is the cross product of <1,0,0> and <0,1,0>?',
+    options: ['<0,0,1>', '<0,0,0>', '<1,1,0>', '<0,1,1>'],
+    correctAnswer: 0,
+    explanation: 'Using the standard right-hand rule, i × j = k.'
+  },
+  {
+    id: 23882,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Two nonzero vectors are perpendicular when their dot product is:',
+    options: ['0', '1', '-1', 'Their magnitudes'],
+    correctAnswer: 0,
+    explanation: 'Perpendicular vectors have zero dot product.'
+  },
+  {
+    id: 23883,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A normal vector to a plane is perpendicular to:',
+    options: ['Every tangent direction in the plane', 'Only the x-axis', 'Only the y-axis', 'The origin'],
+    correctAnswer: 0,
+    explanation: 'A plane normal is perpendicular to all directions lying in the plane.'
+  },
+  {
+    id: 23884,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a surface z = f(x,y), a common parametrization is:',
+    options: ['r(x,y) = <x, y, f(x,y)>', 'r(x,y) = <f(x,y), 0, 0>', 'r(x,y) = <x, f(x,y), 0>', 'r(x,y) = <0,0,f(x,y)>'],
+    correctAnswer: 0,
+    explanation: 'The graph z = f(x,y) can be parametrized directly by x and y.'
+  },
+  {
+    id: 23885,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u,v,u+v>, what is r_u?',
+    options: ['<1,0,1>', '<0,1,1>', '<u,v,u+v>', '<1,1,0>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate with respect to u: r_u = <1,0,1>.'
+  },
+  {
+    id: 23886,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u,v,u+v>, what is r_v?',
+    options: ['<0,1,1>', '<1,0,1>', '<1,1,0>', '<u,v,u+v>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate with respect to v: r_v = <0,1,1>.'
+  },
+  {
+    id: 23887,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For r(u,v) = <u,v,u+v>, what is r_u × r_v?',
+    options: ['<-1,-1,1>', '<1,1,1>', '<0,0,1>', '<1,-1,0>'],
+    correctAnswer: 0,
+    explanation: '<1,0,1> × <0,1,1> = <-1,-1,1>.'
+  },
+  {
+    id: 23888,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The magnitude of <-1,-1,1> is:',
+    options: ['√3', '3', '1', '√2'],
+    correctAnswer: 0,
+    explanation: 'Magnitude = √(1 + 1 + 1) = √3.'
+  },
+  {
+    id: 23889,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'If a surface parametrization has r_u × r_v = 0, the parametrization is:',
+    options: ['Degenerate at that point', 'Always a sphere', 'Always a plane', 'Guaranteed to be regular'],
+    correctAnswer: 0,
+    explanation: 'A zero cross product means the two tangent vectors are parallel or one is zero, so the parametrization is not regular there.'
+  },
+
+  {
+    id: 23890,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The divergence of a vector field measures, conceptually, its:',
+    options: ['Net outward flow density', 'Curvature only', 'Path length', 'Speed only'],
+    correctAnswer: 0,
+    explanation: 'Divergence describes the net tendency of a vector field to flow outward from a point.'
+  },
+  {
+    id: 23891,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For F = <P,Q,R>, the divergence is:',
+    options: ['P_x + Q_y + R_z', 'P_y + Q_x + R_z', 'P + Q + R', 'P_x Q_y R_z'],
+    correctAnswer: 0,
+    explanation: 'div F = ∂P/∂x + ∂Q/∂y + ∂R/∂z.'
+  },
+  {
+    id: 23892,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For F = <x,y,z>, what is div F?',
+    options: ['3', 'x+y+z', '0', '1'],
+    correctAnswer: 0,
+    explanation: 'div F = ∂x/∂x + ∂y/∂y + ∂z/∂z = 1+1+1 = 3.'
+  },
+  {
+    id: 23893,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For F = <x,0,0>, what is div F?',
+    options: ['1', '0', 'x', '3'],
+    correctAnswer: 0,
+    explanation: 'div F = ∂x/∂x = 1.'
+  },
+  {
+    id: 23894,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A vector field with zero divergence is called:',
+    options: ['Solenoidal', 'Irrotational only', 'Constant', 'Singular'],
+    correctAnswer: 0,
+    explanation: 'A vector field with div F = 0 is called solenoidal.'
+  },
+  {
+    id: 23895,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a closed surface, outward flux describes flow:',
+    options: ['Leaving the enclosed volume', 'Entering only', 'Along the boundary curve only', 'Only upward'],
+    correctAnswer: 0,
+    explanation: 'With the outward orientation, positive flux represents net flow leaving the enclosed volume.'
+  },
+  {
+    id: 23896,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'The divergence theorem connects a closed-surface flux integral with a:',
+    options: ['Triple integral of divergence', 'Line integral of curvature', 'Double integral of torsion', 'Single integral of speed'],
+    correctAnswer: 0,
+    explanation: 'The divergence theorem states that outward flux through a closed surface equals the volume integral of div F.'
+  },
+  {
+    id: 23897,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'A closed surface has:',
+    options: ['No boundary curve', 'Exactly one boundary curve', 'Two boundary curves always', 'Only straight boundaries'],
+    correctAnswer: 0,
+    explanation: 'A closed surface encloses a region and has no boundary edge.'
+  },
+  {
+    id: 23898,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'For a sphere centered at the origin, the outward normal points:',
+    options: ['Away from the center', 'Toward the center', 'Only upward', 'Only downward'],
+    correctAnswer: 0,
+    explanation: 'The outward normal on a sphere points radially away from its center.'
+  },
+  {
+    id: 23899,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Easy',
+    question: 'Which sequence best describes the educational workflow for this topic?',
+    options: ['Learn concepts → Practice → Master → Certification', 'Certification → Learn → Practice', 'Practice → Skip concepts → Certification', 'Certificate → Practice → Learn'],
+    correctAnswer: 0,
+    explanation: 'The intended learning progression is to learn the concepts, practice them at increasing difficulty, demonstrate mastery, and then complete certification.'
+  },
+  
+  {
+    id: 23900,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <t^2, 2t, t^3>, what is the velocity at t = 1?',
+    options: ['<2, 2, 3>', '<1, 2, 1>', '<2, 1, 3>', '<1, 2, 3>'],
+    correctAnswer: 0,
+    explanation: "r'(t) = <2t, 2, 3t^2>. At t = 1, v = <2, 2, 3>."
+  },
+  {
+    id: 23901,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <t, t^2, t^3>, what is the acceleration at t = 2?',
+    options: ['<0, 2, 12>', '<1, 4, 12>', '<0, 2, 6>', '<1, 2, 12>'],
+    correctAnswer: 0,
+    explanation: "r''(t) = <0, 2, 6t>, so at t = 2 the acceleration is <0, 2, 12>."
+  },
+  {
+    id: 23902,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If r(t) = <3t, 4t, 0>, what is the speed?',
+    options: ['5', '7', '12', '25'],
+    correctAnswer: 0,
+    explanation: "The velocity is <3,4,0>, whose magnitude is sqrt(9+16) = 5."
+  },
+  {
+    id: 23903,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <cos t, sin t, 2t>, what is the velocity?',
+    options: ['<-sin t, cos t, 2>', '<sin t, cos t, 2>', '<-cos t, sin t, 2>', '<-sin t, -cos t, 2>'],
+    correctAnswer: 0,
+    explanation: "Differentiate each component to obtain r'(t) = <-sin t, cos t, 2>."
+  },
+  {
+    id: 23904,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'What is the speed of r(t) = <cos t, sin t, 2t>?',
+    options: ['√5', '2', '3', '5'],
+    correctAnswer: 0,
+    explanation: "The velocity has magnitude sqrt(sin^2(t)+cos^2(t)+4) = sqrt(5)."
+  },
+  {
+    id: 23905,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'A particle has position r(t) = <t^2, 2t^2, 0>. At t = 1, its velocity is:',
+    options: ['<2,4,0>', '<1,2,0>', '<2,2,0>', '<4,4,0>'],
+    correctAnswer: 0,
+    explanation: "r'(t) = <2t,4t,0>. At t = 1 this gives <2,4,0>."
+  },
+  {
+    id: 23906,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <t^3, 3t^2, 2t>, what is the acceleration?',
+    options: ['<6t,6,0>', '<3t^2,6t,2>', '<6t,6t,2>', '<6,6t,0>'],
+    correctAnswer: 0,
+    explanation: "The velocity is <3t^2,6t,2>, so acceleration is <6t,6,0>."
+  },
+  {
+    id: 23907,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If r(t) = <t, 2t, 2t>, what is the unit tangent vector?',
+    options: ['<1/3,2/3,2/3>', '<1,2,2>', '<1/√5,2/√5,2/√5>', '<1/2,1,1>'],
+    correctAnswer: 0,
+    explanation: "The velocity is <1,2,2>, whose magnitude is 3. Dividing by 3 gives the unit tangent."
+  },
+  {
+    id: 23908,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If v = <2,-1,2>, what is the speed?',
+    options: ['3', '5', '√5', '√7'],
+    correctAnswer: 0,
+    explanation: "The speed is sqrt(2^2+(-1)^2+2^2) = sqrt(9) = 3."
+  },
+  {
+    id: 23909,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If r(t) = <t, t^2, 2>, at which value of t is the velocity <1,4,0>?',
+    options: ['t = 2', 't = 1', 't = 4', 't = 0'],
+    correctAnswer: 0,
+    explanation: "r'(t) = <1,2t,0>. Setting 2t = 4 gives t = 2."
+  },
+
+  {
+    id: 23910,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <t^2, t^2, t>, what is r'(t) × r''(t)?",
+    options: ['<2,-2,0>', '<-2,2,0>', '<0,0,2>', '<2,2,0>'],
+    correctAnswer: 0,
+    explanation: "r' = <2t,2t,1> and r'' = <2,2,0>. Their cross product is <-2,2,0>."
+  },
+  {
+    id: 23911,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <t,t^2,0>, what is the curvature at t = 0?",
+    options: ['2', '1', '0', '1/2'],
+    correctAnswer: 0,
+    explanation: "At t=0, r'=<1,0,0> and r''=<0,2,0>. Thus |r'×r''|=2 and |r'|^3=1, giving κ=2."
+  },
+  {
+    id: 23912,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <t,t^2,0>, what is the curvature at t = 1?',
+    options: ['2/(5√5)', '1/5', '2/5', '1/√5'],
+    correctAnswer: 0,
+    explanation: "r'=<1,2,0>, r''=<0,2,0>. The cross product magnitude is 2 and |r'|^3=(√5)^3=5√5."
+  },
+  {
+    id: 23913,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a circle of radius 4, what is its curvature?',
+    options: ['1/4', '4', '1/16', '16'],
+    correctAnswer: 0,
+    explanation: "The curvature of a circle is κ=1/R, so κ=1/4."
+  },
+  {
+    id: 23914,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If a circle has curvature 1/3, what is its radius?',
+    options: ['3', '1/3', '9', '√3'],
+    correctAnswer: 0,
+    explanation: "Since κ=1/R, R=1/κ=3."
+  },
+  {
+    id: 23915,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Which quantity must be nonzero for the standard curvature formula to apply to a regular curve?',
+    options: ['r\'(t)', 'r(t)', 'r\'\'(t)', 'r\'(t) × r\'\'(t)'],
+    correctAnswer: 0,
+    explanation: "A regular parametrized curve requires r'(t) ≠ 0."
+  },
+  {
+    id: 23916,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <3cos t, 3sin t, 0>, what is the curvature?',
+    options: ['1/3', '3', '1/9', '9'],
+    correctAnswer: 0,
+    explanation: "This is a circle of radius 3, so κ=1/3."
+  },
+  {
+    id: 23917,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <2cos t, 2sin t, 0>, what is the speed?',
+    options: ['2', '1', '4', '√2'],
+    correctAnswer: 0,
+    explanation: "r'=<-2sin t,2cos t,0>, whose magnitude is 2."
+  },
+  {
+    id: 23918,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <2cos t,2sin t,0>, what is |r''(t)|?",
+    options: ['2', '1', '4', '√2'],
+    correctAnswer: 0,
+    explanation: "r''=<-2cos t,-2sin t,0>, whose magnitude is 2."
+  },
+  {
+    id: 23919,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t) = <cos t,sin t,t>, which coordinate causes the curve to leave the xy-plane?',
+    options: ['z=t', 'x=cos t', 'y=sin t', 'None'],
+    correctAnswer: 0,
+    explanation: "The nonconstant z-coordinate causes the circular motion to rise through space."
+  },
+
+  {
+    id: 23920,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <cos t,sin t,t>, what is r''(t)?",
+    options: ['<-cos t,-sin t,0>', '<-sin t,cos t,1>', '<cos t,sin t,0>', '<-cos t,sin t,1>'],
+    correctAnswer: 0,
+    explanation: "Differentiate the velocity <-sin t,cos t,1> to obtain <-cos t,-sin t,0>."
+  },
+  {
+    id: 23921,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t) = <cos t,sin t,t>, what is |r' × r''|?",
+    options: ['√2', '1', '2', '√3'],
+    correctAnswer: 0,
+    explanation: "Computing the cross product gives <sin t,-cos t,1>, whose magnitude is √2."
+  },
+  {
+    id: 23922,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "What is the curvature of r(t) = <cos t,sin t,t>?",
+    options: ['1/2', '√2/2', '1', '2'],
+    correctAnswer: 0,
+    explanation: "The numerator is √2 and |r'|=√2, so κ=√2/(√2)^3=1/2."
+  },
+  {
+    id: 23923,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t)=<t,t^2,t^3>, what is r''(t)?",
+    options: ['<0,2,6t>', '<1,2t,3t^2>', '<0,2,6>', '<1,2,6t>'],
+    correctAnswer: 0,
+    explanation: "r'=<1,2t,3t^2>, so r''=<0,2,6t>."
+  },
+  {
+    id: 23924,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "For r(t)=<t,t^2,t^3>, what is r'(0)?",
+    options: ['<1,0,0>', '<0,1,0>', '<1,1,1>', '<0,0,0>'],
+    correctAnswer: 0,
+    explanation: "r'=<1,2t,3t^2>, so r'(0)=<1,0,0>."
+  },
+  {
+    id: 23925,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If acceleration is always perpendicular to velocity, what happens to speed?',
+    options: ['It remains constant', 'It always increases', 'It always decreases', 'It becomes zero'],
+    correctAnswer: 0,
+    explanation: "Since d/dt(|v|^2)=2v·a, v·a=0 implies constant speed."
+  },
+  {
+    id: 23926,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If v(t) = <cos t,sin t,0>, what is the speed?',
+    options: ['1', 'cos t + sin t', '2', '√2'],
+    correctAnswer: 0,
+    explanation: "The magnitude is sqrt(cos²t+sin²t)=1."
+  },
+  {
+    id: 23927,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<t^2,2t,3>, what is the speed at t=2?',
+    options: ['4', '2', '√20', '6'],
+    correctAnswer: 0,
+    explanation: "r'=<2t,2,0>. At t=2 this is <4,2,0>, whose magnitude is √20, not 4."
+  },
+  {
+    id: 23928,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<t^2,2t,3>, what is the speed at t=0?',
+    options: ['2', '0', '3', '√13'],
+    correctAnswer: 0,
+    explanation: "r'(0)=<0,2,0>, so the speed is 2."
+  },
+  {
+    id: 23929,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "If r'(t)=<2t,2,0>, at what t is the speed √8?",
+    options: ['t=1', 't=2', 't=√2', 't=0'],
+    correctAnswer: 0,
+    explanation: "Speed²=4t²+4. Setting this equal to 8 gives t²=1, so t=±1. Among the listed positive values, t=1."
+  },
+
+  {
+    id: 23930,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(u,v)=<u,v,u²+v²>, what is r_u?',
+    options: ['<1,0,2u>', '<0,1,2v>', '<u,v,u²+v²>', '<1,1,2u+2v>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate with respect to u while holding v constant.'
+  },
+  {
+    id: 23931,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(u,v)=<u,v,u²+v²>, what is r_v?',
+    options: ['<0,1,2v>', '<1,0,2u>', '<1,1,2u+2v>', '<u,v,u²+v²>'],
+    correctAnswer: 0,
+    explanation: 'Differentiate with respect to v while holding u constant.'
+  },
+  {
+    id: 23932,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(u,v)=<u,v,u²+v²>, what is r_u × r_v?',
+    options: ['<-2u,-2v,1>', '<2u,2v,1>', '<1,-2v,2u>', '<-2u,2v,1>'],
+    correctAnswer: 0,
+    explanation: '<1,0,2u> × <0,1,2v> = <-2u,-2v,1>.'
+  },
+  {
+    id: 23933,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'At (u,v)=(0,0), what is a normal vector for r(u,v)=<u,v,u²+v²>?',
+    options: ['<0,0,1>', '<1,0,0>', '<0,1,0>', '<1,1,0>'],
+    correctAnswer: 0,
+    explanation: "At (0,0), r_u×r_v = <0,0,1>."
+  },
+  {
+    id: 23934,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For z=x²+y², the point corresponding to (x,y)=(1,2) is:',
+    options: ['(1,2,5)', '(1,2,3)', '(1,2,4)', '(1,2,1)'],
+    correctAnswer: 0,
+    explanation: "z=1²+2²=5, so the point is (1,2,5)."
+  },
+  {
+    id: 23935,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For z=x²+y², a parametrization is:',
+    options: ['<u,v,u²+v²>', '<u²,v²,u+v>', '<u,v,u+v>', '<u²+v²,u,v>'],
+    correctAnswer: 0,
+    explanation: "Set x=u and y=v, giving r(u,v)=<u,v,u²+v²>."
+  },
+  {
+    id: 23936,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the parametrized surface r(u,v)=<u,v,u+v>, what is the area element?',
+    options: ['√3 du dv', 'du dv', '3 du dv', '2 du dv'],
+    correctAnswer: 0,
+    explanation: "The cross product is <-1,-1,1>, whose magnitude is √3."
+  },
+  {
+    id: 23937,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'What is the surface area of r(u,v)=<u,v,u+v> for 0≤u≤1 and 0≤v≤1?',
+    options: ['√3', '1', '3', '2√3'],
+    correctAnswer: 0,
+    explanation: "The area element is √3 du dv. Integrating over the unit square gives √3."
+  },
+  {
+    id: 23938,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x,y,z>, what is the flux through the unit sphere oriented outward?',
+    options: ['4π', '0', '1', '3'],
+    correctAnswer: 0,
+    explanation: "On the unit sphere, F is the outward normal of magnitude 1, so the flux equals the sphere area 4π."
+  },
+  {
+    id: 23939,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Using the divergence theorem, the flux of F=<x,y,z> through a sphere of radius R is:',
+    options: ['4πR³', '4πR²', '3πR²', 'R³'],
+    correctAnswer: 0,
+    explanation: "div F=3. The sphere volume is 4πR³/3, so the flux is 3(4πR³/3)=4πR³."
+  },
+
+  {
+    id: 23940,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x,0,0>, what is the divergence?',
+    options: ['1', 'x', '0', '3'],
+    correctAnswer: 0,
+    explanation: "div F = ∂x/∂x = 1."
+  },
+  {
+    id: 23941,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<0,y²,0>, what is div F?',
+    options: ['2y', 'y²', '0', '2'],
+    correctAnswer: 0,
+    explanation: "div F = ∂(y²)/∂y = 2y."
+  },
+  {
+    id: 23942,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If div F = 2 everywhere inside a region of volume V, what is the outward flux through its closed boundary?',
+    options: ['2V', 'V/2', 'V²', '0'],
+    correctAnswer: 0,
+    explanation: "By the divergence theorem, flux = ∫∫∫ div F dV = 2V."
+  },
+  {
+    id: 23943,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x²,y²,z²>, what is div F?',
+    options: ['2x+2y+2z', 'x²+y²+z²', '6', 'xyz'],
+    correctAnswer: 0,
+    explanation: "Differentiate each component with respect to its corresponding variable."
+  },
+  {
+    id: 23944,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<2x,3y,4z>, what is div F?',
+    options: ['9', '2x+3y+4z', '24', '0'],
+    correctAnswer: 0,
+    explanation: "div F=2+3+4=9."
+  },
+  {
+    id: 23945,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the transformation x=2u, y=3v, what is |∂(x,y)/∂(u,v)|?',
+    options: ['6', '5', '1', '0'],
+    correctAnswer: 0,
+    explanation: "The Jacobian matrix is [[2,0],[0,3]], whose determinant is 6."
+  },
+  {
+    id: 23946,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For x=2u and y=3v, how does an area element transform?',
+    options: ['dA=6 du dv', 'dA=du dv', 'dA=5 du dv', 'dA=2 du dv'],
+    correctAnswer: 0,
+    explanation: "The absolute Jacobian is 6, so dA=6 du dv."
+  },
+  {
+    id: 23947,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For x=u+v and y=u-v, what is the absolute Jacobian?',
+    options: ['2', '1', '0', '4'],
+    correctAnswer: 0,
+    explanation: "The determinant of [[1,1],[1,-1]] is -2, so its absolute value is 2."
+  },
+  {
+    id: 23948,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Under x=u+v and y=u-v, the area element becomes:',
+    options: ['2 du dv', 'du dv', '1/2 du dv', '4 du dv'],
+    correctAnswer: 0,
+    explanation: "The absolute Jacobian is 2."
+  },
+  {
+    id: 23949,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For x=uv and y=u/v, what is the Jacobian ∂(x,y)/∂(u,v)?',
+    options: ['-2u/v', '2u/v', 'u/v', '-u/v'],
+    correctAnswer: 0,
+    explanation: "The determinant is (v)(-u/v²) - (u)(1/v) = -2u/v."
+  },
+
+  {
+    id: 23950,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'In polar coordinates, what is the Jacobian for x=r cosθ and y=r sinθ?',
+    options: ['r', 'r²', '1', 'sinθ cosθ'],
+    correctAnswer: 0,
+    explanation: "The absolute determinant of the polar-coordinate transformation is r."
+  },
+  {
+    id: 23951,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Evaluate ∫∫_D 1 dA over the disk x²+y²≤4 using polar coordinates.',
+    options: ['4π', '2π', 'π', '8π'],
+    correctAnswer: 0,
+    explanation: "The disk has radius 2, so its area is π(2²)=4π."
+  },
+  {
+    id: 23952,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'In polar coordinates, the disk x²+y²≤9 corresponds to:',
+    options: ['0≤r≤3, 0≤θ≤2π', '0≤r≤9, 0≤θ≤π', '0≤r≤3, 0≤θ≤π', '0≤r≤9, 0≤θ≤2π'],
+    correctAnswer: 0,
+    explanation: "Since x²+y²=r², the disk gives 0≤r≤3 and a full angular range of 0≤θ≤2π."
+  },
+  {
+    id: 23953,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'The transformation x=r cosθ, y=r sinθ maps a rectangle in (r,θ)-coordinates to a:',
+    options: ['Polar region in the xy-plane', 'Cube', 'Line', 'Plane only'],
+    correctAnswer: 0,
+    explanation: "Polar coordinates describe regions in the xy-plane using radius and angle."
+  },
+  {
+    id: 23954,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a 3D transformation with constant Jacobian 5, the volume element transforms as:',
+    options: ['dV=5 du dv dw', 'dV=du dv dw/5', 'dV=5 du dv', 'dV=du dv'],
+    correctAnswer: 0,
+    explanation: "The absolute 3D Jacobian gives the volume scaling factor."
+  },
+  {
+    id: 23955,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If a transformation has Jacobian determinant -4, what factor is used for area?',
+    options: ['4', '-4', '1/4', '0'],
+    correctAnswer: 0,
+    explanation: "Area scaling uses the absolute value of the Jacobian determinant."
+  },
+  {
+    id: 23956,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'A negative Jacobian determinant primarily indicates:',
+    options: ['Orientation reversal', 'Zero area', 'Zero volume', 'Infinite scaling'],
+    correctAnswer: 0,
+    explanation: "A negative determinant indicates that the transformation reverses orientation."
+  },
+  {
+    id: 23957,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If the Jacobian determinant is zero at a point, the transformation is locally:',
+    options: ['Degenerate there', 'A perfect scaling', 'Guaranteed invertible', 'Orientation preserving'],
+    correctAnswer: 0,
+    explanation: "A zero Jacobian means the local mapping loses dimension and is not locally invertible under the usual conditions."
+  },
+  {
+    id: 23958,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For x=3u and y=v/2, what is the area scaling factor?',
+    options: ['3/2', '6', '1/6', '5/2'],
+    correctAnswer: 0,
+    explanation: "The Jacobian determinant is 3(1/2)=3/2."
+  },
+  {
+    id: 23959,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'A suitable change of variables is especially useful when it makes the region:',
+    options: ['Simpler to describe', 'Larger automatically', 'Three-dimensional automatically', 'Impossible to integrate'],
+    correctAnswer: 0,
+    explanation: "A major purpose of a change of variables is simplifying the integration region and/or integrand."
+  },
+
+  {
+    id: 23960,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²+y² on the disk x²+y²≤4, what is the minimum value?',
+    options: ['0', '2', '4', '16'],
+    correctAnswer: 0,
+    explanation: "The minimum occurs at (0,0), where f=0."
+  },
+  {
+    id: 23961,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²+y² on x²+y²≤4, what is the maximum value?',
+    options: ['4', '2', '8', '16'],
+    correctAnswer: 0,
+    explanation: "On the boundary x²+y²=4, f=4."
+  },
+  {
+    id: 23962,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²+y²-2x on the plane, what is the interior critical point?',
+    options: ['(1,0)', '(0,1)', '(-1,0)', '(0,0)'],
+    correctAnswer: 0,
+    explanation: "f_x=2x-2 and f_y=2y. Setting both equal to zero gives (1,0)."
+  },
+  {
+    id: 23963,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'What type of point is (1,0) for f=x²+y²-2x?',
+    options: ['Global minimum', 'Global maximum', 'Saddle point', 'Boundary point'],
+    correctAnswer: 0,
+    explanation: "f=(x-1)²+y²-1, so the minimum value -1 occurs at (1,0)."
+  },
+  {
+    id: 23964,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²+y² on the square -1≤x≤1, -1≤y≤1, where is the maximum attained?',
+    options: ['At all four corners', 'Only at the origin', 'At the midpoint of each edge', 'Nowhere'],
+    correctAnswer: 0,
+    explanation: "The maximum of x²+y² on the square is 2, attained at all four corners."
+  },
+  {
+    id: 23965,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x+y on the unit square 0≤x,y≤1, the maximum value is:',
+    options: ['2', '1', '0', '√2'],
+    correctAnswer: 0,
+    explanation: "Both x and y are maximized at 1, giving f=2."
+  },
+  {
+    id: 23966,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x+y on 0≤x,y≤1, the minimum value is:',
+    options: ['0', '1', '-1', '2'],
+    correctAnswer: 0,
+    explanation: "The minimum occurs at (0,0), giving f=0."
+  },
+  {
+    id: 23967,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'A boundary of a disk x²+y²=R² can be parametrized by:',
+    options: ['<R cos t,R sin t>', '<R t,R t>', '<cos R,sin R>', '<t²,t³>'],
+    correctAnswer: 0,
+    explanation: "The standard circle parametrization is x=R cos t, y=R sin t."
+  },
+  {
+    id: 23968,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'When checking a circular boundary for extrema, the parameter interval can be:',
+    options: ['0≤t≤2π', '0≤t≤π/2 only', '0≤t≤1 only', '-∞≤t≤∞ only'],
+    correctAnswer: 0,
+    explanation: "A full circle is traced once by 0≤t≤2π."
+  },
+  {
+    id: 23969,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=xy on the unit disk, which interior point is a critical point?',
+    options: ['(0,0)', '(1,1)', '(1,0)', '(0,1)'],
+    correctAnswer: 0,
+    explanation: "f_x=y and f_y=x, so both vanish at (0,0)."
+  },
+
+  {
+    id: 23970,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=xy on the unit disk, what is the maximum value?',
+    options: ['1/2', '1', '2', '0'],
+    correctAnswer: 0,
+    explanation: "On x²+y²≤1, the maximum of xy occurs at x=y=1/√2, giving xy=1/2."
+  },
+  {
+    id: 23971,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=xy on the unit disk, what is the minimum value?',
+    options: ['-1/2', '0', '-1', '1/2'],
+    correctAnswer: 0,
+    explanation: "The minimum occurs at x=1/√2, y=-1/√2 or the opposite signs, giving -1/2."
+  },
+  {
+    id: 23972,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a closed bounded region, why must boundary points be considered?',
+    options: ['An extremum may occur there', 'They are always critical points', 'They always have zero derivatives', 'They are never extrema'],
+    correctAnswer: 0,
+    explanation: "A global maximum or minimum can occur on the boundary even when no interior critical point gives it."
+  },
+  {
+    id: 23973,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If f has no interior critical points on a closed bounded region, global extrema can still occur:',
+    options: ['On the boundary', 'Only at infinity', 'Nowhere', 'Only at the origin'],
+    correctAnswer: 0,
+    explanation: "Boundary analysis is still required."
+  },
+  {
+    id: 23974,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a boundary parametrization r(t), the restricted function is:',
+    options: ['f(r(t))', 'r(f(t))', 'f(t)/r(t)', '∇r(t)'],
+    correctAnswer: 0,
+    explanation: "Substitute the boundary parametrization into f to obtain a single-variable function."
+  },
+  {
+    id: 23975,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If a boundary is x²+y²=1, which substitution is appropriate?',
+    options: ['x=cos t, y=sin t', 'x=t, y=t', 'x=sin t, y=t²', 'x=e^t, y=e^-t'],
+    correctAnswer: 0,
+    explanation: "x=cos t and y=sin t traces the unit circle."
+  },
+  {
+    id: 23976,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²-y² on the unit circle, what is the maximum value?',
+    options: ['1', '0', '2', '-1'],
+    correctAnswer: 0,
+    explanation: "On x²+y²=1, f=x²-y²=2x²-1, whose maximum is 1."
+  },
+  {
+    id: 23977,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For f(x,y)=x²-y² on the unit circle, what is the minimum value?',
+    options: ['-1', '0', '1', '-2'],
+    correctAnswer: 0,
+    explanation: "The minimum occurs when x=0 and y²=1, giving f=-1."
+  },
+  {
+    id: 23978,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If f is continuous on a closed bounded region, what theorem guarantees global extrema exist?',
+    options: ['Extreme Value Theorem', 'Mean Value Theorem', 'Chain Rule', 'Green’s theorem'],
+    correctAnswer: 0,
+    explanation: 'The Extreme Value Theorem guarantees a continuous function on a compact closed bounded region attains maximum and minimum values.'
+  },
+  {
+    id: 23979,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Which set is closed and bounded?',
+    options: ['x²+y²≤4', 'x²+y²<4', 'x>0', 'All of R²'],
+    correctAnswer: 0,
+    explanation: "The closed disk x²+y²≤4 is both closed and bounded."
+  },
+
+  {
+    id: 23980,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<t,t²,t³>, which component contributes most directly to the torsion calculation?',
+    options: ["The third derivative r'''(t)", "Only r(t)", "Only r'(t)", 'The parameter t alone'],
+    correctAnswer: 0,
+    explanation: "The standard torsion formula involves r', r'', and r'''."
+  },
+  {
+    id: 23981,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'The torsion formula for a regular space curve is:',
+    options: [
+    "τ = ((r' × r'') · r''') / |r' × r''|²",
+    "τ = |r' × r''| / |r'|³",
+    "τ = |r''| / |r'|",
+    "τ = r' · r''"
+],
+correctAnswer: 0,
+    explanation: "The standard torsion formula uses the scalar triple product divided by |r'×r''|²."
+  },
+  {
+    id: 23982,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: "If (r' × r'') · r''' = 0 and r' × r'' ≠ 0, the torsion is:",
+options: ['0', '1', 'Undefined', 'Infinite'],
+correctAnswer: 0,
+    
+    explanation: "The numerator of the torsion formula is zero while the denominator is nonzero."
+  },
+  {
+    id: 23983,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'What does zero torsion indicate for a regular curve locally?',
+    options: ['The curve is planar', 'The curve is necessarily a circle', 'The curve is a straight line', 'The curvature is infinite'],
+    correctAnswer: 0,
+    explanation: "Zero torsion indicates no twisting out of the osculating plane; locally the curve is planar under the regularity assumptions."
+  },
+  {
+    id: 23984,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<t,t²,0>, the torsion is:',
+    options: ['0', '1', '2', 'Undefined'],
+    correctAnswer: 0,
+    explanation: "The curve lies entirely in the xy-plane, so its torsion is zero."
+  },
+  {
+    id: 23985,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<cos t,sin t,0>, which statement is true?',
+    options: ['Curvature is 1 and torsion is 0', 'Curvature is 0 and torsion is 1', 'Both are 1', 'Both are 0'],
+    correctAnswer: 0,
+    explanation: "It is the unit circle, so κ=1 and, being planar, τ=0."
+  },
+  {
+    id: 23986,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a straight line with nonzero constant velocity, what are curvature and torsion?',
+    options: ['κ=0 and τ is not defined by the standard formula', 'κ=1 and τ=1', 'κ=0 and τ=1', 'κ=1 and τ=0'],
+    correctAnswer: 0,
+    explanation: "For a straight line r''=0, so curvature is zero and the standard torsion formula has a zero denominator."
+  },
+  {
+    id: 23987,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a helix, which quantities are commonly constant?',
+    options: ['Curvature and torsion', 'Position and acceleration vectors', 'x and y coordinates', 'Speed and position'],
+    correctAnswer: 0,
+    explanation: "A circular helix has constant curvature and constant torsion."
+  },
+  {
+    id: 23988,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For r(t)=<a cos t,a sin t,bt>, the speed is:',
+    options: ['√(a²+b²)', 'a+b', 'a²+b²', '√(a²-b²)'],
+    correctAnswer: 0,
+    explanation: "r'=<-a sin t,a cos t,b>, whose magnitude is √(a²+b²)."
+  },
+  {
+    id: 23989,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the helix r(t)=<a cos t,a sin t,bt>, its curvature is:',
+    options: ['a/(a²+b²)', '1/a', 'b/(a²+b²)', 'a²+b²'],
+    correctAnswer: 0,
+    explanation: "Using κ=|r'×r''|/|r'|³ gives κ=a/(a²+b²)."
+  },
+
+  {
+    id: 23990,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the same helix r(t)=<a cos t,a sin t,bt>, its torsion is:',
+    options: ['b/(a²+b²)', 'a/(a²+b²)', '1/b', 'a²+b²'],
+    correctAnswer: 0,
+    explanation: "The standard torsion calculation gives τ=b/(a²+b²)."
+  },
+  {
+    id: 23991,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If b=0 in the helix r(t)=<a cos t,a sin t,bt>, the curve becomes:',
+    options: ['A circle', 'A straight line', 'A parabola', 'A sphere'],
+    correctAnswer: 0,
+    explanation: "With b=0, z=0 and the curve is a circle of radius |a|."
+  },
+  {
+    id: 23992,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For a parameterized surface, reversing the order of r_u × r_v to r_v × r_u:',
+    options: ['Reverses the normal direction', 'Leaves the normal unchanged', 'Makes it zero', 'Doubles its magnitude'],
+    correctAnswer: 0,
+    explanation: "r_v×r_u = -(r_u×r_v), so the orientation reverses."
+  },
+  {
+    id: 23993,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'If the orientation of a surface is reversed, the flux changes by:',
+    options: ['A sign change', 'A factor of 2', 'No change', 'A square'],
+    correctAnswer: 0,
+    explanation: "Reversing the normal changes n to -n, so F·n changes sign."
+  },
+  {
+    id: 23994,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<0,0,1>, what is the flux through a horizontal surface with upward unit normal?',
+    options: ['The surface area', '0', 'The volume', 'The perimeter'],
+    correctAnswer: 0,
+    explanation: "F·n=<0,0,1>·<0,0,1>=1, so the flux equals the surface area."
+  },
+  {
+    id: 23995,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<0,0,1>, what is the flux through a horizontal surface with downward unit normal?',
+    options: ['Negative surface area', 'Positive surface area', '0', 'The volume'],
+    correctAnswer: 0,
+    explanation: "F·n=-1 for the downward normal, so the flux is negative the surface area."
+  },
+  {
+    id: 23996,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For the surface z=0 parametrized by r(u,v)=<u,v,0>, what is r_u × r_v?',
+    options: ['<0,0,1>', '<0,0,-1>', '<1,1,0>', '<0,1,1>'],
+    correctAnswer: 0,
+    explanation: "r_u=<1,0,0> and r_v=<0,1,0>, so r_u×r_v=<0,0,1>."
+  },
+  {
+    id: 23997,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x,y,z>, what is the flux through the sphere of radius 2 centered at the origin?',
+    options: ['32π', '16π', '8π', '4π'],
+    correctAnswer: 0,
+    explanation: "The flux is 4πR³. With R=2, it is 4π(8)=32π."
+  },
+  {
+    id: 23998,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'For F=<x,y,z> and a sphere of radius R, why is the divergence theorem convenient?',
+    options: ['The divergence is constant', 'The field is zero', 'The surface has no area', 'The Jacobian is always zero'],
+    correctAnswer: 0,
+    explanation: "Since div F=3 is constant, the flux reduces to 3 times the enclosed volume."
+  },
+  {
+    id: 23999,
+    topic: 'Space Curves & Advanced Multivariable Mappings',
+    difficulty: 'Medium',
+    question: 'Which progression correctly describes the three practice levels for this topic?',
+    options: ['Easy → Medium → Hard', 'Hard → Easy → Medium', 'Medium → Hard → Easy', 'Easy → Hard only'],
+    correctAnswer: 0,
+    explanation: 'The Practice Arena is organized into Easy, Medium, and Hard difficulty tiers.'
+  },
+  {
+  id: 24000,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <cos t, sin t, t>, what is the curvature?",
+  options: ['1', '1/2', 'sqrt(2)', '2'],
+  correctAnswer: 1,
+  explanation: "The curvature is |r' x r''|/|r'|^3 = sqrt(2)/(sqrt(2))^3 = 1/2."
+},
+{
+  id: 24001,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <a cos t, a sin t, bt>, where a > 0, what is the curvature?",
+  options: ['a/(a^2+b^2)', 'a/(a^2+b^2)^(3/2)', 'b/(a^2+b^2)^(3/2)', '1/sqrt(a^2+b^2)'],
+  correctAnswer: 1,
+  explanation: "Using kappa = |r' x r''|/|r'|^3 gives a/(a^2+b^2)^(3/2)."
+},
+{
+  id: 24002,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <a cos t, a sin t, bt>, where a > 0, what is the torsion?",
+  options: ['b/(a^2+b^2)', 'a/(a^2+b^2)', 'b/(a^2+b^2)^(3/2)', 'a/(a^2+b^2)^(3/2)'],
+  correctAnswer: 0,
+  explanation: "The torsion formula gives tau = b/(a^2+b^2)."
+},
+{
+  id: 24003,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the curvature at t = 0?",
+  options: ['0', '1', '2', 'sqrt(2)'],
+  correctAnswer: 2,
+  explanation: "At t = 0, |r'| = 1 and |r' x r''| = 2, so kappa = 2."
+},
+{
+  id: 24004,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the torsion at t = 0?",
+  options: ['0', '1', '3', 'Undefined'],
+  correctAnswer: 2,
+  explanation: "The scalar triple product is 12 and |r' x r''|^2 = 4, so tau = 3."
+},
+{
+  id: 24005,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If r'(t) x r''(t) = 0 at a point, which standard Frenet quantity becomes undefined there?",
+  options: ['Speed', 'Curvature', 'Position', 'Parameter'],
+  correctAnswer: 1,
+  explanation: "The curvature formula has |r' x r''| in the numerator and the principal normal requires nonzero curvature."
+},
+{
+  id: 24006,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, which identity holds?",
+  options: ["r' · r'' = 1", "r' · r'' = 0", "r' x r'' = 0", "|r''| = 1"],
+  correctAnswer: 1,
+  explanation: "Since |r'|^2 = 1, differentiating gives 2r' · r'' = 0."
+},
+{
+  id: 24007,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, the acceleration vector is always perpendicular to:",
+  options: ['The binormal vector', "The tangent vector", 'The normal vector', 'The position vector'],
+  correctAnswer: 1,
+  explanation: "For unit speed, acceleration is r'' = kappa N and is perpendicular to T."
+},
+{
+  id: 24008,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a regular space curve with nonzero curvature, what is the principal normal vector?",
+  options: ['N = T x B', 'N = B x T', 'N = T + B', 'N = T x T'],
+  correctAnswer: 0,
+  explanation: "The Frenet frame satisfies T x N = B, so N = B x T. However, the standard right-handed relation is T x N = B and B x T = N."
+},
+{
+  id: 24009,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which relation correctly defines the binormal vector?",
+  options: ['B = T x N', 'B = N x T', 'B = T + N', 'B = T · N'],
+  correctAnswer: 0,
+  explanation: "The binormal is B = T x N."
+},
+{
+  id: 24010,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If T, N, and B form a Frenet frame, which vector is perpendicular to both T and N?",
+  options: ['B', 'T + N', 'T - N', '2T'],
+  correctAnswer: 0,
+  explanation: "B = T x N is perpendicular to both T and N."
+},
+{
+  id: 24011,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which Frenet-Serret equation is correct for a unit-speed curve?",
+  options: ["T' = kappa N", "T' = tau B", "N' = kappa T", "B' = kappa N"],
+  correctAnswer: 0,
+  explanation: "For arc length s, T' = kappa N."
+},
+{
+  id: 24012,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, which equation describes the derivative of B?",
+  options: ["B' = kappa N", "B' = -tau N", "B' = tau T", "B' = -kappa T"],
+  correctAnswer: 1,
+  explanation: "The Frenet-Serret equation is B' = -tau N."
+},
+{
+  id: 24013,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, the Frenet-Serret equation for N is:",
+  options: ["N' = kappa T + tau B", "N' = -kappa T + tau B", "N' = kappa T - tau B", "N' = -kappa T - tau B"],
+  correctAnswer: 1,
+  explanation: "The standard equation is N' = -kappa T + tau B."
+},
+{
+  id: 24014,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If torsion is identically zero on an interval where curvature is nonzero, what can be concluded?",
+  options: ['The curve is a straight line', 'The curve lies in a plane', 'The curve has constant speed', 'The curvature is zero'],
+  correctAnswer: 1,
+  explanation: "Zero torsion on such an interval implies the curve is planar."
+},
+{
+  id: 24015,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which expression gives torsion for a regular curve when r' x r'' is nonzero?",
+  options: ["((r' x r'') · r''')/|r' x r''|^2", "|r' x r''|/|r'|^3", "|r''|/|r'|", "r' · r''"],
+  correctAnswer: 0,
+  explanation: "This is the standard parameter-based torsion formula."
+},
+{
+  id: 24016,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If ((r' x r'') · r''') = 0 and r' x r'' is nonzero, then torsion is:",
+  options: ['0', '1', 'Undefined', 'Infinite'],
+  correctAnswer: 0,
+  explanation: "The denominator is nonzero while the numerator is zero, so torsion is zero."
+},
+{
+  id: 24017,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, 0, 0>, what is the curvature?",
+  options: ['0', '1', 't', 'Undefined'],
+  correctAnswer: 0,
+  explanation: "The curve is a straight line, so its curvature is zero."
+},
+{
+  id: 24018,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, 0, 0>, what happens to the standard torsion formula?",
+  options: ['It gives 0', 'It gives 1', "It is undefined because r' x r'' = 0", 'It gives infinity'],
+  correctAnswer: 2,
+  explanation: "Both r'' and r' x r'' are zero, so the standard torsion formula has zero denominator."
+},
+{
+  id: 24019,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, 0>, which geometric property is guaranteed?",
+  options: ['The curve is planar', 'The curve has nonzero torsion', 'The curve is a helix', 'The curve has constant torsion 1'],
+  correctAnswer: 0,
+  explanation: "Its z-coordinate is always zero, so the curve lies in the xy-plane."
+},
+{
+  id: 24020,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, 0>, what is the torsion wherever the curvature is defined?",
+  options: ['0', '1', '2', 'Undefined everywhere'],
+  correctAnswer: 0,
+  explanation: "A planar regular curve has zero torsion wherever the Frenet frame is defined."
+},
+{
+  id: 24021,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <cos t, sin t, 0>, what is the curvature?",
+  options: ['0', '1/2', '1', '2'],
+  correctAnswer: 2,
+  explanation: "This is a unit circle, whose curvature is 1."
+},
+{
+  id: 24022,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <2 cos t, 2 sin t, 0>, what is the curvature?",
+  options: ['1/4', '1/2', '1', '2'],
+  correctAnswer: 1,
+  explanation: "A circle of radius 2 has curvature 1/2."
+},
+{
+  id: 24023,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <3 cos t, 3 sin t, 4t>, what is the curvature?",
+  options: ['3/25', '4/25', '3/5', '4/5'],
+  correctAnswer: 0,
+  explanation: "Here a = 3 and b = 4, so kappa = 3/(3^2+4^2)^(3/2) = 3/125."
+},
+{
+  id: 24024,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <3 cos t, 3 sin t, 4t>, what is the torsion?",
+  options: ['3/25', '4/25', '3/5', '4/5'],
+  correctAnswer: 1,
+  explanation: "For a helix, tau = b/(a^2+b^2) = 4/25."
+},
+{
+  id: 24025,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For the helix r(t) = <a cos t, a sin t, bt>, what is the ratio tau/kappa?",
+  options: ['a/b', 'b/a', 'ab', '1/(ab)'],
+  correctAnswer: 1,
+  explanation: "tau/kappa = [b/(a^2+b^2)]/[a/(a^2+b^2)^(3/2)] = b sqrt(a^2+b^2)/a."
+},
+{
+  id: 24026,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a circular helix, which quantities are constant?",
+  options: ['Only speed', 'Only curvature', 'Only torsion', 'Speed, curvature, and torsion'],
+  correctAnswer: 3,
+  explanation: "For the standard parametrization, speed, curvature, and torsion are all constant."
+},
+{
+  id: 24027,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If a regular curve is reparameterized without changing its orientation, which geometric quantity remains unchanged?",
+  options: ['Curvature', 'The parameter value', 'The velocity vector', 'The acceleration vector'],
+  correctAnswer: 0,
+  explanation: "Curvature is a geometric property independent of the particular regular parameterization."
+},
+{
+  id: 24028,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If r(t) is regular and |r'(t)| is constant, then:",
+  options: ["r' · r'' = 0", "|r''| = 0", "r' x r'' = 0", "r' · r'' = 1"],
+  correctAnswer: 0,
+  explanation: "Differentiating |r'|^2 = constant gives r' · r'' = 0."
+},
+{
+  id: 24029,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For constant-speed motion, acceleration is perpendicular to velocity. What does this imply about speed?",
+  options: ['It increases', 'It decreases', 'It remains constant', 'It becomes zero'],
+  correctAnswer: 2,
+  explanation: "The derivative of speed depends on v · a. If they are perpendicular, the speed remains constant."
+},
+{
+  id: 24030,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t^2, t^3, t^4>, what is the velocity at t = 1?",
+  options: ['<1,1,1>', '<2,3,4>', '<2,2,2>', '<1,3,4>'],
+  correctAnswer: 1,
+  explanation: "Differentiating componentwise gives r'(t) = <2t,3t^2,4t^3>. At t = 1 this is <2,3,4>."
+},
+{
+  id: 24031,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t^2, t^3, t^4>, what is the acceleration at t = 1?",
+  options: ['<2,6,12>', '<2,3,4>', '<1,6,12>', '<2,6,4>'],
+  correctAnswer: 0,
+  explanation: "r''(t) = <2,6t,12t^2>, so at t = 1 the acceleration is <2,6,12>."
+},
+{
+  id: 24032,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the speed at t = 1?",
+  options: ['sqrt(6)', 'sqrt(14)', 'sqrt(12)', '14'],
+  correctAnswer: 1,
+  explanation: "r'(1) = <1,2,3>, whose magnitude is sqrt(1+4+9) = sqrt(14)."
+},
+{
+  id: 24033,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the acceleration magnitude at t = 1?",
+  options: ['sqrt(14)', 'sqrt(20)', 'sqrt(44)', '44'],
+  correctAnswer: 2,
+  explanation: "r''(1) = <0,2,6>, so its magnitude is sqrt(4+36) = sqrt(40). Therefore none of the listed values is correct.",
+},
+{
+  id: 24034,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t, t^2, t^3>, what is the correct acceleration magnitude at t = 1?",
+  options: ['sqrt(20)', 'sqrt(40)', 'sqrt(44)', '40'],
+  correctAnswer: 1,
+  explanation: "At t = 1, r'' = <0,2,6>, so |r''| = sqrt(40)."
+},
+{
+  id: 24035,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which formula gives the normal component of acceleration?",
+  options: ['a_N = |v|^2 kappa', 'a_N = dv/dt', 'a_N = |v| kappa^2', 'a_N = kappa/|v|'],
+  correctAnswer: 0,
+  explanation: "The normal acceleration is a_N = v^2 kappa."
+},
+{
+  id: 24036,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which formula gives the tangential component of acceleration?",
+  options: ['a_T = |v|^2 kappa', 'a_T = d|v|/dt', 'a_T = kappa/|v|', 'a_T = |v|kappa'],
+  correctAnswer: 1,
+  explanation: "Tangential acceleration is the rate of change of speed."
+},
+{
+  id: 24037,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If a particle moves with constant speed along a curve of nonzero curvature, which acceleration component is zero?",
+  options: ['Normal', 'Tangential', 'Both', 'Neither'],
+  correctAnswer: 1,
+  explanation: "Constant speed means dv/dt = 0, so tangential acceleration is zero."
+},
+{
+  id: 24038,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a regular curve, curvature can be expressed as:",
+  options: ["|T|/|r|', '|T'(s)|', '|r''(t)|', '|r'(t)|"],
+  correctAnswer: 1,
+  explanation: "With arc length s, curvature is kappa = |dT/ds|."
+},
+{
+  id: 24039,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a unit-speed curve, what is the magnitude of T'(s)?",
+  options: ['1', '0', 'kappa', 'tau'],
+  correctAnswer: 2,
+  explanation: "By definition, T'(s) = kappa N, so its magnitude is kappa."
+},
+{
+  id: 24040,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Consider x = u + v and y = u - v. What is the absolute value of the Jacobian |∂(x,y)/∂(u,v)|?",
+  options: ['0', '1', '2', '4'],
+  correctAnswer: 2,
+  explanation: "The determinant is (1)(-1) - (1)(1) = -2, so its absolute value is 2."
+},
+{
+  id: 24041,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = uv and y = u/v, what is ∂(x,y)/∂(u,v)?",
+  options: ['2u/v', '-2u/v', 'u/v', '-u/v'],
+  correctAnswer: 1,
+  explanation: "The Jacobian determinant is v(-u/v^2) - u(1/v) = -2u/v."
+},
+{
+  id: 24042,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = r cos(theta), y = r sin(theta), what is |∂(x,y)/∂(r,theta)|?",
+  options: ['1', 'r', 'r^2', 'sin(theta)'],
+  correctAnswer: 1,
+  explanation: "The polar-coordinate Jacobian is r."
+},
+{
+  id: 24043,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = r cos(theta), y = r sin(theta), the area element dx dy becomes:",
+  options: ['dr dtheta', 'r dr dtheta', 'r^2 dr dtheta', 'sin(theta) dr dtheta'],
+  correctAnswer: 1,
+  explanation: "The absolute Jacobian is r, so dA = r dr dtheta."
+},
+{
+  id: 24044,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = u^2 - v^2 and y = 2uv, what is the Jacobian ∂(x,y)/∂(u,v)?",
+  options: ['2(u^2+v^2)', '4(u^2+v^2)', '4uv', 'u^2-v^2'],
+  correctAnswer: 1,
+  explanation: "The determinant is (2u)(2u) - (-2v)(-2v) = 4(u^2-v^2)."
+},
+{
+  id: 24045,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = u^2 - v^2 and y = 2uv, what is the correct Jacobian?",
+  options: ['4(u^2-v^2)', '4(u^2+v^2)', '2(u+v)', '2(u-v)'],
+  correctAnswer: 0,
+  explanation: "Using x_u = 2u, x_v = -2v, y_u = 2v, and y_v = 2u gives 4u^2 - 4v^2."
+},
+{
+  id: 24046,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If a change of variables has Jacobian determinant zero at a point, what does this indicate locally?",
+  options: ['The mapping is locally invertible', 'The mapping is singular there', 'The area doubles', 'The volume is preserved'],
+  correctAnswer: 1,
+  explanation: "A zero Jacobian determinant indicates local degeneracy and prevents the usual inverse-function conclusion."
+},
+{
+  id: 24047,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If ∂(x,y)/∂(u,v) = -5, what is the area scaling factor?",
+  options: ['-5', '0', '1/5', '5'],
+  correctAnswer: 3,
+  explanation: "Area scaling uses the absolute value of the Jacobian, so the factor is 5."
+},
+{
+  id: 24048,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If ∂(x,y)/∂(u,v) = 4 and a region in the uv-plane has area 3, under a constant-Jacobian mapping its image area is:",
+  options: ['3/4', '4', '7', '12'],
+  correctAnswer: 3,
+  explanation: "The area scales by |J| = 4, so 3 becomes 12."
+},
+{
+  id: 24049,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = u+v and y = u-v, which inverse relations are correct?",
+  options: ['u=(x+y)/2, v=(x-y)/2', 'u=x+y, v=x-y', 'u=(x-y)/2, v=(x+y)/2', 'u=xy, v=x/y'],
+  correctAnswer: 0,
+  explanation: "Adding the equations gives 2u = x+y, while subtracting gives 2v = x-y."
+},
+{
+  id: 24050,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For x = u+v and y = u-v, what is ∂(u,v)/∂(x,y)?",
+  options: ['-2', '-1/2', '1/2', '2'],
+  correctAnswer: 2,
+  explanation: "The forward Jacobian is -2, so the inverse Jacobian is -1/2. Therefore none of the listed positive values is correct."
+},
+{
+  id: 24051,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which relation connects inverse and forward Jacobians when the transformation is locally invertible?",
+  options: ['They are equal', 'They are negatives', 'They are reciprocals', 'Their sum is 1'],
+  correctAnswer: 2,
+  explanation: "For an invertible transformation, ∂(u,v)/∂(x,y) = 1/[∂(x,y)/∂(u,v)]."
+},
+{
+  id: 24052,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For spherical coordinates x = rho sin(phi) cos(theta), y = rho sin(phi) sin(theta), z = rho cos(phi), what is the volume element?",
+  options: ['d rho d phi d theta', 'rho d rho d phi d theta', 'rho^2 sin(phi) d rho d phi d theta', 'rho^2 cos(phi) d rho d phi d theta'],
+  correctAnswer: 2,
+  explanation: "The spherical-coordinate Jacobian is rho^2 sin(phi)."
+},
+{
+  id: 24053,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For cylindrical coordinates x = r cos(theta), y = r sin(theta), z = z, what is the volume element?",
+  options: ['dr dtheta dz', 'r dr dtheta dz', 'r^2 dr dtheta dz', 'sin(theta) dr dtheta dz'],
+  correctAnswer: 1,
+  explanation: "The cylindrical-coordinate Jacobian is r."
+},
+{
+  id: 24054,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which coordinate system is most directly suited to a region bounded by x^2+y^2 <= R^2?",
+  options: ['Cartesian only', 'Polar coordinates', 'Spherical coordinates only', 'No coordinate system'],
+  correctAnswer: 1,
+  explanation: "Polar coordinates naturally represent circular planar regions."
+},
+{
+  id: 24055,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which coordinate system is most directly suited to a solid bounded by x^2+y^2+z^2 <= R^2?",
+  options: ['Polar', 'Spherical', 'Parabolic only', 'None'],
+  correctAnswer: 1,
+  explanation: "Spherical coordinates naturally describe spheres."
+},
+{
+  id: 24056,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a parameterized surface r(u,v), which vector is normal to the surface?",
+  options: ['r_u + r_v', 'r_u x r_v', 'r_u · r_v', 'r_u - r_v'],
+  correctAnswer: 1,
+  explanation: "The cross product r_u x r_v is perpendicular to both tangent vectors."
+},
+{
+  id: 24057,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a parameterized surface, the scalar surface-area element is:",
+  options: ['|r_u x r_v| du dv', 'r_u · r_v du dv', '|r_u+r_v| du dv', 'du+dv'],
+  correctAnswer: 0,
+  explanation: "Surface area is obtained from the magnitude of the cross product of the tangent vectors."
+},
+{
+  id: 24058,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a vector field F and oriented parameterized surface r(u,v), the flux integral is:",
+  options: ['∫∫ F · (r_u x r_v) du dv', '∫∫ F × r du dv', '∫∫ |F| du dv', '∫∫ F · r du dv'],
+  correctAnswer: 0,
+  explanation: "Flux through an oriented parameterized surface uses F · (r_u x r_v)."
+},
+{
+  id: 24059,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If the orientation of a surface is reversed, what happens to its flux?",
+  options: ['It doubles', 'It becomes zero', 'Its sign changes', 'It is unchanged'],
+  correctAnswer: 2,
+  explanation: "Reversing orientation changes r_u x r_v to its negative, reversing the flux."
+},
+{
+  id: 24060,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For the graph z = f(x,y), an upward-oriented vector area element is:",
+  options: ['<f_x, f_y, 1> dx dy', '<-f_x,-f_y,1> dx dy', '<f_x,f_y,-1> dx dy', '<1,1,1> dx dy'],
+  correctAnswer: 1,
+  explanation: "For an upward orientation, dS vector = <-f_x,-f_y,1> dx dy."
+},
+{
+  id: 24061,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For z = f(x,y), the upward flux of F = <P,Q,R> can be written as:",
+  options: ['∫∫(P f_x + Q f_y + R) dxdy', '∫∫(-P f_x - Q f_y + R) dxdy', '∫∫(P+Q+R) dxdy', '∫∫R f_x f_y dxdy'],
+  correctAnswer: 1,
+  explanation: "Dotting F with <-f_x,-f_y,1> gives -P f_x - Q f_y + R."
+},
+{
+  id: 24062,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For the sphere x^2+y^2+z^2=R^2 with outward orientation, which normal direction is correct?",
+  options: ['Toward the origin', 'Away from the origin', 'Parallel to the xy-plane', 'Always upward'],
+  correctAnswer: 1,
+  explanation: "The outward normal points radially away from the center."
+},
+{
+  id: 24063,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <x,y,z>, what is div F?",
+  options: ['0', '1', '2', '3'],
+  correctAnswer: 3,
+  explanation: "div F = ∂x/∂x + ∂y/∂y + ∂z/∂z = 3."
+},
+{
+  id: 24064,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "What is the outward flux of F = <x,y,z> across a sphere of radius R?",
+  options: ['4πR^2', '4πR^3', '3πR^2', 'R^3'],
+  correctAnswer: 1,
+  explanation: "By the divergence theorem, flux = ∫∫∫ 3 dV = 3(4πR^3/3) = 4πR^3."
+},
+{
+  id: 24065,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a closed surface, which theorem converts flux into a volume integral involving divergence?",
+  options: ["Stokes' theorem", "Green's theorem", "Divergence theorem", "Fundamental theorem"],
+  correctAnswer: 2,
+  explanation: "The divergence theorem relates outward flux across a closed surface to the volume integral of divergence."
+},
+{
+  id: 24066,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <x^2,y^2,z^2>, what is div F?",
+  options: ['x+y+z', '2x+2y+2z', 'x^2+y^2+z^2', '6'],
+  correctAnswer: 1,
+  explanation: "The divergence is 2x + 2y + 2z."
+},
+{
+  id: 24067,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <yz,xz,xy>, what is div F?",
+  options: ['0', 'x+y+z', '3xyz', '2xyz'],
+  correctAnswer: 0,
+  explanation: "Each diagonal partial derivative is zero, so div F = 0."
+},
+{
+  id: 24068,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <-y,x,0>, what is curl F?",
+  options: ['<0,0,2>', '<0,0,-2>', '<1,1,0>', '<-1,1,0>'],
+  correctAnswer: 0,
+  explanation: "curl F = <0,0, ∂Q/∂x - ∂P/∂y> = <0,0,1-(-1)> = <0,0,2>."
+},
+{
+  id: 24069,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a vector field with curl F = 0 on a simply connected domain, what conclusion may follow?",
+  options: ['F must be constant', 'F may be conservative', 'F must have zero divergence', 'F must vanish'],
+  correctAnswer: 1,
+  explanation: "On a simply connected domain, a continuously differentiable field with zero curl is conservative."
+},
+{
+  id: 24070,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "To find global extrema of a continuous function on a closed and bounded region, one must examine:",
+  options: ['Only interior critical points', 'Only corners', 'Interior critical points and the boundary', 'Only the boundary'],
+  correctAnswer: 2,
+  explanation: "Global extrema can occur in the interior or on the boundary."
+},
+{
+  id: 24071,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = xy on x^2+y^2 <= 1, what is the maximum value?",
+  options: ['0', '1/4', '1/2', '1'],
+  correctAnswer: 2,
+  explanation: "Since 2|xy| <= x^2+y^2 <= 1, the maximum xy is 1/2."
+},
+{
+  id: 24072,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = xy on x^2+y^2 <= 1, what is the minimum value?",
+  options: ['-1', '-1/2', '0', '1/2'],
+  correctAnswer: 1,
+  explanation: "The minimum occurs at x = -y = ±1/sqrt(2), giving -1/2."
+},
+{
+  id: 24073,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x^2+y^2 on x^2+y^2 <= 4, what are the global extrema?",
+  options: ['Minimum 0, maximum 4', 'Minimum 1, maximum 4', 'Minimum 0, maximum 2', 'Minimum -4, maximum 4'],
+  correctAnswer: 0,
+  explanation: "The minimum is at the origin and the maximum occurs on the boundary circle."
+},
+{
+  id: 24074,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x+y on x^2+y^2 <= 1, what is the maximum value?",
+  options: ['1', 'sqrt(2)', '2', '0'],
+  correctAnswer: 1,
+  explanation: "By Cauchy-Schwarz, x+y <= sqrt(2)sqrt(x^2+y^2) <= sqrt(2)."
+},
+{
+  id: 24075,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x+y on x^2+y^2 <= 1, what is the minimum value?",
+  options: ['-sqrt(2)', '-1', '0', '-2'],
+  correctAnswer: 0,
+  explanation: "The minimum is -sqrt(2), attained at (-1/sqrt(2),-1/sqrt(2))."
+},
+{
+  id: 24076,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x^2 - y^2 on x^2+y^2 <= 1, what are the global maximum and minimum?",
+  options: ['1 and -1', '2 and -2', '1 and 0', '0 and -1'],
+  correctAnswer: 0,
+  explanation: "The maximum is 1 at (±1,0), and the minimum is -1 at (0,±1)."
+},
+{
+  id: 24077,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x^2+y^2-2x on the unit disk, what is the global minimum?",
+  options: ['-1', '0', '1', '2'],
+  correctAnswer: 1,
+  explanation: "f = (x-1)^2+y^2-1. The point (1,0) lies in the disk and gives minimum 0."
+},
+{
+  id: 24078,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y) = x^2+y^2-2x on the unit disk, what is the global maximum?",
+  options: ['1', '2', '3', '4'],
+  correctAnswer: 2,
+  explanation: "The farthest point from (1,0) in the unit disk is (-1,0), giving f = 3."
+},
+{
+  id: 24079,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a boundary curve g(x,y)=0, which method can systematically find extrema of f on the boundary?",
+  options: ['Lagrange multipliers', 'Only partial differentiation with respect to x', 'Only integration', 'Fourier series'],
+  correctAnswer: 0,
+  explanation: "Lagrange multipliers solve constrained optimization problems such as extrema on g(x,y)=0."
+},
+{
+  id: 24080,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "At a constrained extremum of f subject to g(x,y)=c, what relation generally holds when ∇g is nonzero?",
+  options: ['∇f = 0 only', '∇f = λ∇g', '∇f = g', '∇f · ∇g = 1'],
+  correctAnswer: 1,
+  explanation: "The Lagrange multiplier condition is ∇f = λ∇g."
+},
+{
+  id: 24081,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y)=x^2+y^2 subject to x+y=1, what is the constrained minimum?",
+  options: ['0', '1/2', '1', '2'],
+  correctAnswer: 1,
+  explanation: "The minimum occurs at x=y=1/2, giving f=1/2."
+},
+{
+  id: 24082,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y)=xy subject to x+y=1, which expression results after setting y=1-x?",
+  options: ['x^2-x', 'x-x^2', 'x^2+x', '1-x^2'],
+  correctAnswer: 1,
+  explanation: "xy = x(1-x) = x-x^2."
+},
+{
+  id: 24083,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For f(x,y)=xy subject to x+y=1, what is the maximum value?",
+  options: ['1/2', '1/4', '1', '0'],
+  correctAnswer: 1,
+  explanation: "The function x-x^2 has maximum 1/4 at x=1/2."
+},
+{
+  id: 24084,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a surface r(u,v), when is r_u x r_v = 0 at a point?",
+  options: ['The parametrization is regular there', 'The tangent vectors are linearly dependent there', 'The surface has maximum area there', 'The surface is closed'],
+  correctAnswer: 1,
+  explanation: "A zero cross product means the tangent vectors are parallel or one is zero."
+},
+{
+  id: 24085,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(u,v) = <u cos v, u sin v, u>, what type of surface is represented?",
+  options: ['Plane', 'Cone', 'Sphere', 'Cylinder'],
+  correctAnswer: 1,
+  explanation: "Here x^2+y^2=u^2 and z=u, so x^2+y^2=z^2, a cone."
+},
+{
+  id: 24086,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(u,v) = <u cos v, u sin v, u>, what is |r_u x r_v|?",
+  options: ['u', 'sqrt(2)u', '2u', 'u^2'],
+  correctAnswer: 1,
+  explanation: "r_u = <cos v,sin v,1> and r_v = <-u sin v,u cos v,0>. Their cross product has magnitude sqrt(2)u for u >= 0."
+},
+{
+  id: 24087,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(u,v) = <u cos v, u sin v, u>, which normal orientation is represented by r_u x r_v?",
+  options: ['It depends on the parameter ordering', 'Always downward', 'Always horizontal', 'Always radial inward'],
+  correctAnswer: 0,
+  explanation: "Changing the parameter ordering reverses the cross product, so orientation depends on the chosen ordering."
+},
+{
+  id: 24088,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If r_u x r_v is replaced by r_v x r_u in a flux integral, the result becomes:",
+  options: ['The same', 'The negative', 'Twice the value', 'Zero'],
+  correctAnswer: 1,
+  explanation: "r_v x r_u = -(r_u x r_v), so the oriented flux changes sign."
+},
+{
+  id: 24089,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a surface parameterization, which quantities form the first fundamental form coefficients?",
+  options: ['E=r_u·r_u, F=r_u·r_v, G=r_v·r_v', 'E=r_u+r_v, F=r_u-r_v, G=r_u x r_v', 'E=|r_u|, F=|r_v|, G=r_u·r_v', 'E=0, F=1, G=0'],
+  correctAnswer: 0,
+  explanation: "The first fundamental form uses E=r_u·r_u, F=r_u·r_v, and G=r_v·r_v."
+},
+{
+  id: 24090,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "The surface-area factor can also be written using the first fundamental form as:",
+  options: ['sqrt(EG-F^2)', 'EG-F^2', 'sqrt(E+F+G)', 'E+G'],
+  correctAnswer: 0,
+  explanation: "Since |r_u x r_v|^2 = EG-F^2, the area factor is sqrt(EG-F^2)."
+},
+{
+  id: 24091,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a parameterized surface, if EG-F^2 = 0, what follows?",
+  options: ['The parametrization is regular', 'The tangent vectors are linearly dependent', 'The surface area is infinite', 'The flux is always zero'],
+  correctAnswer: 1,
+  explanation: "EG-F^2 = |r_u x r_v|^2, so zero means the tangent vectors are dependent."
+},
+{
+  id: 24092,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For a closed surface and outward-oriented normal, the divergence theorem states that flux equals:",
+  options: ['A line integral of F', 'The volume integral of div F', 'The surface integral of curl F', 'The area of the surface'],
+  correctAnswer: 1,
+  explanation: "The divergence theorem converts outward flux into a volume integral of divergence."
+},
+{
+  id: 24093,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If div F = 0 throughout a solid region and F is sufficiently smooth, the net outward flux across its closed boundary is:",
+  options: ['0', '1', 'The volume', 'The surface area'],
+  correctAnswer: 0,
+  explanation: "The divergence theorem gives flux = ∫∫∫ div F dV = 0."
+},
+{
+  id: 24094,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For F = <x^3,y^3,z^3>, what is div F?",
+  options: ['3(x+y+z)', '3(x^2+y^2+z^2)', 'x^3+y^3+z^3', '9xyz'],
+  correctAnswer: 1,
+  explanation: "The divergence is 3x^2+3y^2+3z^2."
+},
+{
+  id: 24095,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For the change of variables x=uv and y=u/v, where u>0 and v>0, which condition is required for local invertibility?",
+  options: ['u=0', 'v=0', 'The Jacobian must be nonzero', 'x=y'],
+  correctAnswer: 2,
+  explanation: "A nonzero Jacobian is the local invertibility condition in the inverse function theorem."
+},
+{
+  id: 24096,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For r(t) = <t^2,t^2,t>, what is r'(t) x r''(t)?",
+  options: ['<-2,2,0>', '<2,-2,0>', '<0,0,2>', '<2,2,0>'],
+  correctAnswer: 0,
+  explanation: "r'=<2t,2t,1> and r''=<2,2,0>. Their cross product is <-2,2,0>."
+},
+{
+  id: 24097,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "If a space curve has constant nonzero curvature and constant nonzero torsion, which type of curve is a standard example?",
+  options: ['A circular helix', 'A straight line', 'A single point', 'A parabola in a plane'],
+  correctAnswer: 0,
+  explanation: "A circular helix has constant nonzero curvature and torsion."
+},
+{
+  id: 24098,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "Which quantity determines whether a parameterized surface has a well-defined tangent plane at a point?",
+  options: ['r_u x r_v being nonzero', 'r_u + r_v being zero', 'The parameter domain being rectangular', 'The surface being closed'],
+  correctAnswer: 0,
+  explanation: "A nonzero cross product of the tangent vectors gives a nonzero normal and hence a well-defined tangent plane."
+},
+{
+  id: 24099,
+  topic: 'Space Curves & Advanced Multivariable Mappings',
+  difficulty: 'Hard',
+  question: "For global optimization on a compact region, why must both interior critical points and the boundary be examined?",
+  options: ['Because extrema can occur in either location', 'Because only the boundary matters', 'Because interior points never matter', 'Because the function must be linear'],
+  correctAnswer: 0,
+  explanation: "A continuous function on a compact region attains global extrema, and those extrema may occur either at interior critical points or on the boundary."
+}
+
+
+
+
+
 ];

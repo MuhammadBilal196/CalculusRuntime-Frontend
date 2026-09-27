@@ -2,7 +2,8 @@
 
 export const TAYLOR_CONCEPT_QUIZ = [
   {
-    prompt: "The degree-1 Taylor polynomial of $f(x)=\\sqrt{x}$ at $a=4$ equals:",
+    prompt:
+      "The degree-1 Taylor polynomial of $f(x)=\\sqrt{x}$ at $a=4$ equals:",
     options: ["$2+(x-4)$", "$2+\\dfrac{x-4}{4}$", "$\\dfrac{x}{2}$"],
     answer: "B",
     explanation: "$f(4)=2$ and $f'(4)=1/4$.",
@@ -14,14 +15,23 @@ export const TAYLOR_CONCEPT_QUIZ = [
     explanation: "$f(0)=1$, $f'(0)=0$, $f''(0)=-1$.",
   },
   {
-    prompt: "Compared with $T_1$, the quadratic $T_2$ of $e^x$ at $0$ typically:",
-    options: ["Ignores the second derivative", "Is exact for all $x$", "Stays closer to $e^x$ near $0$"],
+    prompt:
+      "Compared with $T_1$, the quadratic $T_2$ of $e^x$ at $0$ typically:",
+    options: [
+      "Ignores the second derivative",
+      "Is exact for all $x$",
+      "Stays closer to $e^x$ near $0$",
+    ],
     answer: "C",
     explanation: "Matching one extra derivative improves local accuracy.",
   },
   {
     prompt: "Approximation by $T_n$ centered at $a$ generally worsens when:",
-    options: ["$x=a$", "$|x-a|$ becomes large", "$n$ increases with $x$ fixed near $a$"],
+    options: [
+      "$x=a$",
+      "$|x-a|$ becomes large",
+      "$n$ increases with $x$ fixed near $a$",
+    ],
     answer: "B",
     explanation: "Error terms grow with distance from the center.",
   },
@@ -45,7 +55,11 @@ export const TAYLOR_CONCEPT_QUIZ = [
   },
   {
     prompt: "A graph of $f$ and $T_2$ near the center typically shows:",
-    options: ["Identical curves everywhere", "Contact of order 2 at $a$", "Only matching values, never slopes"],
+    options: [
+      "Identical curves everywhere",
+      "Contact of order 2 at $a$",
+      "Only matching values, never slopes",
+    ],
     answer: "B",
     explanation: "Value, slope, and concavity match at the center.",
   },
@@ -57,25 +71,42 @@ export const TAYLOR_CONCEPT_QUIZ = [
   },
   {
     prompt: "Using only $T_0(x)=f(a)$ means the approximation is:",
-    options: ["The tangent line at $a$", "The constant line through $(a,f(a))$", "A secant through two points"],
+    options: [
+      "The tangent line at $a$",
+      "The constant line through $(a,f(a))$",
+      "A secant through two points",
+    ],
     answer: "B",
     explanation: "Degree $0$ ignores all derivatives.",
   },
   {
     prompt: "For $f(x)=1/x$ at $a=2$, $T_2(x)$ equals:",
-    options: ["$\\dfrac{1}{2}-\\dfrac{x-2}{2}+(x-2)^2$", "$1-(x-2)+(x-2)^2$", "$\\dfrac{1}{2}-\\dfrac{x-2}{4}+\\dfrac{(x-2)^2}{8}$"],
+    options: [
+      "$\\dfrac{1}{2}-\\dfrac{x-2}{2}+(x-2)^2$",
+      "$1-(x-2)+(x-2)^2$",
+      "$\\dfrac{1}{2}-\\dfrac{x-2}{4}+\\dfrac{(x-2)^2}{8}$",
+    ],
     answer: "C",
-    explanation: "$f(2)=1/2$, $f'(2)=-1/4$, $f''(2)=1/4$, so $c_2=(1/4)/2=1/8$.",
+    explanation:
+      "$f(2)=1/2$, $f'(2)=-1/4$, $f''(2)=1/4$, so $c_2=(1/4)/2=1/8$.",
   },
   {
     prompt: "Why can $T_3$ be worse than $T_1$ far from the center?",
-    options: ["Higher powers of $(x-a)$ can dominate away from $a$", "Taylor polynomials never use factorials", "$T_n$ is always exact"],
+    options: [
+      "Higher powers of $(x-a)$ can dominate away from $a$",
+      "Taylor polynomials never use factorials",
+      "$T_n$ is always exact",
+    ],
     answer: "A",
     explanation: "Polynomial growth in $|x-a|$ can overshoot.",
   },
   {
     prompt: "Matching value and first derivative at $a$ means $T_1$ is the:",
-    options: ["Secant through two distant points", "Horizontal asymptote", "Tangent-line approximation"],
+    options: [
+      "Secant through two distant points",
+      "Horizontal asymptote",
+      "Tangent-line approximation",
+    ],
     answer: "C",
     explanation: "Standard linearization.",
   },
@@ -86,16 +117,54 @@ export const TAYLOR_CONCEPT_QUIZ = [
     explanation: "$f''(0)=4$, so $c_2=4/2=2$.",
   },
   {
-    prompt: "If $f$ and $T_n$ agree through the $n$th derivative at $a$, then $f(a)-T_n(a)$ equals:",
+    prompt:
+      "If $f$ and $T_n$ agree through the $n$th derivative at $a$, then $f(a)-T_n(a)$ equals:",
     options: ["$n!$", "$0$", "$f^{(n)}(a)$"],
     answer: "B",
     explanation: "By construction $T_n(a)=f(a)$.",
+  },
+  {
+    prompt: "Taylor polynomials aim to match:",
+    options: [
+      "Function values and derivatives at the center",
+      "Only roots of the function",
+      "Global asymptotes",
+    ],
+    answer: "A",
+    explanation:
+      "They force local polynomial derivatives to match the function's derivatives.",
+  },
+  {
+    prompt: "The Maclaurin series is just a Taylor series centered at:",
+    options: ["$a=0$", "$a=1$", "$a=\\pi$"],
+    answer: "A",
+    explanation: "By definition.",
+  },
+  {
+    prompt: "The degree of $T_n(x)$ is:",
+    options: ["At most $n$", "Exactly $n$", "Infinite"],
+    answer: "A",
+    explanation:
+      "If $f^{(n)}(a)=0$, the highest non-zero power may be less than $n$.",
+  },
+  {
+    prompt: "The zeroth-order Taylor polynomial $T_0(x)$ represents:",
+    options: ["A horizontal line", "The $x$-axis", "A tangent line"],
+    answer: "A",
+    explanation: "$T_0(x) = f(a)$, which is a constant.",
+  },
+  {
+    prompt: "As $n \\to \\infty$, the Taylor polynomial $T_n(x)$ becomes:",
+    options: ["The Taylor series", "A constant", "Undefined"],
+    answer: "A",
+    explanation: "The infinite limit of the partial sums forms the series.",
   },
 ];
 
 export const TAYLOR_FORMULA_QUIZ = [
   {
-    prompt: "In $\\sum_{n=0}^{\\infty}\\dfrac{f^{(n)}(a)}{n!}(x-a)^n$, the center is:",
+    prompt:
+      "In $\\sum_{n=0}^{\\infty}\\dfrac{f^{(n)}(a)}{n!}(x-a)^n$, the center is:",
     options: ["$a$", "$x$", "$0$ always"],
     answer: "A",
     explanation: "Powers of $(x-a)$.",
@@ -108,7 +177,11 @@ export const TAYLOR_FORMULA_QUIZ = [
   },
   {
     prompt: "Build $T_2$ for $f(x)=\\ln x$ about $a=1$:",
-    options: ["$(x-1)+\\dfrac{(x-1)^2}{2}$", "$(x-1)-\\dfrac{(x-1)^2}{2}$", "$x-\\dfrac{x^2}{2}$"],
+    options: [
+      "$(x-1)+\\dfrac{(x-1)^2}{2}$",
+      "$(x-1)-\\dfrac{(x-1)^2}{2}$",
+      "$x-\\dfrac{x^2}{2}$",
+    ],
     answer: "B",
     explanation: "$f(1)=0$, $c_1=1$, $c_2=-1/2$.",
   },
@@ -119,7 +192,8 @@ export const TAYLOR_FORMULA_QUIZ = [
     explanation: "$\\cos(\\pi/2)=0$.",
   },
   {
-    prompt: "If a Taylor series about $a=3$ has $c_3=5$, then $f'''(3)$ equals:",
+    prompt:
+      "If a Taylor series about $a=3$ has $c_3=5$, then $f'''(3)$ equals:",
     options: ["$5$", "$30$", "$5/6$"],
     answer: "B",
     explanation: "$c_3=f'''(3)/3!$ so $f'''(3)=30$.",
@@ -132,7 +206,11 @@ export const TAYLOR_FORMULA_QUIZ = [
   },
   {
     prompt: "$T_3$ of $f(x)=\\cos x$ about $a=0$ equals:",
-    options: ["$1-x+\\dfrac{x^2}{2}$", "$1-\\dfrac{x^2}{2}+\\dfrac{x^3}{6}$", "$1-\\dfrac{x^2}{2}$"],
+    options: [
+      "$1-x+\\dfrac{x^2}{2}$",
+      "$1-\\dfrac{x^2}{2}+\\dfrac{x^3}{6}$",
+      "$1-\\dfrac{x^2}{2}$",
+    ],
     answer: "C",
     explanation: "Odd derivatives of $\\cos$ vanish at $0$.",
   },
@@ -156,7 +234,11 @@ export const TAYLOR_FORMULA_QUIZ = [
   },
   {
     prompt: "$T_2$ of $f(x)=e^{x}$ about $a=2$ equals:",
-    options: ["$1+(x-2)+\\dfrac{(x-2)^2}{2}$", "$e^2\\bigl(1+(x-2)+\\dfrac{(x-2)^2}{2}\\bigr)$", "$e^2+(x-2)$"],
+    options: [
+      "$1+(x-2)+\\dfrac{(x-2)^2}{2}$",
+      "$e^2\\bigl(1+(x-2)+\\dfrac{(x-2)^2}{2}\\bigr)$",
+      "$e^2+(x-2)$",
+    ],
     answer: "B",
     explanation: "All derivatives equal $e^2$ at $a=2$.",
   },
@@ -174,15 +256,65 @@ export const TAYLOR_FORMULA_QUIZ = [
   },
   {
     prompt: "$T_3$ of $\\sin x$ about $a=0$ is:",
-    options: ["$x+\\dfrac{x^3}{6}$", "$x-\\dfrac{x^3}{3}$", "$x-\\dfrac{x^3}{6}$"],
+    options: [
+      "$x+\\dfrac{x^3}{6}$",
+      "$x-\\dfrac{x^3}{3}$",
+      "$x-\\dfrac{x^3}{6}$",
+    ],
     answer: "C",
     explanation: "$f'''(0)=-1$, so $c_3=-1/6$.",
   },
   {
-    prompt: "If $T_2(x)=4-3(x+1)+\\dfrac{1}{2}(x+1)^2$ about $a=-1$, then $f''(-1)$ equals:",
+    prompt:
+      "If $T_2(x)=4-3(x+1)+\\dfrac{1}{2}(x+1)^2$ about $a=-1$, then $f''(-1)$ equals:",
     options: ["$1$", "$1/2$", "$-3$"],
     answer: "A",
     explanation: "$c_2=f''(a)/2=1/2$, so $f''(a)=1$.",
+  },
+  {
+    prompt:
+      "The factorial $n!$ in the denominator of the Taylor formula comes from:",
+    options: [
+      "Integrating polynomials $n$ times",
+      "The definition of limits",
+      "Geometric series expansion",
+    ],
+    answer: "A",
+    explanation:
+      "Taking $n$ derivatives of $x^n$ leaves $n!$, which must be cancelled out.",
+  },
+  {
+    prompt: "If $f(x)$ is an odd function, its Maclaurin series contains:",
+    options: [
+      "Only odd powers of $x$",
+      "Only even powers of $x$",
+      "Both odd and even powers",
+    ],
+    answer: "A",
+    explanation: "All even derivatives evaluate to zero at the origin.",
+  },
+  {
+    prompt: "For $f(x)=2x+3$ centered at $a=0$, $T_5(x)$ is:",
+    options: ["$2x+3$", "$0$", "$x^5$"],
+    answer: "A",
+    explanation:
+      "Taylor polynomials of a polynomial match it exactly once the degree is reached.",
+  },
+  {
+    prompt: "The general coefficient $c_n$ for $f(x)=e^{2x}$ at $a=0$ is:",
+    options: ["$2^n / n!$", "$1/n!$", "$(-1)^n 2^n / n!$"],
+    answer: "A",
+    explanation: "$f^{(n)}(0) = 2^n$, divided by $n!$.",
+  },
+  {
+    prompt: "If $c_2 = 0$ in a Maclaurin series, it implies:",
+    options: [
+      "The function has zero concavity at $x=0$",
+      "The function is odd",
+      "The function is constant",
+    ],
+    answer: "A",
+    explanation: "$c_2 = f''(0)/2!$, so $f''(0)$ must be zero.",
   },
 ];
 
@@ -195,37 +327,61 @@ export const MACLAURIN_CORE_QUIZ = [
   },
   {
     prompt: "The Maclaurin series for $e^x$ begins:",
-    options: ["$1+x+\\dfrac{x^2}{2!}+\\dfrac{x^3}{3!}+\\cdots$", "$1+x+x^2+x^3$", "$x+\\dfrac{x^2}{2}$"],
+    options: [
+      "$1+x+\\dfrac{x^2}{2!}+\\dfrac{x^3}{3!}+\\cdots$",
+      "$1+x+x^2+x^3$",
+      "$x+\\dfrac{x^2}{2}$",
+    ],
     answer: "A",
     explanation: "All derivatives equal $e^x$; evaluate at $0$.",
   },
   {
     prompt: "Maclaurin series for $\\sin x$ begins:",
-    options: ["$1-\\dfrac{x^2}{2!}+\\cdots$", "$x+\\dfrac{x^3}{3!}$", "$x-\\dfrac{x^3}{3!}+\\dfrac{x^5}{5!}-\\cdots$"],
+    options: [
+      "$1-\\dfrac{x^2}{2!}+\\cdots$",
+      "$x+\\dfrac{x^3}{3!}$",
+      "$x-\\dfrac{x^3}{3!}+\\dfrac{x^5}{5!}-\\cdots$",
+    ],
     answer: "C",
     explanation: "Odd function with alternating factorial denominators.",
   },
   {
     prompt: "Maclaurin series for $\\cos x$ begins:",
-    options: ["$x-\\dfrac{x^3}{3!}$", "$1+x+\\dfrac{x^2}{2}$", "$1-\\dfrac{x^2}{2!}+\\dfrac{x^4}{4!}-\\cdots$"],
+    options: [
+      "$x-\\dfrac{x^3}{3!}$",
+      "$1+x+\\dfrac{x^2}{2}$",
+      "$1-\\dfrac{x^2}{2!}+\\dfrac{x^4}{4!}-\\cdots$",
+    ],
     answer: "C",
     explanation: "Even function.",
   },
   {
     prompt: "Maclaurin series for $\\ln(1+x)$ (for $|x|<1$) begins:",
-    options: ["$x-\\dfrac{x^2}{2}+\\dfrac{x^3}{3}-\\cdots$", "$x+\\dfrac{x^2}{2}+\\dfrac{x^3}{3}$", "$1+x+\\dfrac{x^2}{2}$"],
+    options: [
+      "$x-\\dfrac{x^2}{2}+\\dfrac{x^3}{3}-\\cdots$",
+      "$x+\\dfrac{x^2}{2}+\\dfrac{x^3}{3}$",
+      "$1+x+\\dfrac{x^2}{2}$",
+    ],
     answer: "A",
     explanation: "Integrate the geometric series for $1/(1+x)$.",
   },
   {
     prompt: "Geometric Maclaurin series $1/(1-x)$ equals:",
-    options: ["$\\sum n x^n$", "$\\sum_{n=0}^{\\infty}x^n$ for $|x|<1$", "$\\sum x^n/n!$"],
+    options: [
+      "$\\sum n x^n$",
+      "$\\sum_{n=0}^{\\infty}x^n$ for $|x|<1$",
+      "$\\sum x^n/n!$",
+    ],
     answer: "B",
     explanation: "Classic geometric sum.",
   },
   {
     prompt: "Because $\\sin x$ is odd, its Maclaurin series contains:",
-    options: ["A nonzero constant term", "Only even powers", "Only odd powers of $x$"],
+    options: [
+      "A nonzero constant term",
+      "Only even powers",
+      "Only odd powers of $x$",
+    ],
     answer: "C",
     explanation: "Odd symmetry.",
   },
@@ -277,24 +433,83 @@ export const MACLAURIN_CORE_QUIZ = [
     answer: "B",
     explanation: "$c_0=f(0)$.",
   },
+  {
+    prompt: "Maclaurin series for $1/(1+x)$ begins:",
+    options: [
+      "$1 - x + x^2 - x^3 + \\cdots$",
+      "$1 + x + x^2 + x^3 + \\cdots$",
+      "$1 - x^2 + x^4 - \\cdots$",
+    ],
+    answer: "A",
+    explanation: "Substitute $-x$ into the geometric series $1/(1-x)$.",
+  },
+  {
+    prompt: "Maclaurin series for $\\arctan x$ begins:",
+    options: [
+      "$x - x^3/3 + x^5/5 - \\cdots$",
+      "$x - x^3/3! + x^5/5! - \\cdots$",
+      "$1 - x^2 + x^4 - \\cdots$",
+    ],
+    answer: "A",
+    explanation: "Integrate $1/(1+t^2) = 1 - t^2 + t^4 - \\cdots$.",
+  },
+  {
+    prompt: "Maclaurin series for $\\cosh x$ contains:",
+    options: [
+      "Only even powers of $x$",
+      "Only odd powers of $x$",
+      "Both odd and even powers",
+    ],
+    answer: "A",
+    explanation:
+      "$\\cosh x = (e^x + e^{-x})/2$, which isolates the even terms.",
+  },
+  {
+    prompt: "Maclaurin series for $\\sinh x$ contains:",
+    options: [
+      "Only odd powers of $x$",
+      "Only even powers of $x$",
+      "Both odd and even powers",
+    ],
+    answer: "A",
+    explanation: "$\\sinh x = (e^x - e^{-x})/2$, which isolates the odd terms.",
+  },
+  {
+    prompt: "What is the coefficient of $x^2$ in $e^{-x}$?",
+    options: ["$1/2$", "$-1/2$", "$1$"],
+    answer: "A",
+    explanation: "$(-1)^2 / 2! = 1/2$.",
+  },
 ];
 
 export const TAYLOR_CATALOG_QUIZ = [
   {
     prompt: "Substitute into $e^u$: the Maclaurin series of $e^{-x^2}$ begins:",
-    options: ["$1-x^2+\\dfrac{x^4}{2}-\\dfrac{x^6}{6}+\\cdots$", "$1-x+\\dfrac{x^2}{2}-\\cdots$", "$1+x^2+\\dfrac{x^4}{2}+\\cdots$"],
+    options: [
+      "$1-x^2+\\dfrac{x^4}{2}-\\dfrac{x^6}{6}+\\cdots$",
+      "$1-x+\\dfrac{x^2}{2}-\\cdots$",
+      "$1+x^2+\\dfrac{x^4}{2}+\\cdots$",
+    ],
     answer: "A",
     explanation: "Replace $u=-x^2$ in $1+u+u^2/2!+\\cdots$.",
   },
   {
     prompt: "From $\\sin u$, the series for $\\sin(2x)$ begins:",
-    options: ["$2x-\\dfrac{x^3}{6}+\\cdots$", "$2x-\\dfrac{(2x)^3}{6}+\\cdots$", "$x-\\dfrac{x^3}{6}+\\cdots$"],
+    options: [
+      "$2x-\\dfrac{x^3}{6}+\\cdots$",
+      "$2x-\\dfrac{(2x)^3}{6}+\\cdots$",
+      "$x-\\dfrac{x^3}{6}+\\cdots$",
+    ],
     answer: "B",
     explanation: "Replace $u$ by $2x$.",
   },
   {
     prompt: "Maclaurin series of $\\cos(x^2)$ begins:",
-    options: ["$1-x^2+\\dfrac{x^4}{2}-\\cdots$", "$1-\\dfrac{x^2}{2}+\\dfrac{x^4}{24}-\\cdots$", "$1-\\dfrac{x^4}{2}+\\dfrac{x^8}{24}-\\cdots$"],
+    options: [
+      "$1-x^2+\\dfrac{x^4}{2}-\\cdots$",
+      "$1-\\dfrac{x^2}{2}+\\dfrac{x^4}{24}-\\cdots$",
+      "$1-\\dfrac{x^4}{2}+\\dfrac{x^8}{24}-\\cdots$",
+    ],
     answer: "C",
     explanation: "Replace $u$ by $x^2$ in the cosine series.",
   },
@@ -306,12 +521,17 @@ export const TAYLOR_CATALOG_QUIZ = [
   },
   {
     prompt: "Termwise differentiation of $\\sum_{n=0}^{\\infty}x^n$ gives:",
-    options: ["$\\sum x^n$", "$\\sum_{n=1}^{\\infty}nx^{n-1}=1/(1-x)^2$", "$\\sum n!\\,x^n$"],
+    options: [
+      "$\\sum x^n$",
+      "$\\sum_{n=1}^{\\infty}nx^{n-1}=1/(1-x)^2$",
+      "$\\sum n!\\,x^n$",
+    ],
     answer: "B",
     explanation: "Differentiate the geometric series.",
   },
   {
-    prompt: "Integrating $\\sum_{n=0}^{\\infty}(-1)^n x^n$ termwise from $0$ to $x$ relates to:",
+    prompt:
+      "Integrating $\\sum_{n=0}^{\\infty}(-1)^n x^n$ termwise from $0$ to $x$ relates to:",
     options: ["$\\ln(1+x)$", "$\\sin x$", "$e^{-x}$"],
     answer: "A",
     explanation: "Integral of $1/(1+x)$.",
@@ -324,13 +544,21 @@ export const TAYLOR_CATALOG_QUIZ = [
   },
   {
     prompt: "Series for $x\\sin x$ begins:",
-    options: ["$x-\\dfrac{x^3}{6}+\\cdots$", "$x^2-\\dfrac{x^4}{6}+\\cdots$", "$1-\\dfrac{x^2}{6}+\\cdots$"],
+    options: [
+      "$x-\\dfrac{x^3}{6}+\\cdots$",
+      "$x^2-\\dfrac{x^4}{6}+\\cdots$",
+      "$1-\\dfrac{x^2}{6}+\\cdots$",
+    ],
     answer: "B",
     explanation: "Multiply the sine series by $x$.",
   },
   {
     prompt: "From $1/(1-x)=\\sum x^n$, replace $x$ by $-x^2$ to get:",
-    options: ["$e^{-x^2}$", "$1/(1-x^2)=\\sum x^{2n}$", "$1/(1+x^2)=\\sum(-1)^n x^{2n}$"],
+    options: [
+      "$e^{-x^2}$",
+      "$1/(1-x^2)=\\sum x^{2n}$",
+      "$1/(1+x^2)=\\sum(-1)^n x^{2n}$",
+    ],
     answer: "C",
     explanation: "Geometric substitution.",
   },
@@ -341,14 +569,19 @@ export const TAYLOR_CATALOG_QUIZ = [
     explanation: "Product pairs give $1/24-1/4+1/24=-1/6$.",
   },
   {
-    prompt: "Differentiating the Maclaurin series of $\\ln(1+x)$ termwise recovers:",
+    prompt:
+      "Differentiating the Maclaurin series of $\\ln(1+x)$ termwise recovers:",
     options: ["$1/(1-x)$", "$1/(1+x)$", "$\\ln(1+x)$"],
     answer: "B",
     explanation: "Derivative of $\\ln(1+x)$.",
   },
   {
     prompt: "Series for $\\sin x\\cos x$ can be obtained from:",
-    options: ["$\\dfrac{1}{2}\\sin(2x)$ series", "Geometric series alone", "$e^{x}\\sin x$ only"],
+    options: [
+      "$\\dfrac{1}{2}\\sin(2x)$ series",
+      "Geometric series alone",
+      "$e^{x}\\sin x$ only",
+    ],
     answer: "A",
     explanation: "Double-angle identity.",
   },
@@ -359,28 +592,79 @@ export const TAYLOR_CATALOG_QUIZ = [
     explanation: "$1-(3x)^2/2+\\cdots$ contributes $-9x^2/2$.",
   },
   {
-    prompt: "Integrating $\\sum_{n=0}^{\\infty}\\dfrac{(-1)^n x^{2n}}{n!}$ from $0$ to $1$ approximates:",
-    options: ["$\\int_0^1 e^{-x^2}\\,dx$", "$\\int_0^1\\sin x\\,dx$", "$\\int_0^1 e^{x}\\,dx$"],
+    prompt:
+      "Integrating $\\sum_{n=0}^{\\infty}\\dfrac{(-1)^n x^{2n}}{n!}$ from $0$ to $1$ approximates:",
+    options: [
+      "$\\int_0^1 e^{-x^2}\\,dx$",
+      "$\\int_0^1\\sin x\\,dx$",
+      "$\\int_0^1 e^{x}\\,dx$",
+    ],
     answer: "A",
     explanation: "That sum is $e^{-x^2}$.",
   },
   {
-    prompt: "From $\\arctan x=\\int_0^x\\dfrac{1}{1+t^2}\\,dt$, the Maclaurin series begins:",
-    options: ["$x-\\dfrac{x^2}{2}+\\dfrac{x^3}{3}-\\cdots$", "$x-\\dfrac{x^3}{3}+\\dfrac{x^5}{5}-\\cdots$", "$1-x^2+x^4-\\cdots$"],
+    prompt:
+      "From $\\arctan x=\\int_0^x\\dfrac{1}{1+t^2}\\,dt$, the Maclaurin series begins:",
+    options: [
+      "$x-\\dfrac{x^2}{2}+\\dfrac{x^3}{3}-\\cdots$",
+      "$x-\\dfrac{x^3}{3}+\\dfrac{x^5}{5}-\\cdots$",
+      "$1-x^2+x^4-\\cdots$",
+    ],
     answer: "B",
     explanation: "Integrate $\\sum(-1)^n t^{2n}$.",
+  },
+  {
+    prompt: "The Maclaurin series for $x e^x$ begins:",
+    options: [
+      "$x + x^2 + x^3/2! + \\cdots$",
+      "$1 + x^2 + x^3/2! + \\cdots$",
+      "$x - x^2 + x^3/2! - \\cdots$",
+    ],
+    answer: "A",
+    explanation: "Multiply the series for $e^x$ by $x$.",
+  },
+  {
+    prompt: "The Maclaurin series for $\\ln(1-x)$ begins:",
+    options: [
+      "$-x - x^2/2 - x^3/3 - \\cdots$",
+      "$x - x^2/2 + x^3/3 - \\cdots$",
+      "$1 - x - x^2/2 - \\cdots$",
+    ],
+    answer: "A",
+    explanation: "Substitute $-x$ into $\\ln(1+x)$.",
+  },
+  {
+    prompt: "Series for $\\cos^2 x$ can be found using the identity:",
+    options: ["$(1 + \\cos(2x))/2$", "$1 - \\sin^2 x$", "$\\sin(2x)/2$"],
+    answer: "A",
+    explanation: "Power-reduction formulas simplify series substitution.",
+  },
+  {
+    prompt: "Multiply $\\sin x$ and $\\cos x$ series to degree 3 gives:",
+    options: ["$x - 2x^3/3$", "$x - x^3/3$", "$x + x^3/6$"],
+    answer: "A",
+    explanation:
+      "$(x - x^3/6)(1 - x^2/2) \\approx x - x^3/2 - x^3/6 = x - 2x^3/3$.",
+  },
+  {
+    prompt: "The first term of $\\tan x$ Maclaurin series is:",
+    options: ["$x$", "$1$", "$x^2$"],
+    answer: "A",
+    explanation: "$\\tan(0)=0$ and $\\sec^2(0)=1$, so it starts with $x$.",
   },
 ];
 
 export const TAYLOR_CONVERGENCE_QUIZ = [
   {
-    prompt: "For the Taylor series of $e^x$ about $0$, the radius of convergence is:",
+    prompt:
+      "For the Taylor series of $e^x$ about $0$, the radius of convergence is:",
     options: ["$\\infty$", "$1$", "$0$"],
     answer: "A",
     explanation: "Ratio test: $|x|/(n+1)\\to 0$ for all $x$.",
   },
   {
-    prompt: "Ratio test on $\\sum\\dfrac{(x-1)^n}{n\\,2^n}$: radius $R$ equals:",
+    prompt:
+      "Ratio test on $\\sum\\dfrac{(x-1)^n}{n\\,2^n}$: radius $R$ equals:",
     options: ["$1$", "$1/2$", "$2$"],
     answer: "C",
     explanation: "$|x-1|/2<1$.",
@@ -392,7 +676,8 @@ export const TAYLOR_CONVERGENCE_QUIZ = [
     explanation: "$|x/3|<1$.",
   },
   {
-    prompt: "Interval of convergence for $\\ln(1+x)=\\sum_{n=1}^{\\infty}(-1)^{n+1}x^n/n$ is:",
+    prompt:
+      "Interval of convergence for $\\ln(1+x)=\\sum_{n=1}^{\\infty}(-1)^{n+1}x^n/n$ is:",
     options: ["$-1<x<1$", "$-1<x\\le 1$", "$-1\\le x\\le 1$"],
     answer: "B",
     explanation: "Open at $-1$, closed at $1$.",
@@ -411,7 +696,11 @@ export const TAYLOR_CONVERGENCE_QUIZ = [
   },
   {
     prompt: "Shifting the center of a Taylor series:",
-    options: ["Deletes all odd terms", "Always forces $R=0$", "Translates the interval with the new center"],
+    options: [
+      "Deletes all odd terms",
+      "Always forces $R=0$",
+      "Translates the interval with the new center",
+    ],
     answer: "C",
     explanation: "Powers of $(x-a)$ recenter the disk.",
   },
@@ -423,7 +712,11 @@ export const TAYLOR_CONVERGENCE_QUIZ = [
   },
   {
     prompt: "At an endpoint of a power-series interval one must:",
-    options: ["Always include it", "Test that single $x$-value separately", "Always exclude it"],
+    options: [
+      "Always include it",
+      "Test that single $x$-value separately",
+      "Always exclude it",
+    ],
     answer: "B",
     explanation: "Endpoint behavior is independent.",
   },
@@ -434,7 +727,8 @@ export const TAYLOR_CONVERGENCE_QUIZ = [
     explanation: "Same factorial growth as $e^{x^2}$.",
   },
   {
-    prompt: "If $\\lim|c_n/c_{n+1}|=4$, then $R$ for $\\sum c_n(x-a)^n$ equals:",
+    prompt:
+      "If $\\lim|c_n/c_{n+1}|=4$, then $R$ for $\\sum c_n(x-a)^n$ equals:",
     options: ["$1/4$", "$0$", "$4$"],
     answer: "C",
     explanation: "Standard consecutive-coefficient radius formula.",
@@ -453,27 +747,77 @@ export const TAYLOR_CONVERGENCE_QUIZ = [
   },
   {
     prompt: "For $\\sum\\dfrac{x^n}{n}$, at $x=-1$ one obtains:",
-    options: ["The alternating harmonic series (converges)", "The harmonic series (diverges)", "A geometric series with ratio $2$"],
+    options: [
+      "The alternating harmonic series (converges)",
+      "The harmonic series (diverges)",
+      "A geometric series with ratio $2$",
+    ],
     answer: "A",
     explanation: "$\\sum(-1)^n/n$.",
   },
   {
     prompt: "Inside the open interval of convergence, a power series may be:",
-    options: ["Evaluated only at integers", "Differentiated and integrated term by term", "Only added, never differentiated"],
+    options: [
+      "Evaluated only at integers",
+      "Differentiated and integrated term by term",
+      "Only added, never differentiated",
+    ],
     answer: "B",
     explanation: "Standard calculus of power series.",
+  },
+  {
+    prompt: "The radius of convergence for $\\sin x$ is:",
+    options: ["$\\infty$", "$1$", "$0$"],
+    answer: "A",
+    explanation: "The ratio test yields a limit of 0 for all $x$.",
+  },
+  {
+    prompt: "The interval of convergence for $1/(1-x)$ is:",
+    options: ["$(-1, 1)$", "$[-1, 1]$", "$[-1, 1)$"],
+    answer: "A",
+    explanation: "Geometric series converges strictly for $|x| < 1$.",
+  },
+  {
+    prompt:
+      "If a power series converges at $x=4$ and is centered at $x=0$, it must converge at:",
+    options: ["$x=-3$", "$x=-4$", "$x=5$"],
+    answer: "A",
+    explanation: "Convergence is guaranteed in the open interval $(-4, 4)$.",
+  },
+  {
+    prompt: "Differentiating a power series term-by-term:",
+    options: [
+      "Does not change its radius of convergence",
+      "Always increases its radius",
+      "Always decreases its radius",
+    ],
+    answer: "A",
+    explanation:
+      "The radius $R$ remains identical, though endpoint behavior may change.",
+  },
+  {
+    prompt: "The series $\\sum x^n / n^2$ converges on:",
+    options: ["$[-1, 1]$", "$(-1, 1)$", "$[-1, 1)$"],
+    answer: "A",
+    explanation:
+      "At endpoints $x=\\pm 1$, the series converges by $p$-series ($p=2$).",
   },
 ];
 
 export const TAYLOR_ERROR_QUIZ = [
   {
     prompt: "Taylor's inequality bounds $|R_n(x)|$ by:",
-    options: ["$n!$", "$M|x-a|$ only", "$\\dfrac{M|x-a|^{n+1}}{(n+1)!}$ when $|f^{(n+1)}|\\le M$"],
+    options: [
+      "$n!$",
+      "$M|x-a|$ only",
+      "$\\dfrac{M|x-a|^{n+1}}{(n+1)!}$ when $|f^{(n+1)}|\\le M$",
+    ],
     answer: "C",
     explanation: "Standard remainder estimate.",
   },
   {
-    prompt: "For $f(x)=e^x$ on $[0,1]$ with $|f^{(n+1)}|\\le e$, one has $|R_n(1)|\\le$:",
+    prompt:
+      "For $f(x)=e^x$ on $[0,1]$ with $|f^{(n+1)}|\\le e$, one has $|R_n(1)|\\le$:",
     options: ["$e/(n+1)!$", "$e$", "$1/(n+1)$"],
     answer: "A",
     explanation: "Plug distance $1$ into Taylor's inequality.",
@@ -485,13 +829,15 @@ export const TAYLOR_ERROR_QUIZ = [
     explanation: "Alternating series estimation theorem.",
   },
   {
-    prompt: "Approximate $\\sin(0.1)$ by $0.1$; the next sine term has size about:",
+    prompt:
+      "Approximate $\\sin(0.1)$ by $0.1$; the next sine term has size about:",
     options: ["$0.1$", "$(0.1)^3/6\\approx 1.7\\times 10^{-4}$", "$1$"],
     answer: "B",
     explanation: "Next term $x^3/3!$.",
   },
   {
-    prompt: "To guarantee $|R_n(0.5)|\\le 10^{-4}$ for $e^x$ with $M=e$, a sufficient choice among these is:",
+    prompt:
+      "To guarantee $|R_n(0.5)|\\le 10^{-4}$ for $e^x$ with $M=e$, a sufficient choice among these is:",
     options: ["$n=6$", "$n=2$", "$n=1$"],
     answer: "A",
     explanation: "Factorials shrink the bound; $n=6$ works.",
@@ -509,65 +855,135 @@ export const TAYLOR_ERROR_QUIZ = [
     explanation: "Taylor inequality with $n=3$.",
   },
   {
-    prompt: "For alternating $\\ln(1+x)$ at $x=1$, error after terms through $x^5/5$ is at most:",
+    prompt:
+      "For alternating $\\ln(1+x)$ at $x=1$, error after terms through $x^5/5$ is at most:",
     options: ["$1/6$", "$5$", "$1$"],
     answer: "A",
     explanation: "Next term absolute value $1/6$.",
   },
   {
     prompt: "Choosing larger $n$ near $a$ typically:",
-    options: ["Removes the need for $M$", "Forces divergence", "Shrinks the remainder bound"],
+    options: [
+      "Removes the need for $M$",
+      "Forces divergence",
+      "Shrinks the remainder bound",
+    ],
     answer: "C",
     explanation: "Factorial growth in the denominator.",
   },
   {
-    prompt: "Bound $|R_1(x)|$ for $f=\\cos$ on $|x|\\le 0.2$ using $|f''|\\le 1$:",
-    options: ["$|R_1|\\le 0.2$", "$|R_1(x)|\\le (0.2)^2/2=0.02$", "$|R_1|\\le 1$"],
+    prompt:
+      "Bound $|R_1(x)|$ for $f=\\cos$ on $|x|\\le 0.2$ using $|f''|\\le 1$:",
+    options: [
+      "$|R_1|\\le 0.2$",
+      "$|R_1(x)|\\le (0.2)^2/2=0.02$",
+      "$|R_1|\\le 1$",
+    ],
     answer: "B",
     explanation: "$n=1$, $M=1$.",
   },
   {
-    prompt: "If a remainder bound is $0.003$, a safe display precision is about:",
+    prompt:
+      "If a remainder bound is $0.003$, a safe display precision is about:",
     options: ["Exactly ten decimals", "No decimals", "Three decimal places"],
     answer: "C",
     explanation: "Match reported digits to the error bound.",
   },
   {
-    prompt: "For $f=\\sin$, $a=0$, $n=0$, Taylor's inequality with $M=1$ gives:",
-    options: ["$|\\sin x|\\le|x|$", "$|\\sin x|\\le 1/|x|$", "$|\\sin x|\\le x^2$"],
+    prompt:
+      "For $f=\\sin$, $a=0$, $n=0$, Taylor's inequality with $M=1$ gives:",
+    options: [
+      "$|\\sin x|\\le|x|$",
+      "$|\\sin x|\\le 1/|x|$",
+      "$|\\sin x|\\le x^2$",
+    ],
     answer: "A",
     explanation: "$|R_0(x)|\\le|x|$.",
   },
   {
     prompt: "Increasing $|x-a|$ with fixed $n$ and $M$:",
-    options: ["Always improves it", "Has no effect", "Worsens the a priori remainder bound"],
+    options: [
+      "Always improves it",
+      "Has no effect",
+      "Worsens the a priori remainder bound",
+    ],
     answer: "C",
     explanation: "Power $|x-a|^{n+1}$ grows.",
   },
   {
-    prompt: "For an alternating Taylor series, if the first omitted term has size $10^{-5}$, the truncation error is at most:",
+    prompt:
+      "For an alternating Taylor series, if the first omitted term has size $10^{-5}$, the truncation error is at most:",
     options: ["$10^{-10}$", "$10^{-5}$", "$1$"],
     answer: "B",
     explanation: "Alternating estimate.",
   },
   {
-    prompt: "For $e^{0.1}$ with $T_3$ and $M=1.2$, $|R_3|\\le 1.2(0.1)^4/24$ which is:",
+    prompt:
+      "For $e^{0.1}$ with $T_3$ and $M=1.2$, $|R_3|\\le 1.2(0.1)^4/24$ which is:",
     options: ["$5\\times 10^{-6}$", "$1$", "$0.1$"],
     answer: "A",
     explanation: "$1.2\\times 10^{-4}/24=5\\times 10^{-6}$.",
+  },
+  {
+    prompt:
+      "If a series is alternating, decreasing, and terms approach 0, the error $|R_n|$ is bounded by:",
+    options: ["The first omitted term $|a_{n+1}|$", "$1/n!$", "Zero"],
+    answer: "A",
+    explanation: "Alternating Series Estimation Theorem.",
+  },
+  {
+    prompt: "Taylor's inequality bounds the remainder using the maximum of:",
+    options: [
+      "The $(n+1)$-th derivative on the interval",
+      "The function value",
+      "The $n$-th derivative",
+    ],
+    answer: "A",
+    explanation: "The $M$ in Taylor's inequality is $\\max |f^{(n+1)}(c)|$.",
+  },
+  {
+    prompt:
+      "Approximating $e^x$ for $x < 0$ creates an alternating series, allowing:",
+    options: [
+      "Easier error bounding using the next term",
+      "Larger error bounds",
+      "Exact values",
+    ],
+    answer: "A",
+    explanation:
+      "Alternating series bounds are often tighter and simpler than Lagrange bounds.",
+  },
+  {
+    prompt: "If $f(x)$ is a polynomial of degree 3, the remainder $R_3(x)$ is:",
+    options: ["Exactly 0", "A constant", "$x^4$"],
+    answer: "A",
+    explanation: "The 4th derivative of a cubic is 0.",
+  },
+  {
+    prompt: "The Lagrange remainder is technically derived from:",
+    options: ["The Mean Value Theorem", "The Ratio Test", "L'Hôpital's Rule"],
+    answer: "A",
+    explanation:
+      "It's an extension of the Mean Value Theorem to higher derivatives.",
   },
 ];
 
 export const TAYLOR_ENGINEERING_QUIZ = [
   {
-    prompt: "Small-angle $\\sin\\theta\\approx\\theta$ comes from $T_1$ of sine at:",
+    prompt:
+      "Small-angle $\\sin\\theta\\approx\\theta$ comes from $T_1$ of sine at:",
     options: ["$\\pi/2$", "$0$", "$1$"],
     answer: "B",
     explanation: "Maclaurin linearization.",
   },
   {
-    prompt: "Pendulum linearization replaces $\\sin\\theta$ by $\\theta$ for small $\\theta$ to get a:",
-    options: ["Cubic oscillator only", "Pure exponential ODE", "Simple harmonic ODE"],
+    prompt:
+      "Pendulum linearization replaces $\\sin\\theta$ by $\\theta$ for small $\\theta$ to get a:",
+    options: [
+      "Cubic oscillator only",
+      "Pure exponential ODE",
+      "Simple harmonic ODE",
+    ],
     answer: "C",
     explanation: "Standard small-angle model.",
   },
@@ -584,7 +1000,8 @@ export const TAYLOR_ENGINEERING_QUIZ = [
     explanation: "$\\int_0^1(1-x^2+x^4/2)\\,dx=1-1/3+1/10$.",
   },
   {
-    prompt: "Relativistic kinetic energy for small $v/c$ expands like $\\tfrac12 mv^2$ plus higher powers of:",
+    prompt:
+      "Relativistic kinetic energy for small $v/c$ expands like $\\tfrac12 mv^2$ plus higher powers of:",
     options: ["$v$", "$c$ alone", "$(v/c)^2$"],
     answer: "C",
     explanation: "Binomial expansion of $(1-v^2/c^2)^{-1/2}$.",
@@ -602,65 +1019,142 @@ export const TAYLOR_ENGINEERING_QUIZ = [
     explanation: "$1-0.005=0.995$.",
   },
   {
-    prompt: "Hard limit $\\lim_{x\\to 0}\\dfrac{1-\\cos x}{x^2}$ via series equals:",
+    prompt:
+      "Hard limit $\\lim_{x\\to 0}\\dfrac{1-\\cos x}{x^2}$ via series equals:",
     options: ["$1/2$", "$0$", "$1$"],
     answer: "A",
     explanation: "$(x^2/2-\\cdots)/x^2\\to 1/2$.",
   },
   {
-    prompt: "Integral $\\int_0^{0.1}\\sin x\\,dx$ approximated by $\\int_0^{0.1}x\\,dx$ equals:",
+    prompt:
+      "Integral $\\int_0^{0.1}\\sin x\\,dx$ approximated by $\\int_0^{0.1}x\\,dx$ equals:",
     options: ["$0.1$", "$0.01$", "$0.005$"],
     answer: "C",
     explanation: "$[x^2/2]_0^{0.1}=0.005$.",
   },
   {
-    prompt: "If remainder bound is $10^{-3}$, report the approximation to about:",
+    prompt:
+      "If remainder bound is $10^{-3}$, report the approximation to about:",
     options: ["Ten decimals", "No decimals", "Three decimal places"],
     answer: "C",
     explanation: "Match displayed precision to error.",
   },
   {
-    prompt: "Series for $\\sqrt{1+\\varepsilon}$ with tiny $\\varepsilon$ begins $1+\\varepsilon/2$, used for:",
-    options: ["Divergence tests", "First-order binomial approximations", "Exact radical evaluation only"],
+    prompt:
+      "Series for $\\sqrt{1+\\varepsilon}$ with tiny $\\varepsilon$ begins $1+\\varepsilon/2$, used for:",
+    options: [
+      "Divergence tests",
+      "First-order binomial approximations",
+      "Exact radical evaluation only",
+    ],
     answer: "B",
     explanation: "Linear response in $\\varepsilon$.",
   },
   {
     prompt: "Approximate $\\ln(1.1)$ by $0.1-(0.1)^2/2=0.095$ using:",
-    options: ["The first two Maclaurin terms of $\\ln(1+x)$", "The exponential series", "The sine series"],
+    options: [
+      "The first two Maclaurin terms of $\\ln(1+x)$",
+      "The exponential series",
+      "The sine series",
+    ],
     answer: "A",
     explanation: "$x=0.1$ in $\\ln(1+x)$.",
   },
   {
-    prompt: "In optics, $\\cos\\theta\\approx 1-\\theta^2/2$ for small $\\theta$ is the:",
-    options: ["Exact identity at $\\theta=\\pi/2$", "Maclaurin $T_2$ of $\\cos$", "Geometric sum"],
+    prompt:
+      "In optics, $\\cos\\theta\\approx 1-\\theta^2/2$ for small $\\theta$ is the:",
+    options: [
+      "Exact identity at $\\theta=\\pi/2$",
+      "Maclaurin $T_2$ of $\\cos$",
+      "Geometric sum",
+    ],
     answer: "B",
     explanation: "Standard quadratic cosine approximation.",
   },
   {
-    prompt: "Limit $\\lim_{x\\to 0}\\dfrac{\\tan x-x}{x^3}$ equals $1/3$ because the $x^3$ coefficient of $\\tan x-x$ is:",
+    prompt:
+      "Limit $\\lim_{x\\to 0}\\dfrac{\\tan x-x}{x^3}$ equals $1/3$ because the $x^3$ coefficient of $\\tan x-x$ is:",
     options: ["$1/3$", "$0$", "$1$"],
     answer: "A",
     explanation: "$\\tan x=x+x^3/3+\\cdots$.",
   },
   {
-    prompt: "Approximate $e^{-0.01}$ by $1-0.01+0.00005$ using $T_2$; the value is about:",
+    prompt:
+      "Approximate $e^{-0.01}$ by $1-0.01+0.00005$ using $T_2$; the value is about:",
     options: ["$1.01$", "$0.99$", "$0.99005$"],
     answer: "C",
     explanation: "$1+u+u^2/2$ with $u=-0.01$.",
+  },
+  {
+    prompt:
+      "The approximation $\\sqrt{1+x} \\approx 1 + x/2$ is widely used for:",
+    options: [
+      "Small $x$ in physics (binomial approximation)",
+      "Large $x$ in cosmology",
+      "Solving quadratics",
+    ],
+    answer: "A",
+    explanation: "Truncating the binomial series at the linear term.",
+  },
+  {
+    prompt: "In circuit analysis, $e^{-t/RC} \\approx 1 - t/RC$ is valid for:",
+    options: [
+      "Very short times $t \\ll RC$",
+      "Long times $t \\to \\infty$",
+      "Negative times",
+    ],
+    answer: "A",
+    explanation: "First-order Taylor expansion near $t=0$.",
+  },
+  {
+    prompt:
+      "Gravitational potential energy $U = -GMm/(R+h)$ reduces to $mgh$ using:",
+    options: [
+      "First-order Taylor expansion for $h \\ll R$",
+      "Infinite series sums",
+      "Second derivatives",
+    ],
+    answer: "A",
+    explanation: "Factoring out $R$ and using $(1+x)^{-1} \\approx 1-x$.",
+  },
+  {
+    prompt: "The approximation $\\ln(1+x) \\approx x$ is heavily used in:",
+    options: [
+      "Continuous compound interest and growth rates",
+      "Geometry",
+      "Trigonometric identities",
+    ],
+    answer: "A",
+    explanation: "For small rates $r$, $\\ln(1+r) \\approx r$.",
+  },
+  {
+    prompt:
+      "Replacing a nonlinear differential equation with a linear one using $T_1(x)$ is called:",
+    options: ["Linearization", "Integration", "Truncation"],
+    answer: "A",
+    explanation:
+      "Standard dynamic systems technique near an equilibrium point.",
   },
 ];
 
 export const TAYLOR_CHALLENGE_QUIZ = [
   {
     prompt: "Maclaurin series of $e^{\\sin x}$ through order $x^2$ is:",
-    options: ["$1+x+\\dfrac{x^2}{2}+\\cdots$", "$1+x+x^2+\\cdots$", "$1+\\dfrac{x^2}{2}+\\cdots$"],
+    options: [
+      "$1+x+\\dfrac{x^2}{2}+\\cdots$",
+      "$1+x+x^2+\\cdots$",
+      "$1+\\dfrac{x^2}{2}+\\cdots$",
+    ],
     answer: "A",
     explanation: "$\\sin x=x+O(x^3)$ and $e^u=1+u+u^2/2+\\cdots$.",
   },
   {
     prompt: "First terms of $\\sec x=1/\\cos x$ about $0$ begin:",
-    options: ["$1+x+\\dfrac{x^2}{2}+\\cdots$", "$1-\\dfrac{x^2}{2}+\\cdots$", "$1+\\dfrac{x^2}{2}+\\dfrac{5x^4}{24}+\\cdots$"],
+    options: [
+      "$1+x+\\dfrac{x^2}{2}+\\cdots$",
+      "$1-\\dfrac{x^2}{2}+\\cdots$",
+      "$1+\\dfrac{x^2}{2}+\\dfrac{5x^4}{24}+\\cdots$",
+    ],
     answer: "C",
     explanation: "Invert the cosine series.",
   },
@@ -689,7 +1183,8 @@ export const TAYLOR_CHALLENGE_QUIZ = [
     explanation: "$1-x^2/6+x^4/120-\\cdots$ has only even powers.",
   },
   {
-    prompt: "Series for $x/\\sin x$ about $0$ begins $1+x^2/6+\\cdots$. Coefficient of $x^2$ is:",
+    prompt:
+      "Series for $x/\\sin x$ about $0$ begins $1+x^2/6+\\cdots$. Coefficient of $x^2$ is:",
     options: ["$1/2$", "$-1/6$", "$1/6$"],
     answer: "C",
     explanation: "Invert $1-x^2/6+\\cdots$.",
@@ -719,7 +1214,8 @@ export const TAYLOR_CHALLENGE_QUIZ = [
     explanation: "$\\sin(e^x-1)\\sim e^x-1\\sim x$.",
   },
   {
-    prompt: "For $f=\\ln(1+x)$, Lagrange $|R_2(0.5)|$ with $|f'''|\\le 2$ on $[0,0.5]$ is at most:",
+    prompt:
+      "For $f=\\ln(1+x)$, Lagrange $|R_2(0.5)|$ with $|f'''|\\le 2$ on $[0,0.5]$ is at most:",
     options: ["$2$", "$1/24$", "$(0.5)^3$"],
     answer: "B",
     explanation: "$2\\cdot(0.5)^3/3!=1/24$.",
@@ -731,7 +1227,8 @@ export const TAYLOR_CHALLENGE_QUIZ = [
     explanation: "$\\binom{1/3}{2}=-1/9$.",
   },
   {
-    prompt: "Using $e^{ix}=\\sum(ix)^n/n!$, the coefficient of $x^3$ in $\\cos x$ is:",
+    prompt:
+      "Using $e^{ix}=\\sum(ix)^n/n!$, the coefficient of $x^3$ in $\\cos x$ is:",
     options: ["$-1/6$", "$0$", "$1/6$"],
     answer: "B",
     explanation: "$\\cos$ has only even powers.",
@@ -741,5 +1238,44 @@ export const TAYLOR_CHALLENGE_QUIZ = [
     options: ["$1$", "$-1/6$", "$1/6$"],
     answer: "C",
     explanation: "$\\arcsin x=x+x^3/6+\\cdots$.",
+  },
+  {
+    prompt: "The coefficient of $x^n$ in $e^x \\cdot e^{-x}$ is:",
+    options: ["$0$ for $n \\ge 1$", "$1/n!$", "$(-1)^n$"],
+    answer: "A",
+    explanation:
+      "Since $e^x e^{-x} = 1$, all higher coefficients cancel out exactly.",
+  },
+  {
+    prompt: "$\\lim_{x \\to 0} \\frac{e^x - 1 - x - x^2/2}{x^3}$ evaluates to:",
+    options: ["$1/6$", "$0$", "$1/2$"],
+    answer: "A",
+    explanation: "The first non-cancelled term in $e^x$ is $x^3/3! = x^3/6$.",
+  },
+  {
+    prompt:
+      "The Maclaurin series for $\\int_0^x \\frac{\\sin t}{t} dt$ (the Sine Integral) begins:",
+    options: [
+      "$x - x^3/18 + x^5/600 - \\cdots$",
+      "$1 - x^2/6 + \\cdots$",
+      "$x - x^3/6 + \\cdots$",
+    ],
+    answer: "A",
+    explanation:
+      "Integrate $(1 - t^2/6 + t^4/120 - \\cdots)$ to get $x - x^3/18 + x^5/600$.",
+  },
+  {
+    prompt: "Summing $\\sum_{n=0}^\\infty \\frac{1}{n!}$ yields exactly:",
+    options: ["$e$", "$\\pi$", "$1$"],
+    answer: "A",
+    explanation: "This is the Maclaurin series for $e^x$ evaluated at $x=1$.",
+  },
+  {
+    prompt:
+      "Summing $\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n}$ yields exactly:",
+    options: ["$\\ln 2$", "$1$", "$e^{-1}$"],
+    answer: "A",
+    explanation:
+      "This is the Maclaurin series for $\\ln(1+x)$ evaluated at $x=1$.",
   },
 ];

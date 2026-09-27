@@ -91,6 +91,36 @@ export const FIELD_CONCEPT_QUIZ = [
     answer: "B",
     explanation: "Definition of a 3D vector field.",
   },
+  {
+    prompt: "A vector field $\\mathbf F = \\langle c, 0, 0 \\rangle$ where $c > 0$ represents:",
+    options: ["Uniform flow along the positive $x$-axis", "Uniform flow along the $y$-axis", "A radial source"],
+    answer: "A",
+    explanation: "The vector is constant and points strictly in the $+x$ direction.",
+  },
+  {
+    prompt: "The domain of $\\mathbf F(x,y) = \\langle 1/x, 1/y \\rangle$ excludes:",
+    options: ["The $x$ and $y$ axes", "The origin only", "The line $y=x$"],
+    answer: "A",
+    explanation: "Division by zero occurs whenever $x=0$ or $y=0$.",
+  },
+  {
+    prompt: "If $\\mathbf F = \\langle y, x, z \\rangle$, the magnitude $\\|\\mathbf F\\|$ at $(1, 1, 1)$ is:",
+    options: ["$\\sqrt{3}$", "$3$", "$1$"],
+    answer: "A",
+    explanation: "$\\mathbf F(1,1,1) = \\langle 1,1,1 \\rangle$, whose magnitude is $\\sqrt{1^2+1^2+1^2} = \\sqrt{3}$.",
+  },
+  {
+    prompt: "In a fluid velocity field, a streamline is a curve that is:",
+    options: ["Tangent to the velocity vector at every point", "Perpendicular to the velocity vector at every point", "Always a closed loop"],
+    answer: "A",
+    explanation: "Streamlines visually trace the exact direction of flow at every point.",
+  },
+  {
+    prompt: "For the gravitational force field $\\mathbf F = -\\frac{GMm}{r^3}\\mathbf r$, the field points:",
+    options: ["Directly toward the origin", "Directly away from the origin", "In a circular path"],
+    answer: "A",
+    explanation: "The negative sign on the radial vector $\\mathbf r$ indicates it is an inward attractive force.",
+  },
 ];
 
 export const DIV_FORMULA_QUIZ = [
@@ -184,6 +214,36 @@ export const DIV_FORMULA_QUIZ = [
     answer: "A",
     explanation: "Negative divergence means net inward flux density.",
   },
+  {
+    prompt: "Compute $\\nabla \\cdot \\langle x, 2y, 3z \\rangle$.",
+    options: ["$6$", "$x+2y+3z$", "$\\langle 1, 2, 3 \\rangle$"],
+    answer: "A",
+    explanation: "$1 + 2 + 3 = 6$.",
+  },
+  {
+    prompt: "Divergence mathematically transforms a:",
+    options: ["Vector field into a scalar field", "Scalar field into a vector field", "Vector field into another vector field"],
+    answer: "A",
+    explanation: "The dot product of the del operator with a vector field yields a scalar function.",
+  },
+  {
+    prompt: "For $\\mathbf F = \\langle \\sin x, \\cos y, 0 \\rangle$, $\\nabla \\cdot \\mathbf F$ is:",
+    options: ["$\\cos x - \\sin y$", "$\\cos x + \\sin y$", "$0$"],
+    answer: "A",
+    explanation: "$P_x = \\cos x$ and $Q_y = -\\sin y$, so the sum is $\\cos x - \\sin y$.",
+  },
+  {
+    prompt: "If a gas is undergoing uniform expansion in all directions, its velocity field's divergence is:",
+    options: ["Positive everywhere", "Negative everywhere", "Zero everywhere"],
+    answer: "A",
+    explanation: "Expansion means a net outward flow, which corresponds to positive divergence.",
+  },
+  {
+    prompt: "Evaluate $\\nabla \\cdot \\langle xy^2, x^2y, z^3 \\rangle$ at $(1, 1, 1)$.",
+    options: ["$5$", "$3$", "$0$"],
+    answer: "A",
+    explanation: "$P_x = y^2$, $Q_y = x^2$, $R_z = 3z^2$. At $(1,1,1)$, $1 + 1 + 3 = 5$.",
+  }
 ];
 
 export const CURL_CORE_QUIZ = [
@@ -277,6 +337,36 @@ export const CURL_CORE_QUIZ = [
     answer: "B",
     explanation: "$\\mathbf i(1-0)-\\mathbf j(0-(-1))+\\mathbf k(0)=\\langle 1,1,0\\rangle$.",
   },
+  {
+    prompt: "$\\nabla \\times \\langle x, y, z \\rangle$ equals:",
+    options: ["$\\mathbf 0$", "$\\langle 1, 1, 1 \\rangle$", "$3$"],
+    answer: "A",
+    explanation: "There are no mixed variables; $R_y=0, Q_z=0$, etc., so every component of the curl is zero.",
+  },
+  {
+    prompt: "Curl mathematically transforms a:",
+    options: ["Vector field into another vector field", "Vector field into a scalar field", "Scalar field into a vector field"],
+    answer: "A",
+    explanation: "The cross product of the del operator with a vector field yields a new vector field.",
+  },
+  {
+    prompt: "Compute the $\\mathbf{j}$-component of $\\nabla \\times \\langle 0, xz, 0 \\rangle$.",
+    options: ["$0$", "$x$", "$-z$"],
+    answer: "A",
+    explanation: "The $\\mathbf j$-component is $P_z - R_x$. Since $P=0$ and $R=0$, this component is $0$.",
+  },
+  {
+    prompt: "If a tiny paddlewheel placed in a fluid flow does not spin at all, the field's curl there is:",
+    options: ["$\\mathbf 0$", "Positive", "Negative"],
+    answer: "A",
+    explanation: "Curl measures microscopic rotation; no spin means zero curl.",
+  },
+  {
+    prompt: "For $\\mathbf F = \\langle y^2, z^2, x^2 \\rangle$, the $\\mathbf{i}$-component of the curl is:",
+    options: ["$-2z$", "$2z$", "$0$"],
+    answer: "A",
+    explanation: "$R_y - Q_z = 0 - 2z = -2z$.",
+  }
 ];
 
 export const VECTOR_CATALOG_QUIZ = [
@@ -370,6 +460,36 @@ export const VECTOR_CATALOG_QUIZ = [
     answer: "B",
     explanation: "Necessary condition.",
   },
+  {
+    prompt: "A vector field is formally defined as solenoidal if:",
+    options: ["$\\nabla \\cdot \\mathbf F = 0$", "$\\nabla \\times \\mathbf F = \\mathbf 0$", "$\\mathbf F = \\nabla f$"],
+    answer: "A",
+    explanation: "Solenoidal means the field behaves like an incompressible fluid with zero divergence.",
+  },
+  {
+    prompt: "A vector field is formally defined as irrotational if:",
+    options: ["$\\nabla \\times \\mathbf F = \\mathbf 0$", "$\\nabla \\cdot \\mathbf F = 0$", "$\\mathbf F = \\mathbf 0$"],
+    answer: "A",
+    explanation: "Irrotational means there is no local spinning, hence zero curl.",
+  },
+  {
+    prompt: "The 2D field $\\mathbf F = \\langle 2xy, x^2 \\rangle$ is:",
+    options: ["Conservative", "Not conservative", "Solenoidal"],
+    answer: "A",
+    explanation: "Since $P_y = 2x$ and $Q_x = 2x$, the curl is zero, making it conservative.",
+  },
+  {
+    prompt: "The total work done by a conservative vector field moving a particle around any closed loop is:",
+    options: ["Always zero", "Equal to the loop's area", "Dependent on the path length"],
+    answer: "A",
+    explanation: "Path independence implies that returning to the starting point yields zero net work.",
+  },
+  {
+    prompt: "Which of the following is a potential function for $\\mathbf F = \\langle 1, 1, 1 \\rangle$?",
+    options: ["$f(x,y,z) = x+y+z$", "$f(x,y,z) = xyz$", "$f(x,y,z) = x^2+y^2+z^2$"],
+    answer: "A",
+    explanation: "Taking the gradient of $x+y+z$ gives exactly $\\langle 1, 1, 1 \\rangle$.",
+  }
 ];
 
 export const VECTOR_IDENTITY_QUIZ = [
@@ -463,6 +583,36 @@ export const VECTOR_IDENTITY_QUIZ = [
     answer: "B",
     explanation: "Both differential conditions.",
   },
+  {
+    prompt: "The vector identity $\\nabla \\cdot (\\mathbf F \\times \\mathbf G)$ expands to:",
+    options: ["$\\mathbf G \\cdot (\\nabla \\times \\mathbf F) - \\mathbf F \\cdot (\\nabla \\times \\mathbf G)$", "$\\mathbf F \\cdot (\\nabla \\times \\mathbf G) + \\mathbf G \\cdot (\\nabla \\times \\mathbf F)$", "$\\mathbf 0$"],
+    answer: "A",
+    explanation: "This is the standard product rule for the divergence of a cross product.",
+  },
+  {
+    prompt: "The gradient of a product of two scalar functions, $\\nabla(fg)$, expands as:",
+    options: ["$f\\nabla g + g\\nabla f$", "$f\\nabla g - g\\nabla f$", "$\\nabla f \\cdot \\nabla g$"],
+    answer: "A",
+    explanation: "It follows the standard product rule of calculus for each partial derivative.",
+  },
+  {
+    prompt: "Is the statement $\\nabla \\cdot (\\nabla f) = 0$ always true?",
+    options: ["No, it equals the Laplacian $\\nabla^2 f$", "Yes, divergence of a gradient is always zero", "Only if $f$ is a constant"],
+    answer: "A",
+    explanation: "The divergence of a gradient forms the Laplacian, which is only zero for harmonic functions.",
+  },
+  {
+    prompt: "The curl of any constant vector field $\\mathbf F = \\langle a, b, c \\rangle$ is:",
+    options: ["$\\mathbf 0$", "$\\langle a, b, c \\rangle$", "Undefined"],
+    answer: "A",
+    explanation: "Since the components are constants, all their partial derivatives are exactly zero.",
+  },
+  {
+    prompt: "The vector identity $\\nabla \\times (\\nabla f) = \\mathbf{0}$ proves that:",
+    options: ["Conservative fields are irrotational", "Solenoidal fields are incompressible", "Gradients have constant divergence"],
+    answer: "A",
+    explanation: "Because the curl of a gradient is always zero, a conservative field (which is a gradient) must have zero curl (be irrotational).",
+  }
 ];
 
 export const DIV_THEOREM_QUIZ = [
@@ -556,6 +706,36 @@ export const DIV_THEOREM_QUIZ = [
     answer: "A",
     explanation: "Standard orientation convention.",
   },
+  {
+    prompt: "The Divergence Theorem requires the solid region $E$ to be:",
+    options: ["Bounded with a piecewise smooth, closed boundary", "An infinite plane", "An open surface with a boundary curve"],
+    answer: "A",
+    explanation: "Gauss's Theorem applies to bounded 3D volumes completely enclosed by a surface.",
+  },
+  {
+    prompt: "Using the Divergence Theorem, the flux of $\\mathbf F = \\langle 3x, 3y, 3z \\rangle$ out of a region of volume $V$ is:",
+    options: ["$9V$", "$3V$", "$0$"],
+    answer: "A",
+    explanation: "$\\nabla \\cdot \\mathbf F = 3 + 3 + 3 = 9$. The triple integral of $9$ over volume $V$ is $9V$.",
+  },
+  {
+    prompt: "By the Divergence Theorem, the outward flux of a curl field $\\nabla \\times \\mathbf F$ through any closed surface is:",
+    options: ["Always zero", "Equal to the enclosed volume", "Equal to the surface area"],
+    answer: "A",
+    explanation: "Since $\\nabla \\cdot (\\nabla \\times \\mathbf F) = 0$, the triple integral of the divergence is strictly zero.",
+  },
+  {
+    prompt: "For the vector field $\\mathbf F = \\langle x^2, 0, 0 \\rangle$, the divergence is:",
+    options: ["$2x$", "$x^2$", "$0$"],
+    answer: "A",
+    explanation: "Only the $x$-component has a non-zero partial derivative: $P_x = 2x$.",
+  },
+  {
+    prompt: "If a fluid is totally incompressible ($\\nabla \\cdot \\mathbf F = 0$), the net flux through any closed surface is:",
+    options: ["$0$", "Positive", "Negative"],
+    answer: "A",
+    explanation: "The Divergence Theorem states the flux equals the integral of divergence. If divergence is zero, the flux is zero.",
+  }
 ];
 
 export const STOKES_THEOREM_QUIZ = [
@@ -649,6 +829,36 @@ export const STOKES_THEOREM_QUIZ = [
     answer: "C",
     explanation: "Same rim $x^2+y^2=1$, $z=0$.",
   },
+  {
+    prompt: "Stokes' Theorem can be viewed as the 3D generalization of which 2D theorem?",
+    options: ["Green's Theorem", "The Divergence Theorem", "Fundamental Theorem of Calculus"],
+    answer: "A",
+    explanation: "Green's Theorem is exactly Stokes' Theorem applied to a flat surface in the $xy$-plane.",
+  },
+  {
+    prompt: "If the surface $S$ is a completely closed sphere, its boundary curve $C$ is:",
+    options: ["Empty, so the circulation integral is zero", "The equator of the sphere", "A point at the pole"],
+    answer: "A",
+    explanation: "A closed surface has no edge. With no boundary curve, the line integral evaluates to zero.",
+  },
+  {
+    prompt: "The orientation of the surface $S$ and its boundary curve $C$ must be consistent according to:",
+    options: ["The right-hand rule", "The left-hand rule", "The outward-normal rule only"],
+    answer: "A",
+    explanation: "If the thumb of your right hand points in the direction of the normal vector, your fingers curl in the positive direction of curve $C$.",
+  },
+  {
+    prompt: "To evaluate the circulation of $\\mathbf F$ along a boundary $C$, you compute the line integral:",
+    options: ["$\\oint_C \\mathbf F \\cdot d\\mathbf r$", "$\\oint_C \\mathbf F \\cdot \\mathbf n \\, ds$", "$\\iint_S \\mathbf F \\cdot d\\mathbf S$"],
+    answer: "A",
+    explanation: "Circulation is the tangential line integral of the field around a closed curve.",
+  },
+  {
+    prompt: "If $S_1$ is a hemisphere and $S_2$ is a flat disk, and both share the exact same boundary curve $C$, then their curl fluxes $\\iint \\nabla \\times \\mathbf F \\cdot d\\mathbf S$ are:",
+    options: ["Equal to each other", "Zero", "Proportional to their respective surface areas"],
+    answer: "A",
+    explanation: "By Stokes' Theorem, both surface integrals equal the exact same line integral around their shared boundary $C$.",
+  }
 ];
 
 export const DIVCURL_CHALLENGE_QUIZ = [
@@ -742,4 +952,34 @@ export const DIVCURL_CHALLENGE_QUIZ = [
     answer: "C",
     explanation: "div(curl)=0 or Stokes with empty boundary.",
   },
+  {
+    prompt: "Let $\\mathbf F = \\mathbf r / |\\mathbf r|^3$ be the inverse-square field. The flux through a sphere centered at the origin is $4\\pi$. Why doesn't the Divergence Theorem yield $0$?",
+    options: ["The field is undefined at the origin, violating the theorem's requirements", "The divergence of this field is actually $4\\pi$ everywhere", "The sphere is not a closed surface"],
+    answer: "A",
+    explanation: "The singularity at $(0,0,0)$ means the region is not continuous, so you cannot simply integrate divergence over the solid ball.",
+  },
+  {
+    prompt: "Find the outward flux of $\\mathbf F = \\langle x, y, z \\rangle$ through a cube of side length $2$.",
+    options: ["$24$", "$8$", "$0$"],
+    answer: "A",
+    explanation: "The divergence is $3$. The volume of a $2 \\times 2 \\times 2$ cube is $8$. Flux = $3 \\times 8 = 24$.",
+  },
+  {
+    prompt: "What is $\\nabla \\cdot (\\mathbf r)$ where $\\mathbf r = \\langle x, y, z \\rangle$ is the position vector?",
+    options: ["$3$", "$1$", "$\\langle 1, 1, 1 \\rangle$"],
+    answer: "A",
+    explanation: "The partial derivatives are $\\partial x/\\partial x = 1$, $\\partial y/\\partial y = 1$, $\\partial z/\\partial z = 1$, summing to $3$.",
+  },
+  {
+    prompt: "If $\\mathbf F = \\nabla(\\ln(x^2+y^2))$, what is $\\nabla \\times \\mathbf F$?",
+    options: ["$\\mathbf 0$", "$\\langle 0, 0, 2 \\rangle$", "$\\langle 1/x, 1/y, 0 \\rangle$"],
+    answer: "A",
+    explanation: "The field is explicitly given as the gradient of a scalar function, so its curl must be identically zero.",
+  },
+  {
+    prompt: "A field has a constant divergence of $C$. The flux out of a sphere of radius $R$ is:",
+    options: ["$C \\frac{4}{3}\\pi R^3$", "$C 4\\pi R^2$", "$C \\pi R^2$"],
+    answer: "A",
+    explanation: "Flux = $\\iiint C \\, dV = C \\times \\text{Volume of Sphere} = C (\\frac{4}{3}\\pi R^3)$.",
+  }
 ];

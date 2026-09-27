@@ -91,6 +91,37 @@ export const PS_D_CENTER_QUIZ = [
     answer: "B",
     explanation: "Symmetric about zero.",
   },
+
+  {
+    prompt: "The mean of $2,4,6,8$ is:",
+    options: ["$4$", "$6$", "$5$"],
+    answer: "C",
+    explanation: "$(2+4+6+8)/4=5$.",
+  },
+  {
+    prompt: "The median of $1,3,7,9,12$ is:",
+    options: ["$7$", "$6$", "$9$"],
+    answer: "A",
+    explanation: "The middle ordered observation is $7$.",
+  },
+  {
+    prompt: "The mode of $2,2,3,4,4,4,5$ is:",
+    options: ["$2$", "$4$", "$3$"],
+    answer: "B",
+    explanation: "$4$ appears most often.",
+  },
+  {
+    prompt: "Which measure of center is most sensitive to a large outlier?",
+    options: ["Median", "Mode", "Mean"],
+    answer: "C",
+    explanation: "The mean uses every magnitude directly, so extreme values can pull it strongly.",
+  },
+  {
+    prompt: "For a symmetric unimodal distribution, mean and median are often:",
+    options: ["Approximately equal", "Always of opposite signs", "Unrelated by definition"],
+    answer: "A",
+    explanation: "Symmetry places both common measures of center near the symmetry point.",
+  },
 ];
 
 export const PS_D_QUANT_QUIZ = [
@@ -183,6 +214,37 @@ export const PS_D_QUANT_QUIZ = [
     options: ["$40$", "$30$", "$50$"],
     answer: "A",
     explanation: "Middle of the upper half.",
+  },
+
+  {
+    prompt: "The second quartile $Q_2$ is the:",
+    options: ["Median", "Minimum", "Maximum"],
+    answer: "A",
+    explanation: "$Q_2$ is the 50th percentile.",
+  },
+  {
+    prompt: "The interquartile range is:",
+    options: ["$Q_3+Q_1$", "$Q_3-Q_1$", "$Q_2-Q_1$"],
+    answer: "B",
+    explanation: "IQR measures the width of the middle 50% of the data.",
+  },
+  {
+    prompt: "The 90th percentile is a value such that approximately:",
+    options: ["10% are at or below it", "All observations equal it", "90% of observations are at or below it"],
+    answer: "C",
+    explanation: "A percentile reports cumulative position in the ordered data.",
+  },
+  {
+    prompt: "An observation below $Q_1$ lies in roughly the:",
+    options: ["Lowest 25% of the data", "Highest 25%", "Middle 50% only"],
+    answer: "A",
+    explanation: "$Q_1$ is the 25th percentile.",
+  },
+  {
+    prompt: "A common boxplot outlier rule uses which fences?",
+    options: ["$Q_1-0.5\\,\\mathrm{IQR}$ and $Q_3+0.5\\,\\mathrm{IQR}$", "$Q_1-1.5\\,\\mathrm{IQR}$ and $Q_3+1.5\\,\\mathrm{IQR}$", "$\\bar{x}\\pm s$"],
+    answer: "B",
+    explanation: "Tukey's common boxplot rule uses the lower fence $Q_1-1.5IQR$ and upper fence $Q_3+1.5IQR$.",
   },
 ];
 
@@ -277,6 +339,37 @@ export const PS_D_SPREAD_QUIZ = [
     answer: "B",
     explanation: "Standardization centers at zero.",
   },
+
+  {
+    prompt: "The range of data values $3,8,10,12$ is:",
+    options: ["$12$", "$9$", "$7$"],
+    answer: "B",
+    explanation: "$12-3=9$.",
+  },
+  {
+    prompt: "Variance measures average:",
+    options: ["Raw deviation from the median only", "Maximum value only", "Squared deviation from the mean"],
+    answer: "C",
+    explanation: "Squaring deviations prevents cancellation and measures spread.",
+  },
+  {
+    prompt: "Standard deviation has units:",
+    options: ["The same as the original variable", "Squared units", "No units in every case"],
+    answer: "A",
+    explanation: "Taking the square root of variance restores the original units.",
+  },
+  {
+    prompt: "If every observation is identical, the variance is:",
+    options: ["$1$", "$0$", "Undefined"],
+    answer: "B",
+    explanation: "There is no deviation from the mean.",
+  },
+  {
+    prompt: "Adding a constant $c$ to every observation changes the standard deviation by:",
+    options: ["Adds $c$", "Multiplies it by $c^2$", "No change"],
+    answer: "C",
+    explanation: "A uniform shift changes location but not spread.",
+  },
 ];
 
 export const PS_D_PLOTS_QUIZ = [
@@ -369,6 +462,37 @@ export const PS_D_PLOTS_QUIZ = [
     options: ["Pie chart", "Scatterplot", "Single box without axes"],
     answer: "B",
     explanation: "Two quantitative variables.",
+  },
+
+  {
+    prompt: "A histogram is most appropriate for displaying:",
+    options: ["A single equation", "Only paired categorical labels", "The distribution of a quantitative variable"],
+    answer: "C",
+    explanation: "Histograms group numeric values into bins.",
+  },
+  {
+    prompt: "A boxplot displays median, quartiles, and:",
+    options: ["Potential outliers", "Every individual value necessarily labeled", "Only the mean"],
+    answer: "A",
+    explanation: "Boxplots summarize distribution using quartiles and whiskers.",
+  },
+  {
+    prompt: "A right-skewed distribution has a longer tail toward:",
+    options: ["Smaller values", "Larger values", "Neither side"],
+    answer: "B",
+    explanation: "Right skew means the upper-value tail extends farther.",
+  },
+  {
+    prompt: "A scatterplot is used to examine:",
+    options: ["Only one categorical variable", "Only a sample mean", "Association between two quantitative variables"],
+    answer: "C",
+    explanation: "Each point represents a paired quantitative observation.",
+  },
+  {
+    prompt: "In a histogram, increasing the number of bins generally makes the display:",
+    options: ["More detailed but potentially noisier", "Identical in every case", "Always less detailed"],
+    answer: "A",
+    explanation: "Bin width controls the resolution/smoothness tradeoff.",
   },
 ];
 
@@ -463,6 +587,37 @@ export const PS_H_FRAMEWORK_QUIZ = [
     answer: "B",
     explanation: "Conservative language.",
   },
+
+  {
+    prompt: "The null hypothesis $H_0$ usually represents:",
+    options: ["A baseline/no-effect claim", "The final conclusion automatically", "A sample statistic"],
+    answer: "A",
+    explanation: "Testing assesses evidence against a specified baseline model.",
+  },
+  {
+    prompt: "The alternative hypothesis $H_1$ represents:",
+    options: ["The same claim as $H_0$", "The competing claim supported if evidence against $H_0$ is strong", "A confidence interval only"],
+    answer: "B",
+    explanation: "The alternative states the effect/difference of interest.",
+  },
+  {
+    prompt: "The significance level $\\alpha$ is chosen:",
+    options: ["After seeing the p-value to force significance", "Only when $H_0$ is false", "Before examining the test result"],
+    answer: "C",
+    explanation: "Pre-specifying $\\alpha$ controls the Type I error rate.",
+  },
+  {
+    prompt: "A test statistic summarizes:",
+    options: ["How far the sample evidence is from what $H_0$ predicts", "Only the sample size", "The population parameter exactly"],
+    answer: "A",
+    explanation: "Test statistics standardize evidence relative to the null model.",
+  },
+  {
+    prompt: "A two-sided alternative for a mean $\\mu$ against $\\mu_0$ is:",
+    options: ["$H_1:\\mu>\\mu_0$ only", "$H_1:\\mu\\neq\\mu_0$", "$H_1:\\mu=\\mu_0$"],
+    answer: "B",
+    explanation: "Two-sided tests look for deviations in either direction.",
+  },
 ];
 
 export const PS_H_TESTS_QUIZ = [
@@ -555,6 +710,37 @@ export const PS_H_TESTS_QUIZ = [
     options: ["$3$", "$5$", "$1$"],
     answer: "A",
     explanation: "$(5)/(5/3)=3$.",
+  },
+
+  {
+    prompt: "A one-sample z-test for a mean is appropriate when the population standard deviation is:",
+    options: ["Always unknown with tiny samples", "Known (with suitable normal/large-sample conditions)", "Exactly zero"],
+    answer: "B",
+    explanation: "Knowing $\\sigma$ allows standardization with the normal distribution.",
+  },
+  {
+    prompt: "A one-sample t-test is commonly used when the population standard deviation is:",
+    options: ["Known exactly", "Negative", "Unknown"],
+    answer: "C",
+    explanation: "The sample standard deviation replaces the unknown population standard deviation.",
+  },
+  {
+    prompt: "A paired t-test analyzes:",
+    options: ["Differences within matched pairs", "Two completely unrelated proportions only", "One categorical count table"],
+    answer: "A",
+    explanation: "Pairing converts matched observations into a one-sample problem on differences.",
+  },
+  {
+    prompt: "For two independent samples, a two-sample t-test compares:",
+    options: ["Only population variances", "Population means", "Only medians by definition"],
+    answer: "B",
+    explanation: "The test targets the difference between two means.",
+  },
+  {
+    prompt: "Welch's two-sample t-test is useful because it:",
+    options: ["Requires paired data", "Requires known population variances", "Does not require equal population variances"],
+    answer: "C",
+    explanation: "Welch's procedure adjusts degrees of freedom for unequal variances.",
   },
 ];
 
@@ -649,6 +835,37 @@ export const PS_H_PVAL_QUIZ = [
     answer: "C",
     explanation: "Larger $|z|$.",
   },
+
+  {
+    prompt: "A p-value is computed assuming:",
+    options: ["$H_1$ is true", "The sample mean is zero", "$H_0$ is true"],
+    answer: "C",
+    explanation: "It measures how surprising the observed or more extreme data would be under the null model.",
+  },
+  {
+    prompt: "If p-value $<\\alpha$, the usual decision is to:",
+    options: ["Reject $H_0$", "Accept $H_0$ as certainly true", "Increase the sample mean"],
+    answer: "A",
+    explanation: "The result is statistically significant at level $\\alpha$.",
+  },
+  {
+    prompt: "If p-value $>\\alpha$, the usual decision is to:",
+    options: ["Prove $H_0$ true", "Fail to reject $H_0$", "Reject $H_0$"],
+    answer: "B",
+    explanation: "Insufficient evidence against $H_0$ is not the same as proving it true.",
+  },
+  {
+    prompt: "A p-value of $0.03$ means:",
+    options: ["$H_0$ has a 3% probability of being true", "$H_1$ is 97% certain", "Under $H_0$, data at least this extreme have probability about 3%"],
+    answer: "C",
+    explanation: "A p-value is a tail probability under the null, not a posterior probability of a hypothesis.",
+  },
+  {
+    prompt: "All else equal, stronger evidence against $H_0$ corresponds to a:",
+    options: ["Smaller p-value", "Larger p-value", "p-value above 1"],
+    answer: "A",
+    explanation: "More extreme test statistics produce smaller null tail probabilities.",
+  },
 ];
 
 export const PS_H_ERRORS_QUIZ = [
@@ -741,6 +958,37 @@ export const PS_H_ERRORS_QUIZ = [
     options: ["Identical rejection regions", "Higher Type I risk", "Lower Type I risk and typically lower power"],
     answer: "C",
     explanation: "Stricter threshold.",
+  },
+
+  {
+    prompt: "A Type I error occurs when we:",
+    options: ["Reject a true $H_0$", "Fail to reject a false $H_0$", "Reject a false $H_0$"],
+    answer: "A",
+    explanation: "Type I error is a false positive.",
+  },
+  {
+    prompt: "A Type II error occurs when we:",
+    options: ["Reject a true $H_0$", "Fail to reject a false $H_0$", "Reject a false $H_0$"],
+    answer: "B",
+    explanation: "Type II error is a false negative.",
+  },
+  {
+    prompt: "The probability of a Type I error is controlled by:",
+    options: ["$1-\\alpha$", "$R^2$", "$\\alpha$"],
+    answer: "C",
+    explanation: "The test's significance level is the long-run Type I error rate under the null.",
+  },
+  {
+    prompt: "Statistical power equals:",
+    options: ["$1-\\beta$", "$1-\\alpha$", "$\\alpha+\\beta$"],
+    answer: "A",
+    explanation: "Power is the probability of rejecting a false null.",
+  },
+  {
+    prompt: "Increasing sample size generally tends to:",
+    options: ["Decrease power to zero", "Increase power, all else equal", "Leave power exactly unchanged in every test"],
+    answer: "B",
+    explanation: "More data reduce standard error and improve the ability to detect real effects.",
   },
 ];
 
@@ -835,6 +1083,37 @@ export const PS_R_CORR_QUIZ = [
     answer: "B",
     explanation: "Sensitivity demonstration.",
   },
+
+  {
+    prompt: "Pearson correlation $r$ always lies between:",
+    options: ["$0$ and $10$", "$-1$ and $1$", "$-\\infty$ and $\\infty$"],
+    answer: "B",
+    explanation: "Correlation is a standardized covariance.",
+  },
+  {
+    prompt: "A correlation near $1$ indicates:",
+    options: ["Strong negative linear association", "No linear association", "Strong positive linear association"],
+    answer: "C",
+    explanation: "As one variable increases, the other tends to increase linearly.",
+  },
+  {
+    prompt: "A correlation near $-1$ indicates:",
+    options: ["Strong negative linear association", "Strong positive linear association", "No association of any kind"],
+    answer: "A",
+    explanation: "As one variable increases, the other tends to decrease linearly.",
+  },
+  {
+    prompt: "Correlation equal to zero implies:",
+    options: ["The variables are always independent", "No linear association, though nonlinear association may exist", "The variables are identical"],
+    answer: "B",
+    explanation: "Zero Pearson correlation only rules out linear association.",
+  },
+  {
+    prompt: "Correlation is unchanged by:",
+    options: ["Arbitrary nonlinear transformations always", "Removing all data", "Positive changes of measurement units (location/scale)"],
+    answer: "C",
+    explanation: "Standardization makes correlation unitless and invariant to positive linear rescaling.",
+  },
 ];
 
 export const PS_R_ASSOC_QUIZ = [
@@ -927,6 +1206,37 @@ export const PS_R_ASSOC_QUIZ = [
     options: ["A hypothesis test", "Clustered / no pattern", "Always normal"],
     answer: "B",
     explanation: "Shape vocabulary.",
+  },
+
+  {
+    prompt: "Covariance is positive when two variables tend to:",
+    options: ["Move in opposite directions", "Have zero variance", "Increase together"],
+    answer: "C",
+    explanation: "Positive covariance reflects same-direction deviations from means.",
+  },
+  {
+    prompt: "Covariance depends on:",
+    options: ["The measurement units", "No units at all", "Only sample size"],
+    answer: "A",
+    explanation: "Rescaling variables rescales covariance.",
+  },
+  {
+    prompt: "Correlation is covariance divided by:",
+    options: ["The sum of the two means", "The product of the two standard deviations", "The sample size only"],
+    answer: "B",
+    explanation: "Standardizing covariance yields a unitless value in $[-1,1]$.",
+  },
+  {
+    prompt: "For categorical variables, association is commonly summarized using:",
+    options: ["Only scatterplot slopes", "Only a sample mean", "Contingency tables"],
+    answer: "C",
+    explanation: "Cross-tabulated counts show how category combinations occur.",
+  },
+  {
+    prompt: "If two variables are independent and have finite moments, their covariance is:",
+    options: ["$0$", "$1$", "Undefined always"],
+    answer: "A",
+    explanation: "Independence gives $E[XY]=E[X]E[Y]$, hence zero covariance.",
   },
 ];
 
@@ -1021,6 +1331,37 @@ export const PS_R_FIT_QUIZ = [
     answer: "B",
     explanation: "$b=r(s_y/s_x)$ so $s_y/s_x=b/r=5$.",
   },
+
+  {
+    prompt: "In simple linear regression $y=\\beta_0+\\beta_1x+\\varepsilon$, $\\beta_1$ is the:",
+    options: ["Slope", "Intercept", "Residual variance only"],
+    answer: "A",
+    explanation: "The slope measures expected response change per unit increase in $x$.",
+  },
+  {
+    prompt: "The OLS estimates minimize:",
+    options: ["The sum of predictors", "The sum of squared residuals", "The sample size"],
+    answer: "B",
+    explanation: "Ordinary least squares chooses the line closest in squared vertical error.",
+  },
+  {
+    prompt: "For simple regression with an intercept, the fitted line passes through:",
+    options: ["$(0,0)$ always", "The largest observation only", "$(\\bar{x},\\bar{y})$"],
+    answer: "C",
+    explanation: "The OLS normal equations imply the fitted line crosses the point of sample means.",
+  },
+  {
+    prompt: "The fitted value for observation $i$ is usually written:",
+    options: ["$\\hat{y}_i$", "$e_i$", "$p_i$"],
+    answer: "A",
+    explanation: "A hat denotes the model-predicted response.",
+  },
+  {
+    prompt: "In simple linear regression with an intercept, $R^2$ lies between:",
+    options: ["$-1$ and $1$ necessarily", "$0$ and $1$", "$1$ and $\\infty$"],
+    answer: "B",
+    explanation: "$R^2$ is the proportion of response variation explained by the fitted line.",
+  },
 ];
 
 export const PS_R_RESID_QUIZ = [
@@ -1113,5 +1454,36 @@ export const PS_R_RESID_QUIZ = [
     options: ["$3$", "$-3$", "$7$"],
     answer: "A",
     explanation: "$\\hat y=7$, residual $10-7=3$.",
+  },
+
+  {
+    prompt: "A residual is defined as:",
+    options: ["$y_i+\\hat{y}_i$", "$e_i=y_i-\\hat{y}_i$", "$x_i-y_i$"],
+    answer: "B",
+    explanation: "Residual equals observed response minus fitted response.",
+  },
+  {
+    prompt: "A residual plot showing random scatter around zero is generally:",
+    options: ["Proof of perfect prediction", "Evidence that every residual is zero", "Consistent with a reasonable linear-form assumption"],
+    answer: "C",
+    explanation: "Lack of systematic pattern supports the chosen functional form.",
+  },
+  {
+    prompt: "A curved pattern in residuals suggests:",
+    options: ["The linear model may be missing nonlinear structure", "Perfect linearity", "No relationship at all necessarily"],
+    answer: "A",
+    explanation: "Systematic curvature indicates the mean relationship is not well captured by a straight line.",
+  },
+  {
+    prompt: "A funnel-shaped residual plot suggests possible:",
+    options: ["Perfect homoscedasticity", "Nonconstant variance (heteroscedasticity)", "Zero slope only"],
+    answer: "B",
+    explanation: "Changing residual spread with fitted values violates constant-variance assumptions.",
+  },
+  {
+    prompt: "An influential point can substantially change:",
+    options: ["Only the sample labels", "The definition of a residual", "The fitted regression coefficients"],
+    answer: "C",
+    explanation: "High leverage combined with an unusual response can pull the fitted line.",
   },
 ];
