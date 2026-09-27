@@ -97,7 +97,7 @@ import {
   MarkovChainsPart1,
   MarkovChainsPart2
 } from "./pages/linearAlgebra";
-import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
+import {\n  LinearAlgebraModuleAPart1,\n  LinearAlgebraModuleAPart2,\n  LinearAlgebraModuleBPart1,\n  LinearAlgebraModuleBPart2,\n  LinearAlgebraModuleCPart1,\n  LinearAlgebraModuleCPart2,\n} from "./pages/linearAlgebra/LaModuleParts";\nimport MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
 import CalculusOverview from "./pages/calculus/CalculusOverview";
 import MultivariableOverview from "./pages/multivariableCalculus/MultivariableOverview";
@@ -604,6 +604,44 @@ function App() {
                 <Route
                   path="/linear-algebra/matrix-sandbox"
                   element={<Layout body={<MatrixSandbox />} />}
+                />
+
+                {/* Grouped Linear Algebra modules: 3 modules, 4 topics each, 2 parts per module */}
+                <Route
+                  path="/linear-algebra/module-a"
+                  element={<Navigate to="/linear-algebra/module-a/1" replace />}
+                />
+                <Route
+                  path="/linear-algebra/module-a/1"
+                  element={<Layout body={<LinearAlgebraModuleAPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/module-a/2"
+                  element={<Layout body={<LinearAlgebraModuleAPart2 />} />}
+                />
+                <Route
+                  path="/linear-algebra/module-b"
+                  element={<Navigate to="/linear-algebra/module-b/1" replace />}
+                />
+                <Route
+                  path="/linear-algebra/module-b/1"
+                  element={<Layout body={<LinearAlgebraModuleBPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/module-b/2"
+                  element={<Layout body={<LinearAlgebraModuleBPart2 />} />}
+                />
+                <Route
+                  path="/linear-algebra/module-c"
+                  element={<Navigate to="/linear-algebra/module-c/1" replace />}
+                />
+                <Route
+                  path="/linear-algebra/module-c/1"
+                  element={<Layout body={<LinearAlgebraModuleCPart1 />} />}
+                />
+                <Route
+                  path="/linear-algebra/module-c/2"
+                  element={<Layout body={<LinearAlgebraModuleCPart2 />} />}
                 />
 
                 {/* Probability & Statistics */}
