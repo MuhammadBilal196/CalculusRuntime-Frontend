@@ -39,6 +39,7 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "jacobians-1": [],
   "jacobians-2": ["jacobians"],
   "curvilinear-1": ["curvilinear"],
+  "parametrized-surface-area-2": ["parametrized-surface-area"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],

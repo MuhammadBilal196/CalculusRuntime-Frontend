@@ -836,7 +836,7 @@ function GuideFooter() {
     <div className="pg-foot">
       <p>End of Curvilinear Coordinate Systems.</p>
       <div className="guide-navigation">
-        <a href="/parametrized-surface-area/1" className="guide-nav-button">
+        <a href="/parametrized-surface-area/2" className="guide-nav-button">
           Next Part: Parametrized Surface Area →
         </a>
       </div>

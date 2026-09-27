@@ -318,3 +318,292 @@ export const MV_CURVILINEAR_QUIZ = [
       "A reliable verification checks the forward transformation, inverse relations where appropriate, Jacobian or scale factors, coordinate ranges, and the geometry represented by constant-coordinate surfaces.",
   },
 ];
+// ------------------------------------------------------------
+// Topic 3 — Parametrized Surface Area
+// ------------------------------------------------------------
+
+export const MV_PARAMETRIZED_SURFACE_AREA_QUIZ = [
+  {
+    id: "surface-area-01",
+    prompt: "How is a parametrized surface commonly represented?",
+    options: [
+      "r(u,v) = <x(u,v), y(u,v), z(u,v)>",
+      "r(t) = <x(t), y(t)>",
+      "f(x) = ax + b",
+      "r = <x,y>",
+    ],
+    answer: "A",
+    explanation:
+      "A surface in three-dimensional space is commonly parametrized using two parameters: r(u,v) = <x(u,v), y(u,v), z(u,v)>.",
+  },
+
+  {
+    id: "surface-area-02",
+    prompt:
+      "How many independent parameters are generally required to parametrize a surface?",
+    options: ["One", "Two", "Three", "Four"],
+    answer: "B",
+    explanation:
+      "A two-dimensional surface generally requires two independent parameters.",
+  },
+
+  {
+    id: "surface-area-03",
+    prompt:
+      "For r(u,v), which vectors are tangent to the parameter curves on the surface?",
+    options: [
+      "r_u and r_v",
+      "r and r_u + r_v only",
+      "r_u · r_v and r",
+      "Only r",
+    ],
+    answer: "A",
+    explanation:
+      "The partial derivatives r_u and r_v are tangent vectors corresponding to changes in u and v.",
+  },
+
+  {
+    id: "surface-area-04",
+    prompt:
+      "Which expression gives a normal vector to a parametrized surface?",
+    options: [
+      "r_u + r_v",
+      "r_u · r_v",
+      "r_u × r_v",
+      "r_u / r_v",
+    ],
+    answer: "C",
+    explanation:
+      "The cross product r_u × r_v is perpendicular to both tangent vectors and therefore gives a normal vector.",
+  },
+
+  {
+    id: "surface-area-05",
+    prompt:
+      "What is the differential surface-area element for r(u,v)?",
+    options: [
+      "dS = du dv",
+      "dS = |r_u × r_v| du dv",
+      "dS = r_u · r_v du dv",
+      "dS = |r_u + r_v| du dv",
+    ],
+    answer: "B",
+    explanation:
+      "The local surface-area element is dS = |r_u × r_v| du dv.",
+  },
+
+  {
+    id: "surface-area-06",
+    prompt:
+      "What is the total area of a parametrized surface over parameter domain D?",
+    options: [
+      "∫D |r_u + r_v| du dv",
+      "∫D |r_u × r_v| du dv",
+      "∫D r_u · r_v du dv",
+      "∫D du + dv",
+    ],
+    answer: "B",
+    explanation:
+      "Surface area is obtained by integrating the magnitude of the cross product of the tangent vectors over the parameter domain.",
+  },
+
+  {
+    id: "surface-area-07",
+    prompt:
+      "If r_u × r_v = <3,4,0>, what is the corresponding surface-area scaling factor?",
+    options: ["3", "4", "5", "7"],
+    answer: "C",
+    explanation:
+      "The magnitude is sqrt(3^2 + 4^2) = 5.",
+  },
+
+  {
+    id: "surface-area-08",
+    prompt:
+      "If r_v × r_u is used instead of r_u × r_v, what changes?",
+    options: [
+      "The surface itself disappears",
+      "The normal direction reverses",
+      "The surface area doubles",
+      "The parameter domain changes",
+    ],
+    answer: "B",
+    explanation:
+      "r_v × r_u = -(r_u × r_v), so the normal direction reverses. Its magnitude remains unchanged.",
+  },
+
+  {
+    id: "surface-area-09",
+    prompt:
+      "For a graph z = f(x,y), which parametrization is natural?",
+    options: [
+      "r(x,y) = <x,y,f(x,y)>",
+      "r(x,y) = <f(x,y),f(x,y),f(x,y)>",
+      "r(t) = <x(t),y(t)>",
+      "r(x,y) = <x,y,0>",
+    ],
+    answer: "A",
+    explanation:
+      "A graph z=f(x,y) can naturally be parametrized as r(x,y)=<x,y,f(x,y)>.",
+  },
+
+  {
+    id: "surface-area-10",
+    prompt:
+      "For z=f(x,y), what is the surface-area element?",
+    options: [
+      "dS = dA",
+      "dS = sqrt(1 + f_x^2 + f_y^2) dA",
+      "dS = (f_x + f_y)dA",
+      "dS = f_x f_y dA",
+    ],
+    answer: "B",
+    explanation:
+      "For a graph z=f(x,y), dS = sqrt(1+f_x^2+f_y^2) dA.",
+  },
+
+  {
+    id: "surface-area-11",
+    prompt:
+      "A parametrization is regular at a point when:",
+    options: [
+      "r_u × r_v = 0",
+      "r_u × r_v ≠ 0",
+      "r_u = r_v",
+      "u = v",
+    ],
+    answer: "B",
+    explanation:
+      "Regularity requires the tangent vectors to be linearly independent, which is equivalent to r_u × r_v ≠ 0.",
+  },
+
+  {
+    id: "surface-area-12",
+    prompt:
+      "Why does the cross product appear in the surface-area formula?",
+    options: [
+      "Its magnitude gives the area of the parallelogram spanned by the tangent vectors",
+      "It always equals one",
+      "It gives the parameter domain directly",
+      "It removes the need for integration",
+    ],
+    answer: "A",
+    explanation:
+      "The tangent vectors span a small parallelogram approximating a surface patch, and the cross-product magnitude gives its area.",
+  },
+
+  {
+    id: "surface-area-13",
+    prompt:
+      "Consider r(u,v)=<u,v,u+v>. What is r_u?",
+    options: [
+      "<1,1,0>",
+      "<1,0,1>",
+      "<0,1,1>",
+      "<u,v,1>",
+    ],
+    answer: "B",
+    explanation:
+      "Differentiating with respect to u gives r_u=<1,0,1>.",
+  },
+
+  {
+    id: "surface-area-14",
+    prompt:
+      "For r(u,v)=<u,v,u+v>, what is r_v?",
+    options: [
+      "<1,0,1>",
+      "<0,1,1>",
+      "<u,1,v>",
+      "<1,1,1>",
+    ],
+    answer: "B",
+    explanation:
+      "Differentiating with respect to v gives r_v=<0,1,1>.",
+  },
+
+  {
+    id: "surface-area-15",
+    prompt:
+      "For the cylinder r(theta,z)=<a cos(theta), a sin(theta), z>, what does theta represent?",
+    options: [
+      "Height along the z-axis",
+      "Angular position around the cylinder",
+      "Distance from the origin in the z-direction",
+      "Surface area",
+    ],
+    answer: "B",
+    explanation:
+      "Theta describes angular position around the cylindrical axis.",
+  },
+
+  {
+    id: "surface-area-16",
+    prompt:
+      "For the cylindrical parametrization r(theta,z)=<a cos(theta),a sin(theta),z>, what is |r_theta × r_z|?",
+    options: ["1", "a", "a^2", "2a"],
+    answer: "B",
+    explanation:
+      "The cross-product magnitude is a, giving dS = a dtheta dz.",
+  },
+
+  {
+    id: "surface-area-17",
+    prompt:
+      "What should be checked carefully when setting up a surface-area integral?",
+    options: [
+      "Only the final numerical answer",
+      "The parametrization, parameter domain, tangent vectors, cross product, and limits",
+      "Only the name of the surface",
+      "Only whether the surface is closed",
+    ],
+    answer: "B",
+    explanation:
+      "A correct surface-area setup depends on all of these components.",
+  },
+
+  {
+    id: "surface-area-18",
+    prompt:
+      "Which coordinate system is often useful when a surface has circular symmetry?",
+    options: [
+      "Polar or cylindrical coordinates",
+      "Only Cartesian coordinates",
+      "Only one-dimensional coordinates",
+      "No coordinate system is useful",
+    ],
+    answer: "A",
+    explanation:
+      "Polar and cylindrical coordinates often simplify surfaces and regions with circular symmetry.",
+  },
+
+  {
+    id: "surface-area-19",
+    prompt:
+      "Does the orientation of the normal affect ordinary surface area?",
+    options: [
+      "Yes, it changes the area sign",
+      "Yes, it doubles the area",
+      "No, because the magnitude is used",
+      "Only when the surface is planar",
+    ],
+    answer: "C",
+    explanation:
+      "Ordinary surface area uses |r_u × r_v|, so reversing orientation does not change the positive area.",
+  },
+
+  {
+    id: "surface-area-20",
+    prompt:
+      "What is the main geometric interpretation of |r_u × r_v|?",
+    options: [
+      "It measures the local stretching of parameter area into surface area",
+      "It gives the parameter u directly",
+      "It gives the height of the surface",
+      "It is always equal to the Jacobian of a volume transformation",
+    ],
+    answer: "A",
+    explanation:
+      "The magnitude of the cross product measures how a small area du dv in parameter space is stretched into an area on the surface.",
+  },
+];
