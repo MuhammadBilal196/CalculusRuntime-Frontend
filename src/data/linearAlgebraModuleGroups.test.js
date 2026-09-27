@@ -47,3 +47,5 @@ test("module B title is stable",()=>{expect(getLinearAlgebraModuleGroup("module-
 test("module A has the expected first topic",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts[0].topics[0].id).toBe("lu-decomposition");});
 
 test("module A has the expected second topic",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts[0].topics[1].id).toBe("cholesky-decomposition");});
+
+test("module A part two starts with Jordan form",()=>{expect(getLinearAlgebraModuleGroup("module-a").parts[1].topics[0].id).toBe("jordan-normal-form");});
