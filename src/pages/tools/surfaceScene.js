@@ -109,13 +109,11 @@ function buildAxes({ len, step, theme }) {
 
   const r = len * 0.0065;
   const coneHeight = r * 11;
-  const shaftLength = len - coneHeight;
-  const dashCount = 12;
-  const dashLength = shaftLength / (dashCount * 2 - 1);
-  const shaftGeometry = new THREE.CylinderGeometry(r, r, shaftLength, 14);
-  const dashGeometry = new THREE.CylinderGeometry(r, r, dashLength, 10);
+  const dotGap = len / 28;
+  const dotsPerHalf = Math.floor((len - coneHeight) / dotGap);
+  const dotGeometry = new THREE.SphereGeometry(r * 1.5, 10, 8);
   const coneGeometry = new THREE.ConeGeometry(r * 3.1, coneHeight, 24);
-  const tickGeometry = new THREE.SphereGeometry(r * 2.1, 12, 8);
+  const tickGeometry = new THREE.SphereGeometry(r * 2.6, 12, 8);
   const tickValues = [];
   for (let v = step; v <= len - step * 0.35 + 1e-9; v += step) {
     tickValues.push(v, -v);
@@ -123,24 +121,17 @@ function buildAxes({ len, step, theme }) {
 
   AXES.forEach(({ key, dir }) => {
     const d = toScene(...dir).normalize();
-    const q = new THREE.Quaternion().setFromUnitVectors(UP, d);
     const material = new THREE.MeshStandardMaterial({ color: theme.axis[key], roughness: 0.35, metalness: 0.1 });
 
-    // Positive half: solid shaft.
-    const shaft = new THREE.Mesh(shaftGeometry, material);
-    shaft.quaternion.copy(q);
-    shaft.position.copy(d).multiplyScalar(shaftLength / 2);
-    group.add(shaft);
-
-    // Negative half: dashed shaft, the usual convention for the "behind" direction.
-    const dashes = new THREE.InstancedMesh(dashGeometry, material, dashCount);
+    // A dotted line through the origin, running out to both ends of the axis.
+    const dots = new THREE.InstancedMesh(dotGeometry, material, dotsPerHalf * 2);
     const matrix = new THREE.Matrix4();
-    const one = new THREE.Vector3(1, 1, 1);
-    for (let i = 0; i < dashCount; i++) {
-      matrix.compose(d.clone().multiplyScalar(-(i * 2 + 0.5) * dashLength), q, one);
-      dashes.setMatrixAt(i, matrix);
+    for (let i = 0; i < dotsPerHalf; i++) {
+      const at = (i + 1) * dotGap;
+      dots.setMatrixAt(2 * i, matrix.makeTranslation(d.x * at, d.y * at, d.z * at));
+      dots.setMatrixAt(2 * i + 1, matrix.makeTranslation(-d.x * at, -d.y * at, -d.z * at));
     }
-    group.add(dashes);
+    group.add(dots);
 
     // An arrowhead and a label on every one of the six half-axes.
     [1, -1].forEach((sign) => {
@@ -192,18 +183,41 @@ function buildAxes({ len, step, theme }) {
   return { group, ticks };
 }
 
+// A square mesh in the three.js XZ plane: strong lines at every tick, fainter lines between them.
+function buildGridMesh(size, major, minor, color) {
+  const half = size / 2;
+  const count = Math.round(size / minor);
+  const every = Math.round(major / minor);
+  const majorPoints = [];
+  const minorPoints = [];
+  for (let i = 0; i <= count; i++) {
+    const v = -half + i * minor;
+    (i % every === 0 ? majorPoints : minorPoints).push(v, 0, -half, v, 0, half, -half, 0, v, half, 0, v);
+  }
+  const lines = (points, opacity) => {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(points, 3));
+    return new THREE.LineSegments(
+      geometry,
+      new THREE.LineBasicMaterial({ color, transparent: true, opacity, depthWrite: false }),
+    );
+  };
+  const mesh = new THREE.Group();
+  mesh.add(lines(minorPoints, 0.3), lines(majorPoints, 0.65));
+  return mesh;
+}
+
 function buildPlanes({ len, step, theme }) {
   const cells = Math.max(1, Math.floor(len / step + 1e-9));
   const size = cells * step * 2;
+  const leadingDigit = Math.round(step / 10 ** Math.floor(Math.log10(step)));
+  const minor = step / (leadingDigit === 5 ? 5 : 4);
   const make = (tint, orient) => {
     const group = new THREE.Group();
-    const grid = new THREE.GridHelper(size, cells * 2, theme.grid, theme.grid);
-    grid.material.transparent = true;
-    grid.material.opacity = 0.55;
-    grid.material.depthWrite = false;
+    const grid = buildGridMesh(size, step, minor, theme.grid);
     const fill = new THREE.Mesh(
       new THREE.PlaneGeometry(size, size),
-      new THREE.MeshBasicMaterial({ color: tint, transparent: true, opacity: 0.07, side: THREE.DoubleSide, depthWrite: false }),
+      new THREE.MeshBasicMaterial({ color: tint, transparent: true, opacity: 0.05, side: THREE.DoubleSide, depthWrite: false }),
     );
     orient(grid, fill);
     group.add(fill, grid);
