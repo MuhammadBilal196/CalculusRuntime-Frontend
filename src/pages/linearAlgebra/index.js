@@ -48,3 +48,6 @@ export { default as AffineTransformationsPart2 } from "./AffineTransformationsPa
 export { default as PrincipalComponentAnalysisGuide } from "./PrincipalComponentAnalysisGuide";
 export { default as PrincipalComponentAnalysisPart1 } from "./PrincipalComponentAnalysisPart1";
 export { default as PrincipalComponentAnalysisPart2 } from "./PrincipalComponentAnalysisPart2";
+export { default as MarkovChainsGuide } from "./MarkovChainsGuide";
+export { default as MarkovChainsPart1 } from "./MarkovChainsPart1";
+export { default as MarkovChainsPart2 } from "./MarkovChainsPart2";
