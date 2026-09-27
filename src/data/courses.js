@@ -18,7 +18,7 @@ export const COURSES = [
     heroImageAlt: "Calculus and Analytical Geometry Curves and Tangents Visual",
     overview: {
       longDescription: [
-        "Calculus and Analytical Geometry forms the mathematical bedrock for modern science, engineering, and computational modeling. This rigorous curriculum establishes first principles of limits and continuity via epsilon-delta formulations, the Squeeze Theorem, and intermediate value properties. We develop differential calculus from difference quotients through product, quotient, and chain rules, analyzing curve optimization, related rates, and Mean Value Theorems. Integral calculus bridges accumulation via Riemann sums to the Fundamental Theorem of Calculus, improper integrals, and geometric volume applications. The course advances through infinite series convergence tests, Taylor and Maclaurin expansions, and concludes with Cartesian coordinate geometry and complete conic section classifications."
+        "Calculus and Analytical Geometry forms the mathematical bedrock for modern science, engineering, and computational modeling. This rigorous curriculum establishes first principles of limits and continuity via epsilon-delta formulations, the Squeeze Theorem, and intermediate value properties. We develop differential calculus from difference quotients through product, quotient, and chain rules, analyzing curve optimization, related rates, and Mean Value Theorems. Integral calculus bridges accumulation via Riemann sums to the Fundamental Theorem of Calculus, improper integrals, and geometric volume applications. The course advances through infinite series convergence tests, Taylor and Maclaurin expansions, and concludes with Cartesian coordinate geometry and complete conic section classifications.",
       ],
       highlights: [
         "Limits, epsilon-delta proofs & squeeze theorem",
@@ -34,7 +34,8 @@ export const COURSES = [
     modules: [
       {
         title: "Overview",
-        description: "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
+        description:
+          "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
         path: "/calculus/overview",
         meta: "Start here",
         icon: "★",
@@ -43,23 +44,34 @@ export const COURSES = [
       },
       {
         title: "Limits & Continuity",
-        description: "Limits, path tests, continuity — with certificate-depth theory and worked examples.",
+        description:
+          "Limits, path tests, continuity — with certificate-depth theory and worked examples.",
         path: "/limits-continuity/1",
         meta: "2 parts · 6+ examples each",
         icon: "lim",
-        logo: <span className="math-logo">lim<sub>x→a</sub> f(x)</span>,
+        logo: (
+          <span className="math-logo">
+            lim<sub>x→a</sub> f(x)
+          </span>
+        ),
       },
       {
         title: "Differentiation",
-        description: "Definition, rules, related rates, extrema, MVT, L'Hôpital — certificate track.",
+        description:
+          "Definition, rules, related rates, extrema, MVT, L'Hôpital — certificate track.",
         path: "/differentiation/1",
         meta: "2 parts · 6 examples each",
         icon: "d/dx",
-        logo: <span className="math-logo">f'(x) = <sup>df</sup>/<sub>dx</sub></span>,
+        logo: (
+          <span className="math-logo">
+            f'(x) = <sup>df</sup>/<sub>dx</sub>
+          </span>
+        ),
       },
       {
         title: "Integration",
-        description: "Antiderivatives, FTC, area, techniques, improper integrals — certificate track.",
+        description:
+          "Antiderivatives, FTC, area, techniques, improper integrals — certificate track.",
         path: "/integration/1",
         meta: "2 parts · 6 examples each",
         icon: "∫",
@@ -67,15 +79,22 @@ export const COURSES = [
       },
       {
         title: "Sequences & Infinite Series",
-        description: "Convergence tests, power series, and radius of convergence — certificate track.",
+        description:
+          "Convergence tests, power series, and radius of convergence — certificate track.",
         path: "/sequences-series/1",
         meta: "2 parts · 8 examples each",
         icon: "Σ",
-        logo: <span className="math-logo">Σ<sub>n=1</sub><sup>∞</sup> a<sub>n</sub></span>,
+        logo: (
+          <span className="math-logo">
+            Σ<sub>n=1</sub>
+            <sup>∞</sup> a<sub>n</sub>
+          </span>
+        ),
       },
       {
         title: "Conic Sections",
-        description: "Parabolas, ellipses, hyperbolas, and analytic geometry — certificate track.",
+        description:
+          "Parabolas, ellipses, hyperbolas, and analytic geometry — certificate track.",
         path: "/conic-sections/1",
         meta: "2 parts · 8 examples each",
         icon: "◯",
@@ -83,73 +102,113 @@ export const COURSES = [
       },
       {
         title: "Straight Lines & Systems of Lines",
-        description: "Slope, intercepts, normal form, angle between lines, concurrency, and homogeneous pairs of lines (F.Sc Ch. 4 + Math-101).",
+        description:
+          "Slope, intercepts, normal form, angle between lines, concurrency, and homogeneous pairs of lines (F.Sc Ch. 4 + Math-101).",
         path: "/lines-geometry/1",
         meta: "2 parts · 16 lengthy examples · 30 MCQs",
         icon: "📏",
-        logo: <span className="math-logo">Ax + By + C = 0 &amp; ax² + 2hxy + by² = 0</span>,
+        logo: (
+          <span className="math-logo">
+            Ax + By + C = 0 &amp; ax² + 2hxy + by² = 0
+          </span>
+        ),
       },
       {
         title: "Circle & Conic Tangents/Normals",
-        description: "Standard/general circles, 3-point circles, parametric forms, T = 0 operator, tangency conditions, and director circles (F.Sc Ch. 6 + Math-101).",
+        description:
+          "Standard/general circles, 3-point circles, parametric forms, T = 0 operator, tangency conditions, and director circles (F.Sc Ch. 6 + Math-101).",
         path: "/circles-tangents/1",
         meta: "2 parts · 16 lengthy examples · 30 MCQs",
         icon: "⭕",
-        logo: <span className="math-logo">x² + y² + 2gx + 2fy + c = 0 &amp; T = 0</span>,
+        logo: (
+          <span className="math-logo">
+            x² + y² + 2gx + 2fy + c = 0 &amp; T = 0
+          </span>
+        ),
       },
       {
         title: "Advanced Single-Variable Calculus",
-        description: "Epsilon-delta limit proofs, discontinuity classification, IVT/EVT/MVT, logarithmic/parametric differentiation, hyperbolics, and curvature (F.Sc Ch. 1-3 + Math-101).",
+        description:
+          "Epsilon-delta limit proofs, discontinuity classification, IVT/EVT/MVT, logarithmic/parametric differentiation, hyperbolics, and curvature (F.Sc Ch. 1-3 + Math-101).",
         path: "/advanced-calculus/1",
         meta: "2 parts · 16 lengthy examples · 30 MCQs",
         icon: "∂",
-        logo: <span className="math-logo">(ε, δ) &amp; κ = |y''| / (1+y'²)^(3/2)</span>,
+        logo: (
+          <span className="math-logo">
+            (ε, δ) &amp; κ = |y''| / (1+y'²)^(3/2)
+          </span>
+        ),
       },
       {
         title: "Ordinary Differential Equations",
-        description: "Separable, homogeneous, integrating factor, exact, Bernoulli, and 2nd-order constant coefficient ODEs (F.Sc Ch. 3 + Math-201).",
+        description:
+          "Separable, homogeneous, integrating factor, exact, Bernoulli, and 2nd-order constant coefficient ODEs (F.Sc Ch. 3 + Math-201).",
         path: "/differential-equations/1",
         meta: "2 parts · 16 lengthy examples · 30 MCQs",
         icon: "⚡",
-        logo: <span className="math-logo">y' + P(x)y = Q(x) &amp; ay'' + by' + cy = 0</span>,
+        logo: (
+          <span className="math-logo">
+            y' + P(x)y = Q(x) &amp; ay'' + by' + cy = 0
+          </span>
+        ),
       },
       {
         title: "Analytic & 3D Vector Lab",
-        description: "Interactive laboratory for 2D conic rotation of axes, polar conics, scalar triple product, and skew line distance.",
+        description:
+          "Interactive laboratory for 2D conic rotation of axes, polar conics, scalar triple product, and skew line distance.",
         path: "/analytic-vector-lab",
         meta: "Interactive Suite",
         icon: "📐",
         logo: <span className="math-logo">B²-4AC &amp; u·(v×w)</span>,
       },
 
-
       {
         title: "Continuity Finder",
-        description: "Interactive tool for checking continuity conditions at a point or over an interval.",
+        description:
+          "Interactive tool for checking continuity conditions at a point or over an interval.",
         path: "/test",
         meta: "Interactive tool",
         icon: "lim",
-        logo: <span className="math-logo">lim<sub>x→c</sub> f(x) = f(c)</span>,
+        logo: (
+          <span className="math-logo">
+            lim<sub>x→c</sub> f(x) = f(c)
+          </span>
+        ),
       },
       {
         title: "Taylor Series",
-        description: "Local approximations, Maclaurin catalogs, convergence and error — certificate depth.",
+        description:
+          "Local approximations, Maclaurin catalogs, convergence and error — certificate depth.",
         path: "/taylor-series/1",
         meta: "2 parts · 6+ examples each",
         icon: "Σ",
-        logo: <span className="math-logo">Σ <sup>f<sup>(n)</sup>(a)</sup>/<sub>n!</sub> (x-a)<sup>n</sup></span>,
+        logo: (
+          <span className="math-logo">
+            Σ{" "}
+            <sup>
+              f<sup>(n)</sup>(a)
+            </sup>
+            /<sub>n!</sub> (x-a)<sup>n</sup>
+          </span>
+        ),
       },
       {
         title: "TaylorX (Derivative Visualizer)",
-        description: "Interactive derivative visualizer that pairs with the Taylor Series guide.",
+        description:
+          "Interactive derivative visualizer that pairs with the Taylor Series guide.",
         path: "/taylorx",
         meta: "Interactive tool",
         icon: "Σ",
-        logo: <span className="math-logo">T<sub>n</sub>(x) ≈ f(x)</span>,
+        logo: (
+          <span className="math-logo">
+            T<sub>n</sub>(x) ≈ f(x)
+          </span>
+        ),
       },
       {
         title: "Certification Quiz",
-        description: "60 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+        description:
+          "60 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/calculus-analytical-geometry",
         meta: "60 questions · 80% to pass",
         icon: "✓",
@@ -162,7 +221,8 @@ export const COURSES = [
     title: "Multivariable Calculus",
     logo: (
       <span className="math-logo-card">
-        <span className="math-sym-big">∭</span> curl <span className="math-bold">F</span>
+        <span className="math-sym-big">∭</span> curl{" "}
+        <span className="math-bold">F</span>
       </span>
     ),
     description:
@@ -175,7 +235,7 @@ export const COURSES = [
     heroImageAlt: "Multivariable Calculus 3D Surface and Gradient Field",
     overview: {
       longDescription: [
-        "Multivariable Calculus extends single-variable analysis to multidimensional coordinate spaces and physical vector field theory. The curriculum begins with functions of several variables, level surfaces, and partial derivatives, formalizing tangent planes, total differentials, gradient vectors, and directional derivatives. We analyze unconstrained multivariable optimization alongside Lagrange Multipliers for constrained systems. The course develops multiple integration across Cartesian, polar, cylindrical, and spherical coordinates using Fubini's Theorem and Jacobian transformations. Finally, vector calculus formalizes line and surface integrals, conservative work fields, and the cornerstone integral theorems—Green's, Gauss's Divergence, and Stokes' Theorems—connecting differential field divergence and curl to macro-scale boundary fluxes across science."
+        "Multivariable Calculus extends single-variable analysis to multidimensional coordinate spaces and physical vector field theory. The curriculum begins with functions of several variables, level surfaces, and partial derivatives, formalizing tangent planes, total differentials, gradient vectors, and directional derivatives. We analyze unconstrained multivariable optimization alongside Lagrange Multipliers for constrained systems. The course develops multiple integration across Cartesian, polar, cylindrical, and spherical coordinates using Fubini's Theorem and Jacobian transformations. Finally, vector calculus formalizes line and surface integrals, conservative work fields, and the cornerstone integral theorems—Green's, Gauss's Divergence, and Stokes' Theorems—connecting differential field divergence and curl to macro-scale boundary fluxes across science.",
       ],
       highlights: [
         "Partial derivatives, gradients & tangent planes",
@@ -186,12 +246,14 @@ export const COURSES = [
         "Stokes' Theorem & surface integrals",
         "Extreme-value finder, volume calculator & vector-field visualizer",
       ],
-      prerequisites: "Single-variable calculus (limits, derivatives, integrals) and basic linear algebra.",
+      prerequisites:
+        "Single-variable calculus (limits, derivatives, integrals) and basic linear algebra.",
     },
     modules: [
       {
         title: "Overview",
-        description: "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
+        description:
+          "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
         path: "/multivariable-calculus/overview",
         meta: "Start here",
         icon: "★",
@@ -200,7 +262,8 @@ export const COURSES = [
       },
       {
         title: "Partial Derivatives",
-        description: "Limits, gradients, tangent planes, differentials, and optimization.",
+        description:
+          "Limits, gradients, tangent planes, differentials, and optimization.",
         path: "/partial-derivatives/1",
         meta: "2 parts · MCQ practice",
         icon: "∂",
@@ -220,15 +283,24 @@ export const COURSES = [
         path: "/extreme",
         meta: "Interactive tool",
         icon: "⬆",
-        logo: <span className="math-logo">D = f<sub>xx</sub>f<sub>yy</sub> - f<sub>xy</sub>²</span>,
+        logo: (
+          <span className="math-logo">
+            D = f<sub>xx</sub>f<sub>yy</sub> - f<sub>xy</sub>²
+          </span>
+        ),
       },
       {
         title: "Vector Calculus",
-        description: "Line integrals, conservative fields, Green's theorem, and surfaces.",
+        description:
+          "Line integrals, conservative fields, Green's theorem, and surfaces.",
         path: "/vector-calculus/1",
         meta: "2 parts · Worked examples",
         icon: "∇",
-        logo: <span className="math-logo">∮<sub>C</sub> F · dr</span>,
+        logo: (
+          <span className="math-logo">
+            ∮<sub>C</sub> F · dr
+          </span>
+        ),
       },
       {
         title: "Vector Field Visualizer",
@@ -240,11 +312,16 @@ export const COURSES = [
       },
       {
         title: "Multiple Integrals",
-        description: "Double and triple integrals, Fubini, polar and cylindrical coordinates.",
+        description:
+          "Double and triple integrals, Fubini, polar and cylindrical coordinates.",
         path: "/multiple-integrals/1",
         meta: "2 parts · Worked integrals",
         icon: "∬",
-        logo: <span className="math-logo">∬<sub>R</sub> f(x,y) dA</span>,
+        logo: (
+          <span className="math-logo">
+            ∬<sub>R</sub> f(x,y) dA
+          </span>
+        ),
       },
       {
         title: "Volume Calculator",
@@ -264,7 +341,8 @@ export const COURSES = [
       },
       {
         title: "Divergence & Curl",
-        description: "Vector field operators, identities, divergence theorem, and Stokes connections.",
+        description:
+          "Vector field operators, identities, divergence theorem, and Stokes connections.",
         path: "/divergence-curl/1",
         meta: "2 parts · Theorems",
         icon: "∇·",
@@ -276,19 +354,34 @@ export const COURSES = [
         path: "/stokes-theorem/1",
         meta: "2 parts · Theorem applications",
         icon: "∮",
-        logo: <span className="math-logo">∮<sub>∂S</sub> F·dr = ∬<sub>S</sub> (∇×F)·dS</span>,
+        logo: (
+          <span className="math-logo">
+            ∮<sub>∂S</sub> F·dr = ∬<sub>S</sub> (∇×F)·dS
+          </span>
+        ),
       },
       {
         title: "3D Analytical Geometry & Quadric Surfaces",
-        description: "Direction cosines, planes and lines in 3D, skew lines, and the six standard quadric surfaces.",
+        description:
+          "Direction cosines, planes and lines in 3D, skew lines, and the six standard quadric surfaces.",
         path: "/3d-geometry/1",
         meta: "2 parts · MCQ practice",
         icon: "⬡",
         logo: <span className="math-logo">x²/a² + y²/b² − z²/c² = 1</span>,
       },
       {
+        title: "Space Curves & Advanced Multivariable Mappings",
+        description:
+          "Vector-valued functions, velocity and acceleration, Frenet–Serret frames, curvature, torsion, Jacobians, surface and flux integrals, and global extrema.",
+        path: "/space-curves/1",
+        meta: "2 parts · 140 MCQ practice",
+        icon: "∿",
+        logo: <span className="math-logo">∇f · dS</span>,
+      },
+      {
         title: "Certification Quiz",
-        description: "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+        description:
+          "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/multivariable-calculus",
         meta: "30 questions · 80% to pass",
         icon: "✓",
@@ -314,7 +407,7 @@ export const COURSES = [
     heroImageAlt: "Linear Algebra Vectors and Matrix Transformation Visual",
     overview: {
       longDescription: [
-        "Linear Algebra provides the universal mathematical framework for modern computation, machine learning, data science, and quantum physics. We establish vector space algebra in n-dimensional Euclidean space, investigating linear combinations, span, basis sets, dimensions, and fundamental subspaces. Matrix operations, Gaussian elimination, row reduction, rank-nullity invariants, and determinant volumes characterize linear system solvability and matrix invertibility. The curriculum explores linear transformations, spectral eigenvalue decompositions, and the Spectral Theorem for symmetric operators. Advanced modules formalize inner product orthogonality, Gram-Schmidt QR factorizations, and least-squares normal equations, culminating in the Singular Value Decomposition (SVD) and Principal Component Analysis for optimal high-dimensional data reduction and modeling."
+        "Linear Algebra provides the universal mathematical framework for modern computation, machine learning, data science, and quantum physics. We establish vector space algebra in n-dimensional Euclidean space, investigating linear combinations, span, basis sets, dimensions, and fundamental subspaces. Matrix operations, Gaussian elimination, row reduction, rank-nullity invariants, and determinant volumes characterize linear system solvability and matrix invertibility. The curriculum explores linear transformations, spectral eigenvalue decompositions, and the Spectral Theorem for symmetric operators. Advanced modules formalize inner product orthogonality, Gram-Schmidt QR factorizations, and least-squares normal equations, culminating in the Singular Value Decomposition (SVD) and Principal Component Analysis for optimal high-dimensional data reduction and modeling.",
       ],
       highlights: [
         "Vectors, span, basis & linear independence",
@@ -326,21 +419,28 @@ export const COURSES = [
         "SVD, low-rank approximation & the pseudoinverse",
         "Interactive Matrix Sandbox",
       ],
-      prerequisites: "Comfortable with algebra and systems of equations; no prior linear algebra needed.",
+      prerequisites:
+        "Comfortable with algebra and systems of equations; no prior linear algebra needed.",
     },
     modules: [
       {
         title: "Overview",
-        description: "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
+        description:
+          "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
         path: "/linear-algebra/overview",
         meta: "Start here",
         icon: "★",
-        logo: <span className="math-logo">ℝ<sup>n</sup> Toolkit</span>,
+        logo: (
+          <span className="math-logo">
+            ℝ<sup>n</sup> Toolkit
+          </span>
+        ),
         start: true,
       },
       {
         title: "Linear Equations",
-        description: "General form in 2, 3, and n variables, graphing with intercepts, systems, and solving techniques.",
+        description:
+          "General form in 2, 3, and n variables, graphing with intercepts, systems, and solving techniques.",
         path: "/linear-algebra/linear-equations/1",
         meta: "2 parts · MCQ practice",
         icon: "=",
@@ -372,7 +472,8 @@ export const COURSES = [
       },
       {
         title: "Eigenvalues & Eigenvectors",
-        description: "Characteristic polynomials, eigenspaces, algebraic vs geometric multiplicity, diagonalization, matrix powers, and the Spectral Theorem.",
+        description:
+          "Characteristic polynomials, eigenspaces, algebraic vs geometric multiplicity, diagonalization, matrix powers, and the Spectral Theorem.",
         path: "/linear-algebra/eigen/1",
         meta: "2 parts · MCQ practice",
         icon: "λ",
@@ -380,7 +481,8 @@ export const COURSES = [
       },
       {
         title: "Linear Transformations",
-        description: "Standard matrices, kernel & image, composition, and invertibility.",
+        description:
+          "Standard matrices, kernel & image, composition, and invertibility.",
         path: "/linear-algebra/transformations/1",
         meta: "2 parts · MCQ practice",
         icon: "T",
@@ -388,19 +490,29 @@ export const COURSES = [
       },
       {
         title: "Orthogonality & Least Squares",
-        description: "Inner products, norms, orthogonal matrices, Gram–Schmidt, QR, projections, and least-squares solutions.",
+        description:
+          "Inner products, norms, orthogonal matrices, Gram–Schmidt, QR, projections, and least-squares solutions.",
         path: "/linear-algebra/orthogonality/1",
         meta: "2 parts · MCQ practice",
         icon: "⊥",
-        logo: <span className="math-logo">Q<sup>T</sup>Q = I</span>,
+        logo: (
+          <span className="math-logo">
+            Q<sup>T</sup>Q = I
+          </span>
+        ),
       },
       {
         title: "Singular Value Decomposition",
-        description: "Full and compact SVD, singular values, fundamental subspaces, conditioning, low-rank approximation, and the pseudoinverse.",
+        description:
+          "Full and compact SVD, singular values, fundamental subspaces, conditioning, low-rank approximation, and the pseudoinverse.",
         path: "/linear-algebra/svd/1",
         meta: "2 parts · MCQ practice",
         icon: "Σ",
-        logo: <span className="math-logo">A = U Σ V<sup>T</sup></span>,
+        logo: (
+          <span className="math-logo">
+            A = U Σ V<sup>T</sup>
+          </span>
+        ),
       },
       {
         title: "Matrix Decompositions & Factorizations",
@@ -460,7 +572,8 @@ export const COURSES = [
       },
       {
         title: "Practice Arena",
-        description: "MCQ drills for Linear Algebra topics with leaderboard submit.",
+        description:
+          "MCQ drills for Linear Algebra topics with leaderboard submit.",
         path: "/practice",
         meta: "Interactive · Difficulty tiers",
         icon: "✎",
@@ -468,7 +581,8 @@ export const COURSES = [
       },
       {
         title: "Certification Quiz",
-        description: "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+        description:
+          "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/linear-algebra",
         meta: "30 questions · 80% to pass",
         icon: "✓",
@@ -491,10 +605,11 @@ export const COURSES = [
     icon: "P",
     color: "purple",
     heroImage: "/images/courses/prob-stats-hero.svg",
-    heroImageAlt: "Probability and Statistics Gaussian Bell Curve and Regression Visual",
+    heroImageAlt:
+      "Probability and Statistics Gaussian Bell Curve and Regression Visual",
     overview: {
       longDescription: [
-        "Probability and Statistics bridges mathematical theory and real-world empirical inference. Master sample spaces, probability axioms, conditional probability, and Bayes' Theorem. Explore discrete and continuous random variables, probability mass and density functions, expected values, variance, and fundamental distributions (Binomial, Poisson, Normal, Exponential). Learn descriptive statistics, central limit theorem, hypothesis testing (z-tests, t-tests, p-values), and linear regression with residual analysis."
+        "Probability and Statistics bridges mathematical theory and real-world empirical inference. Master sample spaces, probability axioms, conditional probability, and Bayes' Theorem. Explore discrete and continuous random variables, probability mass and density functions, expected values, variance, and fundamental distributions (Binomial, Poisson, Normal, Exponential). Learn descriptive statistics, central limit theorem, hypothesis testing (z-tests, t-tests, p-values), and linear regression with residual analysis.",
       ],
       highlights: [
         "Sample spaces, axioms & conditional probability",
@@ -510,7 +625,8 @@ export const COURSES = [
     modules: [
       {
         title: "Overview",
-        description: "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
+        description:
+          "What you'll learn, the order to learn it in, and how the course and certificate are structured.",
         path: "/probability-statistics/overview",
         meta: "Start here",
         icon: "★",
@@ -519,23 +635,34 @@ export const COURSES = [
       },
       {
         title: "Probability Basics",
-        description: "Sample spaces, axioms, conditional probability, and Bayes' Theorem.",
+        description:
+          "Sample spaces, axioms, conditional probability, and Bayes' Theorem.",
         path: "/probability-statistics/probability-basics/1",
         meta: "2 parts · Worked examples",
         icon: "P",
-        logo: <span className="math-logo">P(A|B) = <sup>P(A∩B)</sup>/<sub>P(B)</sub></span>,
+        logo: (
+          <span className="math-logo">
+            P(A|B) = <sup>P(A∩B)</sup>/<sub>P(B)</sub>
+          </span>
+        ),
       },
       {
         title: "Bayes Lab",
-        description: "Interactive Bayesian screening and posterior probability calculator.",
+        description:
+          "Interactive Bayesian screening and posterior probability calculator.",
         path: "/probability-statistics/bayes-lab",
         meta: "Interactive tool",
         icon: "⚖",
-        logo: <span className="math-logo">P(B|A) = <sup>P(A|B)P(B)</sup>/<sub>P(A)</sub></span>,
+        logo: (
+          <span className="math-logo">
+            P(B|A) = <sup>P(A|B)P(B)</sup>/<sub>P(A)</sub>
+          </span>
+        ),
       },
       {
         title: "Random Variables & Distributions",
-        description: "Discrete and continuous random variables, PMFs, PDFs, expectation, and variance.",
+        description:
+          "Discrete and continuous random variables, PMFs, PDFs, expectation, and variance.",
         path: "/probability-statistics/random-variables/1",
         meta: "2 parts · Worked examples",
         icon: "X",
@@ -543,23 +670,34 @@ export const COURSES = [
       },
       {
         title: "Descriptive Statistics",
-        description: "Mean, median, mode, variance, standard deviation, and data visualization.",
+        description:
+          "Mean, median, mode, variance, standard deviation, and data visualization.",
         path: "/probability-statistics/descriptive-statistics/1",
         meta: "2 parts · Worked examples",
         icon: "σ",
-        logo: <span className="math-logo">x̄, s² = <sup>1</sup>/<sub>n-1</sub>Σ(x-x̄)²</span>,
+        logo: (
+          <span className="math-logo">
+            x̄, s² = <sup>1</sup>/<sub>n-1</sub>Σ(x-x̄)²
+          </span>
+        ),
       },
       {
         title: "Hypothesis Testing",
-        description: "Null and alternative hypotheses, z-tests, t-tests, and p-value inference.",
+        description:
+          "Null and alternative hypotheses, z-tests, t-tests, and p-value inference.",
         path: "/probability-statistics/hypothesis-testing/1",
         meta: "2 parts · Worked examples",
         icon: "H",
-        logo: <span className="math-logo">z = <sup>(x̄ - μ₀)</sup>/<sub>(σ/√n)</sub></span>,
+        logo: (
+          <span className="math-logo">
+            z = <sup>(x̄ - μ₀)</sup>/<sub>(σ/√n)</sub>
+          </span>
+        ),
       },
       {
         title: "Regression & Correlation",
-        description: "Linear association, least squares regression, and residual analysis.",
+        description:
+          "Linear association, least squares regression, and residual analysis.",
         path: "/probability-statistics/regression-correlation/1",
         meta: "2 parts · MCQ practice",
         icon: "ρ",
@@ -567,7 +705,8 @@ export const COURSES = [
       },
       {
         title: "Practice Arena",
-        description: "MCQ drills for Probability & Statistics with leaderboard submit.",
+        description:
+          "MCQ drills for Probability & Statistics with leaderboard submit.",
         path: "/practice",
         meta: "Interactive · Difficulty tiers",
         icon: "✎",
@@ -575,7 +714,8 @@ export const COURSES = [
       },
       {
         title: "Certification Quiz",
-        description: "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+        description:
+          "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/probability-statistics",
         meta: "30 questions · 80% to pass",
         icon: "✓",
