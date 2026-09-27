@@ -15,3 +15,5 @@ test("formatCompletionDate formats a known date",()=>{const value=new Date("2024
 test("isOverdueForReview returns false for null",()=>{expect(isOverdueForReview(null)).toBe(false);});
 
 test("normalizeTimestamp accepts numeric strings",()=>{expect(normalizeTimestamp("1700000000")).toBe(1700000000000);});
+
+test("normalizeTimestamp accepts numeric millisecond strings",()=>{expect(normalizeTimestamp("1700000000000")).toBe(1700000000000);});
