@@ -57,3 +57,5 @@ test("module B part one starts with complex spaces",()=>{expect(getLinearAlgebra
 test("module B part two contains affine transformations",()=>{expect(getLinearAlgebraModuleGroup("module-b").parts[1].topics[1].id).toBe("affine-homogeneous");});
 
 test("module C part one starts with orthogonality",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[0].topics[0].id).toBe("orthogonality-least-squares");});
+
+test("module C part one contains SVD",()=>{expect(getLinearAlgebraModuleGroup("module-c").parts[0].topics[1].id).toBe("singular-value-decomposition");});
