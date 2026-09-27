@@ -451,6 +451,14 @@ export const COURSES = [
         logo: <span className="math-logo">X<sup>T</sup>X</span>,
       },
       {
+        title: "Markov Chains & Steady States",
+        description: "Model state transitions with stochastic matrices, solve for stationary distributions as eigenvectors, and distinguish fixed states from convergence.",
+        path: "/linear-algebra/markov-chains-steady-states/1",
+        meta: "2 parts · 20-question checkpoint",
+        icon: "π",
+        logo: <span className="math-logo">Pπ = π</span>,
+      },
+      {
         title: "Practice Arena",
         description: "MCQ drills for Linear Algebra topics with leaderboard submit.",
         path: "/practice",
