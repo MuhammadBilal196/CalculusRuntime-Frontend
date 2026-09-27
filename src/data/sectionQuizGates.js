@@ -38,7 +38,7 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "partial-2": ["144", "145", "146", "147"],
   "jacobians-1": [],
   "jacobians-2": ["jacobians"],
-
+  "curvilinear-1": ["curvilinear"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
