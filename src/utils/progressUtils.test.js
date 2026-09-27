@@ -23,3 +23,5 @@ test("normalizeTimestamp accepts Date parseable strings",()=>{expect(normalizeTi
 test("formatRelativeCompletion handles null",()=>{expect(formatRelativeCompletion(null)).toBe("Completed recently");});
 
 test("formatCompletionDate handles null",()=>{expect(formatCompletionDate(null)).toBe("Unknown completion date");});
+
+test("getStreak returns zero with no stored days",()=>{localStorage.clear();expect(getStreak()).toBe(0);});
