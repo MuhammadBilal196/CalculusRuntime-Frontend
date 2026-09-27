@@ -25,3 +25,5 @@ test("unknown module lookup returns null",()=>{expect(getLinearAlgebraModuleGrou
 test("unknown part lookup returns null",()=>{expect(getLinearAlgebraModulePart("missing")).toBeNull();});
 
 test("part lookup returns parent module",()=>{expect(getLinearAlgebraModulePart("module-a-1").module.id).toBe("module-a");});
+
+test("part lookup returns requested part",()=>{expect(getLinearAlgebraModulePart("module-b-2").part.id).toBe("module-b-2");});
