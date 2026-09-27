@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getCourseById } from "../../data/courses";
+import { LINEAR_ALGEBRA_MODULE_GROUPS } from "../../data/linearAlgebraModuleGroups";
 import "./LinearAlgebraOverview.css";
 
 const CORE_CERT_PATHS = new Set([
@@ -19,8 +20,8 @@ const EXCLUDED_FROM_ROADMAP = new Set([
 function LinearAlgebraOverview() {
   const { hash } = useLocation();
   useEffect(() => {
-    if (hash === "#module-a") {
-      document.getElementById("module-a")?.scrollIntoView();
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView();
     }
   }, [hash]);
   const course = getCourseById("linear-algebra");
@@ -100,57 +101,44 @@ function LinearAlgebraOverview() {
         </ol>
       </section>
 
-      <section className="guide-section" id="module-a" aria-labelledby="module-a-heading">
-        <div className="section-kicker">Linear Algebra</div>
-        <h2 id="module-a-heading">Matrix Decompositions &amp; Factorizations</h2>
-        <p className="la-overview-lead">Learn how matrix structure turns a difficult calculation into simpler ones. Start with reusable elimination, specialize to positive-definite systems, study defective eigenvalues, and finish by measuring numerical sensitivity.</p>
-        <p>Each topic has two reading parts, four worked examples, and a 20-question checkpoint at the end of Part 2. Answer every question and score at least 80% to unlock that part’s completion.</p>
-        <ol className="la-roadmap">
-          <li>
-            <Link className="la-roadmap-row" to="/linear-algebra/lu-decomposition/1">
-              <span className="la-roadmap-num">1</span>
-              <span className="la-roadmap-copy">
-                <span className="la-roadmap-title">LU Decomposition</span>
-                <small>Elimination as a reusable factorization: from A = LU to pivoted solves</small>
-              </span>
-              <span className="la-roadmap-arrow" aria-hidden="true">→</span>
-            </Link>
-          </li>
-          <li>
-            <Link className="la-roadmap-row" to="/linear-algebra/cholesky-decomposition/1">
-              <span className="la-roadmap-num">2</span>
-              <span className="la-roadmap-copy">
-                <span className="la-roadmap-title">Cholesky Decomposition</span>
-                <small>Positive-definite structure, square-root factors, and efficient symmetric solves</small>
-              </span>
-              <span className="la-roadmap-arrow" aria-hidden="true">→</span>
-            </Link>
-          </li>
-          <li>
-            <Link className="la-roadmap-row" to="/linear-algebra/jordan-normal-form/1">
-              <span className="la-roadmap-num">3</span>
-              <span className="la-roadmap-copy">
-                <span className="la-roadmap-title">Jordan Normal Form</span>
-                <small>Generalized eigenvectors, chain structure, matrix powers, and exact canonical form</small>
-              </span>
-              <span className="la-roadmap-arrow" aria-hidden="true">→</span>
-            </Link>
-          </li>
-          <li>
-            <Link className="la-roadmap-row" to="/linear-algebra/matrix-norms-conditioning/1">
-              <span className="la-roadmap-num">4</span>
-              <span className="la-roadmap-copy">
-                <span className="la-roadmap-title">Vector &amp; Matrix Norms, Condition Number</span>
-                <small>Measuring size, maximum stretch, and the sensitivity of a linear solve</small>
-              </span>
-              <span className="la-roadmap-arrow" aria-hidden="true">→</span>
-            </Link>
-          </li>
-        </ol>
-        <h3>Before you begin</h3>
-        <p>Review elimination and triangular matrices for LU, symmetric matrices for Cholesky, eigenspaces for Jordan form, and singular values for conditioning.</p>
-        <p><Link to="/linear-algebra/systems/1">Linear systems</Link> · <Link to="/linear-algebra/eigen/2">Diagonalization</Link> · <Link to="/linear-algebra/svd/1">Singular values</Link></p>
-      </section>
+      {LINEAR_ALGEBRA_MODULE_GROUPS.map((module) => (
+        <section
+          className="guide-section la-module-overview"
+          id={module.id}
+          key={module.id}
+          aria-labelledby={module.id + "-heading"}
+        >
+          <div className="section-kicker">Linear Algebra · {module.id.replace("module-", "Module ").toUpperCase()}</div>
+          <h2 id={module.id + "-heading"}>{module.title}</h2>
+          <p className="la-overview-lead">{module.description}</p>
+          <p>
+            Each module has exactly four topics split across two parts. Topics remain inside
+            the module; they are not separate module cards in the overview.
+          </p>
+          {module.parts.map((part) => (
+            <div className="la-module-overview__part" key={part.id}>
+              <div className="la-module-overview__part-heading">
+                <h3>{part.title}</h3>
+                <span>{part.description}</span>
+              </div>
+              <ol className="la-roadmap">
+                {part.topics.map((topic, index) => (
+                  <li key={topic.id}>
+                    <Link className="la-roadmap-row" to={topic.path}>
+                      <span className="la-roadmap-num">{index + 1}</span>
+                      <span className="la-roadmap-copy">
+                        <span className="la-roadmap-title">{topic.title}</span>
+                        <small>{topic.description}</small>
+                      </span>
+                      <span className="la-roadmap-arrow" aria-hidden="true">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </section>
+      ))}
 
       <section className="guide-section" aria-labelledby="structure-heading">
         <div className="section-kicker">How this course works</div>
