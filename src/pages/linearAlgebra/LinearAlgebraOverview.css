@@ -177,27 +177,3 @@
 .dark .la-roadmap-row:hover .la-roadmap-arrow {
   color: #38bdf8;
 }
-
-.la-module-overview__part {
-  margin-top: 1.5rem;
-}
-.la-module-overview__part-heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: .5rem;
-}
-.la-module-overview__part-heading h3 {
-  margin: 0;
-}
-.la-module-overview__part-heading span {
-  opacity: .75;
-  font-size: .95rem;
-}
-@media (max-width: 720px) {
-  .la-module-overview__part-heading {
-    flex-direction: column;
-    gap: .25rem;
-  }
-}

@@ -1,3 +1,5 @@
+import { LA_MODULES, getLaModuleTopics } from "./laModules";
+
 /**
  * Guide MCQ keys (data-section / LaMcq `section`) required before
  * "Mark as complete" unlocks for a progress sectionId.
@@ -36,6 +38,11 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   // Multivariable Calculus
   "partial-1": ["141", "142", "143"],
   "partial-2": ["144", "145", "146", "147"],
+  "jacobians-1": [],
+  "jacobians-2": ["jacobians"],
+  "curvilinear-1": ["curvilinear"],
+  "parametrized-surface-area-2": ["parametrized-surface-area"],
+  "flux-integrals-general-surfaces-2": ["flux-integrals-general-surfaces"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
@@ -62,6 +69,12 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "geo3d-2": ["geo-line3d", "geo-skew", "geo-quadric"],
 
   // Linear Algebra
+  ...Object.fromEntries(LA_MODULES.flatMap((module) =>
+    [1, 2].map((part) => [
+      `la-${module.id}-${part}`,
+      getLaModuleTopics(module, part).map((topic) => topic.quizKey),
+    ]),
+  )),
   "la-lineq-1": ["la-le-forms", "la-le-graph"],
   "la-lineq-2": ["la-le-sys", "la-le-solve"],
   "la-vectors-1": ["la-v-intro", "la-v-ops"],
@@ -83,6 +96,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "la-pca-2": ["la-pca-checkpoint"],
   "la-markov-1": [],
   "la-markov-2": ["la-markov-checkpoint"],
+  "la-linear-programming-1": [],
+  "la-linear-programming-2": ["la-linear-programming-checkpoint"],
 
   "la-complex-1": [],
   "la-complex-2": ["la-complex-checkpoint"],

@@ -6,28 +6,19 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_COMPLEX_VECTOR_SPACES_QUIZ } from "../../data/laQuizzes";
 
-export default function ComplexVectorSpacesGuide({ part = 1 }) {
+export default function ComplexVectorSpacesGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
-  return (
-    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={`Complex Vector Spaces (Part ${part})`}>
-      <nav className="sidebar">
-        <div className="sb-brand"><div className="sb-title">Complex Vector Spaces</div></div>
-        <a className="sb-link" href="#complex-theory">Theory</a>
-        <a className="sb-link" href="#complex-method">Method</a>
-        <a className="sb-link" href="#complex-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-complex-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
-      </nav>
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Linear Algebra</div>
           <h1 className="ch-title">Complex Vector Spaces</h1>
           <p className="ch-sub">Hermitian and unitary matrices: geometry with complex coordinates</p>
           <p><Link to="/linear-algebra/vectors/1">Vector spaces</Link> · <Link to="/linear-algebra/orthogonality/1">Inner products</Link> · <Link to="/linear-algebra/eigen/1">Eigenvalues</Link></p>
           <p>Part {part} of 2. Part 1 develops complex scalars, inner products and projections; Part 2 covers Hermitian and unitary matrices and the 20-question topic checkpoint.</p>
-        </header>
-        <section className="section" id="complex-theory">
+        </header>)}
+        <section className="section" id={embedded ? `complex-theory-${part}` : "complex-theory"}>
           <h2 className="sec-title">{advanced ? "Hermitian and unitary matrices" : "Complex vector-space foundations"}</h2>
           {advanced ? (
             <>
@@ -79,14 +70,14 @@ export default function ComplexVectorSpacesGuide({ part = 1 }) {
             </>
           )}
         </section>
-        <section className="section" id="complex-method">
+        <section className="section" id={embedded ? `complex-method-${part}` : "complex-method"}>
           <h2 className="sec-title">A reliable calculation sequence</h2>
           <ProcedureBox
             title={advanced ? "Classify and use a complex matrix" : "Work with a complex subspace or projection"}
             steps={advanced ? ["Check that the matrix is square before asking whether it is Hermitian or unitary.", "Compute the conjugate transpose carefully. Test $H^*=H$ for Hermitian structure or $U^*U=I$ for unitarity.", "For Hermitian diagonalization, find eigenvalues and eigenvectors, then normalize and orthogonalize within any repeated eigenspace.", "Check $Q^*Q=I$ and $HQ=Q\\Lambda$ before writing $H=Q\\Lambda Q^*$. For a unitary solve, use $x=U^*b$."] : ["State the scalar field. Test subspace closure with complex scalars, especially multiplication by $i$.", "Use conjugate transpose in inner products and compute squared norms as sums of squared moduli.", "For a projection onto a nonzero $u$, compute $p=u(u^*v)/(u^*u)$; for orthonormal columns use $QQ^*v$.", "Verify that the residual is orthogonal to the target subspace and that any claimed unit vectors have norm one."]}
           />
         </section>
-        <section className="section" id="complex-examples">
+        <section className="section" id={embedded ? `complex-examples-${part}` : "complex-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -165,13 +156,26 @@ export default function ComplexVectorSpacesGuide({ part = 1 }) {
             onComplete={(score, total) => saveQuizScore("guide-mcq-la-complex-checkpoint", score, total)}
           />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to Hermitian and unitary matrices</h2>
             <p>The checkpoint in Part 2 covers both parts. Answer all 20 questions and score at least 80% to unlock Part 2 completion.</p>
             <Link to="/linear-algebra/complex-vector-spaces/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={`Complex Vector Spaces (Part ${part})`}>
+      <nav className="sidebar">
+        <div className="sb-brand"><div className="sb-title">Complex Vector Spaces</div></div>
+        <a className="sb-link" href="#complex-theory">Theory</a>
+        <a className="sb-link" href="#complex-method">Method</a>
+        <a className="sb-link" href="#complex-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-complex-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
+      </nav>
+      {content}
     </StudyGuideShell>
   );
 }

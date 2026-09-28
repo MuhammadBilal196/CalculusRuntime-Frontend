@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getCourseById } from "../../data/courses";
-import { LINEAR_ALGEBRA_MODULE_GROUPS } from "../../data/linearAlgebraModuleGroups";
 import "./LinearAlgebraOverview.css";
+import { LA_MODULES, getLaModulePath, getLaModuleTopics, getLaTopicPath } from "../../data/laModules";
 
 const CORE_CERT_PATHS = new Set([
   "/linear-algebra/vectors/1",
@@ -20,7 +20,7 @@ const EXCLUDED_FROM_ROADMAP = new Set([
 function LinearAlgebraOverview() {
   const { hash } = useLocation();
   useEffect(() => {
-    if (hash) {
+    if (LA_MODULES.some((module) => hash === `#${module.overviewAnchor}`)) {
       document.getElementById(hash.slice(1))?.scrollIntoView();
     }
   }, [hash]);
@@ -101,34 +101,23 @@ function LinearAlgebraOverview() {
         </ol>
       </section>
 
-      {LINEAR_ALGEBRA_MODULE_GROUPS.map((module) => (
-        <section
-          className="guide-section la-module-overview"
-          id={module.id}
-          key={module.id}
-          aria-labelledby={module.id + "-heading"}
-        >
-          <div className="section-kicker">Linear Algebra · {module.id.replace("module-", "Module ").toUpperCase()}</div>
-          <h2 id={module.id + "-heading"}>{module.title}</h2>
+      {LA_MODULES.map((module) => (
+        <section className="guide-section" id={module.overviewAnchor} key={module.id} aria-labelledby={`${module.id}-heading`}>
+          <div className="section-kicker">Linear Algebra · 4 topics · 80 checkpoint questions</div>
+          <h2 id={`${module.id}-heading`}>{module.title}</h2>
           <p className="la-overview-lead">{module.description}</p>
-          <p>
-            Each module has exactly four topics split across two parts. Topics remain inside
-            the module; they are not separate module cards in the overview.
-          </p>
-          {module.parts.map((part) => (
-            <div className="la-module-overview__part" key={part.id}>
-              <div className="la-module-overview__part-heading">
-                <h3>{part.title}</h3>
-                <span>{part.description}</span>
-              </div>
+          <p>Two parts, with two complete topics in each. Every topic ends with its own 20-question checkpoint. Score at least 80% on both checkpoints to complete a part.</p>
+          {[1, 2].map((part) => (
+            <div key={part}>
+              <h3><Link to={getLaModulePath(module, part)}>Part {part} — Topics {part * 2 - 1} and {part * 2}</Link></h3>
               <ol className="la-roadmap">
-                {part.topics.map((topic, index) => (
+                {getLaModuleTopics(module, part).map((topic) => (
                   <li key={topic.id}>
-                    <Link className="la-roadmap-row" to={topic.path}>
-                      <span className="la-roadmap-num">{index + 1}</span>
+                    <Link className="la-roadmap-row" to={getLaTopicPath(module, topic)}>
+                      <span className="la-roadmap-num">{module.topics.indexOf(topic) + 1}</span>
                       <span className="la-roadmap-copy">
                         <span className="la-roadmap-title">{topic.title}</span>
-                        <small>{topic.description}</small>
+                        <small>Theory, worked examples, and a 20-question checkpoint</small>
                       </span>
                       <span className="la-roadmap-arrow" aria-hidden="true">→</span>
                     </Link>
@@ -144,8 +133,8 @@ function LinearAlgebraOverview() {
         <div className="section-kicker">How this course works</div>
         <h2 id="structure-heading">Structure &amp; certificate</h2>
         <p className="la-overview-lead">
-          Every topic module has the same shape: two parts of theory and worked examples, with a short
-          MCQ quiz after each major section. Score 80%+ on a section's quizzes to unlock "Mark as
+          The three advanced modules above each have two parts and four topics. Core topic guides
+          retain their existing theory, examples, and quizzes. Score 80%+ on a section's quizzes to unlock "Mark as
           complete" — your progress and quiz scores are saved to your account automatically.
         </p>
         <p className="la-overview-lead">

@@ -6,28 +6,19 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_A_JORDAN_QUIZ } from "../../data/laQuizzes";
 
-export default function JordanNormalFormGuide({ part = 1 }) {
+export default function JordanNormalFormGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
-  return (
-    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={`${"Jordan Normal Form"} (Part ${part})`}>
-      <nav className="sidebar">
-        <div className="sb-brand"><div className="sb-title">Topic 3</div></div>
-        <a className="sb-link" href="#la-a-jordan-theory">Theory</a>
-        {advanced && <a className="sb-link" href="#la-a-jordan-method">Method</a>}
-        <a className="sb-link" href="#la-a-jordan-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-a-jordan-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview#module-a">All four topics</Link>
-      </nav>
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Matrix Decompositions &amp; Factorizations</div>
           <h1 className="ch-title">Jordan Normal Form</h1>
           <p className="ch-sub">Generalized eigenvectors, chain structure, matrix powers, and exact canonical form</p>
           <p>Curriculum: University Linear Algebra.</p>
           <p><Link to="/linear-algebra/eigen/2">Review prerequisites</Link> · Part {part} of 2</p>
-        </header>
-        <section className="section" id="la-a-jordan-theory">
+        </header>)}
+        <section className="section" id={embedded ? `la-a-jordan-theory-${part}` : "la-a-jordan-theory"}>
           {advanced ? (
             <>
               <TheoryBox title={"Powers of a Jordan block"}>
@@ -62,12 +53,12 @@ export default function JordanNormalFormGuide({ part = 1 }) {
           )}
         </section>
         {advanced && (
-          <section className="section" id="la-a-jordan-method">
+          <section className="section" id={embedded ? `la-a-jordan-method-${part}` : "la-a-jordan-method"}>
             <h2 className="sec-title">A reliable working procedure</h2>
             <ProcedureBox title="Step by step" steps={["Choose the field, factor the characteristic polynomial, and find algebraic multiplicities.", "Compute nullities of successive powers of $A-\\lambda I$ to infer block sizes for each eigenvalue.", "Choose top-level generalized vectors and apply $A-\\lambda I$ repeatedly to build independent chains.", "Place chain vectors from eigenvector to highest generalized vector into $P$.", "Construct $J$ with matching blocks; verify $AP=PJ$ and invertibility of $P$ before computing powers."]} />
           </section>
         )}
-        <section className="section" id="la-a-jordan-examples">
+        <section className="section" id={embedded ? `la-a-jordan-examples-${part}` : "la-a-jordan-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -120,13 +111,26 @@ export default function JordanNormalFormGuide({ part = 1 }) {
             onComplete={(score, total) => saveQuizScore("guide-mcq-la-a-jordan-checkpoint", score, total)}
           />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to the topic checkpoint</h2>
             <p>Part 1 develops the foundations. Part 2 adds applications and the single 20-question checkpoint for this topic. Complete all questions and score at least 80% to unlock Part 2 completion.</p>
             <Link to="/linear-algebra/jordan-normal-form/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={`${"Jordan Normal Form"} (Part ${part})`}>
+      <nav className="sidebar">
+        <div className="sb-brand"><div className="sb-title">Topic 3</div></div>
+        <a className="sb-link" href="#la-a-jordan-theory">Theory</a>
+        {advanced && <a className="sb-link" href="#la-a-jordan-method">Method</a>}
+        <a className="sb-link" href="#la-a-jordan-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-a-jordan-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview#module-a">All four topics</Link>
+      </nav>
+      {content}
     </StudyGuideShell>
   );
 }

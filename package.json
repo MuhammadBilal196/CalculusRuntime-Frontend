@@ -56,5 +56,15 @@
   },
   "overrides": {
     "eslint-scope": "5.1.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^react-router/dom$": "<rootDir>/node_modules/react-router/dist/development/dom-export.js",
+      "^katex/contrib/auto-render$": "<rootDir>/node_modules/katex/dist/contrib/auto-render.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\](?!crosstex[/\\\\]).+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
   }
 }

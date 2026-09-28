@@ -6,28 +6,19 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_A_CHOLESKY_QUIZ } from "../../data/laQuizzes";
 
-export default function CholeskyDecompositionGuide({ part = 1 }) {
+export default function CholeskyDecompositionGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
-  return (
-    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={`${"Cholesky Decomposition"} (Part ${part})`}>
-      <nav className="sidebar">
-        <div className="sb-brand"><div className="sb-title">Topic 2</div></div>
-        <a className="sb-link" href="#la-a-cholesky-theory">Theory</a>
-        {advanced && <a className="sb-link" href="#la-a-cholesky-method">Method</a>}
-        <a className="sb-link" href="#la-a-cholesky-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-a-cholesky-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview#module-a">All four topics</Link>
-      </nav>
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Matrix Decompositions &amp; Factorizations</div>
           <h1 className="ch-title">Cholesky Decomposition</h1>
           <p className="ch-sub">Positive-definite structure, square-root factors, and efficient symmetric solves</p>
           <p>Curriculum: University Linear Algebra.</p>
           <p><Link to="/linear-algebra/matrices/1">Review prerequisites</Link> · Part {part} of 2</p>
-        </header>
-        <section className="section" id="la-a-cholesky-theory">
+        </header>)}
+        <section className="section" id={embedded ? `la-a-cholesky-theory-${part}` : "la-a-cholesky-theory"}>
           {advanced ? (
             <>
               <TheoryBox title={"Solves, cost, and determinants"}>
@@ -62,12 +53,12 @@ export default function CholeskyDecompositionGuide({ part = 1 }) {
           )}
         </section>
         {advanced && (
-          <section className="section" id="la-a-cholesky-method">
+          <section className="section" id={embedded ? `la-a-cholesky-method-${part}` : "la-a-cholesky-method"}>
             <h2 className="sec-title">A reliable working procedure</h2>
             <ProcedureBox title="Step by step" steps={["Confirm symmetry (or Hermitian symmetry) and establish positive definiteness for the problem.", "For column $j$, subtract previous squared entries from $a_{jj}$ and take the positive square root.", "Compute entries below the pivot from the recurrence; never divide by a zero pivot.", "Check $LL^T=A$ for real data, or $LL^*=A$ for complex data.", "Forward-solve with $L$, then back-solve with its transpose or adjoint, and check the original residual."]} />
           </section>
         )}
-        <section className="section" id="la-a-cholesky-examples">
+        <section className="section" id={embedded ? `la-a-cholesky-examples-${part}` : "la-a-cholesky-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -120,13 +111,26 @@ export default function CholeskyDecompositionGuide({ part = 1 }) {
             onComplete={(score, total) => saveQuizScore("guide-mcq-la-a-cholesky-checkpoint", score, total)}
           />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to the topic checkpoint</h2>
             <p>Part 1 develops the foundations. Part 2 adds applications and the single 20-question checkpoint for this topic. Complete all questions and score at least 80% to unlock Part 2 completion.</p>
             <Link to="/linear-algebra/cholesky-decomposition/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={`${"Cholesky Decomposition"} (Part ${part})`}>
+      <nav className="sidebar">
+        <div className="sb-brand"><div className="sb-title">Topic 2</div></div>
+        <a className="sb-link" href="#la-a-cholesky-theory">Theory</a>
+        {advanced && <a className="sb-link" href="#la-a-cholesky-method">Method</a>}
+        <a className="sb-link" href="#la-a-cholesky-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-a-cholesky-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview#module-a">All four topics</Link>
+      </nav>
+      {content}
     </StudyGuideShell>
   );
 }

@@ -37,6 +37,10 @@ import DivergencePart2 from "./pages/multivariableCalculus/DivergencePart2";
 import Geometry3DPart1 from "./pages/multivariableCalculus/Geometry3DPart1";
 import Geometry3DPart2 from "./pages/multivariableCalculus/Geometry3DPart2";
 import SpaceCurvesGuide from "./pages/multivariableCalculus/SpaceCurvesGuideNew";
+import JacobiansGuide from "./pages/multivariableCalculus/JacobiansGuide";
+import CurvilinearCoordinatesGuide from "./pages/multivariableCalculus/CurvilinearCoordinatesGuide";
+import ParametrizedSurfaceAreaGuide from "./pages/multivariableCalculus/ParametrizedSurfaceAreaGuide";
+import FluxIntegralsGeneralSurfacesGuide from "./pages/multivariableCalculus/FluxIntegralsGeneralSurfacesGuide";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -75,36 +79,10 @@ import {
   SvdPart1,
   SvdPart2,
 } from "./pages/linearAlgebra/LaParts";
-import {
-  LUDecompositionPart1,
-  LUDecompositionPart2,
-  CholeskyDecompositionPart1,
-  CholeskyDecompositionPart2,
-  JordanNormalFormPart1,
-  JordanNormalFormPart2,
-  MatrixNormsPart1,
-  MatrixNormsPart2,
-  ComplexVectorSpacesPart1,
-  ComplexVectorSpacesPart2,
-  QuadraticFormsPart1,
-  QuadraticFormsPart2,
-  ChangeOfBasisPart1,
-  ChangeOfBasisPart2,
-  AffineTransformationsPart1,
-  AffineTransformationsPart2,
-  PrincipalComponentAnalysisPart1,
-  PrincipalComponentAnalysisPart2,
-  MarkovChainsPart1,
-  MarkovChainsPart2
-} from "./pages/linearAlgebra";
-import {
-  LinearAlgebraModuleAPart1,
-  LinearAlgebraModuleAPart2,
-  LinearAlgebraModuleBPart1,
-  LinearAlgebraModuleBPart2,
-  LinearAlgebraModuleCPart1,
-  LinearAlgebraModuleCPart2,
-} from "./pages/linearAlgebra/LaModuleParts";
+
+import LaModulePart from "./pages/linearAlgebra/LaModulePart";
+import { LA_MODULES, LA_TOPIC_REDIRECTS, LA_MODULE_REDIRECTS, getLaModulePath } from "./data/laModules";
+
 import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
 import CalculusOverview from "./pages/calculus/CalculusOverview";
@@ -246,6 +224,7 @@ function App() {
                   path="/courses/calculus-analytical-geometry/overview"
                   element={<Layout body={<CalculusOverview />} />}
                 />
+
                 {/* Space Curves & Advanced Multivariable Mappings */}
                 <Route
                   path="/space-curves"
@@ -344,6 +323,55 @@ function App() {
                 <Route
                   path="/multiple-integrals/2"
                   element={<Layout body={<IntegralsPart2 />} />}
+                />
+
+                {/* <Route
+                  path="/jacobians-change-of-variables"
+                  element={
+                    <Navigate to="/jacobians-change-of-variables/1" replace />
+                  }
+                /> */}
+                <Route
+                  path="/jacobians-change-of-variables/1"
+                  element={<Layout body={<JacobiansGuide />} />}
+                />
+                <Route
+                  path="/curvilinear-coordinate-systems"
+                  element={
+                    <Navigate to="/curvilinear-coordinate-systems/1" replace />
+                  }
+                />
+
+                <Route
+                  path="/curvilinear-coordinate-systems/1"
+                  element={<Layout body={<CurvilinearCoordinatesGuide />} />}
+                />
+                <Route
+                  path="/parametrized-surface-area"
+                  element={
+                    <Navigate to="/parametrized-surface-area/2" replace />
+                  }
+                />
+
+                <Route
+                  path="/parametrized-surface-area/2"
+                  element={<Layout body={<ParametrizedSurfaceAreaGuide />} />}
+                />
+                <Route
+                  path="/flux-integrals-general-surfaces"
+                  element={
+                    <Navigate
+                      to="/flux-integrals-general-surfaces/2"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/flux-integrals-general-surfaces/2"
+                  element={
+                    <Layout body={<FluxIntegralsGeneralSurfacesGuide />} />
+                  }
                 />
 
                 {/* Taylor Series */}
@@ -505,7 +533,10 @@ function App() {
                 <Route
                   path="/linear-algebra/linear-equations"
                   element={
-                    <Navigate to="/linear-algebra/linear-equations/1" replace />
+                    <Navigate
+                      to="/linear-algebra/linear-equations/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -564,11 +595,15 @@ function App() {
                   path="/linear-algebra/eigen/2"
                   element={<Layout body={<EigenPart2 />} />}
                 />
+
                 {/* Linear Transformations */}
                 <Route
                   path="/linear-algebra/transformations"
                   element={
-                    <Navigate to="/linear-algebra/transformations/1" replace />
+                    <Navigate
+                      to="/linear-algebra/transformations/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -584,7 +619,10 @@ function App() {
                 <Route
                   path="/linear-algebra/orthogonality"
                   element={
-                    <Navigate to="/linear-algebra/orthogonality/1" replace />
+                    <Navigate
+                      to="/linear-algebra/orthogonality/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -595,6 +633,17 @@ function App() {
                   path="/linear-algebra/orthogonality/2"
                   element={<Layout body={<OrthoPart2 />} />}
                 />
+
+                {/* Curriculum modules: two parts, two complete topics in each. */}
+                {LA_MODULES.flatMap((module) => [
+                  <Route key={module.id} path={`/linear-algebra/${module.id}`} element={<Navigate to={getLaModulePath(module)} replace />} />,
+                  ...[1, 2].map((part) => (
+                    <Route key={`${module.id}-${part}`} path={getLaModulePath(module, part)} element={<Layout body={<LaModulePart moduleId={module.id} part={part} />} />} />
+                  )),
+                ])}
+                {[...LA_TOPIC_REDIRECTS, ...LA_MODULE_REDIRECTS].map(({ from, to }) => (
+                  <Route key={from} path={from} element={<Navigate to={to} replace />} />
+                ))}
 
                 {/* Singular Value Decomposition */}
                 <Route
@@ -612,44 +661,6 @@ function App() {
                 <Route
                   path="/linear-algebra/matrix-sandbox"
                   element={<Layout body={<MatrixSandbox />} />}
-                />
-
-                {/* Grouped Linear Algebra modules: 3 modules, 4 topics each, 2 parts per module */}
-                <Route
-                  path="/linear-algebra/module-a"
-                  element={<Navigate to="/linear-algebra/module-a/1" replace />}
-                />
-                <Route
-                  path="/linear-algebra/module-a/1"
-                  element={<Layout body={<LinearAlgebraModuleAPart1 />} />}
-                />
-                <Route
-                  path="/linear-algebra/module-a/2"
-                  element={<Layout body={<LinearAlgebraModuleAPart2 />} />}
-                />
-                <Route
-                  path="/linear-algebra/module-b"
-                  element={<Navigate to="/linear-algebra/module-b/1" replace />}
-                />
-                <Route
-                  path="/linear-algebra/module-b/1"
-                  element={<Layout body={<LinearAlgebraModuleBPart1 />} />}
-                />
-                <Route
-                  path="/linear-algebra/module-b/2"
-                  element={<Layout body={<LinearAlgebraModuleBPart2 />} />}
-                />
-                <Route
-                  path="/linear-algebra/module-c"
-                  element={<Navigate to="/linear-algebra/module-c/1" replace />}
-                />
-                <Route
-                  path="/linear-algebra/module-c/1"
-                  element={<Layout body={<LinearAlgebraModuleCPart1 />} />}
-                />
-                <Route
-                  path="/linear-algebra/module-c/2"
-                  element={<Layout body={<LinearAlgebraModuleCPart2 />} />}
                 />
 
                 {/* Probability & Statistics */}
@@ -767,6 +778,10 @@ function App() {
                 <Route
                   path="/analytic-vector-lab"
                   element={<Layout body={<AnalyticVectorLab />} />}
+                />
+                <Route
+                  path="/surface-explorer"
+                  element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading 3D view…" fullPage />}><SurfaceExplorer /></Suspense>} />}
                 />
                 <Route
                   path="/derivative-visualizer"

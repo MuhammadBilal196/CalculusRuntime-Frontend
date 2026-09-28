@@ -2236,3 +2236,450 @@ export const LA_MARKOV_QUIZ = [
     "explanation": "A strictly positive finite stochastic matrix is irreducible and aperiodic, so it has a unique stationary distribution and its iterates converge to it."
   }
 ];
+
+export const LA_LINEAR_PROGRAMMING_QUIZ = [
+  {
+    "prompt": "In a linear-programming model, what should a decision variable represent?",
+    "options": [
+      "The quantity of an activity the model chooses",
+      "A constraint that must always be zero",
+      "The final objective value before optimization",
+      "A label for a tableau row"
+    ],
+    "answer": "A",
+    "explanation": "Decision variables encode controllable quantities; the objective and constraints are written in terms of them."
+  },
+  {
+    "prompt": "For $x_1+2x_2\\leq8$, which equation uses a slack variable for unused capacity?",
+    "options": [
+      "$x_1+2x_2-s=8$, $s\\geq0$",
+      "$x_1+2x_2+s=8$, $s\\geq0$",
+      "$x_1+2x_2=8+s$, $s\\geq0$",
+      "$x_1+2x_2+s\\leq8$, $s=0$"
+    ],
+    "answer": "B",
+    "explanation": "Add a nonnegative slack variable to a ≤ constraint to make an equality."
+  },
+  {
+    "prompt": "A point is feasible for a linear program when it:",
+    "options": [
+      "maximizes the objective, even if a constraint fails",
+      "satisfies only the tightest constraint",
+      "satisfies every constraint and variable bound",
+      "makes every inequality strict"
+    ],
+    "answer": "C",
+    "explanation": "Feasibility means all constraints and bounds hold at once; it does not require optimality."
+  },
+  {
+    "prompt": "For $\\max z=3x+2y$ with $x+y\\leq4$, $x\\leq2$, $y\\leq3$, $x,y\\geq0$, what is $z$ at $(2,2)$?",
+    "options": [
+      "$5$",
+      "$8$",
+      "$9$",
+      "$10$"
+    ],
+    "answer": "D",
+    "explanation": "Substitution gives $3(2)+2(2)=10$, and the point satisfies all constraints."
+  },
+  {
+    "prompt": "For a nonempty bounded feasible polyhedron, which statement is true?",
+    "options": [
+      "At least one optimum occurs at an extreme point (vertex)",
+      "Every feasible point has the same objective value",
+      "The optimum must lie strictly inside the region",
+      "An optimum exists only if simplex is run"
+    ],
+    "answer": "A",
+    "explanation": "A linear objective on a nonempty bounded polyhedron attains an optimum at an extreme point."
+  },
+  {
+    "prompt": "How do you convert $2x_1+x_2\\leq9$ to equality for simplex?",
+    "options": [
+      "Subtract a nonnegative slack variable",
+      "Add $s\\geq0$: $2x_1+x_2+s=9$",
+      "Add an unrestricted variable to the RHS",
+      "Replace it with $2x_1+x_2=0$"
+    ],
+    "answer": "B",
+    "explanation": "Adding $s\\geq0$ gives equality and records unused capacity."
+  },
+  {
+    "prompt": "For $x_1+x_2\\geq5$, what is the usual surplus conversion?",
+    "options": [
+      "Add $s\\geq0$ to the left",
+      "Add $s\\leq0$ to the right",
+      "Subtract $s\\geq0$ from the left",
+      "Replace with $x_1+x_2+s=0$"
+    ],
+    "answer": "C",
+    "explanation": "A ≥ constraint becomes $x_1+x_2-s=5$ with $s\\geq0$."
+  },
+  {
+    "prompt": "Under tableau convention $z-c^Tx=0$ for maximization, which nonbasic variable is a common entering choice?",
+    "options": [
+      "One with a positive objective-row coefficient",
+      "The variable with the largest RHS",
+      "A variable whose column is already basic",
+      "One with a negative objective-row reduced-cost coefficient"
+    ],
+    "answer": "D",
+    "explanation": "Under this convention, a negative coefficient gives an improving direction."
+  },
+  {
+    "prompt": "In the minimum-ratio test, which rows are eligible?",
+    "options": [
+      "Rows with positive entering-column entries; compare RHS divided by entry",
+      "Rows with negative entries; compare entry divided by RHS",
+      "Every row, including zero entries",
+      "Only the row with the largest RHS"
+    ],
+    "answer": "A",
+    "explanation": "Positive pivot-column entries limit the increase; choose the smallest nonnegative RHS-to-entry ratio."
+  },
+  {
+    "prompt": "An improving entering column has no positive entries in the constraint rows. What does this indicate?",
+    "options": [
+      "The current point is necessarily infeasible",
+      "The objective can increase without bound along that direction",
+      "The problem has a unique finite optimum",
+      "An artificial variable must be removed"
+    ],
+    "answer": "B",
+    "explanation": "No positive entries means the ratio test cannot limit the improving variable, so the objective is unbounded."
+  },
+  {
+    "prompt": "What characterizes a basic-variable column in a canonical tableau?",
+    "options": [
+      "It contains only negative entries",
+      "Its entries sum to the RHS",
+      "It is a unit column: one 1 and otherwise 0",
+      "It contains zeros in every constraint row"
+    ],
+    "answer": "C",
+    "explanation": "A basic variable has a unit vector column in canonical form."
+  },
+  {
+    "prompt": "A basic feasible solution is degenerate when:",
+    "options": [
+      "There are multiple optimal vertices",
+      "The feasible region is unbounded",
+      "All decision variables are positive",
+      "At least one basic variable is zero"
+    ],
+    "answer": "D",
+    "explanation": "A zero-valued basic variable is degeneracy; a pivot may keep the same vertex."
+  },
+  {
+    "prompt": "Which description defines the feasible set?",
+    "options": [
+      "The intersection of constraint regions and variable bounds",
+      "Only points with the largest objective value",
+      "The collection of basic variables",
+      "Constraints that have zero slack"
+    ],
+    "answer": "A",
+    "explanation": "Intersect all half-spaces and hyperplanes with the variable bounds."
+  },
+  {
+    "prompt": "Why might simplex need an artificial variable for a $\\geq$ row?",
+    "options": [
+      "To make the objective linear",
+      "A surplus column alone may not provide an initial basic unit column",
+      "To turn maximization into minimization",
+      "To force the constraint to be redundant"
+    ],
+    "answer": "B",
+    "explanation": "Subtracting a surplus variable produces a negative column entry, not a basic unit column."
+  },
+  {
+    "prompt": "In two-phase simplex, a positive optimal Phase I objective (minimum artificial-variable sum) proves:",
+    "options": [
+      "The original objective is unbounded",
+      "The original problem has infinitely many optima",
+      "The original constraints are infeasible",
+      "The original objective value is zero"
+    ],
+    "answer": "C",
+    "explanation": "If the minimum artificial-variable sum stays positive, no point satisfies all original constraints."
+  },
+  {
+    "prompt": "With $z-c^Tx=0$ in a maximization tableau, when is a feasible tableau optimal for its nonbasic variables?",
+    "options": [
+      "When every RHS is negative",
+      "When every objective coefficient is negative",
+      "When at least one objective coefficient is negative",
+      "When no nonbasic objective-row coefficient is negative"
+    ],
+    "answer": "D",
+    "explanation": "A negative reduced cost offers an improving pivot under this convention; none remaining certifies optimality."
+  },
+  {
+    "prompt": "At an optimal tableau, a zero reduced cost for a nonbasic variable can mean:",
+    "options": [
+      "There may be another optimum on an adjacent feasible edge",
+      "The current solution is infeasible",
+      "The objective is unbounded",
+      "The constraints are inconsistent"
+    ],
+    "answer": "A",
+    "explanation": "A feasible pivot with zero reduced cost can produce another solution with the same objective."
+  },
+  {
+    "prompt": "What is Bland's rule designed to do?",
+    "options": [
+      "Choose the largest objective coefficient as the leaving variable",
+      "Break ties by a fixed variable order to prevent cycling",
+      "Make every LP bounded",
+      "Avoid all slack variables"
+    ],
+    "answer": "B",
+    "explanation": "A consistent index ordering for eligible pivots prevents cycling, including in degenerate cases."
+  },
+  {
+    "prompt": "A shadow price commonly measures:",
+    "options": [
+      "The number of pivots needed",
+      "Slack at every feasible point",
+      "Local change in optimum per unit change of a constraint RHS",
+      "The entering variable's objective coefficient"
+    ],
+    "answer": "C",
+    "explanation": "While the current basis remains optimal, the dual value estimates marginal objective change per RHS unit."
+  },
+  {
+    "prompt": "What is the central geometric idea behind simplex?",
+    "options": [
+      "Search every feasible point simultaneously",
+      "Replace inequalities with equalities and stop",
+      "Move randomly through the interior",
+      "Move between adjacent basic feasible solutions while improving the objective"
+    ],
+    "answer": "D",
+    "explanation": "Simplex traverses neighboring vertices, pivoting until no improving move remains."
+  }
+];
+
+
+export const LA_VECTOR_APPLICATIONS_QUIZ = [
+  {
+    "prompt": "A mesh stores $n$ vertices as columns of $V\\in\\mathbb R^{3\\times n}$. Which product applies a $3\\times3$ linear map $A$ to every vertex?",
+    "options": [
+      "$AV$",
+      "$VA$",
+      "$V^TA$",
+      "$A+V$"
+    ],
+    "answer": "A",
+    "explanation": "Left multiplication transforms each column of $V$ and preserves the $3\\times n$ storage shape."
+  },
+  {
+    "prompt": "Which homogeneous coordinate convention distinguishes a finite point from a direction in affine 3D geometry?",
+    "options": [
+      "Point: $0$; direction: $1$",
+      "Point: last coordinate $1$; direction: last coordinate $0$",
+      "Both must end in $1$",
+      "Both must end in $0$"
+    ],
+    "answer": "B",
+    "explanation": "The translation column is multiplied by the last coordinate, so it affects points but not directions."
+  },
+  {
+    "prompt": "With column vectors, first applying $H_1$ and then $H_2$ is represented by which matrix?",
+    "options": [
+      "$H_1H_2$",
+      "$H_1+H_2$",
+      "$H_2H_1$",
+      "$H_1-H_2$"
+    ],
+    "answer": "C",
+    "explanation": "The rightmost matrix acts first: $H_2(H_1x)=(H_2H_1)x$."
+  },
+  {
+    "prompt": "For an invertible linear transformation $A$, which expression correctly transforms a surface normal before renormalization?",
+    "options": [
+      "$An$ for every invertible $A$",
+      "$A^Tn$ for every invertible $A$",
+      "$n+A(1,1,1)^T$",
+      "$A^{-T}n$"
+    ],
+    "answer": "D",
+    "explanation": "For a tangent $v$, $(A^{-T}n)^TAv=n^Tv=0$, preserving perpendicularity."
+  },
+  {
+    "prompt": "An ideal pinhole camera has $f=2$ and views $(X,Y,Z)=(3,1,2)$ with identity pose. What are its image coordinates?",
+    "options": [
+      "$(3,1)$",
+      "$(6,2)$",
+      "$(3/2,1/2)$",
+      "$(6,4)$"
+    ],
+    "answer": "A",
+    "explanation": "Use $(u,v)=(fX/Z,fY/Z)=(3,1)$."
+  },
+  {
+    "prompt": "Which condition on barycentric weights makes $p=\\alpha a+\\beta b+\\gamma c$ an affine combination?",
+    "options": [
+      "$\\alpha+\\beta+\\gamma=0$",
+      "$\\alpha+\\beta+\\gamma=1$",
+      "$\\alpha\\beta\\gamma=1$",
+      "$\\alpha^2+\\beta^2+\\gamma^2=1$"
+    ],
+    "answer": "B",
+    "explanation": "The sum-to-one condition makes the combination transform consistently when the origin is translated."
+  },
+  {
+    "prompt": "If $Q$ has orthonormal columns, which matrix is the orthogonal projection onto its column space?",
+    "options": [
+      "$Q^TQ$ as a map on the ambient space in every dimension",
+      "$Q+Q^T$ in every dimension",
+      "$QQ^T$",
+      "$2QQ^T$"
+    ],
+    "answer": "C",
+    "explanation": "The projection is $QQ^T$; $Q^TQ$ is the identity on the smaller coordinate space."
+  },
+  {
+    "prompt": "A matrix has singular values $4,3,1$. What is the Frobenius error norm of its best rank-one approximation?",
+    "options": [
+      "$1$",
+      "$3$",
+      "$10$",
+      "$\\sqrt{10}$"
+    ],
+    "answer": "D",
+    "explanation": "Discarded singular values give squared error $3^2+1^2=10$, so the error norm is $\\sqrt{10}$."
+  },
+  {
+    "prompt": "How many numbers are stored in $U_k$, the $k$ singular values, and $V_k$ for an $8\\times6$ matrix with $k=2$?",
+    "options": [
+      "$30$",
+      "$16$",
+      "$28$",
+      "$48$"
+    ],
+    "answer": "A",
+    "explanation": "The storage count is $k(m+n+1)=2(8+6+1)=30$."
+  },
+  {
+    "prompt": "For $X\\in\\mathbb R^{20\\times3}$ and weights $w\\in\\mathbb R^3$, what is the dimension of the prediction vector $Xw$?",
+    "options": [
+      "$3$",
+      "$20$",
+      "$60$",
+      "$23$"
+    ],
+    "answer": "B",
+    "explanation": "Each of the twenty observations produces one prediction."
+  },
+  {
+    "prompt": "Least squares fits $y\\approx a+bt$ to $(0,1),(1,2),(2,2)$. Which coefficients solve the normal equations?",
+    "options": [
+      "$a=1,\\ b=1$",
+      "$a=5/3,\\ b=0$",
+      "$a=7/6,\\ b=1/2$",
+      "$a=1/2,\\ b=7/6$"
+    ],
+    "answer": "C",
+    "explanation": "The equations are $3a+3b=5$ and $3a+5b=6$; subtraction gives $b=1/2$ and then $a=7/6$."
+  },
+  {
+    "prompt": "If nonzero $z\\in\\ker X$, what can be concluded about weights $w$ and $w+z$?",
+    "options": [
+      "They must be equal",
+      "Their predictions differ by $z$",
+      "Only $w+z$ can minimize squared error",
+      "They give identical predictions under $X$"
+    ],
+    "answer": "D",
+    "explanation": "Because $Xz=0$, $X(w+z)=Xw$."
+  },
+  {
+    "prompt": "When all weights are penalized, why does ridge regression with $\\lambda>0$ have unique weights even for rank-deficient $X$?",
+    "options": [
+      "$X^TX+\\lambda I$ is positive definite",
+      "$X$ automatically becomes square",
+      "Every residual becomes zero",
+      "The penalty removes all data dependence"
+    ],
+    "answer": "A",
+    "explanation": "For nonzero $v$, $v^T(X^TX+\\lambda I)v=\\|Xv\\|^2+\\lambda\\|v\\|^2>0$."
+  },
+  {
+    "prompt": "Two dense layers have biases but no nonlinear activations. What kind of map is their composition?",
+    "options": [
+      "An arbitrary nonlinear map",
+      "A single affine map",
+      "Always an orthogonal map",
+      "Always a constant map"
+    ],
+    "answer": "B",
+    "explanation": "$W_2(W_1x+b_1)+b_2=(W_2W_1)x+(W_2b_1+b_2)$."
+  },
+  {
+    "prompt": "For $W=\\begin{pmatrix}1&-1\\\\2&1\\end{pmatrix}$, $x=(1,2)^T$, and $b=(0,-1)^T$, what is $\\operatorname{ReLU}(Wx+b)$?",
+    "options": [
+      "$(-1,3)^T$",
+      "$(0,4)^T$",
+      "$(0,3)^T",
+      "$(1,3)^T$"
+    ],
+    "answer": "C",
+    "explanation": "$Wx+b=(-1,3)^T$, and ReLU replaces each negative component by zero."
+  },
+  {
+    "prompt": "What is the cosine similarity of $x=(1,0)^T$ and $y=(2,2)^T$?",
+    "options": [
+      "$0$",
+      "$1$",
+      "$\\sqrt2$",
+      "$1/\\sqrt2$"
+    ],
+    "answer": "D",
+    "explanation": "The dot product is $2$, while the product of norms is $2\\sqrt2$."
+  },
+  {
+    "prompt": "Which square change of coordinates preserves Euclidean dot products of all vector pairs?",
+    "options": [
+      "An orthogonal matrix $Q$ with $Q^TQ=I$",
+      "Every invertible matrix",
+      "Every diagonal matrix",
+      "Every symmetric matrix"
+    ],
+    "answer": "A",
+    "explanation": "$(Qx)^T(Qy)=x^TQ^TQy=x^Ty$."
+  },
+  {
+    "prompt": "Project $(3,4)^T$ orthogonally onto the horizontal axis. What is the residual norm?",
+    "options": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$7$"
+    ],
+    "answer": "B",
+    "explanation": "The projection is $(3,0)^T$, leaving residual $(0,4)^T$."
+  },
+  {
+    "prompt": "A linear network maps $\\mathbb R^3$ to $\\mathbb R^2$ and then to $\\mathbb R^4$. What upper bound follows for the rank of its composite matrix?",
+    "options": [
+      "$3$",
+      "$4$",
+      "$2$",
+      "$6$"
+    ],
+    "answer": "C",
+    "explanation": "The intermediate two-dimensional space bounds the rank of the product by two."
+  },
+  {
+    "prompt": "When using centered features in a train/test evaluation, which procedure avoids using test information to fit preprocessing?",
+    "options": [
+      "Fit the mean on all training and test observations",
+      "Choose the mean that minimizes test prediction error",
+      "Refit the training mean after reading test labels",
+      "Fit the mean on training data and reuse it for test data"
+    ],
+    "answer": "D",
+    "explanation": "Preprocessing is fitted using the training set; the same fitted transformation is then applied to held-out observations."
+  }
+];
