@@ -1,3 +1,5 @@
+import { LA_MODULES, getLaModuleTopics } from "./laModules";
+
 /**
  * Guide MCQ keys (data-section / LaMcq `section`) required before
  * "Mark as complete" unlocks for a progress sectionId.
@@ -67,6 +69,12 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "geo3d-2": ["geo-line3d", "geo-skew", "geo-quadric"],
 
   // Linear Algebra
+  ...Object.fromEntries(LA_MODULES.flatMap((module) =>
+    [1, 2].map((part) => [
+      `la-${module.id}-${part}`,
+      getLaModuleTopics(module, part).map((topic) => topic.quizKey),
+    ]),
+  )),
   "la-lineq-1": ["la-le-forms", "la-le-graph"],
   "la-lineq-2": ["la-le-sys", "la-le-solve"],
   "la-vectors-1": ["la-v-intro", "la-v-ops"],

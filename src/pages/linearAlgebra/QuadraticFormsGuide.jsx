@@ -6,28 +6,19 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_QUADRATIC_FORMS_QUIZ } from "../../data/laQuizzes";
 
-export default function QuadraticFormsGuide({ part = 1 }) {
+export default function QuadraticFormsGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
-  return (
-    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={"Quadratic Forms & Definiteness (Part " + part + ")"}>
-      <nav className="sidebar">
-        <div className="sb-brand"><div className="sb-title">Quadratic Forms &amp; Definiteness</div></div>
-        <a className="sb-link" href="#quadratic-theory">Theory</a>
-        <a className="sb-link" href="#quadratic-method">Method</a>
-        <a className="sb-link" href="#quadratic-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-quadratic-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
-      </nav>
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Linear Algebra</div>
           <h1 className="ch-title">Quadratic Forms &amp; Definiteness</h1>
           <p className="ch-sub">Matrix forms, sign classification, congruence and second-order tests</p>
           <p><Link to="/linear-algebra/complex-vector-spaces/1">Complex vector spaces</Link> · <Link to="/linear-algebra/eigen/1">Eigenvalues</Link> · <Link to="/linear-algebra/orthogonality/1">Orthogonality</Link></p>
           <p>Part {part} of 2. Part 1 develops matrix representation and sign tests; Part 2 covers congruence, inertia, optimization and the topic checkpoint.</p>
-        </header>
-        <section className="section" id="quadratic-theory">
+        </header>)}
+        <section className="section" id={embedded ? `quadratic-theory-${part}` : "quadratic-theory"}>
           <h2 className="sec-title">{advanced ? "Congruence, inertia and applications" : "Represent and classify quadratic forms"}</h2>
           {advanced ? (
             <>
@@ -67,14 +58,14 @@ export default function QuadraticFormsGuide({ part = 1 }) {
             </>
           )}
         </section>
-        <section className="section" id="quadratic-method">
+        <section className="section" id={embedded ? `quadratic-method-${part}` : "quadratic-method"}>
           <h2 className="sec-title">A reliable classification workflow</h2>
           <ProcedureBox
             title={advanced ? "Use a form in new coordinates or optimization" : "Represent and classify a quadratic form"}
             steps={advanced ? ["Under $x=Py$, form the congruence $P^TAP$; do not substitute the similarity formula.", "Use Sylvester’s law to preserve positive, negative and zero counts.", "At a stationary point, test the Hessian and treat a singular semidefinite Hessian as inconclusive.", "If needed, inspect higher-order terms or feasible directions."] : ["Split every mixed coefficient equally between symmetric off-diagonal entries.", "For a real form replace a nonsymmetric representative by $(A+A^T)/2$.", "Use eigenvalues for full classification, or leading principal minors for strict definiteness.", "For semidefiniteness use eigenvalues or all principal minors; leading minors alone do not suffice."]}
           />
         </section>
-        <section className="section" id="quadratic-examples">
+        <section className="section" id={embedded ? `quadratic-examples-${part}` : "quadratic-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -153,13 +144,26 @@ export default function QuadraticFormsGuide({ part = 1 }) {
             onComplete={(score, total) => saveQuizScore("guide-mcq-la-quadratic-checkpoint", score, total)}
           />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to congruence and applications</h2>
             <p>The single checkpoint in Part 2 covers both parts. Answer all 20 questions and score at least 80% to unlock Part 2 completion.</p>
             <Link to="/linear-algebra/quadratic-forms-definiteness/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={"Quadratic Forms & Definiteness (Part " + part + ")"}>
+      <nav className="sidebar">
+        <div className="sb-brand"><div className="sb-title">Quadratic Forms &amp; Definiteness</div></div>
+        <a className="sb-link" href="#quadratic-theory">Theory</a>
+        <a className="sb-link" href="#quadratic-method">Method</a>
+        <a className="sb-link" href="#quadratic-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-quadratic-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
+      </nav>
+      {content}
     </StudyGuideShell>
   );
 }

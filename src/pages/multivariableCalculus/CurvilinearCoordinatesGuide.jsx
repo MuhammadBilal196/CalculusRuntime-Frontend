@@ -150,7 +150,7 @@ function SectionC2() {
       <h3 className="subsec">Geometry of an Infinitesimal Polar Patch</h3>
       <p>
         A small polar patch has radial width {"$dr$"} and angular arc length
-        approximately {"$r\,d\\theta$"}. Therefore
+        approximately {"$r\\,d\\theta$"}. Therefore
       </p>
       <div className="fml">{String.raw`$$dA=r\,dr\,d\theta.$$`}</div>
 

@@ -6,30 +6,20 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, TheoremBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_LINEAR_PROGRAMMING_QUIZ } from "../../data/laQuizzes";
 
-export default function LinearProgrammingGuide({ part = 1 }) {
+export default function LinearProgrammingGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
-  return (
-    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={"Linear Programming: The Simplex Method (Part " + part + ")"}>
-      <nav className="sidebar">
-        <div className="sb-brand"><div className="sb-title">Linear Programming</div></div>
-        <a className="sb-link" href="#lp-model">Model and feasible region</a>
-        <a className="sb-link" href="#lp-standard-form">Standard form</a>
-        {advanced && <a className="sb-link" href="#lp-tableau">Tableau and pivots</a>}
-        <a className="sb-link" href="#lp-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-linear-programming-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
-      </nav>
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Linear Algebra</div>
           <h1 className="ch-title">Linear Programming: The Simplex Method</h1>
           <p className="ch-sub">Model decisions, move between corner points, and certify an optimum with pivots</p>
           <p><Link to="/linear-algebra/systems/1">Linear systems</Link>{" · "}<Link to="/linear-algebra/matrices/1">Matrices</Link></p>
           <p>Part {part} of 2. Part 1 develops LP models, feasible regions, and standard form. Part 2 derives simplex pivots, stopping rules, and special cases.</p>
-        </header>
+        </header>)}
 
-        <section className="section" id="lp-model">
+        <section className="section" id={embedded ? `lp-model-${part}` : "lp-model"}>
           <h2 className="sec-title">{advanced ? "Canonical form and the simplex viewpoint" : "From a decision problem to a linear model"}</h2>
           {advanced ? (
             <>
@@ -56,7 +46,7 @@ export default function LinearProgrammingGuide({ part = 1 }) {
           )}
         </section>
 
-        <section className="section" id="lp-standard-form">
+        <section className="section" id={embedded ? `lp-standard-form-${part}` : "lp-standard-form"}>
           <h2 className="sec-title">{advanced ? "Starting bases and two-phase setup" : "Convert constraints to standard form"}</h2>
           {advanced ? (
             <>
@@ -89,7 +79,7 @@ export default function LinearProgrammingGuide({ part = 1 }) {
           )}
         </section>
 
-        {advanced && <section className="section" id="lp-tableau">
+        {advanced && <section className="section" id={embedded ? `lp-tableau-${part}` : "lp-tableau"}>
           <h2 className="sec-title">Tableau algebra and pivot rules</h2>
           <TheoryBox title="Pivoting and the ratio test">
             <p>{"Choose an entering column that can improve the objective. The ratio test finds the first basic variable that reaches zero as the entering variable grows; that variable leaves. Divide the pivot row by its pivot entry, then eliminate the entering-column entries from every other constraint row and the objective row. These elementary row operations preserve the equations."}</p>
@@ -101,7 +91,7 @@ export default function LinearProgrammingGuide({ part = 1 }) {
           </TheoryBox>
         </section>}
 
-        <section className="section" id="lp-examples">
+        <section className="section" id={embedded ? `lp-examples-${part}` : "lp-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? <>
             <WorkedExample number={2} title="Pivot to the best corner" setup={"Maximize $z=3x+2y$ subject to $x+y\\leq4$, $x\\leq2$, $y\\leq3$, and $x,y\\geq0$. Add slacks $s_1,s_2,s_3$."} steps={[
@@ -136,12 +126,26 @@ export default function LinearProgrammingGuide({ part = 1 }) {
           section="la-linear-programming-checkpoint"
           questions={LA_LINEAR_PROGRAMMING_QUIZ}
           onComplete={(score, total) => saveQuizScore("guide-mcq-la-linear-programming-checkpoint", score, total)}
-        /> : <section className="section">
+        /> : !embedded && (<section className="section">
           <h2 className="sec-title">Continue to simplex pivots</h2>
           <p>Part 2 constructs a basis, applies ratio tests, and examines optimality and special cases.</p>
           <Link to="/linear-algebra/linear-programming-simplex/2">Continue to Part 2 →</Link>
-        </section>}
-      </main>
+        </section>)}
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={"Linear Programming: The Simplex Method (Part " + part + ")"}>
+      <nav className="sidebar">
+        <div className="sb-brand"><div className="sb-title">Linear Programming</div></div>
+        <a className="sb-link" href="#lp-model">Model and feasible region</a>
+        <a className="sb-link" href="#lp-standard-form">Standard form</a>
+        {advanced && <a className="sb-link" href="#lp-tableau">Tableau and pivots</a>}
+        <a className="sb-link" href="#lp-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-linear-programming-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
+      </nav>
+      {content}
     </StudyGuideShell>
   );
 }

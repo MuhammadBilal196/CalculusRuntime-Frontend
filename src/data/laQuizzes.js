@@ -2459,3 +2459,227 @@ export const LA_LINEAR_PROGRAMMING_QUIZ = [
     "explanation": "Simplex traverses neighboring vertices, pivoting until no improving move remains."
   }
 ];
+
+
+export const LA_VECTOR_APPLICATIONS_QUIZ = [
+  {
+    "prompt": "A mesh stores $n$ vertices as columns of $V\\in\\mathbb R^{3\\times n}$. Which product applies a $3\\times3$ linear map $A$ to every vertex?",
+    "options": [
+      "$AV$",
+      "$VA$",
+      "$V^TA$",
+      "$A+V$"
+    ],
+    "answer": "A",
+    "explanation": "Left multiplication transforms each column of $V$ and preserves the $3\\times n$ storage shape."
+  },
+  {
+    "prompt": "Which homogeneous coordinate convention distinguishes a finite point from a direction in affine 3D geometry?",
+    "options": [
+      "Point: $0$; direction: $1$",
+      "Point: last coordinate $1$; direction: last coordinate $0$",
+      "Both must end in $1$",
+      "Both must end in $0$"
+    ],
+    "answer": "B",
+    "explanation": "The translation column is multiplied by the last coordinate, so it affects points but not directions."
+  },
+  {
+    "prompt": "With column vectors, first applying $H_1$ and then $H_2$ is represented by which matrix?",
+    "options": [
+      "$H_1H_2$",
+      "$H_1+H_2$",
+      "$H_2H_1$",
+      "$H_1-H_2$"
+    ],
+    "answer": "C",
+    "explanation": "The rightmost matrix acts first: $H_2(H_1x)=(H_2H_1)x$."
+  },
+  {
+    "prompt": "For an invertible linear transformation $A$, which expression correctly transforms a surface normal before renormalization?",
+    "options": [
+      "$An$ for every invertible $A$",
+      "$A^Tn$ for every invertible $A$",
+      "$n+A(1,1,1)^T$",
+      "$A^{-T}n$"
+    ],
+    "answer": "D",
+    "explanation": "For a tangent $v$, $(A^{-T}n)^TAv=n^Tv=0$, preserving perpendicularity."
+  },
+  {
+    "prompt": "An ideal pinhole camera has $f=2$ and views $(X,Y,Z)=(3,1,2)$ with identity pose. What are its image coordinates?",
+    "options": [
+      "$(3,1)$",
+      "$(6,2)$",
+      "$(3/2,1/2)$",
+      "$(6,4)$"
+    ],
+    "answer": "A",
+    "explanation": "Use $(u,v)=(fX/Z,fY/Z)=(3,1)$."
+  },
+  {
+    "prompt": "Which condition on barycentric weights makes $p=\\alpha a+\\beta b+\\gamma c$ an affine combination?",
+    "options": [
+      "$\\alpha+\\beta+\\gamma=0$",
+      "$\\alpha+\\beta+\\gamma=1$",
+      "$\\alpha\\beta\\gamma=1$",
+      "$\\alpha^2+\\beta^2+\\gamma^2=1$"
+    ],
+    "answer": "B",
+    "explanation": "The sum-to-one condition makes the combination transform consistently when the origin is translated."
+  },
+  {
+    "prompt": "If $Q$ has orthonormal columns, which matrix is the orthogonal projection onto its column space?",
+    "options": [
+      "$Q^TQ$ as a map on the ambient space in every dimension",
+      "$Q+Q^T$ in every dimension",
+      "$QQ^T$",
+      "$2QQ^T$"
+    ],
+    "answer": "C",
+    "explanation": "The projection is $QQ^T$; $Q^TQ$ is the identity on the smaller coordinate space."
+  },
+  {
+    "prompt": "A matrix has singular values $4,3,1$. What is the Frobenius error norm of its best rank-one approximation?",
+    "options": [
+      "$1$",
+      "$3$",
+      "$10$",
+      "$\\sqrt{10}$"
+    ],
+    "answer": "D",
+    "explanation": "Discarded singular values give squared error $3^2+1^2=10$, so the error norm is $\\sqrt{10}$."
+  },
+  {
+    "prompt": "How many numbers are stored in $U_k$, the $k$ singular values, and $V_k$ for an $8\\times6$ matrix with $k=2$?",
+    "options": [
+      "$30$",
+      "$16$",
+      "$28$",
+      "$48$"
+    ],
+    "answer": "A",
+    "explanation": "The storage count is $k(m+n+1)=2(8+6+1)=30$."
+  },
+  {
+    "prompt": "For $X\\in\\mathbb R^{20\\times3}$ and weights $w\\in\\mathbb R^3$, what is the dimension of the prediction vector $Xw$?",
+    "options": [
+      "$3$",
+      "$20$",
+      "$60$",
+      "$23$"
+    ],
+    "answer": "B",
+    "explanation": "Each of the twenty observations produces one prediction."
+  },
+  {
+    "prompt": "Least squares fits $y\\approx a+bt$ to $(0,1),(1,2),(2,2)$. Which coefficients solve the normal equations?",
+    "options": [
+      "$a=1,\\ b=1$",
+      "$a=5/3,\\ b=0$",
+      "$a=7/6,\\ b=1/2$",
+      "$a=1/2,\\ b=7/6$"
+    ],
+    "answer": "C",
+    "explanation": "The equations are $3a+3b=5$ and $3a+5b=6$; subtraction gives $b=1/2$ and then $a=7/6$."
+  },
+  {
+    "prompt": "If nonzero $z\\in\\ker X$, what can be concluded about weights $w$ and $w+z$?",
+    "options": [
+      "They must be equal",
+      "Their predictions differ by $z$",
+      "Only $w+z$ can minimize squared error",
+      "They give identical predictions under $X$"
+    ],
+    "answer": "D",
+    "explanation": "Because $Xz=0$, $X(w+z)=Xw$."
+  },
+  {
+    "prompt": "When all weights are penalized, why does ridge regression with $\\lambda>0$ have unique weights even for rank-deficient $X$?",
+    "options": [
+      "$X^TX+\\lambda I$ is positive definite",
+      "$X$ automatically becomes square",
+      "Every residual becomes zero",
+      "The penalty removes all data dependence"
+    ],
+    "answer": "A",
+    "explanation": "For nonzero $v$, $v^T(X^TX+\\lambda I)v=\\|Xv\\|^2+\\lambda\\|v\\|^2>0$."
+  },
+  {
+    "prompt": "Two dense layers have biases but no nonlinear activations. What kind of map is their composition?",
+    "options": [
+      "An arbitrary nonlinear map",
+      "A single affine map",
+      "Always an orthogonal map",
+      "Always a constant map"
+    ],
+    "answer": "B",
+    "explanation": "$W_2(W_1x+b_1)+b_2=(W_2W_1)x+(W_2b_1+b_2)$."
+  },
+  {
+    "prompt": "For $W=\\begin{pmatrix}1&-1\\\\2&1\\end{pmatrix}$, $x=(1,2)^T$, and $b=(0,-1)^T$, what is $\\operatorname{ReLU}(Wx+b)$?",
+    "options": [
+      "$(-1,3)^T$",
+      "$(0,4)^T$",
+      "$(0,3)^T",
+      "$(1,3)^T$"
+    ],
+    "answer": "C",
+    "explanation": "$Wx+b=(-1,3)^T$, and ReLU replaces each negative component by zero."
+  },
+  {
+    "prompt": "What is the cosine similarity of $x=(1,0)^T$ and $y=(2,2)^T$?",
+    "options": [
+      "$0$",
+      "$1$",
+      "$\\sqrt2$",
+      "$1/\\sqrt2$"
+    ],
+    "answer": "D",
+    "explanation": "The dot product is $2$, while the product of norms is $2\\sqrt2$."
+  },
+  {
+    "prompt": "Which square change of coordinates preserves Euclidean dot products of all vector pairs?",
+    "options": [
+      "An orthogonal matrix $Q$ with $Q^TQ=I$",
+      "Every invertible matrix",
+      "Every diagonal matrix",
+      "Every symmetric matrix"
+    ],
+    "answer": "A",
+    "explanation": "$(Qx)^T(Qy)=x^TQ^TQy=x^Ty$."
+  },
+  {
+    "prompt": "Project $(3,4)^T$ orthogonally onto the horizontal axis. What is the residual norm?",
+    "options": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$7$"
+    ],
+    "answer": "B",
+    "explanation": "The projection is $(3,0)^T$, leaving residual $(0,4)^T$."
+  },
+  {
+    "prompt": "A linear network maps $\\mathbb R^3$ to $\\mathbb R^2$ and then to $\\mathbb R^4$. What upper bound follows for the rank of its composite matrix?",
+    "options": [
+      "$3$",
+      "$4$",
+      "$2$",
+      "$6$"
+    ],
+    "answer": "C",
+    "explanation": "The intermediate two-dimensional space bounds the rank of the product by two."
+  },
+  {
+    "prompt": "When using centered features in a train/test evaluation, which procedure avoids using test information to fit preprocessing?",
+    "options": [
+      "Fit the mean on all training and test observations",
+      "Choose the mean that minimizes test prediction error",
+      "Refit the training mean after reading test labels",
+      "Fit the mean on training data and reuse it for test data"
+    ],
+    "answer": "D",
+    "explanation": "Preprocessing is fitted using the training set; the same fitted transformation is then applied to held-out observations."
+  }
+];

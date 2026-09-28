@@ -530,23 +530,6 @@ function SectionJ10() {
   );
 }
 
-function KeyFormulasPart1() {
-  return (
-    <section className="section" id="jac-summary-1">
-      <div className="sec-badge">Reference</div>
-      <h2 className="sec-title">Part 1 Key Formulas</h2>
-      <div className="box def">
-        <div className="box-lbl">Core Formulas</div>
-        <div className="fml">{"$$J=\\frac{\\partial(x,y)}{\\partial(u,v)}\n        =x_u y_v-x_v y_u.$$"}</div>
-        <div className="fml">{"$$dA=|J|\\,du\\,dv.$$"}</div>
-        <div className="fml">{"$$\\iint_Rf(x,y)\\,dA\n        =\\iint_Sf(x(u,v),y(u,v))|J|\\,du\\,dv.$$"}</div>
-      </div>
-    </section>
-  );
-}
-
-
-
 function KeyFormulas() {
   return (
     <section className="section" id="jac-summary-2">

@@ -1,3 +1,4 @@
+import { LA_MODULES, getLaModulePath } from "./laModules";
 /** Top-level subject paths shown on Home ("Choose a path"). */
 export const COURSES = [
   {
@@ -411,7 +412,7 @@ export const COURSES = [
     description:
       "Vectors, matrices, linear systems, eigenvalues, and the algebraic toolkit used across calculus and data science.",
     path: "/courses/linear-algebra",
-    meta: "4 modules · Guides + practice",
+    meta: "11 modules · Guides + tools",
     icon: "A",
     color: "blue",
     heroImage: "/images/courses/linear-algebra-hero.svg",
@@ -525,90 +526,14 @@ export const COURSES = [
           </span>
         ),
       },
-      {
-        title: "Matrix Decompositions & Factorizations",
-        description:
-          "LU, Cholesky, Jordan normal form, and vector/matrix norms with conditioning. Four topics, worked examples, and 20 MCQs per topic.",
-        path: "/linear-algebra/lu-decomposition/1",
-        meta: "4 topics · 80 checkpoint MCQs",
-        icon: "A",
-        logo: <span className="math-logo">A = LU</span>,
-      },
-      {
-        title: "Complex Vector Spaces",
-        description:
-          "Complex scalars, inner products, Hermitian and unitary matrices, with worked examples and a 20-question quiz.",
-        path: "/linear-algebra/complex-vector-spaces/1",
-        meta: "2 parts · 20 quiz questions",
-        icon: "ℂ",
-        logo: <span className="math-logo">U*U = I</span>,
-      },
-      {
-        title: "Quadratic Forms & Definiteness",
-        description:
-          "Quadratic forms, eigenvalue and principal-minor tests, completing squares, congruence, inertia, and Hessian classification. Includes worked examples and a 20-question checkpoint.",
-        path: "/linear-algebra/quadratic-forms-definiteness/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "Q",
-        logo: (
-          <span className="math-logo">
-            x<sup>T</sup>Ax
-          </span>
-        ),
-      },
-      {
-        title: "Change of Basis & Similarity Transformations",
-        description:
-          "Coordinate vectors, transition matrices, operator representations, similarity invariants, and diagonalization, with worked examples and a 20-question checkpoint.",
-        path: "/linear-algebra/change-of-basis-similarity/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "P",
-        logo: (
-          <span className="math-logo">
-            P<sup>-1</sup>AP
-          </span>
-        ),
-      },
-      {
-        title: "Affine Transformations & Homogeneous Coordinates",
-        description:
-          "Affine maps, homogeneous-coordinate matrices, transformations about arbitrary points, compositions, inverses, and geometry with worked examples and a 20-question checkpoint.",
-        path: "/linear-algebra/affine-homogeneous/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "T",
-        logo: <span className="math-logo">Ax + b</span>,
-      },
-      {
-        title: "Principal Component Analysis (PCA)",
-        description:
-          "Center and transform multivariate data into orthogonal directions ranked by variance, with worked examples and a 20-question checkpoint.",
-        path: "/linear-algebra/principal-component-analysis/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "P",
-        logo: (
-          <span className="math-logo">
-            X<sup>T</sup>X
-          </span>
-        ),
-      },
-      {
-        title: "Markov Chains & Steady States",
-        description:
-          "Model state transitions with stochastic matrices, solve for stationary distributions as eigenvectors, and distinguish fixed states from convergence.",
-        path: "/linear-algebra/markov-chains-steady-states/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "π",
-        logo: <span className="math-logo">Pπ = π</span>,
-      },
-      {
-        title: "Linear Programming: The Simplex Method",
-        description:
-          "Model linear objectives and constraints, convert inequalities to standard form, and follow simplex pivots to an optimality certificate.",
-        path: "/linear-algebra/linear-programming-simplex/1",
-        meta: "2 parts · 20-question checkpoint",
-        icon: "LP",
-        logo: <span className="math-logo">max cᵀx</span>,
-      },
+      ...LA_MODULES.map((module) => ({
+        title: module.title,
+        description: module.description,
+        path: getLaModulePath(module),
+        meta: "2 parts · 4 topics · 80 checkpoint MCQs",
+        icon: module.logo,
+        logo: <span className="math-logo">{module.logo}</span>,
+      })),
       {
         title: "Practice Arena",
         description:

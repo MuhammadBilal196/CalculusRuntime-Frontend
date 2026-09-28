@@ -6,28 +6,19 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_CHANGE_BASIS_SIMILARITY_QUIZ } from "../../data/laQuizzes";
 
-export default function ChangeOfBasisGuide({ part = 1 }) {
+export default function ChangeOfBasisGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
-  return (
-    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={"Change of Basis & Similarity (Part " + part + ")"}>
-      <nav className="sidebar">
-        <div className="sb-brand"><div className="sb-title">Change of Basis &amp; Similarity</div></div>
-        <a className="sb-link" href="#basis-theory">Theory</a>
-        <a className="sb-link" href="#basis-method">Method</a>
-        <a className="sb-link" href="#basis-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-change-basis-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
-      </nav>
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Linear Algebra</div>
           <h1 className="ch-title">Change of Basis &amp; Similarity Transformations</h1>
           <p className="ch-sub">Coordinate systems, transition matrices and operator representations</p>
           <p><Link to="/linear-algebra/transformations/1">Linear transformations</Link> · <Link to="/linear-algebra/eigen/1">Eigenvalues and eigenvectors</Link> · <Link to="/linear-algebra/quadratic-forms-definiteness/1">Quadratic forms</Link></p>
           <p>Part {part} of 2. Part 1 develops coordinates and transition matrices; Part 2 derives similarity, diagonalization and the checkpoint.</p>
-        </header>
-        <section className="section" id="basis-theory">
+        </header>)}
+        <section className="section" id={embedded ? `basis-theory-${part}` : "basis-theory"}>
           <h2 className="sec-title">{advanced ? "Similarity and operator representations" : "Coordinates and transition matrices"}</h2>
           {advanced ? (
             <>
@@ -67,12 +58,12 @@ export default function ChangeOfBasisGuide({ part = 1 }) {
             </>
           )}
         </section>
-        <section className="section" id="basis-method">
+        <section className="section" id={embedded ? `basis-method-${part}` : "basis-method"}>
           <h2 className="sec-title">A dependable coordinate workflow</h2>
           <ProcedureBox title={advanced ? "Change an operator matrix or test diagonalization" : "Convert coordinates without reversing the arrow"}
             steps={advanced ? ["Write old and new basis matrices and define the transition direction.", "For one operator in two bases, use $[T]_C=P_{C\\leftarrow B}[T]_B P_{B\\leftarrow C}$.", "Check trace, determinant, characteristic polynomial, rank and eigenspace structure when testing similarity.", "For diagonalization, pair each eigenvector column with the eigenvalue in the same position."] : ["Write ordered basis vectors as columns of $P_B$ and $P_C$.", "Use $P_{C\\leftarrow B}=P_C^{-1}P_B$ to convert $B$-coordinates to $C$-coordinates.", "For a map $V\\to W$, use $P_C^{-1}AP_B$; use similarity only for one operator represented in two bases.", "Check by reconstructing the vector in the original basis."]} />
         </section>
-        <section className="section" id="basis-examples">
+        <section className="section" id={embedded ? `basis-examples-${part}` : "basis-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -95,13 +86,26 @@ export default function ChangeOfBasisGuide({ part = 1 }) {
         {advanced ? (
           <GuideMcqSection id="quiz-la-change-basis-checkpoint" badge="Topic checkpoint · 20 questions" title="Change of Basis & Similarity Transformations" scoreId="score-la-change-basis-checkpoint" section="la-change-basis-checkpoint" questions={LA_CHANGE_BASIS_SIMILARITY_QUIZ} onComplete={(score, total) => saveQuizScore("guide-mcq-la-change-basis-checkpoint", score, total)} />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to similarity transformations</h2>
             <p>The Part 2 checkpoint covers both parts. Answer all 20 questions and score at least 80% to unlock Part 2 completion.</p>
             <Link to="/linear-algebra/change-of-basis-similarity/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={"Change of Basis & Similarity (Part " + part + ")"}>
+      <nav className="sidebar">
+        <div className="sb-brand"><div className="sb-title">Change of Basis &amp; Similarity</div></div>
+        <a className="sb-link" href="#basis-theory">Theory</a>
+        <a className="sb-link" href="#basis-method">Method</a>
+        <a className="sb-link" href="#basis-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-change-basis-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
+      </nav>
+      {content}
     </StudyGuideShell>
   );
 }

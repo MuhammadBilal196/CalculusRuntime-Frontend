@@ -80,30 +80,8 @@ import {
   SvdPart2,
 } from "./pages/linearAlgebra/LaParts";
 
-import {
-  LUDecompositionPart1,
-  LUDecompositionPart2,
-  CholeskyDecompositionPart1,
-  CholeskyDecompositionPart2,
-  JordanNormalFormPart1,
-  JordanNormalFormPart2,
-  MatrixNormsPart1,
-  MatrixNormsPart2,
-  ComplexVectorSpacesPart1,
-  ComplexVectorSpacesPart2,
-  QuadraticFormsPart1,
-  QuadraticFormsPart2,
-  ChangeOfBasisPart1,
-  ChangeOfBasisPart2,
-  AffineTransformationsPart1,
-  AffineTransformationsPart2,
-  PrincipalComponentAnalysisPart1,
-  PrincipalComponentAnalysisPart2,
-  MarkovChainsPart1,
-  MarkovChainsPart2,
-  LinearProgrammingPart1,
-  LinearProgrammingPart2,
-} from "./pages/linearAlgebra";
+import LaModulePart from "./pages/linearAlgebra/LaModulePart";
+import { LA_MODULES, LA_TOPIC_REDIRECTS, LA_MODULE_REDIRECTS, getLaModulePath } from "./data/laModules";
 
 import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
@@ -656,24 +634,16 @@ function App() {
                   element={<Layout body={<OrthoPart2 />} />}
                 />
 
-                {/* Linear Programming */}
-                <Route
-                  path="/linear-algebra/linear-programming-simplex"
-                  element={
-                    <Navigate
-                      to="/linear-algebra/linear-programming-simplex/1"
-                      replace
-                    />
-                  }
-                />
-                <Route
-                  path="/linear-algebra/linear-programming-simplex/1"
-                  element={<Layout body={<LinearProgrammingPart1 />} />}
-                />
-                <Route
-                  path="/linear-algebra/linear-programming-simplex/2"
-                  element={<Layout body={<LinearProgrammingPart2 />} />}
-                />
+                {/* Curriculum modules: two parts, two complete topics in each. */}
+                {LA_MODULES.flatMap((module) => [
+                  <Route key={module.id} path={`/linear-algebra/${module.id}`} element={<Navigate to={getLaModulePath(module)} replace />} />,
+                  ...[1, 2].map((part) => (
+                    <Route key={`${module.id}-${part}`} path={getLaModulePath(module, part)} element={<Layout body={<LaModulePart moduleId={module.id} part={part} />} />} />
+                  )),
+                ])}
+                {[...LA_TOPIC_REDIRECTS, ...LA_MODULE_REDIRECTS].map(({ from, to }) => (
+                  <Route key={from} path={from} element={<Navigate to={to} replace />} />
+                ))}
 
                 {/* Singular Value Decomposition */}
                 <Route
@@ -808,6 +778,10 @@ function App() {
                 <Route
                   path="/analytic-vector-lab"
                   element={<Layout body={<AnalyticVectorLab />} />}
+                />
+                <Route
+                  path="/surface-explorer"
+                  element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading 3D view…" fullPage />}><SurfaceExplorer /></Suspense>} />}
                 />
                 <Route
                   path="/derivative-visualizer"
