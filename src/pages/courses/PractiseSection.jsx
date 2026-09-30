@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { LA_MODULES } from "../../data/laModules";
 import SubmitToLeaderboard from "../../components/SubmitToLeaderboard";
 import "../dashboard/Leaderboard.css";
 import "./PractiseSection.css";
@@ -44,6 +45,7 @@ const TOPICS = [
   'Linear Transformations',
   'Orthogonality & Least Squares',
   'Singular Value Decomposition',
+  ...LA_MODULES.flatMap((module) => module.topics.map((topic) => topic.title)),
   'Probability Basics',
   'Random Variables & Distributions',
   'Descriptive Statistics',
@@ -63,6 +65,7 @@ const TOPIC_ALIASES = {
 };
 
 const TOPIC_BANK = {
+  ...Object.fromEntries(LA_MODULES.flatMap((module) => module.topics.map((topic) => [topic.title, "la"]))),
   'Limits and Continuity': 'calcAg',
   'Limits & Continuity': 'calcAg',
   Differentiation: 'calcAg',
