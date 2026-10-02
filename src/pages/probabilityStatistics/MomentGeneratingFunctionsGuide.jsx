@@ -23,7 +23,7 @@ export default function MomentGeneratingFunctionsGuide({ part = 1 }) {
         <header className="ch-hdr">
           <div className="ch-eye">Estimation & Inference Theory</div>
           <h1 className="ch-title">Moment Generating Functions</h1>
-          <p className="ch-sub">M(t)=E[e^{tX}] encodes moments</p>
+          <p className="ch-sub">{"M(t)=E[e^{tX}] encodes moments"}</p>
           <p>Curriculum: University Probability &amp; Statistics · Part {part} of 2</p>
         </header>
         <section className="section" id="ps-a-mgf-theory">
