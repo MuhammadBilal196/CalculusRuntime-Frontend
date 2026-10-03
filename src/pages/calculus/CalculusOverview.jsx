@@ -12,6 +12,18 @@ const CORE_CERT_PATHS = new Set([
   "/circles-tangents/1",
   "/advanced-calculus/1",
   "/differential-equations/1",
+  "/space-curves/1",
+  "/vector-motion/1",
+  "/parametric-surfaces/1",
+  "/polar-calculus/1",
+  "/solids-revolution/1",
+  "/volume-cross-sections/1",
+  "/numerical-methods/1",
+  "/improper-integrals-advanced/1",
+  "/complex-numbers/1",
+  "/hyperbolic-functions/1",
+  "/laplace-transforms/1",
+  "/fourier-series/1",
 ]);
 
 const EXCLUDED_FROM_ROADMAP = new Set([
@@ -110,11 +122,9 @@ function CalculusOverview() {
           Scoring 80%+ on each topic's quizzes unlocks section completion.
         </p>
         <p className="la-overview-lead">
-          Complete all nine core certificate tracks—<strong>Limits &amp; Continuity</strong>,{" "}
-          <strong>Differentiation</strong>, <strong>Integration</strong>, <strong>Sequences &amp; Series</strong>,{" "}
-          <strong>Conic Sections</strong>, <strong>Straight Lines</strong>, <strong>Circles &amp; Tangents</strong>,{" "}
-          <strong>Advanced Single-Variable Calculus</strong>, and <strong>Ordinary Differential Equations</strong>—to{" "}
-          unlock the 30-question comprehensive certification exam and earn your verifiable digital certificate.
+          Complete the core tracks spanning foundational single-variable calculus, analytical geometry,
+          space curves &amp; motion, advanced volume &amp; numerical techniques, and complex analysis &amp; transforms
+          to master the curriculum and earn your verifiable digital certificate.
         </p>
       </section>
 

@@ -147,6 +147,32 @@ import {
   OdePart1,
   OdePart2,
 } from "./pages/calculus/CalcParts";
+import {
+  SpaceCurvesPart1,
+  SpaceCurvesPart2,
+  VectorMotionPart1,
+  VectorMotionPart2,
+  ParametricSurfacesPart1,
+  ParametricSurfacesPart2,
+  PolarCalculusPart1,
+  PolarCalculusPart2,
+  SolidsRevPart1,
+  SolidsRevPart2,
+  VolumeCrossPart1,
+  VolumeCrossPart2,
+  NumMethodsPart1,
+  NumMethodsPart2,
+  ImproperIntegralsPart1,
+  ImproperIntegralsPart2,
+  ComplexNumbersPart1,
+  ComplexNumbersPart2,
+  HyperbolicsPart1,
+  HyperbolicsPart2,
+  LaplacePart1,
+  LaplacePart2,
+  FourierPart1,
+  FourierPart2,
+} from "./pages/calculus/CalcDev3Parts";
 
 // three.js is large, so the 3D explorer loads in its own chunk only when visited.
 const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
@@ -468,6 +494,57 @@ function App() {
                   path="/differential-equations/2"
                   element={<Layout body={<OdePart2 />} />}
                 />
+
+                {/* Developer 3 — Module A: Space Curves & Motion */}
+                <Route path="/space-curves" element={<Navigate to="/space-curves/1" replace />} />
+                <Route path="/space-curves/1" element={<Layout body={<SpaceCurvesPart1 />} />} />
+                <Route path="/space-curves/2" element={<Layout body={<SpaceCurvesPart2 />} />} />
+
+                <Route path="/vector-motion" element={<Navigate to="/vector-motion/1" replace />} />
+                <Route path="/vector-motion/1" element={<Layout body={<VectorMotionPart1 />} />} />
+                <Route path="/vector-motion/2" element={<Layout body={<VectorMotionPart2 />} />} />
+
+                <Route path="/parametric-surfaces" element={<Navigate to="/parametric-surfaces/1" replace />} />
+                <Route path="/parametric-surfaces/1" element={<Layout body={<ParametricSurfacesPart1 />} />} />
+                <Route path="/parametric-surfaces/2" element={<Layout body={<ParametricSurfacesPart2 />} />} />
+
+                <Route path="/polar-calculus" element={<Navigate to="/polar-calculus/1" replace />} />
+                <Route path="/polar-calculus/1" element={<Layout body={<PolarCalculusPart1 />} />} />
+                <Route path="/polar-calculus/2" element={<Layout body={<PolarCalculusPart2 />} />} />
+
+                {/* Developer 3 — Module B: Advanced Volume & Numerical Techniques */}
+                <Route path="/solids-revolution" element={<Navigate to="/solids-revolution/1" replace />} />
+                <Route path="/solids-revolution/1" element={<Layout body={<SolidsRevPart1 />} />} />
+                <Route path="/solids-revolution/2" element={<Layout body={<SolidsRevPart2 />} />} />
+
+                <Route path="/volume-cross-sections" element={<Navigate to="/volume-cross-sections/1" replace />} />
+                <Route path="/volume-cross-sections/1" element={<Layout body={<VolumeCrossPart1 />} />} />
+                <Route path="/volume-cross-sections/2" element={<Layout body={<VolumeCrossPart2 />} />} />
+
+                <Route path="/numerical-methods" element={<Navigate to="/numerical-methods/1" replace />} />
+                <Route path="/numerical-methods/1" element={<Layout body={<NumMethodsPart1 />} />} />
+                <Route path="/numerical-methods/2" element={<Layout body={<NumMethodsPart2 />} />} />
+
+                <Route path="/improper-integrals-advanced" element={<Navigate to="/improper-integrals-advanced/1" replace />} />
+                <Route path="/improper-integrals-advanced/1" element={<Layout body={<ImproperIntegralsPart1 />} />} />
+                <Route path="/improper-integrals-advanced/2" element={<Layout body={<ImproperIntegralsPart2 />} />} />
+
+                {/* Developer 3 — Module C: Complex Analysis & Transform Methods */}
+                <Route path="/complex-numbers" element={<Navigate to="/complex-numbers/1" replace />} />
+                <Route path="/complex-numbers/1" element={<Layout body={<ComplexNumbersPart1 />} />} />
+                <Route path="/complex-numbers/2" element={<Layout body={<ComplexNumbersPart2 />} />} />
+
+                <Route path="/hyperbolic-functions" element={<Navigate to="/hyperbolic-functions/1" replace />} />
+                <Route path="/hyperbolic-functions/1" element={<Layout body={<HyperbolicsPart1 />} />} />
+                <Route path="/hyperbolic-functions/2" element={<Layout body={<HyperbolicsPart2 />} />} />
+
+                <Route path="/laplace-transforms" element={<Navigate to="/laplace-transforms/1" replace />} />
+                <Route path="/laplace-transforms/1" element={<Layout body={<LaplacePart1 />} />} />
+                <Route path="/laplace-transforms/2" element={<Layout body={<LaplacePart2 />} />} />
+
+                <Route path="/fourier-series" element={<Navigate to="/fourier-series/1" replace />} />
+                <Route path="/fourier-series/1" element={<Layout body={<FourierPart1 />} />} />
+                <Route path="/fourier-series/2" element={<Layout body={<FourierPart2 />} />} />
 
                 <Route
                   path="/certificates"
