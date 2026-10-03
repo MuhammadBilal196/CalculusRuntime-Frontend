@@ -1,4 +1,5 @@
 import { COURSES } from "./courses";
+import { LA_MODULES } from "./laModules";
 
 /**
  * Certificate requirements per course:
@@ -60,6 +61,7 @@ export const COURSE_CERTIFICATE_REQUIREMENTS = {
       "la-ortho-2",
       "la-svd-1",
       "la-svd-2",
+      ...LA_MODULES.flatMap((module) => [1, 2].map((part) => `la-${module.id}-${part}`)),
     ],
     quizId: "quiz-linear-algebra",
     minQuizScore: 80,
