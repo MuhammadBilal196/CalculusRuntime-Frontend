@@ -2,6 +2,9 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import LaModuleGuide from "./LaModuleGuide";
 import LaModulePart from "./LaModulePart";
+import LinearAlgebraOverview from "./LinearAlgebraOverview";
+import StochasticProcessesGuide from "../probabilityStatistics/StochasticProcessesGuide";
+import { getRequiredSections, isCourseComplete, getMinQuizScore, hasPassedQuiz } from "../../data/courseCompletion";
 import { LA_MODULES, LA_TOPIC_REDIRECTS, LA_MODULE_REDIRECTS, getLaModulePath, getLaModuleTopics } from "../../data/laModules";
 import { getCourseById } from "../../data/courses";
 import { hasPassedSectionQuizzes } from "../../data/sectionQuizGates";
@@ -9,7 +12,7 @@ import * as quizzes from "../../data/laQuizzes";
 
 const mockSaveQuizScore = jest.fn();
 jest.mock("../../context/ProgressContext", () => ({ useProgress: () => ({ saveQuizScore: mockSaveQuizScore, recordVisit: jest.fn() }) }));
-jest.mock("react-router-dom", () => ({ Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a> }));
+jest.mock("react-router-dom", () => ({ useLocation: () => ({ hash: "" }), Link: ({ to, children, ...props }) => <a href={to} {...props}>{children}</a> }));
 jest.mock("../courses/StudyGuideShell", () => ({ __esModule: true, default: ({ children }) => <div data-testid="guide-shell">{children}</div> }));
 jest.mock("../../components/GuideMcq", () => ({
   GuideMcqSection: ({ id, section, questions, onComplete }) => (
@@ -111,4 +114,48 @@ test("all nine earlier grouped URLs redirect to the corresponding curriculum par
     expect(LA_MODULE_REDIRECTS.find((route) => route.from === `/linear-algebra/${module.overviewAnchor}${suffix}`).to)
       .toBe(getLaModulePath(module, suffix === "/2" ? 2 : 1));
   }));
+});
+
+
+test("certificate completion requires all 18 parts including each advanced part", () => {
+  const required = getRequiredSections("linear-algebra");
+  expect(required).toHaveLength(18);
+  expect(new Set(required).size).toBe(18);
+  const complete = Object.fromEntries(required.map((id) => [id, true]));
+  expect(isCourseComplete("linear-algebra", complete)).toBe(true);
+  for (const module of LA_MODULES) for (const part of [1, 2]) {
+    const id = `la-${module.id}-${part}`;
+    expect(required).toContain(id);
+    expect(isCourseComplete("linear-algebra", { ...complete, [id]: false })).toBe(false);
+  }
+  const legacyOnly = Object.fromEntries(required.slice(0, 12).map((id) => [id, true]));
+  expect(isCourseComplete("linear-algebra", legacyOnly)).toBe(false);
+  expect(getMinQuizScore("linear-algebra")).toBe(80);
+  expect(hasPassedQuiz("linear-algebra", { "quiz-linear-algebra": { score: 52, total: 66 } })).toBe(false);
+  expect(hasPassedQuiz("linear-algebra", { "quiz-linear-algebra": { score: 53, total: 66 } })).toBe(true);
+});
+
+test("certificate card and rendered overview agree on 66 questions and 18 parts", () => {
+  const card = getCourseById("linear-algebra").modules.find((item) => item.path === "/quiz/linear-algebra");
+  expect(card.description).toContain("66 MCQs");
+  expect(card.meta).toBe("66 questions · 80% to pass");
+  const { container } = render(<LinearAlgebraOverview />);
+  expect(container.textContent).toContain("Complete all 18 required parts");
+  expect(container.textContent).toContain("66-question certification quiz");
+  expect(screen.getAllByText("Required for certificate")).toHaveLength(9);
+  expect(screen.getAllByText("Extra depth")).toHaveLength(2);
+  expect(container.textContent).not.toContain("30-question");
+});
+
+test.each([1, 2])("Stochastic Processes part %s links to the grouped Markov topic", (part) => {
+  render(<StochasticProcessesGuide part={part} />);
+  expect(screen.getByRole("link", { name: "Markov Chains & Steady States (Linear Algebra)" }))
+    .toHaveAttribute("href", "/linear-algebra/applied-linear-algebra/1#markov-chains-steady-states");
+});
+
+test("the grouped Markov topic links back to the existing Stochastic Processes route", () => {
+  render(<LaModuleGuide moduleId="applied-linear-algebra" part={1} />);
+  const links = screen.getAllByRole("link", { name: /Stochastic Processes/ });
+  expect(links.length).toBeGreaterThan(0);
+  links.forEach((link) => expect(link).toHaveAttribute("href", "/probability-statistics/stochastic-processes/1"));
 });

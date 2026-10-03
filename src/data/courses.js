@@ -654,11 +654,11 @@ export const COURSES = [
       {
         title: "Certification Quiz",
         description:
-          "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+          "66 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/linear-algebra",
-        meta: "30 questions · 80% to pass",
+        meta: "66 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 30 MCQs · 80%</span>,
+        logo: <span className="math-logo">✓ 66 MCQs · 80%</span>,
       },
     ],
   },

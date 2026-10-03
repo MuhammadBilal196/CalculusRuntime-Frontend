@@ -9,6 +9,9 @@ const CORE_CERT_PATHS = new Set([
   "/linear-algebra/matrices/1",
   "/linear-algebra/systems/1",
   "/linear-algebra/eigen/1",
+  "/linear-algebra/orthogonality/1",
+  "/linear-algebra/svd/1",
+  ...LA_MODULES.map((module) => getLaModulePath(module)),
 ]);
 
 const EXCLUDED_FROM_ROADMAP = new Set([
@@ -88,7 +91,7 @@ function LinearAlgebraOverview() {
                     <span className="la-roadmap-title">
                       {mod.title}
                       <span className={`la-roadmap-tag${isCore ? " la-roadmap-tag--core" : ""}`}>
-                        {isCore ? "Core · certificate" : "Extra depth"}
+                        {isCore ? "Required for certificate" : "Extra depth"}
                       </span>
                     </span>
                     <small>{mod.description}</small>
@@ -138,12 +141,13 @@ function LinearAlgebraOverview() {
           complete" — your progress and quiz scores are saved to your account automatically.
         </p>
         <p className="la-overview-lead">
-          <strong>Vectors &amp; Vector Spaces</strong>, <strong>Matrices &amp; Determinants</strong>,{" "}
-          <strong>Systems of Linear Equations</strong>, and <strong>Eigenvalues &amp; Eigenvectors</strong>{" "}
-          form the core certificate track — complete all eight of their parts to unlock the 30-question
-          certification quiz. <strong>Linear Equations</strong>, <strong>Linear Transformations</strong>,{" "}
-          <strong>Orthogonality &amp; Least Squares</strong>, and <strong>Singular Value Decomposition</strong>{" "}
-          are additional depth you can study any time, in any order.
+          Complete all 18 required parts: both parts of <strong>Vectors &amp; Vector Spaces</strong>,{" "}
+          <strong>Matrices &amp; Determinants</strong>, <strong>Systems of Linear Equations</strong>,{" "}
+          <strong>Eigenvalues &amp; Eigenvectors</strong>, <strong>Orthogonality &amp; Least Squares</strong>,{" "}
+          <strong>Singular Value Decomposition</strong>, and the three advanced modules above.
+          Then pass the 66-question certification quiz with a score of at least 80%.
+          <strong> Linear Equations</strong> and <strong>Linear Transformations</strong> remain
+          optional additional study.
         </p>
       </section>
 
