@@ -1785,3 +1785,898 @@ export const CALC_B_IMPROPER_INTEGRALS_QUIZ = [
   }
 ];
 
+
+// --- Module C: Complex Analysis & Transform Methods ---
+
+export const CALC_C_COMPLEX_NUMBERS_QUIZ = [
+  {
+    "prompt": "The polar form of a complex number z = x + i y is:",
+    "options": [
+      "z = r(cos \u03b8 + i sin \u03b8) = r e^(i \u03b8), where r = \u221a(x\u00b2 + y\u00b2) and tan \u03b8 = y/x",
+      "z = r(sin \u03b8 + i cos \u03b8)",
+      "z = r(cos \u03b8 - i sin \u03b8)",
+      "z = (x\u00b2 + y\u00b2) e^(i \u03b8)"
+    ],
+    "answer": "A",
+    "explanation": "In polar coordinates, x = r cos \u03b8 and y = r sin \u03b8, giving z = r(cos \u03b8 + i sin \u03b8) = r e^(i \u03b8) by Euler's formula."
+  },
+  {
+    "prompt": "Euler's formula states that for any real \u03b8:",
+    "options": [
+      "e^(i \u03b8) = cos \u03b8 - i sin \u03b8",
+      "e^(i \u03b8) = cos \u03b8 + i sin \u03b8",
+      "e^(i \u03b8) = sin \u03b8 + i cos \u03b8",
+      "e^(i \u03b8) = cos(i \u03b8) + sin(i \u03b8)"
+    ],
+    "answer": "B",
+    "explanation": "Euler's formula is the foundational bridge between complex exponentials and trigonometry: e^(i \u03b8) = cos \u03b8 + i sin \u03b8."
+  },
+  {
+    "prompt": "De Moivre's Theorem states that for any real \u03b8 and integer n:",
+    "options": [
+      "[cos \u03b8 + i sin \u03b8]\u207f = cos(n \u03b8) - i sin(n \u03b8)",
+      "[cos \u03b8 + i sin \u03b8]\u207f = cos\u207f \u03b8 + i sin\u207f \u03b8",
+      "[cos \u03b8 + i sin \u03b8]\u207f = cos(n \u03b8) + i sin(n \u03b8)",
+      "[cos \u03b8 + i sin \u03b8]\u207f = n cos \u03b8 + i n sin \u03b8"
+    ],
+    "answer": "C",
+    "explanation": "By repeated multiplication or complex exponentiation: (e^(i \u03b8))\u207f = e^(i n \u03b8) = cos(n \u03b8) + i sin(n \u03b8)."
+  },
+  {
+    "prompt": "The n distinct n-th roots of a complex number z = r e^(i \u03b8) are given by w_k =",
+    "options": [
+      "r^(1/n) [cos(\u03b8/n) + i sin(\u03b8/n)]",
+      "r^(1/n) e^(i \u03b8/n)",
+      "r\u207f e^(i (\u03b8 + 2k\u03c0)/n)",
+      "r^(1/n) e^(i (\u03b8 + 2k\u03c0)/n) for k = 0, 1, 2, ..., n - 1"
+    ],
+    "answer": "D",
+    "explanation": "Roots of unity and general complex numbers are spaced evenly on a circle of radius r^(1/n) by angles (\u03b8 + 2k\u03c0)/n for k = 0, ..., n - 1."
+  },
+  {
+    "prompt": "The three cube roots of unity (solutions of z\u00b3 = 1) are:",
+    "options": [
+      "1, -1/2 + i \u221a3/2, -1/2 - i \u221a3/2",
+      "1, i, -i",
+      "1, -1, i",
+      "1, 1/2 + i \u221a3/2, 1/2 - i \u221a3/2"
+    ],
+    "answer": "A",
+    "explanation": "e^(i 2k\u03c0/3) for k = 0, 1, 2 gives: k=0 \u21d2 1; k=1 \u21d2 cos(2\u03c0/3)+i sin(2\u03c0/3) = -1/2 + i\u221a3/2; k=2 \u21d2 -1/2 - i\u221a3/2."
+  },
+  {
+    "prompt": "If \u03c9 is a non-real cube root of unity (\u03c9 \u2260 1), which fundamental identity holds?",
+    "options": [
+      "1 + \u03c9 = \u03c9\u00b2",
+      "1 + \u03c9 + \u03c9\u00b2 = 0",
+      "\u03c9\u00b2 = -1",
+      "1 + \u03c9\u00b2 = 0"
+    ],
+    "answer": "B",
+    "explanation": "z\u00b3 - 1 = (z - 1)(z\u00b2 + z + 1) = 0. Since \u03c9 \u2260 1, it satisfies the cyclotomic quadratic 1 + \u03c9 + \u03c9\u00b2 = 0."
+  },
+  {
+    "prompt": "Evaluate (1 + i)\u2078 using De Moivre's Theorem:",
+    "options": [
+      "-16",
+      "16 i",
+      "16",
+      "8 i"
+    ],
+    "answer": "C",
+    "explanation": "1 + i = \u221a2 e^(i \u03c0/4). (1 + i)\u2078 = (\u221a2)\u2078 e^(i 8(\u03c0/4)) = 2\u2074 e^(i 2\u03c0) = 16(1) = 16."
+  },
+  {
+    "prompt": "Express cos(3\u03b8) in terms of powers of cos \u03b8 using De Moivre's Theorem:",
+    "options": [
+      "4 cos\u00b3 \u03b8 + 3 cos \u03b8",
+      "3 cos \u03b8 - 4 cos\u00b3 \u03b8",
+      "cos\u00b3 \u03b8 - 3 cos \u03b8",
+      "4 cos\u00b3 \u03b8 - 3 cos \u03b8"
+    ],
+    "answer": "D",
+    "explanation": "cos(3\u03b8) = Re[(cos \u03b8 + i sin \u03b8)\u00b3] = cos\u00b3 \u03b8 - 3 cos \u03b8 sin\u00b2 \u03b8 = cos\u00b3 \u03b8 - 3 cos \u03b8 (1 - cos\u00b2 \u03b8) = 4 cos\u00b3 \u03b8 - 3 cos \u03b8."
+  },
+  {
+    "prompt": "Express sin(3\u03b8) in terms of powers of sin \u03b8 using De Moivre's Theorem:",
+    "options": [
+      "3 sin \u03b8 - 4 sin\u00b3 \u03b8",
+      "4 sin\u00b3 \u03b8 - 3 sin \u03b8",
+      "3 sin \u03b8 + 4 sin\u00b3 \u03b8",
+      "sin\u00b3 \u03b8 - 3 sin \u03b8"
+    ],
+    "answer": "A",
+    "explanation": "sin(3\u03b8) = Im[(cos \u03b8 + i sin \u03b8)\u00b3] = 3 cos\u00b2 \u03b8 sin \u03b8 - sin\u00b3 \u03b8 = 3(1 - sin\u00b2 \u03b8) sin \u03b8 - sin\u00b3 \u03b8 = 3 sin \u03b8 - 4 sin\u00b3 \u03b8."
+  },
+  {
+    "prompt": "The sum of all n-th roots of unity (for any integer n \u2265 2) is:",
+    "options": [
+      "1",
+      "0",
+      "n",
+      "-1"
+    ],
+    "answer": "B",
+    "explanation": "The roots form a geometric progression: \u2211_{k=0}^{n-1} \u03c9^k = (1 - \u03c9\u207f)/(1 - \u03c9) = (1 - 1)/(1 - \u03c9) = 0."
+  },
+  {
+    "prompt": "The product of all n-th roots of unity is:",
+    "options": [
+      "-1",
+      "1",
+      "(-1)\u207f\u207a\u00b9",
+      "0"
+    ],
+    "answer": "C",
+    "explanation": "\u220f_{k=0}^{n-1} e^(i 2k\u03c0/n) = e^(i (2\u03c0/n) \u2211 k) = e^(i (2\u03c0/n) [n(n-1)/2]) = e^(i \u03c0(n-1)) = (-1)^(n-1) = (-1)^(n+1)."
+  },
+  {
+    "prompt": "The modulus |z\u2081 + z\u2082| satisfies the Triangle Inequality:",
+    "options": [
+      "|z\u2081 + z\u2082| \u2264 |z\u2081| |z\u2082|",
+      "|z\u2081 + z\u2082| \u2265 |z\u2081| + |z\u2082|",
+      "|z\u2081 + z\u2082| = |z\u2081| + |z\u2082|",
+      "|z\u2081 + z\u2082| \u2264 |z\u2081| + |z\u2082|"
+    ],
+    "answer": "D",
+    "explanation": "By vector geometry in the complex plane, the length of any side of a triangle is bounded by the sum of the other two sides: |z\u2081 + z\u2082| \u2264 |z\u2081| + |z\u2082|."
+  },
+  {
+    "prompt": "The complex conjugate of z = x + i y is z\u0304 = x - i y. The product z \u00b7 z\u0304 equals:",
+    "options": [
+      "|z|\u00b2 = x\u00b2 + y\u00b2",
+      "|z| = \u221a(x\u00b2 + y\u00b2)",
+      "x\u00b2 - y\u00b2",
+      "2x"
+    ],
+    "answer": "A",
+    "explanation": "z \u00b7 z\u0304 = (x + i y)(x - i y) = x\u00b2 - i\u00b2 y\u00b2 = x\u00b2 + y\u00b2 = |z|\u00b2."
+  },
+  {
+    "prompt": "Euler's identity, often considered the most beautiful formula in mathematics, is:",
+    "options": [
+      "e^(i \u03c0) = 1",
+      "e^(i \u03c0) + 1 = 0",
+      "e^(2i \u03c0) = -1",
+      "e^(i \u03c0/2) = -1"
+    ],
+    "answer": "B",
+    "explanation": "Setting \u03b8 = \u03c0 in Euler's formula gives e^(i \u03c0) = cos \u03c0 + i sin \u03c0 = -1, which rearranges to e^(i \u03c0) + 1 = 0."
+  },
+  {
+    "prompt": "Evaluate the principal value of i^i:",
+    "options": [
+      "-1",
+      "1",
+      "e^(-\u03c0/2) \u2248 0.2079",
+      "i"
+    ],
+    "answer": "C",
+    "explanation": "i = e^(i \u03c0/2). Thus i^i = (e^(i \u03c0/2))^i = e^(i\u00b2 \u03c0/2) = e^(-\u03c0/2), a purely real number!"
+  },
+  {
+    "prompt": "Find the polar angle (argument) of z = -1 - i \u221a3 in the principal range (-\u03c0, \u03c0]:",
+    "options": [
+      "4\u03c0 / 3",
+      "2\u03c0 / 3",
+      "-\u03c0 / 3",
+      "-2\u03c0 / 3"
+    ],
+    "answer": "D",
+    "explanation": "z lies in the third quadrant (x < 0, y < 0). Arg(z) = -\u03c0 + arctan(\u221a3/1) = -\u03c0 + \u03c0/3 = -2\u03c0/3."
+  },
+  {
+    "prompt": "The geometric effect of multiplying a complex number z by e^(i \u03b1) is:",
+    "options": [
+      "Counterclockwise rotation of z by angle \u03b1 about the origin without changing magnitude",
+      "Scaling the magnitude of z by \u03b1",
+      "Reflecting z across the real axis",
+      "Translating z by vector \u03b1"
+    ],
+    "answer": "A",
+    "explanation": "Since |e^(i \u03b1)| = 1 and arg(z e^(i \u03b1)) = arg(z) + \u03b1, multiplying by e^(i \u03b1) is an isometry representing pure counterclockwise rotation by \u03b1."
+  },
+  {
+    "prompt": "Solve z\u2074 = -16 completely in the complex plane:",
+    "options": [
+      "2(\u00b11 \u00b1 i)",
+      "\u221a2(\u00b11 \u00b1 i)",
+      "\u00b12, \u00b12i",
+      "4(\u00b11 \u00b1 i)"
+    ],
+    "answer": "B",
+    "explanation": "-16 = 16 e^(i \u03c0). z_k = 2 e^(i (\u03c0 + 2k\u03c0)/4) = 2 e^(i (2k+1)\u03c0/4). For k = 0: 2(cos \u03c0/4 + i sin \u03c0/4) = \u221a2(1 + i). All 4 roots are \u221a2(\u00b11 \u00b1 i)."
+  },
+  {
+    "prompt": "Express cos\u2074 \u03b8 in terms of cosines of multiple angles using complex exponentials:",
+    "options": [
+      "(1/8) cos(4\u03b8) - (1/2) cos(2\u03b8) + 3/8",
+      "(1/4) cos(4\u03b8) + (1/2) cos(2\u03b8) + 1/4",
+      "(1/8) cos(4\u03b8) + (1/2) cos(2\u03b8) + 3/8",
+      "cos(4\u03b8)/4 + 3/4"
+    ],
+    "answer": "C",
+    "explanation": "cos \u03b8 = (e^(i\u03b8) + e^(-i\u03b8))/2. cos\u2074 \u03b8 = (1/16)(e^(4i\u03b8) + 4 e^(2i\u03b8) + 6 + 4 e^(-2i\u03b8) + e^(-4i\u03b8)) = (1/8) cos(4\u03b8) + (1/2) cos(2\u03b8) + 3/8."
+  },
+  {
+    "prompt": "If z + 1/z = 2 cos \u03b8, then z\u207f + 1/z\u207f equals:",
+    "options": [
+      "2\u207f cos\u207f \u03b8",
+      "2 sin(n \u03b8)",
+      "cos(n \u03b8)",
+      "2 cos(n \u03b8)"
+    ],
+    "answer": "D",
+    "explanation": "z = cos \u03b8 + i sin \u03b8 = e^(i \u03b8). Then z\u207f = e^(i n \u03b8) and 1/z\u207f = e^(-i n \u03b8). Adding gives e^(i n \u03b8) + e^(-i n \u03b8) = 2 cos(n \u03b8)."
+  }
+];
+
+export const CALC_C_HYPERBOLIC_FUNCTIONS_QUIZ = [
+  {
+    "prompt": "The definitions of hyperbolic sine and hyperbolic cosine are:",
+    "options": [
+      "sinh x = (e\u02e3 - e^(-x))/2, cosh x = (e\u02e3 + e^(-x))/2",
+      "sinh x = (e\u02e3 + e^(-x))/2, cosh x = (e\u02e3 - e^(-x))/2",
+      "sinh x = e\u02e3 - e^(-x), cosh x = e\u02e3 + e^(-x)",
+      "sinh x = (e^(ix) - e^(-ix))/2i, cosh x = (e^(ix) + e^(-ix))/2"
+    ],
+    "answer": "A",
+    "explanation": "By definition, sinh x = (e\u02e3 - e^(-x))/2 (odd function) and cosh x = (e\u02e3 + e^(-x))/2 (even function)."
+  },
+  {
+    "prompt": "The fundamental identity connecting cosh x and sinh x is:",
+    "options": [
+      "cosh\u00b2 x + sinh\u00b2 x = 1",
+      "cosh\u00b2 x - sinh\u00b2 x = 1",
+      "sinh\u00b2 x - cosh\u00b2 x = 1",
+      "cosh x - sinh x = 1"
+    ],
+    "answer": "B",
+    "explanation": "cosh\u00b2 x - sinh\u00b2 x = ((e\u02e3+e^(-x))\u00b2 - (e\u02e3-e^(-x))\u00b2)/4 = (4)/4 = 1. (This parameterizes the unit hyperbola x\u00b2 - y\u00b2 = 1)."
+  },
+  {
+    "prompt": "The derivatives of sinh x and cosh x are:",
+    "options": [
+      "d/dx[sinh x] = -cosh x, d/dx[cosh x] = sinh x",
+      "d/dx[sinh x] = cosh x, d/dx[cosh x] = -sinh x",
+      "d/dx[sinh x] = cosh x, d/dx[cosh x] = sinh x",
+      "d/dx[sinh x] = sech\u00b2 x, d/dx[cosh x] = csch\u00b2 x"
+    ],
+    "answer": "C",
+    "explanation": "Both derivatives are positive: d/dx[sinh x] = cosh x, and d/dx[cosh x] = sinh x (unlike trigonometric cosine, no minus sign!)."
+  },
+  {
+    "prompt": "The derivative of tanh x is:",
+    "options": [
+      "sech x tanh x",
+      "-sech\u00b2 x",
+      "coth\u00b2 x",
+      "sech\u00b2 x = 1 - tanh\u00b2 x"
+    ],
+    "answer": "D",
+    "explanation": "d/dx[sinh x / cosh x] = (cosh\u00b2 x - sinh\u00b2 x) / cosh\u00b2 x = 1 / cosh\u00b2 x = sech\u00b2 x = 1 - tanh\u00b2 x."
+  },
+  {
+    "prompt": "The derivative of sech x is:",
+    "options": [
+      "-sech x tanh x",
+      "sech x tanh x",
+      "-csch x coth x",
+      "-sech\u00b2 x"
+    ],
+    "answer": "A",
+    "explanation": "d/dx[1/cosh x] = -sinh x / cosh\u00b2 x = -(1/cosh x)(sinh x/cosh x) = -sech x tanh x."
+  },
+  {
+    "prompt": "The logarithmic formula for inverse hyperbolic sine arsinh(x) is:",
+    "options": [
+      "ln(x + \u221a(x\u00b2 - 1)) for x \u2265 1",
+      "ln(x + \u221a(x\u00b2 + 1)) for all real x",
+      "(1/2) ln((1 + x)/(1 - x))",
+      "ln(x - \u221a(x\u00b2 + 1))"
+    ],
+    "answer": "B",
+    "explanation": "Solving y = sinh x = (e\u02b8 - e^(-y))/2 gives quadratic (e\u02b8)\u00b2 - 2x(e\u02b8) - 1 = 0 \u21d2 e\u02b8 = x + \u221a(x\u00b2 + 1) \u21d2 y = ln(x + \u221a(x\u00b2 + 1))."
+  },
+  {
+    "prompt": "The logarithmic formula for inverse hyperbolic cosine arcosh(x) (for x \u2265 1) is:",
+    "options": [
+      "(1/2) ln((1 + x)/(1 - x))",
+      "ln(x + \u221a(x\u00b2 + 1))",
+      "ln(x + \u221a(x\u00b2 - 1))",
+      "ln(x - \u221a(x\u00b2 - 1))"
+    ],
+    "answer": "C",
+    "explanation": "Solving y = cosh x gives e\u02b8 = x + \u221a(x\u00b2 - 1) for the principal branch y \u2265 0, so arcosh x = ln(x + \u221a(x\u00b2 - 1))."
+  },
+  {
+    "prompt": "The logarithmic formula for inverse hyperbolic tangent artanh(x) (for |x| < 1) is:",
+    "options": [
+      "ln(x + \u221a(1 - x\u00b2))",
+      "ln((1 + x) / (1 - x))",
+      "(1/2) ln((x + 1) / (x - 1))",
+      "(1/2) ln((1 + x) / (1 - x))"
+    ],
+    "answer": "D",
+    "explanation": "x = (e\u02b8 - e^(-y))/(e\u02b8 + e^(-y)) = (e^(2y) - 1)/(e^(2y) + 1) \u21d2 e^(2y) = (1 + x)/(1 - x) \u21d2 y = (1/2) ln((1 + x)/(1 - x))."
+  },
+  {
+    "prompt": "Evaluate the standard integral \u222b 1 / \u221a(x\u00b2 + a\u00b2) dx:",
+    "options": [
+      "arsinh(x/a) + C = ln(x + \u221a(x\u00b2 + a\u00b2)) + C\u2081",
+      "arcsin(x/a) + C",
+      "(1/a) arctan(x/a) + C",
+      "arcosh(x/a) + C"
+    ],
+    "answer": "A",
+    "explanation": "Substituting x = a sinh u gives dx = a cosh u du, so \u222b (a cosh u)/(a cosh u) du = u + C = arsinh(x/a) + C = ln(x + \u221a(x\u00b2 + a\u00b2)) + C\u2081."
+  },
+  {
+    "prompt": "Evaluate the standard integral \u222b 1 / \u221a(x\u00b2 - a\u00b2) dx (for x > a > 0):",
+    "options": [
+      "arsinh(x/a) + C",
+      "arcosh(x/a) + C = ln(x + \u221a(x\u00b2 - a\u00b2)) + C\u2081",
+      "arcsec(x/a) + C",
+      "(1/a) arcosh(x/a) + C"
+    ],
+    "answer": "B",
+    "explanation": "Substituting x = a cosh u yields u + C = arcosh(x/a) + C = ln(x + \u221a(x\u00b2 - a\u00b2)) + C\u2081."
+  },
+  {
+    "prompt": "Evaluate the standard integral \u222b 1 / (a\u00b2 - x\u00b2) dx (for |x| < a):",
+    "options": [
+      "arsinh(x/a) + C",
+      "(1/a) arctan(x/a) + C",
+      "(1/a) artanh(x/a) + C = (1/(2a)) ln|(a + x)/(a - x)| + C",
+      "(1/2a) ln|(x - a)/(x + a)| + C"
+    ],
+    "answer": "C",
+    "explanation": "Partial fractions or substitution x = a tanh u gives (1/a) artanh(x/a) + C = (1/(2a)) ln|(a + x)/(a - x)| + C."
+  },
+  {
+    "prompt": "The addition formula for sinh(x + y) is:",
+    "options": [
+      "cosh x cosh y - sinh x sinh y",
+      "sinh x cosh y - cosh x sinh y",
+      "sinh x sinh y + cosh x cosh y",
+      "sinh x cosh y + cosh x sinh y"
+    ],
+    "answer": "D",
+    "explanation": "Expanding exponentials confirms sinh(x + y) = sinh x cosh y + cosh x sinh y (identical in form to sin(x + y))."
+  },
+  {
+    "prompt": "The addition formula for cosh(x + y) is:",
+    "options": [
+      "cosh x cosh y + sinh x sinh y",
+      "cosh x cosh y - sinh x sinh y",
+      "sinh x cosh y + cosh x sinh y",
+      "sinh x sinh y - cosh x cosh y"
+    ],
+    "answer": "A",
+    "explanation": "cosh(x + y) = cosh x cosh y + sinh x sinh y (notice the plus sign, contrasting with the minus in cos(x + y))."
+  },
+  {
+    "prompt": "The catenary curve formed by a freely hanging uniform cable under gravity is modeled by:",
+    "options": [
+      "y = a sinh(x/a)",
+      "y = a cosh(x/a)",
+      "y = a x\u00b2",
+      "y = a e^(x/a)"
+    ],
+    "answer": "B",
+    "explanation": "Balancing horizontal tension and gravitational vertical weight leads to the ODE y'' = (1/a)\u221a(1 + (y')\u00b2), whose solution is the catenary y = a cosh(x/a)."
+  },
+  {
+    "prompt": "Evaluate \u222b cosh\u00b2 x dx:",
+    "options": [
+      "(1/3) cosh\u00b3 x + C",
+      "(1/2) x - (1/4) sinh(2x) + C",
+      "(1/2) x + (1/4) sinh(2x) + C",
+      "sinh\u00b2 x + C"
+    ],
+    "answer": "C",
+    "explanation": "Use the double-argument identity cosh\u00b2 x = (cosh 2x + 1)/2: \u222b (cosh 2x + 1)/2 dx = (1/4) sinh(2x) + (1/2) x + C."
+  },
+  {
+    "prompt": "The relationship between trigonometric and hyperbolic functions in the complex plane is:",
+    "options": [
+      "cosh(i x) = cosh x, sinh(i x) = sinh x",
+      "cosh(i x) = i cos x, sinh(i x) = sin x",
+      "cosh(i x) = -cos x, sinh(i x) = -i sin x",
+      "cosh(i x) = cos x, sinh(i x) = i sin x"
+    ],
+    "answer": "D",
+    "explanation": "cosh(ix) = (e^(ix) + e^(-ix))/2 = cos x, and sinh(ix) = (e^(ix) - e^(-ix))/2 = i sin x."
+  },
+  {
+    "prompt": "Find the arc length of the catenary y = a cosh(x/a) from x = 0 to x = b:",
+    "options": [
+      "a sinh(b/a)",
+      "a cosh(b/a)",
+      "b cosh(b/a)",
+      "a tanh(b/a)"
+    ],
+    "answer": "A",
+    "explanation": "y' = sinh(x/a). 1 + (y')\u00b2 = 1 + sinh\u00b2(x/a) = cosh\u00b2(x/a). L = \u222b\u2080\u1d47 cosh(x/a) dx = [a sinh(x/a)]\u2080\u1d47 = a sinh(b/a)."
+  },
+  {
+    "prompt": "The Maclaurin series expansion of cosh x is:",
+    "options": [
+      "\u2211_{n=0}^\u221e (-1)\u207f x^(2n) / (2n)!",
+      "\u2211_{n=0}^\u221e x^(2n) / (2n)! = 1 + x\u00b2/2! + x\u2074/4! + ...",
+      "\u2211_{n=0}^\u221e x^(2n+1) / (2n+1)!",
+      "\u2211_{n=0}^\u221e x\u207f / n!"
+    ],
+    "answer": "B",
+    "explanation": "cosh x = (e\u02e3 + e^(-x))/2. All odd powers cancel, leaving all even powers with positive signs: 1 + x\u00b2/2! + x\u2074/4! + ... for all x \u2208 \u211d."
+  },
+  {
+    "prompt": "The Maclaurin series expansion of sinh x is:",
+    "options": [
+      "\u2211_{n=0}^\u221e x^(2n) / (2n)!",
+      "\u2211_{n=0}^\u221e (-1)\u207f x^(2n+1) / (2n+1)!",
+      "\u2211_{n=0}^\u221e x^(2n+1) / (2n+1)! = x + x\u00b3/3! + x\u2075/5! + ...",
+      "\u2211_{n=1}^\u221e x\u207f / n!"
+    ],
+    "answer": "C",
+    "explanation": "sinh x = (e\u02e3 - e^(-x))/2. All even powers cancel, leaving all odd powers with positive signs: x + x\u00b3/3! + x\u2075/5! + ... for all x \u2208 \u211d."
+  },
+  {
+    "prompt": "Solve the equation 2 cosh x - sinh x = 2 for x:",
+    "options": [
+      "x = ln 5",
+      "x = ln 2",
+      "x = 0 only",
+      "x = 0 or x = ln 3"
+    ],
+    "answer": "D",
+    "explanation": "Substitute e\u02e3 = u: 2(u + 1/u)/2 - (u - 1/u)/2 = 2 \u21d2 u + 1/u - u/2 + 1/(2u) = 2 \u21d2 u/2 + 3/(2u) = 2 \u21d2 u\u00b2 - 4u + 3 = 0 \u21d2 (u - 1)(u - 3) = 0 \u21d2 u = 1 or u = 3 \u21d2 x = 0 or x = ln 3."
+  }
+];
+
+export const CALC_C_LAPLACE_TRANSFORMS_QUIZ = [
+  {
+    "prompt": "The unilateral Laplace transform of a function f(t) for t \u2265 0 is defined as:",
+    "options": [
+      "\u2112{f(t)} = F(s) = \u222b\u2080^\u221e e^(-st) f(t) dt",
+      "\u2112{f(t)} = \u222b_{-\u221e}^\u221e e^(-st) f(t) dt",
+      "\u2112{f(t)} = \u222b\u2080^\u221e e^(st) f(t) dt",
+      "\u2112{f(t)} = d/ds [f(s)]"
+    ],
+    "answer": "A",
+    "explanation": "The unilateral Laplace transform integrates f(t) weighted by the exponential kernel e^(-st) from t = 0 to \u221e."
+  },
+  {
+    "prompt": "The Laplace transform of f(t) = 1 (for s > 0) is:",
+    "options": [
+      "1 / s\u00b2",
+      "1 / s",
+      "s",
+      "1 / (s - 1)"
+    ],
+    "answer": "B",
+    "explanation": "\u222b\u2080^\u221e e^(-st)(1) dt = [-e^(-st)/s]\u2080^\u221e = 1/s for s > 0."
+  },
+  {
+    "prompt": "The Laplace transform of f(t) = t\u207f (for non-negative integer n, s > 0) is:",
+    "options": [
+      "1 / s^(n+1)",
+      "n! / s\u207f",
+      "n! / s^(n+1)",
+      "(n - 1)! / s\u207f"
+    ],
+    "answer": "C",
+    "explanation": "By repeated integration by parts, \u2112{t\u207f} = n! / s^(n+1)."
+  },
+  {
+    "prompt": "The Laplace transform of f(t) = e^(at) (for s > a) is:",
+    "options": [
+      "1 / (s\u00b2 - a\u00b2)",
+      "1 / (s + a)",
+      "a / (s - a)",
+      "1 / (s - a)"
+    ],
+    "answer": "D",
+    "explanation": "\u222b\u2080^\u221e e^(-st) e^(at) dt = \u222b\u2080^\u221e e^(-(s-a)t) dt = 1/(s - a) for s > a."
+  },
+  {
+    "prompt": "The Laplace transforms of sin(\u03c9 t) and cos(\u03c9 t) are:",
+    "options": [
+      "\u2112{sin \u03c9t} = \u03c9 / (s\u00b2 + \u03c9\u00b2), \u2112{cos \u03c9t} = s / (s\u00b2 + \u03c9\u00b2)",
+      "\u2112{sin \u03c9t} = s / (s\u00b2 + \u03c9\u00b2), \u2112{cos \u03c9t} = \u03c9 / (s\u00b2 + \u03c9\u00b2)",
+      "\u2112{sin \u03c9t} = \u03c9 / (s\u00b2 - \u03c9\u00b2), \u2112{cos \u03c9t} = s / (s\u00b2 - \u03c9\u00b2)",
+      "\u2112{sin \u03c9t} = 1 / (s\u00b2 + \u03c9\u00b2), \u2112{cos \u03c9t} = s / (s + \u03c9)"
+    ],
+    "answer": "A",
+    "explanation": "Euler's formula gives \u2112{e^(i\u03c9t)} = 1/(s - i\u03c9) = (s + i\u03c9)/(s\u00b2 + \u03c9\u00b2). Separating real and imaginary parts yields s/(s\u00b2 + \u03c9\u00b2) and \u03c9/(s\u00b2 + \u03c9\u00b2)."
+  },
+  {
+    "prompt": "The First Shifting Theorem (Frequency Shift) states that \u2112{e^(at) f(t)} equals:",
+    "options": [
+      "F(s + a)",
+      "F(s - a)",
+      "e^(-as) F(s)",
+      "F(s) / a"
+    ],
+    "answer": "B",
+    "explanation": "\u222b\u2080^\u221e e^(-st) e^(at) f(t) dt = \u222b\u2080^\u221e e^(-(s-a)t) f(t) dt = F(s - a)."
+  },
+  {
+    "prompt": "Evaluate \u2112{e^(3t) cos(2t)}:",
+    "options": [
+      "2 / ((s - 3)\u00b2 + 4)",
+      "(s + 3) / ((s + 3)\u00b2 + 4)",
+      "(s - 3) / ((s - 3)\u00b2 + 4)",
+      "(s - 3) / (s\u00b2 + 4)"
+    ],
+    "answer": "C",
+    "explanation": "By the First Shifting Theorem, \u2112{cos 2t} = s/(s\u00b2 + 4) shifted by s \u2192 s - 3 gives (s - 3)/((s - 3)\u00b2 + 4)."
+  },
+  {
+    "prompt": "The Laplace transform of the first derivative f'(t) is:",
+    "options": [
+      "s\u00b2 F(s) - f(0)",
+      "s F(s) + f(0)",
+      "F'(s)",
+      "s F(s) - f(0)"
+    ],
+    "answer": "D",
+    "explanation": "Integrating by parts: \u222b\u2080^\u221e e^(-st) f'(t) dt = [e^(-st) f(t)]\u2080^\u221e + s \u222b\u2080^\u221e e^(-st) f(t) dt = -f(0) + s F(s) = s F(s) - f(0)."
+  },
+  {
+    "prompt": "The Laplace transform of the second derivative f''(t) is:",
+    "options": [
+      "s\u00b2 F(s) - s f(0) - f'(0)",
+      "s\u00b2 F(s) + s f(0) + f'(0)",
+      "s\u00b2 F(s) - f'(0)",
+      "s F'(s) - f(0)"
+    ],
+    "answer": "A",
+    "explanation": "Applying the derivative theorem twice yields \u2112{f''} = s \u2112{f'} - f'(0) = s(s F(s) - f(0)) - f'(0) = s\u00b2 F(s) - s f(0) - f'(0)."
+  },
+  {
+    "prompt": "The Second Shifting Theorem (Time Shift) with Heaviside step function u(t - c) states that \u2112{f(t - c) u(t - c)} equals:",
+    "options": [
+      "e^(cs) F(s)",
+      "e^(-cs) F(s)",
+      "F(s - c)",
+      "e^(-cs) / s"
+    ],
+    "answer": "B",
+    "explanation": "A delay of c in time corresponds to multiplication by e^(-cs) in the frequency s-domain: \u2112{f(t - c) u(t - c)} = e^(-cs) F(s)."
+  },
+  {
+    "prompt": "The Laplace transform of the Heaviside unit step function u(t - c) (c > 0) is:",
+    "options": [
+      "e^(cs) / s",
+      "1 / (s - c)",
+      "e^(-cs) / s",
+      "1 / s"
+    ],
+    "answer": "C",
+    "explanation": "\u222b_c^\u221e e^(-st)(1) dt = [-e^(-st)/s]_c^\u221e = e^(-cs) / s."
+  },
+  {
+    "prompt": "The Laplace transform of the Dirac delta function \u03b4(t - c) (c \u2265 0) is:",
+    "options": [
+      "c / s",
+      "e^(-cs) / s",
+      "1 / s",
+      "e^(-cs)"
+    ],
+    "answer": "D",
+    "explanation": "By the sifting property of the Dirac delta distribution, \u222b\u2080^\u221e e^(-st) \u03b4(t - c) dt = e^(-cs)."
+  },
+  {
+    "prompt": "The Laplace transform of t f(t) (frequency differentiation) satisfies:",
+    "options": [
+      "\u2112{t f(t)} = -F'(s) = -d/ds[F(s)]",
+      "\u2112{t f(t)} = F'(s)",
+      "\u2112{t f(t)} = F(s) / s",
+      "\u2112{t f(t)} = s F'(s)"
+    ],
+    "answer": "A",
+    "explanation": "d/ds [\u222b\u2080^\u221e e^(-st) f(t) dt] = \u222b\u2080^\u221e -t e^(-st) f(t) dt = -\u2112{t f(t)}. Thus \u2112{t f(t)} = -F'(s)."
+  },
+  {
+    "prompt": "Evaluate \u2112{t sin(\u03c9 t)} using frequency differentiation:",
+    "options": [
+      "(s\u00b2 - \u03c9\u00b2) / (s\u00b2 + \u03c9\u00b2)\u00b2",
+      "2\u03c9 s / (s\u00b2 + \u03c9\u00b2)\u00b2",
+      "\u03c9 / (s\u00b2 + \u03c9\u00b2)\u00b2",
+      "2\u03c9 / (s\u00b2 + \u03c9\u00b2)"
+    ],
+    "answer": "B",
+    "explanation": "\u2112{t sin \u03c9t} = -d/ds [\u03c9/(s\u00b2 + \u03c9\u00b2)] = -[ -\u03c9(2s)/(s\u00b2 + \u03c9\u00b2)\u00b2 ] = 2\u03c9 s / (s\u00b2 + \u03c9\u00b2)\u00b2."
+  },
+  {
+    "prompt": "The Convolution Theorem states that \u2112{(f * g)(t)} = \u2112{\u222b\u2080\u1d57 f(\u03c4) g(t - \u03c4) d\u03c4} equals:",
+    "options": [
+      "F(s) * G(s)",
+      "F(s) + G(s)",
+      "F(s) \u00b7 G(s)",
+      "F(s) / G(s)"
+    ],
+    "answer": "C",
+    "explanation": "Convolution in the time domain corresponds to simple algebraic multiplication in the Laplace s-domain: \u2112{f * g} = F(s) G(s)."
+  },
+  {
+    "prompt": "Find the inverse Laplace transform \u2112\u207b\u00b9{ 1 / (s\u00b2 - 4) }:",
+    "options": [
+      "(1/2) sin(2t)",
+      "sinh(2t)",
+      "(1/2) cosh(2t)",
+      "(1/2) sinh(2t)"
+    ],
+    "answer": "D",
+    "explanation": "Since \u2112{sinh at} = a/(s\u00b2 - a\u00b2), here a = 2, so \u2112\u207b\u00b9{1/(s\u00b2 - 4)} = (1/2) sinh(2t)."
+  },
+  {
+    "prompt": "Find the inverse Laplace transform \u2112\u207b\u00b9{ (3s + 5) / (s\u00b2 + 9) }:",
+    "options": [
+      "3 cos(3t) + (5/3) sin(3t)",
+      "3 cos(3t) + 5 sin(3t)",
+      "5 cos(3t) + 3 sin(3t)",
+      "(8/3) sin(3t)"
+    ],
+    "answer": "A",
+    "explanation": "Split into two terms: 3 [s/(s\u00b2 + 9)] + (5/3) [3/(s\u00b2 + 9)] = 3 cos(3t) + (5/3) sin(3t)."
+  },
+  {
+    "prompt": "Use Laplace transforms to solve the initial value problem y' + 2y = 4, y(0) = 1. What is Y(s)?",
+    "options": [
+      "Y(s) = 4 / [s(s + 2)]",
+      "Y(s) = (s + 4) / [s(s + 2)]",
+      "Y(s) = 1 / (s + 2)",
+      "Y(s) = (s + 2) / [s(s + 4)]"
+    ],
+    "answer": "B",
+    "explanation": "\u2112{y' + 2y} = s Y(s) - y(0) + 2 Y(s) = (s + 2)Y(s) - 1. Right side is \u2112{4} = 4/s. (s + 2)Y(s) = 1 + 4/s = (s + 4)/s \u21d2 Y(s) = (s + 4)/[s(s + 2)]."
+  },
+  {
+    "prompt": "Inverting Y(s) = (s + 4)/[s(s + 2)] gives the solution y(t) =",
+    "options": [
+      "y(t) = 4 - 3 e^(-2t)",
+      "y(t) = 2 + e^(-2t)",
+      "y(t) = 2 - e^(-2t)",
+      "y(t) = 1 + e^(-2t)"
+    ],
+    "answer": "C",
+    "explanation": "Partial fractions: (s + 4)/[s(s + 2)] = A/s + B/(s + 2). A = 4/2 = 2; B = (-2 + 4)/(-2) = -1. Thus y(t) = 2 - e^(-2t). (Check: y(0) = 2 - 1 = 1; y' + 2y = 2e^(-2t) + 4 - 2e^(-2t) = 4)."
+  },
+  {
+    "prompt": "The Laplace transform of the integral \u222b\u2080\u1d57 f(\u03c4) d\u03c4 is:",
+    "options": [
+      "F'(s) / s",
+      "s F(s)",
+      "F(s) - f(0)/s",
+      "F(s) / s"
+    ],
+    "answer": "D",
+    "explanation": "Since differentiation corresponds to multiplication by s, integration from 0 to t corresponds to division by s: \u2112{\u222b\u2080\u1d57 f(\u03c4) d\u03c4} = F(s) / s."
+  }
+];
+
+export const CALC_C_FOURIER_SERIES_QUIZ = [
+  {
+    "prompt": "A function f(x) is periodic with period T > 0 if for all x in its domain:",
+    "options": [
+      "f(x + T) = f(x)",
+      "f(x + T) = -f(x)",
+      "f(T x) = f(x)",
+      "f(x + T) = f(x) + T"
+    ],
+    "answer": "A",
+    "explanation": "By definition, a function is periodic with period T if shifting the independent variable by T leaves the function unchanged: f(x + T) = f(x)."
+  },
+  {
+    "prompt": "The Fourier series representation of a periodic function f(x) of period 2L on [-L, L] is:",
+    "options": [
+      "f(x) ~ a\u2080 + \u2211_{n=1}^\u221e [a\u2099 cos(n\u03c0 x / L) + b\u2099 sin(n\u03c0 x / L)]",
+      "f(x) ~ a\u2080/2 + \u2211_{n=1}^\u221e [a\u2099 cos(n\u03c0 x / L) + b\u2099 sin(n\u03c0 x / L)]",
+      "f(x) ~ \u2211_{n=1}^\u221e a\u2099 cos(n\u03c0 x / L)",
+      "f(x) ~ a\u2080/2 + \u2211_{n=1}^\u221e a\u2099 b\u2099 cos(n\u03c0 x / L)"
+    ],
+    "answer": "B",
+    "explanation": "The standard Fourier expansion writes f(x) as a constant term a\u2080/2 plus an infinite harmonic sum of cosine and sine modes."
+  },
+  {
+    "prompt": "The Euler-Fourier formula for the constant coefficient a\u2080 on [-L, L] is:",
+    "options": [
+      "a\u2080 = (2/L) \u222b_{-L}^L f(x) dx",
+      "a\u2080 = (1/2L) \u222b_{-L}^L f(x) dx",
+      "a\u2080 = (1/L) \u222b_{-L}^L f(x) dx",
+      "a\u2080 = \u222b_{-L}^L f(x) dx"
+    ],
+    "answer": "C",
+    "explanation": "With the series leading term written as a\u2080/2, the average value is a\u2080/2 = (1/(2L)) \u222b_{-L}^L f(x) dx \u21d2 a\u2080 = (1/L) \u222b_{-L}^L f(x) dx."
+  },
+  {
+    "prompt": "The Euler-Fourier formulas for the harmonic coefficients a\u2099 and b\u2099 on [-L, L] are:",
+    "options": [
+      "a\u2099 = \u222b_{-L}^L f(x) cos(n\u03c0 x/L) dx, b\u2099 = \u222b_{-L}^L f(x) sin(n\u03c0 x/L) dx",
+      "a\u2099 = (2/L) \u222b_{-L}^L f(x) cos(n\u03c0 x/L) dx, b\u2099 = (2/L) \u222b_{-L}^L f(x) sin(n\u03c0 x/L) dx",
+      "a\u2099 = (1/2L) \u222b_{-L}^L f(x) cos(n\u03c0 x/L) dx, b\u2099 = (1/2L) \u222b_{-L}^L f(x) sin(n\u03c0 x/L) dx",
+      "a\u2099 = (1/L) \u222b_{-L}^L f(x) cos(n\u03c0 x/L) dx, b\u2099 = (1/L) \u222b_{-L}^L f(x) sin(n\u03c0 x/L) dx"
+    ],
+    "answer": "D",
+    "explanation": "By orthogonality of the trigonometric system on [-L, L], a\u2099 = (1/L) \u222b_{-L}^L f(x) cos(n\u03c0x/L) dx and b\u2099 = (1/L) \u222b_{-L}^L f(x) sin(n\u03c0x/L) dx."
+  },
+  {
+    "prompt": "If f(x) is an even function (f(-x) = f(x)) on [-L, L], its Fourier series:",
+    "options": [
+      "Contains only cosine terms (all b\u2099 = 0)",
+      "Contains only sine terms (all a\u2099 = 0)",
+      "Contains both sine and cosine terms",
+      "Has a\u2080 = 0 only"
+    ],
+    "answer": "A",
+    "explanation": "For an even function, f(x) sin(n\u03c0x/L) is odd, so its integral over symmetric bounds [-L, L] vanishes: b\u2099 = 0 for all n. Thus it is a pure cosine series."
+  },
+  {
+    "prompt": "If f(x) is an odd function (f(-x) = -f(x)) on [-L, L], its Fourier series:",
+    "options": [
+      "Contains only cosine terms",
+      "Contains only sine terms (all a\u2099 = 0, including a\u2080 = 0)",
+      "Has b\u2099 = 0 for all n",
+      "Has non-zero a\u2080"
+    ],
+    "answer": "B",
+    "explanation": "For an odd function, f(x) cos(n\u03c0x/L) is odd, so all a\u2099 = 0. The Fourier series is a pure sine series."
+  },
+  {
+    "prompt": "Dirichlet's Theorem on Fourier convergence states that at a jump discontinuity x\u2080, the Fourier series converges to:",
+    "options": [
+      "f(x\u2080\u207b)",
+      "f(x\u2080\u207a)",
+      "The midpoint of the jump: [f(x\u2080\u207a) + f(x\u2080\u207b)] / 2",
+      "0"
+    ],
+    "answer": "C",
+    "explanation": "At any jump discontinuity satisfying Dirichlet conditions, the Fourier series converges exactly to the average of the left- and right-hand limits: [f(x\u2080\u207a) + f(x\u2080\u207b)]/2."
+  },
+  {
+    "prompt": "The Gibbs phenomenon describes the behavior of Fourier partial sums near a jump discontinuity, characterized by:",
+    "options": [
+      "Convergence to infinity",
+      "A complete damping of oscillations",
+      "An overshoot that shrinks to zero as n increases",
+      "An overshoot of approximately 9% of the jump height that does not vanish as n \u2192 \u221e"
+    ],
+    "answer": "D",
+    "explanation": "The Gibbs phenomenon is the persistent ~8.95% overshoot of the jump discontinuity present in trigonometric polynomial partial sums as the number of terms n \u2192 \u221e."
+  },
+  {
+    "prompt": "Find the Fourier series of the square wave f(x) = -1 for -\u03c0 < x < 0, and f(x) = 1 for 0 < x < \u03c0:",
+    "options": [
+      "(4/\u03c0) \u2211_{k=1}^\u221e [sin((2k - 1)x) / (2k - 1)] = (4/\u03c0)[sin x + (sin 3x)/3 + (sin 5x)/5 + ...]",
+      "(2/\u03c0) \u2211_{n=1}^\u221e [sin(nx) / n]",
+      "(4/\u03c0) \u2211_{k=1}^\u221e [cos((2k - 1)x) / (2k - 1)]",
+      "\u2211_{n=1}^\u221e [(-1)\u207f sin(nx) / n]"
+    ],
+    "answer": "A",
+    "explanation": "f(x) is odd, so a\u2099 = 0. b\u2099 = (2/\u03c0) \u222b\u2080^\u03c0 (1) sin(nx) dx = (2/(n\u03c0)) [1 - cos(n\u03c0)]. For even n, b\u2099 = 0; for odd n = 2k-1, b\u2099 = 4/(n\u03c0)."
+  },
+  {
+    "prompt": "Evaluating the square wave Fourier series at x = \u03c0/2 gives the famous Leibniz formula for \u03c0:",
+    "options": [
+      "1 + 1/4 + 1/9 + 1/16 + ... = \u03c0\u00b2 / 6",
+      "1 - 1/3 + 1/5 - 1/7 + ... = \u03c0 / 4",
+      "1 - 1/2 + 1/3 - 1/4 + ... = ln 2",
+      "1 + 1/3\u00b2 + 1/5\u00b2 + ... = \u03c0\u00b2 / 8"
+    ],
+    "answer": "B",
+    "explanation": "At x = \u03c0/2, f(\u03c0/2) = 1. (4/\u03c0)[sin(\u03c0/2) + (1/3)sin(3\u03c0/2) + (1/5)sin(5\u03c0/2) + ...] = (4/\u03c0)[1 - 1/3 + 1/5 - 1/7 + ...] = 1 \u21d2 1 - 1/3 + 1/5 - 1/7 + ... = \u03c0/4."
+  },
+  {
+    "prompt": "The Fourier series of f(x) = x on (-\u03c0, \u03c0) is:",
+    "options": [
+      "2 \u2211_{n=1}^\u221e [cos(nx) / n]",
+      "\u2211_{n=1}^\u221e [sin(nx) / n]",
+      "2 \u2211_{n=1}^\u221e [ (-1)\u207f\u207a\u00b9 sin(nx) / n ] = 2[sin x - (sin 2x)/2 + (sin 3x)/3 - ...]",
+      "\u03c0/2 - (4/\u03c0) \u2211 [cos((2k-1)x)/(2k-1)\u00b2]"
+    ],
+    "answer": "C",
+    "explanation": "f(x) = x is odd, so a\u2099 = 0. b\u2099 = (2/\u03c0) \u222b\u2080^\u03c0 x sin(nx) dx = (2/\u03c0) [ -x cos(nx)/n + sin(nx)/n\u00b2 ]\u2080^\u03c0 = (2/\u03c0)[ -\u03c0(-1)\u207f/n ] = 2(-1)\u207f\u207a\u00b9/n."
+  },
+  {
+    "prompt": "The Fourier series of f(x) = x\u00b2 on [-\u03c0, \u03c0] is:",
+    "options": [
+      "4 \u2211_{n=1}^\u221e [ (-1)\u207f cos(nx) / n\u00b2 ]",
+      "\u03c0\u00b2 / 3 - 4 \u2211_{n=1}^\u221e [ cos(nx) / n\u00b2 ]",
+      "\u03c0\u00b2 / 6 + 2 \u2211_{n=1}^\u221e [ (-1)\u207f cos(nx) / n ]",
+      "\u03c0\u00b2 / 3 + 4 \u2211_{n=1}^\u221e [ (-1)\u207f cos(nx) / n\u00b2 ]"
+    ],
+    "answer": "D",
+    "explanation": "f(x) = x\u00b2 is even, so b\u2099 = 0. a\u2080 = (2/\u03c0) \u222b\u2080^\u03c0 x\u00b2 dx = 2\u03c0\u00b2/3. a\u2099 = (2/\u03c0) \u222b\u2080^\u03c0 x\u00b2 cos(nx) dx = 4(-1)\u207f/n\u00b2. Series is a\u2080/2 + \u2211 a\u2099 cos(nx) = \u03c0\u00b2/3 + 4 \u2211 [(-1)\u207f cos(nx)/n\u00b2]."
+  },
+  {
+    "prompt": "Evaluating the Fourier series of f(x) = x\u00b2 at x = \u03c0 yields Basel's famous problem sum:",
+    "options": [
+      "\u2211_{n=1}^\u221e (1 / n\u00b2) = 1 + 1/4 + 1/9 + 1/16 + ... = \u03c0\u00b2 / 6",
+      "\u2211_{n=1}^\u221e (1 / n\u00b2) = \u03c0\u00b2 / 8",
+      "\u2211_{n=1}^\u221e (1 / n\u2074) = \u03c0\u2074 / 90",
+      "\u2211_{n=1}^\u221e (1 / n\u00b2) = \u03c0 / 4"
+    ],
+    "answer": "A",
+    "explanation": "At x = \u03c0, f(\u03c0) = \u03c0\u00b2: \u03c0\u00b2 = \u03c0\u00b2/3 + 4 \u2211 (-1)\u207f cos(n\u03c0)/n\u00b2 = \u03c0\u00b2/3 + 4 \u2211 (-1)\u207f(-1)\u207f/n\u00b2 = \u03c0\u00b2/3 + 4 \u2211 (1/n\u00b2). 2\u03c0\u00b2/3 = 4 \u2211 (1/n\u00b2) \u21d2 \u2211 1/n\u00b2 = \u03c0\u00b2/6."
+  },
+  {
+    "prompt": "Parseval's Identity for a Fourier series on [-L, L] relates the average squared function to the coefficients:",
+    "options": [
+      "(1/L) \u222b_{-L}^L [f(x)]\u00b2 dx = a\u2080\u00b2 + \u2211 (a\u2099\u00b2 + b\u2099\u00b2)",
+      "(1/L) \u222b_{-L}^L [f(x)]\u00b2 dx = a\u2080\u00b2/2 + \u2211_{n=1}^\u221e (a\u2099\u00b2 + b\u2099\u00b2)",
+      "\u222b_{-L}^L f(x) dx = \u2211 (a\u2099 + b\u2099)",
+      "(1/2L) \u222b [f(x)]\u00b2 dx = a\u2080\u00b2/4 + \u2211 (a\u2099\u00b2 + b\u2099\u00b2)"
+    ],
+    "answer": "B",
+    "explanation": "Parseval's identity is the infinite-dimensional Pythagorean theorem (energy conservation): (1/L) \u222b_{-L}^L [f(x)]\u00b2 dx = a\u2080\u00b2/2 + \u2211 (a\u2099\u00b2 + b\u2099\u00b2)."
+  },
+  {
+    "prompt": "Using Parseval's identity on f(x) = x on (-\u03c0, \u03c0) with b\u2099 = 2(-1)\u207f\u207a\u00b9/n allows evaluation of:",
+    "options": [
+      "\u2211_{n=1}^\u221e (1 / n\u00b3) = 1.202",
+      "\u2211_{n=1}^\u221e (1 / n\u2074) = \u03c0\u2074 / 90",
+      "\u2211_{n=1}^\u221e (1 / n\u00b2) = \u03c0\u00b2 / 6",
+      "\u2211_{n=1}^\u221e (1 / (2n - 1)\u00b2) = \u03c0\u00b2 / 8"
+    ],
+    "answer": "C",
+    "explanation": "(1/\u03c0) \u222b_{-\u03c0}^\u03c0 x\u00b2 dx = 2\u03c0\u00b2/3. By Parseval, this equals \u2211 b\u2099\u00b2 = \u2211 4/n\u00b2 = 4 \u2211 (1/n\u00b2). Thus 4 \u2211 1/n\u00b2 = 2\u03c0\u00b2/3 \u21d2 \u2211 1/n\u00b2 = \u03c0\u00b2/6."
+  },
+  {
+    "prompt": "The half-range Fourier sine expansion of f(x) on [0, L] is obtained by:",
+    "options": [
+      "Integrating only from 0 to L/2",
+      "Taking the even periodic extension of f(x) with period 2L",
+      "Setting all terms except a\u2080 to zero",
+      "Taking the odd periodic extension of f(x) with period 2L"
+    ],
+    "answer": "D",
+    "explanation": "Extending f(x) as an odd function on [-L, L] eliminates all cosine terms, producing a pure Fourier sine series with b\u2099 = (2/L) \u222b\u2080^L f(x) sin(n\u03c0x/L) dx."
+  },
+  {
+    "prompt": "The half-range Fourier cosine expansion of f(x) on [0, L] has coefficients:",
+    "options": [
+      "a\u2080 = (2/L) \u222b\u2080^L f(x) dx, a\u2099 = (2/L) \u222b\u2080^L f(x) cos(n\u03c0 x/L) dx, and b\u2099 = 0",
+      "a\u2099 = (1/L) \u222b\u2080^L f(x) cos(n\u03c0 x/L) dx, and b\u2099 = 0",
+      "a\u2080 = 0, a\u2099 = (2/L) \u222b\u2080^L f(x) cos(n\u03c0 x/L) dx",
+      "b\u2099 = (2/L) \u222b\u2080^L f(x) sin(n\u03c0 x/L) dx"
+    ],
+    "answer": "A",
+    "explanation": "Extending f(x) as an even function on [-L, L] eliminates all sine terms, giving a pure cosine series with a\u2099 = (2/L) \u222b\u2080^L f(x) cos(n\u03c0x/L) dx."
+  },
+  {
+    "prompt": "The complex exponential form of the Fourier series of period 2L is:",
+    "options": [
+      "f(x) ~ \u2211_{n=0}^\u221e c\u2099 e^(i n\u03c0 x / L)",
+      "f(x) ~ \u2211_{n=-\u221e}^\u221e c\u2099 e^(i n\u03c0 x / L), where c\u2099 = (1/2L) \u222b_{-L}^L f(x) e^(-i n\u03c0 x / L) dx",
+      "f(x) ~ \u2211_{n=-\u221e}^\u221e c\u2099 e^(-i n\u03c0 x / L)",
+      "f(x) ~ (1/2L) \u2211 c\u2099 cos(n\u03c0 x / L)"
+    ],
+    "answer": "B",
+    "explanation": "Euler's formula unifies cosines and sines into bilateral complex exponentials c\u2099 e^(in\u03c0x/L) with c\u2099 = (1/(2L)) \u222b_{-L}^L f(x) e^(-in\u03c0x/L) dx."
+  },
+  {
+    "prompt": "The complex Fourier coefficients c\u2099 are related to real coefficients a\u2099 and b\u2099 by:",
+    "options": [
+      "c\u2099 = (a\u2099 + b\u2099)/2",
+      "c\u2099 = a\u2099 + i b\u2099",
+      "c\u2080 = a\u2080/2, c\u2099 = (a\u2099 - i b\u2099)/2 for n > 0, and c\u208b\u2099 = (a\u2099 + i b\u2099)/2",
+      "c\u2099 = a\u2099 - b\u2099"
+    ],
+    "answer": "C",
+    "explanation": "cos \u03b8 = (e^(i\u03b8)+e^(-i\u03b8))/2 and sin \u03b8 = (e^(i\u03b8)-e^(-i\u03b8))/(2i). Grouping yields c\u2080 = a\u2080/2 and c\u2099 = (a\u2099 - i b\u2099)/2."
+  },
+  {
+    "prompt": "In heat diffusion and wave equations on a rod of length L with fixed zero temperature at ends (u(0,t)=u(L,t)=0), which series is naturally selected?",
+    "options": [
+      "Taylor series",
+      "Fourier cosine series",
+      "Full exponential Fourier series",
+      "Fourier sine series (satisfies boundary conditions sin(0) = sin(n\u03c0) = 0)"
+    ],
+    "answer": "D",
+    "explanation": "The Dirichlet boundary conditions u(0, t) = u(L, t) = 0 force all basis functions to vanish at x = 0 and x = L, which is identically satisfied by sin(n\u03c0x/L)."
+  }
+];
+
