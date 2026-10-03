@@ -214,7 +214,7 @@ export const COURSES = [
         path: "/numerical-methods/1",
         meta: "2 parts · 20 MCQs",
         icon: "🧮",
-        logo: <span className="math-logo">x_{n+1} = x_n - f/f' &amp; S_n</span>,
+        logo: <span className="math-logo">xₙ₊₁ = xₙ − f/f' &amp; Sₙ</span>,
       },
       {
         title: "Improper Integrals — Advanced Tests",
@@ -232,7 +232,7 @@ export const COURSES = [
         path: "/complex-numbers/1",
         meta: "2 parts · 20 MCQs",
         icon: "ℂ",
-        logo: <span className="math-logo">e^{iθ} &amp; (cosθ+isinθ)ⁿ</span>,
+        logo: <span className="math-logo">e^(iθ) &amp; (cosθ+isinθ)ⁿ</span>,
       },
       {
         title: "Hyperbolic Functions & Inverses",
@@ -250,7 +250,7 @@ export const COURSES = [
         path: "/laplace-transforms/1",
         meta: "2 parts · 20 MCQs",
         icon: "ℒ",
-        logo: <span className="math-logo">ℒ&#123;f(t)&#125; = ∫e^{-st}f(t)dt</span>,
+        logo: <span className="math-logo">ℒ&#123;f(t)&#125; = ∫e^(-st)f(t)dt</span>,
       },
       {
         title: "Fourier Series",

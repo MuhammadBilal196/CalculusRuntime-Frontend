@@ -3,7 +3,7 @@ import StudyGuideShell from "../courses/StudyGuideShell";
 import "../multivariableCalculus/PartialDerivativesGuide.css";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { useProgress } from "../../context/ProgressContext";
-import { TheoryBox, PracticalTheory, RealLifeUse, ProcedureBox, CertificateExample } from "./CalcBlocks";
+import { TheoryBox, RealLifeUse, ProcedureBox, CertificateExample } from "./CalcBlocks";
 import { CALC_B_SOLIDS_REVOLUTION_QUIZ } from "../../data/calcAgDev3Quizzes";
 
 function Divider() {

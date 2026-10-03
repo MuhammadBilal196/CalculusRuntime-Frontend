@@ -1,4 +1,9 @@
-/**\n * Developer 3: Calculus & Analytical Geometry Topic Checkpoint Quizzes\n * 20 MCQs per topic with 80% passing threshold.\n */\n\nexport const CALC_A_SPACE_CURVES_QUIZ = [
+/**
+ * Developer 3: Calculus & Analytical Geometry Topic Checkpoint Quizzes
+ * 20 MCQs per topic with 80% passing threshold.
+ */
+
+export const CALC_A_SPACE_CURVES_QUIZ = [
   {
     "prompt": "For a smooth curve r(t), the unit tangent vector T(t) is defined as:",
     "options": [
