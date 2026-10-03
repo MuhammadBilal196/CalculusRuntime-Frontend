@@ -154,6 +154,114 @@ export const COURSES = [
         ),
       },
       {
+        title: "Space Curves (Frenet-Serret)",
+        description:
+          "Arc length parameterization, TNB moving trihedron, curvature, torsion, and osculating geometry.",
+        path: "/space-curves/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🌀",
+        logo: <span className="math-logo">T, N, B &amp; κ, τ</span>,
+      },
+      {
+        title: "Vector-Valued Functions & Motion",
+        description:
+          "Kinematics in ℝ³, velocity, speed, tangential/normal acceleration components, and central orbital forces.",
+        path: "/vector-motion/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🚀",
+        logo: <span className="math-logo">r'(t), a_T T + a_N N</span>,
+      },
+      {
+        title: "Parametric Surfaces",
+        description:
+          "Surface coordinate grids, tangent planes, normal fields, differential surface area, and ruled minimal manifolds.",
+        path: "/parametric-surfaces/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🌐",
+        logo: <span className="math-logo">r_u × r_v &amp; dS</span>,
+      },
+      {
+        title: "Polar Coordinate Calculus",
+        description:
+          "Polar tangents, area bounded by cardioids and rose petals, polar arc length, and curvature.",
+        path: "/polar-calculus/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🎯",
+        logo: <span className="math-logo">r = f(θ) &amp; ½∫r²dθ</span>,
+      },
+      {
+        title: "Solids of Revolution",
+        description:
+          "Disk, washer, and cylindrical shells methods, rotations about arbitrary axes, and Pappus's Centroid Theorem.",
+        path: "/solids-revolution/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🏺",
+        logo: <span className="math-logo">π∫R²dx &amp; 2π∫r h dx</span>,
+      },
+      {
+        title: "Volume by Cross-Sections",
+        description:
+          "Non-revolution volume slicing with square, triangular, and semicircular profiles, wedges, and bicylinders.",
+        path: "/volume-cross-sections/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "📦",
+        logo: <span className="math-logo">V = ∫ A(x) dx</span>,
+      },
+      {
+        title: "Numerical Methods",
+        description:
+          "Newton-Raphson quadratic root convergence, Trapezoidal Rule, Simpson's 1/3 Rule, and Romberg extrapolation.",
+        path: "/numerical-methods/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🧮",
+        logo: <span className="math-logo">xₙ₊₁ = xₙ − f/f' &amp; Sₙ</span>,
+      },
+      {
+        title: "Improper Integrals — Advanced Tests",
+        description:
+          "Infinite horizons, singular asymptotes, Direct/Limit comparison, Cauchy Principal Value, and Gamma/Beta functions.",
+        path: "/improper-integrals-advanced/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "♾️",
+        logo: <span className="math-logo">P.V. ∫ &amp; Γ(z), B(p,q)</span>,
+      },
+      {
+        title: "Complex Numbers & De Moivre",
+        description:
+          "Polar Euler representation, De Moivre's theorem, n-th roots of unity, and multiple-angle trigonometric expansions.",
+        path: "/complex-numbers/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "ℂ",
+        logo: <span className="math-logo">e^(iθ) &amp; (cosθ+isinθ)ⁿ</span>,
+      },
+      {
+        title: "Hyperbolic Functions & Inverses",
+        description:
+          "Hyperbolic identities, logarithmic inverse expressions, standard radical integrals, and catenary cable geometry.",
+        path: "/hyperbolic-functions/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "〰️",
+        logo: <span className="math-logo">cosh²x - sinh²x = 1</span>,
+      },
+      {
+        title: "Laplace Transforms",
+        description:
+          "Exponential kernel mappings, frequency/time shifting, derivative transforms, convolutions, and ODE solutions.",
+        path: "/laplace-transforms/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "ℒ",
+        logo: <span className="math-logo">ℒ&#123;f(t)&#125; = ∫e^(-st)f(t)dt</span>,
+      },
+      {
+        title: "Fourier Series",
+        description:
+          "Periodic function decomposition, Euler-Fourier coefficients, half-range cosine/sine series, and Parseval's identity.",
+        path: "/fourier-series/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "📈",
+        logo: <span className="math-logo">½a₀ + ∑(aₙcos + bₙsin)</span>,
+      },
+      {
         title: "Analytic & 3D Vector Lab",
         description:
           "Interactive laboratory for 2D conic rotation of axes, polar conics, scalar triple product, and skew line distance.",
@@ -209,11 +317,11 @@ export const COURSES = [
       {
         title: "Certification Quiz",
         description:
-          "60 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+          "90 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/calculus-analytical-geometry",
-        meta: "60 questions · 80% to pass",
+        meta: "90 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 60 MCQs · 80%</span>,
+        logo: <span className="math-logo">✓ 90 MCQs · 80%</span>,
       },
     ],
   },

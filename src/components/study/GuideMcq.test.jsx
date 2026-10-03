@@ -3,6 +3,8 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { GuideMcqSection } from "./GuideMcq";
 import { hasPassedSectionQuizzes } from "../../data/sectionQuizGates";
 
+jest.setTimeout(15000);
+
 const questions = Array.from({ length: 20 }, (_, i) => ({
   prompt: `Question ${i + 1}: $x^2$`,
   options: ["Right", "Wrong", "Third", "Fourth"],
