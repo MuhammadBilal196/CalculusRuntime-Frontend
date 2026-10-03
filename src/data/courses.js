@@ -317,11 +317,11 @@ export const COURSES = [
       {
         title: "Certification Quiz",
         description:
-          "60 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+          "90 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/calculus-analytical-geometry",
-        meta: "60 questions · 80% to pass",
+        meta: "90 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 60 MCQs · 80%</span>,
+        logo: <span className="math-logo">✓ 90 MCQs · 80%</span>,
       },
     ],
   },
