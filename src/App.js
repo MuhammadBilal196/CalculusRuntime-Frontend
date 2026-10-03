@@ -103,6 +103,31 @@ import {
   RegressionPart1,
   RegressionPart2,
 } from "./pages/probabilityStatistics/PsParts";
+import BayesianInferencePart1 from "./pages/probabilityStatistics/BayesianInferencePart1";
+import BayesianInferencePart2 from "./pages/probabilityStatistics/BayesianInferencePart2";
+import MaximumLikelihoodPart1 from "./pages/probabilityStatistics/MaximumLikelihoodPart1";
+import MaximumLikelihoodPart2 from "./pages/probabilityStatistics/MaximumLikelihoodPart2";
+import ConfidenceIntervalsPart1 from "./pages/probabilityStatistics/ConfidenceIntervalsPart1";
+import ConfidenceIntervalsPart2 from "./pages/probabilityStatistics/ConfidenceIntervalsPart2";
+import MomentGeneratingFunctionsPart1 from "./pages/probabilityStatistics/MomentGeneratingFunctionsPart1";
+import MomentGeneratingFunctionsPart2 from "./pages/probabilityStatistics/MomentGeneratingFunctionsPart2";
+import AnovaPart1 from "./pages/probabilityStatistics/AnovaPart1";
+import AnovaPart2 from "./pages/probabilityStatistics/AnovaPart2";
+import ChiSquareTestsPart1 from "./pages/probabilityStatistics/ChiSquareTestsPart1";
+import ChiSquareTestsPart2 from "./pages/probabilityStatistics/ChiSquareTestsPart2";
+import NonparametricTestsPart1 from "./pages/probabilityStatistics/NonparametricTestsPart1";
+import NonparametricTestsPart2 from "./pages/probabilityStatistics/NonparametricTestsPart2";
+import MultipleLinearRegressionPart1 from "./pages/probabilityStatistics/MultipleLinearRegressionPart1";
+import MultipleLinearRegressionPart2 from "./pages/probabilityStatistics/MultipleLinearRegressionPart2";
+import JointMarginalDistributionsPart1 from "./pages/probabilityStatistics/JointMarginalDistributionsPart1";
+import JointMarginalDistributionsPart2 from "./pages/probabilityStatistics/JointMarginalDistributionsPart2";
+import MultivariateNormalPart1 from "./pages/probabilityStatistics/MultivariateNormalPart1";
+import MultivariateNormalPart2 from "./pages/probabilityStatistics/MultivariateNormalPart2";
+import StochasticProcessesPart1 from "./pages/probabilityStatistics/StochasticProcessesPart1";
+import StochasticProcessesPart2 from "./pages/probabilityStatistics/StochasticProcessesPart2";
+import CentralLimitTheoremPart1 from "./pages/probabilityStatistics/CentralLimitTheoremPart1";
+import CentralLimitTheoremPart2 from "./pages/probabilityStatistics/CentralLimitTheoremPart2";
+
 
 import {
   DiffPart1,
@@ -762,6 +787,44 @@ function App() {
                   element={<Layout body={<RegressionPart2 />} />}
                 />
 
+
+                {/* Dev4 PS new modules */}
+                <Route path="/probability-statistics/bayesian-inference" element={<Navigate to="/probability-statistics/bayesian-inference/1" replace />} />
+                <Route path="/probability-statistics/bayesian-inference/1" element={<Layout body={<BayesianInferencePart1 />} />} />
+                <Route path="/probability-statistics/bayesian-inference/2" element={<Layout body={<BayesianInferencePart2 />} />} />
+                <Route path="/probability-statistics/maximum-likelihood" element={<Navigate to="/probability-statistics/maximum-likelihood/1" replace />} />
+                <Route path="/probability-statistics/maximum-likelihood/1" element={<Layout body={<MaximumLikelihoodPart1 />} />} />
+                <Route path="/probability-statistics/maximum-likelihood/2" element={<Layout body={<MaximumLikelihoodPart2 />} />} />
+                <Route path="/probability-statistics/confidence-intervals" element={<Navigate to="/probability-statistics/confidence-intervals/1" replace />} />
+                <Route path="/probability-statistics/confidence-intervals/1" element={<Layout body={<ConfidenceIntervalsPart1 />} />} />
+                <Route path="/probability-statistics/confidence-intervals/2" element={<Layout body={<ConfidenceIntervalsPart2 />} />} />
+                <Route path="/probability-statistics/moment-generating-functions" element={<Navigate to="/probability-statistics/moment-generating-functions/1" replace />} />
+                <Route path="/probability-statistics/moment-generating-functions/1" element={<Layout body={<MomentGeneratingFunctionsPart1 />} />} />
+                <Route path="/probability-statistics/moment-generating-functions/2" element={<Layout body={<MomentGeneratingFunctionsPart2 />} />} />
+                <Route path="/probability-statistics/anova" element={<Navigate to="/probability-statistics/anova/1" replace />} />
+                <Route path="/probability-statistics/anova/1" element={<Layout body={<AnovaPart1 />} />} />
+                <Route path="/probability-statistics/anova/2" element={<Layout body={<AnovaPart2 />} />} />
+                <Route path="/probability-statistics/chi-square-tests" element={<Navigate to="/probability-statistics/chi-square-tests/1" replace />} />
+                <Route path="/probability-statistics/chi-square-tests/1" element={<Layout body={<ChiSquareTestsPart1 />} />} />
+                <Route path="/probability-statistics/chi-square-tests/2" element={<Layout body={<ChiSquareTestsPart2 />} />} />
+                <Route path="/probability-statistics/nonparametric-tests" element={<Navigate to="/probability-statistics/nonparametric-tests/1" replace />} />
+                <Route path="/probability-statistics/nonparametric-tests/1" element={<Layout body={<NonparametricTestsPart1 />} />} />
+                <Route path="/probability-statistics/nonparametric-tests/2" element={<Layout body={<NonparametricTestsPart2 />} />} />
+                <Route path="/probability-statistics/multiple-linear-regression" element={<Navigate to="/probability-statistics/multiple-linear-regression/1" replace />} />
+                <Route path="/probability-statistics/multiple-linear-regression/1" element={<Layout body={<MultipleLinearRegressionPart1 />} />} />
+                <Route path="/probability-statistics/multiple-linear-regression/2" element={<Layout body={<MultipleLinearRegressionPart2 />} />} />
+                <Route path="/probability-statistics/joint-marginal-distributions" element={<Navigate to="/probability-statistics/joint-marginal-distributions/1" replace />} />
+                <Route path="/probability-statistics/joint-marginal-distributions/1" element={<Layout body={<JointMarginalDistributionsPart1 />} />} />
+                <Route path="/probability-statistics/joint-marginal-distributions/2" element={<Layout body={<JointMarginalDistributionsPart2 />} />} />
+                <Route path="/probability-statistics/multivariate-normal" element={<Navigate to="/probability-statistics/multivariate-normal/1" replace />} />
+                <Route path="/probability-statistics/multivariate-normal/1" element={<Layout body={<MultivariateNormalPart1 />} />} />
+                <Route path="/probability-statistics/multivariate-normal/2" element={<Layout body={<MultivariateNormalPart2 />} />} />
+                <Route path="/probability-statistics/stochastic-processes" element={<Navigate to="/probability-statistics/stochastic-processes/1" replace />} />
+                <Route path="/probability-statistics/stochastic-processes/1" element={<Layout body={<StochasticProcessesPart1 />} />} />
+                <Route path="/probability-statistics/stochastic-processes/2" element={<Layout body={<StochasticProcessesPart2 />} />} />
+                <Route path="/probability-statistics/central-limit-theorem" element={<Navigate to="/probability-statistics/central-limit-theorem/1" replace />} />
+                <Route path="/probability-statistics/central-limit-theorem/1" element={<Layout body={<CentralLimitTheoremPart1 />} />} />
+                <Route path="/probability-statistics/central-limit-theorem/2" element={<Layout body={<CentralLimitTheoremPart2 />} />} />
                 {/* Tools */}
                 <Route
                   path="/test"
