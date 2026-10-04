@@ -71,6 +71,7 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "flux-integrals-general-surfaces-2": ["flux-integrals-general-surfaces"],
   "hessian-optimization": ["hessian-optimization"],
   "kkt-conditions": ["kkt-conditions"],
+  "global-extrema": ["global-extrema"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
