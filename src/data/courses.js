@@ -497,6 +497,15 @@ export const COURSES = [
         icon: "J",
         logo: <span className="math-logo">∂(x,y) / ∂(u,v)</span>,
       },
+      {
+        title: "Constrained & Unconstrained Optimization",
+        description:
+          "The Hessian Matrix & Optimization, Inequality Constraints (KKT Conditions), Global Extrema on Bounded Domains, and Gradient Descent & Numerical Optimization.",
+        path: "/constrained-unconstrained-optimization/1",
+        meta: "4 topics · 20-question checkpoint per topic",
+        icon: "H",
+        logo: <span className="math-logo">H = ∇²f</span>,
+      },
 
       {
         title: "Certification Quiz",
