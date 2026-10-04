@@ -72,6 +72,7 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "hessian-optimization": ["hessian-optimization"],
   "kkt-conditions": ["kkt-conditions"],
   "global-extrema": ["global-extrema"],
+  "gradient-descent": ["gradient-descent"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
