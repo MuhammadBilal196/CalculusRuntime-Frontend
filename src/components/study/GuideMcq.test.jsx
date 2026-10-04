@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { GuideMcqSection } from "./GuideMcq";
-import { hasPassedSectionQuizzes } from "../../data/sectionQuizGates";
+import { SECTION_GUIDE_QUIZ_KEYS, getSectionQuizGateStatus, hasPassedSectionQuizzes } from "../../data/sectionQuizGates";
 
 jest.setTimeout(15000);
 
@@ -127,4 +127,67 @@ test("assessed checkpoints ignore legacy stored mastery scores", async () => {
   await waitFor(() => expect(saved).toHaveBeenCalledWith(0, 2));
   expect(localStorage.getItem("fresh-score")).toBe("20");
   expect(localStorage.getItem("fresh-unlocked")).toBe("19");
+});
+
+
+test("a rejected result save can retry the same score without answering again", async () => {
+  const saved = jest.fn().mockRejectedValueOnce(new Error("offline")).mockResolvedValueOnce(undefined);
+  render(<GuideMcqSection id="save-retry" scoreId="save-retry" questions={questions.slice(0, 1)} onComplete={saved} />);
+  fireEvent.click(screen.getByRole("button", { name: "A Right" }));
+  fireEvent.click(screen.getByRole("button", { name: "Submit Answer" }));
+  expect(await screen.findByRole("alert")).toHaveTextContent("Your result could not be saved");
+  expect(screen.getByRole("status")).toHaveTextContent("Attempt complete: 1/1 (100%)");
+  fireEvent.click(screen.getByRole("button", { name: "Save result again" }));
+  await waitFor(() => expect(saved).toHaveBeenCalledTimes(2));
+  expect(saved.mock.calls).toEqual([[1, 1], [1, 1]]);
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "A Right" })).toBeDisabled();
+});
+
+test("retaking after a save failure clears the error, answers and navigation locks", async () => {
+  const saved = jest.fn().mockRejectedValueOnce(new Error("offline")).mockResolvedValueOnce(undefined);
+  const { container } = render(<GuideMcqSection id="reset" scoreId="reset" questions={questions.slice(0, 2)} onComplete={saved} />);
+  for (let index = 0; index < 2; index += 1) {
+    fireEvent.click(screen.getByRole("button", { name: "A Right" }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit Answer" }));
+    if (index === 0) fireEvent.click(screen.getByRole("button", { name: /NEXT/ }));
+  }
+  await screen.findByRole("alert");
+  fireEvent.click(screen.getByRole("button", { name: "Retake checkpoint" }));
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  expect(screen.queryByRole("status")).not.toBeInTheDocument();
+  expect(screen.getByText("Question 1 / 2")).toBeInTheDocument();
+  expect(container.querySelector(".la-quiz-score")).toHaveTextContent("Score 0 / 2");
+  expect(screen.getByRole("button", { name: "Submit Answer" })).toBeDisabled();
+  expect(screen.getByRole("button", { name: "Go to question 2" })).toBeDisabled();
+  for (let index = 0; index < 2; index += 1) {
+    fireEvent.click(screen.getByRole("button", { name: "B Wrong" }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit Answer" }));
+    if (index === 0) {
+      expect(saved).toHaveBeenCalledTimes(1);
+      fireEvent.click(screen.getByRole("button", { name: /NEXT/ }));
+    }
+  }
+  await waitFor(() => expect(saved).toHaveBeenCalledTimes(2));
+  expect(saved.mock.calls).toEqual([[2, 2], [0, 2]]);
+  expect(screen.getByRole("status")).toHaveTextContent("Attempt complete: 0/2 (0%)");
+});
+
+test("every registered section gate requires all its checkpoints to reach 80 percent", () => {
+  const entries = Object.entries(SECTION_GUIDE_QUIZ_KEYS);
+  expect(entries.length).toBeGreaterThan(0);
+  for (const [section, keys] of entries) {
+    const passed = Object.fromEntries(keys.map((key) => [`guide-mcq-${key}`, { score: 16, total: 20 }]));
+    expect({ section, passed: hasPassedSectionQuizzes(section, passed) }).toEqual({ section, passed: true });
+    expect(getSectionQuizGateStatus(section, passed)).toEqual({ locked: false, required: keys, missing: [], failed: [] });
+    for (const key of keys) {
+      const incomplete = { ...passed };
+      delete incomplete[`guide-mcq-${key}`];
+      expect({ section, key, passed: hasPassedSectionQuizzes(section, incomplete) }).toEqual({ section, key, passed: false });
+      expect(getSectionQuizGateStatus(section, incomplete)).toEqual({ locked: true, required: keys, missing: [key], failed: [] });
+      const failed = { ...passed, [`guide-mcq-${key}`]: { score: 15, total: 20 } };
+      expect(hasPassedSectionQuizzes(section, failed)).toBe(false);
+      expect(getSectionQuizGateStatus(section, failed)).toEqual({ locked: true, required: keys, missing: [], failed: [{ key, pct: 75 }] });
+    }
+  }
 });
