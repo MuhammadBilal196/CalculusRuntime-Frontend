@@ -76,3 +76,55 @@ test("existing callers without onComplete retain their stored-score behavior", (
   expect(localStorage.getItem("legacy-score-unlocked")).toBe("1");
   expect(screen.queryByRole("button", { name: "Retake checkpoint" })).toBeNull();
 });
+
+
+test("an unanswered checkpoint cannot submit, advance or jump ahead", () => {
+  const saved = jest.fn();
+  render(<GuideMcqSection id="unanswered" scoreId="unanswered" questions={questions.slice(0, 2)} onComplete={saved} />);
+  const submit = screen.getByRole("button", { name: "Submit Answer" });
+  expect(submit).toBeDisabled();
+  expect(screen.getByRole("button", { name: /NEXT/ })).toBeDisabled();
+  expect(screen.getByRole("button", { name: "Go to question 2" })).toBeDisabled();
+  fireEvent.click(submit);
+  fireEvent.click(screen.getByRole("button", { name: "Go to question 2" }));
+  expect(screen.getByText("Question 1 / 2")).toBeInTheDocument();
+  expect(screen.queryByText("Correct!")).not.toBeInTheDocument();
+  expect(saved).not.toHaveBeenCalled();
+});
+
+test("all four answer slots score correctly and submitted choices stay locked", async () => {
+  const saved = jest.fn();
+  const bank = "ABCD".split("").map((answer, index) => ({ ...questions[index], answer }));
+  render(<GuideMcqSection id="slots" scoreId="slots" questions={bank} onComplete={saved} />);
+  const labels = ["A Right", "B Wrong", "C Third", "D Fourth"];
+  for (let index = 0; index < 4; index += 1) {
+    fireEvent.click(screen.getByRole("button", { name: labels[(index + 1) % 4] }));
+    fireEvent.click(screen.getByRole("button", { name: labels[index] }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit Answer" }));
+    expect(screen.getByText("Correct!")).toBeInTheDocument();
+    labels.forEach((name) => expect(screen.getByRole("button", { name })).toBeDisabled());
+    if (index < 3) {
+      expect(saved).not.toHaveBeenCalled();
+      fireEvent.click(screen.getByRole("button", { name: /NEXT/ }));
+    }
+  }
+  await waitFor(() => expect(saved).toHaveBeenCalledWith(4, 4));
+  expect(saved).toHaveBeenCalledTimes(1);
+});
+
+test("assessed checkpoints ignore legacy stored mastery scores", async () => {
+  localStorage.setItem("fresh-score", "20");
+  localStorage.setItem("fresh-unlocked", "19");
+  const saved = jest.fn();
+  const { container } = render(<GuideMcqSection id="fresh" scoreId="fresh" questions={questions.slice(0, 2)} onComplete={saved} />);
+  expect(container.querySelector(".la-quiz-score")).toHaveTextContent("Score 0 / 2");
+  expect(screen.getByRole("button", { name: "Go to question 2" })).toBeDisabled();
+  for (let index = 0; index < 2; index += 1) {
+    fireEvent.click(screen.getByRole("button", { name: "B Wrong" }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit Answer" }));
+    if (index === 0) fireEvent.click(screen.getByRole("button", { name: /NEXT/ }));
+  }
+  await waitFor(() => expect(saved).toHaveBeenCalledWith(0, 2));
+  expect(localStorage.getItem("fresh-score")).toBe("20");
+  expect(localStorage.getItem("fresh-unlocked")).toBe("19");
+});
