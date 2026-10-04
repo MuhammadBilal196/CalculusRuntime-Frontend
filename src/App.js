@@ -41,6 +41,7 @@ import JacobiansGuide from "./pages/multivariableCalculus/JacobiansGuide";
 import CurvilinearCoordinatesGuide from "./pages/multivariableCalculus/CurvilinearCoordinatesGuide";
 import ParametrizedSurfaceAreaGuide from "./pages/multivariableCalculus/ParametrizedSurfaceAreaGuide";
 import FluxIntegralsGeneralSurfacesGuide from "./pages/multivariableCalculus/FluxIntegralsGeneralSurfacesGuide";
+import HessianOptimizationGuide from "./pages/multivariableCalculus/HessianOptimizationGuide";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -385,6 +386,20 @@ function App() {
                   element={
                     <Layout body={<FluxIntegralsGeneralSurfacesGuide />} />
                   }
+                />
+                <Route
+                  path="/constrained-unconstrained-optimization"
+                  element={
+                    <Navigate
+                      to="/constrained-unconstrained-optimization/1"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/constrained-unconstrained-optimization/1"
+                  element={<Layout body={<HessianOptimizationGuide />} />}
                 />
                 {/* Taylor Series */}
                 <Route
