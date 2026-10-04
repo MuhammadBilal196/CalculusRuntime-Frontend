@@ -1,3 +1,5 @@
+import { LA_MODULES, getLaModuleTopics } from "./laModules";
+
 /**
  * Guide MCQ keys (data-section / LaMcq `section`) required before
  * "Mark as complete" unlocks for a progress sectionId.
@@ -32,6 +34,32 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
     "taylor-engineering",
     "taylor-challenge",
   ],
+
+  // Developer 3 — Calculus & Analytical Geometry Modules A, B, C
+  "space-curves-1": [],
+  "space-curves-2": ["space-curves-checkpoint"],
+  "vector-motion-1": [],
+  "vector-motion-2": ["vector-motion-checkpoint"],
+  "parametric-surfaces-1": [],
+  "parametric-surfaces-2": ["parametric-surfaces-checkpoint"],
+  "polar-calculus-1": [],
+  "polar-calculus-2": ["polar-calculus-checkpoint"],
+  "solids-revolution-1": [],
+  "solids-revolution-2": ["solids-revolution-checkpoint"],
+  "volume-cross-sections-1": [],
+  "volume-cross-sections-2": ["volume-cross-sections-checkpoint"],
+  "numerical-methods-1": [],
+  "numerical-methods-2": ["numerical-methods-checkpoint"],
+  "improper-integrals-1": [],
+  "improper-integrals-2": ["improper-integrals-checkpoint"],
+  "complex-numbers-1": [],
+  "complex-numbers-2": ["complex-numbers-checkpoint"],
+  "hyperbolic-functions-1": [],
+  "hyperbolic-functions-2": ["hyperbolic-functions-checkpoint"],
+  "laplace-transforms-1": [],
+  "laplace-transforms-2": ["laplace-transforms-checkpoint"],
+  "fourier-series-1": [],
+  "fourier-series-2": ["fourier-series-checkpoint"],
 
   // Multivariable Calculus
   "partial-1": ["141", "142", "143"],
@@ -68,6 +96,12 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "geo3d-2": ["geo-line3d", "geo-skew", "geo-quadric"],
 
   // Linear Algebra
+  ...Object.fromEntries(LA_MODULES.flatMap((module) =>
+    [1, 2].map((part) => [
+      `la-${module.id}-${part}`,
+      getLaModuleTopics(module, part).map((topic) => topic.quizKey),
+    ]),
+  )),
   "la-lineq-1": ["la-le-forms", "la-le-graph"],
   "la-lineq-2": ["la-le-sys", "la-le-solve"],
   "la-vectors-1": ["la-v-intro", "la-v-ops"],
@@ -89,6 +123,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "la-pca-2": ["la-pca-checkpoint"],
   "la-markov-1": [],
   "la-markov-2": ["la-markov-checkpoint"],
+  "la-linear-programming-1": [],
+  "la-linear-programming-2": ["la-linear-programming-checkpoint"],
 
   "la-complex-1": [],
   "la-complex-2": ["la-complex-checkpoint"],
@@ -113,6 +149,19 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "ps-hyp-2": ["ps-h-pval", "ps-h-errors"],
   "ps-reg-1": ["ps-r-corr", "ps-r-assoc"],
   "ps-reg-2": ["ps-r-fit", "ps-r-resid"],
+  // Dev4 Module A/B/C
+  "ps-a-bayes-1": [], "ps-a-bayes-2": ["ps-a-bayes-checkpoint"],
+  "ps-a-mle-1": [], "ps-a-mle-2": ["ps-a-mle-checkpoint"],
+  "ps-a-ci-1": [], "ps-a-ci-2": ["ps-a-ci-checkpoint"],
+  "ps-a-mgf-1": [], "ps-a-mgf-2": ["ps-a-mgf-checkpoint"],
+  "ps-b-anova-1": [], "ps-b-anova-2": ["ps-b-anova-checkpoint"],
+  "ps-b-chisq-1": [], "ps-b-chisq-2": ["ps-b-chisq-checkpoint"],
+  "ps-b-nonparam-1": [], "ps-b-nonparam-2": ["ps-b-nonparam-checkpoint"],
+  "ps-b-mlr-1": [], "ps-b-mlr-2": ["ps-b-mlr-checkpoint"],
+  "ps-c-joint-1": [], "ps-c-joint-2": ["ps-c-joint-checkpoint"],
+  "ps-c-mvn-1": [], "ps-c-mvn-2": ["ps-c-mvn-checkpoint"],
+  "ps-c-stoch-1": [], "ps-c-stoch-2": ["ps-c-stoch-checkpoint"],
+  "ps-c-clt-1": [], "ps-c-clt-2": ["ps-c-clt-checkpoint"],
 };
 
 export const SECTION_QUIZ_PASS_PERCENT = 80;

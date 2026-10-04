@@ -17,6 +17,7 @@ export default function LaTopicPart({
   nextPath,
   nextLabel,
   courseId,
+  guideProps,
 }) {
   const { recordVisit } = useProgress();
 
@@ -33,7 +34,7 @@ export default function LaTopicPart({
         </div>
         <BookmarkButton id={sectionId} title={title} path={path} />
       </div>
-      <Guide part={part} />
+      <Guide part={part} {...guideProps} />
       <SectionCompleteBar
         sectionId={sectionId}
         nextPath={nextPath}

@@ -1,3 +1,4 @@
+import { TextEncoder, TextDecoder } from "util";
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
@@ -5,6 +6,7 @@
 import "@testing-library/jest-dom";
 
 if (typeof window !== 'undefined') {
+  window.scrollTo = jest.fn();
   window.URL.createObjectURL = jest.fn(() => 'blob:test');
   window.URL.revokeObjectURL = jest.fn();
 
@@ -35,3 +37,7 @@ if (typeof window !== 'undefined') {
     clip: jest.fn(),
   }));
 }
+
+// React Router 7 requires encoding APIs missing from Jest's jsdom environment.
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;

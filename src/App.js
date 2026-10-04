@@ -80,28 +80,10 @@ import {
   SvdPart1,
   SvdPart2,
 } from "./pages/linearAlgebra/LaParts";
-import {
-  LUDecompositionPart1,
-  LUDecompositionPart2,
-  CholeskyDecompositionPart1,
-  CholeskyDecompositionPart2,
-  JordanNormalFormPart1,
-  JordanNormalFormPart2,
-  MatrixNormsPart1,
-  MatrixNormsPart2,
-  ComplexVectorSpacesPart1,
-  ComplexVectorSpacesPart2,
-  QuadraticFormsPart1,
-  QuadraticFormsPart2,
-  ChangeOfBasisPart1,
-  ChangeOfBasisPart2,
-  AffineTransformationsPart1,
-  AffineTransformationsPart2,
-  PrincipalComponentAnalysisPart1,
-  PrincipalComponentAnalysisPart2,
-  MarkovChainsPart1,
-  MarkovChainsPart2,
-} from "./pages/linearAlgebra";
+
+import LaModulePart from "./pages/linearAlgebra/LaModulePart";
+import { LA_MODULES, LA_TOPIC_REDIRECTS, LA_MODULE_REDIRECTS, getLaModulePath } from "./data/laModules";
+
 import MatrixSandbox from "./pages/linearAlgebra/MatrixSandbox";
 import LinearAlgebraOverview from "./pages/linearAlgebra/LinearAlgebraOverview";
 import CalculusOverview from "./pages/calculus/CalculusOverview";
@@ -122,6 +104,31 @@ import {
   RegressionPart1,
   RegressionPart2,
 } from "./pages/probabilityStatistics/PsParts";
+import BayesianInferencePart1 from "./pages/probabilityStatistics/BayesianInferencePart1";
+import BayesianInferencePart2 from "./pages/probabilityStatistics/BayesianInferencePart2";
+import MaximumLikelihoodPart1 from "./pages/probabilityStatistics/MaximumLikelihoodPart1";
+import MaximumLikelihoodPart2 from "./pages/probabilityStatistics/MaximumLikelihoodPart2";
+import ConfidenceIntervalsPart1 from "./pages/probabilityStatistics/ConfidenceIntervalsPart1";
+import ConfidenceIntervalsPart2 from "./pages/probabilityStatistics/ConfidenceIntervalsPart2";
+import MomentGeneratingFunctionsPart1 from "./pages/probabilityStatistics/MomentGeneratingFunctionsPart1";
+import MomentGeneratingFunctionsPart2 from "./pages/probabilityStatistics/MomentGeneratingFunctionsPart2";
+import AnovaPart1 from "./pages/probabilityStatistics/AnovaPart1";
+import AnovaPart2 from "./pages/probabilityStatistics/AnovaPart2";
+import ChiSquareTestsPart1 from "./pages/probabilityStatistics/ChiSquareTestsPart1";
+import ChiSquareTestsPart2 from "./pages/probabilityStatistics/ChiSquareTestsPart2";
+import NonparametricTestsPart1 from "./pages/probabilityStatistics/NonparametricTestsPart1";
+import NonparametricTestsPart2 from "./pages/probabilityStatistics/NonparametricTestsPart2";
+import MultipleLinearRegressionPart1 from "./pages/probabilityStatistics/MultipleLinearRegressionPart1";
+import MultipleLinearRegressionPart2 from "./pages/probabilityStatistics/MultipleLinearRegressionPart2";
+import JointMarginalDistributionsPart1 from "./pages/probabilityStatistics/JointMarginalDistributionsPart1";
+import JointMarginalDistributionsPart2 from "./pages/probabilityStatistics/JointMarginalDistributionsPart2";
+import MultivariateNormalPart1 from "./pages/probabilityStatistics/MultivariateNormalPart1";
+import MultivariateNormalPart2 from "./pages/probabilityStatistics/MultivariateNormalPart2";
+import StochasticProcessesPart1 from "./pages/probabilityStatistics/StochasticProcessesPart1";
+import StochasticProcessesPart2 from "./pages/probabilityStatistics/StochasticProcessesPart2";
+import CentralLimitTheoremPart1 from "./pages/probabilityStatistics/CentralLimitTheoremPart1";
+import CentralLimitTheoremPart2 from "./pages/probabilityStatistics/CentralLimitTheoremPart2";
+
 
 import {
   DiffPart1,
@@ -141,6 +148,32 @@ import {
   OdePart1,
   OdePart2,
 } from "./pages/calculus/CalcParts";
+import {
+  SpaceCurvesPart1,
+  SpaceCurvesPart2,
+  VectorMotionPart1,
+  VectorMotionPart2,
+  ParametricSurfacesPart1,
+  ParametricSurfacesPart2,
+  PolarCalculusPart1,
+  PolarCalculusPart2,
+  SolidsRevPart1,
+  SolidsRevPart2,
+  VolumeCrossPart1,
+  VolumeCrossPart2,
+  NumMethodsPart1,
+  NumMethodsPart2,
+  ImproperIntegralsPart1,
+  ImproperIntegralsPart2,
+  ComplexNumbersPart1,
+  ComplexNumbersPart2,
+  HyperbolicsPart1,
+  HyperbolicsPart2,
+  LaplacePart1,
+  LaplacePart2,
+  FourierPart1,
+  FourierPart2,
+} from "./pages/calculus/CalcDev3Parts";
 
 // three.js is large, so the 3D explorer loads in its own chunk only when visited.
 const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
@@ -243,6 +276,7 @@ function App() {
                   path="/courses/calculus-analytical-geometry/overview"
                   element={<Layout body={<CalculusOverview />} />}
                 />
+
                 {/* Space Curves & Advanced Multivariable Mappings */}
                 <Route
                   path="/space-curves"
@@ -342,6 +376,7 @@ function App() {
                   path="/multiple-integrals/2"
                   element={<Layout body={<IntegralsPart2 />} />}
                 />
+
                 {/* <Route
                   path="/jacobians-change-of-variables"
                   element={
@@ -377,7 +412,10 @@ function App() {
                 <Route
                   path="/flux-integrals-general-surfaces"
                   element={
-                    <Navigate to="/flux-integrals-general-surfaces/2" replace />
+                    <Navigate
+                      to="/flux-integrals-general-surfaces/2"
+                      replace
+                    />
                   }
                 />
 
@@ -401,6 +439,7 @@ function App() {
                   path="/constrained-unconstrained-optimization/1"
                   element={<Layout body={<HessianOptimizationGuide />} />}
                 />
+
                 {/* Taylor Series */}
                 <Route
                   path="/taylor-series"
@@ -470,6 +509,57 @@ function App() {
                   path="/differential-equations/2"
                   element={<Layout body={<OdePart2 />} />}
                 />
+
+                {/* Developer 3 — Module A: Space Curves & Motion */}
+                <Route path="/space-curves" element={<Navigate to="/space-curves/1" replace />} />
+                <Route path="/space-curves/1" element={<Layout body={<SpaceCurvesPart1 />} />} />
+                <Route path="/space-curves/2" element={<Layout body={<SpaceCurvesPart2 />} />} />
+
+                <Route path="/vector-motion" element={<Navigate to="/vector-motion/1" replace />} />
+                <Route path="/vector-motion/1" element={<Layout body={<VectorMotionPart1 />} />} />
+                <Route path="/vector-motion/2" element={<Layout body={<VectorMotionPart2 />} />} />
+
+                <Route path="/parametric-surfaces" element={<Navigate to="/parametric-surfaces/1" replace />} />
+                <Route path="/parametric-surfaces/1" element={<Layout body={<ParametricSurfacesPart1 />} />} />
+                <Route path="/parametric-surfaces/2" element={<Layout body={<ParametricSurfacesPart2 />} />} />
+
+                <Route path="/polar-calculus" element={<Navigate to="/polar-calculus/1" replace />} />
+                <Route path="/polar-calculus/1" element={<Layout body={<PolarCalculusPart1 />} />} />
+                <Route path="/polar-calculus/2" element={<Layout body={<PolarCalculusPart2 />} />} />
+
+                {/* Developer 3 — Module B: Advanced Volume & Numerical Techniques */}
+                <Route path="/solids-revolution" element={<Navigate to="/solids-revolution/1" replace />} />
+                <Route path="/solids-revolution/1" element={<Layout body={<SolidsRevPart1 />} />} />
+                <Route path="/solids-revolution/2" element={<Layout body={<SolidsRevPart2 />} />} />
+
+                <Route path="/volume-cross-sections" element={<Navigate to="/volume-cross-sections/1" replace />} />
+                <Route path="/volume-cross-sections/1" element={<Layout body={<VolumeCrossPart1 />} />} />
+                <Route path="/volume-cross-sections/2" element={<Layout body={<VolumeCrossPart2 />} />} />
+
+                <Route path="/numerical-methods" element={<Navigate to="/numerical-methods/1" replace />} />
+                <Route path="/numerical-methods/1" element={<Layout body={<NumMethodsPart1 />} />} />
+                <Route path="/numerical-methods/2" element={<Layout body={<NumMethodsPart2 />} />} />
+
+                <Route path="/improper-integrals-advanced" element={<Navigate to="/improper-integrals-advanced/1" replace />} />
+                <Route path="/improper-integrals-advanced/1" element={<Layout body={<ImproperIntegralsPart1 />} />} />
+                <Route path="/improper-integrals-advanced/2" element={<Layout body={<ImproperIntegralsPart2 />} />} />
+
+                {/* Developer 3 — Module C: Complex Analysis & Transform Methods */}
+                <Route path="/complex-numbers" element={<Navigate to="/complex-numbers/1" replace />} />
+                <Route path="/complex-numbers/1" element={<Layout body={<ComplexNumbersPart1 />} />} />
+                <Route path="/complex-numbers/2" element={<Layout body={<ComplexNumbersPart2 />} />} />
+
+                <Route path="/hyperbolic-functions" element={<Navigate to="/hyperbolic-functions/1" replace />} />
+                <Route path="/hyperbolic-functions/1" element={<Layout body={<HyperbolicsPart1 />} />} />
+                <Route path="/hyperbolic-functions/2" element={<Layout body={<HyperbolicsPart2 />} />} />
+
+                <Route path="/laplace-transforms" element={<Navigate to="/laplace-transforms/1" replace />} />
+                <Route path="/laplace-transforms/1" element={<Layout body={<LaplacePart1 />} />} />
+                <Route path="/laplace-transforms/2" element={<Layout body={<LaplacePart2 />} />} />
+
+                <Route path="/fourier-series" element={<Navigate to="/fourier-series/1" replace />} />
+                <Route path="/fourier-series/1" element={<Layout body={<FourierPart1 />} />} />
+                <Route path="/fourier-series/2" element={<Layout body={<FourierPart2 />} />} />
 
                 <Route
                   path="/certificates"
@@ -560,7 +650,10 @@ function App() {
                 <Route
                   path="/linear-algebra/linear-equations"
                   element={
-                    <Navigate to="/linear-algebra/linear-equations/1" replace />
+                    <Navigate
+                      to="/linear-algebra/linear-equations/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -619,11 +712,15 @@ function App() {
                   path="/linear-algebra/eigen/2"
                   element={<Layout body={<EigenPart2 />} />}
                 />
+
                 {/* Linear Transformations */}
                 <Route
                   path="/linear-algebra/transformations"
                   element={
-                    <Navigate to="/linear-algebra/transformations/1" replace />
+                    <Navigate
+                      to="/linear-algebra/transformations/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -639,7 +736,10 @@ function App() {
                 <Route
                   path="/linear-algebra/orthogonality"
                   element={
-                    <Navigate to="/linear-algebra/orthogonality/1" replace />
+                    <Navigate
+                      to="/linear-algebra/orthogonality/1"
+                      replace
+                    />
                   }
                 />
                 <Route
@@ -650,6 +750,17 @@ function App() {
                   path="/linear-algebra/orthogonality/2"
                   element={<Layout body={<OrthoPart2 />} />}
                 />
+
+                {/* Curriculum modules: two parts, two complete topics in each. */}
+                {LA_MODULES.flatMap((module) => [
+                  <Route key={module.id} path={`/linear-algebra/${module.id}`} element={<Navigate to={getLaModulePath(module)} replace />} />,
+                  ...[1, 2].map((part) => (
+                    <Route key={`${module.id}-${part}`} path={getLaModulePath(module, part)} element={<Layout body={<LaModulePart moduleId={module.id} part={part} />} />} />
+                  )),
+                ])}
+                {[...LA_TOPIC_REDIRECTS, ...LA_MODULE_REDIRECTS].map(({ from, to }) => (
+                  <Route key={from} path={from} element={<Navigate to={to} replace />} />
+                ))}
 
                 {/* Singular Value Decomposition */}
                 <Route
@@ -768,6 +879,44 @@ function App() {
                   element={<Layout body={<RegressionPart2 />} />}
                 />
 
+
+                {/* Dev4 PS new modules */}
+                <Route path="/probability-statistics/bayesian-inference" element={<Navigate to="/probability-statistics/bayesian-inference/1" replace />} />
+                <Route path="/probability-statistics/bayesian-inference/1" element={<Layout body={<BayesianInferencePart1 />} />} />
+                <Route path="/probability-statistics/bayesian-inference/2" element={<Layout body={<BayesianInferencePart2 />} />} />
+                <Route path="/probability-statistics/maximum-likelihood" element={<Navigate to="/probability-statistics/maximum-likelihood/1" replace />} />
+                <Route path="/probability-statistics/maximum-likelihood/1" element={<Layout body={<MaximumLikelihoodPart1 />} />} />
+                <Route path="/probability-statistics/maximum-likelihood/2" element={<Layout body={<MaximumLikelihoodPart2 />} />} />
+                <Route path="/probability-statistics/confidence-intervals" element={<Navigate to="/probability-statistics/confidence-intervals/1" replace />} />
+                <Route path="/probability-statistics/confidence-intervals/1" element={<Layout body={<ConfidenceIntervalsPart1 />} />} />
+                <Route path="/probability-statistics/confidence-intervals/2" element={<Layout body={<ConfidenceIntervalsPart2 />} />} />
+                <Route path="/probability-statistics/moment-generating-functions" element={<Navigate to="/probability-statistics/moment-generating-functions/1" replace />} />
+                <Route path="/probability-statistics/moment-generating-functions/1" element={<Layout body={<MomentGeneratingFunctionsPart1 />} />} />
+                <Route path="/probability-statistics/moment-generating-functions/2" element={<Layout body={<MomentGeneratingFunctionsPart2 />} />} />
+                <Route path="/probability-statistics/anova" element={<Navigate to="/probability-statistics/anova/1" replace />} />
+                <Route path="/probability-statistics/anova/1" element={<Layout body={<AnovaPart1 />} />} />
+                <Route path="/probability-statistics/anova/2" element={<Layout body={<AnovaPart2 />} />} />
+                <Route path="/probability-statistics/chi-square-tests" element={<Navigate to="/probability-statistics/chi-square-tests/1" replace />} />
+                <Route path="/probability-statistics/chi-square-tests/1" element={<Layout body={<ChiSquareTestsPart1 />} />} />
+                <Route path="/probability-statistics/chi-square-tests/2" element={<Layout body={<ChiSquareTestsPart2 />} />} />
+                <Route path="/probability-statistics/nonparametric-tests" element={<Navigate to="/probability-statistics/nonparametric-tests/1" replace />} />
+                <Route path="/probability-statistics/nonparametric-tests/1" element={<Layout body={<NonparametricTestsPart1 />} />} />
+                <Route path="/probability-statistics/nonparametric-tests/2" element={<Layout body={<NonparametricTestsPart2 />} />} />
+                <Route path="/probability-statistics/multiple-linear-regression" element={<Navigate to="/probability-statistics/multiple-linear-regression/1" replace />} />
+                <Route path="/probability-statistics/multiple-linear-regression/1" element={<Layout body={<MultipleLinearRegressionPart1 />} />} />
+                <Route path="/probability-statistics/multiple-linear-regression/2" element={<Layout body={<MultipleLinearRegressionPart2 />} />} />
+                <Route path="/probability-statistics/joint-marginal-distributions" element={<Navigate to="/probability-statistics/joint-marginal-distributions/1" replace />} />
+                <Route path="/probability-statistics/joint-marginal-distributions/1" element={<Layout body={<JointMarginalDistributionsPart1 />} />} />
+                <Route path="/probability-statistics/joint-marginal-distributions/2" element={<Layout body={<JointMarginalDistributionsPart2 />} />} />
+                <Route path="/probability-statistics/multivariate-normal" element={<Navigate to="/probability-statistics/multivariate-normal/1" replace />} />
+                <Route path="/probability-statistics/multivariate-normal/1" element={<Layout body={<MultivariateNormalPart1 />} />} />
+                <Route path="/probability-statistics/multivariate-normal/2" element={<Layout body={<MultivariateNormalPart2 />} />} />
+                <Route path="/probability-statistics/stochastic-processes" element={<Navigate to="/probability-statistics/stochastic-processes/1" replace />} />
+                <Route path="/probability-statistics/stochastic-processes/1" element={<Layout body={<StochasticProcessesPart1 />} />} />
+                <Route path="/probability-statistics/stochastic-processes/2" element={<Layout body={<StochasticProcessesPart2 />} />} />
+                <Route path="/probability-statistics/central-limit-theorem" element={<Navigate to="/probability-statistics/central-limit-theorem/1" replace />} />
+                <Route path="/probability-statistics/central-limit-theorem/1" element={<Layout body={<CentralLimitTheoremPart1 />} />} />
+                <Route path="/probability-statistics/central-limit-theorem/2" element={<Layout body={<CentralLimitTheoremPart2 />} />} />
                 {/* Tools */}
                 <Route
                   path="/test"
@@ -784,6 +933,10 @@ function App() {
                 <Route
                   path="/analytic-vector-lab"
                   element={<Layout body={<AnalyticVectorLab />} />}
+                />
+                <Route
+                  path="/surface-explorer"
+                  element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading 3D view…" fullPage />}><SurfaceExplorer /></Suspense>} />}
                 />
                 <Route
                   path="/derivative-visualizer"

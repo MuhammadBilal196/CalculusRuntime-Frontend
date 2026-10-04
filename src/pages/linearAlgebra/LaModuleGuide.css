@@ -1,0 +1,32 @@
+.la-module-guide .la-module-topic {
+  scroll-margin-top: 8rem;
+  padding-top: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.la-module-guide .la-module-topic + .la-module-topic {
+  border-top: 2px solid var(--border-color, #64748b);
+}
+
+.la-module-guide .la-module-topic-header {
+  margin-bottom: 2rem;
+}
+
+.la-module-guide .la-module-topic-header h2 {
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.la-module-guide .la-module-topic-header a {
+  text-decoration: underline;
+}
+
+.la-module-guide .sidebar .sb-link {
+  white-space: normal;
+}
+
+.la-module-guide .ch-title {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  overflow-wrap: anywhere;
+}

@@ -1,3 +1,5 @@
+import { LA_MODULES, getLaModuleTopics } from "../data/laModules";
+
 /**
  * routeContext.js — Objective CB-5
  * Reads pathname + maps to topic; full URL is sent with every chat request.
@@ -98,6 +100,11 @@ export function getPageUrl() {
 }
 
 export function getTopicContext(pathname = getPageUrl()) {
+  const module = LA_MODULES.find((item) => pathname.split(/[?#]/)[0].startsWith(`/linear-algebra/${item.id}/`));
+  if (module) {
+    const part = pathname.split(/[?#]/)[0].endsWith("/2") ? 2 : 1;
+    return { topic: `${module.title} Part ${part}`, detail: getLaModuleTopics(module, part).map((topic) => topic.title).join("; ") };
+  }
   for (const entry of ROUTE_MAP) {
     if (entry.match.test(pathname)) {
       return { topic: entry.topic, detail: entry.detail };

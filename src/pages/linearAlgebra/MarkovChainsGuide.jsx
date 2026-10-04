@@ -6,30 +6,13 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_MARKOV_QUIZ } from "../../data/laQuizzes";
 
-export default function MarkovChainsGuide({ part = 1 }) {
+export default function MarkovChainsGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
 
-  return (
-    <StudyGuideShell
-      key={part}
-      guideClass="partial-derivatives-guide"
-      title={"Markov Chains & Steady States (Part " + part + ")"}
-    >
-      <nav className="sidebar">
-        <div className="sb-brand">
-          <div className="sb-title">Markov Chains &amp; Steady States</div>
-        </div>
-        <a className="sb-link" href="#markov-model">Transition matrices</a>
-        <a className="sb-link" href="#markov-evolution">State evolution</a>
-        {advanced && <a className="sb-link" href="#markov-stationary">Stationary states</a>}
-        <a className="sb-link" href="#markov-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-markov-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
-      </nav>
-
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Linear Algebra</div>
           <h1 className="ch-title">Markov Chains &amp; Steady States</h1>
           <p className="ch-sub">Represent state changes with stochastic matrices and find long-run distributions as fixed vectors</p>
@@ -49,9 +32,9 @@ export default function MarkovChainsGuide({ part = 1 }) {
             eigenvalue 1, and matrix powers. The linked Stochastic Processes guide covers the
             broader probability model and process-level framing.
           </p>
-        </header>
+        </header>)}
 
-        <section className="section" id="markov-model">
+        <section className="section" id={embedded ? `markov-model-${part}` : "markov-model"}>
           <h2 className="sec-title">
             {advanced ? "Stationary states as eigenvectors" : "A finite-state model as a matrix"}
           </h2>
@@ -83,7 +66,7 @@ export default function MarkovChainsGuide({ part = 1 }) {
           )}
         </section>
 
-        <section className="section" id="markov-evolution">
+        <section className="section" id={embedded ? `markov-evolution-${part}` : "markov-evolution"}>
           <h2 className="sec-title">{advanced ? "Reading repeated transitions" : "A dependable matrix workflow"}</h2>
           <ProcedureBox
             title={advanced ? "Compute and interpret a steady state" : "Advance a state distribution"}
@@ -104,7 +87,7 @@ export default function MarkovChainsGuide({ part = 1 }) {
         </section>
 
         {advanced && (
-          <section className="section" id="markov-stationary">
+          <section className="section" id={embedded ? `markov-stationary-${part}` : "markov-stationary"}>
             <h2 className="sec-title">The spectral picture</h2>
             <TheoryBox title="Why the eigenvalue 1 matters">
               <p>{"The identity $\\mathbf{1}^{T}P=\\mathbf{1}^{T}$ makes $\\mathbf{1}^{T}$ a left eigenvector of $P$ for eigenvalue $1$. Since $P$ and $P^{T}$ have the same eigenvalues, $P$ also has a right eigenvector for $1$; the finite-dimensional Perron–Frobenius theorem guarantees a nonnegative one that can be normalized as a stationary distribution."}</p>
@@ -113,7 +96,7 @@ export default function MarkovChainsGuide({ part = 1 }) {
           </section>
         )}
 
-        <section className="section" id="markov-examples">
+        <section className="section" id={embedded ? `markov-examples-${part}` : "markov-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -168,16 +151,37 @@ export default function MarkovChainsGuide({ part = 1 }) {
             onComplete={(score, total) => saveQuizScore("guide-mcq-la-markov-checkpoint", score, total)}
           />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to stationary distributions</h2>
             <p>
               Part 2 solves $P\\pi=\\pi$, normalizes the eigenvector, and distinguishes
               a stationary state from convergence of $P^np_0$.
             </p>
             <Link to="/linear-algebra/markov-chains-steady-states/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell
+      key={part}
+      guideClass="partial-derivatives-guide"
+      title={"Markov Chains & Steady States (Part " + part + ")"}
+    >
+      <nav className="sidebar">
+        <div className="sb-brand">
+          <div className="sb-title">Markov Chains &amp; Steady States</div>
+        </div>
+        <a className="sb-link" href="#markov-model">Transition matrices</a>
+        <a className="sb-link" href="#markov-evolution">State evolution</a>
+        {advanced && <a className="sb-link" href="#markov-stationary">Stationary states</a>}
+        <a className="sb-link" href="#markov-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-markov-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
+      </nav>
+
+      {content}
     </StudyGuideShell>
   );
 }

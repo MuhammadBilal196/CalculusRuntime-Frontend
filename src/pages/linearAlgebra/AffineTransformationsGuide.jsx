@@ -6,29 +6,13 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_AFFINE_HOMOGENEOUS_QUIZ } from "../../data/laQuizzes";
 
-export default function AffineTransformationsGuide({ part = 1 }) {
+export default function AffineTransformationsGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
 
-  return (
-    <StudyGuideShell
-      key={part}
-      guideClass="partial-derivatives-guide"
-      title={"Affine Transformations (Part " + part + ")"}
-    >
-      <nav className="sidebar">
-        <div className="sb-brand">
-          <div className="sb-title">Affine Transformations</div>
-        </div>
-        <a className="sb-link" href="#affine-theory">Theory</a>
-        <a className="sb-link" href="#affine-method">Method</a>
-        <a className="sb-link" href="#affine-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-affine-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
-      </nav>
-
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Linear Algebra</div>
           <h1 className="ch-title">Affine Transformations &amp; Homogeneous Coordinates</h1>
           <p className="ch-sub">Model translations and linear maps in one matrix framework</p>
@@ -38,9 +22,9 @@ export default function AffineTransformationsGuide({ part = 1 }) {
             <Link to="/linear-algebra/transformations/1">Linear transformations</Link>
           </p>
           <p>Part {part} of 2. Part 1 builds affine and homogeneous-coordinate models; Part 2 covers compositions, inverses, geometry, applications, and the checkpoint.</p>
-        </header>
+        </header>)}
 
-        <section className="section" id="affine-theory">
+        <section className="section" id={embedded ? `affine-theory-${part}` : "affine-theory"}>
           <h2 className="sec-title">
             {advanced ? "Composition, inverse, and geometric meaning" : "Affine maps and homogeneous coordinates"}
           </h2>
@@ -76,7 +60,7 @@ export default function AffineTransformationsGuide({ part = 1 }) {
           )}
         </section>
 
-        <section className="section" id="affine-method">
+        <section className="section" id={embedded ? `affine-method-${part}` : "affine-method"}>
           <h2 className="sec-title">A dependable transformation workflow</h2>
           <ProcedureBox
             title={advanced ? "Compose or invert affine maps" : "Encode an affine map"}
@@ -96,7 +80,7 @@ export default function AffineTransformationsGuide({ part = 1 }) {
           />
         </section>
 
-        <section className="section" id="affine-examples">
+        <section className="section" id={embedded ? `affine-examples-${part}` : "affine-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -196,13 +180,33 @@ export default function AffineTransformationsGuide({ part = 1 }) {
             onComplete={(score, total) => saveQuizScore("guide-mcq-la-affine-checkpoint", score, total)}
           />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to composition and applications</h2>
             <p>Part 2 completes the topic and includes the 20-question checkpoint.</p>
             <Link to="/linear-algebra/affine-homogeneous/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell
+      key={part}
+      guideClass="partial-derivatives-guide"
+      title={"Affine Transformations (Part " + part + ")"}
+    >
+      <nav className="sidebar">
+        <div className="sb-brand">
+          <div className="sb-title">Affine Transformations</div>
+        </div>
+        <a className="sb-link" href="#affine-theory">Theory</a>
+        <a className="sb-link" href="#affine-method">Method</a>
+        <a className="sb-link" href="#affine-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-affine-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
+      </nav>
+
+      {content}
     </StudyGuideShell>
   );
 }

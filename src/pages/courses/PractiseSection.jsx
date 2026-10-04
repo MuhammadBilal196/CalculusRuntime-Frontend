@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { LA_MODULES } from "../../data/laModules";
 import SubmitToLeaderboard from "../../components/SubmitToLeaderboard";
 import "../dashboard/Leaderboard.css";
 import "./PractiseSection.css";
@@ -35,6 +36,18 @@ const TOPICS = [
   'Circles & Conic Tangents',
   'Advanced Single-Variable Calculus',
   'Ordinary Differential Equations (ODEs)',
+  'Space Curves (Frenet-Serret)',
+  'Vector-Valued Functions & Motion in Space',
+  'Parametric Surfaces',
+  'Polar Coordinate Calculus',
+  'Solids of Revolution',
+  'Volume by Cross-Sections',
+  'Numerical Methods',
+  'Improper Integrals — Advanced Convergence Tests',
+  "Complex Numbers & De Moivre's Theorem",
+  'Hyperbolic Functions',
+  'Laplace Transforms',
+  'Fourier Series',
   'Multiple Integrals',
   'Vectors & Vector Spaces',
   'Matrices & Determinants',
@@ -44,6 +57,7 @@ const TOPICS = [
   'Linear Transformations',
   'Orthogonality & Least Squares',
   'Singular Value Decomposition',
+  ...LA_MODULES.flatMap((module) => module.topics.map((topic) => topic.title)),
   'Probability Basics',
   'Random Variables & Distributions',
   'Descriptive Statistics',
@@ -63,6 +77,7 @@ const TOPIC_ALIASES = {
 };
 
 const TOPIC_BANK = {
+  ...Object.fromEntries(LA_MODULES.flatMap((module) => module.topics.map((topic) => [topic.title, "la"]))),
   'Limits and Continuity': 'calcAg',
   'Limits & Continuity': 'calcAg',
   Differentiation: 'calcAg',
@@ -78,6 +93,18 @@ const TOPIC_BANK = {
   'Circles & Conic Tangents': 'calcAg',
   'Advanced Single-Variable Calculus': 'calcAg',
   'Ordinary Differential Equations (ODEs)': 'calcAg',
+  'Space Curves (Frenet-Serret)': 'calcAg',
+  'Vector-Valued Functions & Motion in Space': 'calcAg',
+  'Parametric Surfaces': 'calcAg',
+  'Polar Coordinate Calculus': 'calcAg',
+  'Solids of Revolution': 'calcAg',
+  'Volume by Cross-Sections': 'calcAg',
+  'Numerical Methods': 'calcAg',
+  'Improper Integrals — Advanced Convergence Tests': 'calcAg',
+  "Complex Numbers & De Moivre's Theorem": 'calcAg',
+  'Hyperbolic Functions': 'calcAg',
+  'Laplace Transforms': 'calcAg',
+  'Fourier Series': 'calcAg',
   'Taylor Series for Multivariable Functions': 'calcAg',
   'Taylor & Maclaurin Series': 'calcAg',
   'Maclaurin Series': 'calcAg',

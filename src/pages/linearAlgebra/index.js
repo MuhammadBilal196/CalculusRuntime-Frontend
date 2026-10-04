@@ -51,3 +51,6 @@ export { default as PrincipalComponentAnalysisPart2 } from "./PrincipalComponent
 export { default as MarkovChainsGuide } from "./MarkovChainsGuide";
 export { default as MarkovChainsPart1 } from "./MarkovChainsPart1";
 export { default as MarkovChainsPart2 } from "./MarkovChainsPart2";
+export { default as LinearProgrammingGuide } from "./LinearProgrammingGuide";
+export { default as LinearProgrammingPart1 } from "./LinearProgrammingPart1";
+export { default as LinearProgrammingPart2 } from "./LinearProgrammingPart2";

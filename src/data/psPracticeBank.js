@@ -3,6 +3,7 @@
  *  Regenerate with: python _pgen_build.py
  */
 import { PS_MODULE_KL_PRACTICE_BANK } from "./psModuleKL_PracticeBank";
+import { PS_NEW_MODULES_PRACTICE_BANK } from "./psNewModulesPracticeBank";
 export const PS_PRACTICE_BANK = [
   {
     "id": 30000,
@@ -21326,3 +21327,4 @@ PS_PRACTICE_BANK.push(
 );
 
 PS_PRACTICE_BANK.push(...PS_MODULE_KL_PRACTICE_BANK);
+PS_PRACTICE_BANK.push(...PS_NEW_MODULES_PRACTICE_BANK);

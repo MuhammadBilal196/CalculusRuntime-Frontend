@@ -6,29 +6,13 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_PCA_QUIZ } from "../../data/laQuizzes";
 
-export default function PrincipalComponentAnalysisGuide({ part = 1 }) {
+export default function PrincipalComponentAnalysisGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
 
-  return (
-    <StudyGuideShell
-      key={part}
-      guideClass="partial-derivatives-guide"
-      title={"Principal Component Analysis (Part " + part + ")"}
-    >
-      <nav className="sidebar">
-        <div className="sb-brand">
-          <div className="sb-title">Principal Component Analysis</div>
-        </div>
-        <a className="sb-link" href="#pca-theory">Theory</a>
-        <a className="sb-link" href="#pca-method">Method</a>
-        <a className="sb-link" href="#pca-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-pca-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
-      </nav>
-
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Linear Algebra</div>
           <h1 className="ch-title">Principal Component Analysis (PCA)</h1>
           <p className="ch-sub">Find orthogonal directions that summarize the variance in centered data</p>
@@ -43,9 +27,9 @@ export default function PrincipalComponentAnalysisGuide({ part = 1 }) {
             Part {part} of 2. Part 1 develops centering, covariance, and principal directions;
             Part 2 covers scores, variance explained, reconstruction, and the checkpoint.
           </p>
-        </header>
+        </header>)}
 
-        <section className="section" id="pca-theory">
+        <section className="section" id={embedded ? `pca-theory-${part}` : "pca-theory"}>
           <h2 className="sec-title">
             {advanced ? "Scores, dimension reduction, and reconstruction" : "Centering data and finding principal directions"}
           </h2>
@@ -81,7 +65,7 @@ export default function PrincipalComponentAnalysisGuide({ part = 1 }) {
           )}
         </section>
 
-        <section className="section" id="pca-method">
+        <section className="section" id={embedded ? `pca-method-${part}` : "pca-method"}>
           <h2 className="sec-title">A dependable PCA workflow</h2>
           <ProcedureBox
             title={advanced ? "Project observations and assess the reduced representation" : "Fit principal directions from a data matrix"}
@@ -101,7 +85,7 @@ export default function PrincipalComponentAnalysisGuide({ part = 1 }) {
           />
         </section>
 
-        <section className="section" id="pca-examples">
+        <section className="section" id={embedded ? `pca-examples-${part}` : "pca-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -152,16 +136,36 @@ export default function PrincipalComponentAnalysisGuide({ part = 1 }) {
             onComplete={(score, total) => saveQuizScore("guide-mcq-la-pca-checkpoint", score, total)}
           />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to scores and dimension reduction</h2>
             <p>
               Part 2 applies the principal directions to observations, compares explained variance,
               and reconstructs data from a selected number of components.
             </p>
             <Link to="/linear-algebra/principal-component-analysis/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell
+      key={part}
+      guideClass="partial-derivatives-guide"
+      title={"Principal Component Analysis (Part " + part + ")"}
+    >
+      <nav className="sidebar">
+        <div className="sb-brand">
+          <div className="sb-title">Principal Component Analysis</div>
+        </div>
+        <a className="sb-link" href="#pca-theory">Theory</a>
+        <a className="sb-link" href="#pca-method">Method</a>
+        <a className="sb-link" href="#pca-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-pca-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview">Course overview</Link>
+      </nav>
+
+      {content}
     </StudyGuideShell>
   );
 }

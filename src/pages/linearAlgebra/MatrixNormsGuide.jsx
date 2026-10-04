@@ -6,28 +6,19 @@ import { useProgress } from "../../context/ProgressContext";
 import { TheoryBox, ProcedureBox, WorkedExample } from "./LaBlocks";
 import { LA_A_NORMS_QUIZ } from "../../data/laQuizzes";
 
-export default function MatrixNormsGuide({ part = 1 }) {
+export default function MatrixNormsGuide({ part = 1, embedded = false }) {
   const { saveQuizScore } = useProgress();
   const advanced = part === 2;
-  return (
-    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={`${"Vector & Matrix Norms, Condition Number"} (Part ${part})`}>
-      <nav className="sidebar">
-        <div className="sb-brand"><div className="sb-title">Topic 4</div></div>
-        <a className="sb-link" href="#la-a-norms-theory">Theory</a>
-        {advanced && <a className="sb-link" href="#la-a-norms-method">Method</a>}
-        <a className="sb-link" href="#la-a-norms-examples">Worked examples</a>
-        {advanced && <a className="sb-link" href="#quiz-la-a-norms-checkpoint">Quiz</a>}
-        <Link className="sb-link" to="/linear-algebra/overview#module-a">All four topics</Link>
-      </nav>
-      <main className="main">
-        <header className="ch-hdr">
+  const content = (
+      <div className={embedded ? "la-topic-content" : "main"}>
+        {!embedded && (<header className="ch-hdr">
           <div className="ch-eye">Matrix Decompositions &amp; Factorizations</div>
           <h1 className="ch-title">Vector &amp; Matrix Norms, Condition Number</h1>
           <p className="ch-sub">Measuring size, maximum stretch, and the sensitivity of a linear solve</p>
           <p>Curriculum: University Linear Algebra.</p>
           <p><Link to="/linear-algebra/svd/1">Review prerequisites</Link> · Part {part} of 2</p>
-        </header>
-        <section className="section" id="la-a-norms-theory">
+        </header>)}
+        <section className="section" id={embedded ? `la-a-norms-theory-${part}` : "la-a-norms-theory"}>
           {advanced ? (
             <>
               <TheoryBox title={"Deriving the right-hand-side perturbation bound"}>
@@ -62,12 +53,12 @@ export default function MatrixNormsGuide({ part = 1 }) {
           )}
         </section>
         {advanced && (
-          <section className="section" id="la-a-norms-method">
+          <section className="section" id={embedded ? `la-a-norms-method-${part}` : "la-a-norms-method"}>
             <h2 className="sec-title">A reliable working procedure</h2>
             <ProcedureBox title="Step by step" steps={["State the vector norm, the corresponding induced matrix norm, and whether the matrix is invertible.", "Use column sums for the 1-norm, row sums for the infinity norm, singular values for the 2-norm, and entry squares for Frobenius norm.", "Compute or estimate the condition number using a compatible norm; avoid confusing it with the determinant.", "Calculate a relative input perturbation or residual and apply the appropriate error bound with its assumptions.", "Interpret the bound as worst-case sensitivity, then choose scaling, precision, or a solver appropriate to the problem."]} />
           </section>
         )}
-        <section className="section" id="la-a-norms-examples">
+        <section className="section" id={embedded ? `la-a-norms-examples-${part}` : "la-a-norms-examples"}>
           <h2 className="sec-title">Worked examples</h2>
           {advanced ? (
             <>
@@ -120,13 +111,26 @@ export default function MatrixNormsGuide({ part = 1 }) {
             onComplete={(score, total) => saveQuizScore("guide-mcq-la-a-norms-checkpoint", score, total)}
           />
         ) : (
-          <section className="section">
+          !embedded && (<section className="section">
             <h2 className="sec-title">Continue to the topic checkpoint</h2>
             <p>Part 1 develops the foundations. Part 2 adds applications and the single 20-question checkpoint for this topic. Complete all questions and score at least 80% to unlock Part 2 completion.</p>
             <Link to="/linear-algebra/matrix-norms-conditioning/2">Continue to Part 2 →</Link>
-          </section>
+          </section>)
         )}
-      </main>
+      </div>
+  );
+  if (embedded) return content;
+  return (
+    <StudyGuideShell key={part} guideClass="partial-derivatives-guide" title={`${"Vector & Matrix Norms, Condition Number"} (Part ${part})`}>
+      <nav className="sidebar">
+        <div className="sb-brand"><div className="sb-title">Topic 4</div></div>
+        <a className="sb-link" href="#la-a-norms-theory">Theory</a>
+        {advanced && <a className="sb-link" href="#la-a-norms-method">Method</a>}
+        <a className="sb-link" href="#la-a-norms-examples">Worked examples</a>
+        {advanced && <a className="sb-link" href="#quiz-la-a-norms-checkpoint">Quiz</a>}
+        <Link className="sb-link" to="/linear-algebra/overview#module-a">All four topics</Link>
+      </nav>
+      {content}
     </StudyGuideShell>
   );
 }

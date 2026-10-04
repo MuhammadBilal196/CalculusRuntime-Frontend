@@ -1,4 +1,8 @@
 /** Linear Algebra Practice Arena — core banks plus curriculum-aligned extension questions (Obj 8 / Dev 3). */
+import { LA_MODULES } from "./laModules";
+import { LA_DECOMPOSITIONS_PRACTICE_BANK } from "./laDecompositionsPracticeBank";
+import { LA_ADVANCEDSPACES_PRACTICE_BANK } from "./laAdvancedSpacesPracticeBank";
+import { LA_APPLICATIONS_PRACTICE_BANK } from "./laApplicationsPracticeBank";
 import { LA_NEW_TOPICS_PRACTICE_BANK } from "./laNewTopicsPracticeBank";
 function pack(startId, topic, difficulty, rows) {
   return rows.map(([question, options, correctAnswer, explanation], i) => ({
@@ -1518,7 +1522,14 @@ LA_PRACTICE_BANK.push(...pack(73288, "Singular Value Decomposition", "Hard", [
   ["Linear-algebra review — For compact SVD A=U_rΣ_rV_rᵀ, the pseudoinverse is:", ["U_rΣ_r⁻¹V_rᵀ", "V_rΣ_rU_rᵀ", "V_rΣ_r⁻¹U_rᵀ", "Aᵀ always"], 2, "Reverse the compact SVD factors and reciprocate positive singular values."],
   ["Linear-algebra review — Tiny singular values make inverse problems unstable because:", ["They make U nonorthogonal", "They increase rank", "They force every residual to zero", "Their reciprocals strongly amplify noise"], 3, "Inversion scales singular directions by 1/σ."],
 ]));
+LA_PRACTICE_BANK.push(
+  ...LA_DECOMPOSITIONS_PRACTICE_BANK,
+  ...LA_ADVANCEDSPACES_PRACTICE_BANK,
+  ...LA_APPLICATIONS_PRACTICE_BANK,
+);
 export const LA_TOPICS = [
+  ...LA_MODULES.flatMap((module) => module.topics.map((topic) => topic.title)),
+  "Fundamental Subspaces & Rank-Nullity",
   "Vectors & Vector Spaces",
   "Matrices & Determinants",
   "Systems of Linear Equations",
