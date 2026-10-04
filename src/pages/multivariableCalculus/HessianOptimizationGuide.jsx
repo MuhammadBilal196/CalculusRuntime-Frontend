@@ -3,6 +3,7 @@ import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_HESSIAN_OPTIMIZATION_QUIZ } from "../../data/mvOptimizationQuiz";
 import "./PartialDerivativesGuide.css";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import KKTConditionsGuide from "./KKTConditionsGuide";
 
 function Divider() {
   return <hr className="divider" />;
@@ -12,42 +13,77 @@ function OpeningNote() {
   return (
     <div className="opening-note-box">
       <p className="opening-note">
-        <strong>Operational Blueprint:</strong>{" "}
-        The Hessian Matrix &amp; Optimization extends the first-derivative
-        critical-point test into several variables. The gradient identifies
-        stationary points, while the Hessian matrix records the second-order
-        curvature information needed to determine whether a critical point is a
-        local minimum, local maximum, or saddle point. This guide develops the
-        Hessian systematically, explains the two-variable determinant test,
-        extends the classification idea to higher dimensions, and connects
-        second-order information to practical optimization.
+        <strong>Operational Blueprint:</strong> The Hessian Matrix &amp;
+        Optimization extends the first-derivative critical-point test into
+        several variables. The gradient identifies stationary points, while the
+        Hessian matrix records the second-order curvature information needed to
+        determine whether a critical point is a local minimum, local maximum, or
+        saddle point. This guide develops the Hessian systematically, explains
+        the two-variable determinant test, extends the classification idea to
+        higher dimensions, and connects second-order information to practical
+        optimization.
       </p>
     </div>
   );
 }
 
-function GuideSidebar() {
+function GuideSidebarPart1() {
   return (
     <nav className="sidebar">
       <div className="sb-brand">
+        <div className="sb-sub">Multivariable Calculus</div>
         <div className="sb-title">
           Constrained &amp; Unconstrained Optimization
         </div>
       </div>
 
-      <div className="sb-group">Part 1</div>
+      <div className="sb-group">PART 1</div>
 
-      <a
-        className="sb-link active"
-        href="#hessian-optimization"
-      >
+      {/* Topic 1 */}
+      <a className="sb-link" href="#hessian-optimization">
         The Hessian Matrix &amp; Optimization
       </a>
 
-      {/*
-        Topic 2 — Inequality Constraints (KKT Conditions) will be added
-        to this same Part 1 page later. It will not receive its own route.
-      */}
+      <a className="sb-link" href="#optimization-worked-examples">
+        Worked Examples
+      </a>
+
+      <a className="sb-link" href="#mcq-hessian-optimization">
+        Quiz (20 Questions)
+      </a>
+
+      {/* Topic 2 */}
+      <a className="sb-link" href="#kkt-opening">
+        Inequality Constraints (KKT Conditions)
+      </a>
+
+      <a className="sb-link" href="#kkt-7">
+        Worked Examples
+      </a>
+
+      <a className="sb-link" href="#mcq-kkt-conditions">
+        Quiz (20 Questions)
+      </a>
+
+      <a className="sb-link" href="#kkt-12">
+        Key Concepts
+      </a>
+
+      <div className="sb-group">PART 2</div>
+
+      <a
+        className="sb-link"
+        href="/constrained-unconstrained-optimization/2"
+      >
+        Global Extrema on Bounded Domains
+      </a>
+
+      <a
+        className="sb-link"
+        href="/constrained-unconstrained-optimization/2"
+      >
+        Gradient Descent &amp; Numerical Optimization
+      </a>
     </nav>
   );
 }
@@ -59,14 +95,11 @@ function GuideHeader() {
         Constrained &amp; Unconstrained Optimization · Part 1
       </div>
 
-      <h1 className="ch-title">
-        The Hessian Matrix &amp; Optimization
-      </h1>
+      <h1 className="ch-title">The Hessian Matrix &amp; Optimization</h1>
 
       <p className="ch-sub">
-        Hessian matrices, second-order curvature, critical-point
-        classification, positive and negative definiteness, and multivariable
-        optimization
+        Hessian matrices, second-order curvature, critical-point classification,
+        positive and negative definiteness, and multivariable optimization
       </p>
 
       <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
@@ -74,85 +107,123 @@ function GuideHeader() {
   );
 }
 
-function TableOfContents() {
+function TableOfContentsPart1() {
   return (
     <nav className="toc">
-      <div className="toc-h">The Hessian Matrix &amp; Optimization</div>
+      <div className="toc-h">
+        Contents — Part 1 of 2
+      </div>
 
       <div className="toc-grid">
+        {/* =========================
+            TOPIC 1
+        ========================== */}
+
         <a className="toc-a" href="#hessian-optimization">
-          1. What Is the Hessian Matrix?
+          The Hessian Matrix &amp; Optimization
         </a>
 
         <a className="toc-a" href="#critical-points">
-          2. Critical Points in Several Variables
+          Critical Points in Several Variables
         </a>
 
         <a className="toc-a" href="#second-order">
-          3. Why Second-Order Information Matters
+          Why Second-Order Information Matters
         </a>
 
         <a className="toc-a" href="#hessian-two-variable">
-          4. The Hessian in Two Variables
+          The Hessian in Two Variables
         </a>
 
         <a className="toc-a" href="#determinant-test">
-          5. The Two-Variable Hessian Test
+          The Two-Variable Hessian Test
         </a>
 
         <a className="toc-a" href="#positive-definite">
-          6. Positive Definiteness
+          Positive Definiteness
         </a>
 
         <a className="toc-a" href="#negative-definite">
-          7. Negative Definiteness
+          Negative Definiteness
         </a>
 
         <a className="toc-a" href="#indefinite">
-          8. Indefinite Hessians and Saddle Points
+          Indefinite Hessians and Saddle Points
         </a>
 
         <a className="toc-a" href="#higher-dimensional">
-          9. Hessian Classification in Higher Dimensions
+          Hessian Classification in Higher Dimensions
         </a>
 
         <a className="toc-a" href="#degenerate">
-          10. Degenerate Critical Points
+          Degenerate Critical Points
         </a>
 
         <a className="toc-a" href="#optimization-worked-examples">
           Worked Examples
         </a>
 
-        <a className="toc-a" href="#worked-example-1">
-          11. Local Minimum Example
-        </a>
-
-        <a className="toc-a" href="#worked-example-2">
-          12. Local Maximum Example
-        </a>
-
-        <a className="toc-a" href="#worked-example-3">
-          13. Saddle Point Example
-        </a>
-
-        <a className="toc-a" href="#worked-example-4">
-          14. Degenerate Example
-        </a>
-
-        <a className="toc-a" href="#applications">
-          15. Optimization Applications
-        </a>
-
-        <a className="toc-a" href="#common-mistakes">
-          16. Common Mistakes
-        </a>
-
-        <a className="toc-a" href="#key-formulas">
-          17. Key Formulas
-        </a>
-
         <a className="toc-a" href="#mcq-hessian-optimization">
+          Quiz (20 Questions)
+        </a>
+
+        {/* =========================
+            TOPIC 2
+        ========================== */}
+
+        <a className="toc-a" href="#kkt-opening">
+          Inequality Constraints (KKT Conditions)
+        </a>
+
+        <a className="toc-a" href="#kkt-1">
+          Why Inequality Constraints Need a New Tool
+        </a>
+
+        <a className="toc-a" href="#kkt-2">
+          Feasible Points, Active Constraints, and Slack
+        </a>
+
+        <a className="toc-a" href="#kkt-3">
+          The KKT Conditions
+        </a>
+
+        <a className="toc-a" href="#kkt-4">
+          The Lagrangian
+        </a>
+
+        <a className="toc-a" href="#kkt-5">
+          Complementary Slackness
+        </a>
+
+        <a className="toc-a" href="#kkt-6">
+          Interior Optima Versus Boundary Optima
+        </a>
+
+        <a className="toc-a" href="#kkt-7">
+          Worked Example — Minimum with a Linear Inequality
+        </a>
+
+        <a className="toc-a" href="#kkt-8">
+          Worked Example — Active Disk Constraint
+        </a>
+
+        <a className="toc-a" href="#kkt-9">
+          Multiple Inequality Constraints and Active Sets
+        </a>
+
+        <a className="toc-a" href="#kkt-10">
+          When KKT Conditions Are Sufficient
+        </a>
+
+        <a className="toc-a" href="#kkt-11">
+          Constraint Qualifications and Common Mistakes
+        </a>
+
+        <a className="toc-a" href="#kkt-12">
+          KKT Checklist
+        </a>
+
+        <a className="toc-a" href="#mcq-kkt-conditions">
           Quiz (20 Questions)
         </a>
       </div>
@@ -166,10 +237,7 @@ function GuideFooter() {
       <p>End of The Hessian Matrix &amp; Optimization.</p>
 
       <div className="guide-navigation">
-        <a
-          href="#hessian-optimization"
-          className="guide-nav-button"
-        >
+        <a href="#hessian-optimization" className="guide-nav-button">
           ↑ Back to The Hessian Matrix &amp; Optimization
         </a>
       </div>
@@ -180,20 +248,18 @@ function GuideFooter() {
 function HessianOptimizationContent() {
   return (
     <>
-      <GuideSidebar />
+      <GuideSidebarPart1 />
 
       <main className="main">
         <GuideHeader />
-        <TableOfContents />
+        <TableOfContentsPart1 />
         <OpeningNote />
 
         <Divider />
 
         <section className="section" id="hessian-optimization">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            1. What Is the Hessian Matrix?
-          </h2>
+          <h2 className="sec-title">1. What Is the Hessian Matrix?</h2>
 
           <p>
             For a scalar-valued function of several variables, the Hessian
@@ -225,14 +291,12 @@ f_{xy}=f_{yx}.
 $$`}
           </div>
 
-          <p>
-            so the Hessian is symmetric.
-          </p>
+          <p>so the Hessian is symmetric.</p>
 
           <p>
             The Hessian is the multivariable analogue of the second derivative
-            from single-variable calculus. It describes how the gradient
-            changes from point to point and captures local curvature.
+            from single-variable calculus. It describes how the gradient changes
+            from point to point and captures local curvature.
           </p>
 
           <RealLifeUse>
@@ -247,13 +311,11 @@ $$`}
 
         <section className="section" id="critical-points">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            2. Critical Points in Several Variables
-          </h2>
+          <h2 className="sec-title">2. Critical Points in Several Variables</h2>
 
           <p>
-            The Hessian test is applied after finding the critical points.
-            For a differentiable function
+            The Hessian test is applied after finding the critical points. For a
+            differentiable function
             <strong> f(x,y) </strong>, the gradient is
           </p>
 
@@ -303,9 +365,7 @@ $$`}
 
         <section className="section" id="second-order">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            3. Why Second-Order Information Matters
-          </h2>
+          <h2 className="sec-title">3. Why Second-Order Information Matters</h2>
 
           <p>
             A point where the gradient is zero tells us that the first-order
@@ -313,9 +373,7 @@ $$`}
             geometry.
           </p>
 
-          <p>
-            Consider the one-variable analogy:
-          </p>
+          <p>Consider the one-variable analogy:</p>
 
           <div className="fml">
             {String.raw`$$
@@ -323,9 +381,7 @@ f'(a)=0.
 $$`}
           </div>
 
-          <p>
-            If
-          </p>
+          <p>If</p>
 
           <div className="fml">
             {String.raw`$$
@@ -333,9 +389,7 @@ f''(a)>0,
 $$`}
           </div>
 
-          <p>
-            the point behaves locally like a minimum. If
-          </p>
+          <p>the point behaves locally like a minimum. If</p>
 
           <div className="fml">
             {String.raw`$$
@@ -343,9 +397,7 @@ f''(a)<0,
 $$`}
           </div>
 
-          <p>
-            it behaves locally like a maximum.
-          </p>
+          <p>it behaves locally like a maximum.</p>
 
           <p>
             In several variables there are infinitely many directions in which
@@ -366,8 +418,8 @@ $$`}
           </div>
 
           <p>
-            At a critical point, the linear term vanishes, leaving the
-            quadratic expression
+            At a critical point, the linear term vanishes, leaving the quadratic
+            expression
           </p>
 
           <div className="fml">
@@ -376,18 +428,14 @@ $$`}
 $$`}
           </div>
 
-          <p>
-            This quadratic form determines the local second-order geometry.
-          </p>
+          <p>This quadratic form determines the local second-order geometry.</p>
         </section>
 
         <Divider />
 
         <section className="section" id="hessian-two-variable">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            4. The Hessian in Two Variables
-          </h2>
+          <h2 className="sec-title">4. The Hessian in Two Variables</h2>
 
           <p>
             For
@@ -405,9 +453,7 @@ f_{yx} & f_{yy}
 $$`}
           </div>
 
-          <p>
-            Define the Hessian determinant
-          </p>
+          <p>Define the Hessian determinant</p>
 
           <div className="fml">
             {String.raw`$$
@@ -421,9 +467,7 @@ f_{xx}f_{yy}
 $$`}
           </div>
 
-          <p>
-            when the mixed partials agree.
-          </p>
+          <p>when the mixed partials agree.</p>
 
           <p>
             At a critical point, the pair
@@ -438,9 +482,7 @@ $$`}
 
         <section className="section" id="determinant-test">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            5. The Two-Variable Hessian Test
-          </h2>
+          <h2 className="sec-title">5. The Two-Variable Hessian Test</h2>
 
           <p>
             Let
@@ -492,13 +534,9 @@ $$`}
 
         <section className="section" id="positive-definite">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            6. Positive Definiteness
-          </h2>
+          <h2 className="sec-title">6. Positive Definiteness</h2>
 
-          <p>
-            A symmetric matrix H is positive definite if
-          </p>
+          <p>A symmetric matrix H is positive definite if</p>
 
           <div className="fml">
             {String.raw`$$
@@ -514,9 +552,7 @@ $$`}
             strict local minimum.
           </p>
 
-          <p>
-            For a symmetric two-by-two Hessian,
-          </p>
+          <p>For a symmetric two-by-two Hessian,</p>
 
           <div className="fml">
             {String.raw`$$
@@ -528,9 +564,7 @@ b&c
 $$`}
           </div>
 
-          <p>
-            positive definiteness is equivalent to
-          </p>
+          <p>positive definiteness is equivalent to</p>
 
           <div className="fml">
             {String.raw`$$
@@ -550,13 +584,9 @@ $$`}
 
         <section className="section" id="negative-definite">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            7. Negative Definiteness
-          </h2>
+          <h2 className="sec-title">7. Negative Definiteness</h2>
 
-          <p>
-            A symmetric matrix H is negative definite when
-          </p>
+          <p>A symmetric matrix H is negative definite when</p>
 
           <div className="fml">
             {String.raw`$$
@@ -567,17 +597,14 @@ $$`}
           </div>
 
           <p>
-            At a critical point, a negative-definite Hessian therefore implies
-            a strict local maximum.
+            At a critical point, a negative-definite Hessian therefore implies a
+            strict local maximum.
           </p>
 
           <p>
             For
-            <strong>
-              {" "}
-              H = [[a,b],[b,c]]
-            </strong>
-            , the two-dimensional conditions become
+            <strong> H = [[a,b],[b,c]]</strong>, the two-dimensional conditions
+            become
           </p>
 
           <div className="fml">
@@ -619,9 +646,7 @@ $$`}
             point.
           </p>
 
-          <p>
-            In the two-variable test, the simplest signal is
-          </p>
+          <p>In the two-variable test, the simplest signal is</p>
 
           <div className="fml">
             {String.raw`$$
@@ -660,22 +685,14 @@ H_f(x)
 $$`}
           </div>
 
-          <p>
-            At a critical point:
-          </p>
+          <p>At a critical point:</p>
 
           <div className="box">
-            <p>
-              Positive-definite Hessian → strict local minimum.
-            </p>
+            <p>Positive-definite Hessian → strict local minimum.</p>
 
-            <p>
-              Negative-definite Hessian → strict local maximum.
-            </p>
+            <p>Negative-definite Hessian → strict local maximum.</p>
 
-            <p>
-              Indefinite Hessian → saddle point.
-            </p>
+            <p>Indefinite Hessian → saddle point.</p>
 
             <p>
               Semidefinite or singular Hessian → second-order test may be
@@ -695,13 +712,9 @@ $$`}
 
         <section className="section" id="degenerate">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            10. Degenerate Critical Points
-          </h2>
+          <h2 className="sec-title">10. Degenerate Critical Points</h2>
 
-          <p>
-            When the Hessian determinant is zero in the two-variable test,
-          </p>
+          <p>When the Hessian determinant is zero in the two-variable test,</p>
 
           <div className="fml">
             {String.raw`$$
@@ -729,16 +742,11 @@ $$`}
 
         <Divider />
 
-        <section
-          className="section"
-          id="optimization-worked-examples"
-        >
+        <section className="section" id="optimization-worked-examples">
           <div className="sec-badge">Practice</div>
           <h2 className="sec-title">Worked Examples</h2>
 
-          <p>
-            The examples below follow the full optimization workflow:
-          </p>
+          <p>The examples below follow the full optimization workflow:</p>
 
           <div className="box">
             <p>1. Compute the first partial derivatives.</p>
@@ -749,8 +757,8 @@ $$`}
           </div>
 
           <p>
-            This order prevents a common mistake: attempting to classify a
-            point before checking that it is actually critical.
+            This order prevents a common mistake: attempting to classify a point
+            before checking that it is actually critical.
           </p>
         </section>
 
@@ -758,9 +766,7 @@ $$`}
 
         <section className="section" id="worked-example-1">
           <div className="sec-badge">Worked Example</div>
-          <h2 className="sec-title">
-            11. Worked Example — Local Minimum
-          </h2>
+          <h2 className="sec-title">11. Worked Example — Local Minimum</h2>
 
           <p>Consider</p>
 
@@ -780,9 +786,7 @@ f_y=2y.
 $$`}
           </div>
 
-          <p>
-            Setting both equal to zero gives
-          </p>
+          <p>Setting both equal to zero gives</p>
 
           <div className="fml">
             {String.raw`$$
@@ -838,9 +842,7 @@ $$`}
 
         <section className="section" id="worked-example-2">
           <div className="sec-badge">Worked Example</div>
-          <h2 className="sec-title">
-            12. Worked Example — Local Maximum
-          </h2>
+          <h2 className="sec-title">12. Worked Example — Local Maximum</h2>
 
           <p>Consider</p>
 
@@ -905,9 +907,7 @@ $$`}
 
         <section className="section" id="worked-example-3">
           <div className="sec-badge">Worked Example</div>
-          <h2 className="sec-title">
-            13. Worked Example — Saddle Point
-          </h2>
+          <h2 className="sec-title">13. Worked Example — Saddle Point</h2>
 
           <p>Consider</p>
 
@@ -978,9 +978,7 @@ $$`}
 
         <section className="section" id="worked-example-4">
           <div className="sec-badge">Worked Example</div>
-          <h2 className="sec-title">
-            14. Worked Example — Degenerate Hessian
-          </h2>
+          <h2 className="sec-title">14. Worked Example — Degenerate Hessian</h2>
 
           <p>Consider</p>
 
@@ -1018,9 +1016,7 @@ H_f
 $$`}
           </div>
 
-          <p>
-            At the critical point,
-          </p>
+          <p>At the critical point,</p>
 
           <div className="fml">
             {String.raw`$$
@@ -1033,9 +1029,7 @@ H_f(0,0)
 $$`}
           </div>
 
-          <p>
-            Hence
-          </p>
+          <p>Hence</p>
 
           <div className="fml">
             {String.raw`$$
@@ -1043,15 +1037,11 @@ D=0.
 $$`}
           </div>
 
-          <p>
-            The Hessian test is inconclusive.
-          </p>
+          <p>The Hessian test is inconclusive.</p>
 
           <h3>Step 3: Use another argument</h3>
 
-          <p>
-            Since
-          </p>
+          <p>Since</p>
 
           <div className="fml">
             {String.raw`$$
@@ -1077,9 +1067,7 @@ $$`}
 
         <section className="section" id="applications">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            15. Optimization Applications
-          </h2>
+          <h2 className="sec-title">15. Optimization Applications</h2>
 
           <p>
             The Hessian is important whenever a model is optimized near a
@@ -1118,9 +1106,7 @@ $$`}
 
         <section className="section" id="common-mistakes">
           <div className="sec-badge">Section</div>
-          <h2 className="sec-title">
-            16. Common Mistakes
-          </h2>
+          <h2 className="sec-title">16. Common Mistakes</h2>
 
           <div className="box">
             <p>
@@ -1241,6 +1227,7 @@ $$`}
         />
 
         <Divider />
+        <KKTConditionsGuide />
 
         <GuideFooter />
       </main>
