@@ -234,11 +234,23 @@ function TableOfContentsPart1() {
 function GuideFooter() {
   return (
     <div className="pg-foot">
-      <p>End of The Hessian Matrix &amp; Optimization.</p>
+      <p>
+        Constrained &amp; Unconstrained Optimization · Part 1 of 2
+      </p>
 
-      <div className="guide-navigation">
-        <a href="#hessian-optimization" className="guide-nav-button">
+      <div className="guide-navigation" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        <a
+          href="#hessian-optimization"
+          className="guide-nav-button"
+        >
           ↑ Back to The Hessian Matrix &amp; Optimization
+        </a>
+
+        <a
+          href="/constrained-unconstrained-optimization/2"
+          className="guide-nav-button"
+        >
+          Next Page: Global Extrema on Bounded Domains →
         </a>
       </div>
     </div>
