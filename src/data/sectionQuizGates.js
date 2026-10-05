@@ -74,6 +74,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "global-extrema": ["global-extrema"],
   "gradient-descent": ["gradient-descent"],
   "vector-potentials": ["vector-potentials"],
+  "multivariable-taylor": ["multivariable-taylor"],
+  "implicit-function-theorem": ["implicit-function-theorem"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
