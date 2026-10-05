@@ -2,7 +2,11 @@
  *  Every question is unique across the entire site and requires real work to solve.
  *  Regenerate with: python _pgen_build.py
  */
+import {
+  MV_COORDINATE_TRANSFORMATIONS_PRACTICE_BANK,
+} from "./mvCoordinateTransformationsPracticeBank";
 export const MV_PRACTICE_BANK = [
+  ...MV_COORDINATE_TRANSFORMATIONS_PRACTICE_BANK,
   {
     "id": 20000,
     "topic": "Partial Derivatives",
