@@ -44,6 +44,7 @@ import FluxIntegralsGeneralSurfacesGuide from "./pages/multivariableCalculus/Flu
 import HessianOptimizationGuide from "./pages/multivariableCalculus/HessianOptimizationGuide";
 import ConstrainedOptimizationPart2 from "./pages/multivariableCalculus/ConstrainedOptimizationPart2";
 import VectorFieldsApproximationPart1 from "./pages/multivariableCalculus/VectorFieldsApproximationPart1";
+import VectorFieldsApproximationPart2 from "./pages/multivariableCalculus/VectorFieldsApproximationPart2";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -446,6 +447,7 @@ function App() {
                   path="/constrained-unconstrained-optimization/2"
                   element={<Layout body={<ConstrainedOptimizationPart2 />} />}
                 />
+                
                 {/* Module C: Vector Fields & Approximation Theory */}
 
                 <Route
@@ -458,6 +460,11 @@ function App() {
                 <Route
                   path="/vector-fields-approximation/1"
                   element={<Layout body={<VectorFieldsApproximationPart1 />} />}
+                />
+
+                <Route
+                  path="/vector-fields-approximation/2"
+                  element={<Layout body={<VectorFieldsApproximationPart2 />} />}
                 />
 
                 {/* Taylor Series */}
