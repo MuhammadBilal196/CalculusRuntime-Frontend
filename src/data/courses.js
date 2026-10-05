@@ -250,7 +250,9 @@ export const COURSES = [
         path: "/laplace-transforms/1",
         meta: "2 parts · 20 MCQs",
         icon: "ℒ",
-        logo: <span className="math-logo">ℒ&#123;f(t)&#125; = ∫e^(-st)f(t)dt</span>,
+        logo: (
+          <span className="math-logo">ℒ&#123;f(t)&#125; = ∫e^(-st)f(t)dt</span>
+        ),
       },
       {
         title: "Fourier Series",
@@ -505,6 +507,15 @@ export const COURSES = [
         meta: "4 topics · 20-question checkpoint per topic",
         icon: "H",
         logo: <span className="math-logo">H = ∇²f</span>,
+      },
+      {
+        title: "Vector Fields & Approximation Theory",
+        description:
+          "Vector Potentials, Multivariable Taylor Series & Second-Order Approximation, Implicit Function Theorem, and Directional Derivatives in n Dimensions.",
+        path: "/vector-fields-approximation/1",
+        meta: "4 topics · 20-question checkpoint per topic",
+        icon: "∇",
+        logo: <span className="math-logo">∇×A = F</span>,
       },
 
       {
