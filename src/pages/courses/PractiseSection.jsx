@@ -9,23 +9,14 @@ import "./PractiseSection.css";
 const BANK_LOADERS = {
   calcAg: () =>
     import("../../data/calcAgPracticeBank").then(
-      (m) => m.CALC_AG_PRACTICE_BANK
+      (m) => m.CALC_AG_PRACTICE_BANK,
     ),
 
-  mv: () =>
-    import("../../data/mvPracticeBank").then(
-      (m) => m.MV_PRACTICE_BANK
-    ),
+  mv: () => import("../../data/mvPracticeBank").then((m) => m.MV_PRACTICE_BANK),
 
-  la: () =>
-    import("../../data/laPracticeBank").then(
-      (m) => m.LA_PRACTICE_BANK
-    ),
+  la: () => import("../../data/laPracticeBank").then((m) => m.LA_PRACTICE_BANK),
 
-  ps: () =>
-    import("../../data/psPracticeBank").then(
-      (m) => m.PS_PRACTICE_BANK
-    ),
+  ps: () => import("../../data/psPracticeBank").then((m) => m.PS_PRACTICE_BANK),
 };
 
 const DIFFICULTIES = ["Easy", "Medium", "Hard"];
@@ -48,6 +39,7 @@ const TOPICS = [
   "3D Analytic Geometry & Vectors",
   "Space Curves & Advanced Multivariable Mappings",
   "Coordinate Transformations & Surfaces",
+  "Constrained & Unconstrained Optimization",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -73,9 +65,7 @@ const TOPICS = [
   "Linear Transformations",
   "Orthogonality & Least Squares",
   "Singular Value Decomposition",
-  ...LA_MODULES.flatMap((module) =>
-    module.topics.map((topic) => topic.title)
-  ),
+  ...LA_MODULES.flatMap((module) => module.topics.map((topic) => topic.title)),
   "Probability Basics",
   "Random Variables & Distributions",
   "Descriptive Statistics",
@@ -113,8 +103,8 @@ const PRACTICE_SELECTIONS = {
           type: "topic",
           banks: ["la"],
         },
-      ])
-    )
+      ]),
+    ),
   ),
 
   // ============================================================
@@ -334,6 +324,11 @@ const PRACTICE_SELECTIONS = {
     banks: ["mv"],
     moduleName: "Coordinate Transformations & Surfaces",
   },
+  "Constrained & Unconstrained Optimization": {
+    type: "module",
+    banks: ["mv"],
+    moduleName: "Constrained & Unconstrained Optimization",
+  },
 
   // ============================================================
   // FUTURE NEW MVC MODULES
@@ -415,7 +410,7 @@ function shuffleQuestionOptions(question) {
     ...question,
     options: randomizedChoices.map((choice) => choice.option),
     correctAnswer: randomizedChoices.findIndex(
-      (choice) => choice.originalIndex === question.correctAnswer
+      (choice) => choice.originalIndex === question.correctAnswer,
     ),
   };
 }
@@ -474,11 +469,10 @@ export default function PractiseSection() {
 
     let cancelled = false;
 
-    const selection =
-      PRACTICE_SELECTIONS[chosenTopic] || {
-        type: "topic",
-        banks: [],
-      };
+    const selection = PRACTICE_SELECTIONS[chosenTopic] || {
+      type: "topic",
+      banks: [],
+    };
 
     setIsLoadingBank(true);
     setPoolProblems([]);
@@ -536,24 +530,17 @@ export default function PractiseSection() {
         // ========================================================
 
         const uniqueQuestions = Array.from(
-          new Map(
-            filtered.map((question) => [question.id, question])
-          ).values()
+          new Map(filtered.map((question) => [question.id, question])).values(),
         );
 
         // ========================================================
         // SHUFFLE QUESTIONS + OPTIONS
         // ========================================================
 
-        setPoolProblems(
-          shuffled(uniqueQuestions).map(shuffleQuestionOptions)
-        );
+        setPoolProblems(shuffled(uniqueQuestions).map(shuffleQuestionOptions));
       })
       .catch((error) => {
-        console.error(
-          "Failed to load practice question bank:",
-          error
-        );
+        console.error("Failed to load practice question bank:", error);
 
         if (!cancelled) {
           setPoolProblems([]);
@@ -647,8 +634,7 @@ export default function PractiseSection() {
       return;
     }
 
-    const correct =
-      index === currentProblem.correctAnswer;
+    const correct = index === currentProblem.correctAnswer;
 
     setScore((prev) => ({
       correct: prev.correct + (correct ? 1 : 0),
@@ -685,8 +671,7 @@ export default function PractiseSection() {
       return;
     }
 
-    const correct =
-      selectedAnswer === currentProblem.correctAnswer;
+    const correct = selectedAnswer === currentProblem.correctAnswer;
 
     setScore((prev) => ({
       correct: prev.correct + (correct ? 1 : 0),
@@ -707,8 +692,7 @@ export default function PractiseSection() {
     }
   };
 
-  const currentProblem =
-    poolProblems[currentIndex] || null;
+  const currentProblem = poolProblems[currentIndex] || null;
 
   // ============================================================
   // RENDER
@@ -721,16 +705,14 @@ export default function PractiseSection() {
           <h1>Focused Practice Arena</h1>
 
           <p>
-            Comprehensive testing workspace for Advanced
-            Calculus and Mathematics modules.
+            Comprehensive testing workspace for Advanced Calculus and
+            Mathematics modules.
           </p>
         </div>
 
         <div className="practice-score">
           <div>
-            <span className="practice-score-label">
-              Total Score
-            </span>
+            <span className="practice-score-label">Total Score</span>
 
             <div className="practice-score-value">
               {score.correct} <span>/</span> {score.total}
@@ -767,8 +749,7 @@ export default function PractiseSection() {
               fontSize: "0.9rem",
             }}
           >
-            Choose a difficulty tier to unlock the specific
-            topic modules.
+            Choose a difficulty tier to unlock the specific topic modules.
           </p>
 
           <div className="practice-tier-grid">
@@ -776,9 +757,7 @@ export default function PractiseSection() {
               <button
                 key={level}
                 type="button"
-                onClick={() =>
-                  setChosenDifficulty(level)
-                }
+                onClick={() => setChosenDifficulty(level)}
                 className={`practice-tier-btn practice-tier-btn--${level.toLowerCase()}`}
               >
                 {level} Mode
@@ -804,9 +783,7 @@ export default function PractiseSection() {
           >
             <span className="practice-crumb">
               Difficulty Tier:{" "}
-              <span className="practice-crumb-pill">
-                {chosenDifficulty}
-              </span>
+              <span className="practice-crumb-pill">{chosenDifficulty}</span>
             </span>
 
             <button
@@ -843,9 +820,7 @@ export default function PractiseSection() {
         <div>
           <div className="practice-toolbar">
             <div className="practice-crumb">
-              <span className="practice-crumb-pill">
-                {chosenDifficulty}
-              </span>
+              <span className="practice-crumb-pill">{chosenDifficulty}</span>
 
               <span>/</span>
 
@@ -880,10 +855,7 @@ export default function PractiseSection() {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  <p
-                    className="practice-kicker"
-                    style={{ margin: 0 }}
-                  >
+                  <p className="practice-kicker" style={{ margin: 0 }}>
                     Question Workspace
                   </p>
 
@@ -894,77 +866,52 @@ export default function PractiseSection() {
                       color: "var(--accent)",
                     }}
                   >
-                    Question {currentIndex + 1} of{" "}
-                    {poolProblems.length}
+                    Question {currentIndex + 1} of {poolProblems.length}
                   </span>
                 </div>
 
-                <h2 className="practice-question">
-                  {currentProblem.question}
-                </h2>
+                <h2 className="practice-question">{currentProblem.question}</h2>
 
                 <div
                   className="practice-options"
                   role="listbox"
                   aria-label="Answer choices"
                 >
-                  {currentProblem.options.map(
-                    (option, idx) => {
-                      let stateClass = "";
+                  {currentProblem.options.map((option, idx) => {
+                    let stateClass = "";
 
-                      if (
-                        selectedAnswer === idx &&
-                        !isSubmitted
-                      ) {
-                        stateClass =
-                          "practice-option--selected";
-                      }
-
-                      if (isSubmitted) {
-                        if (
-                          idx ===
-                          currentProblem.correctAnswer
-                        ) {
-                          stateClass =
-                            "practice-option--correct";
-                        } else if (
-                          selectedAnswer === idx
-                        ) {
-                          stateClass =
-                            "practice-option--wrong";
-                        } else {
-                          stateClass =
-                            "practice-option--muted";
-                        }
-                      }
-
-                      return (
-                        <button
-                          key={idx}
-                          type="button"
-                          role="option"
-                          aria-selected={
-                            selectedAnswer === idx
-                          }
-                          disabled={isSubmitted}
-                          onClick={() =>
-                            handleAnswerClick(idx)
-                          }
-                          className={`practice-option ${stateClass}`.trim()}
-                        >
-                          <span className="practice-option__letter">
-                            {String.fromCharCode(
-                              65 + idx
-                            )}
-                          </span>
-
-                          <span className="practice-option__text">
-                            {option}
-                          </span>
-                        </button>
-                      );
+                    if (selectedAnswer === idx && !isSubmitted) {
+                      stateClass = "practice-option--selected";
                     }
-                  )}
+
+                    if (isSubmitted) {
+                      if (idx === currentProblem.correctAnswer) {
+                        stateClass = "practice-option--correct";
+                      } else if (selectedAnswer === idx) {
+                        stateClass = "practice-option--wrong";
+                      } else {
+                        stateClass = "practice-option--muted";
+                      }
+                    }
+
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        role="option"
+                        aria-selected={selectedAnswer === idx}
+                        disabled={isSubmitted}
+                        onClick={() => handleAnswerClick(idx)}
+                        className={`practice-option ${stateClass}`.trim()}
+                      >
+                        <span className="practice-option__letter">
+                          {String.fromCharCode(65 + idx)}
+                        </span>
+
+                        <span className="practice-option__text">{option}</span>
+                      </button>
+                    );
+                  })}
                 </div>
 
                 <div className="practice-actions">
@@ -973,9 +920,7 @@ export default function PractiseSection() {
                       type="button"
                       className="practice-submit"
                       onClick={handleSubmit}
-                      disabled={
-                        selectedAnswer === null
-                      }
+                      disabled={selectedAnswer === null}
                     >
                       Submit Verification
                     </button>
@@ -985,8 +930,7 @@ export default function PractiseSection() {
                       className="practice-next"
                       onClick={handleNextQuestion}
                     >
-                      {currentIndex <
-                      poolProblems.length - 1
+                      {currentIndex < poolProblems.length - 1
                         ? "Next Question →"
                         : "Finish Quiz & View Score"}
                     </button>
@@ -997,9 +941,7 @@ export default function PractiseSection() {
                   <div className="practice-insight">
                     <h4>Solution Insight</h4>
 
-                    <p>
-                      {currentProblem.explanation}
-                    </p>
+                    <p>{currentProblem.explanation}</p>
                   </div>
                 )}
               </div>
@@ -1014,8 +956,7 @@ export default function PractiseSection() {
 
                 <p>
                   You have finished all questions for{" "}
-                  <strong>{chosenTopic}</strong> (
-                  {chosenDifficulty}).
+                  <strong>{chosenTopic}</strong> ({chosenDifficulty}).
                 </p>
 
                 <div
@@ -1026,10 +967,7 @@ export default function PractiseSection() {
                   <SubmitToLeaderboard
                     quizId={`practice-${chosenTopic}-${chosenDifficulty}`}
                     score={score.correct}
-                    total={Math.max(
-                      score.total,
-                      1
-                    )}
+                    total={Math.max(score.total, 1)}
                   />
                 </div>
 
@@ -1045,13 +983,10 @@ export default function PractiseSection() {
                 </button>
               </div>
             ) : isLoadingBank ? (
-              <div className="practice-empty">
-                Loading question bank…
-              </div>
+              <div className="practice-empty">Loading question bank…</div>
             ) : (
               <div className="practice-empty">
-                No questions populated matching this
-                configuration choice.
+                No questions populated matching this configuration choice.
               </div>
             )}
           </div>
