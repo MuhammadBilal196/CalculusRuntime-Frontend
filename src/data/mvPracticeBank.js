@@ -5,8 +5,11 @@
 import {
   MV_COORDINATE_TRANSFORMATIONS_PRACTICE_BANK,
 } from "./mvCoordinateTransformationsPracticeBank";
+
+import { MV_OPTIMIZATION_PRACTICE_BANK } from "./mvOptimizationPracticeBank";
 export const MV_PRACTICE_BANK = [
   ...MV_COORDINATE_TRANSFORMATIONS_PRACTICE_BANK,
+  ...MV_OPTIMIZATION_PRACTICE_BANK,
   {
     "id": 20000,
     "topic": "Partial Derivatives",
