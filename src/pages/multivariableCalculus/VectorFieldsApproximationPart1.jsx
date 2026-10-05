@@ -2,13 +2,13 @@ import StudyGuideShell from "../courses/StudyGuideShell";
 import "./PartialDerivativesGuide.css";
 
 import VectorPotentialsGuide from "./VectorPotentialsGuide";
+import MultivariableTaylorSeriesGuide from "./MultivariableTaylorSeriesGuide";
 
 function GuideSidebarPart1() {
   return (
     <nav className="sidebar">
       <div className="sb-brand">
         <div className="sb-sub">Multivariable Calculus</div>
-
         <div className="sb-title">
           Vector Fields &amp; Approximation Theory
         </div>
@@ -16,41 +16,37 @@ function GuideSidebarPart1() {
 
       <div className="sb-group">PART 1</div>
 
-      {/* Topic 1 */}
-      <a
-        className="sb-link"
-        href="#vector-potential-opening"
-      >
+      <a className="sb-link" href="#vector-potential-opening">
         Vector Potentials
       </a>
 
-      <a
-        className="sb-link"
-        href="#vector-potential-5"
-      >
+      <a className="sb-link" href="#vector-potential-5">
         Worked Examples
       </a>
 
-      <a
-        className="sb-link"
-        href="#mcq-vector-potentials"
-      >
+      <a className="sb-link" href="#mcq-vector-potentials">
+        Quiz (20 Questions)
+      </a>
+
+      <a className="sb-link" href="#multivariable-taylor-opening">
+        Multivariable Taylor Series &amp; Second-Order Approximation
+      </a>
+
+      <a className="sb-link" href="#multivariable-taylor-5">
+        Worked Examples
+      </a>
+
+      <a className="sb-link" href="#mcq-multivariable-taylor">
         Quiz (20 Questions)
       </a>
 
       <div className="sb-group">PART 2</div>
 
-      <a
-        className="sb-link"
-        href="/vector-fields-approximation/2"
-      >
+      <a className="sb-link" href="/vector-fields-approximation/2">
         Implicit Function Theorem
       </a>
 
-      <a
-        className="sb-link"
-        href="/vector-fields-approximation/2"
-      >
+      <a className="sb-link" href="/vector-fields-approximation/2">
         Directional Derivatives in n Dimensions
       </a>
     </nav>
@@ -89,137 +85,87 @@ function TableOfContentsPart1() {
       </div>
 
       <div className="toc-grid">
-        <a
-          className="toc-a"
-          href="#vector-potential-opening"
-        >
+        <a className="toc-a" href="#vector-potential-opening">
           Vector Potentials
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-1"
-        >
+        <a className="toc-a" href="#vector-potential-1">
           The Curl Operator
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-2"
-        >
+        <a className="toc-a" href="#vector-potential-2">
           The Fundamental Divergence Condition
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-3"
-        >
+        <a className="toc-a" href="#vector-potential-3">
           Divergence-Free Is Necessary, but Topology Also Matters
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-4"
-        >
+        <a className="toc-a" href="#vector-potential-4">
           A First Construction Strategy
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-5"
-        >
-          Worked Example — Constant Vertical Field
+        <a className="toc-a" href="#vector-potential-5">
+          Worked Examples
+        </a>
+        <a className="toc-a" href="#mcq-vector-potentials">
+          Vector Potentials — Quiz (20 Questions)
         </a>
 
-        <a
-          className="toc-a"
-          href="#vector-potential-6"
-        >
-          Worked Example — A Field with Polynomial Components
+        <a className="toc-a" href="#multivariable-taylor-opening">
+          Multivariable Taylor Series &amp; Second-Order Approximation
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-7"
-        >
-          A Systematic Component-by-Component Construction
+        <a className="toc-a" href="#multivariable-taylor-1">
+          Why Taylor Approximation Matters
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-8"
-        >
-          Gauge Freedom
+        <a className="toc-a" href="#multivariable-taylor-2">
+          The Displacement Vector
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-9"
-        >
-          Worked Example — Demonstrating Gauge Freedom
+        <a className="toc-a" href="#multivariable-taylor-3">
+          First-Order Taylor Approximation
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-10"
-        >
-          Vector Potentials and Conservative Fields Are Different Ideas
+        <a className="toc-a" href="#multivariable-taylor-4">
+          Geometric Meaning — The Tangent Plane
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-11"
-        >
-          Geometric Meaning of a Vector Potential
+        <a className="toc-a" href="#multivariable-taylor-5">
+          Worked Example — First-Order Approximation
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-12"
-        >
-          Connection to Surface Flux
+        <a className="toc-a" href="#multivariable-taylor-6">
+          The Hessian Matrix
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-13"
-        >
-          Worked Example — Using Stokes' Theorem
+        <a className="toc-a" href="#multivariable-taylor-7">
+          Second-Order Taylor Approximation
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-14"
-        >
-          Gauge Choices and Simplification
+        <a className="toc-a" href="#multivariable-taylor-8">
+          Expanded Second-Order Formula
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-15"
-        >
-          Applications of Vector Potentials
+        <a className="toc-a" href="#multivariable-taylor-9">
+          Worked Example — Quadratic Function
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-16"
-        >
-          Common Mistakes and Diagnostic Checks
+        <a className="toc-a" href="#multivariable-taylor-10">
+          Taylor Series in More Than Two Variables
         </a>
-
-        <a
-          className="toc-a"
-          href="#vector-potential-17"
-        >
-          Complete Vector-Potential Strategy and Key Formulas
+        <a className="toc-a" href="#multivariable-taylor-11">
+          The Role of Curvature
         </a>
-
-        <a
-          className="toc-a"
-          href="#mcq-vector-potentials"
-        >
-          Quiz (20 Questions)
+        <a className="toc-a" href="#multivariable-taylor-12">
+          Mixed Partial Derivatives
+        </a>
+        <a className="toc-a" href="#multivariable-taylor-13">
+          Worked Example — A Nonlinear Approximation
+        </a>
+        <a className="toc-a" href="#multivariable-taylor-14">
+          Error and the Remainder
+        </a>
+        <a className="toc-a" href="#multivariable-taylor-15">
+          Choosing First- or Second-Order Approximation
+        </a>
+        <a className="toc-a" href="#multivariable-taylor-16">
+          Applications
+        </a>
+        <a className="toc-a" href="#multivariable-taylor-17">
+          Common Mistakes
+        </a>
+        <a className="toc-a" href="#multivariable-taylor-18">
+          Complete Taylor Approximation Workflow
+        </a>
+        <a className="toc-a" href="#mcq-multivariable-taylor">
+          Multivariable Taylor — Quiz (20 Questions)
         </a>
       </div>
     </nav>
@@ -270,7 +216,7 @@ function VectorFieldsApproximationPart1Content() {
         <TableOfContentsPart1 />
 
         <VectorPotentialsGuide />
-
+        <MultivariableTaylorSeriesGuide />
         <GuideFooterPart1 />
       </main>
     </>
