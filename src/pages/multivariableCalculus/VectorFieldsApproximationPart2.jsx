@@ -2,6 +2,7 @@ import StudyGuideShell from "../courses/StudyGuideShell";
 import "./PartialDerivativesGuide.css";
 
 import ImplicitFunctionTheoremGuide from "./ImplicitFunctionTheoremGuide";
+import DirectionalDerivativesGuide from "./DirectionalDerivativesGuide";
 
 function GuideSidebarPart2() {
   return (
@@ -37,12 +38,26 @@ function GuideSidebarPart2() {
         Quiz (20 Questions)
       </a>
 
-      {/* Topic 4 — will be added to this same page */}
+      {/* Topic 4 */}
       <a
         className="sb-link"
-        href="/vector-fields-approximation/2"
+        href="#directional-derivatives-opening"
       >
         Directional Derivatives in n Dimensions
+      </a>
+
+      <a
+        className="sb-link"
+        href="#directional-derivatives-5"
+      >
+        Worked Examples
+      </a>
+
+      <a
+        className="sb-link"
+        href="#mcq-directional-derivatives"
+      >
+        Quiz (20 Questions)
       </a>
 
       <div className="sb-group">PART 1</div>
@@ -96,85 +111,277 @@ function TableOfContentsPart2() {
       </div>
 
       <div className="toc-grid">
-        <a className="toc-a" href="#implicit-function-opening">
+        {/* Topic 3 */}
+        <a
+          className="toc-a"
+          href="#implicit-function-opening"
+        >
           Implicit Function Theorem
         </a>
 
-        <a className="toc-a" href="#implicit-function-1">
+        <a
+          className="toc-a"
+          href="#implicit-function-1"
+        >
           Explicit and Implicit Relationships
         </a>
 
-        <a className="toc-a" href="#implicit-function-2">
+        <a
+          className="toc-a"
+          href="#implicit-function-2"
+        >
           The Local Nature of the Theorem
         </a>
 
-        <a className="toc-a" href="#implicit-function-3">
+        <a
+          className="toc-a"
+          href="#implicit-function-3"
+        >
           Why the Partial Derivative Must Be Nonzero
         </a>
 
-        <a className="toc-a" href="#implicit-function-4">
+        <a
+          className="toc-a"
+          href="#implicit-function-4"
+        >
           Deriving the Implicit Derivative Formula
         </a>
 
-        <a className="toc-a" href="#implicit-function-5">
+        <a
+          className="toc-a"
+          href="#implicit-function-5"
+        >
           Worked Example — Circle
         </a>
 
-        <a className="toc-a" href="#implicit-function-6">
+        <a
+          className="toc-a"
+          href="#implicit-function-6"
+        >
           Level Curves and the Gradient
         </a>
 
-        <a className="toc-a" href="#implicit-function-7">
+        <a
+          className="toc-a"
+          href="#implicit-function-7"
+        >
           Regular Level Sets
         </a>
 
-        <a className="toc-a" href="#implicit-function-8">
-          Worked Example — Linear Equation
+        <a
+          className="toc-a"
+          href="#implicit-function-8"
+        >
+          Worked Example — Linear Implicit Equation
         </a>
 
-        <a className="toc-a" href="#implicit-function-9">
+        <a
+          className="toc-a"
+          href="#implicit-function-9"
+        >
           Solving for z in Three Variables
         </a>
 
-        <a className="toc-a" href="#implicit-function-10">
+        <a
+          className="toc-a"
+          href="#implicit-function-10"
+        >
           Partial Derivatives of an Implicit Function
         </a>
 
-        <a className="toc-a" href="#implicit-function-11">
+        <a
+          className="toc-a"
+          href="#implicit-function-11"
+        >
           Worked Example — Sphere
         </a>
 
-        <a className="toc-a" href="#implicit-function-12">
+        <a
+          className="toc-a"
+          href="#implicit-function-12"
+        >
           The Jacobian Perspective
         </a>
 
-        <a className="toc-a" href="#implicit-function-13">
+        <a
+          className="toc-a"
+          href="#implicit-function-13"
+        >
           What Happens When F_y = 0?
         </a>
 
-        <a className="toc-a" href="#implicit-function-14">
+        <a
+          className="toc-a"
+          href="#implicit-function-14"
+        >
           Worked Example — Choosing the Dependent Variable
         </a>
 
-        <a className="toc-a" href="#implicit-function-15">
+        <a
+          className="toc-a"
+          href="#implicit-function-15"
+        >
           Local Uniqueness
         </a>
 
-        <a className="toc-a" href="#implicit-function-16">
+        <a
+          className="toc-a"
+          href="#implicit-function-16"
+        >
           Applications
         </a>
 
-        <a className="toc-a" href="#implicit-function-17">
+        <a
+          className="toc-a"
+          href="#implicit-function-17"
+        >
           Common Mistakes
         </a>
 
-        <a className="toc-a" href="#implicit-function-18">
+        <a
+          className="toc-a"
+          href="#implicit-function-18"
+        >
           Key Formulas and Complete Workflow
         </a>
 
         <a
           className="toc-a"
           href="#mcq-implicit-function-theorem"
+        >
+          Quiz (20 Questions)
+        </a>
+
+        {/* Topic 4 */}
+        <a
+          className="toc-a"
+          href="#directional-derivatives-opening"
+        >
+          Directional Derivatives in n Dimensions
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-1"
+        >
+          Why a Directional Derivative Is Needed
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-2"
+        >
+          The Gradient in n Dimensions
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-3"
+        >
+          Direction Vectors and Unit Directions
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-4"
+        >
+          Definition of the Directional Derivative
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-5"
+        >
+          Worked Example — Two-Dimensional Direction
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-6"
+        >
+          Geometric Meaning of the Gradient
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-7"
+        >
+          Maximum and Minimum Directional Derivatives
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-8"
+        >
+          Orthogonal Directions and Zero Change
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-9"
+        >
+          Worked Example — Three Variables
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-10"
+        >
+          Directional Derivatives and the Differential
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-11"
+        >
+          Connection with the Tangent Hyperplane
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-12"
+        >
+          Worked Example — Maximum Rate of Increase
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-13"
+        >
+          Directional Derivatives Along Coordinate Directions
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-14"
+        >
+          When the Gradient Is Zero
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-15"
+        >
+          Applications in High-Dimensional Problems
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-16"
+        >
+          Common Mistakes
+        </a>
+
+        <a
+          className="toc-a"
+          href="#directional-derivatives-17"
+        >
+          Key Formulas and Complete Workflow
+        </a>
+
+        <a
+          className="toc-a"
+          href="#mcq-directional-derivatives"
         >
           Quiz (20 Questions)
         </a>
@@ -225,6 +432,7 @@ function VectorFieldsApproximationPart2Content() {
         <GuideHeaderPart2 />
         <TableOfContentsPart2 />
         <ImplicitFunctionTheoremGuide />
+        <DirectionalDerivativesGuide />
         <GuideFooterPart2 />
       </main>
     </>
