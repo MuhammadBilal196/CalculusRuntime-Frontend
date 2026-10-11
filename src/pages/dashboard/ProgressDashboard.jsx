@@ -32,6 +32,18 @@ const TOPIC_COLORS = {
   "lagrange-multipliers": "#f6d365",
   "stokes-theorem":       "#a18cd1",
   "divergence-curl":      "#fda085",
+    // Additional Multivariable Calculus topics
+  "geo3d": "#a18cd1",
+  "3d-geometry": "#a18cd1",
+  "space-curves": "#4facfe",
+  "coordinate-transformations": "#43e97b",
+  "jacobians-change-of-variables": "#43e97b",
+  "curvilinear-coordinate-systems": "#43e97b",
+  "parametrized-surface-area": "#43e97b",
+  "flux-integrals-general-surfaces": "#43e97b",
+  "optimization": "#f6d365",
+  "constrained-unconstrained-optimization": "#f6d365",
+  "vector-fields-approximation": "#f093fb",
 };
 
 // ── Main page ─────────────────────────────────────────────────
