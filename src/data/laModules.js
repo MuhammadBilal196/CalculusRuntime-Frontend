@@ -6,6 +6,7 @@ export const LA_MODULES = [
     title: "Matrix Decompositions & Factorizations",
     description: "LU, Cholesky, Jordan normal form, and vector/matrix norms with conditioning. Detailed theory, worked examples, and 20 MCQs per topic.",
     logo: "A = LU",
+    logoLatex: "A = LU",
     topics: [
       { id: "lu-decomposition", title: "LU Decomposition", quizKey: "la-a-lu-checkpoint" },
       { id: "cholesky-decomposition", title: "Cholesky Decomposition", quizKey: "la-a-cholesky-checkpoint" },
@@ -19,6 +20,7 @@ export const LA_MODULES = [
     title: "Advanced Vector Space Theory",
     description: "Complex vector spaces, quadratic forms, change of basis, and affine transformations. Four complete topics with worked examples and individual checkpoints.",
     logo: "U*U = I",
+    logoLatex: "U^* U = I",
     topics: [
       { id: "complex-vector-spaces", title: "Complex Vector Spaces (Hermitian & Unitary Matrices)", quizKey: "la-complex-checkpoint" },
       { id: "quadratic-forms-definiteness", title: "Quadratic Forms & Definiteness", quizKey: "la-quadratic-checkpoint" },
@@ -32,6 +34,7 @@ export const LA_MODULES = [
     title: "Applied Linear Algebra",
     description: "PCA, Markov chains, linear programming with the Simplex method, and vector-space applications in graphics and machine learning.",
     logo: "XᵀX",
+    logoLatex: "X^T X",
     topics: [
       { id: "principal-component-analysis", title: "Principal Component Analysis (PCA)", quizKey: "la-pca-checkpoint" },
       { id: "markov-chains-steady-states", title: "Markov Chains & Steady States", quizKey: "la-markov-checkpoint" },

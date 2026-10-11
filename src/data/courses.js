@@ -91,7 +91,7 @@ export const COURSES = [
         path: "/conic-sections/1",
         meta: "2 parts · 8 examples each",
         icon: "◯",
-        logo: <span className="math-logo">x²/a² + y²/b² = 1</span>,
+        logo: mathLogo(String.raw`\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1`),
       },
       {
         title: "Straight Lines & Systems of Lines",
@@ -100,10 +100,8 @@ export const COURSES = [
         path: "/lines-geometry/1",
         meta: "2 parts · 16 lengthy examples · 30 MCQs",
         icon: "📏",
-        logo: (
-          <span className="math-logo">
-            Ax + By + C = 0 &amp; ax² + 2hxy + by² = 0
-          </span>
+        logo: mathLogo(
+          String.raw`Ax + By + C = 0 \;\&\; ax^2 + 2hxy + by^2 = 0`,
         ),
       },
       {
@@ -113,11 +111,7 @@ export const COURSES = [
         path: "/circles-tangents/1",
         meta: "2 parts · 16 lengthy examples · 30 MCQs",
         icon: "⭕",
-        logo: (
-          <span className="math-logo">
-            x² + y² + 2gx + 2fy + c = 0 &amp; T = 0
-          </span>
-        ),
+        logo: mathLogo(String.raw`x^2 + y^2 + 2gx + 2fy + c = 0 \;\&\; T = 0`),
       },
       {
         title: "Advanced Single-Variable Calculus",
@@ -126,10 +120,8 @@ export const COURSES = [
         path: "/advanced-calculus/1",
         meta: "2 parts · 16 lengthy examples · 30 MCQs",
         icon: "∂",
-        logo: (
-          <span className="math-logo">
-            (ε, δ) &amp; κ = |y''| / (1+y'²)^(3/2)
-          </span>
+        logo: mathLogo(
+          String.raw`(\varepsilon, \delta) \;\&\; \kappa = \frac{|y''|}{(1 + y'^2)^{3/2}}`,
         ),
       },
       {
@@ -139,10 +131,8 @@ export const COURSES = [
         path: "/differential-equations/1",
         meta: "2 parts · 16 lengthy examples · 30 MCQs",
         icon: "⚡",
-        logo: (
-          <span className="math-logo">
-            y' + P(x)y = Q(x) &amp; ay'' + by' + cy = 0
-          </span>
+        logo: mathLogo(
+          String.raw`y' + P(x)\,y = Q(x) \;\&\; ay'' + by' + cy = 0`,
         ),
       },
       {
@@ -152,7 +142,9 @@ export const COURSES = [
         path: "/space-curves/1",
         meta: "2 parts · 20 MCQs",
         icon: "🌀",
-        logo: <span className="math-logo">T, N, B &amp; κ, τ</span>,
+        logo: mathLogo(
+          String.raw`\mathbf{T}, \mathbf{N}, \mathbf{B} \;\&\; \kappa, \tau`,
+        ),
       },
       {
         title: "Vector-Valued Functions & Motion",
@@ -161,7 +153,9 @@ export const COURSES = [
         path: "/vector-motion/1",
         meta: "2 parts · 20 MCQs",
         icon: "🚀",
-        logo: <span className="math-logo">r'(t), a_T T + a_N N</span>,
+        logo: mathLogo(
+          String.raw`\mathbf{r}'(t),\; a_T\mathbf{T} + a_N\mathbf{N}`,
+        ),
       },
       {
         title: "Parametric Surfaces",
@@ -170,7 +164,7 @@ export const COURSES = [
         path: "/parametric-surfaces/1",
         meta: "2 parts · 20 MCQs",
         icon: "🌐",
-        logo: <span className="math-logo">r_u × r_v &amp; dS</span>,
+        logo: mathLogo(String.raw`\mathbf{r}_u \times \mathbf{r}_v \;\&\; dS`),
       },
       {
         title: "Polar Coordinate Calculus",
@@ -179,7 +173,9 @@ export const COURSES = [
         path: "/polar-calculus/1",
         meta: "2 parts · 20 MCQs",
         icon: "🎯",
-        logo: <span className="math-logo">r = f(θ) &amp; ½∫r²dθ</span>,
+        logo: mathLogo(
+          String.raw`r = f(\theta) \;\&\; \frac{1}{2}\int r^2\,d\theta`,
+        ),
       },
       {
         title: "Solids of Revolution",
@@ -188,7 +184,7 @@ export const COURSES = [
         path: "/solids-revolution/1",
         meta: "2 parts · 20 MCQs",
         icon: "🏺",
-        logo: <span className="math-logo">π∫R²dx &amp; 2π∫r h dx</span>,
+        logo: mathLogo(String.raw`\pi\int R^2\,dx \;\&\; 2\pi\int r\,h\,dx`),
       },
       {
         title: "Volume by Cross-Sections",
@@ -197,7 +193,7 @@ export const COURSES = [
         path: "/volume-cross-sections/1",
         meta: "2 parts · 20 MCQs",
         icon: "📦",
-        logo: <span className="math-logo">V = ∫ A(x) dx</span>,
+        logo: mathLogo(String.raw`V = \int A(x)\,dx`),
       },
       {
         title: "Numerical Methods",
@@ -206,7 +202,7 @@ export const COURSES = [
         path: "/numerical-methods/1",
         meta: "2 parts · 20 MCQs",
         icon: "🧮",
-        logo: <span className="math-logo">xₙ₊₁ = xₙ − f/f' &amp; Sₙ</span>,
+        logo: mathLogo(String.raw`x_{n+1} = x_n - \frac{f}{f'} \;\&\; S_n`),
       },
       {
         title: "Improper Integrals — Advanced Tests",
@@ -215,7 +211,9 @@ export const COURSES = [
         path: "/improper-integrals-advanced/1",
         meta: "2 parts · 20 MCQs",
         icon: "♾️",
-        logo: <span className="math-logo">P.V. ∫ &amp; Γ(z), B(p,q)</span>,
+        logo: mathLogo(
+          String.raw`\mathrm{P.V.}\int \;\&\; \Gamma(z),\; B(p,q)`,
+        ),
       },
       {
         title: "Complex Numbers & De Moivre",
@@ -224,7 +222,9 @@ export const COURSES = [
         path: "/complex-numbers/1",
         meta: "2 parts · 20 MCQs",
         icon: "ℂ",
-        logo: <span className="math-logo">e^(iθ) &amp; (cosθ+isinθ)ⁿ</span>,
+        logo: mathLogo(
+          String.raw`e^{i\theta} \;\&\; (\cos\theta + i\sin\theta)^n`,
+        ),
       },
       {
         title: "Hyperbolic Functions & Inverses",
@@ -233,7 +233,7 @@ export const COURSES = [
         path: "/hyperbolic-functions/1",
         meta: "2 parts · 20 MCQs",
         icon: "〰️",
-        logo: <span className="math-logo">cosh²x - sinh²x = 1</span>,
+        logo: mathLogo(String.raw`\cosh^2 x - \sinh^2 x = 1`),
       },
       {
         title: "Laplace Transforms",
@@ -242,9 +242,7 @@ export const COURSES = [
         path: "/laplace-transforms/1",
         meta: "2 parts · 20 MCQs",
         icon: "ℒ",
-        logo: (
-          <span className="math-logo">ℒ&#123;f(t)&#125; = ∫e^(-st)f(t)dt</span>
-        ),
+        logo: mathLogo(String.raw`\mathcal{L}\{f(t)\} = \int e^{-st} f(t)\,dt`),
       },
       {
         title: "Fourier Series",
@@ -253,7 +251,9 @@ export const COURSES = [
         path: "/fourier-series/1",
         meta: "2 parts · 20 MCQs",
         icon: "📈",
-        logo: <span className="math-logo">½a₀ + ∑(aₙcos + bₙsin)</span>,
+        logo: mathLogo(
+          String.raw`\frac{1}{2}a_0 + \sum (a_n\cos nx + b_n\sin nx)`,
+        ),
       },
       {
         title: "Analytic & 3D Vector Lab",
@@ -262,7 +262,9 @@ export const COURSES = [
         path: "/analytic-vector-lab",
         meta: "Interactive Suite",
         icon: "📐",
-        logo: <span className="math-logo">B²-4AC &amp; u·(v×w)</span>,
+        logo: mathLogo(
+          String.raw`B^2 - 4AC \;\&\; \mathbf{u}\cdot(\mathbf{v}\times\mathbf{w})`,
+        ),
       },
 
       {
@@ -272,11 +274,7 @@ export const COURSES = [
         path: "/test",
         meta: "Interactive tool",
         icon: "lim",
-        logo: (
-          <span className="math-logo">
-            lim<sub>x→c</sub> f(x) = f(c)
-          </span>
-        ),
+        logo: mathLogo(String.raw`\lim\limits_{x \to c} f(x) = f(c)`),
       },
       {
         title: "Taylor Series",
@@ -285,15 +283,7 @@ export const COURSES = [
         path: "/taylor-series/1",
         meta: "2 parts · 6+ examples each",
         icon: "Σ",
-        logo: (
-          <span className="math-logo">
-            Σ{" "}
-            <sup>
-              f<sup>(n)</sup>(a)
-            </sup>
-            /<sub>n!</sub> (x-a)<sup>n</sup>
-          </span>
-        ),
+        logo: mathLogo(String.raw`\sum \frac{f^{(n)}(a)}{n!}(x-a)^n`),
       },
       {
         title: "TaylorX (Derivative Visualizer)",
@@ -302,11 +292,7 @@ export const COURSES = [
         path: "/taylorx",
         meta: "Interactive tool",
         icon: "Σ",
-        logo: (
-          <span className="math-logo">
-            T<sub>n</sub>(x) ≈ f(x)
-          </span>
-        ),
+        logo: mathLogo(String.raw`T_n(x) \approx f(x)`),
       },
       {
         title: "Certification Quiz",
@@ -315,7 +301,7 @@ export const COURSES = [
         path: "/quiz/calculus-analytical-geometry",
         meta: "90 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 90 MCQs · 80%</span>,
+        logo: mathLogo(String.raw`\checkmark\;\text{90 MCQs} \cdot 80\%`),
       },
     ],
   },
@@ -360,7 +346,7 @@ export const COURSES = [
         path: "/multivariable-calculus/overview",
         meta: "Start here",
         icon: "★",
-        logo: <span className="math-logo">∇ &amp; ∭ Roadmap</span>,
+        logo: mathLogo(String.raw`\nabla \;\&\; \iiint \;\; \text{Roadmap}`),
         start: true,
       },
       {
@@ -370,7 +356,9 @@ export const COURSES = [
         path: "/partial-derivatives/1",
         meta: "2 parts · MCQ practice",
         icon: "∂",
-        logo: <span className="math-logo">∂f/∂x, ∂f/∂y</span>,
+        logo: mathLogo(
+          String.raw`\frac{\partial f}{\partial x},\; \frac{\partial f}{\partial y}`,
+        ),
       },
       {
         title: "3D Surface Explorer",
@@ -379,7 +367,7 @@ export const COURSES = [
         path: "/surface-explorer",
         meta: "Interactive tool",
         icon: "⛰",
-        logo: <span className="math-logo">z = f(x, y)</span>,
+        logo: mathLogo("z = f(x, y)"),
       },
       {
         title: "Extreme Value Finder",
@@ -387,11 +375,7 @@ export const COURSES = [
         path: "/extreme",
         meta: "Interactive tool",
         icon: "⬆",
-        logo: (
-          <span className="math-logo">
-            D = f<sub>xx</sub>f<sub>yy</sub> - f<sub>xy</sub>²
-          </span>
-        ),
+        logo: mathLogo("D = f_{xx}f_{yy} - f_{xy}^2"),
       },
       {
         title: "Vector Calculus",
@@ -400,11 +384,7 @@ export const COURSES = [
         path: "/vector-calculus/1",
         meta: "2 parts · Worked examples",
         icon: "∇",
-        logo: (
-          <span className="math-logo">
-            ∮<sub>C</sub> F · dr
-          </span>
-        ),
+        logo: mathLogo(String.raw`\oint_C \mathbf{F}\cdot d\mathbf{r}`),
       },
       {
         title: "Vector Field Visualizer",
@@ -412,7 +392,7 @@ export const COURSES = [
         path: "/vectorfield",
         meta: "Interactive tool",
         icon: "∇",
-        logo: <span className="math-logo">F(x,y) = ⟨P, Q⟩</span>,
+        logo: mathLogo(String.raw`\mathbf{F}(x,y) = \langle P, Q \rangle`),
       },
       {
         title: "Multiple Integrals",
@@ -421,11 +401,7 @@ export const COURSES = [
         path: "/multiple-integrals/1",
         meta: "2 parts · Worked integrals",
         icon: "∬",
-        logo: (
-          <span className="math-logo">
-            ∬<sub>R</sub> f(x,y) dA
-          </span>
-        ),
+        logo: mathLogo(String.raw`\iint_R f(x,y)\,dA`),
       },
       {
         title: "Volume Calculator",
@@ -433,7 +409,7 @@ export const COURSES = [
         path: "/volumecalculator",
         meta: "Interactive tool",
         icon: "∬",
-        logo: <span className="math-logo">V = ∬ (z₂ - z₁) dA</span>,
+        logo: mathLogo(String.raw`V = \iint (z_2 - z_1)\,dA`),
       },
       {
         title: "Lagrange Multipliers",
@@ -441,7 +417,7 @@ export const COURSES = [
         path: "/lagrange-multipliers/1",
         meta: "2 parts · Applications",
         icon: "λ",
-        logo: <span className="math-logo">∇f = λ ∇g</span>,
+        logo: mathLogo(String.raw`\nabla f = \lambda\nabla g`),
       },
       {
         title: "Divergence & Curl",
@@ -450,7 +426,9 @@ export const COURSES = [
         path: "/divergence-curl/1",
         meta: "2 parts · Theorems",
         icon: "∇·",
-        logo: <span className="math-logo">div F, curl F</span>,
+        logo: mathLogo(
+          String.raw`\operatorname{div}\mathbf{F},\; \operatorname{curl}\mathbf{F}`,
+        ),
       },
       {
         title: "Stokes' Theorem",
@@ -458,10 +436,8 @@ export const COURSES = [
         path: "/stokes-theorem/1",
         meta: "2 parts · Theorem applications",
         icon: "∮",
-        logo: (
-          <span className="math-logo">
-            ∮<sub>∂S</sub> F·dr = ∬<sub>S</sub> (∇×F)·dS
-          </span>
+        logo: mathLogo(
+          String.raw`\oint_{\partial S} \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla\times\mathbf{F})\cdot d\mathbf{S}`,
         ),
       },
       {
@@ -471,7 +447,9 @@ export const COURSES = [
         path: "/3d-geometry/1",
         meta: "2 parts · MCQ practice",
         icon: "⬡",
-        logo: <span className="math-logo">x²/a² + y²/b² − z²/c² = 1</span>,
+        logo: mathLogo(
+          String.raw`\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1`,
+        ),
       },
       {
         title: "Space Curves & Advanced Multivariable Mappings",
@@ -480,7 +458,7 @@ export const COURSES = [
         path: "/space-curves/1",
         meta: "2 parts · 140 MCQ practice",
         icon: "∿",
-        logo: <span className="math-logo">∇f · dS</span>,
+        logo: mathLogo(String.raw`\nabla f \cdot d\mathbf{S}`),
       },
       {
         title: "Coordinate Transformations & Surfaces",
@@ -489,7 +467,7 @@ export const COURSES = [
         path: "/jacobians-change-of-variables/1",
         meta: "4 topics · 20-question checkpoint per topic",
         icon: "J",
-        logo: <span className="math-logo">∂(x,y) / ∂(u,v)</span>,
+        logo: mathLogo(String.raw`\frac{\partial(x,y)}{\partial(u,v)}`),
       },
       {
         title: "Constrained & Unconstrained Optimization",
@@ -498,7 +476,7 @@ export const COURSES = [
         path: "/constrained-unconstrained-optimization/1",
         meta: "4 topics · 20-question checkpoint per topic",
         icon: "H",
-        logo: <span className="math-logo">H = ∇²f</span>,
+        logo: mathLogo(String.raw`H = \nabla^2 f`),
       },
       {
         title: "Vector Fields & Approximation Theory",
@@ -507,7 +485,7 @@ export const COURSES = [
         path: "/vector-fields-approximation/1",
         meta: "4 topics · 20-question checkpoint per topic",
         icon: "∇",
-        logo: <span className="math-logo">∇×A = F</span>,
+        logo: mathLogo(String.raw`\nabla\times\mathbf{A} = \mathbf{F}`),
       },
 
       {
@@ -517,7 +495,7 @@ export const COURSES = [
         path: "/quiz/multivariable-calculus",
         meta: "30 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 30 MCQs · 80%</span>,
+        logo: mathLogo(String.raw`\checkmark\;\text{30 MCQs} \cdot 80\%`),
       },
     ],
   },
@@ -562,11 +540,7 @@ export const COURSES = [
         path: "/linear-algebra/overview",
         meta: "Start here",
         icon: "★",
-        logo: (
-          <span className="math-logo">
-            ℝ<sup>n</sup> Toolkit
-          </span>
-        ),
+        logo: mathLogo(String.raw`\mathbb{R}^n \;\; \text{Toolkit}`),
         start: true,
       },
       {
@@ -576,7 +550,7 @@ export const COURSES = [
         path: "/linear-algebra/linear-equations/1",
         meta: "2 parts · MCQ practice",
         icon: "=",
-        logo: <span className="math-logo">a₁x₁ + ... + aₙxₙ = b</span>,
+        logo: mathLogo(String.raw`a_1x_1 + \cdots + a_nx_n = b`),
       },
       {
         title: "Vectors & Vector Spaces",
@@ -584,7 +558,9 @@ export const COURSES = [
         path: "/linear-algebra/vectors/1",
         meta: "2 parts · MCQ practice",
         icon: "v",
-        logo: <span className="math-logo">span&#123;v₁, ..., vₖ&#125;</span>,
+        logo: mathLogo(
+          String.raw`\operatorname{span}\{\mathbf{v}_1, \ldots, \mathbf{v}_k\}`,
+        ),
       },
       {
         title: "Matrices & Determinants",
@@ -592,7 +568,7 @@ export const COURSES = [
         path: "/linear-algebra/matrices/1",
         meta: "2 parts · MCQ practice",
         icon: "M",
-        logo: <span className="math-logo">det(A) ≠ 0</span>,
+        logo: mathLogo(String.raw`\det(A) \neq 0`),
       },
       {
         title: "Systems of Linear Equations",
@@ -600,7 +576,7 @@ export const COURSES = [
         path: "/linear-algebra/systems/1",
         meta: "2 parts · MCQ practice",
         icon: "Σ",
-        logo: <span className="math-logo">[A | b] → [I | x]</span>,
+        logo: mathLogo(String.raw`[A \mid \mathbf{b}] \to [I \mid \mathbf{x}]`),
       },
       {
         title: "Eigenvalues & Eigenvectors",
@@ -609,7 +585,7 @@ export const COURSES = [
         path: "/linear-algebra/eigen/1",
         meta: "2 parts · MCQ practice",
         icon: "λ",
-        logo: <span className="math-logo">Av = λv</span>,
+        logo: mathLogo(String.raw`A\mathbf{v} = \lambda\mathbf{v}`),
       },
       {
         title: "Linear Transformations",
@@ -618,7 +594,9 @@ export const COURSES = [
         path: "/linear-algebra/transformations/1",
         meta: "2 parts · MCQ practice",
         icon: "T",
-        logo: <span className="math-logo">T(u + v) = Tu + Tv</span>,
+        logo: mathLogo(
+          String.raw`T(\mathbf{u} + \mathbf{v}) = T\mathbf{u} + T\mathbf{v}`,
+        ),
       },
       {
         title: "Orthogonality & Least Squares",
@@ -627,11 +605,7 @@ export const COURSES = [
         path: "/linear-algebra/orthogonality/1",
         meta: "2 parts · MCQ practice",
         icon: "⊥",
-        logo: (
-          <span className="math-logo">
-            Q<sup>T</sup>Q = I
-          </span>
-        ),
+        logo: mathLogo("Q^T Q = I"),
       },
       {
         title: "Singular Value Decomposition",
@@ -640,11 +614,7 @@ export const COURSES = [
         path: "/linear-algebra/svd/1",
         meta: "2 parts · MCQ practice",
         icon: "Σ",
-        logo: (
-          <span className="math-logo">
-            A = U Σ V<sup>T</sup>
-          </span>
-        ),
+        logo: mathLogo(String.raw`A = U\Sigma V^T`),
       },
       ...LA_MODULES.map((module) => ({
         title: module.title,
@@ -652,7 +622,7 @@ export const COURSES = [
         path: getLaModulePath(module),
         meta: "2 parts · 4 topics · 80 checkpoint MCQs",
         icon: module.logo,
-        logo: <span className="math-logo">{module.logo}</span>,
+        logo: mathLogo(module.logoLatex),
       })),
       {
         title: "Practice Arena",
@@ -661,7 +631,11 @@ export const COURSES = [
         path: "/practice",
         meta: "Interactive · Difficulty tiers",
         icon: "✎",
-        logo: <span className="math-logo">✎ Drill Arena</span>,
+        logo: (
+          <span className="math-logo">
+            ✎ <InlineMath latex={String.raw`\text{Drill Arena}`} />
+          </span>
+        ),
       },
       {
         title: "Certification Quiz",
@@ -670,7 +644,7 @@ export const COURSES = [
         path: "/quiz/linear-algebra",
         meta: "66 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 66 MCQs · 80%</span>,
+        logo: mathLogo(String.raw`\checkmark\;\text{66 MCQs} \cdot 80\%`),
       },
     ],
   },
@@ -714,7 +688,9 @@ export const COURSES = [
         path: "/probability-statistics/overview",
         meta: "Start here",
         icon: "★",
-        logo: <span className="math-logo">P(A|B) &amp; N(μ,σ²) Roadmap</span>,
+        logo: mathLogo(
+          String.raw`P(A \mid B) \;\&\; N(\mu, \sigma^2) \;\; \text{Roadmap}`,
+        ),
         start: true,
       },
       {
@@ -724,11 +700,7 @@ export const COURSES = [
         path: "/probability-statistics/probability-basics/1",
         meta: "2 parts · Worked examples",
         icon: "P",
-        logo: (
-          <span className="math-logo">
-            P(A|B) = <sup>P(A∩B)</sup>/<sub>P(B)</sub>
-          </span>
-        ),
+        logo: mathLogo(String.raw`P(A \mid B) = \frac{P(A \cap B)}{P(B)}`),
       },
       {
         title: "Bayes Lab",
@@ -737,10 +709,8 @@ export const COURSES = [
         path: "/probability-statistics/bayes-lab",
         meta: "Interactive tool",
         icon: "⚖",
-        logo: (
-          <span className="math-logo">
-            P(B|A) = <sup>P(A|B)P(B)</sup>/<sub>P(A)</sub>
-          </span>
+        logo: mathLogo(
+          String.raw`P(B \mid A) = \frac{P(A \mid B)\,P(B)}{P(A)}`,
         ),
       },
       {
@@ -750,7 +720,7 @@ export const COURSES = [
         path: "/probability-statistics/random-variables/1",
         meta: "2 parts · Worked examples",
         icon: "X",
-        logo: <span className="math-logo">E[X] = μ, Var(X) = σ²</span>,
+        logo: mathLogo(String.raw`E[X] = \mu,\; \mathrm{Var}(X) = \sigma^2`),
       },
       {
         title: "Descriptive Statistics",
@@ -759,10 +729,8 @@ export const COURSES = [
         path: "/probability-statistics/descriptive-statistics/1",
         meta: "2 parts · Worked examples",
         icon: "σ",
-        logo: (
-          <span className="math-logo">
-            x̄, s² = <sup>1</sup>/<sub>n-1</sub>Σ(x-x̄)²
-          </span>
+        logo: mathLogo(
+          String.raw`\bar{x},\; s^2 = \frac{1}{n-1}\sum (x - \bar{x})^2`,
         ),
       },
       {
@@ -772,11 +740,7 @@ export const COURSES = [
         path: "/probability-statistics/hypothesis-testing/1",
         meta: "2 parts · Worked examples",
         icon: "H",
-        logo: (
-          <span className="math-logo">
-            z = <sup>(x̄ - μ₀)</sup>/<sub>(σ/√n)</sub>
-          </span>
-        ),
+        logo: mathLogo(String.raw`z = \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}}`),
       },
       {
         title: "Regression & Correlation",
@@ -785,7 +749,7 @@ export const COURSES = [
         path: "/probability-statistics/regression-correlation/1",
         meta: "2 parts · MCQ practice",
         icon: "ρ",
-        logo: <span className="math-logo">ŷ = β₀ + β₁x</span>,
+        logo: mathLogo(String.raw`\hat{y} = \beta_0 + \beta_1 x`),
       },
       {
         title: "Practice Arena",
@@ -794,7 +758,11 @@ export const COURSES = [
         path: "/practice",
         meta: "Interactive · Difficulty tiers",
         icon: "✎",
-        logo: <span className="math-logo">✎ Drill Arena</span>,
+        logo: (
+          <span className="math-logo">
+            ✎ <InlineMath latex={String.raw`\text{Drill Arena}`} />
+          </span>
+        ),
       },
       {
         title: "Certification Quiz",
@@ -803,7 +771,7 @@ export const COURSES = [
         path: "/quiz/probability-statistics",
         meta: "30 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 30 MCQs · 80%</span>,
+        logo: mathLogo(String.raw`\checkmark\;\text{30 MCQs} \cdot 80\%`),
       },
     ],
   },
