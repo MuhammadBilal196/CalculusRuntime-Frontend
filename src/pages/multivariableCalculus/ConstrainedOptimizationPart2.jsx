@@ -43,7 +43,7 @@ function GuideSidebarPart2() {
         Gradient Descent &amp; Numerical Optimization
       </a>
 
-      <a className="sb-link" href="#gradient-5">
+      <a className="sb-link" href="#gradient-4">
         Worked Examples
       </a>
 
@@ -203,83 +203,83 @@ function TableOfContentsPart2() {
           Gradient Descent &amp; Numerical Optimization
         </a>
 
-        <a className="toc-a" href="#gradient-1">
+        <a className="toc-a" href="#gradient-opening">
           Why Numerical Optimization Is Needed
         </a>
 
-        <a className="toc-a" href="#gradient-2">
+        <a className="toc-a" href="#gradient-1">
           The Gradient as the Local Direction of Steepest Increase
         </a>
 
-        <a className="toc-a" href="#gradient-3">
+        <a className="toc-a" href="#gradient-2">
           Deriving the Gradient-Descent Update
         </a>
 
-        <a className="toc-a" href="#gradient-4">
+        <a className="toc-a" href="#gradient-3">
           Choosing the Step Size
         </a>
 
-        <a className="toc-a" href="#gradient-5">
+        <a className="toc-a" href="#gradient-4">
           Worked Example — One-Dimensional Descent
         </a>
 
-        <a className="toc-a" href="#gradient-6">
+        <a className="toc-a" href="#gradient-5">
           Worked Example — Two-Variable Gradient Descent
         </a>
 
-        <a className="toc-a" href="#gradient-7">
+        <a className="toc-a" href="#gradient-6">
           Gradient Norm and Stopping Criteria
         </a>
 
-        <a className="toc-a" href="#gradient-8">
+        <a className="toc-a" href="#gradient-7">
           Convexity and Global Convergence
         </a>
 
-        <a className="toc-a" href="#gradient-9">
+        <a className="toc-a" href="#gradient-8">
           Strong Convexity and Rates of Progress
         </a>
 
-        <a className="toc-a" href="#gradient-10">
+        <a className="toc-a" href="#gradient-9">
           Momentum Methods
         </a>
 
-        <a className="toc-a" href="#gradient-11">
+        <a className="toc-a" href="#gradient-10">
           Line Search
         </a>
 
-        <a className="toc-a" href="#gradient-12">
+        <a className="toc-a" href="#gradient-11">
           Newton's Method for Optimization
         </a>
 
-        <a className="toc-a" href="#gradient-13">
+        <a className="toc-a" href="#gradient-12">
           Quasi-Newton Ideas and Hessian Approximation
         </a>
 
-        <a className="toc-a" href="#gradient-14">
+        <a className="toc-a" href="#gradient-13">
           Conditioning and Zig-Zag Behavior
         </a>
 
-        <a className="toc-a" href="#gradient-15">
+        <a className="toc-a" href="#gradient-14">
           Stochastic and Mini-Batch Optimization
         </a>
 
-        <a className="toc-a" href="#gradient-16">
+        <a className="toc-a" href="#gradient-15">
           Constraints in Numerical Optimization
         </a>
 
-        <a className="toc-a" href="#gradient-17">
+        <a className="toc-a" href="#gradient-16">
           Gradient Descent Versus Newton's Method
         </a>
 
-        <a className="toc-a" href="#gradient-18">
+        <a className="toc-a" href="#gradient-17">
           Common Numerical Failure Modes
         </a>
 
-        <a className="toc-a" href="#gradient-19">
+        <a className="toc-a" href="#gradient-18">
           Complete Numerical Optimization Workflow
         </a>
 
-        <a className="toc-a" href="#gradient-20">
+        <a className="toc-a" href="#gradient-19">
           Key Formulas and Final Strategy
         </a>
 
