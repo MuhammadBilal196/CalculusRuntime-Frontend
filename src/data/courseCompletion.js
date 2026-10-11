@@ -30,23 +30,47 @@ export const COURSE_CERTIFICATE_REQUIREMENTS = {
     minQuizScore: 80,
   },
   "multivariable-calculus": {
-    requiredSections: [
-      "partial-1",
-      "partial-2",
-      "vector-1",
-      "vector-2",
-      "integrals-1",
-      "integrals-2",
-      "lagrange-1",
-      "lagrange-2",
-      "divergence-1",
-      "divergence-2",
-      "stokes-1",
-      "stokes-2",
-    ],
-    quizId: "quiz-multivariable-calculus",
-    minQuizScore: 80,
-  },
+  requiredSections: [
+    // Existing modules
+    "partial-1",
+    "partial-2",
+    "vector-1",
+    "vector-2",
+    "integrals-1",
+    "integrals-2",
+    "lagrange-1",
+    "lagrange-2",
+    "divergence-1",
+    "divergence-2",
+    "stokes-1",
+    "stokes-2",
+
+    // 3D Analytical Geometry & Quadric Surfaces
+    "geo3d-1",
+    "geo3d-2",
+
+    // Space Curves & Advanced Multivariable Mappings
+    "space-curves-1",
+    "space-curves-2",
+
+    // Coordinate Transformations & Surfaces
+    "jacobians-1",
+    "jacobians-2",
+    "curvilinear-1",
+    "parametrized-surface-area-2",
+    "flux-integrals-general-surfaces-2",
+
+    // Constrained & Unconstrained Optimization
+    "optimization-1",
+    "optimization-2",
+
+    // Vector Fields & Approximation Theory
+    "vector-fields-approximation-1",
+    "vector-fields-approximation-2",
+  ],
+  quizId: "quiz-multivariable-calculus",
+  minQuizScore: 80,
+},
   "linear-algebra": {
     requiredSections: [
       "la-vectors-1",
