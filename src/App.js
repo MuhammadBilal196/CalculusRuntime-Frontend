@@ -101,8 +101,19 @@ import {
   HypothesisPart1,
   HypothesisPart2,
   RegressionPart1,
-  RegressionPart2,
-} from "./pages/probabilityStatistics/PsParts";
+  RegressionPart2,LogisticPart1,
+  LogisticPart2,
+  TimeSeriesPart1,
+  TimeSeriesPart2,
+  MonteCarloPart1,
+  MonteCarloPart2,
+  BootstrapPart1,
+  BootstrapPart2,
+  OrderStatsPart1,
+  OrderStatsPart2,
+  QueueingPart1,
+  QueueingPart2,
+  } from "./pages/probabilityStatistics/PsParts";
 import BayesianInferencePart1 from "./pages/probabilityStatistics/BayesianInferencePart1";
 import BayesianInferencePart2 from "./pages/probabilityStatistics/BayesianInferencePart2";
 import MaximumLikelihoodPart1 from "./pages/probabilityStatistics/MaximumLikelihoodPart1";
@@ -150,7 +161,7 @@ import {
 
 // three.js is large, so the 3D explorer loads in its own chunk only when visited.
 const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
-
+const DistributionExplorer = lazy(() => import("./pages/probabilityStatistics/DistributionExplorer"));
 function App() {
   return (
     <ThemeProvider>
@@ -825,6 +836,25 @@ function App() {
                 <Route path="/probability-statistics/central-limit-theorem" element={<Navigate to="/probability-statistics/central-limit-theorem/1" replace />} />
                 <Route path="/probability-statistics/central-limit-theorem/1" element={<Layout body={<CentralLimitTheoremPart1 />} />} />
                 <Route path="/probability-statistics/central-limit-theorem/2" element={<Layout body={<CentralLimitTheoremPart2 />} />} />
+                                {/* Dev 4 - Logistic, Time Series, Monte Carlo, Bootstrap, Order Stats, Queueing */}
+                                <Route path="/probability-statistics/logistic-regression" element={<Navigate to="/probability-statistics/logistic-regression/1" replace />} />
+                <Route path="/probability-statistics/logistic-regression/1" element={<Layout body={<LogisticPart1 />} />} />
+                <Route path="/probability-statistics/logistic-regression/2" element={<Layout body={<LogisticPart2 />} />} />
+                <Route path="/probability-statistics/time-series" element={<Navigate to="/probability-statistics/time-series/1" replace />} />
+                <Route path="/probability-statistics/time-series/1" element={<Layout body={<TimeSeriesPart1 />} />} />
+                <Route path="/probability-statistics/time-series/2" element={<Layout body={<TimeSeriesPart2 />} />} />
+                <Route path="/probability-statistics/monte-carlo" element={<Navigate to="/probability-statistics/monte-carlo/1" replace />} />
+                <Route path="/probability-statistics/monte-carlo/1" element={<Layout body={<MonteCarloPart1 />} />} />
+                <Route path="/probability-statistics/monte-carlo/2" element={<Layout body={<MonteCarloPart2 />} />} />
+                <Route path="/probability-statistics/bootstrap" element={<Navigate to="/probability-statistics/bootstrap/1" replace />} />
+                <Route path="/probability-statistics/bootstrap/1" element={<Layout body={<BootstrapPart1 />} />} />
+                <Route path="/probability-statistics/bootstrap/2" element={<Layout body={<BootstrapPart2 />} />} />
+                <Route path="/probability-statistics/order-statistics" element={<Navigate to="/probability-statistics/order-statistics/1" replace />} />
+                <Route path="/probability-statistics/order-statistics/1" element={<Layout body={<OrderStatsPart1 />} />} />
+                <Route path="/probability-statistics/order-statistics/2" element={<Layout body={<OrderStatsPart2 />} />} />
+                <Route path="/probability-statistics/queueing-theory" element={<Navigate to="/probability-statistics/queueing-theory/1" replace />} />
+                <Route path="/probability-statistics/queueing-theory/1" element={<Layout body={<QueueingPart1 />} />} />
+                <Route path="/probability-statistics/queueing-theory/2" element={<Layout body={<QueueingPart2 />} />} />
                 {/* Tools */}
                 <Route
                   path="/test"
@@ -838,6 +868,8 @@ function App() {
                   path="/volumecalculator"
                   element={<Layout body={<VolumeCalculator />} />}
                 />
+                <Route 
+                path="/distribution-explorer" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading explorer…" fullPage />}><DistributionExplorer /></Suspense>} />} />
                 <Route
                   path="/analytic-vector-lab"
                   element={<Layout body={<AnalyticVectorLab />} />}
