@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { mixedMathToHtml } from "../../utils/mixedMath";
 
+import { inferGuideCourse } from "../../utils/mistakeNotebook";
+import useQuizAttempts from "../../hooks/useQuizAttempts";
+
 export function GuideMcqSection({ id, badge, title, scoreId, section, questions, onComplete }) {
+  const { record: recordAnswer, restart: restartRecording } = useQuizAttempts();
+  const responseNumber = useRef(0);
   const count = questions.length;
   // Opt-in assessed attempts: existing callers retain their mastery-style behavior.
   const checkpointMode = typeof onComplete === "function";
   const attemptsRef = useRef({});
   const [saveError, setSaveError] = useState(false);
-  const formatText = (text) => checkpointMode ? mixedMathToHtml(text) : text;
+  // Render formulas in React's HTML output, not by mutating the live quiz DOM.
+  const formatText = mixedMathToHtml;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -17,14 +23,66 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
   
   const containerRef = useRef(null);
 
-  // Load saved progress
-  useEffect(() => {
+  const [answeredCount, setAnsweredCount] = useState(0);
+  const [storageError, setStorageError] = useState(false);
+  const [restoreNotice, setRestoreNotice] = useState("");
+  const bankSignature = JSON.stringify(questions.map(({ prompt, options, answer }) => [prompt, options, answer]));
+  const progressKey = `${scoreId || section || id}-progress-v2`;
+
+  const saveProgress = (answers, index) => {
     if (checkpointMode) return;
-    const savedUnlocked = localStorage.getItem(`${scoreId}-unlocked`);
-    const savedScore = localStorage.getItem(`${scoreId}-score`);
-    if (savedUnlocked) setUnlockedIndex(parseInt(savedUnlocked, 10));
-    if (savedScore) setScore(parseInt(savedScore, 10));
-  }, [scoreId, checkpointMode]);
+    try {
+      localStorage.setItem(progressKey, JSON.stringify({ signature: bankSignature, answers, index }));
+      // Keep aggregate keys for existing consumers; never infer answers from them.
+      localStorage.setItem(`${scoreId}-score`, Object.values(answers).filter(a => a.correct).length);
+      localStorage.setItem(`${scoreId}-unlocked`, Math.min(Object.keys(answers).length, count - 1));
+      setStorageError(false);
+    } catch {
+      setStorageError(true);
+    }
+  };
+
+  useEffect(() => {
+    let answers = {};
+    let index = 0;
+    let notice = "";
+    setStorageError(false);
+    if (!checkpointMode) {
+      try {
+        const raw = localStorage.getItem(progressKey);
+        if (raw) {
+          const saved = JSON.parse(raw);
+          if (saved.signature !== bankSignature) {
+            notice = "This quiz has changed. Start a fresh attempt with the updated questions.";
+          } else {
+            const bank = JSON.parse(bankSignature);
+            if (!saved.answers || typeof saved.answers !== "object" || Array.isArray(saved.answers)) throw new Error("Invalid answers");
+            for (let i = 0; i < Object.keys(saved.answers).length; i += 1) {
+              const selected = saved.answers[i]?.selected;
+              if (!bank[i] || !Number.isInteger(selected) || selected < 0 || selected >= bank[i][1].length) throw new Error("Invalid answer");
+              answers[i] = { selected, correct: "ABCD"[selected] === bank[i][2] };
+            }
+            const unlocked = Math.min(Object.keys(answers).length, count - 1);
+            index = Number.isInteger(saved.index) ? Math.max(0, Math.min(saved.index, unlocked)) : 0;
+          }
+        } else if (localStorage.getItem(`${scoreId}-score`) !== null || localStorage.getItem(`${scoreId}-unlocked`) !== null) {
+          notice = "Older progress did not store individual answers. Start a fresh attempt for accurate scoring.";
+        }
+      } catch {
+        answers = {};
+        notice = "Saved progress could not be restored. You can start a fresh attempt.";
+      }
+    }
+    attemptsRef.current = answers;
+    setCurrentIndex(index);
+    setSelectedOption(answers[index]?.selected ?? null);
+    setIsSubmitted(Boolean(answers[index]));
+    setAnsweredCount(Object.keys(answers).length);
+    setUnlockedIndex(Math.min(Object.keys(answers).length, count - 1));
+    setScore(Object.values(answers).filter(a => a.correct).length);
+    setRestoreNotice(notice);
+    setSaveError(false);
+  }, [progressKey, bankSignature, checkpointMode, count, scoreId]);
 
   // Observer to show/hide the floating side bar when quiz is on screen
   useEffect(() => {
@@ -56,12 +114,15 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
 
   const revisit = (index) => {
     setCurrentIndex(index);
-    const previous = checkpointMode ? attemptsRef.current[index] : undefined;
+    const previous = attemptsRef.current[index];
+    saveProgress(attemptsRef.current, index);
     setSelectedOption(previous?.selected ?? null);
     setIsSubmitted(Boolean(previous));
   };
 
   const restartAttempt = () => {
+    restartRecording();
+    responseNumber.current = 0;
     attemptsRef.current = {};
     setCurrentIndex(0);
     setSelectedOption(null);
@@ -69,6 +130,9 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
     setUnlockedIndex(0);
     setScore(0);
     setSaveError(false);
+    setAnsweredCount(0);
+    setRestoreNotice("");
+    saveProgress({}, 0);
   };
 
   const handleSubmit = () => {
@@ -78,26 +142,24 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
     
     const isCorrect = letterLabels[selectedOption] === currentQ.answer;
     
+    if (attemptsRef.current[currentIndex]) return;
+    recordAnswer({ source: "guide", quizId: section || scoreId || id,
+      courseId: inferGuideCourse(section || scoreId || id, window.location.pathname),
+      questionId: currentQ.id ?? currentIndex, responseId: String(++responseNumber.current),
+      prompt: currentQ.prompt, options: currentQ.options, selectedIndex: selectedOption,
+      correctIndex: letterLabels.indexOf(currentQ.answer), topic: title || badge || null });
+    const next = { ...attemptsRef.current, [currentIndex]: { selected: selectedOption, correct: isCorrect } };
+    attemptsRef.current = next;
+    const completed = Object.keys(next).length;
+    const result = Object.values(next).filter(answer => answer.correct).length;
+    setScore(result);
+    setAnsweredCount(completed);
+    setUnlockedIndex(Math.min(completed, count - 1));
+    setRestoreNotice("");
     if (checkpointMode) {
-      if (attemptsRef.current[currentIndex]) return;
-      const next = { ...attemptsRef.current, [currentIndex]: { selected: selectedOption, correct: isCorrect } };
-      attemptsRef.current = next;
-      const result = Object.values(next).filter((answer) => answer.correct).length;
-      setScore(result);
-      setUnlockedIndex(Math.min(currentIndex + 1, count - 1));
-      if (Object.keys(next).length === count) persistAttempt(result);
-      return;
-    }
-
-    if (isCorrect && currentIndex === unlockedIndex) {
-      const newUnlocked = Math.min(unlockedIndex + 1, count - 1);
-      const newScore = score + 1;
-      
-      setUnlockedIndex(newUnlocked);
-      setScore(newScore);
-      
-      localStorage.setItem(`${scoreId}-unlocked`, newUnlocked);
-      localStorage.setItem(`${scoreId}-score`, newScore);
+      if (completed === count) persistAttempt(result);
+    } else {
+      saveProgress(next, currentIndex);
     }
   };
 
@@ -126,7 +188,7 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
         <div className="la-floating-score">
           <div className="la-fs-fraction">{score} / {count}</div>
           <div className="la-fs-label">Score: {score}</div>
-          <div className="la-fs-percent">{Math.round((score / count) * 100)}%</div>
+          <div className="la-fs-percent">Score: {Math.round((score / count) * 100)}%</div>
         </div>
       )}
 
@@ -140,7 +202,7 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
             Score <span>{score}</span> / {count}
           </div>
           <div className="la-quiz-instruction">
-            Solve each question to unlock the next
+            Submit each answer to unlock the next
           </div>
         </div>
       </div>
@@ -161,9 +223,19 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
         ))}
       </div>
 
-      <p className="la-quiz-progress-text">
-        Quiz progress: question {unlockedIndex + 1} of {count} unlocked — slide through with the dots or Prev / Next below.
+      <p className="la-quiz-progress-text" aria-live="polite">
+        Progress: {answeredCount} of {count} answered ({Math.round(answeredCount / count * 100)}%).
+        {" "}Score: {score} correct out of {count}.
       </p>
+      <progress aria-label="Quiz completion" value={answeredCount} max={count} style={{ width: "100%" }} />
+      {restoreNotice && <p role="status">{restoreNotice}</p>}
+      {storageError && <p role="alert">Progress could not be saved on this device. Keep this page open to continue.</p>}
+      {!checkpointMode && answeredCount === count && (
+        <div>
+          <p role="status">Attempt complete: {score}/{count}. Review your answers or start a new attempt.</p>
+          <button type="button" className="la-nav-btn" onClick={restartAttempt}>Retake quiz</button>
+        </div>
+      )}
 
       {/* Main MCQ Card */}
       <div className="la-quiz-card">

@@ -153,6 +153,122 @@ export const CURRICULUM = [
       { id: "stokes-2", label: "Part 2 — Surface Integrals & Stokes Applications", path: "/stokes-theorem/2" },
     ],
   },
+    // ── Additional Multivariable Calculus Modules ────────────────────────
+  {
+    id: "geo3d",
+    title: "3D Analytical Geometry & Quadric Surfaces",
+    icon: "⬡",
+    color: "teal",
+    subject: "Multivariable Calculus",
+    courseId: "multivariable-calculus",
+    parts: [
+      {
+        id: "geo3d-1",
+        label: "Part 1 — Direction Cosines, Planes & Distances",
+        path: "/3d-geometry/1",
+      },
+      {
+        id: "geo3d-2",
+        label: "Part 2 — Lines, Skew Lines & Quadric Surfaces",
+        path: "/3d-geometry/2",
+      },
+    ],
+  },
+  {
+    id: "space-curves",
+    title: "Space Curves & Advanced Multivariable Mappings",
+    icon: "∿",
+    color: "blue",
+    subject: "Multivariable Calculus",
+    courseId: "multivariable-calculus",
+    parts: [
+      {
+        id: "space-curves-1",
+        label: "Part 1 — Vector-Valued Curves, Velocity & Acceleration",
+        path: "/space-curves/1",
+      },
+      {
+        id: "space-curves-2",
+        label: "Part 2 — Curvature, Torsion & Advanced Mappings",
+        path: "/space-curves/2",
+      },
+    ],
+  },
+  {
+    id: "coordinate-transformations",
+    title: "Coordinate Transformations & Surfaces",
+    icon: "J",
+    color: "teal",
+    subject: "Multivariable Calculus",
+    courseId: "multivariable-calculus",
+    parts: [
+      {
+        id: "jacobians-1",
+        label: "Part 1 — Jacobians & Change of Variables",
+        path: "/jacobians-change-of-variables/1",
+      },
+      {
+        id: "jacobians-2",
+        label: "Part 2 — Jacobians & Change of Variables",
+        path: "/jacobians-change-of-variables/2",
+      },
+      {
+        id: "curvilinear-1",
+        label: "Part 1 — Curvilinear Coordinate Systems",
+        path: "/curvilinear-coordinate-systems/1",
+      },
+      {
+        id: "parametrized-surface-area-2",
+        label: "Part 2 — Parametrized Surface Area",
+        path: "/parametrized-surface-area/2",
+      },
+      {
+        id: "flux-integrals-general-surfaces-2",
+        label: "Part 2 — Flux Integrals over General Parameterized Surfaces",
+        path: "/flux-integrals-general-surfaces/2",
+      },
+    ],
+  },
+  {
+    id: "optimization",
+    title: "Constrained & Unconstrained Optimization",
+    icon: "H",
+    color: "purple",
+    subject: "Multivariable Calculus",
+    courseId: "multivariable-calculus",
+    parts: [
+      {
+        id: "optimization-1",
+        label: "Part 1 — Hessian Matrix & KKT Conditions",
+        path: "/constrained-unconstrained-optimization/1",
+      },
+      {
+        id: "optimization-2",
+        label: "Part 2 — Global Extrema & Gradient Descent",
+        path: "/constrained-unconstrained-optimization/2",
+      },
+    ],
+  },
+  {
+    id: "vector-fields-approximation",
+    title: "Vector Fields & Approximation Theory",
+    icon: "∇",
+    color: "blue",
+    subject: "Multivariable Calculus",
+    courseId: "multivariable-calculus",
+    parts: [
+      {
+        id: "vector-fields-approximation-1",
+        label: "Part 1 — Vector Potentials & Taylor Approximation",
+        path: "/vector-fields-approximation/1",
+      },
+      {
+        id: "vector-fields-approximation-2",
+        label: "Part 2 — Implicit Function Theorem & Directional Derivatives",
+        path: "/vector-fields-approximation/2",
+      },
+    ],
+  },
 
   // ── Linear Algebra ──────────────────────────────────────────────────────
   {
@@ -562,6 +678,7 @@ function Dashboard() {
 
   return (
     <main className="dashboard">
+      <p><Link to="/notes">Notes &amp; Highlights</Link>{" · "}<Link to="/flashcards">Review flashcards</Link>{" · "}<Link to="/mistakes">Review your Mistake Notebook</Link></p>
       {/* ── Hero Welcome Banner ── */}
       <section className="db-hero-banner">
         <div className="db-hero-user">

@@ -1,9 +1,4 @@
-import { InlineMath } from "../components/Math";
-import { LA_MODULES, getLaModulePath } from "./laModules";
-
-/** Module-card formula, typeset by KaTeX from a LaTeX string. */
-const mathLogo = (latex) => <InlineMath className="math-logo" latex={latex} />;
-
+import { LA_MODULES, LA_EXPANSION_MODULES, getLaModuleParts, getLaModulePath } from "./laModules";
 /** Top-level subject paths shown on Home ("Choose a path"). */
 export const COURSES = [
   {
@@ -624,6 +619,14 @@ export const COURSES = [
         icon: module.logo,
         logo: mathLogo(module.logoLatex),
       })),
+      ...LA_EXPANSION_MODULES.map((module) => ({
+        title: module.title,
+        description: module.description,
+        path: getLaModulePath(module),
+        icon: module.logo,
+        logo: <span className="math-logo">{module.logo}</span>,
+        meta: `${getLaModuleParts(module).length} available part${getLaModuleParts(module).length === 1 ? "" : "s"} · ${module.topics.length} topic${module.topics.length === 1 ? "" : "s"} · ${module.topics.length * 20} checkpoint MCQs`,
+      })),
       {
         title: "Practice Arena",
         description:
@@ -640,9 +643,9 @@ export const COURSES = [
       {
         title: "Certification Quiz",
         description:
-          "66 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+          "99 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/linear-algebra",
-        meta: "66 questions · 80% to pass",
+        meta: "99 questions · 80% to pass",
         icon: "✓",
         logo: mathLogo(String.raw`\checkmark\;\text{66 MCQs} \cdot 80\%`),
       },

@@ -641,13 +641,13 @@ function SectionCh164() {
       
       <h3 className="subsec">The Core Idea: The Edge Tells You About the Inside</h3>
       <p>
-        {"Green's Theorem is one of the most surprising and beautiful shortcuts in all of mathematics. It says: "}<strong>what happens on the boundary of a 2D region is perfectly equivalent to what happens throughout the entire interior</strong>{"."}
+        {"Green's Theorem is one of the most surprising and beautiful shortcuts in all of mathematics. It says: "}<strong>the circulation around a planar boundary equals the integral of the scalar curl over its interior</strong>{"."}
       </p>
       <p>
         {"In other words, instead of integrating over a complicated closed curve (the boundary), you can switch to a double integral over the enclosed region — or the other way around. Pick whichever is easier!"}
       </p>
       <div className="note">
-        <strong>Analogy:</strong> {"Imagine a shallow lake filled with tiny spinning whirlpools. You want to measure the total \"spinning energy\" of the entire lake. Method 1: Swim to every point and measure — exhausting. Method 2: Just measure the water current flowing around the "}<em>shoreline</em>{". Green's Theorem guarantees these give the same answer. The boundary current perfectly summarizes everything happening inside."}
+        <strong>Fluid interpretation:</strong> {"For a smooth planar velocity field, integrate its scalar curl over the lake to obtain the circulation around the shoreline. This is a signed measure of local rotation, not kinetic energy. Interior edges cancel when adjacent small regions are combined."}
       </div>
       <div className="note">
         <strong>Analogy:</strong> {"Here's another way to see it: imagine a room full of tiny ceiling fans, each spinning. Neighboring fans whose edges touch will spin against each other and cancel out. Only the fans along the outermost wall contribute a net spin in the boundary direction. So the sum of all interior spins equals what you measure at the outer boundary only."}
@@ -655,7 +655,7 @@ function SectionCh164() {
 
       <div className="box thm">
         <div className="box-lbl">Green's Theorem</div>
-        <p><strong>Setup requirements:</strong>{" $C$ is a simple closed curve, traversed "}<em>counterclockwise</em>{" (the region $R$ stays on your left as you walk). $M(x,y)$ and $N(x,y)$ have continuous partial derivatives throughout $R$."}</p>
+        <p><strong>Setup requirements:</strong>{" $C$ is a piecewise-smooth, simple closed curve bounding a bounded planar region $R$, traversed "}<em>counterclockwise</em>{" (the region $R$ stays on your left as you walk). $M(x,y)$ and $N(x,y)$ have continuous first partial derivatives on an open set containing all of $R$ and its boundary $C$. Corners are allowed; self-intersections require splitting the curve into suitable simple loops. A singularity inside the region invalidates this direct application."}</p>
         <div className="fml">
           {"$$\\oint_C M\\, dx + N\\, dy \\;=\\; \\iint_R \\left(\\frac{\\partial N}{\\partial x} - \\frac{\\partial M}{\\partial y}\\right) dA$$"}
         </div>
@@ -696,7 +696,7 @@ function SectionCh164() {
       </div>
 
       <div className="note">
-        <strong>⚠️ Warning: Counterclockwise is mandatory.</strong> {"Green's Theorem assumes you traverse $C$ counterclockwise — so the region is always to your left. Walking clockwise gives you the negative of the right answer. This \"positive orientation\" convention is standard across all of vector calculus."}
+        <strong>Orientation determines the sign.</strong> {"The displayed circulation formula uses a counterclockwise outer boundary. A clockwise outer traversal negates the integral. For a region with holes, use clockwise inner boundaries so the region remains on your left. Outward flux uses the normal pointing out of the region, including into its holes."}
       </div>
 
       <div className="box exm">
@@ -743,6 +743,77 @@ function SectionCh164() {
           </div>
         </div>
       </div>
+      <h3 className="subsec">Why the theorem works: a proof for a rectangle</h3>
+      <p>{"Let $R=[a,b]\\times[c,d]$ with counterclockwise boundary. On horizontal edges $dy=0$; on vertical edges $dx=0$. The top and left edges run in the decreasing coordinate direction."}</p>
+      <p>{"The horizontal contributions are $\\int_a^b M(x,c)\\,dx-\\int_a^b M(x,d)\\,dx=-\\int_a^b\\int_c^d M_y(x,y)\\,dy\\,dx$ by the Fundamental Theorem of Calculus."}</p>
+      <p>{"The vertical contributions are $\\int_c^d N(b,y)\\,dy-\\int_c^d N(a,y)\\,dy=\\int_c^d\\int_a^b N_x(x,y)\\,dx\\,dy$. Fubini combines both results into $\\iint_R(N_x-M_y)\\,dA$."}</p>
+      <p>{"For regions that can be partitioned into suitable simple pieces, apply the identity on each piece and cancel shared edges, which are traversed in opposite directions. Extending to general piecewise-smooth boundaries requires the usual limiting argument; the rectangle calculation is the proof of the basic case."}</p>
+      <p>{"For flux, apply the circulation formula to the auxiliary field $(-N,M)$. This gives $\\oint_C M\\,dy-N\\,dx=\\iint_R(M_x+N_y)\\,dA$. On a positively oriented boundary, the right-hand normal is outward, so $\\mathbf n\\,ds=(dy,-dx)$."}</p>
+
+      <h3 className="subsec">Regions with holes: add the oriented boundaries</h3>
+      <p>{"For an annulus, $\\partial R=C_{\\mathrm{outer,CCW}}\\cup C_{\\mathrm{inner,CW}}$. Add both integrals with these orientations. Equivalently, subtract the inner integral only when it is evaluated counterclockwise. Do not subtract an already clockwise inner integral."}</p>
+      <p>{"The field must be smooth on a neighborhood of the annular region and both boundaries. A singularity confined to the removed hole can be allowed. Smoothness on the outer curve alone is never sufficient."}</p>
+
+      <div className="box exm">
+        <div className="box-lbl">Further worked example</div>
+        <div className="exm-title">Annulus: keeping both boundary signs</div>
+        <p>{"Find $\\oint_{\\partial R}(-y\\,dx+x\\,dy)$ for $R:1\\le x^2+y^2\\le4$, with positive boundary orientation."}</p>
+        <ol className="steps">
+          <li>{"The field $(-y,x)$ is smooth everywhere and its scalar curl is $1-(-1)=2$."}</li>
+          <li>{"The annulus has area $\\pi(2^2-1^2)=3\\pi$, so Green gives $2(3\\pi)=6\\pi$."}</li>
+          <li>{"Check directly: on a counterclockwise circle of radius $r$, use $(x,y)=(r\\cos t,r\\sin t)$; then $-y\\,dx+x\\,dy=r^2\\,dt$."}</li>
+          <li>{"The outer circle contributes $8\\pi$. The inner circle is clockwise and contributes $-2\\pi$. Their sum is $6\\pi$, not $10\\pi$."}</li>
+        </ol>
+        <div className="fml">{"$$\\oint_{\\partial R}(-y\\,dx+x\\,dy)=6\\pi.$$"}</div>
+      </div>
+
+      <div className="box exm">
+        <div className="box-lbl">Further worked example</div>
+        <div className="exm-title">A singularity: when zero curl is not enough</div>
+        <p>{"Consider $\\mathbf F=(-y/(x^2+y^2),x/(x^2+y^2))$ around the counterclockwise unit circle."}</p>
+        <ol className="steps">
+          <li>{"Away from the origin, $N_x=(y^2-x^2)/(x^2+y^2)^2=M_y$, hence $N_x-M_y=0$."}</li>
+          <li>{"The field is undefined at the origin. The full disk therefore fails the smoothness assumption, even though the field is smooth on the circle."}</li>
+          <li>{"Parameterize $x=\\cos t$, $y=\\sin t$, $0\\le t\\le2\\pi$. Then $M=-\\sin t$, $N=\\cos t$, $dx=-\\sin t\\,dt$ and $dy=\\cos t\\,dt$."}</li>
+          <li>{"The circulation is $\\int_0^{2\\pi}(\\sin^2t+\\cos^2t)\\,dt=2\\pi$. On an annulus avoiding zero, Green does apply: outer $2\\pi$ plus inner clockwise $-2\\pi$ equals zero."}</li>
+        </ol>
+        <div className="fml">{"$$\\oint_C\\mathbf F\\cdot d\\mathbf r=2\\pi\\ne0.$$"}</div>
+      </div>
+
+      <div className="box exm">
+        <div className="box-lbl">Further worked example</div>
+        <div className="exm-title">Variable curl over a triangle</div>
+        <p>{"Evaluate $\\oint_C x^2\\,dy$ around the counterclockwise triangle with vertices $(0,0),(1,0),(0,1)$."}</p>
+        <ol className="steps">
+          <li>{"Take $M=0$, $N=x^2$. The polynomial field is smooth and $N_x-M_y=2x$."}</li>
+          <li>{"The triangle is $0\\le x\\le1$, $0\\le y\\le1-x$. Thus $\\iint_R2x\\,dA=\\int_0^1\\int_0^{1-x}2x\\,dy\\,dx$."}</li>
+          <li>{"Integrate in $y$ first: $\\int_0^1(2x-2x^2)\\,dx=[x^2-2x^3/3]_0^1=1/3$."}</li>
+          <li>{"Check directly: the bottom edge has $dy=0$ and the left edge has $x=0$. On the diagonal $(x,y)=(1-t,t)$, the integral is $\\int_0^1(1-t)^2\\,dt=1/3$."}</li>
+        </ol>
+        <div className="fml">{"$$\\oint_C x^2\\,dy=\\frac13.$$"}</div>
+      </div>
+
+      <div className="box exm">
+        <div className="box-lbl">Further worked example</div>
+        <div className="exm-title">Outward flux with a nonconstant divergence</div>
+        <p>{"Find the outward flux of $\\mathbf F=(x^2,y)$ across $R=[0,1]\\times[0,2]$."}</p>
+        <ol className="steps">
+          <li>{"The divergence is $M_x+N_y=2x+1$. Choose the outward normal on each edge."}</li>
+          <li>{"Green gives $\\int_0^1\\int_0^2(2x+1)\\,dy\\,dx=\\int_0^1(4x+2)\\,dx=4$."}</li>
+          <li>{"On the right edge, the normal is $(1,0)$ and the flux is $\\int_0^2 1\\,dy=2$. On the top edge, the normal is $(0,1)$ and the flux is $\\int_0^1 2\\,dx=2$."}</li>
+          <li>{"The left and bottom edges contribute zero. Total outward flux is $2+2=4$. The boundary integral $M\\,dy-N\\,dx$ produces this outward flux when the boundary is counterclockwise."}</li>
+        </ol>
+        <div className="fml">{"$$\\oint_C\\mathbf F\\cdot\\mathbf n\\,ds=4.$$"}</div>
+      </div>
+
+      <h3 className="subsec">How to choose and check your method</h3>
+      <p>{"First identify circulation or outward flux, sketch the region, check smoothness including the boundary, and mark every boundary orientation. Compute curl for circulation or divergence for flux. Choose Cartesian or polar limits appropriate to the region and retain the polar Jacobian when needed."}</p>
+      <p>{"For an open path, add a return segment to make a closed curve and subtract that segment's integral afterward. For self-intersecting paths, track the orientation of each simple loop separately. Area formulas produce signed area if orientation is reversed."}</p>
+      <p>{"For a continuously differentiable field on an open simply connected domain, zero scalar curl implies conservativeness and path independence. The punctured-plane example shows why the domain condition matters."}</p>
+      <p>{"Green is the planar case of Stokes: for $\\mathbf F=(M,N,0)$ on an upward-oriented flat surface, $(\\nabla\\times\\mathbf F)\\cdot\\mathbf k=N_x-M_y$."}</p>
+
+      <p><a href="https://openstax.org/books/calculus-volume-3/pages/6-4-greens-theorem">Further reading: OpenStax, Green’s Theorem</a></p>
+
     </section>
   );
 }

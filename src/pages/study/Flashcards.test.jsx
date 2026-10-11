@@ -1,0 +1,50 @@
+import {render,screen,fireEvent,waitFor,act} from '@testing-library/react';
+import {MemoryRouter} from 'react-router-dom';
+import Flashcards from './Flashcards';
+import {readLearningState,syncLearningEvents} from '../../utils/learningEvents';
+let mockUser;
+jest.mock('../../context/AuthContext',()=>({useAuth:()=>({user:mockUser})}));
+beforeEach(()=>{localStorage.clear();mockUser={username:'alice',accessToken:'x'};global.fetch=jest.fn(async()=>({ok:true,json:async()=>({items:[],next_cursor:null})}));});
+afterEach(async()=>{await act(async()=>{await syncLearningEvents(mockUser);});delete global.fetch;});
+test('requires login',()=>{mockUser=null;render(<MemoryRouter><Flashcards/></MemoryRouter>);expect(screen.getByRole('link',{name:'Log in'})).toBeInTheDocument();});
+test.each(['Again','Good','Easy'])('flip then %s saves a review and advances',async(rating)=>{
+ const {unmount}=render(<MemoryRouter><Flashcards/></MemoryRouter>);
+ await act(async()=>{await syncLearningEvents(mockUser);});
+ expect(screen.getByRole('button',{name:rating})).toBeDisabled();
+ const title=screen.getByRole('heading',{level:2}).textContent;
+ fireEvent.click(screen.getByRole('button',{name:'Reveal answer'}));
+ fireEvent.click(screen.getByRole('button',{name:rating}));
+ await waitFor(()=>expect(screen.getByRole('heading',{level:2}).textContent).not.toBe(title));
+ expect(readLearningState(mockUser).events[0].data.rating).toBe(rating);
+ unmount();render(<MemoryRouter><Flashcards/></MemoryRouter>);
+ await act(async()=>{await syncLearningEvents(mockUser);});
+ expect(screen.getByRole('heading',{level:2}).textContent).not.toBe(title);
+});
+test('course selection and account switching keep schedules separate',async()=>{
+ const {rerender}=render(<MemoryRouter><Flashcards/></MemoryRouter>);
+ await act(async()=>{await syncLearningEvents(mockUser);});
+ fireEvent.change(screen.getByLabelText('Course'),{target:{value:'probability-statistics'}});
+ expect(screen.getByRole('heading',{level:2})).toBeInTheDocument();
+ fireEvent.click(screen.getByRole('button',{name:'Reveal answer'}));fireEvent.click(screen.getByRole('button',{name:'Good'}));
+ await act(async()=>{await syncLearningEvents(mockUser);});mockUser={username:'bob',accessToken:'y'};
+ rerender(<MemoryRouter><Flashcards/></MemoryRouter>);
+ await act(async()=>{await syncLearningEvents(mockUser);});
+ expect(readLearningState(mockUser).events).toHaveLength(0);
+});
+
+test.each(['LU Decomposition','Complex Vector Spaces (Hermitian & Unitary Matrices)','Principal Component Analysis (PCA)','Iterative Solvers (Jacobi, Gauss–Seidel, SOR)','Dual Spaces & Linear Functionals','Spectral Graph Theory'])('new topic %s can be selected, revealed and reviewed',async(topic)=>{
+ render(<MemoryRouter><Flashcards/></MemoryRouter>);
+ await act(async()=>{await syncLearningEvents(mockUser);});
+ fireEvent.change(screen.getByLabelText('Topic'),{target:{value:topic}});
+ expect(screen.getByLabelText('Topic')).toHaveValue(topic);
+ expect(screen.getByText(/4 due today · 4 ready now · 4 cards/)).toBeInTheDocument();
+ const title=screen.getByRole('heading',{level:2}).textContent;
+ fireEvent.click(screen.getByRole('button',{name:'Reveal answer'}));
+ fireEvent.click(screen.getByRole('button',{name:'Good'}));
+ await waitFor(()=>expect(screen.getByRole('heading',{level:2}).textContent).not.toBe(title));
+ const review=readLearningState(mockUser).events.find(e=>e.kind==='flashcard');
+ expect(review.data.cardId).toContain(title);
+ fireEvent.change(screen.getByLabelText('Course'),{target:{value:'probability-statistics'}});
+ expect(screen.getByLabelText('Topic')).toHaveValue('');
+ expect(screen.getByRole('button',{name:'Reveal answer'})).toBeInTheDocument();
+});

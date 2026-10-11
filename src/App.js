@@ -1,3 +1,7 @@
+import StudyNotes from "./pages/study/StudyNotes";
+import GuideNotesLayer from "./pages/study/GuideNotesLayer";
+import Flashcards from "./pages/study/Flashcards";
+import MistakeNotebook from "./pages/study/MistakeNotebook";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
@@ -87,6 +91,8 @@ import {
 import LaModulePart from "./pages/linearAlgebra/LaModulePart";
 import {
   LA_MODULES,
+  LA_EXPANSION_MODULES,
+  getLaModuleParts,
   LA_TOPIC_REDIRECTS,
   LA_MODULE_REDIRECTS,
   getLaModulePath,
@@ -194,9 +200,13 @@ function App() {
             <ErrorBoundary>
               <ScrollToTop />
               <SiteThemeManager />
+              <GuideNotesLayer />
               <Routes>
                 {/* Home */}
                 <Route path="/" element={<Layout body={<Home />} />} />
+                <Route path="/notes" element={<Layout body={<StudyNotes />} />} />
+                <Route path="/flashcards" element={<Layout body={<Flashcards />} />} />
+                <Route path="/mistakes" element={<Layout body={<MistakeNotebook />} />} />
 
                 {/* Auth */}
                 <Route path="/login" element={<Login />} />
@@ -879,14 +889,14 @@ function App() {
                   element={<Layout body={<OrthoPart2 />} />}
                 />
 
-                {/* Curriculum modules: two parts, two complete topics in each. */}
-                {LA_MODULES.flatMap((module) => [
+                {/* Publish only available module parts; topic counts are defined in laModules. */}
+                {[...LA_MODULES, ...LA_EXPANSION_MODULES].flatMap((module) => [
                   <Route
                     key={module.id}
                     path={`/linear-algebra/${module.id}`}
                     element={<Navigate to={getLaModulePath(module)} replace />}
                   />,
-                  ...[1, 2].map((part) => (
+                  ...getLaModuleParts(module).map((part) => (
                     <Route
                       key={`${module.id}-${part}`}
                       path={getLaModulePath(module, part)}

@@ -191,3 +191,86 @@ test("every registered section gate requires all its checkpoints to reach 80 per
     }
   }
 });
+
+describe('saved quiz progress regressions', () => {
+  function mount() {
+    return render(<GuideMcqSection id="audit" section="vector-16-4" scoreId="audit" questions={questions.slice(0, 3)} />);
+  }
+  function answer(right) {
+    fireEvent.click(screen.getByRole('button', {name:right?'A Right':'B Wrong'}));
+    fireEvent.click(screen.getByRole('button', {name:'Submit Answer'}));
+  }
+  test('wrong first answer then correct second answer increments score and completion', () => {
+    const {container}=mount(); answer(false);
+    fireEvent.click(screen.getByRole('button',{name:/NEXT/}));
+    answer(true);
+    expect(screen.getByText('Correct!')).toBeInTheDocument();
+    expect(container.querySelector('.la-quiz-score')).toHaveTextContent('Score 1 / 3');
+    expect(container.querySelector('.la-quiz-progress-text')).toHaveTextContent('Progress: 2 of 3 answered (67%)');
+  });
+  test('revisiting a final answer cannot award duplicate points', () => {
+    const {container}=mount();
+    for(let i=0;i<3;i++){answer(true);if(i<2)fireEvent.click(screen.getByRole('button',{name:/NEXT/}));}
+    fireEvent.click(screen.getByRole('button',{name:/PREVIOUS/}));
+    fireEvent.click(screen.getByRole('button',{name:/NEXT/}));
+    expect(screen.queryByRole('button',{name:'Submit Answer'})).toBeNull();
+    expect(container.querySelector('.la-quiz-score')).toHaveTextContent('Score 3 / 3');
+  });
+  test('refresh restores the current question and locks submitted answers', () => {
+    const view=mount();answer(true);
+    fireEvent.click(screen.getByRole('button',{name:/NEXT/}));answer(true);
+    view.unmount();const {container}=mount();
+    expect(container.querySelector('.la-quiz-score')).toHaveTextContent('Score 2 / 3');
+    expect(screen.getByText('Question 2 / 3')).toBeInTheDocument();
+    expect(screen.queryByRole('button',{name:'Submit Answer'})).toBeNull();
+    expect(container.querySelector('.la-quiz-score')).toHaveTextContent('Score 2 / 3');
+  });
+});
+
+
+test("completed ordinary quiz can retake and the reset survives remount", () => {
+  const props = { id: 'retake-ordinary', scoreId: 'retake-ordinary', questions: questions.slice(0, 1) };
+  const view = render(<GuideMcqSection {...props} />);
+  fireEvent.click(screen.getByRole('button', { name: 'B Wrong' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Submit Answer' }));
+  expect(screen.getByRole('progressbar', { name: 'Quiz completion' })).toHaveAttribute('value', '1');
+  fireEvent.click(screen.getByRole('button', { name: 'Retake quiz' }));
+  view.unmount();
+  const { container } = render(<GuideMcqSection {...props} />);
+  expect(container.querySelector('.la-quiz-score')).toHaveTextContent('Score 0 / 1');
+  expect(screen.getByRole('progressbar')).toHaveAttribute('value', '0');
+  expect(screen.getByRole('button', { name: 'Submit Answer' })).toBeDisabled();
+});
+
+test.each(['old', 'malformed', 'changed'])("%s saved progress starts safely with an explanation", (kind) => {
+  if (kind === 'old') localStorage.setItem('restore-score', '99');
+  if (kind === 'malformed') localStorage.setItem('restore-progress-v2', '{');
+  if (kind === 'changed') localStorage.setItem('restore-progress-v2', JSON.stringify({signature: 'old bank', answers: {0: {selected: 0}}}));
+  const { container } = render(<GuideMcqSection id="restore" scoreId="restore" questions={questions.slice(0, 2)} />);
+  expect(container.querySelector('.la-quiz-score')).toHaveTextContent('Score 0 / 2');
+  expect(screen.getByRole('status')).toHaveTextContent(/fresh attempt/);
+  expect(screen.getByRole('progressbar')).toHaveAttribute('value', '0');
+});
+
+test("storage failure does not prevent scoring and reports unsaved progress", () => {
+  const write = jest.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('quota'); });
+  try {
+    const { container } = render(<GuideMcqSection id="quota" scoreId="quota" questions={questions.slice(0, 2)} />);
+    fireEvent.click(screen.getByRole('button', { name: 'A Right' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Submit Answer' }));
+    expect(container.querySelector('.la-quiz-score')).toHaveTextContent('Score 1 / 2');
+    expect(screen.getByRole('progressbar')).toHaveAttribute('value', '1');
+    expect(screen.getByRole('alert')).toHaveTextContent('Progress could not be saved');
+  } finally { write.mockRestore(); }
+});
+
+test("restored correctness is recalculated rather than trusting a saved score flag", () => {
+  const bank = questions.slice(0, 2);
+  localStorage.setItem('tampered-progress-v2', JSON.stringify({
+    signature: JSON.stringify(bank.map(({prompt, options, answer}) => [prompt, options, answer])),
+    answers: {0: {selected: 1, correct: true}}, index: 1,
+  }));
+  const { container } = render(<GuideMcqSection id="tampered" scoreId="tampered" questions={bank} />);
+  expect(container.querySelector('.la-quiz-score')).toHaveTextContent('Score 0 / 2');
+  expect(screen.getByRole('progressbar')).toHaveAttribute('value', '1');
+});

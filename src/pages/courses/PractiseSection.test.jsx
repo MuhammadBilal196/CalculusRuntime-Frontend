@@ -1,3 +1,6 @@
+jest.mock("../../utils/learningEvents", () => ({ queueLearningEvents: jest.fn(() => true) }));
+import { useAuth } from '../../context/AuthContext';
+import { readQuizAttempts } from '../../utils/quizAttempts';
 import React from 'react';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import PractiseSection from './PractiseSection';
@@ -5,8 +8,10 @@ import { CALC_AG_PRACTICE_BANK } from '../../data/calcAgPracticeBank';
 import { MV_PRACTICE_BANK } from '../../data/mvPracticeBank';
 import { LA_PRACTICE_BANK } from '../../data/laPracticeBank';
 import { PS_PRACTICE_BANK } from '../../data/psPracticeBank';
-import { LA_MODULES } from '../../data/laModules';
+import { LA_MODULES, LA_EXPANSION_MODULES } from '../../data/laModules';
 jest.mock('../../components/SubmitToLeaderboard', () => () => null);
+jest.mock('../../context/AuthContext', () => ({ useAuth: jest.fn(() => null) }));
+beforeEach(() => useAuth.mockReturnValue(null));
 afterEach(() => { cleanup(); localStorage.clear(); jest.restoreAllMocks(); });
 const cases = LA_MODULES.flatMap((module) => module.topics.flatMap((topic) => ['Easy','Medium','Hard'].map((difficulty) => [topic.title,difficulty])));
 test.each(cases)('%s / %s loads 25 real questions through individual topic buttons', async (topic,difficulty) => {
@@ -51,7 +56,13 @@ async function openPractice(topic, difficulty) {
 }
 
 function displayedQuestion(bank, container) {
-  return bank.find((q) => q.question === container.querySelector('.practice-question').textContent);
+  const prompt = container.querySelector('.practice-question').textContent;
+  const displayedOptions = [...container.querySelectorAll('.practice-option__text')]
+    .map((node) => node.textContent).sort();
+  return bank.find((q) =>
+    q.question === prompt &&
+    JSON.stringify([...q.options].sort()) === JSON.stringify(displayedOptions)
+  );
 }
 
 function chooseText(container, text) {
@@ -117,4 +128,59 @@ test('shuffled answer keys score once, explain mistakes and persist across topic
   render(<PractiseSection />);
   expect(JSON.parse(localStorage.getItem('arena_score_tracker'))).toEqual({ correct: 1, total: 2 });
   expect(screen.getByRole('button', { name: 'Easy Mode' })).toBeInTheDocument();
+});
+
+
+test('signed-in practice records the displayed shuffled option and course', async () => {
+  const user = { username: 'practice-tester', accessToken: 'token' };
+  useAuth.mockReturnValue({ user });
+  const { container } = render(<PractiseSection />);
+  await openPractice('Vectors & Vector Spaces', 'Easy');
+  const question = displayedQuestion(LA_PRACTICE_BANK, container);
+  const displayed = [...container.querySelectorAll('.practice-option__text')].map((node) => node.textContent);
+  chooseText(container, question.options[question.correctAnswer]);
+  const [record] = readQuizAttempts(user);
+  expect(record).toMatchObject({ source: 'practice', courseId: 'linear-algebra',
+    prompt: question.question, options: displayed, correct: true,
+    selectedIndex: displayed.indexOf(question.options[question.correctAnswer]) });
+});
+
+
+test.each(LA_EXPANSION_MODULES.flatMap((module) => module.topics.flatMap((topic) =>
+  ['Easy', 'Medium', 'Hard'].map((difficulty) => [topic.title, difficulty]))))(
+  'expansion topic %s / %s loads only its allocated questions', async (topic, difficulty) => {
+    const expected = LA_PRACTICE_BANK.filter((q) => q.topic === topic && q.difficulty === difficulty);
+    expect([8,9]).toContain(expected.length);
+    const { container } = render(<PractiseSection />);
+    await openPractice(topic, difficulty);
+    expect(screen.getByText(`Question 1 of ${expected.length}`)).toBeInTheDocument();
+    expect(displayedQuestion(expected, container)).toBeDefined();
+    expect(screen.queryByRole('combobox')).not.toBeInTheDocument();
+  });
+
+
+test('course and text filters retain individual topic selection and question loading', async () => {
+  render(<PractiseSection />);
+  fireEvent.click(screen.getByRole('button', { name: 'Easy Mode' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Linear Algebra', exact: true }));
+  expect(screen.queryByRole('button', { name: 'Limits and Continuity', exact: true })).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Cholesky Decomposition', exact: true })).toBeInTheDocument();
+  fireEvent.change(screen.getByRole('searchbox', { name: 'Search practice topics' }), { target: { value: ' pCa ' } });
+  expect(screen.getByRole('status')).toHaveTextContent('1 topics available');
+  fireEvent.click(screen.getByRole('button', { name: 'Principal Component Analysis (PCA)', exact: true }));
+  await screen.findByText('Question 1 of 25');
+  fireEvent.click(screen.getByRole('button', { name: 'Change Topic' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Medium Mode' }));
+  expect(screen.getByRole('searchbox')).toHaveValue('');
+  expect(screen.getByRole('button', { name: 'All courses' })).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('empty topic filters recover without changing scores or hiding topics permanently', () => {
+  render(<PractiseSection />);
+  fireEvent.click(screen.getByRole('button', { name: 'Hard Mode' }));
+  fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'no-such-topic-xyz' } });
+  expect(screen.getByText(/No topics match/)).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Clear topic filters' }));
+  expect(screen.getByRole('button', { name: 'Vectors & Vector Spaces', exact: true })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Probability Basics', exact: true })).toBeInTheDocument();
 });

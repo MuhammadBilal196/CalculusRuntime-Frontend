@@ -1,8 +1,16 @@
 /** Search index for the header search box: pages, guides, tools and formulas. */
 import { COURSES } from "./courses";
 import formulaData from "./formulaData";
+import { LA_MODULES, LA_EXPANSION_MODULES, getLaTopicPath } from "./laModules";
 
 const PAGES = [
+  { title: "Notes & Highlights", path: "/notes", description: "Saved lesson excerpts and personal notes." },
+  { title: "Flashcards", path: "/flashcards", description: "Review formulas and concepts by topic." },
+  { title: "Mistake Notebook", path: "/mistakes", description: "Review mistakes from your quiz attempts." },
+  { title: "Continuity Finder", path: "/test", description: "Analyze continuity of multivariable functions." },
+  { title: "Extreme Value Finder", path: "/extreme", description: "Find maxima, minima and saddle points." },
+  { title: "Volume Calculator", path: "/volumecalculator", description: "Evaluate double integrals." },
+  { title: "3D Surface Explorer", path: "/surface-explorer", description: "Explore surfaces and tangent planes." },
   { title: "Home", path: "/", description: "Choose a study path and see the four subjects." },
   { title: "Dashboard", path: "/dashboard", description: "Your progress, streaks and enrolled courses." },
   { title: "Simple Concepts", path: "/simple-concepts", description: "Plain-language explanations of the core ideas." },
@@ -58,6 +66,16 @@ function build() {
         });
       }
     });
+  });
+
+  [...LA_MODULES, ...LA_EXPANSION_MODULES].forEach((module) => {
+    module.topics.forEach((topic) => entries.push({
+      title: topic.title,
+      path: getLaTopicPath(module, topic),
+      description: `Theory, worked examples and checkpoint questions for ${topic.title}.`,
+      kind: "Guide",
+      context: `Linear Algebra · ${module.title}`,
+    }));
   });
 
   PRACTICE_TOPICS.forEach((topic) => {

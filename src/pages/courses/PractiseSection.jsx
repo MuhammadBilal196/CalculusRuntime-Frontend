@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { LA_MODULES } from "../../data/laModules";
+import useQuizAttempts from "../../hooks/useQuizAttempts";
+import { LA_MODULES, LA_EXPANSION_MODULES } from "../../data/laModules";
 import SubmitToLeaderboard from "../../components/SubmitToLeaderboard";
 import "../dashboard/Leaderboard.css";
 import "./PractiseSection.css";
@@ -20,6 +21,13 @@ const BANK_LOADERS = {
 };
 
 const DIFFICULTIES = ["Easy", "Medium", "Hard"];
+const COURSE_FILTERS = [
+  ["all", "All courses"],
+  ["calcAg", "Calculus & Geometry"],
+  ["mv", "Multivariable Calculus"],
+  ["la", "Linear Algebra"],
+  ["ps", "Probability & Statistics"],
+];
 
 const TOPICS = [
   "Lagrange Multipliers",
@@ -40,6 +48,7 @@ const TOPICS = [
   "Space Curves & Advanced Multivariable Mappings",
   "Coordinate Transformations & Surfaces",
   "Constrained & Unconstrained Optimization",
+  "Vector Fields & Approximation Theory",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -65,7 +74,7 @@ const TOPICS = [
   "Linear Transformations",
   "Orthogonality & Least Squares",
   "Singular Value Decomposition",
-  ...LA_MODULES.flatMap((module) => module.topics.map((topic) => topic.title)),
+  ...[...LA_MODULES, ...LA_EXPANSION_MODULES].flatMap((module) => module.topics.map((topic) => topic.title)),
   "Probability Basics",
   "Random Variables & Distributions",
   "Descriptive Statistics",
@@ -91,12 +100,23 @@ const TOPICS = [
  *   → one or more practice banks are searched
  */
 const PRACTICE_SELECTIONS = {
+  ...Object.fromEntries([
+    "Vectors & Vector Spaces",
+    "Matrices & Determinants",
+    "Systems of Linear Equations",
+    "Fundamental Subspaces & Rank-Nullity",
+    "Eigenvalues & Eigenvectors",
+    "Linear Transformations",
+    "Orthogonality & Least Squares",
+    "Singular Value Decomposition",
+  ].map((topic) => [topic, { type: "topic", banks: ["la"] }])),
+
   // ============================================================
   // LINEAR ALGEBRA — preserve dynamic existing modules
   // ============================================================
 
   ...Object.fromEntries(
-    LA_MODULES.flatMap((module) =>
+    [...LA_MODULES, ...LA_EXPANSION_MODULES].flatMap((module) =>
       module.topics.map((topic) => [
         topic.title,
         {
@@ -257,13 +277,15 @@ const PRACTICE_SELECTIONS = {
   },
 
   "Taylor & Maclaurin Series": {
-    type: "topic",
+    type: "topicAlias",
     banks: ["calcAg"],
+    canonicalTopic: "Taylor Series for Multivariable Functions",
   },
 
   "Maclaurin Series": {
-    type: "topic",
+    type: "topicAlias",
     banks: ["calcAg"],
+    canonicalTopic: "Taylor Series for Multivariable Functions",
   },
 
   // ============================================================
@@ -329,6 +351,11 @@ const PRACTICE_SELECTIONS = {
     banks: ["mv"],
     moduleName: "Constrained & Unconstrained Optimization",
   },
+  "Vector Fields & Approximation Theory": {
+  type: "module",
+  banks: ["mv"],
+  moduleName: "Vector Fields & Approximation Theory",
+},
 
   // ============================================================
   // FUTURE NEW MVC MODULES
@@ -416,6 +443,7 @@ function shuffleQuestionOptions(question) {
 }
 
 export default function PractiseSection() {
+  const { record: recordAnswer, restart: restartRecording } = useQuizAttempts();
   // ============================================================
   // LAYER 1: DIFFICULTY SELECTION
   // ============================================================
@@ -427,6 +455,12 @@ export default function PractiseSection() {
   // ============================================================
 
   const [chosenTopic, setChosenTopic] = useState(null);
+  const [topicQuery, setTopicQuery] = useState("");
+  const [courseFilter, setCourseFilter] = useState("all");
+  const visibleTopics = TOPICS.filter((topic) =>
+    topic.toLowerCase().includes(topicQuery.trim().toLowerCase()) &&
+    (courseFilter === "all" || PRACTICE_SELECTIONS[topic]?.banks.includes(courseFilter))
+  );
 
   // ============================================================
   // CORE GAMEPLAY STATE
@@ -481,7 +515,8 @@ export default function PractiseSection() {
     resetQuizTurn();
 
     const selectedLoaders = (selection.banks || [])
-      .map((bankName) => BANK_LOADERS[bankName])
+      .map((bankName) => BANK_LOADERS[bankName] && (() => BANK_LOADERS[bankName]().then((questions) =>
+        questions.map((question) => ({ ...question, bankName })))))
       .filter(Boolean);
 
     Promise.all(selectedLoaders.map((loader) => loader()))
@@ -530,13 +565,14 @@ export default function PractiseSection() {
         // ========================================================
 
         const uniqueQuestions = Array.from(
-          new Map(filtered.map((question) => [question.id, question])).values(),
+          new Map(filtered.map((question) => [`${question.bankName}:${question.id}`, question])).values(),
         );
 
         // ========================================================
         // SHUFFLE QUESTIONS + OPTIONS
         // ========================================================
 
+        restartRecording();
         setPoolProblems(shuffled(uniqueQuestions).map(shuffleQuestionOptions));
       })
       .catch((error) => {
@@ -555,7 +591,7 @@ export default function PractiseSection() {
     return () => {
       cancelled = true;
     };
-  }, [chosenDifficulty, chosenTopic]);
+  }, [restartRecording, chosenDifficulty, chosenTopic]);
 
   // ============================================================
   // AUTO-ADVANCE TIMER
@@ -592,6 +628,8 @@ export default function PractiseSection() {
     }
 
     setChosenDifficulty(null);
+    setTopicQuery("");
+    setCourseFilter("all");
     setChosenTopic(null);
     setPoolProblems([]);
     setCurrentIndex(0);
@@ -621,6 +659,16 @@ export default function PractiseSection() {
   // OPTION CLICK
   // ============================================================
 
+  const recordPracticeAnswer = (question, selectedIndex) => {
+    const courseIds = { la: "linear-algebra", calcAg: "calculus-analytical-geometry",
+      mv: "multivariable-calculus", ps: "probability-statistics" };
+    recordAnswer({ source: "practice", courseId: courseIds[question.bankName] || null,
+      quizId: `practice:${chosenTopic}:${chosenDifficulty}`,
+      questionId: question.id, responseId: `${question.bankName}:${question.id}`,
+      prompt: question.question, options: question.options, selectedIndex,
+      correctIndex: question.correctAnswer, topic: question.topic, difficulty: question.difficulty });
+  };
+
   const handleAnswerClick = (index) => {
     if (isSubmitted) {
       return;
@@ -634,6 +682,7 @@ export default function PractiseSection() {
       return;
     }
 
+    recordPracticeAnswer(currentProblem, index);
     const correct = index === currentProblem.correctAnswer;
 
     setScore((prev) => ({
@@ -671,6 +720,7 @@ export default function PractiseSection() {
       return;
     }
 
+    recordPracticeAnswer(currentProblem, selectedAnswer);
     const correct = selectedAnswer === currentProblem.correctAnswer;
 
     setScore((prev) => ({
@@ -797,8 +847,24 @@ export default function PractiseSection() {
 
           <h3>Select Practice Topic</h3>
 
+          <div className="practice-topic-filters">
+            <label htmlFor="practice-topic-search">Search practice topics</label>
+            <input id="practice-topic-search" type="search" value={topicQuery}
+              onChange={(event) => setTopicQuery(event.target.value)} placeholder="For example: PCA or vectors" />
+            <div role="group" aria-label="Filter topics by course" className="practice-course-filters">
+              {COURSE_FILTERS.map(([value, label]) => (
+                <button key={value} type="button" className="practice-tool-btn"
+                  aria-pressed={courseFilter === value} onClick={() => setCourseFilter(value)}>{label}</button>
+              ))}
+            </div>
+            <p role="status">{visibleTopics.length} topics available</p>
+            {visibleTopics.length === 0 && <p>No topics match. Clear the search or choose another course.</p>}
+            {(topicQuery || courseFilter !== "all") && (
+              <button type="button" className="practice-tool-btn" onClick={() => { setTopicQuery(""); setCourseFilter("all"); }}>Clear topic filters</button>
+            )}
+          </div>
           <div className="practice-topic-grid">
-            {TOPICS.map((topic) => (
+            {visibleTopics.map((topic) => (
               <button
                 key={topic}
                 type="button"

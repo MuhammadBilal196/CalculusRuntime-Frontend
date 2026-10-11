@@ -808,204 +808,204 @@ export const QUIZ_CH16_3 = [
 ];
 export const QUIZ_CH16_4 = [
   {
-    prompt: "Green's Theorem establishes a fundamental relationship between which two types of integrals?",
-    options: [
+    "prompt": "Green's Theorem establishes a fundamental relationship between which two types of integrals?",
+    "options": [
       "A line integral around a boundary and a double integral over the enclosed 2D region",
       "A surface integral and a triple volume integral",
       "A definite integral and an indefinite integral"
     ],
-    answer: "A",
-    explanation: "Green's Theorem allows you to swap a potentially difficult 1D boundary line integral for a 2D area double integral (or vice versa)."
+    "answer": "A",
+    "explanation": "Green's Theorem allows you to swap a potentially difficult 1D boundary line integral for a 2D area double integral (or vice versa)."
   },
   {
-    prompt: "What is the mandatory orientation for traversing the boundary curve $C$ when applying standard Green's Theorem?",
-    options: [
-      "Counterclockwise (positive orientation)",
+    "prompt": "For a simple region without holes, what is the positive orientation of its outer boundary?",
+    "options": [
       "Clockwise (negative orientation)",
+      "Counterclockwise (positive orientation)",
       "Orthogonal to the radius"
     ],
-    answer: "A",
-    explanation: "Positive orientation means the enclosed region $R$ must always remain on your left as you walk along the boundary path."
+    "answer": "B",
+    "explanation": "Positive orientation means the enclosed region $R$ must always remain on your left as you walk along the boundary path."
   },
   {
-    prompt: "What is the integrand of the double integral in the circulation form of Green's Theorem?",
-    options: [
-      "$\\frac{\\partial N}{\\partial x} - \\frac{\\partial M}{\\partial y}$",
+    "prompt": "What is the integrand of the double integral in the circulation form of Green's Theorem?",
+    "options": [
       "$\\frac{\\partial M}{\\partial x} + \\frac{\\partial N}{\\partial y}$",
-      "$\\frac{\\partial M}{\\partial y} - \\frac{\\partial N}{\\partial x}$"
+      "$\\frac{\\partial M}{\\partial y} - \\frac{\\partial N}{\\partial x}$",
+      "$\\frac{\\partial N}{\\partial x} - \\frac{\\partial M}{\\partial y}$"
     ],
-    answer: "A",
-    explanation: "This expression represents the 2D curl of the field. Green's Theorem sums up this microscopic 'spin' across the entire area."
+    "answer": "C",
+    "explanation": "This expression represents the 2D curl of the field. Green's Theorem sums up this microscopic 'spin' across the entire area."
   },
   {
-    prompt: "What happens if you apply Green's Theorem but accidentally traverse the boundary curve clockwise instead of counterclockwise?",
-    options: [
+    "prompt": "What happens if you apply Green's Theorem but accidentally traverse the boundary curve clockwise instead of counterclockwise?",
+    "options": [
       "Your final answer will have the opposite sign (multiplied by $-1$)",
       "The theorem completely fails and yields zero",
       "The answer remains the exact same"
     ],
-    answer: "A",
-    explanation: "Reversing the direction of a line integral negates its value. To fix a clockwise path using Green's Theorem, you must slap a negative sign in front of the double integral."
+    "answer": "A",
+    "explanation": "Reversing a circulation path reverses its sign. For clockwise traversal, negate the positively oriented double integral."
   },
   {
-    prompt: "The flux-divergence form of Green's Theorem evaluates the double integral of which quantity?",
-    options: [
-      "$\\frac{\\partial M}{\\partial x} + \\frac{\\partial N}{\\partial y}$",
+    "prompt": "The flux-divergence form of Green's Theorem evaluates the double integral of which quantity?",
+    "options": [
       "$\\frac{\\partial N}{\\partial x} - \\frac{\\partial M}{\\partial y}$",
+      "$\\frac{\\partial M}{\\partial x} + \\frac{\\partial N}{\\partial y}$",
       "$M\\, dy - N\\, dx$"
     ],
-    answer: "A",
-    explanation: "This expression is the 2D divergence of the vector field, which measures the local 'expansion' or 'compression' of the field at a point."
+    "answer": "B",
+    "explanation": "This expression is the 2D divergence of the vector field, which measures the local 'expansion' or 'compression' of the field at a point."
   },
   {
-    prompt: "If the 2D curl ($\\partial N/\\partial x - \\partial M/\\partial y$) evaluates to exactly $0$ everywhere inside a simply connected region, what is the line integral around the boundary?",
-    options: [
-      "$0$",
+    "prompt": "For a continuously differentiable field on an open simply connected domain, if $N_x-M_y=0$ everywhere, what is its circulation around a closed curve?",
+    "options": [
       "Equal to the area of the region",
-      "Undefined"
+      "Undefined",
+      "$0$"
     ],
-    answer: "A",
-    explanation: "If the curl is zero everywhere, the double integral of $0$ is $0$. This confirms the field is conservative, meaning closed-loop work is always zero."
+    "answer": "C",
+    "explanation": "If the curl is zero everywhere, the double integral of $0$ is $0$. This confirms the field is conservative, meaning closed-loop work is always zero."
   },
   {
-    prompt: "Which of the following is a valid formula to calculate the Area of a region using Green's Theorem?",
-    options: [
+    "prompt": "For a positively oriented simple closed boundary, which formula gives the enclosed area?",
+    "options": [
       "$\\frac{1}{2} \\oint_C (x\\, dy - y\\, dx)$",
       "$\\oint_C (x\\, dx + y\\, dy)$",
       "$\\oint_C (x^2\\, dy - y^2\\, dx)$"
     ],
-    answer: "A",
-    explanation: "By setting $M = -y$ and $N = x$, the curl $\\partial N/\\partial x - \\partial M/\\partial y$ becomes $1 - (-1) = 2$. Dividing by $2$ leaves a double integral of $1$, which yields the area."
+    "answer": "A",
+    "explanation": "By setting $M = -y$ and $N = x$, the curl $\\partial N/\\partial x - \\partial M/\\partial y$ becomes $1 - (-1) = 2$. Dividing by $2$ leaves a double integral of $1$, which yields the area."
   },
   {
-    prompt: "If you evaluate $\\oint_C x\\, dy$ using Green's Theorem, what does the result represent?",
-    options: [
-      "The exact area of the enclosed region $R$",
-      "The perimeter of the boundary curve $C$",
-      "Zero"
+    "prompt": "Evaluate $\\oint_C x^2\\,dy$ around the counterclockwise triangle $(0,0),(1,0),(0,1)$.",
+    "options": [
+      "$1/2$",
+      "$1/3$",
+      "$-1/3$"
     ],
-    answer: "A",
-    explanation: "Here $M = 0$ and $N = x$. The curl is $\\partial(x)/\\partial x - \\partial(0)/\\partial y = 1 - 0 = 1$. The double integral of $1$ is just the area."
+    "answer": "B",
+    "explanation": "The curl is $2x$. Integrate $\\int_0^1\\int_0^{1-x}2x\\,dy\\,dx=\\int_0^1(2x-2x^2)\\,dx=1/3$."
   },
   {
-    prompt: "If evaluating $\\oint_C (x^2 - y)\\, dx + (x + y^2)\\, dy$, what is the value of the 2D curl?",
-    options: [
-      "$2$",
+    "prompt": "If evaluating $\\oint_C (x^2 - y)\\, dx + (x + y^2)\\, dy$, what is the value of the 2D curl?",
+    "options": [
       "$0$",
-      "$2x - 2y$"
+      "$2x - 2y$",
+      "$2$"
     ],
-    answer: "A",
-    explanation: "Here $M = x^2 - y$ and $N = x + y^2$. $\\partial N/\\partial x = 1$ and $\\partial M/\\partial y = -1$. The curl is $1 - (-1) = 2$."
+    "answer": "C",
+    "explanation": "Here $M = x^2 - y$ and $N = x + y^2$. $\\partial N/\\partial x = 1$ and $\\partial M/\\partial y = -1$. The curl is $1 - (-1) = 2$."
   },
   {
-    prompt: "If the curl of a field is a constant value of $5$, and the boundary curve encloses a circle of area $10$, what is the circulation around the boundary?",
-    options: [
+    "prompt": "A smooth field has constant scalar curl 5 throughout a disk of area 10. What is its circulation around the counterclockwise boundary?",
+    "options": [
       "$50$",
       "$2$",
       "$0$"
     ],
-    answer: "A",
-    explanation: "Green's theorem says $\\oint_C = \\iint_R 5\\, dA$. You pull the constant out: $5 \\times \\iint_R 1\\, dA$. So, $5 \\times \\text{Area} = 5 \\times 10 = 50$."
+    "answer": "A",
+    "explanation": "Green's theorem says $\\oint_C = \\iint_R 5\\, dA$. You pull the constant out: $5 \\times \\iint_R 1\\, dA$. So, $5 \\times \\text{Area} = 5 \\times 10 = 50$."
   },
   {
-    prompt: "Green's Theorem requires the boundary curve $C$ to be 'simple'. What does this mean?",
-    options: [
-      "The curve does not cross or intersect itself",
+    "prompt": "Green's Theorem requires the boundary curve $C$ to be 'simple'. What does this mean?",
+    "options": [
       "The curve can be parameterized by polynomials",
+      "The curve does not cross or intersect itself",
       "The curve contains no sharp corners"
     ],
-    answer: "A",
-    explanation: "A simple curve doesn't loop over itself (like a figure-eight). If it crosses itself, the region must be split into multiple simpler pieces to apply the theorem properly."
+    "answer": "B",
+    "explanation": "A simple curve doesn't loop over itself (like a figure-eight). If it crosses itself, the region must be split into multiple simpler pieces to apply the theorem properly."
   },
   {
-    prompt: "Green's Theorem requires the boundary curve $C$ to be 'closed'. What does this mean?",
-    options: [
-      "The curve's starting point is exactly the same as its ending point",
+    "prompt": "Green's Theorem requires the boundary curve $C$ to be 'closed'. What does this mean?",
+    "options": [
       "The curve encloses a solid 3D volume",
-      "The curve has a constant radius"
+      "The curve has a constant radius",
+      "The curve's starting point is exactly the same as its ending point"
     ],
-    answer: "A",
-    explanation: "A closed curve forms a complete boundary. You cannot use Green's Theorem directly on a line segment or an open semicircle."
+    "answer": "C",
+    "explanation": "A closed curve forms a complete boundary. You cannot use Green's Theorem directly on a line segment or an open semicircle."
   },
   {
-    prompt: "Can Green's Theorem be used if the region $R$ has a 'hole' in it (a multiply connected region)?",
-    options: [
-      "Yes, but you must subtract the line integral of the inner boundary oriented clockwise",
-      "No, Green's Theorem strictly fails on regions with holes",
-      "Yes, and the hole has no mathematical effect on the boundary integral"
+    "prompt": "For a smooth field on an annulus and its boundary, how are the boundary circulation integrals combined?",
+    "options": [
+      "Add the outer counterclockwise integral and the inner clockwise integral",
+      "Subtract the inner clockwise integral from the outer counterclockwise integral",
+      "Integrate only around the outer boundary"
     ],
-    answer: "A",
-    explanation: "For a region with a hole, the 'boundary' consists of the outer edge (counterclockwise) and the inner edge (clockwise, keeping the region on your left)."
+    "answer": "A",
+    "explanation": "The region stays on your left on both components. Add their oriented integrals; subtract the inner integral only if it was computed counterclockwise."
   },
   {
-    prompt: "Green's Theorem is actually a special, flattened 2D case of which broader 3D theorem?",
-    options: [
-      "Stokes' Theorem",
+    "prompt": "Green's Theorem is actually a special, flattened 2D case of which broader 3D theorem?",
+    "options": [
       "The Divergence Theorem",
+      "Stokes' Theorem",
       "The Fundamental Theorem of Calculus"
     ],
-    answer: "A",
-    explanation: "Stokes' Theorem relates a boundary line integral to a surface integral in 3D. If that surface is perfectly flat on the xy-plane, it simplifies perfectly into Green's Theorem."
+    "answer": "B",
+    "explanation": "Stokes' Theorem relates a boundary line integral to a surface integral in 3D. If that surface is perfectly flat on the xy-plane, it simplifies perfectly into Green's Theorem."
   },
   {
-    prompt: "If $\\mathbf{F} = \\langle 5, -3 \\rangle$ is a constant vector field, what is the circulation around any closed loop?",
-    options: [
-      "$0$",
-      "$15$",
-      "It depends on the loop's perimeter"
+    "prompt": "For $\\mathbf F=(-y/(x^2+y^2),x/(x^2+y^2))$, why can zero curl not be used to conclude zero circulation around the unit circle?",
+    "options": [
+      "The unit circle is not piecewise smooth",
+      "Every nonzero field must have nonzero curl",
+      "The field is undefined at the origin inside the disk"
     ],
-    answer: "A",
-    explanation: "The partial derivatives of constants are zero. Therefore, the curl is $0 - 0 = 0$. The double integral of zero is zero."
+    "answer": "C",
+    "explanation": "The smoothness hypothesis fails at the origin. Direct parameterization gives $\\int_0^{2\\pi}1\\,dt=2\\pi$, although curl vanishes away from zero."
   },
   {
-    prompt: "In the context of fluid dynamics, what does the double integral of the 2D divergence $(\\partial M/\\partial x + \\partial N/\\partial y)$ represent physically?",
-    options: [
-      "The net rate at which fluid is expanding out of or compressing into the entire region",
-      "The net rotation (vorticity) of the fluid inside the region",
-      "The total mass of the fluid in the region"
+    "prompt": "What is the outward flux of $\\mathbf F=(x^2,y)$ across the rectangle $[0,1]\\times[0,2]$?",
+    "options": [
+      "$4$",
+      "$2$",
+      "$0$"
     ],
-    answer: "A",
-    explanation: "Divergence measures expansion. Integrating it over the whole area sums up all the tiny expansions, equaling the total outward flux crossing the boundary."
+    "answer": "A",
+    "explanation": "Use divergence $2x+1$: $\\int_0^1\\int_0^2(2x+1)\\,dy\\,dx=4$. Curl would calculate a different quantity."
   },
   {
-    prompt: "What geometrical shape does the parametric curve $x = a\\cos t, y = b\\sin t$ describe when determining area using Green's Theorem?",
-    options: [
-      "An ellipse with width $2a$ and height $2b$",
-      "A circle of radius $ab$",
-      "A parabola"
+    "prompt": "For $\\mathbf F=(-y,x)$, what is the circulation over the positively oriented full boundary of $1\\le x^2+y^2\\le4$?",
+    "options": [
+      "$10\\pi$",
+      "$6\\pi$",
+      "$8\\pi$"
     ],
-    answer: "A",
-    explanation: "This is the standard parameterization of an ellipse. Plugging these into the Green's Theorem area formula neatly derives the ellipse area formula $\\pi ab$."
+    "answer": "B",
+    "explanation": "Curl is 2 and annulus area is $3\\pi$. Equivalently, outer $8\\pi$ plus inner clockwise $-2\\pi$ is $6\\pi$."
   },
   {
-    prompt: "If you need to evaluate a line integral along a curve consisting of a straight line, a semicircle, and another straight line forming a closed shape, how does Green's theorem help?",
-    options: [
-      "It lets you compute one area integral instead of three separate messy line integrals",
+    "prompt": "If you need to evaluate a line integral along a curve consisting of a straight line, a semicircle, and another straight line forming a closed shape, how does Green's theorem help?",
+    "options": [
       "It guarantees the answer is zero",
-      "It allows you to ignore the straight lines"
+      "It allows you to ignore the straight lines",
+      "It lets you compute one area integral instead of three separate messy line integrals"
     ],
-    answer: "A",
-    explanation: "Instead of parameterizing three different piecewise boundaries and calculating three line integrals, you can often just evaluate one simple double integral over the shape they form."
+    "answer": "C",
+    "explanation": "Instead of parameterizing three different piecewise boundaries and calculating three line integrals, you can often just evaluate one simple double integral over the shape they form."
   },
   {
-    prompt: "What condition must $M(x,y)$ and $N(x,y)$ meet for Green's Theorem to be strictly valid?",
-    options: [
-      "They must have continuous first partial derivatives throughout the entire region $R$",
-      "They must be linear functions",
-      "They must evaluate to zero at the origin"
+    "prompt": "Which smoothness assumption permits the standard Green's theorem on a region and its boundary?",
+    "options": [
+      "Continuous first partial derivatives on an open set containing the region and its entire boundary",
+      "Continuity only along the outer boundary",
+      "Differentiability everywhere except at any interior singularities"
     ],
-    answer: "A",
-    explanation: "If the functions have undefined points (like dividing by zero) or discontinuous derivatives inside the region, you cannot integrate the curl across the area."
+    "answer": "A",
+    "explanation": "The field must be continuously differentiable on a neighborhood of the closed region. Boundary smoothness alone does not rule out interior singularities."
   },
   {
-    prompt: "The expression $M\\, dx + N\\, dy$ in the line integral of Green's theorem is mathematically equivalent to:",
-    options: [
-      "$\\mathbf{F} \\cdot d\\mathbf{r}$",
+    "prompt": "The expression $M\\, dx + N\\, dy$ in the line integral of Green's theorem is mathematically equivalent to:",
+    "options": [
       "$\\mathbf{F} \\cdot \\mathbf{n}\\, ds$",
+      "$\\mathbf{F} \\cdot d\\mathbf{r}$",
       "$\\nabla \\times \\mathbf{F}$"
     ],
-    answer: "A",
-    explanation: "$\\mathbf{F} = \\langle M, N \\rangle$ and $d\\mathbf{r} = \\langle dx, dy \\rangle$. Their dot product results exactly in $M\\, dx + N\\, dy$, which calculates work/circulation."
+    "answer": "B",
+    "explanation": "$\\mathbf{F} = \\langle M, N \\rangle$ and $d\\mathbf{r} = \\langle dx, dy \\rangle$. Their dot product results exactly in $M\\, dx + N\\, dy$, which calculates work/circulation."
   }
 ];
 export const QUIZ_CH16_5 = [

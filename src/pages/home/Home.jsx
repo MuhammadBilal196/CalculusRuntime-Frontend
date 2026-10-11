@@ -2,6 +2,7 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { COURSES } from "../../data/courses";
+import { searchSite } from "../../data/siteSearchIndex";
 import HeroGraph from "./HeroGraph";
 
 const guideCards = COURSES.map((c) => ({
@@ -71,11 +72,6 @@ const toolLinks = [
   },
 ];
 
-const baseItems = [
-  ...guideCards.map((g) => ({ ...g, type: "guide" })),
-  ...toolLinks.map((t) => ({ ...t, type: "tool" })),
-];
-
 function Home() {
   const [query, setQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -84,21 +80,9 @@ function Home() {
   const searchRef = useRef(null);
   const isSearching = query.trim().length > 0;
 
-  const filtered = useMemo(() => {
-    const q = query.toLowerCase().trim();
-    if (!q) return baseItems;
-    return baseItems.filter(
-      (item) =>
-        item.title?.toLowerCase().includes(q) ||
-        item.description?.toLowerCase().includes(q) ||
-        item.desc?.toLowerCase().includes(q) ||
-        item.label?.toLowerCase().includes(q) ||
-        item.meta?.toLowerCase().includes(q),
-    );
-  }, [query]);
-
-  const filteredGuides = filtered.filter((i) => i.type === "guide");
-  const filteredTools = filtered.filter((i) => i.type === "tool");
+  const filtered = useMemo(() => searchSite(query, 12), [query]);
+  const filteredGuides = guideCards;
+  const filteredTools = toolLinks;
 
   useEffect(() => {
     const closeOnOutsideClick = (event) => {
@@ -195,11 +179,11 @@ function Home() {
             aria-label="Search results"
           >
             {filtered.length === 0 ? (
-              <p className="home-search-empty">No guides or tools match “{query}”.</p>
+              <p className="home-search-empty">No topics or tools match “{query}”.</p>
             ) : (
               filtered.map((item) => (
                 <Link
-                  key={item.path}
+                  key={`${item.kind}:${item.path}:${item.title}`}
                   className="home-search-result"
                   to={item.path}
                   role="option"
@@ -210,9 +194,9 @@ function Home() {
                   </span>
                   <span className="home-search-result-copy">
                     <strong>{item.title || item.label}</strong>
-                    <small>{item.meta || item.desc}</small>
+                    <small>{item.context || item.description}</small>
                   </span>
-                  <span className="home-search-result-type">{item.type}</span>
+                  <span className="home-search-result-type">{item.kind}</span>
                 </Link>
               ))
             )}
@@ -294,13 +278,13 @@ function Home() {
       {/* Stats strip */}
       <div className="home-stats">
         <div className="stat-item">
-          <span className="stat-num">3</span>
-          <span className="stat-label">Study Guides</span>
+          <span className="stat-num">{guideCards.length}</span>
+          <span className="stat-label">Course paths</span>
         </div>
         <div className="stat-divider" />
         <div className="stat-item">
-          <span className="stat-num">4</span>
-          <span className="stat-label">Interactive Tools</span>
+          <span className="stat-num">{toolLinks.length}</span>
+          <span className="stat-label">Tools &amp; resources</span>
         </div>
         <div className="stat-divider" />
         <div className="stat-item">
@@ -309,8 +293,8 @@ function Home() {
         </div>
         <div className="stat-divider" />
         <div className="stat-item">
-          <span className="stat-num">∞</span>
-          <span className="stat-label">Practice Problems</span>
+          <span className="stat-num">3</span>
+          <span className="stat-label">Practice difficulty levels</span>
         </div>
       </div>
     </main>
