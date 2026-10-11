@@ -4,6 +4,7 @@ import { MemoryRouter, createRoutesFromChildren, matchRoutes, Navigate, Routes }
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import App from "./App";
 import StudyGuideShell from "./pages/courses/StudyGuideShell";
+import { setupReadableAnchors, guideAnchors, shortAnchorName } from "./utils/ScrollToTop";
 import { GuideMcqSection } from "./components/study/GuideMcq";
 import { ProgressProvider } from "./context/ProgressContext";
 import { COURSES } from "./data/courses";
@@ -555,4 +556,141 @@ test("homepage counts match its published course paths and resource links", () =
   expect(resourceStat.querySelector('.stat-num')).toHaveTextContent(String(resources.length));
   expect(screen.queryByText('∞')).not.toBeInTheDocument();
   expect(screen.getByText('Practice difficulty levels').closest('.stat-item')).toHaveTextContent('3');
+});
+
+
+describe("readable lesson anchors across all courses", () => {
+  test.each([
+    ["la-m-ops", "Matrix Operations", "la-ops"],
+    ["ps-b-cond", "Conditional Probability", "ps-cond"],
+    ["diff-theory", "Differentiation Rules", "differentiation-rules"],
+    ["ch16-4", "Green’s Theorem", "greens-theorem"],
+  ])("%s has readable topic and quiz links without changing saved IDs", (id, title, name) => {
+    const root = document.createElement("div");
+    root.innerHTML = `<a href="#${id}">Topic</a><a href="#quiz-${id}">Quiz</a>
+      <section class="section" id="${id}"><h2>${title}</h2></section>
+      <section class="mcq-section" id="quiz-${id}"><h2>${title}</h2></section>`;
+    document.body.appendChild(root);
+    const stop = setupReadableAnchors(root);
+    expect(root.querySelector('a')).toHaveAttribute('href', `#${name}`);
+    expect(root.querySelectorAll('a')[1]).toHaveAttribute('href', `#${name}-quiz`);
+    fireEvent.click(root.querySelectorAll('a')[1]);
+    expect(window.location.hash).toBe(`#${name}-quiz`);
+    expect(root.querySelector('.section').id).toBe(id);
+    expect(root.querySelector('.mcq-section').id).toBe(`quiz-${id}`);
+    window.history.replaceState({ preserved: true }, "", `/lesson/1?mode=study#${id}`);
+    fireEvent(window, new Event('hashchange'));
+    expect(window.location.hash).toBe(`#${name}`);
+    expect(window.location.search).toBe('?mode=study');
+    expect(window.history.state).toEqual({ preserved: true });
+    window.history.replaceState({}, "", `/lesson/1#${name}-quiz`);
+    fireEvent(window, new Event('popstate'));
+    expect(window.location.hash).toBe(`#${name}-quiz`);
+    stop();
+    expect(root.querySelector('a')).toHaveAttribute('href', `#${id}`);
+    root.remove();
+  });
+
+  test("legacy table-of-contents targets also get readable names", () => {
+    const root = document.createElement('div');
+    root.innerHTML = '<a class="toc-a" href="#s141">Definition</a><div id="s141"><h2>Partial Derivatives</h2></div>';
+    const stop = setupReadableAnchors(root);
+    expect(root.querySelector('a')).toHaveAttribute('href', '#partial-derivatives');
+    expect(root.querySelector('#s141')).not.toBeNull();
+    stop();
+  });
+
+  test("repeated headings cannot shadow existing IDs or each other", () => {
+    const root = document.createElement('div');
+    root.innerHTML = '<div id="examples"></div><section class="section" id="old-one"><h2>Examples</h2></section><section class="section" id="old-two"><h2>Examples</h2></section><a href="#old-one">One</a><a href="#old-two">Two</a>';
+    const stop = setupReadableAnchors(root);
+    expect([...root.querySelectorAll('a')].map(link => link.hash)).toEqual(['#examples-2', '#examples-3']);
+    stop();
+    const stopAgain = setupReadableAnchors(root);
+    expect(root.querySelector('a').hash).toBe('#examples-2');
+    stopAgain();
+  });
+});
+
+beforeAll(() => { Element.prototype.scrollTo = jest.fn(); });
+
+test.each([
+  ['/linear-algebra/matrices/1', 'la-m-ops', 'la-ops'],
+  ['/probability-statistics/probability-basics/2', 'ps-b-cond', 'ps-cond'],
+  ['/differentiation/1', 'diff-theory', null],
+  ['/vector-calculus/2', 'ch16-4', null],
+])('real lesson %s supports old bookmarks and readable sidebar links', async (path, old, expected) => {
+  window.history.replaceState({}, '', `${path}#${old}`);
+  const view = render(<App />);
+  await waitFor(() => {
+    expect(view.container.querySelector(`[id="${old}"]`)).not.toBeNull();
+    expect(window.location.hash).not.toBe(`#${old}`);
+  });
+  if (expected) expect(window.location.hash).toBe(`#${expected}`);
+  const canonical = window.location.hash;
+  expect(view.container.querySelector(`a[href="${canonical}"]`)).not.toBeNull();
+  fireEvent.click(view.container.querySelector(`a[href="${canonical}"]`));
+  expect(window.location.hash).toBe(canonical);
+});
+
+test.each([
+  ['The Formal Definition of a Limit (Epsilon-Delta)', 'limit-definition'],
+  ['Principal Component Analysis (PCA)', 'pca'],
+  ['Worked Examples', 'examples'],
+  ['Singular Value Decomposition', 'svd'],
+  ['Frequently Asked Questions', 'faq'],
+])('short public name for %s', (heading, expected) => {
+  expect(shortAnchorName(heading)).toBe(expected);
+});
+
+test('the long Limits bookmark becomes limit-definition without changing its part or target ID', async () => {
+  window.history.replaceState({}, '', '/limits-continuity/1#the-formal-definition-of-a-limit-epsilon-delta');
+  const view = render(<App />);
+  await waitFor(() => expect(window.location.hash).toBe('#limit-definition'));
+  expect(window.location.pathname).toBe('/limits-continuity/1');
+  expect(view.container.querySelector('#lc-basic-1')).not.toBeNull();
+});
+
+test('public overview anchors resolve and scroll outside lesson shells', async () => {
+  window.history.replaceState({}, '', '/linear-algebra/overview');
+  const view = render(<App />);
+  await waitFor(() => expect(view.container.querySelector('main #structure-heading')).not.toBeNull());
+  const root = view.container.querySelector('main');
+  await waitFor(() => expect(guideAnchors.get(root)).toBeDefined());
+  const target = root.querySelector('#structure-heading');
+  target.scrollIntoView = jest.fn();
+  window.history.replaceState({ preserved: true }, '', '/linear-algebra/overview#structure-heading');
+  fireEvent(window, new Event('hashchange'));
+  expect(window.location.hash).toBe(`#${guideAnchors.get(root).byTarget.get(target)}`);
+  expect(window.history.state).toEqual({ preserved: true });
+  expect(target.scrollIntoView).toHaveBeenCalled();
+});
+
+const studyPartPaths = [...new Set(COURSES.flatMap(course => course.modules
+  .filter(module => /\/1$/.test(module.path))
+  .flatMap(module => [module.path, module.path.replace(/\/1$/, '/2')])))]
+  .filter(path => /\/1$/.test(path) || !resolveDestination(appRoutes(), path));
+
+test.each(studyPartPaths)('all topic and quiz links stay compact on %s', async (path) => {
+  window.history.replaceState({}, '', path);
+  const view = render(<App />);
+  await waitFor(() => expect(view.container.querySelector('.study-guide-page')).not.toBeNull());
+  const root = view.container.querySelector('.study-guide-page').lastElementChild;
+  await waitFor(() => expect(guideAnchors.get(root)).toBeDefined());
+  const registry = guideAnchors.get(root);
+  const links = [...root.querySelectorAll('a[href^="#"]')].filter(link => link.hash.length > 1);
+  expect(links.length).toBeGreaterThan(0);
+  for (const link of links) {
+    const target = registry.byName.get(link.hash.slice(1));
+    expect(target).toBeDefined();
+    expect(link.hash).toBe(`#${registry.byTarget.get(target)}`);
+    expect(link.hash.length).toBeLessThanOrEqual(40);
+  }
+  if (path === '/constrained-unconstrained-optimization/2') {
+    for (const label of ['Why Numerical Optimization Is Needed', 'Key Formulas and Final Strategy']) {
+      const link = links.find(item => item.textContent.trim() === label);
+      const target = registry.byName.get(link.hash.slice(1));
+      expect(target.querySelector('h2,h3').textContent).toContain(label);
+    }
+  }
 });
