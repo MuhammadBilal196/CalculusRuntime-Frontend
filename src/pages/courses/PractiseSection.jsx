@@ -40,6 +40,7 @@ const TOPICS = [
   "Space Curves & Advanced Multivariable Mappings",
   "Coordinate Transformations & Surfaces",
   "Constrained & Unconstrained Optimization",
+  "Vector Fields & Approximation Theory",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -329,6 +330,11 @@ const PRACTICE_SELECTIONS = {
     banks: ["mv"],
     moduleName: "Constrained & Unconstrained Optimization",
   },
+  "Vector Fields & Approximation Theory": {
+  type: "module",
+  banks: ["mv"],
+  moduleName: "Vector Fields & Approximation Theory",
+},
 
   // ============================================================
   // FUTURE NEW MVC MODULES
