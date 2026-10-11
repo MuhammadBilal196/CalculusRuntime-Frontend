@@ -163,6 +163,7 @@ import {
 const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
 const DistributionExplorer = lazy(() => import("./pages/probabilityStatistics/DistributionExplorer"));
 const StatsCalculator = lazy(() => import("./pages/probabilityStatistics/StatsCalculator"));
+const Achievements = lazy(() => import("./pages/dashboard/Achievements"));
 function App() {
   return (
     <ThemeProvider>
@@ -872,6 +873,7 @@ function App() {
                 <Route 
                 path="/distribution-explorer" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading explorer…" fullPage />}><DistributionExplorer /></Suspense>} />} />
                 <Route path="/stats-calculator" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading calculator…" fullPage />}><StatsCalculator /></Suspense>} />} />
+                <Route path="/achievements" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading badges…" fullPage />}><Achievements /></Suspense>} />} />
                 <Route
                   path="/analytic-vector-lab"
                   element={<Layout body={<AnalyticVectorLab />} />}

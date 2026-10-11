@@ -642,6 +642,14 @@ export const COURSES = [
         logo: <span className="math-logo">x̄ ± t*·s/√n</span>,
       },
       {
+        title: "Badges & Achievements",
+        description: "See which badges you have unlocked and how close you are to the next one.",
+        path: "/achievements",
+        meta: "Your progress",
+        icon: "🏅",
+        logo: <span className="math-logo">🏅 5 badges</span>,
+      },
+      {
         title: "Random Variables & Distributions",
         description:
           "Discrete and continuous random variables, PMFs, PDFs, expectation, and variance.",
