@@ -1,4 +1,9 @@
+import { InlineMath } from "../components/Math";
 import { LA_MODULES, getLaModulePath } from "./laModules";
+
+/** Module-card formula, typeset by KaTeX from a LaTeX string. */
+const mathLogo = (latex) => <InlineMath className="math-logo" latex={latex} />;
+
 /** Top-level subject paths shown on Home ("Choose a path"). */
 export const COURSES = [
   {
@@ -40,7 +45,7 @@ export const COURSES = [
         path: "/calculus/overview",
         meta: "Start here",
         icon: "★",
-        logo: <span className="math-logo">∫ f(x) dx Roadmap</span>,
+        logo: mathLogo(String.raw`\int f(x)\,dx \;\; \text{Roadmap}`),
         start: true,
       },
       {
@@ -50,11 +55,7 @@ export const COURSES = [
         path: "/limits-continuity/1",
         meta: "2 parts · 6+ examples each",
         icon: "lim",
-        logo: (
-          <span className="math-logo">
-            lim<sub>x→a</sub> f(x)
-          </span>
-        ),
+        logo: mathLogo(String.raw`\lim\limits_{x \to a} f(x)`),
       },
       {
         title: "Differentiation",
@@ -63,11 +64,7 @@ export const COURSES = [
         path: "/differentiation/1",
         meta: "2 parts · 6 examples each",
         icon: "d/dx",
-        logo: (
-          <span className="math-logo">
-            f'(x) = <sup>df</sup>/<sub>dx</sub>
-          </span>
-        ),
+        logo: mathLogo(String.raw`f'(x) = \frac{df}{dx}`),
       },
       {
         title: "Integration",
@@ -76,7 +73,7 @@ export const COURSES = [
         path: "/integration/1",
         meta: "2 parts · 6 examples each",
         icon: "∫",
-        logo: <span className="math-logo">∫ f(x) dx</span>,
+        logo: mathLogo(String.raw`\int f(x)\,dx`),
       },
       {
         title: "Sequences & Infinite Series",
@@ -85,12 +82,7 @@ export const COURSES = [
         path: "/sequences-series/1",
         meta: "2 parts · 8 examples each",
         icon: "Σ",
-        logo: (
-          <span className="math-logo">
-            Σ<sub>n=1</sub>
-            <sup>∞</sup> a<sub>n</sub>
-          </span>
-        ),
+        logo: mathLogo(String.raw`\sum\limits_{n=1}^{\infty} a_n`),
       },
       {
         title: "Conic Sections",
