@@ -1,3 +1,4 @@
+import useQuizAttempts from "../../hooks/useQuizAttempts";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -19,6 +20,7 @@ const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8002";
 const ADVANCE_DELAY_MS = 350;
 
 function CourseQuiz() {
+  const { record: recordAnswer, restart: restartRecording } = useQuizAttempts();
   const { courseId } = useParams();
   const { user, isHydrated } = useAuth();
   const { progress, saveQuizScore } = useProgress();
@@ -91,6 +93,7 @@ function CourseQuiz() {
       }
       const data = await res.json();
       const secPerQ = data.seconds_per_question || 90;
+      restartRecording();
       setAttempt(data);
       questionDeadlineRef.current = Date.now() + secPerQ * 1000;
       setSecondsLeft(secPerQ);
@@ -99,7 +102,7 @@ function CourseQuiz() {
     } finally {
       setLoading(false);
     }
-  }, [quizId, user?.accessToken]);
+  }, [quizId, user?.accessToken, restartRecording]);
 
   useEffect(() => {
     if (canStart) startAttempt();
@@ -264,6 +267,14 @@ function CourseQuiz() {
       if (!res.ok) {
         throw new Error(data.detail || `Submit failed (${res.status}).`);
       }
+      (data.review || []).forEach((review) => {
+        const question = finalAttempt.questions[review.index];
+        if (!question) return;
+        recordAnswer({ source: "certificate", courseId, quizId,
+          questionId: String(review.index), responseId: String(review.index),
+          prompt: question.q, options: question.options, selectedIndex: review.your_answer,
+          correctIndex: review.correct_option, topic: question.topic, difficulty: question.difficulty, grading: "server-review" });
+      });
       setResult(data);
       setSubmitted(true);
       await saveQuizScore(quizId, data.score, data.total);

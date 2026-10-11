@@ -1201,6 +1201,494 @@ const formulaData = {
       },
     ],
   },
+  // Dedicated decks for the six additional Linear Algebra modules.
+  "la-lu-decomposition": {
+    "title": "LU Decomposition",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "LU factorization",
+        "formula": "A = LU, with L lower triangular and U upper triangular.",
+        "note": "In Doolittle form, the diagonal entries of L are 1."
+      },
+      {
+        "name": "Pivoted LU",
+        "formula": "PA = LU, where P records row interchanges.",
+        "note": "Pivoting is used when a pivot is zero and improves numerical robustness."
+      },
+      {
+        "name": "Solving with LU",
+        "formula": "Solve Ly = Pb, then Ux = y.",
+        "note": "For PA = LU; omit P when the factorization is A = LU."
+      },
+      {
+        "name": "Reusing a factorization",
+        "formula": "Factor once, then use triangular solves for each new right-hand side.",
+        "note": "Dense factorization costs O(n³); each triangular-solve pair costs O(n²)."
+      }
+    ]
+  },
+  "la-cholesky-decomposition": {
+    "title": "Cholesky Decomposition",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Cholesky condition",
+        "formula": "A real symmetric positive-definite matrix has A = LLᵀ.",
+        "note": "L is lower triangular with positive diagonal; the complex form is A = LL*."
+      },
+      {
+        "name": "Cholesky diagonal update",
+        "formula": "Lⱼⱼ = √(aⱼⱼ − Σₖ<ⱼ Lⱼₖ²).",
+        "note": "Positive definiteness ensures a positive radicand in exact arithmetic."
+      },
+      {
+        "name": "Cholesky off-diagonal update",
+        "formula": "Lᵢⱼ = (aᵢⱼ − Σₖ<ⱼ LᵢₖLⱼₖ) / Lⱼⱼ, for i > j.",
+        "note": "Compute columns in order after the diagonal entry is available."
+      },
+      {
+        "name": "Cholesky determinant",
+        "formula": "det(A) = (∏ᵢ Lᵢᵢ)².",
+        "note": "Solve Ax = b using Ly = b followed by Lᵀx = y."
+      }
+    ]
+  },
+  "la-jordan-normal-form": {
+    "title": "Jordan Normal Form",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Jordan block",
+        "formula": "Jₖ(λ) has λ on the diagonal and 1 on the superdiagonal.",
+        "note": "All other entries are zero."
+      },
+      {
+        "name": "Generalized eigenvector chain",
+        "formula": "(A − λI)v₁ = 0; (A − λI)vⱼ = vⱼ₋₁.",
+        "note": "A chain of length k generates a Jordan block of size k."
+      },
+      {
+        "name": "Counting Jordan blocks",
+        "formula": "Number of blocks for λ = dim ker(A − λI).",
+        "note": "Their total size equals the algebraic multiplicity of λ."
+      },
+      {
+        "name": "Diagonalizability via Jordan form",
+        "formula": "A is diagonalizable exactly when every Jordan block has size 1.",
+        "note": "Jordan form exists over a field where the characteristic polynomial splits, such as ℂ."
+      }
+    ]
+  },
+  "la-matrix-norms-conditioning": {
+    "title": "Vector & Matrix Norms, Condition Number",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Induced matrix norm",
+        "formula": "‖A‖ = maxₓ≠₀ ‖Ax‖ / ‖x‖.",
+        "note": "The vector norm determines the induced matrix norm."
+      },
+      {
+        "name": "Common matrix norms",
+        "formula": "‖A‖₁ = maximum absolute column sum; ‖A‖∞ = maximum absolute row sum.",
+        "note": "The spectral norm ‖A‖₂ equals the largest singular value."
+      },
+      {
+        "name": "Condition number",
+        "formula": "κ(A) = ‖A‖ ‖A⁻¹‖ for an invertible square matrix.",
+        "note": "κ₂(A) = σmax / σmin. Large values indicate sensitivity."
+      },
+      {
+        "name": "Right-hand-side sensitivity",
+        "formula": "‖δx‖/‖x‖ ≤ κ(A) ‖δb‖/‖b‖.",
+        "note": "For Ax=b and A(x+δx)=b+δb, with invertible A and nonzero b."
+      }
+    ]
+  },
+  "la-complex-vector-spaces": {
+    "title": "Complex Vector Spaces (Hermitian & Unitary Matrices)",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Complex inner product",
+        "formula": "⟨x,y⟩ = x*y = Σᵢ conjugate(xᵢ)yᵢ.",
+        "note": "This convention is conjugate-linear in the first argument."
+      },
+      {
+        "name": "Hermitian matrix",
+        "formula": "A* = A, where * is conjugate transpose.",
+        "note": "Hermitian matrices have real eigenvalues and an orthonormal eigenbasis."
+      },
+      {
+        "name": "Unitary matrix",
+        "formula": "U*U = UU* = I.",
+        "note": "U⁻¹ = U*; unitary transformations preserve inner products and Euclidean norms."
+      },
+      {
+        "name": "Hermitian spectral theorem",
+        "formula": "A = UΛU*, with U unitary and Λ real diagonal.",
+        "note": "This extends orthogonal diagonalization of real symmetric matrices."
+      }
+    ]
+  },
+  "la-quadratic-forms-definiteness": {
+    "title": "Quadratic Forms & Definiteness",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Quadratic form",
+        "formula": "q(x) = xᵀAx.",
+        "note": "For real x, only the symmetric part (A+Aᵀ)/2 contributes."
+      },
+      {
+        "name": "Positive definiteness",
+        "formula": "xᵀAx > 0 for every nonzero x.",
+        "note": "For real symmetric A, this is equivalent to every eigenvalue being positive."
+      },
+      {
+        "name": "Sylvester criterion",
+        "formula": "A real symmetric matrix is positive definite iff all leading principal minors are positive.",
+        "note": "For positive semidefiniteness, leading principal minors alone are insufficient."
+      },
+      {
+        "name": "Indefinite quadratic form",
+        "formula": "A real symmetric A is indefinite when it has both positive and negative eigenvalues.",
+        "note": "Then q(x) takes both positive and negative values."
+      }
+    ]
+  },
+  "la-change-of-basis-similarity": {
+    "title": "Change of Basis & Similarity Transformations",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Coordinate matrix",
+        "formula": "x = P[x]B when the columns of P are the basis B in standard coordinates.",
+        "note": "Consequently [x]B = P⁻¹x."
+      },
+      {
+        "name": "Similarity transformation",
+        "formula": "[T]B = P⁻¹AP.",
+        "note": "A represents T in standard coordinates; columns of P form B."
+      },
+      {
+        "name": "Similarity invariants",
+        "formula": "Similar matrices share the characteristic polynomial, eigenvalues, trace and determinant.",
+        "note": "They represent the same linear operator in different bases."
+      },
+      {
+        "name": "Changing domain and codomain bases",
+        "formula": "[T]C←B = Q⁻¹AP.",
+        "note": "P contains the domain basis B; Q contains the codomain basis C."
+      }
+    ]
+  },
+  "la-affine-homogeneous": {
+    "title": "Affine Transformations & Homogeneous Coordinates",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Affine map",
+        "formula": "f(x) = Ax + b.",
+        "note": "It is linear exactly when b = 0."
+      },
+      {
+        "name": "Homogeneous matrix",
+        "formula": "[x;1] ↦ [A b; 0 1][x;1].",
+        "note": "The augmented coordinate lets one matrix represent both a linear map and translation."
+      },
+      {
+        "name": "Affine composition",
+        "formula": "(A₂,b₂) ∘ (A₁,b₁) = (A₂A₁, A₂b₁+b₂).",
+        "note": "With column vectors, the rightmost transformation acts first."
+      },
+      {
+        "name": "Affine inverse",
+        "formula": "f⁻¹(y) = A⁻¹y − A⁻¹b.",
+        "note": "The inverse exists iff A is invertible."
+      }
+    ]
+  },
+  "la-principal-component-analysis": {
+    "title": "Principal Component Analysis (PCA)",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Centering PCA data",
+        "formula": "Xc = X − 1μᵀ.",
+        "note": "Rows are observations; μ contains the column means."
+      },
+      {
+        "name": "Sample covariance for PCA",
+        "formula": "S = XcᵀXc / (n−1).",
+        "note": "Assumes n > 1 observations and centered columns."
+      },
+      {
+        "name": "Principal directions",
+        "formula": "Principal directions are covariance eigenvectors, ordered by decreasing eigenvalue.",
+        "note": "Equivalently, use the right singular vectors of centered data."
+      },
+      {
+        "name": "Explained variance ratio",
+        "formula": "Variance captured by the first k PCs = (λ₁+⋯+λₖ)/(λ₁+⋯+λₚ).",
+        "note": "Requires positive total variance; PCA maximizes retained variance among rank-k orthogonal projections."
+      }
+    ]
+  },
+  "la-markov-chains-steady-states": {
+    "title": "Markov Chains & Steady States",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Row-stochastic transition matrix",
+        "formula": "Pᵢⱼ ≥ 0 and ΣⱼPᵢⱼ = 1.",
+        "note": "Pᵢⱼ is the probability of moving from state i to state j."
+      },
+      {
+        "name": "Distribution evolution",
+        "formula": "pₜ₊₁ = pₜP for row probability vectors.",
+        "note": "After k steps, pₜ₊ₖ = pₜPᵏ."
+      },
+      {
+        "name": "Stationary distribution",
+        "formula": "πP = π, with πᵢ ≥ 0 and Σᵢπᵢ = 1.",
+        "note": "For column-vector conventions the transition equation is transposed."
+      },
+      {
+        "name": "Convergence in a finite chain",
+        "formula": "Irreducible and aperiodic finite chains converge to a unique stationary distribution.",
+        "note": "Irreducibility alone gives uniqueness, but periodicity can prevent convergence."
+      }
+    ]
+  },
+  "la-linear-programming-simplex": {
+    "title": "Linear Programming (Simplex Method)",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Slack variables",
+        "formula": "aᵀx ≤ b becomes aᵀx + s = b with s ≥ 0.",
+        "note": "This converts an inequality to an equality."
+      },
+      {
+        "name": "Basic feasible solution",
+        "formula": "For m independent equality constraints, choose m independent basis columns and set nonbasic variables to zero.",
+        "note": "The resulting basic variables must be nonnegative."
+      },
+      {
+        "name": "Reduced cost for maximization",
+        "formula": "rⱼ = cⱼ − cBᵀB⁻¹aⱼ.",
+        "note": "With this convention, a positive reduced cost may enter; all nonbasic rⱼ ≤ 0 certify optimality of a feasible basis."
+      },
+      {
+        "name": "Minimum-ratio test",
+        "formula": "For d = B⁻¹aⱼ, take minᵢ:dᵢ>0 xBᵢ/dᵢ.",
+        "note": "With an improving entering variable and no positive dᵢ, the objective is unbounded along that direction."
+      }
+    ]
+  },
+  "la-vector-space-applications": {
+    "title": "Vector Space Applications in Graphics & ML",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Projection onto an orthonormal subspace",
+        "formula": "proj(x) = QQᵀx.",
+        "note": "Columns of Q form an orthonormal basis of the target subspace."
+      },
+      {
+        "name": "2D rotation matrix",
+        "formula": "R(θ) = [cosθ −sinθ; sinθ cosθ].",
+        "note": "With column vectors, positive θ rotates counterclockwise."
+      },
+      {
+        "name": "Linear feature map",
+        "formula": "z = Wx maps input features into another vector space.",
+        "note": "Adding b gives an affine layer z = Wx+b."
+      },
+      {
+        "name": "Ridge regression",
+        "formula": "w = (XᵀX+λI)⁻¹Xᵀy for λ > 0.",
+        "note": "This minimizes ‖Xw−y‖²+λ‖w‖²; the displayed form penalizes every coordinate."
+      }
+    ]
+  },
+  "la-iterative-solvers": {
+    "title": "Iterative Solvers (Jacobi, Gauss–Seidel, SOR)",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Jacobi iteration",
+        "formula": "x⁽ᵏ⁺¹⁾ = D⁻¹(b − (L+U)x⁽ᵏ⁾).",
+        "note": "Uses A=D+L+U with nonzero diagonal; all updates use the previous iterate."
+      },
+      {
+        "name": "Gauss–Seidel iteration",
+        "formula": "(D+L)x⁽ᵏ⁺¹⁾ = b − Ux⁽ᵏ⁾.",
+        "note": "Uses each newly computed component immediately."
+      },
+      {
+        "name": "Stationary-iteration convergence",
+        "formula": "x⁽ᵏ⁺¹⁾ = Tx⁽ᵏ⁾+c converges for every initial guess iff ρ(T)<1.",
+        "note": "ρ(T) is the spectral radius of the iteration matrix."
+      },
+      {
+        "name": "SOR relaxation",
+        "formula": "(D+ωL)x⁽ᵏ⁺¹⁾ = ωb + [(1−ω)D−ωU]x⁽ᵏ⁾.",
+        "note": "For symmetric positive-definite A, SOR converges for 0<ω<2; ω=1 is Gauss–Seidel."
+      }
+    ]
+  },
+  "la-eigenvalue-algorithms": {
+    "title": "Eigenvalue Algorithms (Power Iteration & QR)",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Power iteration",
+        "formula": "y = Ax⁽ᵏ⁾; x⁽ᵏ⁺¹⁾ = y/‖y‖.",
+        "note": "Dominant-eigenvector convergence needs a uniquely dominant eigenvalue and a suitable nonzero initial component."
+      },
+      {
+        "name": "Rayleigh quotient",
+        "formula": "ρ(x) = x*Ax / (x*x), for x ≠ 0.",
+        "note": "It equals the eigenvalue when x is an eigenvector."
+      },
+      {
+        "name": "QR eigenvalue iteration",
+        "formula": "Aₖ = QₖRₖ; Aₖ₊₁ = RₖQₖ = Qₖ*AₖQₖ.",
+        "note": "Each step is a similarity transformation and preserves eigenvalues."
+      },
+      {
+        "name": "Eigenpair residual",
+        "formula": "r = Av − λv.",
+        "note": "A small residual verifies an approximate eigenpair; small residual alone need not imply small eigenvector error."
+      }
+    ]
+  },
+  "la-dual-spaces": {
+    "title": "Dual Spaces & Linear Functionals",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Dual space",
+        "formula": "V* is the vector space of linear maps from V to its scalar field.",
+        "note": "For finite-dimensional V, dim V* = dim V."
+      },
+      {
+        "name": "Dual basis",
+        "formula": "εⁱ(vⱼ) = δᵢⱼ.",
+        "note": "The dual functional εⁱ extracts the ith coordinate in the basis v₁,…,vₙ."
+      },
+      {
+        "name": "Covector coordinate change",
+        "formula": "If x = PxB and f(x)=ax, then aB = aP.",
+        "note": "Here a and aB are row representations of the same linear functional."
+      },
+      {
+        "name": "Annihilator dimension",
+        "formula": "dim W⁰ = dim V − dim W.",
+        "note": "W⁰ consists of all functionals in V* that vanish on W; V is finite-dimensional."
+      }
+    ]
+  },
+  "la-tensor-products": {
+    "title": "Tensor Products & Kronecker Products",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Tensor-product dimension",
+        "formula": "dim(V⊗W) = (dim V)(dim W).",
+        "note": "For finite-dimensional spaces, basis tensors vᵢ⊗wⱼ form a basis."
+      },
+      {
+        "name": "Kronecker product size",
+        "formula": "If A is m×n and B is p×q, then A⊗B is mp×nq.",
+        "note": "Each scalar entry aᵢⱼ is replaced by the block aᵢⱼB."
+      },
+      {
+        "name": "Kronecker mixed-product identity",
+        "formula": "(A⊗B)(C⊗D) = (AC)⊗(BD).",
+        "note": "The ordinary products AC and BD must be dimensionally compatible."
+      },
+      {
+        "name": "Vectorization identity",
+        "formula": "vec(AXB) = (Bᵀ⊗A)vec(X).",
+        "note": "Uses column-stacking vectorization and compatible matrix dimensions."
+      }
+    ]
+  },
+  "la-spectral-graph": {
+    "title": "Spectral Graph Theory",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Graph Laplacian",
+        "formula": "L = D − A.",
+        "note": "For an undirected graph with nonnegative weights, D contains weighted degrees."
+      },
+      {
+        "name": "Laplacian quadratic form",
+        "formula": "xᵀLx = Σ{i,j}∈E wᵢⱼ(xᵢ−xⱼ)².",
+        "note": "Each undirected edge is counted once; this proves positive semidefiniteness."
+      },
+      {
+        "name": "Zero Laplacian eigenvalues",
+        "formula": "Multiplicity of eigenvalue 0 equals the number of connected components.",
+        "note": "Connectivity uses edges of positive weight."
+      },
+      {
+        "name": "Algebraic connectivity",
+        "formula": "For n≥2, the second-smallest Laplacian eigenvalue λ₂ is positive iff the graph is connected.",
+        "note": "A corresponding eigenvector is called a Fiedler vector."
+      }
+    ]
+  },
+  "la-matrix-calculus": {
+    "title": "Matrix Calculus",
+    "category": "Linear Algebra",
+    "color": "#2563eb",
+    "formulas": [
+      {
+        "name": "Gradient of a quadratic form",
+        "formula": "∇x(xᵀAx) = (A+Aᵀ)x.",
+        "note": "For real symmetric A, this simplifies to 2Ax."
+      },
+      {
+        "name": "Least-squares gradient",
+        "formula": "∇x(½‖Ax−b‖²) = Aᵀ(Ax−b).",
+        "note": "The Hessian is AᵀA."
+      },
+      {
+        "name": "Trace gradient",
+        "formula": "∇X tr(AᵀX) = A.",
+        "note": "The gradient uses the Frobenius inner product."
+      },
+      {
+        "name": "Log-determinant gradient",
+        "formula": "∇X log det(X) = X⁻ᵀ.",
+        "note": "For real invertible X with positive determinant; on the SPD cone it equals X⁻¹."
+      }
+    ]
+  },
+
 };
 
 export default formulaData;

@@ -477,3 +477,11 @@
 [data-theme="dark"] .practice-insight p {
   color: #bbf7d0;
 }
+
+
+.practice-topic-filters { display: grid; gap: .75rem; margin: 1rem 0; }
+.practice-topic-filters input { width: 100%; box-sizing: border-box; padding: .75rem; border: 1px solid var(--line, #64748b); border-radius: 8px; background: var(--card, #fff); color: var(--ink, #111827); font: inherit; }
+.practice-course-filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+.practice-course-filters [aria-pressed="true"] { border-color: #0284c7; box-shadow: inset 0 0 0 1px #0284c7; font-weight: 700; }
+.practice-topic-filters :focus-visible { outline: 3px solid #0284c7; outline-offset: 3px; }
+.practice-topic-filters p { margin: 0; }

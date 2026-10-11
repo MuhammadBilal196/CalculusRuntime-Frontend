@@ -41,12 +41,50 @@ export const LA_MODULES = [
   },
 ];
 
+// Published expansion topics are separate until certificate/practice integration.
+export const LA_EXPANSION_MODULES = [{
+  id: "numerical-linear-algebra",
+  overviewAnchor: "numerical-linear-algebra",
+  title: "Numerical Linear Algebra",
+  description: "Iterative linear solvers and numerical eigenvalue algorithms: Jacobi, Gauss–Seidel, SOR, power iteration, and QR, with worked examples and independent checkpoints.",
+  logo: "Ax ≈ b",
+  topicsPerPart: 1,
+  plannedTopicCount: 2,
+  topics: [{ id: "iterative-solvers", title: "Iterative Solvers (Jacobi, Gauss–Seidel, SOR)", quizKey: "la-iterative-solvers-checkpoint", singlePage: true },
+    { id: "eigenvalue-algorithms", title: "Eigenvalue Algorithms (Power Iteration & QR)", quizKey: "la-eigenvalue-algorithms-checkpoint", singlePage: true }],
+}, {
+  id: "abstract-linear-algebra",
+  overviewAnchor: "abstract-linear-algebra",
+  title: "Abstract Linear Algebra",
+  description: "Dual spaces and linear functionals, tensor products and Kronecker products, with coordinate conventions, worked examples and independent checkpoints.",
+  logo: "V*",
+  topicsPerPart: 1,
+  plannedTopicCount: 2,
+  topics: [{ id: "dual-spaces", title: "Dual Spaces & Linear Functionals", quizKey: "la-dual-spaces-checkpoint", singlePage: true },
+    { id: "tensor-products", title: "Tensor Products & Kronecker Products", quizKey: "la-tensor-products-checkpoint", singlePage: true }],
+}, {
+  id: "modern-applications",
+  overviewAnchor: "modern-applications",
+  title: "Modern Applications",
+  description: "Spectral graph theory and matrix calculus, with graph Laplacians, vector and matrix derivatives, worked examples and independent checkpoints.",
+  logo: "L = D − A",
+  topicsPerPart: 1,
+  plannedTopicCount: 2,
+  topics: [{ id: "spectral-graph", title: "Spectral Graph Theory", quizKey: "la-spectral-graph-checkpoint", singlePage: true },
+    { id: "matrix-calculus", title: "Matrix Calculus", quizKey: "la-matrix-calculus-checkpoint", singlePage: true }],
+}];
+
+export function getLaModuleParts(module) {
+  return Array.from({ length: Math.ceil(module.topics.length / (module.topicsPerPart || 2)) }, (_, i) => i + 1);
+}
+
 export function getLaModule(id) {
-  return LA_MODULES.find((module) => module.id === id);
+  return [...LA_MODULES, ...LA_EXPANSION_MODULES].find((module) => module.id === id);
 }
 
 export function getLaModuleTopics(module, part) {
-  return module.topics.slice((part - 1) * 2, part * 2);
+  const size = module.topicsPerPart || 2;
+  return module.topics.slice((part - 1) * size, part * size);
 }
 
 export function getLaModulePath(module, part = 1) {
@@ -54,7 +92,7 @@ export function getLaModulePath(module, part = 1) {
 }
 
 export function getLaTopicPath(module, topic) {
-  const part = module.topics.findIndex((item) => item.id === topic.id) < 2 ? 1 : 2;
+  const part = Math.floor(module.topics.findIndex((item) => item.id === topic.id) / (module.topicsPerPart || 2)) + 1;
   return `${getLaModulePath(module, part)}#${topic.id}`;
 }
 

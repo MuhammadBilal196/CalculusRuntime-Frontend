@@ -30342,7 +30342,7 @@ correctAnswer: 0,
   topic: 'Space Curves & Advanced Multivariable Mappings',
   difficulty: 'Hard',
   question: "For a regular curve, curvature can be expressed as:",
-  options: ["|T|/|r|', '|T'(s)|', '|r''(t)|', '|r'(t)|"],
+  options: ["|T|/|r|", "|T'(s)|", "|r''(t)|", "|r'(t)|"],
   correctAnswer: 1,
   explanation: "With arc length s, curvature is kappa = |dT/ds|."
 },

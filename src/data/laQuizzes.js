@@ -2683,3 +2683,545 @@ export const LA_VECTOR_APPLICATIONS_QUIZ = [
     "explanation": "Preprocessing is fitted using the training set; the same fitted transformation is then applied to held-out observations."
   }
 ];
+
+
+/** Numerical Linear Algebra: Iterative Solvers checkpoint (20 questions). */
+export const LA_ITERATIVE_SOLVERS_QUIZ = [
+  {
+    "prompt": "What distinguishes a stationary iterative solver from a direct factorization?",
+    "options": [
+      "It repeatedly applies a fixed update rule to improve an approximate solution",
+      "It always returns the exact solution in one step",
+      "It must explicitly form the inverse matrix",
+      "It can only solve diagonal systems"
+    ],
+    "answer": "A",
+    "explanation": "A stationary method repeats the same iteration matrix and constant vector; accuracy is assessed using a stopping rule."
+  },
+  {
+    "prompt": "In Jacobi iteration, which values are used for off-diagonal terms during a sweep?",
+    "options": [
+      "Only values updated earlier in the current sweep",
+      "Only values from the previous iterate",
+      "Exact solution values",
+      "Only diagonal entries"
+    ],
+    "answer": "B",
+    "explanation": "Jacobi reads every off-diagonal component from the previous iterate; writing updates into the same input array would change the method."
+  },
+  {
+    "prompt": "In Gauss–Seidel iteration with rows processed from top to bottom, how is component i updated?",
+    "options": [
+      "All components come from the previous iterate",
+      "All components come from the next iterate before it is computed",
+      "Use new components j<i and old components j>i",
+      "Set every off-diagonal term to zero"
+    ],
+    "answer": "C",
+    "explanation": "Gauss–Seidel immediately reuses components already computed during the current sweep."
+  },
+  {
+    "prompt": "Which condition is sufficient for both Jacobi and Gauss–Seidel convergence?",
+    "options": [
+      "Every diagonal entry is positive",
+      "The determinant is nonzero",
+      "The matrix is symmetric",
+      "Strict row diagonal dominance"
+    ],
+    "answer": "D",
+    "explanation": "Strict row diagonal dominance means |a_ii| exceeds the sum of the off-diagonal absolute values in each row. It is sufficient, not necessary."
+  },
+  {
+    "prompt": "For x^(k+1)=Bx^(k)+c with a unique fixed point, convergence from every initial vector is equivalent to:",
+    "options": [
+      "The spectral radius rho(B) being less than 1",
+      "The trace of B being positive",
+      "Every entry of B being less than 1",
+      "The determinant of B being nonzero"
+    ],
+    "answer": "A",
+    "explanation": "The error evolves by e^(k+1)=Be^(k); B^k tends to zero exactly when every eigenvalue lies strictly inside the unit circle."
+  },
+  {
+    "prompt": "Which claim about a real symmetric positive-definite matrix is correct?",
+    "options": [
+      "Both methods always terminate after n sweeps",
+      "Gauss–Seidel converges, but Jacobi is not guaranteed to converge",
+      "Jacobi always converges, but Gauss–Seidel cannot",
+      "Neither method can converge"
+    ],
+    "answer": "B",
+    "explanation": "Positive definiteness guarantees Gauss–Seidel convergence. For Jacobi, a separate convergence check is needed."
+  },
+  {
+    "prompt": "Which SOR parameter gives exactly Gauss–Seidel?",
+    "options": [
+      "omega=0",
+      "omega=2",
+      "omega=1",
+      "omega=-1"
+    ],
+    "answer": "C",
+    "explanation": "At omega=1 the old-value weight vanishes and each SOR update equals the Gauss–Seidel update."
+  },
+  {
+    "prompt": "For a real symmetric positive-definite matrix, which interval guarantees SOR convergence?",
+    "options": [
+      "omega>2",
+      "omega<0",
+      "Every real omega",
+      "0<omega<2"
+    ],
+    "answer": "D",
+    "explanation": "SOR converges for SPD matrices when 0<omega<2; this interval is not a sufficient guarantee for an arbitrary matrix."
+  },
+  {
+    "prompt": "For 4x+y=1 and x+3y=2, Jacobi starting at (0,0) produces which first iterate?",
+    "options": [
+      "(1/4, 2/3)",
+      "(1/4, 7/12)",
+      "(1, 2)",
+      "(1/11, 7/11)"
+    ],
+    "answer": "A",
+    "explanation": "Jacobi uses x=0 and y=0 on the right of both update equations: x_new=1/4 and y_new=2/3."
+  },
+  {
+    "prompt": "For the same system and initial vector, Gauss–Seidel updating x before y produces:",
+    "options": [
+      "(1/4, 2/3)",
+      "(1/4, 7/12)",
+      "(1/12, 7/12)",
+      "(1/11, 7/11)"
+    ],
+    "answer": "B",
+    "explanation": "First x_new=1/4; then y_new=(2-1/4)/3=7/12 using the new x value."
+  },
+  {
+    "prompt": "For 4x+y=1 and x+3y=2, the second Jacobi iterate from (0,0) is:",
+    "options": [
+      "(1/4, 7/12)",
+      "(5/48, 91/144)",
+      "(1/12, 7/12)",
+      "(1/4, 2/3)"
+    ],
+    "answer": "C",
+    "explanation": "Apply the update to (1/4,2/3): x_new=(1-2/3)/4=1/12 and y_new=(2-1/4)/3=7/12."
+  },
+  {
+    "prompt": "For that system, SOR with omega=6/5 from (0,0), updating x before y, gives:",
+    "options": [
+      "(1/4, 7/12)",
+      "(3/10, 4/5)",
+      "(1/5, 3/5)",
+      "(3/10, 17/25)"
+    ],
+    "answer": "D",
+    "explanation": "x_new=(6/5)(1/4)=3/10. Then y_new=(6/5)(2-3/10)/3=17/25."
+  },
+  {
+    "prompt": "For A=[[4,1],[1,3]], b=(1,2), and x_hat=(1/4,2/3), what is b-A*x_hat?",
+    "options": [
+      "(-2/3, -1/4)",
+      "(2/3, 1/4)",
+      "(0, 0)",
+      "(1/4, 2/3)"
+    ],
+    "answer": "A",
+    "explanation": "A*x_hat=(5/3,9/4), so subtraction from b gives (-2/3,-1/4). The residual is not the iterate itself."
+  },
+  {
+    "prompt": "Why is a small residual alone insufficient to guarantee a small solution error?",
+    "options": [
+      "Residuals cannot be computed for sparse matrices",
+      "An ill-conditioned A can amplify residual error through its inverse",
+      "A residual is always exactly zero",
+      "The right-hand side must be positive"
+    ],
+    "answer": "B",
+    "explanation": "If e=x_star-x_hat and r=b-A*x_hat, then Ae=r. A large inverse norm can amplify a small residual."
+  },
+  {
+    "prompt": "For the positive-off-diagonal splitting A=D+L+U, the Jacobi iteration matrix is:",
+    "options": [
+      "D^(-1)(L+U)",
+      "-(D+L)^(-1)U",
+      "-D^(-1)(L+U)",
+      "D+L+U"
+    ],
+    "answer": "C",
+    "explanation": "Rearrange D*x_new=b-(L+U)*x_old. The minus sign follows from this explicitly chosen splitting convention."
+  },
+  {
+    "prompt": "For A=D+L+U, the Gauss–Seidel iteration matrix is:",
+    "options": [
+      "-D^(-1)(L+U)",
+      "D^(-1)L",
+      "(D+U)^(-1)L",
+      "-(D+L)^(-1)U"
+    ],
+    "answer": "D",
+    "explanation": "Gauss–Seidel solves (D+L)*x_new=b-U*x_old; the matrix formula describes a triangular solve, not a recommendation to form an inverse."
+  },
+  {
+    "prompt": "A matrix has a zero diagonal entry. What should happen before applying the usual component formulas?",
+    "options": [
+      "Reorder equations if possible and recheck convergence; otherwise use another method",
+      "Divide by zero and continue",
+      "Replace the zero by an arbitrary tiny number",
+      "Assume the matrix is singular"
+    ],
+    "answer": "A",
+    "explanation": "The formulas divide by a_ii. A zero diagonal does not itself prove singularity; a legitimate reordering must also reorder b and requires a fresh convergence check."
+  },
+  {
+    "prompt": "What happens for Jacobi on A=[[1,2],[2,1]] from a general initial error?",
+    "options": [
+      "Convergence is guaranteed by invertibility",
+      "Convergence from every initial error fails because rho(B)=2",
+      "Convergence is guaranteed by positive entries",
+      "It becomes the identity iteration matrix"
+    ],
+    "answer": "B",
+    "explanation": "The Jacobi matrix [[0,-2],[-2,0]] has eigenvalues 2 and -2. Nonsingularity alone is not a convergence guarantee."
+  },
+  {
+    "prompt": "Which implementation correctly preserves Jacobi semantics?",
+    "options": [
+      "Overwrite x_i immediately and reuse it in later rows",
+      "Compute only the first row repeatedly",
+      "Read from an old vector and write into a separate new vector",
+      "Ignore all off-diagonal coefficients"
+    ],
+    "answer": "C",
+    "explanation": "Two buffers keep every component update based on the same old iterate. Swap buffers after completing the sweep."
+  },
+  {
+    "prompt": "Which stopping policy is most reliable for a practical iteration?",
+    "options": [
+      "Stop after exactly one sweep",
+      "Stop only when consecutive vectors are bit-for-bit equal",
+      "Use only an unscaled update difference for every problem",
+      "Check a scaled residual with absolute tolerance, an iteration cap, and non-finite detection"
+    ],
+    "answer": "D",
+    "explanation": "A residual criterion addresses the original equations; absolute tolerance handles zero or tiny b, and caps/non-finite checks prevent endless or invalid iterations."
+  }
+];
+
+
+/** Numerical Linear Algebra: Eigenvalue Algorithms checkpoint (20 questions). */
+export const LA_EIGENVALUE_ALGORITHMS_QUIZ = [
+  {
+    "prompt": "Under the standard diagonalizable-matrix assumptions, which eigenvalue does power iteration target?",
+    "options": [
+      "The eigenvalue of largest absolute value",
+      "The smallest positive eigenvalue",
+      "The eigenvalue closest to zero",
+      "The sum of all eigenvalues"
+    ],
+    "answer": "A",
+    "explanation": "A unique dominant magnitude controls repeated multiplication when the starting vector has a nonzero component in its eigenvector direction."
+  },
+  {
+    "prompt": "Why normalize the vector after each power iteration?",
+    "options": [
+      "To change the eigenvalues",
+      "To control scale while preserving the vector direction",
+      "To force the eigenvalue to be positive",
+      "To make every matrix symmetric"
+    ],
+    "answer": "B",
+    "explanation": "Normalization controls growth or decay of the iterate without changing its direction; it does not create a missing spectral gap."
+  },
+  {
+    "prompt": "For $A=\\operatorname{diag}(5,2)$ and starting vector $(1,1)^T$, what is the first unit-length power iterate?",
+    "options": [
+      "$ (1,1)^T/\\sqrt{2}$",
+      "$ (2,5)^T/\\sqrt{29}$",
+      "$ (5,2)^T/\\sqrt{29}$",
+      "$ (5,2)^T/7$"
+    ],
+    "answer": "C",
+    "explanation": "Multiplication gives (5,2). Its Euclidean norm is the square root of 25+4, so divide by sqrt(29)."
+  },
+  {
+    "prompt": "For $A=\\operatorname{diag}(5,2)$ and $x=(5,2)^T$, what is the Rayleigh quotient?",
+    "options": [
+      "$7$",
+      "$29/133$",
+      "$5$",
+      "$133/29$"
+    ],
+    "answer": "D",
+    "explanation": "The numerator x^T A x is 5·25+2·4=133 and x^T x=29. The quotient is unchanged if x is normalized."
+  },
+  {
+    "prompt": "With a unique dominant eigenvalue, the asymptotic directional convergence factor of basic power iteration is typically governed by which ratio?",
+    "options": [
+      "$|\\lambda_2/\\lambda_1|$",
+      "$|\\lambda_1/\\lambda_2|$",
+      "$|\\lambda_1+\\lambda_2|$",
+      "$|\\det A|$"
+    ],
+    "answer": "A",
+    "explanation": "For a diagonalizable matrix ordered by decreasing eigenvalue magnitude, subdominant eigenvector coefficients shrink relative to the dominant coefficient by powers of this ratio."
+  },
+  {
+    "prompt": "For $A=\\operatorname{diag}(5,2)$, what happens in exact arithmetic if the starting vector is $(0,1)^T$?",
+    "options": [
+      "It immediately becomes (1,0)",
+      "It remains in the eigenvalue-2 direction",
+      "It returns the dominant eigenvalue 5 after two steps",
+      "It becomes a zero vector"
+    ],
+    "answer": "B",
+    "explanation": "The starting vector has zero component in the dominant direction; multiplication and normalization cannot create that component in exact arithmetic."
+  },
+  {
+    "prompt": "What can happen to normalized power iterates when the unique dominant eigenvalue is negative?",
+    "options": [
+      "Their norms must diverge",
+      "The eigenvalue becomes positive",
+      "Their signs can alternate while the eigenvector line converges",
+      "The matrix becomes singular"
+    ],
+    "answer": "C",
+    "explanation": "A negative dominant eigenvalue reverses orientation each multiplication. The limiting line and the Rayleigh quotient can converge despite sign alternation."
+  },
+  {
+    "prompt": "Which quantity directly checks a proposed eigenpair $(\\mu,x)$?",
+    "options": [
+      "$\\|x\\|$ alone",
+      "$\\operatorname{tr}(A)$ alone",
+      "$\\|A\\|$ alone",
+      "$\\|Ax-\\mu x\\|$"
+    ],
+    "answer": "D",
+    "explanation": "The eigenpair residual measures the defect in the defining equation. Its magnitude must be interpreted relative to the vector and matrix scale."
+  },
+  {
+    "prompt": "For $A=\\operatorname{diag}(3,-3)$ and $x_0=(1,1)^T$, why can basic power iteration fail to settle to one eigenvector line?",
+    "options": [
+      "The two eigenvalues have equal dominant magnitude",
+      "The matrix has no eigenvectors",
+      "The determinant is zero",
+      "The starting vector has zero norm"
+    ],
+    "answer": "A",
+    "explanation": "The two components retain equal magnitude and their relative sign alternates, so the usual unique-dominant-magnitude condition fails."
+  },
+  {
+    "prompt": "If $Ax_k=0$ during power iteration, what is the correct next action?",
+    "options": [
+      "Divide by its norm anyway",
+      "Handle the zero product explicitly before normalization",
+      "Replace the eigenvalue with infinity",
+      "Report convergence to the largest eigenvalue"
+    ],
+    "answer": "B",
+    "explanation": "Normalizing a zero vector is undefined. A nonzero x_k in the nullspace identifies a zero eigenpair, but not necessarily a dominant one; restart or report that limitation."
+  },
+  {
+    "prompt": "If $A_k=Q_kR_k$ is an unshifted QR factorization, which update is correct?",
+    "options": [
+      "$A_{k+1}=Q_kR_k$",
+      "$A_{k+1}=R_kQ_k^T$",
+      "$A_{k+1}=R_kQ_k$",
+      "$A_{k+1}=Q_k+R_k$"
+    ],
+    "answer": "C",
+    "explanation": "Reversing the factors yields RQ=Q^T A_k Q for real orthogonal Q, a similarity transformation."
+  },
+  {
+    "prompt": "Why does a QR step preserve the eigenvalues in exact arithmetic?",
+    "options": [
+      "It preserves every matrix entry",
+      "R has the same diagonal as A",
+      "Q is always the identity",
+      "The new iterate is orthogonally similar to the old one"
+    ],
+    "answer": "D",
+    "explanation": "The relation A_{k+1}=Q_k^T A_k Q_k is a similarity, so the characteristic polynomial and eigenvalues are unchanged."
+  },
+  {
+    "prompt": "For $A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}$ and a QR factorization with positive diagonal entries of R, what is the first unshifted QR iterate?",
+    "options": [
+      "$\\begin{pmatrix}14/5&3/5\\\\3/5&6/5\\end{pmatrix}$",
+      "$\\begin{pmatrix}3&0\\\\0&1\\end{pmatrix}$",
+      "$\\begin{pmatrix}2&-1\\\\-1&2\\end{pmatrix}$",
+      "$\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$"
+    ],
+    "answer": "A",
+    "explanation": "Using Q=[2,-1;1,2]/sqrt(5) and R=[sqrt(5),4/sqrt(5);0,3/sqrt(5)], multiplication RQ gives the stated matrix."
+  },
+  {
+    "prompt": "For that first QR iterate, which trace and determinant provide a consistency check?",
+    "options": [
+      "Trace 3 and determinant 4",
+      "Trace 4 and determinant 3",
+      "Trace 4 and determinant 4",
+      "Trace 3 and determinant 3"
+    ],
+    "answer": "B",
+    "explanation": "Similarity preserves trace and determinant: 14/5+6/5=4, and (84-9)/25=3."
+  },
+  {
+    "prompt": "In shifted QR, after factoring $A_k-\\mu_kI=Q_kR_k$, which update restores the original eigenvalue scale?",
+    "options": [
+      "$A_{k+1}=R_kQ_k-\\mu_kI$",
+      "$A_{k+1}=Q_kR_k+2\\mu_kI$",
+      "$A_{k+1}=R_kQ_k+\\mu_kI$",
+      "$A_{k+1}=R_k+Q_k$"
+    ],
+    "answer": "C",
+    "explanation": "Adding the shift back gives Q_k^T A_k Q_k. Omitting it shifts the spectrum of the iterate."
+  },
+  {
+    "prompt": "What does numerical deflation mean in a symmetric tridiagonal QR computation?",
+    "options": [
+      "Deleting the largest diagonal entry immediately",
+      "Setting every off-diagonal entry to zero at the start",
+      "Subtracting the trace from all entries",
+      "Treating a sufficiently small subdiagonal coupling as zero and splitting the problem"
+    ],
+    "answer": "D",
+    "explanation": "Once the coupling is negligible relative to the local scale and tolerance, the matrix separates into smaller independent blocks up to the accepted perturbation."
+  },
+  {
+    "prompt": "What form can a real nonsymmetric matrix reach in a real Schur computation?",
+    "options": [
+      "Upper quasi-triangular form with 1-by-1 and 2-by-2 diagonal blocks",
+      "A diagonal matrix with only real entries in every case",
+      "A lower triangular matrix with zero diagonal in every case",
+      "The identity matrix in every case"
+    ],
+    "answer": "A",
+    "explanation": "Real 2-by-2 blocks can represent complex conjugate eigenvalue pairs; full real diagonalization is not generally possible."
+  },
+  {
+    "prompt": "For a general real nonsymmetric matrix, what are the columns of the accumulated orthogonal Q in a Schur decomposition?",
+    "options": [
+      "Always all individual eigenvectors",
+      "Schur vectors, not necessarily individual eigenvectors",
+      "The rows of the inverse matrix",
+      "All zero vectors"
+    ],
+    "answer": "B",
+    "explanation": "A=QTQ^T defines Schur vectors. Eigenvectors generally require solving the triangular or block-triangular problem and transforming back."
+  },
+  {
+    "prompt": "Which approach is normally appropriate when only one dominant eigenpair of a very large sparse matrix is needed?",
+    "options": [
+      "Form the dense inverse first",
+      "Expand the characteristic polynomial explicitly",
+      "Use matrix-vector iterations and check residual convergence",
+      "Perform dense QR factorizations without considering sparsity"
+    ],
+    "answer": "C",
+    "explanation": "Power iteration uses sparse matrix-vector products and limited vector storage when its convergence assumptions hold. More advanced Krylov methods are alternatives when needed."
+  },
+  {
+    "prompt": "For real symmetric A and nonzero x, what does the residual guarantee about the Rayleigh estimate $\\mu$?",
+    "options": [
+      "Every eigenvector is close to x",
+      "The largest eigenvalue is exactly mu",
+      "The matrix condition number is one",
+      "Some eigenvalue lies within $\\|Ax-\\mu x\\|_2/\\|x\\|_2$ of mu"
+    ],
+    "answer": "D",
+    "explanation": "Expand x in an orthonormal eigenbasis to bound the distance to the nearest eigenvalue. Closeness to a specific eigenvector additionally depends on spectral separation."
+  }
+];
+
+
+/** LA_DUAL_SPACES_QUIZ: 20 topic checkpoint questions. */
+export const LA_DUAL_SPACES_QUIZ = [{"prompt": "What is a linear functional on V over $\\mathbb F$?", "options": ["A linear map $V\\to\\mathbb F$", "Any map $V\\to V$", "A basis vector only", "A constant nonzero map"], "answer": "A", "explanation": "A functional is a scalar-valued linear map; both the domain and codomain matter."},
+  {"prompt": "Which function on $\\mathbb R^2$ is linear?", "options": ["$2x-3y+1$", "$2x-3y$", "$xy$", "$x^2+y^2$"], "answer": "B", "explanation": "A homogeneous weighted sum preserves addition and scalar multiplication; the other rules do not."},
+  {"prompt": "If $\\dim V=5$, what is $\\dim V^*$?", "options": ["$1$", "$10$", "$5$", "$25$"], "answer": "C", "explanation": "The dual basis has exactly one coordinate functional per original basis vector."},
+  {"prompt": "What defines the dual basis relation?", "options": ["$\\varepsilon^i(v_j)=1$ for every i,j", "$\\varepsilon^i(v_j)=0$ for every i,j", "$\\varepsilon^i=v_i$ without additional choices", "$\\varepsilon^i(v_j)=\\delta_{ij}$"], "answer": "D", "explanation": "The Kronecker delta is one for matching indices and zero otherwise."},
+  {"prompt": "For $v=3v_1-2v_2$, what is $\\varepsilon^2(v)$?", "options": ["$-2$", "$3$", "$2$", "$1$"], "answer": "A", "explanation": "A dual basis functional extracts its corresponding coordinate, including its sign."},
+  {"prompt": "If S contains basis vectors as columns, where are the dual basis row functionals?", "options": ["The columns of S", "The rows of $S^{-1}$", "The rows of $S^T S$", "The diagonal entries of S"], "answer": "B", "explanation": "Their matrix D must satisfy DS=I, so D is the inverse matrix."},
+  {"prompt": "For the basis $(1,1),(1,-1)$, what is the first dual functional?", "options": ["$x+y$", "$(x-y)/2$", "$(x+y)/2$", "$y-x$"], "answer": "C", "explanation": "It evaluates to one on (1,1) and zero on (1,-1)."},
+  {"prompt": "For that basis, what are the coordinates of $(5,1)$?", "options": ["$(5,1)$", "$(2,3)$", "$(6,4)$", "$(3,2)$"], "answer": "D", "explanation": "Applying (x+y)/2 and (x-y)/2 gives 3 and 2; reconstruction verifies the result."},
+  {"prompt": "What is the dimension of the kernel of a nonzero functional on $\\mathbb R^4$?", "options": ["$3$", "$0$", "$1$", "$4$"], "answer": "A", "explanation": "A nonzero scalar-valued map has rank one, so rank-nullity gives 4-1=3."},
+  {"prompt": "Which statement about testing linearity is correct?", "options": ["$\\varphi(0)=0$ always proves linearity", "$\\varphi(0)=0$ is necessary but not sufficient", "Every scalar-valued function is linear", "Every polynomial function is linear"], "answer": "B", "explanation": "The function x squared vanishes at zero but fails additivity, providing a counterexample."},
+  {"prompt": "For $T:V\\to W$, which direction does the dual map have?", "options": ["$T^*:V\\to W$", "$T^*:V^*\\to W^*$", "$T^*:W^*\\to V^*$", "$T^*:W\\to V$"], "answer": "C", "explanation": "A functional on W is pulled back by composing with T to give a functional on V."},
+  {"prompt": "If A represents T, which matrix represents its algebraic dual in dual bases?", "options": ["$A^{-1}$ in every case", "$A^2$", "$A^T A$", "$A^T$"], "answer": "D", "explanation": "The row evaluation beta^T A x equals (A^T beta)^T x; no inverse is needed."},
+  {"prompt": "If $T(x,y)=(x+2y,3y)$ and $\\psi(s,t)=s-t$, what is $T^*\\psi$?", "options": ["$x-y$", "$x+5y$", "$3x-y$", "$x+2y$"], "answer": "A", "explanation": "Composition gives (x+2y)-3y=x-y."},
+  {"prompt": "What is $U^\\circ$?", "options": ["The vectors with norm one in U", "The functionals vanishing on every vector of U", "The image of U under every map", "The union of all bases of U"], "answer": "B", "explanation": "An annihilator is a subspace of the dual, defined by homogeneous evaluation constraints."},
+  {"prompt": "If $\\dim V=7$ and $\\dim U=3$, what is $\\dim U^\\circ$?", "options": ["$3$", "$7$", "$4$", "$21$"], "answer": "C", "explanation": "In finite dimensions the annihilator dimension is dim V minus dim U."},
+  {"prompt": "Which functional annihilates both $(1,1,0)$ and $(0,1,1)$?", "options": ["$x+y+z$", "$x-y-z$", "$x+y-z$", "$x-y+z$"], "answer": "D", "explanation": "Both evaluations are zero: 1-1+0=0 and 0-1+1=0."},
+  {"prompt": "For $p(t)=a+bt+ct^2$, which functional extracts c?", "options": ["$p\\prime\\prime(0)/2$", "$p(0)$", "$p\\prime(0)$", "$p\\prime\\prime(0)$"], "answer": "A", "explanation": "The second derivative is 2c; division by two is required for the dual pairing."},
+  {"prompt": "If the new basis matrix is SC and functional coordinates are columns, how do they change?", "options": ["$a_{new}=C^{-1}a_{old}$", "$a_{new}=C^Ta_{old}$", "$a_{new}=Ca_{old}$ in every case", "$a_{new}=a_{old}$ in every case"], "answer": "B", "explanation": "The pairing remains invariant because vector coordinates change by C inverse and functional coordinates by C transpose."},
+  {"prompt": "What is the canonical map $J:V\\to V^{**}$?", "options": ["$J(v)=0$ for every v", "$J(v)(\\varphi)=\\|v\\|$ regardless of phi", "$J(v)(\\varphi)=\\varphi(v)$", "$J(v)=v^T$ without a basis"], "answer": "C", "explanation": "A vector acts on functionals by evaluation; this definition does not require a chosen basis."},
+  {"prompt": "Which statement correctly distinguishes the algebraic dual over complex scalars?", "options": ["Every algebraic functional must conjugate its input", "The algebraic dual is always the zero space", "The algebraic dual map always has matrix A inverse", "Its coordinate pairing is bilinear and uses transpose without conjugation"], "answer": "D", "explanation": "Complex-linear functionals preserve complex scalar multiplication; Hermitian inner-product representations involve a separate conjugation convention."}];
+
+
+/** LA_TENSOR_PRODUCTS_QUIZ: 20 topic checkpoint questions. */
+export const LA_TENSOR_PRODUCTS_QUIZ = [{"prompt": "If $\\dim V=2$ and $\\dim W=3$, what is $\\dim(V\\otimes W)$?", "options": ["$6$", "$5$", "$2$", "$9$"], "answer": "A", "explanation": "The product basis has one element for each ordered pair of basis indices, so dimensions multiply."},
+  {"prompt": "What does bilinear mean?", "options": ["Linear in neither argument", "Linear in each argument separately when the other is fixed", "Constant in the second argument", "Linear in the pair only if both change together"], "answer": "B", "explanation": "Separate linearity gives the defining distributive and scalar relations of the tensor product."},
+  {"prompt": "Which expansion is valid?", "options": ["$(u+v)\\otimes w=u\\otimes v+w$", "$(u+v)\\otimes w=u\\otimes w$", "$(u+v)\\otimes w=u\\otimes w+v\\otimes w$", "$(u+v)\\otimes w=0$ in every case"], "answer": "C", "explanation": "Tensor multiplication is additive in each argument, so both terms must remain."},
+  {"prompt": "What is $(2u)\\otimes(3v)$?", "options": ["$5(u\\otimes v)$", "$2(u\\otimes v)$", "$3(u\\otimes v)$", "$6(u\\otimes v)$"], "answer": "D", "explanation": "Scalar factors in the two arguments multiply by bilinearity."},
+  {"prompt": "What does the universal property provide for a bilinear map b?", "options": ["A unique linear map on the tensor product agreeing with b on pure tensors", "An inverse matrix for every b", "A unique inner product on V", "A rule making every tensor pure"], "answer": "A", "explanation": "The tensor product linearizes a bilinear map while respecting all bilinear relations."},
+  {"prompt": "Which statement about general tensors in a two-factor product is correct?", "options": ["Every tensor is pure", "They are sums of pure tensors, but need not be pure", "Only the zero tensor is pure", "Pure tensors cannot be added"], "answer": "B", "explanation": "A coefficient matrix of rank two supplies a tensor that cannot be one rank-one outer product."},
+  {"prompt": "What is $(1,2)^T\\otimes(3,-1)^T$ with the second factor index varying fastest?", "options": ["$(3,6,-1,-2)^T", "$(4,1)^T", "$(3,-1,6,-2)^T", "$(3,-2)^T"], "answer": "C", "explanation": "Multiply each entry of the first vector by the complete second vector in order."},
+  {"prompt": "If A is $2\\times3$ and B is $4\\times2$, what size is $A\\otimes B$?", "options": ["$6\\times8$", "$2\\times2$", "$4\\times5$", "$8\\times6$"], "answer": "D", "explanation": "The number of rows and columns multiply separately: 2·4 rows and 3·2 columns."},
+  {"prompt": "What is block (i,j) of $A\\otimes B$?", "options": ["$a_{ij}B$", "$AB$ in every block", "$b_{ij}A$ in every block", "$a_{ij}+B$"], "answer": "A", "explanation": "The Kronecker construction replaces each scalar entry of A with a scaled copy of B."},
+  {"prompt": "For compatible dimensions, what is $(A\\otimes B)(C\\otimes D)$?", "options": ["$(AB)\\otimes(CD)$", "$(AC)\\otimes(BD)$", "$(CA)\\otimes(DB)$ in every case", "$(A+C)\\otimes(B+D)$"], "answer": "B", "explanation": "The two factors act independently on the respective tensor coordinates."},
+  {"prompt": "Which transpose identity is correct?", "options": ["$(A\\otimes B)^T=B^T\\otimes A^T$ in every case", "$(A\\otimes B)^T=A\\otimes B$ in every case", "$(A\\otimes B)^T=A^T\\otimes B^T$", "$(A\\otimes B)^T=A^T+B^T$"], "answer": "C", "explanation": "Transpose preserves the order of the Kronecker factors while transposing each one."},
+  {"prompt": "For square invertible A and B, what is $(A\\otimes B)^{-1}$?", "options": ["$A\\otimes B$", "$B^{-1}\\otimes A^{-1}$ in every case", "$A^{-1}+B^{-1}$", "$A^{-1}\\otimes B^{-1}$"], "answer": "D", "explanation": "The mixed-product identity verifies that multiplication by the stated matrix gives I tensor I."},
+  {"prompt": "If A has rank 2 and B has rank 3, what is the rank of $A\\otimes B$?", "options": ["$6$", "$5$", "$3$", "$1$"], "answer": "A", "explanation": "Kronecker ranks multiply, including when rectangular factors are used."},
+  {"prompt": "For two-by-two A and three-by-three B, what is $\\det(A\\otimes B)$?", "options": ["$\\det(A)^2\\det(B)^3$", "$\\det(A)^3\\det(B)^2$", "$\\det(A)+\\det(B)$", "$\\det(A)\\det(B)$ in every case"], "answer": "B", "explanation": "Each determinant is raised to the size of the other square factor."},
+  {"prompt": "If $Av=2v$ and $Bw=-3w$ with nonzero v,w, what eigenvalue belongs to $v\\otimes w$?", "options": ["$-1$", "$6$", "$-6$", "$5$"], "answer": "C", "explanation": "Applying the tensor product map multiplies the two eigenvalue scalars."},
+  {"prompt": "Under column stacking, which vectorization identity is correct?", "options": ["$\\operatorname{vec}(AXB)=(B\\otimes A)\\operatorname{vec}(X)$ in every case", "$\\operatorname{vec}(AXB)=(A\\otimes B)\\operatorname{vec}(X)$ in every case", "$\\operatorname{vec}(AXB)=\\operatorname{vec}(X)$ in every case", "$\\operatorname{vec}(AXB)=(B^T\\otimes A)\\operatorname{vec}(X)$"], "answer": "D", "explanation": "The columns mix according to B, producing B transpose in the vectorized operator."},
+  {"prompt": "What is the column-stacked vector of $X=\\begin{pmatrix}1&3\\\\2&4\\end{pmatrix}$?", "options": ["$(1,2,3,4)^T", "$(1,3,2,4)^T", "$(4,3,2,1)^T", "$(1,4,2,3)^T"], "answer": "A", "explanation": "Read the first column completely, then the second column."},
+  {"prompt": "For column vectors u and v, what is $\\operatorname{vec}(uv^T)$?", "options": ["$u\\otimes v$ in every case", "$v\\otimes u$", "$u+v$", "$u^Tv$"], "answer": "B", "explanation": "Each column of the outer product is u scaled by the corresponding entry of v, fixing the order."},
+  {"prompt": "Why is $e_1\\otimes f_1+e_2\\otimes f_2$ not pure in the standard two-dimensional bases?", "options": ["Its coefficient matrix has rank one", "It has no coefficient matrix", "Its coefficient matrix has rank two", "It is the zero tensor"], "answer": "C", "explanation": "A nonzero pure tensor has an outer-product coefficient matrix of rank one, unlike the identity matrix."},
+  {"prompt": "If the factors have eigenvalues $\\lambda$ and $\\mu$ on v and w, what eigenvalue does $A\\otimes I+I\\otimes B$ have on $v\\otimes w$?", "options": ["$\\lambda\\mu$", "$\\lambda-\\mu$", "$0$ in every case", "$\\lambda+\\mu$"], "answer": "D", "explanation": "The two summands contribute lambda and mu times the same tensor vector, so the scalars add."}];
+
+
+/** Spectral Graph Theory: 20 checkpoint questions. */
+export const LA_SPECTRAL_GRAPH_QUIZ = [{"prompt": "For an undirected weighted graph, what is the combinatorial Laplacian?", "options": ["$D-A$", "$D+A$", "$A-D$", "$DA$"], "answer": "A", "explanation": "The diagonal is weighted degree and off-diagonal entries are negative edge weights."},
+  {"prompt": "What is the sum of any row of L?", "options": ["$1$", "$0$", "$n$", "$-1$"], "answer": "B", "explanation": "The diagonal degree cancels the sum of the adjacent weights."},
+  {"prompt": "Which vector is always in the kernel of the combinatorial Laplacian?", "options": ["Every coordinate vector", "Every vector orthogonal to $\\mathbf1$", "$\\mathbf1$", "The degree vector in every graph"], "answer": "C", "explanation": "Multiplying by the all-ones vector computes row sums, which are zero."},
+  {"prompt": "Which energy formula counts each undirected edge once?", "options": ["$\\sum_{i<j}w_{ij}(x_i+x_j)^2$", "$\\sum_{i<j}w_{ij}x_i x_j$", "$2\\sum_{i<j}w_{ij}(x_i-x_j)^2$", "$\\sum_{i<j}w_{ij}(x_i-x_j)^2$"], "answer": "D", "explanation": "The expansion equals x transpose L x; summing over i less than j counts each edge once."},
+  {"prompt": "Why is L positive semidefinite for nonnegative undirected weights?", "options": ["Its quadratic form is a sum of nonnegative weighted squares", "Its determinant is always positive", "All of its entries are nonnegative", "It is always invertible"], "answer": "A", "explanation": "The edge-energy representation proves nonnegativity for every real vector."},
+  {"prompt": "A graph has four connected components. What is the multiplicity of eigenvalue zero of L?", "options": ["$1$", "$4$", "$0$", "$8$"], "answer": "B", "explanation": "Kernel vectors are constant independently on each component, giving one degree of freedom per component."},
+  {"prompt": "A graph has 9 vertices and 3 components. What is rank(L)?", "options": ["$3$", "$9$", "$6$", "$12$"], "answer": "C", "explanation": "The kernel dimension is three, so rank-nullity gives nine minus three."},
+  {"prompt": "For a graph with at least two vertices, which condition characterizes connectedness?", "options": ["$\\lambda_1(L)>0$", "$\\operatorname{tr}(L)=0$", "$L=I$", "$\\lambda_2(L)>0$"], "answer": "D", "explanation": "There is exactly one zero eigenvalue when the undirected graph is connected."},
+  {"prompt": "What is a Fiedler vector?", "options": ["An eigenvector of L for its second-smallest eigenvalue", "An eigenvector for the trace", "Every constant vector", "A vector of all edge weights"], "answer": "A", "explanation": "It realizes the relaxed nonconstant minimum-energy direction."},
+  {"prompt": "Which constraint removes the constant direction in the Rayleigh characterization of lambda2?", "options": ["$x=\\mathbf1$", "$x^T\\mathbf1=0$", "$x^Tx=0$", "$L=0$"], "answer": "B", "explanation": "Orthogonality excludes the always-zero-energy constant signal while retaining nonzero candidates."},
+  {"prompt": "For the unit-weight three-vertex path, what is the Laplacian spectrum?", "options": ["$1,2,3$", "$0,0,2$", "$0,1,3$", "$0,3,3$"], "answer": "C", "explanation": "The constant, antisymmetric and alternating vectors give eigenvalues zero, one and three."},
+  {"prompt": "For a single edge plus an isolated vertex, what is the Laplacian spectrum?", "options": ["$0,1,3$", "$1,1,1$", "$0,2,2$", "$0,0,2$"], "answer": "D", "explanation": "The edge block has eigenvalues zero and two; the isolated vertex supplies another zero."},
+  {"prompt": "For two vertices joined by an edge of weight 3, what is lambda2?", "options": ["$6$", "$3$", "$0$", "$9$"], "answer": "A", "explanation": "The matrix [3,-3;-3,3] has eigenvalues zero and six."},
+  {"prompt": "For that weighted edge and signal (2,-1), what is the energy?", "options": ["$9$", "$27$", "$54$", "$3$"], "answer": "B", "explanation": "The weighted squared difference is 3 times 3 squared."},
+  {"prompt": "Adding a nonnegative undirected edge can have what effect on combinatorial algebraic connectivity?", "options": ["It must always double it", "It must decrease it", "It cannot decrease it", "It always leaves it unchanged"], "answer": "C", "explanation": "The new edge adds a positive semidefinite quadratic form to the Rayleigh minimization."},
+  {"prompt": "What does the energy of a zero-one cut indicator equal?", "options": ["The total degree of every vertex", "The number of all vertex pairs", "The square of the graph diameter", "The total weight of edges crossing the cut"], "answer": "D", "explanation": "Only edges whose endpoints have different indicator values contribute one times their weight."},
+  {"prompt": "On a connected graph with positive degrees, which vector is a normalized-Laplacian null vector?", "options": ["$D^{1/2}\\mathbf1$", "$D^{-1}\\mathbf1$ in every case", "$\\mathbf1$ in every case", "$D\\mathbf1$ in every case"], "answer": "A", "explanation": "Multiplying D inverse square root L D inverse square root by D square root times one reduces to L one."},
+  {"prompt": "Under the zero-inverse-degree convention, what normalized-Laplacian row belongs to an isolated vertex?", "options": ["A row with diagonal one", "A zero row", "A row of negative ones", "An undefined row that must be divided by zero"], "answer": "B", "explanation": "Using zero in D inverse square root preserves a zero isolated row; the I-minus formula needs care there."},
+  {"prompt": "What is the normalized spectrum of the three-vertex path?", "options": ["$0,1,3$", "$0,0,2$", "$0,1,2$", "$1,2,3$"], "answer": "C", "explanation": "Normalization gives zero, one and two, within the normalized spectral interval."},
+  {"prompt": "What limitation should be stated when thresholding a Fiedler vector?", "options": ["It always gives every exact minimum cut", "Its coordinates are always nonzero", "Its eigenvalue is always simple", "It is a relaxed partition heuristic and ties need handling"], "answer": "D", "explanation": "Repeated eigenvalues and zero or tied coordinates prevent a unique universal partition rule."}];
+
+
+/** Matrix Calculus: 20 checkpoint questions. */
+export const LA_MATRIX_CALCULUS_QUIZ = [{"prompt": "Under the column-gradient convention, what is the shape of the gradient of a scalar function on R^n?", "options": ["$n\\times1$", "$1\\times n$", "$n\\times n$", "$1\\times1$"], "answer": "A", "explanation": "The differential is gradient transpose times the input perturbation."},
+  {"prompt": "For g:R^n to R^m, what shape is the output-by-input Jacobian?", "options": ["$n\\times m$", "$m\\times n$", "$n\\times n$", "$m\\times m$"], "answer": "B", "explanation": "Rows index outputs and columns index inputs."},
+  {"prompt": "What is the gradient of $a^Tx$?", "options": ["$x$", "$2a$", "$a$", "$a^Tx$"], "answer": "C", "explanation": "The differential is a transpose times dx, so the column gradient is a."},
+  {"prompt": "For constant A, what is the gradient of $x^TAx$?", "options": ["$Ax$ in every case", "$2Ax$ in every case", "$A^TAx$", "$(A+A^T)x$"], "answer": "D", "explanation": "Both occurrences of x contribute; symmetry is required for the simplification to 2Ax."},
+  {"prompt": "If A is symmetric, what is the gradient of $\\frac12x^TAx$?", "options": ["$Ax$", "$2Ax$", "$A^Tx/2$", "$x^TAx$"], "answer": "A", "explanation": "The one-half cancels the factor two from differentiating the symmetric quadratic."},
+  {"prompt": "What is the gradient with respect to x of $x^TAy$ when y is independent of x?", "options": ["$A^Tx$", "$Ay$", "$Ax$", "$A^Ty$ in every case"], "answer": "B", "explanation": "With y held fixed, the scalar is linear in x with coefficient Ay."},
+  {"prompt": "What is the gradient of $\\frac12\\|Ax-b\\|_2^2$?", "options": ["$Ax-b$ in every case", "$A(Ax-b)$ in every case", "$A^T(Ax-b)$", "$A^Tb$"], "answer": "C", "explanation": "The chain rule pulls the residual back through the transpose of A."},
+  {"prompt": "When is the least-squares Hessian A transpose A positive definite?", "options": ["Whenever A has more than one row", "Only when A is square", "Whenever b is nonzero", "When A has full column rank"], "answer": "D", "explanation": "Its quadratic form is the squared norm of Ax, positive for all nonzero x exactly when the kernel is zero."},
+  {"prompt": "What does adding $\\frac\\lambda2\\|x\\|^2$ add to the gradient?", "options": ["$\\lambda x$", "$\\lambda I$", "$2\\lambda x$", "$\\lambda$"], "answer": "A", "explanation": "The Hessian receives lambda I, but the gradient receives the vector lambda x."},
+  {"prompt": "For scalar f and vector g, which chain rule matches column gradients?", "options": ["$\\nabla(f\\circ g)=J_g\\nabla f$ in every case", "$\\nabla(f\\circ g)=J_g^T\\nabla f$", "$\\nabla(f\\circ g)=\\nabla f+J_g$", "$\\nabla(f\\circ g)=J_g^{-1}\\nabla f$ in every case"], "answer": "B", "explanation": "The transpose has the dimensions needed to map an output gradient into the input space."},
+  {"prompt": "Which differential defines the Frobenius matrix gradient G?", "options": ["$df=\\operatorname{tr}(G+dX)$", "$df=G^{-1}dX$", "$df=\\operatorname{tr}(G^TdX)$", "$df=\\det(GdX)$"], "answer": "C", "explanation": "The Frobenius inner product between G and the perturbation is trace G transpose dX."},
+  {"prompt": "What is the matrix gradient of $\\operatorname{tr}(A^TX)$?", "options": ["$A^T$ in every case", "$X$", "$AX$", "$A$"], "answer": "D", "explanation": "Matching the differential to trace G transpose dX identifies G as A."},
+  {"prompt": "What is the matrix gradient of $\\frac12\\|X\\|_F^2$?", "options": ["$X$", "$2X$", "$X^T$ in every case", "$I$"], "answer": "A", "explanation": "This is the sum of one-half times each independent entry squared."},
+  {"prompt": "What is the gradient of $\\frac12\\|AX-B\\|_F^2$ with respect to X?", "options": ["$(AX-B)A^T$ in every case", "$A^T(AX-B)$", "$AX-B$ in every case", "$A^TB$"], "answer": "B", "explanation": "The trace differential yields the transpose of A multiplying the residual on the left."},
+  {"prompt": "What is the differential of the inverse at invertible X?", "options": ["$X^{-1}(dX)X^{-1}$", "$-(dX)^{-1}$", "$-X^{-1}(dX)X^{-1}$", "$-X^{-2}dX$ in every case"], "answer": "C", "explanation": "Differentiate X times X inverse equals I and preserve multiplication order."},
+  {"prompt": "For symmetric positive-definite X, what is the gradient of $\\log\\det X$?", "options": ["$X$", "$\\det(X)I$", "$-X^{-1}$", "$X^{-1}$"], "answer": "D", "explanation": "The differential is trace X inverse dX, and inverse transpose equals inverse on the symmetric domain."},
+  {"prompt": "For $f(x,y)=3x^2+2xy+4y^2$, what is the gradient at (1,-1)?", "options": ["$(4,-6)^T", "$(6,-8)^T", "$(8,-10)^T", "$(4,6)^T"], "answer": "A", "explanation": "Substitution into (6x+2y,2x+8y) gives (4,-6)."},
+  {"prompt": "For $g(x,y)=(x^2y,x+3y)$, what is the Jacobian at (1,2)?", "options": ["$\\begin{pmatrix}2&1\\\\3&1\\end{pmatrix}$", "$\\begin{pmatrix}4&1\\\\1&3\\end{pmatrix}$", "$\\begin{pmatrix}1&4\\\\3&1\\end{pmatrix}$", "$\\begin{pmatrix}4&2\\\\0&3\\end{pmatrix}$"], "answer": "B", "explanation": "Differentiate each output with respect to x and y in column order."},
+  {"prompt": "At $X=\\operatorname{diag}(2,3)$, what is the directional derivative of log det in direction diag(1,-1)?", "options": ["$5/6$", "$-1/6$", "$1/6$", "$6$"], "answer": "C", "explanation": "The trace pairing is 1/2 minus 1/3."},
+  {"prompt": "What is a useful numerical gradient check?", "options": ["Compare the gradient with the objective value only", "Set the perturbation to a singular inverse", "Ignore the domain and use any step size", "Compare a central directional difference with the gradient inner product"], "answer": "D", "explanation": "Directional finite differences test the differential convention; too small a step can amplify roundoff."}];

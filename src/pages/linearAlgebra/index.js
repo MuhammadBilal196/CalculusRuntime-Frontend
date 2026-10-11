@@ -54,3 +54,10 @@ export { default as MarkovChainsPart2 } from "./MarkovChainsPart2";
 export { default as LinearProgrammingGuide } from "./LinearProgrammingGuide";
 export { default as LinearProgrammingPart1 } from "./LinearProgrammingPart1";
 export { default as LinearProgrammingPart2 } from "./LinearProgrammingPart2";
+
+export { default as IterativeSolversGuide } from "./IterativeSolversGuide";
+export { default as EigenvalueAlgorithmsGuide } from "./EigenvalueAlgorithmsGuide";
+export { default as DualSpacesGuide } from "./DualSpacesGuide";
+export { default as TensorProductsGuide } from "./TensorProductsGuide";
+export { default as SpectralGraphTheoryGuide } from "./SpectralGraphTheoryGuide";
+export { default as MatrixCalculusGuide } from "./MatrixCalculusGuide";

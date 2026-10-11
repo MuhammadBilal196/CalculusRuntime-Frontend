@@ -562,6 +562,7 @@ function Dashboard() {
 
   return (
     <main className="dashboard">
+      <p><Link to="/notes">Notes &amp; Highlights</Link>{" · "}<Link to="/flashcards">Review flashcards</Link>{" · "}<Link to="/mistakes">Review your Mistake Notebook</Link></p>
       {/* ── Hero Welcome Banner ── */}
       <section className="db-hero-banner">
         <div className="db-hero-user">

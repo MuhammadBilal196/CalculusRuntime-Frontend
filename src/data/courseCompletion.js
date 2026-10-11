@@ -1,5 +1,5 @@
 import { COURSES } from "./courses";
-import { LA_MODULES } from "./laModules";
+import { LA_MODULES, LA_EXPANSION_MODULES, getLaModuleParts } from "./laModules";
 
 /**
  * Certificate requirements per course:
@@ -61,7 +61,7 @@ export const COURSE_CERTIFICATE_REQUIREMENTS = {
       "la-ortho-2",
       "la-svd-1",
       "la-svd-2",
-      ...LA_MODULES.flatMap((module) => [1, 2].map((part) => `la-${module.id}-${part}`)),
+      ...[...LA_MODULES, ...LA_EXPANSION_MODULES].flatMap((module) => getLaModuleParts(module).map((part) => `la-${module.id}-${part}`)),
     ],
     quizId: "quiz-linear-algebra",
     minQuizScore: 80,
@@ -105,7 +105,7 @@ export function getRequiredSections(courseId) {
 }
 
 export function getRemainingSections(courseId, completedSections = {}) {
-  return getRequiredSections(courseId).filter((id) => !completedSections[id]);
+  return getRequiredSections(courseId).filter((id) => completedSections[id] !== true);
 }
 
 export function isCourseComplete(courseId, completedSections = {}) {
@@ -132,11 +132,13 @@ export function getQuizPercentage(courseId, quizScores = {}) {
   const quizId = getQuizId(courseId);
   if (!quizId) return null;
   const attempt = quizScores[quizId];
-  if (!attempt || !attempt.total) return null;
-  return Math.round((attempt.score / attempt.total) * 100);
+  if (!attempt || !Number.isInteger(attempt.score) || !Number.isInteger(attempt.total)
+      || attempt.total <= 0 || attempt.score < 0 || attempt.score > attempt.total) return null;
+  return Math.round((attempt.score / attempt.total) * 10000) / 100;
 }
 
 export function hasPassedQuiz(courseId, quizScores = {}) {
   const pct = getQuizPercentage(courseId, quizScores);
-  return pct !== null && pct >= getMinQuizScore(courseId);
+  const attempt = quizScores[getQuizId(courseId)];
+  return pct !== null && attempt.score * 100 >= getMinQuizScore(courseId) * attempt.total;
 }

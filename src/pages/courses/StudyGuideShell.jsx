@@ -1,3 +1,4 @@
+import { guideAnchors, setupReadableAnchors } from "../../utils/ScrollToTop";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { saveExample, unsaveExample, isExampleSaved, exampleAnchorId } from "../../utils/saveForLaterStorage";
@@ -58,7 +59,7 @@ const saveForLaterStyles = `
 `;
 
 function renderLatex(root) {
-  root.normalize();
+  // React owns quiz counters and answer state. Never merge its text nodes.
   renderMathInElement(root, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
@@ -69,6 +70,7 @@ function renderLatex(root) {
     throwOnError: false,
     strict: false,
     ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+    ignoredClasses: ["la-quiz-container"],
   });
 }
 
@@ -720,7 +722,7 @@ function setupSidebar(root) {
   const scrollToTarget = (event) => {
     const link = event.currentTarget;
     const hash = link.getAttribute("href");
-    const target = hash ? root.querySelector(hash) : null;
+    const target = hash ? guideAnchors.get(root)?.byName.get(hash.slice(1)) || document.getElementById(hash.slice(1)) : null;
     if (!target) return;
 
     event.preventDefault();
@@ -741,7 +743,7 @@ function setupSidebar(root) {
       sidebarHeight -
       14;
 
-    window.history.pushState(null, "", hash);
+    window.history.pushState(window.history.state, "", hash);
     window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     links.forEach((item) => item.classList.remove("active"));
     link.classList.add("active");
@@ -759,9 +761,10 @@ function setupSidebar(root) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
+      const anchor = guideAnchors.get(root)?.byTarget.get(entry.target) || entry.target.id;
       const link =
-        root.querySelector(`.sb-link[href="#${entry.target.id}"]`) ||
-        root.querySelector(`.sidebar-link[href="#${entry.target.id}"]`);
+        root.querySelector(`.sb-link[href="#${anchor}"]`) ||
+        root.querySelector(`.sidebar-link[href="#${anchor}"]`);
       if (link && link !== lastActive) {
         links.forEach((item) => item.classList.remove("active"));
         link.classList.add("active");
@@ -854,12 +857,18 @@ function setupSaveForLater(root, { guideTitle, guidePath } = {}) {
 }
 
 function scrollToExampleHash(root) {
-  const hash = window.location.hash.replace(/^#/, "");
+  let hash;
+  try { hash = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
   if (!hash || !root) return;
   const target =
+    guideAnchors.get(root)?.byName.get(hash) ||
     root.querySelector(`#${CSS.escape(hash)}`) ||
     document.getElementById(hash);
   if (!target) return;
+  const canonical = guideAnchors.get(root)?.byTarget.get(target);
+  if (canonical && canonical !== hash) {
+    window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.search}#${canonical}`);
+  }
   window.requestAnimationFrame(() => {
     target.scrollIntoView({ behavior: "smooth", block: "center" });
     target.classList.add("exm-flash");
@@ -949,6 +958,7 @@ function StudyGuideShell({
       cleanups.forEach((cleanup) => cleanup());
       renderLatex(rootRef.current);
       cleanups = [
+        setupReadableAnchors(rootRef.current, () => scrollToExampleHash(rootRef.current)),
         ...setupMcqs(rootRef.current, {
           publishQuizToLeaderboard,
           saveQuizScore,
