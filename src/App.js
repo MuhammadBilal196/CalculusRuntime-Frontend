@@ -162,6 +162,7 @@ import {
 // three.js is large, so the 3D explorer loads in its own chunk only when visited.
 const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
 const DistributionExplorer = lazy(() => import("./pages/probabilityStatistics/DistributionExplorer"));
+const StatsCalculator = lazy(() => import("./pages/probabilityStatistics/StatsCalculator"));
 function App() {
   return (
     <ThemeProvider>
@@ -870,6 +871,7 @@ function App() {
                 />
                 <Route 
                 path="/distribution-explorer" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading explorer…" fullPage />}><DistributionExplorer /></Suspense>} />} />
+                <Route path="/stats-calculator" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading calculator…" fullPage />}><StatsCalculator /></Suspense>} />} />
                 <Route
                   path="/analytic-vector-lab"
                   element={<Layout body={<AnalyticVectorLab />} />}
