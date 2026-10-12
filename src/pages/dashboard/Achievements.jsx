@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
 import { getStreak } from "../../utils/progressUtils";
+import { fetchWithTimeout } from "../../utils/fetchWithTimeout";
 import {
-  BADGES, computeStats, countCertificates, isUnlocked, mergeUnlocked, parsePracticeCount,
+  BADGES, computeStats, isUnlocked, mergeUnlocked, parsePracticeCount,
 } from "../../utils/achievements";
 import "./AchievementsStyles.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8002";
 const storeKey = (username) => `calcvoyager_badges_${username}`;
 
 function loadUnlocked(username) {
@@ -26,17 +28,36 @@ export default function Achievements() {
   const quizScores = prog.quizScores || {};
   const username = user?.username;
 
+  const [certificateCount, setCertificateCount] = useState(0);
+  useEffect(() => {
+    if (!user?.accessToken) return undefined;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetchWithTimeout(`${API_URL}/api/certificates/mine`, {
+          headers: { Authorization: `Bearer ${user.accessToken}` },
+        });
+        if (!res.ok) return;
+        const list = await res.json();
+        if (!cancelled && Array.isArray(list)) setCertificateCount(list.length);
+      } catch {
+        /* offline or server down: leave the count at 0 */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [user?.accessToken]);
+
   const stats = useMemo(() => {
     let practiceCount = 0;
-    let certificateCount = 0;
     try {
       practiceCount = parsePracticeCount(localStorage.getItem("arena_score_tracker"));
-      certificateCount = username ? countCertificates(localStorage, username) : 0;
     } catch {
       /* storage unavailable */
     }
     return computeStats({ completedSections, quizScores, streak: getStreak(), practiceCount, certificateCount });
-  }, [completedSections, quizScores, username]);
+  }, [completedSections, quizScores, certificateCount]);
 
   const [unlocked, setUnlocked] = useState(() => (username ? loadUnlocked(username) : {}));
   const [toasts, setToasts] = useState([]);
