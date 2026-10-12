@@ -24,8 +24,8 @@ export default function Achievements() {
   const { user } = useAuth() || {};
   const ctx = useProgress() || {};
   const prog = ctx.progress || ctx;
-  const completedSections = prog.completedSections || {};
-  const quizScores = prog.quizScores || {};
+  const completedSections = prog.completedSections;
+  const quizScores = prog.quizScores;
   const username = user?.username;
 
   const [certificateCount, setCertificateCount] = useState(0);
@@ -56,7 +56,7 @@ export default function Achievements() {
     } catch {
       /* storage unavailable */
     }
-    return computeStats({ completedSections, quizScores, streak: getStreak(), practiceCount, certificateCount });
+    return computeStats({ completedSections: completedSections || {}, quizScores: quizScores || {}, streak: getStreak(), practiceCount, certificateCount });
   }, [completedSections, quizScores, certificateCount]);
 
   const [unlocked, setUnlocked] = useState(() => (username ? loadUnlocked(username) : {}));
