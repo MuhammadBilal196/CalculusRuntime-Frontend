@@ -77,11 +77,11 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "multivariable-taylor": ["multivariable-taylor"],
   "implicit-function-theorem": ["implicit-function-theorem"],
   "directional-derivatives": ["directional-derivatives"],
-  "potential-theory": ["pt-laplacian"],
+
   "potential-theory": ["pt-laplacian", "pt-maxwell"],
-  "differential-forms": ["df-forms"],
+
   "differential-forms": ["df-forms", "df-stokes"],
-  "advanced-integration": ["ai-improper"],
+
   "advanced-integration": ["ai-improper", "ai-variations"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
@@ -115,12 +115,14 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "la-abstract-linear-algebra-1": ["la-dual-spaces-checkpoint"],
   "la-numerical-linear-algebra-1": ["la-iterative-solvers-checkpoint"],
   "la-numerical-linear-algebra-2": ["la-eigenvalue-algorithms-checkpoint"],
-  ...Object.fromEntries(LA_MODULES.flatMap((module) =>
-    [1, 2].map((part) => [
-      `la-${module.id}-${part}`,
-      getLaModuleTopics(module, part).map((topic) => topic.quizKey),
-    ]),
-  )),
+  ...Object.fromEntries(
+    LA_MODULES.flatMap((module) =>
+      [1, 2].map((part) => [
+        `la-${module.id}-${part}`,
+        getLaModuleTopics(module, part).map((topic) => topic.quizKey),
+      ]),
+    ),
+  ),
   "la-lineq-1": ["la-le-forms", "la-le-graph"],
   "la-lineq-2": ["la-le-sys", "la-le-solve"],
   "la-vectors-1": ["la-v-intro", "la-v-ops"],
@@ -169,18 +171,30 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "ps-reg-1": ["ps-r-corr", "ps-r-assoc"],
   "ps-reg-2": ["ps-r-fit", "ps-r-resid"],
   // Dev4 Module A/B/C
-  "ps-a-bayes-1": [], "ps-a-bayes-2": ["ps-a-bayes-checkpoint"],
-  "ps-a-mle-1": [], "ps-a-mle-2": ["ps-a-mle-checkpoint"],
-  "ps-a-ci-1": [], "ps-a-ci-2": ["ps-a-ci-checkpoint"],
-  "ps-a-mgf-1": [], "ps-a-mgf-2": ["ps-a-mgf-checkpoint"],
-  "ps-b-anova-1": [], "ps-b-anova-2": ["ps-b-anova-checkpoint"],
-  "ps-b-chisq-1": [], "ps-b-chisq-2": ["ps-b-chisq-checkpoint"],
-  "ps-b-nonparam-1": [], "ps-b-nonparam-2": ["ps-b-nonparam-checkpoint"],
-  "ps-b-mlr-1": [], "ps-b-mlr-2": ["ps-b-mlr-checkpoint"],
-  "ps-c-joint-1": [], "ps-c-joint-2": ["ps-c-joint-checkpoint"],
-  "ps-c-mvn-1": [], "ps-c-mvn-2": ["ps-c-mvn-checkpoint"],
-  "ps-c-stoch-1": [], "ps-c-stoch-2": ["ps-c-stoch-checkpoint"],
-  "ps-c-clt-1": [], "ps-c-clt-2": ["ps-c-clt-checkpoint"],
+  "ps-a-bayes-1": [],
+  "ps-a-bayes-2": ["ps-a-bayes-checkpoint"],
+  "ps-a-mle-1": [],
+  "ps-a-mle-2": ["ps-a-mle-checkpoint"],
+  "ps-a-ci-1": [],
+  "ps-a-ci-2": ["ps-a-ci-checkpoint"],
+  "ps-a-mgf-1": [],
+  "ps-a-mgf-2": ["ps-a-mgf-checkpoint"],
+  "ps-b-anova-1": [],
+  "ps-b-anova-2": ["ps-b-anova-checkpoint"],
+  "ps-b-chisq-1": [],
+  "ps-b-chisq-2": ["ps-b-chisq-checkpoint"],
+  "ps-b-nonparam-1": [],
+  "ps-b-nonparam-2": ["ps-b-nonparam-checkpoint"],
+  "ps-b-mlr-1": [],
+  "ps-b-mlr-2": ["ps-b-mlr-checkpoint"],
+  "ps-c-joint-1": [],
+  "ps-c-joint-2": ["ps-c-joint-checkpoint"],
+  "ps-c-mvn-1": [],
+  "ps-c-mvn-2": ["ps-c-mvn-checkpoint"],
+  "ps-c-stoch-1": [],
+  "ps-c-stoch-2": ["ps-c-stoch-checkpoint"],
+  "ps-c-clt-1": [],
+  "ps-c-clt-2": ["ps-c-clt-checkpoint"],
 };
 
 export const SECTION_QUIZ_PASS_PERCENT = 80;
