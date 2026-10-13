@@ -79,6 +79,7 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "directional-derivatives": ["directional-derivatives"],
   "potential-theory": ["pt-laplacian"],
   "potential-theory": ["pt-laplacian", "pt-maxwell"],
+  "differential-forms": ["df-forms"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
