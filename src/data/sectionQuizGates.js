@@ -80,6 +80,7 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "potential-theory": ["pt-laplacian"],
   "potential-theory": ["pt-laplacian", "pt-maxwell"],
   "differential-forms": ["df-forms"],
+  "differential-forms": ["df-forms", "df-stokes"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],

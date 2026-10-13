@@ -1,6 +1,7 @@
 // src/data/mvDifferentialFormsQuizzes.js
 // Differential Forms (Multivariable Calculus)
 // Differential Forms & the Exterior Derivative — 20 MCQs
+// Generalized Stokes' Theorem — 20 MCQs
 // Format used by GuideMcqSection: { id, prompt, options[4], answer: "A" | "B" | "C" | "D", explanation }
 
 export const MV_DF_FORMS_QUIZ = [
@@ -202,5 +203,200 @@ export const MV_DF_FORMS_QUIZ = [
     answer: "D",
     explanation:
       "For odd-degree forms, $\\alpha\\wedge\\alpha=(-1)^{1}\\alpha\\wedge\\alpha$, which forces $\\alpha\\wedge\\alpha=0$.",
+  },
+];
+
+export const MV_DF_STOKES_QUIZ = [
+  {
+    id: "df-stokes-1",
+    prompt: "The Generalized Stokes' Theorem for a compact oriented $k$-manifold $M$ with boundary and a smooth $(k-1)$-form $\\omega$ states:",
+    options: [
+      "$\\displaystyle\\int_M d\\omega=\\int_{\\partial M}\\omega$",
+      "$\\displaystyle\\int_M \\omega=\\int_{\\partial M}d\\omega$",
+      "$\\displaystyle\\int_M d\\omega=0$",
+      "$\\displaystyle\\int_{\\partial M}\\omega=\\int_M\\omega\\wedge\\omega$",
+    ],
+    answer: "A",
+    explanation:
+      "Integrating the derivative $d\\omega$ over $M$ equals integrating $\\omega$ itself over the boundary $\\partial M$, with the induced orientation.",
+  },
+  {
+    id: "df-stokes-2",
+    prompt: "For any manifold with boundary $M$, the boundary of its boundary, $\\partial(\\partial M)$, is:",
+    options: ["$M$", "$\\varnothing$", "$\\partial M$", "$-M$"],
+    answer: "B",
+    explanation:
+      "A boundary has no boundary: a circle has no endpoints, a sphere has no edge. This is the geometric twin of $d^2=0$.",
+  },
+  {
+    id: "df-stokes-3",
+    prompt: "When $M$ is an oriented curve from $A$ to $B$ and $\\omega=f$ is a 0-form, the Generalized Stokes' Theorem becomes:",
+    options: [
+      "Green's Theorem",
+      "The Divergence Theorem",
+      "The Fundamental Theorem for line integrals",
+      "Classical Stokes' Theorem",
+    ],
+    answer: "C",
+    explanation:
+      "$\\partial C=\\{B\\}-\\{A\\}$, so $\\int_C df=f(B)-f(A)$: the Fundamental Theorem for line integrals.",
+  },
+  {
+    id: "df-stokes-4",
+    prompt: "Green's Theorem is the Generalized Stokes' Theorem with $M$ equal to:",
+    options: [
+      "A curve in $\\mathbb R^3$",
+      "A solid region in $\\mathbb R^3$",
+      "A surface in $\\mathbb R^3$",
+      "A region in the plane $\\mathbb R^2$",
+    ],
+    answer: "D",
+    explanation:
+      "For a plane region $D$ and $\\omega=P\\,dx+Q\\,dy$: $\\iint_D(Q_x-P_y)\\,dx\\wedge dy=\\oint_{\\partial D}P\\,dx+Q\\,dy$.",
+  },
+  {
+    id: "df-stokes-5",
+    prompt: "For a smooth function $f$ and a curve $C$ from $A$ to $B$, $\\displaystyle\\int_C df$ equals:",
+    options: ["$f(B)-f(A)$", "$f(A)-f(B)$", "$0$", "$\\nabla f(B)-\\nabla f(A)$"],
+    answer: "A",
+    explanation: "The boundary of an oriented curve is its end point minus its start point, so $\\int_C df=f(B)-f(A)$, independent of the path.",
+  },
+  {
+    id: "df-stokes-6",
+    prompt: "Let $f=x^2y+z$. Evaluate $\\int_C df$ along any smooth curve from $(0,0,0)$ to $(1,2,3)$.",
+    options: ["$3$", "$5$", "$6$", "$0$"],
+    answer: "B",
+    explanation: "$f(1,2,3)-f(0,0,0)=(1\\cdot2+3)-0=5$, whatever path is taken.",
+  },
+  {
+    id: "df-stokes-7",
+    prompt: "Using $A=\\tfrac12\\oint_{\\partial D}(x\\,dy-y\\,dx)$, the area enclosed by the ellipse $x=3\\cos t$, $y=2\\sin t$ is:",
+    options: ["$3\\pi$", "$12\\pi$", "$6\\pi$", "$5\\pi$"],
+    answer: "C",
+    explanation:
+      "$x\\,dy-y\\,dx=(6\\cos^2t+6\\sin^2t)\\,dt=6\\,dt$, so $A=\\tfrac12\\int_0^{2\\pi}6\\,dt=6\\pi=\\pi ab$.",
+  },
+  {
+    id: "df-stokes-8",
+    prompt: "Evaluate $\\displaystyle\\oint_C(-y\\,dx+x\\,dy)$ where $C$ is the circle of radius $2$ traversed counterclockwise.",
+    options: ["$4\\pi$", "$2\\pi$", "$0$", "$8\\pi$"],
+    answer: "D",
+    explanation:
+      "$d(-y\\,dx+x\\,dy)=2\\,dx\\wedge dy$, so the integral is $2\\times\\text{area}=2\\cdot4\\pi=8\\pi$.",
+  },
+  {
+    id: "df-stokes-9",
+    prompt: "The Divergence Theorem is the Generalized Stokes' Theorem in which case?",
+    options: [
+      "$M$ a solid region in $\\mathbb R^3$, $\\omega$ a 2-form",
+      "$M$ a surface in $\\mathbb R^3$, $\\omega$ a 1-form",
+      "$M$ a curve, $\\omega$ a 0-form",
+      "$M$ a plane region, $\\omega$ a 1-form",
+    ],
+    answer: "A",
+    explanation:
+      "With $\\omega=\\Phi_{\\mathbf F}$ (the flux 2-form), $d\\omega=(\\nabla\\cdot\\mathbf F)\\,dV$, and the theorem reads $\\iiint_E\\nabla\\cdot\\mathbf F\\,dV=\\iint_{\\partial E}\\mathbf F\\cdot\\mathbf n\\,dS$.",
+  },
+  {
+    id: "df-stokes-10",
+    prompt: "If $M$ is a compact oriented manifold with no boundary and $\\omega=d\\alpha$ is exact, then $\\int_M\\omega$ equals:",
+    options: ["$\\int_M\\alpha$", "$0$", "The volume of $M$", "It depends on $\\alpha$"],
+    answer: "B",
+    explanation: "$\\int_M d\\alpha=\\int_{\\partial M}\\alpha=\\int_{\\varnothing}\\alpha=0$.",
+  },
+  {
+    id: "df-stokes-11",
+    prompt: "For a smooth field $\\mathbf F$ on $\\mathbb R^3$ and any closed surface $S$ (a sphere, say), the flux $\\iint_S(\\nabla\\times\\mathbf F)\\cdot\\mathbf n\\,dS$ is:",
+    options: ["$4\\pi$", "The volume inside $S$", "$0$", "$\\iint_S\\mathbf F\\cdot\\mathbf n\\,dS$"],
+    answer: "C",
+    explanation:
+      "The flux form of $\\nabla\\times\\mathbf F$ is $d\\omega_{\\mathbf F}$, an exact 2-form, and $S$ has no boundary, so the integral is $0$. Equivalently, $\\nabla\\cdot(\\nabla\\times\\mathbf F)=0$.",
+  },
+  {
+    id: "df-stokes-12",
+    prompt: "The upper hemisphere $x^2+y^2+z^2=1$, $z\\ge0$, is oriented by the upward normal. The induced orientation on its boundary circle is:",
+    options: [
+      "Clockwise viewed from above",
+      "Either direction",
+      "No orientation is induced",
+      "Counterclockwise viewed from above",
+    ],
+    answer: "D",
+    explanation:
+      "Right-hand rule: with the normal pointing up and the surface on your left as you walk the edge, you go counterclockwise when viewed from above.",
+  },
+  {
+    id: "df-stokes-13",
+    prompt: "With the standard orientation, the boundary of the interval $[a,b]$ is:",
+    options: ["$\\{b\\}-\\{a\\}$", "$\\{a\\}-\\{b\\}$", "$\\{a\\}+\\{b\\}$", "$\\varnothing$"],
+    answer: "A",
+    explanation:
+      "The end point counts positively and the start point negatively, so $\\int_{[a,b]}df=f(b)-f(a)$ is the ordinary Fundamental Theorem of Calculus.",
+  },
+  {
+    id: "df-stokes-14",
+    prompt: "For the unit square $[0,1]^2$ and $\\omega=xy\\,dy$, what is $\\displaystyle\\iint_{[0,1]^2}d\\omega$?",
+    options: ["$1$", "$\\tfrac12$", "$\\tfrac14$", "$0$"],
+    answer: "B",
+    explanation:
+      "$d\\omega=y\\,dx\\wedge dy$, so the integral is $\\int_0^1\\!\\int_0^1y\\,dx\\,dy=\\tfrac12$. The boundary gives the same: only the edge $x=1$ contributes $\\int_0^1y\\,dy=\\tfrac12$.",
+  },
+  {
+    id: "df-stokes-15",
+    prompt: "Let $\\eta=x\\,dy\\wedge dz+y\\,dz\\wedge dx+z\\,dx\\wedge dy$. What is $\\iint_S\\eta$ over the sphere of radius $2$, oriented outward?",
+    options: ["$8\\pi$", "$16\\pi$", "$32\\pi$", "$4\\pi$"],
+    answer: "C",
+    explanation:
+      "$d\\eta=3\\,dx\\wedge dy\\wedge dz$, so the integral equals $3\\times\\tfrac43\\pi(2)^3=32\\pi$.",
+  },
+  {
+    id: "df-stokes-16",
+    prompt: "On $\\mathbb R^2\\setminus\\{\\mathbf 0\\}$ let $\\omega=\\dfrac{-y\\,dx+x\\,dy}{x^2+y^2}$. What is $\\oint\\omega$ around the unit circle traversed counterclockwise twice?",
+    options: ["$0$", "$2\\pi$", "$\\pi$", "$4\\pi$"],
+    answer: "D",
+    explanation:
+      "Each counterclockwise loop contributes $2\\pi$, so two loops give $4\\pi$. Dividing by $2\\pi$ gives the winding number $2$.",
+  },
+  {
+    id: "df-stokes-17",
+    prompt: "Let $E=[0,1]^3$ with outward orientation. What is $\\displaystyle\\iint_{\\partial E}x^2\\,dy\\wedge dz$?",
+    options: ["$1$", "$0$", "$2$", "$\\tfrac13$"],
+    answer: "A",
+    explanation:
+      "$d(x^2\\,dy\\wedge dz)=2x\\,dx\\wedge dy\\wedge dz$, and $\\iiint_E2x\\,dV=1$. Directly: only the face $x=1$ contributes, giving $1\\cdot\\text{area}=1$.",
+  },
+  {
+    id: "df-stokes-18",
+    prompt: "Why is $\\iint_S d\\omega$ the same for every oriented surface $S$ with the same boundary curve $C$?",
+    options: [
+      "Because $d\\omega$ is always zero",
+      "Because each integral equals $\\oint_C\\omega$",
+      "Because all such surfaces have equal area",
+      "It is not true in general",
+    ],
+    answer: "B",
+    explanation:
+      "Generalized Stokes gives $\\iint_S d\\omega=\\oint_{\\partial S}\\omega=\\oint_C\\omega$, which depends only on the boundary.",
+  },
+  {
+    id: "df-stokes-19",
+    prompt: "Which hypotheses does the Generalized Stokes' Theorem need?",
+    options: [
+      "Only that $\\omega$ is continuous",
+      "$M$ must be a subset of $\\mathbb R^2$",
+      "$M$ compact and oriented with boundary, and $\\omega$ a smooth $(k-1)$-form",
+      "$\\omega$ must be closed",
+    ],
+    answer: "C",
+    explanation:
+      "Compactness (or compact support) makes the integrals finite, orientation makes them well defined, and $\\omega$ must be a smooth $(k-1)$-form on a $k$-manifold so that $d\\omega$ is a $k$-form.",
+  },
+  {
+    id: "df-stokes-20",
+    prompt: "For the upper hemisphere of radius $R$ (upward normal) and $\\omega=-y\\,dx+x\\,dy$, what is $\\iint_S d\\omega$?",
+    options: ["$\\pi R^2$", "$0$", "$4\\pi R^2$", "$2\\pi R^2$"],
+    answer: "D",
+    explanation:
+      "By Stokes it equals $\\oint_{\\partial S}(-y\\,dx+x\\,dy)$ over the counterclockwise circle of radius $R$, which is $R^2\\int_0^{2\\pi}dt=2\\pi R^2$.",
   },
 ];
