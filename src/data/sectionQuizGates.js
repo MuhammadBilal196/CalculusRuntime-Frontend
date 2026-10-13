@@ -77,6 +77,7 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "multivariable-taylor": ["multivariable-taylor"],
   "implicit-function-theorem": ["implicit-function-theorem"],
   "directional-derivatives": ["directional-derivatives"],
+  "potential-theory": ["pt-laplacian"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
