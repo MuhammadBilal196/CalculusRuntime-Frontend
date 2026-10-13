@@ -1,8 +1,8 @@
 // src/pages/multivariableCalculus/AdvancedIntegrationGuide.jsx
 // Advanced Integration & Variational Methods — one page that imports both topic guides:
 //   Improper Multiple Integrals & the Gaussian Integral
-//   Calculus of Variations (Euler–Lagrange Equation)   (added next; its quiz will stay locked
-//                                  until the first quiz is passed, ≥ 80%)
+//   Calculus of Variations (Euler–Lagrange Equation)
+// The Calculus of Variations quiz stays locked until the first quiz is passed (≥ 80%).
 
 import { Fragment } from "react";
 import StudyGuideShell from "../courses/StudyGuideShell";
@@ -16,17 +16,16 @@ import ImproperMultipleIntegralsTopic, {
   AI_IMPROPER_NAV,
   AI_IMPROPER_QUIZ_KEY,
 } from "./ImproperMultipleIntegralsTopic";
-// Calculus of Variations (add when built):
-// import CalculusOfVariationsTopic, { VARIATIONS_NAV } from "./CalculusOfVariationsTopic";
+import CalculusOfVariationsTopic, { VARIATIONS_NAV } from "./CalculusOfVariationsTopic";
 import "./PartialDerivativesGuide.css";
 import "./AdvancedIntegrationGuide.css";
 
 const IMPROPER_TITLE = "Improper Multiple Integrals & the Gaussian Integral";
-// const VARIATIONS_TITLE = "Calculus of Variations (Euler–Lagrange Equation)";
+const VARIATIONS_TITLE = "Calculus of Variations (Euler–Lagrange Equation)";
 
 const TOPICS = [
   { title: IMPROPER_TITLE, nav: AI_IMPROPER_NAV },
-  // { title: VARIATIONS_TITLE, nav: VARIATIONS_NAV },
+  { title: VARIATIONS_TITLE, nav: VARIATIONS_NAV },
 ];
 
 function hasPassed(quizScores, key) {
@@ -99,8 +98,6 @@ function GuideToc() {
 
 function AdvancedIntegrationContent() {
   const { quizScores = {} } = useProgress() || {};
-  // Used to unlock the Calculus of Variations quiz once that topic is added.
-  // eslint-disable-next-line no-unused-vars
   const improperPassed = hasPassed(quizScores, AI_IMPROPER_QUIZ_KEY);
 
   return (
@@ -110,13 +107,11 @@ function AdvancedIntegrationContent() {
         <GuideHeader />
         <GuideToc />
         <ImproperMultipleIntegralsTopic />
-        {/*
         <hr className="divider" />
         <CalculusOfVariationsTopic
           quizUnlocked={improperPassed}
           lockHint={`🔒 Score ${SECTION_QUIZ_PASS_PERCENT}%+ on the ${IMPROPER_TITLE} quiz to unlock this quiz.`}
         />
-        */}
         <footer className="pg-foot">Advanced Integration &amp; Variational Methods · Rendered with MathJax 3</footer>
       </main>
     </>
