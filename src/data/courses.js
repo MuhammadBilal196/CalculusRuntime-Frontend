@@ -540,6 +540,15 @@ export const COURSES = [
         icon: "∧",
         logo: <span className="math-logo">d² = 0</span>,
       },
+      {
+        title: "Advanced Integration & Variational Methods",
+        description:
+          "Improper multiple integrals & the Gaussian integral, then the calculus of variations and the Euler–Lagrange equation.",
+        path: "/multivariable-calculus/advanced-integration",
+        meta: "Improper Integrals & Variations · 20 MCQs each",
+        icon: "∫",
+        logo: <span className="math-logo">∫ e^(−x²) dx = √π</span>,
+      },
 
       {
         title: "Certification Quiz",
