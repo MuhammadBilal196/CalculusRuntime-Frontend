@@ -1,0 +1,30 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   AdvancedIntegrationGuide.css — dark-theme fixes for tables on the
+   Advanced Integration & Variational Methods page only. Scoped to .ai-main so no other guide changes.
+   PartialDerivativesGuide.css is left untouched.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"] .ai-main .tbl-wrap {
+  border-color: #1e293b;
+  background: #0f172a;
+}
+
+[data-theme="dark"] .ai-main thead th {
+  background: #020617;
+  color: #ffffff;
+  border-bottom: 1px solid #1e293b;
+}
+
+[data-theme="dark"] .ai-main tbody td {
+  background: #0f172a;
+  color: #cbd5e1;
+  border-bottom-color: #1e293b;
+}
+
+[data-theme="dark"] .ai-main tbody tr:nth-child(even) td {
+  background: #111c31;
+}
+
+[data-theme="dark"] .ai-main tbody td strong {
+  color: #f8fafc;
+}
