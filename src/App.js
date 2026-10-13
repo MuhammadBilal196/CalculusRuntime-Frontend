@@ -51,6 +51,7 @@ import VectorFieldsApproximationPart1 from "./pages/multivariableCalculus/Vector
 import VectorFieldsApproximationPart2 from "./pages/multivariableCalculus/VectorFieldsApproximationPart2";
 import PotentialTheoryPage from "./pages/multivariableCalculus/PotentialTheoryPage";
 import DifferentialFormsPage from "./pages/multivariableCalculus/DifferentialFormsPage";
+import AdvancedIntegrationPage from "./pages/multivariableCalculus/AdvancedIntegrationPage";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -494,6 +495,10 @@ function App() {
                 <Route
                   path="/multivariable-calculus/differential-forms"
                   element={<Layout body={<DifferentialFormsPage />} />}
+                />
+                <Route
+                  path="/multivariable-calculus/advanced-integration"
+                  element={<Layout body={<AdvancedIntegrationPage />} />}
                 />
 
                 {/* Taylor Series */}
