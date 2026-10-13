@@ -1,8 +1,8 @@
 // src/pages/multivariableCalculus/DifferentialFormsGuide.jsx
 // Differential Forms — one page that imports both topic guides:
 //   Differential Forms & the Exterior Derivative
-//   Generalized Stokes' Theorem   (added next; its quiz will stay locked
-//                                  until the first quiz is passed, ≥ 80%)
+//   Generalized Stokes' Theorem
+// The Generalized Stokes quiz stays locked until the first quiz is passed (≥ 80%).
 
 import { Fragment } from "react";
 import StudyGuideShell from "../courses/StudyGuideShell";
@@ -16,17 +16,16 @@ import DifferentialFormsTopic, {
   DF_FORMS_NAV,
   DF_FORMS_QUIZ_KEY,
 } from "./DifferentialFormsTopic";
-// Generalized Stokes' Theorem (add when built):
-// import GeneralizedStokesTopic, { GEN_STOKES_NAV } from "./GeneralizedStokesTopic";
+import GeneralizedStokesTopic, { GEN_STOKES_NAV } from "./GeneralizedStokesTopic";
 import "./PartialDerivativesGuide.css";
 import "./DifferentialFormsGuide.css";
 
 const FORMS_TITLE = "Differential Forms & the Exterior Derivative";
-// const GEN_STOKES_TITLE = "Generalized Stokes' Theorem";
+const GEN_STOKES_TITLE = "Generalized Stokes' Theorem";
 
 const TOPICS = [
   { title: FORMS_TITLE, nav: DF_FORMS_NAV },
-  // { title: GEN_STOKES_TITLE, nav: GEN_STOKES_NAV },
+  { title: GEN_STOKES_TITLE, nav: GEN_STOKES_NAV },
 ];
 
 function hasPassed(quizScores, key) {
@@ -99,8 +98,6 @@ function GuideToc() {
 
 function DifferentialFormsContent() {
   const { quizScores = {} } = useProgress() || {};
-  // Used to unlock the Generalized Stokes' Theorem quiz once that topic is added.
-  // eslint-disable-next-line no-unused-vars
   const formsPassed = hasPassed(quizScores, DF_FORMS_QUIZ_KEY);
 
   return (
@@ -110,13 +107,11 @@ function DifferentialFormsContent() {
         <GuideHeader />
         <GuideToc />
         <DifferentialFormsTopic />
-        {/*
         <hr className="divider" />
         <GeneralizedStokesTopic
           quizUnlocked={formsPassed}
           lockHint={`🔒 Score ${SECTION_QUIZ_PASS_PERCENT}%+ on the ${FORMS_TITLE} quiz to unlock this quiz.`}
         />
-        */}
         <footer className="pg-foot">Differential Forms · Rendered with MathJax 3</footer>
       </main>
     </>
