@@ -49,6 +49,7 @@ const TOPICS = [
   "Coordinate Transformations & Surfaces",
   "Constrained & Unconstrained Optimization",
   "Vector Fields & Approximation Theory",
+  "Potential Theory",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -356,6 +357,17 @@ const PRACTICE_SELECTIONS = {
   banks: ["mv"],
   moduleName: "Vector Fields & Approximation Theory",
 },
+
+  // ============================================================
+  // NEW MVC MODULES — Potential Theory, Differential Forms,
+  // Advanced Integration & Variational Methods
+  // ============================================================
+
+  "Potential Theory": {
+    type: "module",
+    banks: ["mv"],
+    moduleName: "Potential Theory",
+  },
 
   // ============================================================
   // FUTURE NEW MVC MODULES
