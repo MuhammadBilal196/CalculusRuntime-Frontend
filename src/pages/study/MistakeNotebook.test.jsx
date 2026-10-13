@@ -1,0 +1,21 @@
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import MistakeNotebook from './MistakeNotebook';
+import { readLearningState, syncLearningEvents } from '../../utils/learningEvents';
+let mockUser;
+jest.mock('../../context/AuthContext',()=>({useAuth:()=>({user:mockUser})}));
+const question={schemaVersion:1,attemptId:'old',responseId:'1',source:'practice',courseId:'linear-algebra',quizId:'Vectors',questionId:'1',prompt:'Choose four',options:['three','four'],selectedIndex:0,correctIndex:1,correct:false,grading:'client',topic:'Vectors',difficulty:'Easy',occurredAt:'2026-01-01T10:00:00Z'};
+beforeEach(()=>{localStorage.clear();mockUser={username:'alice',accessToken:'x'};global.fetch=jest.fn(async()=>({ok:true,json:async()=>({items:[],next_cursor:null})}));});
+afterEach(async()=>{await syncLearningEvents(mockUser);delete global.fetch;});
+test('guests see a login prompt',()=>{mockUser=null;render(<MemoryRouter><MistakeNotebook/></MemoryRouter>);expect(screen.getByRole('link',{name:'Log in'})).toBeInTheDocument();});
+test('migrates existing history, filters and removes only after correct retry',async()=>{
+ localStorage.setItem('calcvoyager_question_attempts_v1:alice',JSON.stringify([question]));
+ const {unmount}=render(<MemoryRouter><MistakeNotebook/></MemoryRouter>);
+ expect(await screen.findByText('Choose four')).toBeInTheDocument();
+ fireEvent.change(screen.getByLabelText('Course'),{target:{value:'linear-algebra'}});
+ fireEvent.click(screen.getByRole('radio',{name:'three'}));fireEvent.click(screen.getByRole('button',{name:'Check answer'}));
+ expect(screen.getByText('Not quite. Try again.')).toBeInTheDocument();
+ fireEvent.click(screen.getByRole('radio',{name:'four'}));fireEvent.click(screen.getByRole('button',{name:'Check answer'}));
+ await waitFor(()=>expect(screen.queryByText('Choose four')).not.toBeInTheDocument());
+ expect(readLearningState(mockUser).events).toHaveLength(3);unmount();
+});

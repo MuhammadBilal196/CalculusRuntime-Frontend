@@ -1,4 +1,9 @@
-import { LA_MODULES, getLaModulePath } from "./laModules";
+import {
+  LA_MODULES,
+  LA_EXPANSION_MODULES,
+  getLaModuleParts,
+  getLaModulePath,
+} from "./laModules";
 /** Top-level subject paths shown on Home ("Choose a path"). */
 export const COURSES = [
   {
@@ -154,6 +159,116 @@ export const COURSES = [
         ),
       },
       {
+        title: "Space Curves (Frenet-Serret)",
+        description:
+          "Arc length parameterization, TNB moving trihedron, curvature, torsion, and osculating geometry.",
+        path: "/space-curves/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🌀",
+        logo: <span className="math-logo">T, N, B &amp; κ, τ</span>,
+      },
+      {
+        title: "Vector-Valued Functions & Motion",
+        description:
+          "Kinematics in ℝ³, velocity, speed, tangential/normal acceleration components, and central orbital forces.",
+        path: "/vector-motion/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🚀",
+        logo: <span className="math-logo">r'(t), a_T T + a_N N</span>,
+      },
+      {
+        title: "Parametric Surfaces",
+        description:
+          "Surface coordinate grids, tangent planes, normal fields, differential surface area, and ruled minimal manifolds.",
+        path: "/parametric-surfaces/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🌐",
+        logo: <span className="math-logo">r_u × r_v &amp; dS</span>,
+      },
+      {
+        title: "Polar Coordinate Calculus",
+        description:
+          "Polar tangents, area bounded by cardioids and rose petals, polar arc length, and curvature.",
+        path: "/polar-calculus/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🎯",
+        logo: <span className="math-logo">r = f(θ) &amp; ½∫r²dθ</span>,
+      },
+      {
+        title: "Solids of Revolution",
+        description:
+          "Disk, washer, and cylindrical shells methods, rotations about arbitrary axes, and Pappus's Centroid Theorem.",
+        path: "/solids-revolution/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🏺",
+        logo: <span className="math-logo">π∫R²dx &amp; 2π∫r h dx</span>,
+      },
+      {
+        title: "Volume by Cross-Sections",
+        description:
+          "Non-revolution volume slicing with square, triangular, and semicircular profiles, wedges, and bicylinders.",
+        path: "/volume-cross-sections/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "📦",
+        logo: <span className="math-logo">V = ∫ A(x) dx</span>,
+      },
+      {
+        title: "Numerical Methods",
+        description:
+          "Newton-Raphson quadratic root convergence, Trapezoidal Rule, Simpson's 1/3 Rule, and Romberg extrapolation.",
+        path: "/numerical-methods/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🧮",
+        logo: <span className="math-logo">xₙ₊₁ = xₙ − f/f' &amp; Sₙ</span>,
+      },
+      {
+        title: "Improper Integrals — Advanced Tests",
+        description:
+          "Infinite horizons, singular asymptotes, Direct/Limit comparison, Cauchy Principal Value, and Gamma/Beta functions.",
+        path: "/improper-integrals-advanced/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "♾️",
+        logo: <span className="math-logo">P.V. ∫ &amp; Γ(z), B(p,q)</span>,
+      },
+      {
+        title: "Complex Numbers & De Moivre",
+        description:
+          "Polar Euler representation, De Moivre's theorem, n-th roots of unity, and multiple-angle trigonometric expansions.",
+        path: "/complex-numbers/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "ℂ",
+        logo: <span className="math-logo">e^(iθ) &amp; (cosθ+isinθ)ⁿ</span>,
+      },
+      {
+        title: "Hyperbolic Functions & Inverses",
+        description:
+          "Hyperbolic identities, logarithmic inverse expressions, standard radical integrals, and catenary cable geometry.",
+        path: "/hyperbolic-functions/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "〰️",
+        logo: <span className="math-logo">cosh²x - sinh²x = 1</span>,
+      },
+      {
+        title: "Laplace Transforms",
+        description:
+          "Exponential kernel mappings, frequency/time shifting, derivative transforms, convolutions, and ODE solutions.",
+        path: "/laplace-transforms/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "ℒ",
+        logo: (
+          <span className="math-logo">ℒ&#123;f(t)&#125; = ∫e^(-st)f(t)dt</span>
+        ),
+      },
+      {
+        title: "Fourier Series",
+        description:
+          "Periodic function decomposition, Euler-Fourier coefficients, half-range cosine/sine series, and Parseval's identity.",
+        path: "/fourier-series/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "📈",
+        logo: <span className="math-logo">½a₀ + ∑(aₙcos + bₙsin)</span>,
+      },
+      {
         title: "Analytic & 3D Vector Lab",
         description:
           "Interactive laboratory for 2D conic rotation of axes, polar conics, scalar triple product, and skew line distance.",
@@ -209,11 +324,11 @@ export const COURSES = [
       {
         title: "Certification Quiz",
         description:
-          "60 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+          "90 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/calculus-analytical-geometry",
-        meta: "60 questions · 80% to pass",
+        meta: "90 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 60 MCQs · 80%</span>,
+        logo: <span className="math-logo">✓ 90 MCQs · 80%</span>,
       },
     ],
   },
@@ -236,7 +351,8 @@ export const COURSES = [
     heroImageAlt: "Multivariable Calculus 3D Surface and Gradient Field",
     overview: {
       longDescription: [
-        "Multivariable Calculus extends single-variable analysis to multidimensional coordinate spaces and physical vector field theory. The curriculum begins with functions of several variables, level surfaces, and partial derivatives, formalizing tangent planes, total differentials, gradient vectors, and directional derivatives. We analyze unconstrained multivariable optimization alongside Lagrange Multipliers for constrained systems. The course develops multiple integration across Cartesian, polar, cylindrical, and spherical coordinates using Fubini's Theorem and Jacobian transformations. Finally, vector calculus formalizes line and surface integrals, conservative work fields, and the cornerstone integral theorems—Green's, Gauss's Divergence, and Stokes' Theorems—connecting differential field divergence and curl to macro-scale boundary fluxes across science.",
+        "Multivariable Calculus extends single-variable analysis to multidimensional coordinate spaces and physical vector field theory. The curriculum begins with functions of several variables, level surfaces, and partial derivatives, formalizing tangent planes, total differentials, gradient vectors, and directional derivatives. We analyze unconstrained multivariable optimization alongside Lagrange Multipliers for constrained systems. The course develops multiple integration across Cartesian, polar, cylindrical, and spherical coordinates using Fubini's Theorem and Jacobian transformations. Vector calculus then formalizes line and surface integrals, conservative work fields, and the cornerstone integral theorems—Green's, Gauss's Divergence, and Stokes' Theorems—connecting differential field divergence and curl to macro-scale boundary fluxes across science.",
+        "Additional-depth modules extend the core path: 3D analytical geometry and quadric surfaces; space curves with Frenet–Serret frames, curvature and torsion; coordinate transformations, curvilinear systems and flux through parameterized surfaces; the Hessian, KKT conditions, global extrema and gradient descent; and vector potentials, multivariable Taylor series, the Implicit Function Theorem and n-dimensional directional derivatives. The course closes with potential theory (the Laplacian, harmonic functions, Maxwell's equations and the continuity equation), differential forms with the exterior derivative and the generalized Stokes' theorem, and advanced integration—improper multiple integrals, the Gaussian integral and the calculus of variations via the Euler–Lagrange equation.",
       ],
       highlights: [
         "Partial derivatives, gradients & tangent planes",
@@ -245,7 +361,16 @@ export const COURSES = [
         "Line integrals, conservative fields & Green's theorem",
         "Divergence, curl & the Divergence Theorem",
         "Stokes' Theorem & surface integrals",
+        "3D analytical geometry & quadric surfaces",
+        "Space curves, Frenet–Serret frames, curvature & torsion",
+        "Jacobians, curvilinear coordinates & flux integrals",
+        "Hessian, KKT conditions & gradient descent",
+        "Vector potentials, Taylor series & the Implicit Function Theorem",
+        "Laplacian, harmonic functions & Maxwell's equations",
+        "Differential forms & the generalized Stokes' theorem",
+        "Gaussian integral & the Euler–Lagrange equation",
         "Extreme-value finder, volume calculator & vector-field visualizer",
+        "Certificate quiz — 100 MCQs, 80% to pass",
       ],
       prerequisites:
         "Single-variable calculus (limits, derivatives, integrals) and basic linear algebra.",
@@ -389,15 +514,60 @@ export const COURSES = [
         icon: "J",
         logo: <span className="math-logo">∂(x,y) / ∂(u,v)</span>,
       },
+      {
+        title: "Constrained & Unconstrained Optimization",
+        description:
+          "The Hessian Matrix & Optimization, Inequality Constraints (KKT Conditions), Global Extrema on Bounded Domains, and Gradient Descent & Numerical Optimization.",
+        path: "/constrained-unconstrained-optimization/1",
+        meta: "4 topics · 20-question checkpoint per topic",
+        icon: "H",
+        logo: <span className="math-logo">H = ∇²f</span>,
+      },
+      {
+        title: "Vector Fields & Approximation Theory",
+        description:
+          "Vector Potentials, Multivariable Taylor Series & Second-Order Approximation, Implicit Function Theorem, and Directional Derivatives in n Dimensions.",
+        path: "/vector-fields-approximation/1",
+        meta: "4 topics · 20-question checkpoint per topic",
+        icon: "∇",
+        logo: <span className="math-logo">∇×A = F</span>,
+      },
+      {
+        title: "Potential Theory",
+        description:
+          "The Laplacian & harmonic functions, then Maxwell's equations & the continuity equation.",
+        path: "/multivariable-calculus/potential-theory",
+        meta: "Laplacian & Maxwell · 20 MCQs each",
+        icon: "Δ",
+        logo: <span className="math-logo">∇²φ = 0</span>,
+      },
+      {
+        title: "Differential Forms",
+        description:
+          "Differential forms & the exterior derivative, then the Generalized Stokes' Theorem.",
+        path: "/multivariable-calculus/differential-forms",
+        meta: "Forms & Generalized Stokes · 20 MCQs each",
+        icon: "∧",
+        logo: <span className="math-logo">d² = 0</span>,
+      },
+      {
+        title: "Advanced Integration & Variational Methods",
+        description:
+          "Improper multiple integrals & the Gaussian integral, then the calculus of variations and the Euler–Lagrange equation.",
+        path: "/multivariable-calculus/advanced-integration",
+        meta: "Improper Integrals & Variations · 20 MCQs each",
+        icon: "∫",
+        logo: <span className="math-logo">∫ e^(−x²) dx = √π</span>,
+      },
 
       {
         title: "Certification Quiz",
         description:
-          "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+          "100 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/multivariable-calculus",
-        meta: "30 questions · 80% to pass",
+        meta: "100 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 30 MCQs · 80%</span>,
+        logo: <span className="math-logo">✓ 100 MCQs · 80%</span>,
       },
     ],
   },
@@ -534,6 +704,14 @@ export const COURSES = [
         icon: module.logo,
         logo: <span className="math-logo">{module.logo}</span>,
       })),
+      ...LA_EXPANSION_MODULES.map((module) => ({
+        title: module.title,
+        description: module.description,
+        path: getLaModulePath(module),
+        icon: module.logo,
+        logo: <span className="math-logo">{module.logo}</span>,
+        meta: `${getLaModuleParts(module).length} available part${getLaModuleParts(module).length === 1 ? "" : "s"} · ${module.topics.length} topic${module.topics.length === 1 ? "" : "s"} · ${module.topics.length * 20} checkpoint MCQs`,
+      })),
       {
         title: "Practice Arena",
         description:
@@ -546,11 +724,11 @@ export const COURSES = [
       {
         title: "Certification Quiz",
         description:
-          "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+          "99 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/linear-algebra",
-        meta: "30 questions · 80% to pass",
+        meta: "99 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 30 MCQs · 80%</span>,
+        logo: <span className="math-logo">✓ 66 MCQs · 80%</span>,
       },
     ],
   },

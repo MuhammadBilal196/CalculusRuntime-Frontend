@@ -1043,7 +1043,8 @@ select {
   margin-bottom: 1rem;
   color: var(--muted);
 }
-.guide-card span {
+/* Skip the spans KaTeX generates inside a logo: a fixed size on each one breaks its em-based layout */
+.guide-card span:not(:where(.math-logo *)) {
   color: var(--muted);
   font-size: 0.83rem;
   font-weight: 700;
@@ -1611,6 +1612,17 @@ select {
   display: none;
 }
 
+/* The link colours above suit the dark header bar; on the light dropdown panel they would be white on white. */
+[data-site-theme="default"]:not([data-theme="dark"]) .site-nav .dropdown-content a {
+  color: var(--ink) !important;
+}
+
+[data-site-theme="default"]:not([data-theme="dark"]) .site-nav .dropdown-content a:hover,
+[data-site-theme="default"]:not([data-theme="dark"]) .site-nav .dropdown-content a.active {
+  background: var(--paper-2) !important;
+  color: var(--blue) !important;
+}
+
 [data-site-theme="default"] .theme-toggle,
 [data-site-theme="default"] .hamburger {
   width: auto;
@@ -1905,17 +1917,18 @@ select {
   letter-spacing: 0.02em;
   color: var(--ink, #0f172a);
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.25rem;
   white-space: nowrap;
   line-height: 1.2;
+  /* Fits the tallest formula (a sum with stacked limits) so titles line up across a row */
+  min-height: 2.4em;
 }
 
-.math-logo sub,
-.math-logo sup {
-  font-size: 0.72em;
-  line-height: 1;
-  font-weight: 600;
+/* KaTeX scales itself to 1.21em and inherits letter-spacing; keep the logo size and KaTeX's own spacing */
+.math-logo .katex {
+  font-size: 1em;
+  letter-spacing: normal;
 }
 
 .math-bold {

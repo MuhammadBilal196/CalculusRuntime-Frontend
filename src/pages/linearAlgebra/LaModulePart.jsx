@@ -1,9 +1,10 @@
 import LaTopicPart from "./LaTopicPart";
 import LaModuleGuide from "./LaModuleGuide";
-import { getLaModule, getLaModulePath } from "../../data/laModules";
+import { getLaModule, getLaModuleParts, getLaModulePath } from "../../data/laModules";
 
 export default function LaModulePart({ moduleId, part }) {
   const module = getLaModule(moduleId);
+  const hasNextPart = getLaModuleParts(module).includes(part + 1);
   return (
     <LaTopicPart
       sectionId={`la-${moduleId}-${part}`}
@@ -12,8 +13,8 @@ export default function LaModulePart({ moduleId, part }) {
       Guide={LaModuleGuide}
       guideProps={{ moduleId }}
       part={part}
-      nextPath={part === 1 ? getLaModulePath(module, 2) : `/linear-algebra/overview#${module.overviewAnchor}`}
-      nextLabel={part === 1 ? "Continue to topics 3 and 4" : "Return to the course overview"}
+      nextPath={hasNextPart ? getLaModulePath(module, part + 1) : `/linear-algebra/overview#${module.overviewAnchor}`}
+      nextLabel={hasNextPart ? "Continue to Part 2" : "Return to the course overview"}
     />
   );
 }

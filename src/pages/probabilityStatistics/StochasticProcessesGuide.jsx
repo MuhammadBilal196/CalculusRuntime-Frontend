@@ -25,11 +25,16 @@ export default function StochasticProcessesGuide({ part = 1 }) {
           <h1 className="ch-title">Stochastic Processes</h1>
           <p className="ch-sub">Markov chains, Poisson processes, and related models</p>
           <p>Curriculum: University Probability &amp; Statistics · Part {part} of 2</p>
+          <p>
+            For transition matrices, eigenvectors, and worked steady-state calculations, see{" "}
+            <Link to="/linear-algebra/applied-linear-algebra/1#markov-chains-steady-states">Markov Chains &amp; Steady States (Linear Algebra)</Link>.
+            That guide uses column probability vectors; transpose a row-stochastic transition matrix when following its calculations.
+          </p>
         </header>
         <section className="section" id="ps-c-stoch-theory">
           {advanced ? (
             <TheoryBox title="Deeper theory">
-              <p>{"Stationarity, Poisson process, BM. Cross-link LA Markov Chains guide — do not duplicate theory."}</p>
+              <p>{"Stationarity, Poisson processes, and Brownian motion are further stochastic-process topics. For finite-state Markov chain calculations, use the linked Linear Algebra guide above."}</p>
             </TheoryBox>
           ) : (
             <TheoryBox title="Core ideas">

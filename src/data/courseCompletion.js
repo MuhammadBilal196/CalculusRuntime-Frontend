@@ -1,4 +1,5 @@
 import { COURSES } from "./courses";
+import { LA_MODULES, LA_EXPANSION_MODULES, getLaModuleParts } from "./laModules";
 
 /**
  * Certificate requirements per course:
@@ -29,23 +30,47 @@ export const COURSE_CERTIFICATE_REQUIREMENTS = {
     minQuizScore: 80,
   },
   "multivariable-calculus": {
-    requiredSections: [
-      "partial-1",
-      "partial-2",
-      "vector-1",
-      "vector-2",
-      "integrals-1",
-      "integrals-2",
-      "lagrange-1",
-      "lagrange-2",
-      "divergence-1",
-      "divergence-2",
-      "stokes-1",
-      "stokes-2",
-    ],
-    quizId: "quiz-multivariable-calculus",
-    minQuizScore: 80,
-  },
+  requiredSections: [
+    // Existing modules
+    "partial-1",
+    "partial-2",
+    "vector-1",
+    "vector-2",
+    "integrals-1",
+    "integrals-2",
+    "lagrange-1",
+    "lagrange-2",
+    "divergence-1",
+    "divergence-2",
+    "stokes-1",
+    "stokes-2",
+
+    // 3D Analytical Geometry & Quadric Surfaces
+    "geo3d-1",
+    "geo3d-2",
+
+    // Space Curves & Advanced Multivariable Mappings
+    "space-curves-1",
+    "space-curves-2",
+
+    // Coordinate Transformations & Surfaces
+    "jacobians-1",
+    "jacobians-2",
+    "curvilinear-1",
+    "parametrized-surface-area-2",
+    "flux-integrals-general-surfaces-2",
+
+    // Constrained & Unconstrained Optimization
+    "optimization-1",
+    "optimization-2",
+
+    // Vector Fields & Approximation Theory
+    "vector-fields-approximation-1",
+    "vector-fields-approximation-2",
+  ],
+  quizId: "quiz-multivariable-calculus",
+  minQuizScore: 80,
+},
   "linear-algebra": {
     requiredSections: [
       "la-vectors-1",
@@ -60,6 +85,7 @@ export const COURSE_CERTIFICATE_REQUIREMENTS = {
       "la-ortho-2",
       "la-svd-1",
       "la-svd-2",
+      ...[...LA_MODULES, ...LA_EXPANSION_MODULES].flatMap((module) => getLaModuleParts(module).map((part) => `la-${module.id}-${part}`)),
     ],
     quizId: "quiz-linear-algebra",
     minQuizScore: 80,
@@ -103,7 +129,7 @@ export function getRequiredSections(courseId) {
 }
 
 export function getRemainingSections(courseId, completedSections = {}) {
-  return getRequiredSections(courseId).filter((id) => !completedSections[id]);
+  return getRequiredSections(courseId).filter((id) => completedSections[id] !== true);
 }
 
 export function isCourseComplete(courseId, completedSections = {}) {
@@ -130,11 +156,13 @@ export function getQuizPercentage(courseId, quizScores = {}) {
   const quizId = getQuizId(courseId);
   if (!quizId) return null;
   const attempt = quizScores[quizId];
-  if (!attempt || !attempt.total) return null;
-  return Math.round((attempt.score / attempt.total) * 100);
+  if (!attempt || !Number.isInteger(attempt.score) || !Number.isInteger(attempt.total)
+      || attempt.total <= 0 || attempt.score < 0 || attempt.score > attempt.total) return null;
+  return Math.round((attempt.score / attempt.total) * 10000) / 100;
 }
 
 export function hasPassedQuiz(courseId, quizScores = {}) {
   const pct = getQuizPercentage(courseId, quizScores);
-  return pct !== null && pct >= getMinQuizScore(courseId);
+  const attempt = quizScores[getQuizId(courseId)];
+  return pct !== null && attempt.score * 100 >= getMinQuizScore(courseId) * attempt.total;
 }

@@ -2,13 +2,17 @@ import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getCourseById } from "../../data/courses";
 import "./LinearAlgebraOverview.css";
-import { LA_MODULES, getLaModulePath, getLaModuleTopics, getLaTopicPath } from "../../data/laModules";
+import { getRequiredSections, getMinQuizScore } from "../../data/courseCompletion";
+import { LA_MODULES, LA_EXPANSION_MODULES, getLaModuleParts, getLaModulePath, getLaModuleTopics, getLaTopicPath } from "../../data/laModules";
 
 const CORE_CERT_PATHS = new Set([
   "/linear-algebra/vectors/1",
   "/linear-algebra/matrices/1",
   "/linear-algebra/systems/1",
   "/linear-algebra/eigen/1",
+  "/linear-algebra/orthogonality/1",
+  "/linear-algebra/svd/1",
+  ...[...LA_MODULES, ...LA_EXPANSION_MODULES].map((module) => getLaModulePath(module)),
 ]);
 
 const EXCLUDED_FROM_ROADMAP = new Set([
@@ -20,7 +24,7 @@ const EXCLUDED_FROM_ROADMAP = new Set([
 function LinearAlgebraOverview() {
   const { hash } = useLocation();
   useEffect(() => {
-    if (LA_MODULES.some((module) => hash === `#${module.overviewAnchor}`)) {
+    if ([...LA_MODULES, ...LA_EXPANSION_MODULES].some((module) => hash === `#${module.overviewAnchor}`)) {
       document.getElementById(hash.slice(1))?.scrollIntoView();
     }
   }, [hash]);
@@ -88,7 +92,7 @@ function LinearAlgebraOverview() {
                     <span className="la-roadmap-title">
                       {mod.title}
                       <span className={`la-roadmap-tag${isCore ? " la-roadmap-tag--core" : ""}`}>
-                        {isCore ? "Core · certificate" : "Extra depth"}
+                        {isCore ? "Required for certificate" : LA_EXPANSION_MODULES.some((module) => getLaModulePath(module) === mod.path) ? "New topics" : "Extra depth"}
                       </span>
                     </span>
                     <small>{mod.description}</small>
@@ -129,21 +133,34 @@ function LinearAlgebraOverview() {
         </section>
       ))}
 
+      {LA_EXPANSION_MODULES.map((module) => (
+        <section className="guide-section" id={module.overviewAnchor} key={module.id} aria-labelledby={`${module.id}-heading`}>
+          <h2 id={`${module.id}-heading`}>{module.title}</h2>
+          <p>{module.description}</p>
+          {getLaModuleParts(module).map((part) => (
+            <p key={part}><Link to={getLaModulePath(module, part)}>Part {part} — {getLaModuleTopics(module, part).map((topic) => topic.title).join(" · ")}</Link></p>
+          ))}
+          <p>Each part includes one complete topic with theory, worked examples, and 20 checkpoint questions. Score at least 80% on its checkpoint to complete that part.</p>
+          {module.plannedNextTopic && <p>Part 2 planned: {module.plannedNextTopic}.</p>}
+        </section>
+      ))}
+
       <section className="guide-section" aria-labelledby="structure-heading">
         <div className="section-kicker">How this course works</div>
         <h2 id="structure-heading">Structure &amp; certificate</h2>
         <p className="la-overview-lead">
-          The three advanced modules above each have two parts and four topics. Core topic guides
+          The three four-topic advanced modules each have two parts and four topics. Core topic guides
           retain their existing theory, examples, and quizzes. Score 80%+ on a section's quizzes to unlock "Mark as
           complete" — your progress and quiz scores are saved to your account automatically.
         </p>
         <p className="la-overview-lead">
-          <strong>Vectors &amp; Vector Spaces</strong>, <strong>Matrices &amp; Determinants</strong>,{" "}
-          <strong>Systems of Linear Equations</strong>, and <strong>Eigenvalues &amp; Eigenvectors</strong>{" "}
-          form the core certificate track — complete all eight of their parts to unlock the 30-question
-          certification quiz. <strong>Linear Equations</strong>, <strong>Linear Transformations</strong>,{" "}
-          <strong>Orthogonality &amp; Least Squares</strong>, and <strong>Singular Value Decomposition</strong>{" "}
-          are additional depth you can study any time, in any order.
+          Complete all {getRequiredSections("linear-algebra").length} required parts: both parts of <strong>Vectors &amp; Vector Spaces</strong>,{" "}
+          <strong>Matrices &amp; Determinants</strong>, <strong>Systems of Linear Equations</strong>,{" "}
+          <strong>Eigenvalues &amp; Eigenvectors</strong>, <strong>Orthogonality &amp; Least Squares</strong>,{" "}
+          <strong>Singular Value Decomposition</strong>, the three four-topic advanced modules, and the three two-topic expansion modules.
+          Then pass the certification quiz with a score of at least {getMinQuizScore("linear-algebra")}%.
+          <strong> Linear Equations</strong> and <strong>Linear Transformations</strong> remain
+          optional additional study.
         </p>
       </section>
 

@@ -1,5 +1,6 @@
 import { CALC_AG_NEW_TOPICS_PRACTICE_BANK } from "./calcAgNewTopicsPracticeBank.js";
 import { CALC_AG_EXPANSION_PRACTICE_BANK } from "./calcAgExpansionPracticeBank.js";
+import { CALC_AG_DEV3_PRACTICE_BANK } from "./calcAgDev3PracticeBank.js";
 
 /** Auto-generated practice bank: 100 Easy + 100 Medium + 100 Hard per topic.
  *  Every question is unique across the entire site and requires real work to solve.
@@ -25208,5 +25209,6 @@ export const CALC_AG_PRACTICE_BANK = [
   },
   ...CALC_AG_NEW_TOPICS_PRACTICE_BANK,
   ...CALC_AG_EXPANSION_PRACTICE_BANK,
+  ...CALC_AG_DEV3_PRACTICE_BANK,
 ];
 

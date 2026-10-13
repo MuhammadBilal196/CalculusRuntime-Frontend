@@ -2,7 +2,22 @@
  *  Every question is unique across the entire site and requires real work to solve.
  *  Regenerate with: python _pgen_build.py
  */
+import {
+  MV_COORDINATE_TRANSFORMATIONS_PRACTICE_BANK,
+} from "./mvCoordinateTransformationsPracticeBank";
+
+import { MV_OPTIMIZATION_PRACTICE_BANK } from "./mvOptimizationPracticeBank";
+import { MV_VECTOR_FIELDS_APPROXIMATION_PRACTICE_BANK } from "./mvVectorFieldsApproximationPracticeBank";
+import { MV_POTENTIAL_THEORY_PRACTICE_BANK } from "./mvPotentialTheoryPracticeBank";
+import { MV_DIFFERENTIAL_FORMS_PRACTICE_BANK } from "./mvDifferentialFormsPracticeBank";
+import { MV_ADVANCED_INTEGRATION_PRACTICE_BANK } from "./mvAdvancedIntegrationPracticeBank";
 export const MV_PRACTICE_BANK = [
+  ...MV_COORDINATE_TRANSFORMATIONS_PRACTICE_BANK,
+  ...MV_OPTIMIZATION_PRACTICE_BANK,
+  ...MV_VECTOR_FIELDS_APPROXIMATION_PRACTICE_BANK,
+  ...MV_POTENTIAL_THEORY_PRACTICE_BANK,
+  ...MV_DIFFERENTIAL_FORMS_PRACTICE_BANK,
+  ...MV_ADVANCED_INTEGRATION_PRACTICE_BANK,
   {
     "id": 20000,
     "topic": "Partial Derivatives",
@@ -30333,7 +30348,7 @@ correctAnswer: 0,
   topic: 'Space Curves & Advanced Multivariable Mappings',
   difficulty: 'Hard',
   question: "For a regular curve, curvature can be expressed as:",
-  options: ["|T|/|r|', '|T'(s)|', '|r''(t)|', '|r'(t)|"],
+  options: ["|T|/|r|", "|T'(s)|", "|r''(t)|", "|r'(t)|"],
   correctAnswer: 1,
   explanation: "With arc length s, curvature is kappa = |dT/ds|."
 },

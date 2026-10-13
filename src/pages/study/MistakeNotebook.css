@@ -1,0 +1,18 @@
+.mistakes-page { --study-bg: #fff; --study-ink: #17243a; --study-border: #c5cfdf; max-width: 980px; margin: 0 auto; padding: 32px 20px 64px; color: var(--study-ink); }
+.mistakes-page header { margin-bottom: 28px; }
+.mistakes-page h1 { font-size: clamp(28px, 4vw, 42px); }
+.mistakes-meta { color: #47607d; font-size: .9rem; }
+.mistakes-controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; margin: 24px 0; }
+.mistakes-controls label { display: grid; gap: 6px; max-width: 100%; }
+.mistakes-page select, .mistakes-page button { padding: 10px 14px; border: 1px solid var(--study-border); border-radius: 8px; background: var(--study-bg); color: var(--study-ink); max-width: 100%; }
+.mistakes-page button { cursor: pointer; }
+.mistakes-page button:disabled { opacity: .5; cursor: default; }
+.mistakes-page button:focus-visible, .mistakes-page input:focus-visible, .mistakes-page select:focus-visible { outline: 3px solid #1687c9; outline-offset: 3px; }
+.mistakes-card { padding: 24px; margin: 20px 0; border: 1px solid var(--study-border); border-radius: 12px; background: var(--study-bg); overflow-wrap: anywhere; }
+.mistakes-card h2 { font-size: 1.15rem; line-height: 1.6; white-space: pre-wrap; }
+.mistakes-card fieldset { border: 0; padding: 0; margin-bottom: 18px; }
+.mistakes-card label { display: flex; align-items: start; gap: 10px; padding: 12px 0; }
+.mistakes-card input { margin-top: 5px; flex-shrink: 0; }
+[data-theme="dark"] .mistakes-page, .dark .mistakes-page { --study-bg: #111c2e; --study-ink: #ecf2fa; --study-border: #43536b; }
+[data-theme="dark"] .mistakes-meta, .dark .mistakes-meta { color: #b4c7e0; }
+@media (max-width: 540px) { .mistakes-controls { display: grid; } .mistakes-card { padding: 16px; } }
