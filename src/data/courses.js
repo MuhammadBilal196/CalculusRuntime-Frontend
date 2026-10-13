@@ -1,4 +1,9 @@
-import { LA_MODULES, LA_EXPANSION_MODULES, getLaModuleParts, getLaModulePath } from "./laModules";
+import {
+  LA_MODULES,
+  LA_EXPANSION_MODULES,
+  getLaModuleParts,
+  getLaModulePath,
+} from "./laModules";
 /** Top-level subject paths shown on Home ("Choose a path"). */
 export const COURSES = [
   {
@@ -525,6 +530,15 @@ export const COURSES = [
         meta: "Laplacian & Maxwell · 20 MCQs each",
         icon: "Δ",
         logo: <span className="math-logo">∇²φ = 0</span>,
+      },
+      {
+        title: "Differential Forms",
+        description:
+          "Differential forms & the exterior derivative, then the Generalized Stokes' Theorem.",
+        path: "/multivariable-calculus/differential-forms",
+        meta: "Forms & Generalized Stokes · 20 MCQs each",
+        icon: "∧",
+        logo: <span className="math-logo">d² = 0</span>,
       },
 
       {
