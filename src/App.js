@@ -49,6 +49,7 @@ import HessianOptimizationGuide from "./pages/multivariableCalculus/HessianOptim
 import ConstrainedOptimizationPart2 from "./pages/multivariableCalculus/ConstrainedOptimizationPart2";
 import VectorFieldsApproximationPart1 from "./pages/multivariableCalculus/VectorFieldsApproximationPart1";
 import VectorFieldsApproximationPart2 from "./pages/multivariableCalculus/VectorFieldsApproximationPart2";
+import PotentialTheoryPage from "./pages/multivariableCalculus/PotentialTheoryPage";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -204,9 +205,18 @@ function App() {
               <Routes>
                 {/* Home */}
                 <Route path="/" element={<Layout body={<Home />} />} />
-                <Route path="/notes" element={<Layout body={<StudyNotes />} />} />
-                <Route path="/flashcards" element={<Layout body={<Flashcards />} />} />
-                <Route path="/mistakes" element={<Layout body={<MistakeNotebook />} />} />
+                <Route
+                  path="/notes"
+                  element={<Layout body={<StudyNotes />} />}
+                />
+                <Route
+                  path="/flashcards"
+                  element={<Layout body={<Flashcards />} />}
+                />
+                <Route
+                  path="/mistakes"
+                  element={<Layout body={<MistakeNotebook />} />}
+                />
 
                 {/* Auth */}
                 <Route path="/login" element={<Login />} />
@@ -457,7 +467,7 @@ function App() {
                   path="/constrained-unconstrained-optimization/2"
                   element={<Layout body={<ConstrainedOptimizationPart2 />} />}
                 />
-                
+
                 {/* Module C: Vector Fields & Approximation Theory */}
 
                 <Route
@@ -475,6 +485,10 @@ function App() {
                 <Route
                   path="/vector-fields-approximation/2"
                   element={<Layout body={<VectorFieldsApproximationPart2 />} />}
+                />
+                <Route
+                  path="/multivariable-calculus/potential-theory"
+                  element={<Layout body={<PotentialTheoryPage />} />}
                 />
 
                 {/* Taylor Series */}
