@@ -34,7 +34,9 @@ function MultivariableOverview() {
             physical vector field theory. Master surfaces, directional derivatives, tangent planes,
             constrained optimization via Lagrange multipliers, double and triple integrals in multiple
             coordinate systems, and the crown jewel theorems of vector calculus—Green's, Stokes', and
-            the Divergence Theorem.
+            the Divergence Theorem. Additional-depth modules then take you through 3D geometry, space
+            curves, coordinate transformations, advanced optimization, approximation theory, potential
+            theory, differential forms, and the calculus of variations.
           </p>
           <div className="hero-actions">
             <Link className="secondary-action" to="/courses/multivariable-calculus">
@@ -67,6 +69,9 @@ function MultivariableOverview() {
           <li>Find constrained optima in economics and engineering with Lagrange Multipliers.</li>
           <li>Compute masses, moments, and volumes of 3D solids using Cartesian, cylindrical, and spherical triple integrals.</li>
           <li>Connect microscopic circulation and flux to macroscopic boundary integrals through Green's, Gauss's, and Stokes' Theorems.</li>
+          <li>Model gravity and electrostatics with the Laplacian and harmonic functions, and read Maxwell's equations as conservation laws.</li>
+          <li>Unify Green's, Stokes' and the Divergence Theorem into one statement with differential forms and the generalized Stokes' theorem.</li>
+          <li>Evaluate the Gaussian integral behind the normal distribution, and find optimal curves and paths with the Euler–Lagrange equation.</li>
         </ul>
       </section>
 
@@ -106,10 +111,15 @@ function MultivariableOverview() {
           intuition, worked examples, and interactive MCQ checkpoints with instant score tracking.
         </p>
         <p className="la-overview-lead">
+          The additional-depth modules—<strong>Potential Theory</strong>, <strong>Differential Forms</strong>,
+          and <strong>Advanced Integration &amp; Variational Methods</strong> among them—each pair two topics
+          with a 20-question quiz per topic; the second topic's quiz unlocks once you pass the first.
+        </p>
+        <p className="la-overview-lead">
           The core certificate track covers <strong>Partial Derivatives</strong>, <strong>Vector Calculus</strong>,{" "}
           <strong>Multiple Integrals</strong>, <strong>Lagrange Multipliers</strong>,{" "}
-          <strong>Divergence &amp; Curl</strong>, and <strong>Stokes' Theorem</strong>. Complete all twelve
-          sections to unlock the 30-question final exam and earn your verifiable digital certificate.
+          <strong>Divergence &amp; Curl</strong>, and <strong>Stokes' Theorem</strong>. Complete all twenty five
+          sections to unlock the 100-question final exam and earn your verifiable digital certificate.
         </p>
       </section>
 
