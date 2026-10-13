@@ -1,6 +1,7 @@
 // src/data/mvAdvancedIntegrationQuizzes.js
 // Advanced Integration & Variational Methods (Multivariable Calculus)
 // Improper Multiple Integrals & the Gaussian Integral — 20 MCQs
+// Calculus of Variations (Euler–Lagrange Equation) — 20 MCQs
 // Format used by GuideMcqSection: { id, prompt, options[4], answer: "A" | "B" | "C" | "D", explanation }
 
 export const MV_AI_IMPROPER_QUIZ = [
@@ -179,5 +180,184 @@ export const MV_AI_IMPROPER_QUIZ = [
     answer: "D",
     explanation:
       "It factors as $\\int e^{-x^2}dx\\cdot\\int e^{-4y^2}dy=\\sqrt\\pi\\cdot\\tfrac{\\sqrt\\pi}{2}=\\tfrac{\\pi}{2}$. Equivalently $\\pi/\\sqrt{\\det A}$ with $A=\\operatorname{diag}(1,4)$.",
+  },
+];
+
+export const MV_AI_VARIATIONS_QUIZ = [
+  {
+    id: "ai-variations-1",
+    prompt: "A smooth extremal of $J[y]=\\int_a^bF(x,y,y')\\,dx$ with fixed endpoints must satisfy:",
+    options: [
+      "$\\dfrac{\\partial F}{\\partial y}-\\dfrac{d}{dx}\\dfrac{\\partial F}{\\partial y'}=0$",
+      "$\\dfrac{\\partial F}{\\partial y}+\\dfrac{\\partial F}{\\partial y'}=0$",
+      "$\\dfrac{\\partial F}{\\partial y'}=0$",
+      "$\\dfrac{d}{dx}F=0$",
+    ],
+    answer: "A",
+    explanation:
+      "Setting the first variation to zero and integrating by parts gives the Euler–Lagrange equation $F_y-\\frac{d}{dx}F_{y'}=0$.",
+  },
+  {
+    id: "ai-variations-2",
+    prompt: "When deriving the Euler–Lagrange equation with fixed endpoints, the variation $\\eta(x)$ must satisfy:",
+    options: [
+      "$\\eta'(a)=\\eta'(b)=0$",
+      "$\\eta(a)=\\eta(b)=0$",
+      "$\\eta\\equiv\\text{constant}$",
+      "$\\int_a^b\\eta\\,dx=0$",
+    ],
+    answer: "B",
+    explanation:
+      "The perturbed curve $y+\\varepsilon\\eta$ must still satisfy the boundary conditions, so $\\eta$ vanishes at both endpoints. This also kills the boundary term from integration by parts.",
+  },
+  {
+    id: "ai-variations-3",
+    prompt: "The extremals of the arc-length functional $\\int_a^b\\sqrt{1+(y')^2}\\,dx$ are:",
+    options: ["Parabolas", "Circles", "Straight lines", "Catenaries"],
+    answer: "C",
+    explanation:
+      "$F$ does not involve $y$, so $F_{y'}=y'/\\sqrt{1+y'^2}$ is constant. That forces $y'$ to be constant: the shortest path is a straight line.",
+  },
+  {
+    id: "ai-variations-4",
+    prompt: "If $F=F(x,y')$ does not depend on $y$, the Euler–Lagrange equation reduces to:",
+    options: ["$F=\\text{const}$", "$y'=0$", "$F-y'F_{y'}=\\text{const}$", "$F_{y'}=\\text{const}$"],
+    answer: "D",
+    explanation: "With $F_y=0$ the equation is $\\frac{d}{dx}F_{y'}=0$, so $F_{y'}$ is constant: a first integral.",
+  },
+  {
+    id: "ai-variations-5",
+    prompt: "If $F=F(y,y')$ has no explicit $x$, which quantity is constant along every extremal?",
+    options: ["$F-y'F_{y'}$", "$F_y$", "$F+y'F_{y'}$", "$y\\,F_{y'}$"],
+    answer: "A",
+    explanation:
+      "This is the Beltrami identity: $\\frac{d}{dx}(F-y'F_{y'})=F_x-y'\\big(F_y-\\frac{d}{dx}F_{y'}\\big)=0$ when $F_x=0$ and the Euler–Lagrange equation holds.",
+  },
+  {
+    id: "ai-variations-6",
+    prompt: "The extremal of $\\int_0^1(y'^2+y^2)\\,dx$ with $y(0)=0$, $y(1)=1$ is:",
+    options: ["$y=x$", "$y=\\dfrac{\\sinh x}{\\sinh1}$", "$y=\\sin\\!\\big(\\tfrac{\\pi x}{2}\\big)$", "$y=x^2$"],
+    answer: "B",
+    explanation:
+      "Euler–Lagrange: $2y-2y''=0$, so $y''=y$ and $y=A\\cosh x+B\\sinh x$. The boundary conditions give $A=0$, $B=1/\\sinh1$.",
+  },
+  {
+    id: "ai-variations-7",
+    prompt: "The extremal of $\\int_0^{\\pi/2}(y'^2-y^2)\\,dx$ with $y(0)=0$, $y(\\pi/2)=1$ is:",
+    options: ["$y=\\dfrac{2x}{\\pi}$", "$y=\\cos x$", "$y=\\sin x$", "$y=\\dfrac{\\sinh x}{\\sinh(\\pi/2)}$"],
+    answer: "C",
+    explanation: "Euler–Lagrange: $-2y-2y''=0$, so $y''+y=0$ and $y=A\\cos x+B\\sin x$. Then $A=0$, $B=1$.",
+  },
+  {
+    id: "ai-variations-8",
+    prompt: "The curve of fastest descent under gravity between two points (the brachistochrone) is:",
+    options: ["A straight line", "A parabola", "A circular arc", "A cycloid"],
+    answer: "D",
+    explanation:
+      "The Beltrami identity applied to $\\sqrt{1+y'^2}/\\sqrt{y}$ gives $y(1+y'^2)=\\text{const}$, whose solutions are cycloids $x=r(\\theta-\\sin\\theta)$, $y=r(1-\\cos\\theta)$.",
+  },
+  {
+    id: "ai-variations-9",
+    prompt: "Minimizing the area of a surface of revolution $2\\pi\\int y\\sqrt{1+y'^2}\\,dx$ gives profile curves of the form:",
+    options: [
+      "$y=c\\cosh\\!\\Big(\\dfrac{x-x_0}{c}\\Big)$",
+      "$y=c\\sin\\!\\Big(\\dfrac{x-x_0}{c}\\Big)$",
+      "$y=ax^2+b$",
+      "$y=ce^{x}$",
+    ],
+    answer: "A",
+    explanation:
+      "Beltrami gives $y/\\sqrt{1+y'^2}=c$, whose solutions are catenaries. Rotating a catenary gives the minimal surface called a catenoid.",
+  },
+  {
+    id: "ai-variations-10",
+    prompt: "For the Lagrangian $L=\\tfrac12m\\dot x^2-\\tfrac12kx^2$, the Euler–Lagrange equation is:",
+    options: ["$m\\dot x=-kx$", "$m\\ddot x=-kx$", "$m\\ddot x=kx$", "$\\dot x^2=x^2$"],
+    answer: "B",
+    explanation:
+      "$L_x=-kx$ and $\\frac{d}{dt}L_{\\dot x}=m\\ddot x$, so $-kx-m\\ddot x=0$: Newton's law for a spring (simple harmonic motion).",
+  },
+  {
+    id: "ai-variations-11",
+    prompt: "The Euler–Lagrange equation for the Dirichlet energy $J[u]=\\iint_D\\tfrac12|\\nabla u|^2\\,dA$ is:",
+    options: ["$\\nabla u=\\mathbf 0$", "$u_x=u_y$", "$\\nabla^2u=0$", "$|\\nabla u|=1$"],
+    answer: "C",
+    explanation:
+      "With $F=\\tfrac12(u_x^2+u_y^2)$: $F_u-\\partial_xF_{u_x}-\\partial_yF_{u_y}=-u_{xx}-u_{yy}=0$. Harmonic functions minimize the Dirichlet energy.",
+  },
+  {
+    id: "ai-variations-12",
+    prompt: "The fundamental lemma of the calculus of variations states that if $g$ is continuous and $\\int_a^bg\\,\\eta\\,dx=0$ for every smooth $\\eta$ with $\\eta(a)=\\eta(b)=0$, then:",
+    options: ["$g$ is constant", "$\\int_a^bg\\,dx=0$", "$g$ is linear", "$g\\equiv0$ on $[a,b]$"],
+    answer: "D",
+    explanation:
+      "If $g(x_0)\\neq0$, choose a bump $\\eta\\ge0$ supported near $x_0$ where $g$ keeps its sign; then $\\int g\\eta\\neq0$, a contradiction.",
+  },
+  {
+    id: "ai-variations-13",
+    prompt: "Minimize $\\int_0^1y'^2\\,dx$ subject to $\\int_0^1y\\,dx=1$ and $y(0)=y(1)=0$. The extremal is:",
+    options: ["$y=6x(1-x)$", "$y=4x(1-x)$", "$y=\\sin(\\pi x)$", "$y=x(1-x)$"],
+    answer: "A",
+    explanation:
+      "With $F^*=y'^2+\\lambda y$: $\\lambda-2y''=0$, so $y$ is a parabola vanishing at $0$ and $1$, $y=c\\,x(1-x)$. The constraint $c/6=1$ gives $c=6$.",
+  },
+  {
+    id: "ai-variations-14",
+    prompt: "The Legendre condition, necessary for an extremal to be a minimum, requires along the curve:",
+    options: ["$F_{yy}\\ge0$", "$F_{y'y'}\\ge0$", "$F_{y'}=0$", "$F_y\\le0$"],
+    answer: "B",
+    explanation:
+      "The second variation is dominated by $\\int F_{y'y'}\\eta'^2\\,dx$ for rapidly oscillating $\\eta$, so a minimum needs $F_{y'y'}\\ge0$.",
+  },
+  {
+    id: "ai-variations-15",
+    prompt: "If $y(a)$ is fixed but $y(b)$ is free, the extremal must satisfy which extra condition at $x=b$?",
+    options: ["$y(b)=0$", "$y'(b)=0$", "$\\dfrac{\\partial F}{\\partial y'}\\Big|_{x=b}=0$", "$F\\big|_{x=b}=0$"],
+    answer: "C",
+    explanation:
+      "With $\\eta(b)$ unrestricted, the boundary term $F_{y'}\\eta\\big|_{x=b}$ must vanish on its own: the natural boundary condition $F_{y'}(b)=0$.",
+  },
+  {
+    id: "ai-variations-16",
+    prompt: "The Euler–Lagrange equation for $F=y'^2+2xy$ is:",
+    options: ["$y''=-x$", "$y''=2x$", "$y''=0$", "$y''=x$"],
+    answer: "D",
+    explanation: "$F_y=2x$ and $\\frac{d}{dx}F_{y'}=2y''$, so $2x-2y''=0$, i.e. $y''=x$.",
+  },
+  {
+    id: "ai-variations-17",
+    prompt: "For a projectile with $L=\\tfrac12m(\\dot x^2+\\dot y^2)-mgy$, the Euler–Lagrange equation in $y$ gives:",
+    options: ["$\\ddot y=-g$", "$\\ddot y=g$", "$\\dot y=-g$", "$\\ddot y=0$"],
+    answer: "A",
+    explanation:
+      "$L_y=-mg$ and $\\frac{d}{dt}L_{\\dot y}=m\\ddot y$, so $\\ddot y=-g$. The $x$-equation gives $\\ddot x=0$.",
+  },
+  {
+    id: "ai-variations-18",
+    prompt: "The first variation of $J$ at $y$ in the direction $\\eta$ is defined as:",
+    options: [
+      "$J[y+\\eta]-J[y]$",
+      "$\\dfrac{d}{d\\varepsilon}J[y+\\varepsilon\\eta]\\Big|_{\\varepsilon=0}$",
+      "$\\dfrac{d^2}{d\\varepsilon^2}J[y+\\varepsilon\\eta]\\Big|_{\\varepsilon=0}$",
+      "$\\int_a^b\\eta\\,dx$",
+    ],
+    answer: "B",
+    explanation:
+      "Like a directional derivative: restrict $J$ to the one-parameter family $y+\\varepsilon\\eta$ and differentiate at $\\varepsilon=0$.",
+  },
+  {
+    id: "ai-variations-19",
+    prompt: "Maximizing the area $\\int y\\,dx$ under a curve of fixed length (the isoperimetric problem) gives extremals that are:",
+    options: ["Straight lines", "Parabolas", "Circular arcs", "Cycloids"],
+    answer: "C",
+    explanation:
+      "With a multiplier, $F^*=y+\\lambda\\sqrt{1+y'^2}$. Beltrami gives $(y-C)^2(1+y'^2)=\\lambda^2$, whose solutions are circles of radius $|\\lambda|$.",
+  },
+  {
+    id: "ai-variations-20",
+    prompt: "For the arc-length functional $J[y]=\\int_0^1\\sqrt{1+y'^2}\\,dx$, what is $J[y]$ for $y=x$?",
+    options: ["$1$", "$2$", "$\\dfrac{\\sqrt5}{2}$", "$\\sqrt2$"],
+    answer: "D",
+    explanation: "$y'=1$, so $J=\\int_0^1\\sqrt2\\,dx=\\sqrt2$: the length of the segment from $(0,0)$ to $(1,1)$.",
   },
 ];
