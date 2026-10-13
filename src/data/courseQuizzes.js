@@ -1238,6 +1238,179 @@ export const COURSE_QUIZZES = {
         ],
         correct: 1,
       },
+      // Potential Theory — Hard
+      {
+        q: "Which of the following functions is harmonic on all of R²?",
+        options: ["x³ − 3x²y", "x²y²", "x³ − 3xy²", "eˣ cos x"],
+        correct: 2,
+      },
+      {
+        q: "For which constant k is u(x,y,z) = x² + y² + kz² harmonic on R³?",
+        options: ["−1", "2", "−4", "−2"],
+        correct: 3,
+      },
+      {
+        q: "u is harmonic on the closed unit disk with boundary values u(cos θ, sin θ) = 3 + cos θ + 2 sin 2θ. What is u(1/2, 0)?",
+        options: ["7/2", "3", "4", "5/2"],
+        correct: 0,
+      },
+      {
+        q: "u is harmonic on the closed unit disk and equals x² on the unit circle. By the mean value property, what is u(0,0)?",
+        options: ["0", "1/2", "1", "1/4"],
+        correct: 1,
+      },
+      {
+        q: "In R³, with r = |x|, the fundamental-solution identity for the Laplacian is:",
+        options: [
+          "∇²(1/r) = 0 everywhere, including the origin",
+          "∇²(1/r) = 4π δ(x)",
+          "∇²(1/r) = −2π δ(x)",
+          "∇²(1/r) = −4π δ(x)",
+        ],
+        correct: 3,
+      },
+      {
+        q: "Which family gives all radially symmetric harmonic functions u(r) on R² \\ {0}?",
+        options: ["A + B/r", "A + Br²", "A + B ln r", "A + B/r²"],
+        correct: 2,
+      },
+      {
+        q: "Taking the divergence of the Ampère–Maxwell law ∇×B = μ₀J + μ₀ε₀ ∂E/∂t and using Gauss's law ∇·E = ρ/ε₀ gives:",
+        options: [
+          "∂ρ/∂t − ∇·J = 0",
+          "∂ρ/∂t + ∇·J = 0",
+          "∇·J = 0 always",
+          "∂ρ/∂t = ε₀ ∇·J",
+        ],
+        correct: 1,
+      },
+      {
+        q: "A current density J = (x²y, xy², 0) satisfies the continuity equation. What is ∂ρ/∂t at the point (1, 2, 0)?",
+        options: ["−8", "8", "4", "−4"],
+        correct: 0,
+      },
+      {
+        q: "In vacuum (ρ = 0, J = 0), Maxwell's equations imply ∇²E = μ₀ε₀ ∂²E/∂t². What is the wave speed?",
+        options: ["μ₀ε₀", "√(μ₀ε₀)", "1/√(μ₀ε₀)", "1/(μ₀ε₀)"],
+        correct: 2,
+      },
+      {
+        q: "In the Lorenz gauge ∇·A + μ₀ε₀ ∂φ/∂t = 0, the scalar potential φ satisfies ∇²φ − μ₀ε₀ ∂²φ/∂t² equal to:",
+        options: ["ρ/ε₀", "−μ₀J", "0", "−ρ/ε₀"],
+        correct: 3,
+      },
+      // Differential Forms — Hard
+      {
+        q: "For the 1-form ω = x²y dx + xy² dy on R², what is dω?",
+        options: ["(x² − y²) dx∧dy", "(x² + y²) dx∧dy", "(y² − x²) dx∧dy", "0"],
+        correct: 2,
+      },
+      {
+        q: "Simplify (dx + 2 dy) ∧ (3 dx − dy).",
+        options: ["5 dx∧dy", "7 dx∧dy", "−5 dx∧dy", "−7 dx∧dy"],
+        correct: 3,
+      },
+      {
+        q: "Evaluate ∫_C (x dy − y dx), where C is the unit circle traversed once counterclockwise.",
+        options: ["2π", "0", "π", "4π"],
+        correct: 0,
+      },
+      {
+        q: "In R³, the identity d(dω) = 0 applied to 0-forms and 1-forms corresponds to which vector-calculus identities?",
+        options: [
+          "div(∇f) = 0 and curl(curl F) = 0",
+          "curl(∇f) = 0 and div(curl F) = 0",
+          "∇(div F) = 0 and curl(∇f) = 0",
+          "div(∇f) = ∇²f and curl F = 0",
+        ],
+        correct: 1,
+      },
+      {
+        q: "On R² \\ {0}, the 1-form ω = (x dy − y dx)/(x² + y²) is:",
+        options: [
+          "Exact on R² \\ {0}",
+          "Neither closed nor exact",
+          "Exact, because every closed form is exact",
+          "Closed but not exact",
+        ],
+        correct: 3,
+      },
+      {
+        q: "For the 2-form ω = xyz dx∧dy on R³, what is dω?",
+        options: ["−xy dx∧dy∧dz", "yz dx∧dy∧dz", "xy dx∧dy∧dz", "0"],
+        correct: 2,
+      },
+      {
+        q: "Using the generalized Stokes' theorem, what is ∫ z dx∧dy over the unit sphere x² + y² + z² = 1 with outward orientation?",
+        options: ["0", "4π/3", "4π", "2π/3"],
+        correct: 1,
+      },
+      {
+        q: "What is the dimension of the space of constant-coefficient 2-forms on R⁴?",
+        options: ["6", "4", "8", "12"],
+        correct: 0,
+      },
+      {
+        q: "Let f = x²y + z. Along any smooth path C from (0,0,0) to (1,2,3), what is ∫_C df?",
+        options: ["3", "6", "5", "2"],
+        correct: 2,
+      },
+      {
+        q: "Under the polar map x = r cos θ, y = r sin θ, the pullback of dx∧dy is:",
+        options: ["dr∧dθ", "r² dr∧dθ", "−r dr∧dθ", "r dr∧dθ"],
+        correct: 3,
+      },
+      // Advanced Integration & Variational Methods — Hard
+      {
+        q: "Evaluate ∬_{R²} e^(−(x² + y²)) dA.",
+        options: ["√π", "2π", "π", "π/2"],
+        correct: 2,
+      },
+      {
+        q: "Using the Gaussian integral, evaluate ∫₀^∞ e^(−4x²) dx.",
+        options: ["√π/2", "√π/8", "π/4", "√π/4"],
+        correct: 3,
+      },
+      {
+        q: "Evaluate ∫_{−∞}^{∞} x² e^(−x²) dx.",
+        options: ["√π/2", "√π", "√π/4", "2√π"],
+        correct: 0,
+      },
+      {
+        q: "For which values of p does ∬ over the region x² + y² ≥ 1 of (x² + y²)^(−p) dA converge?",
+        options: ["p > 1/2", "p > 1", "p > 2", "p ≥ 1"],
+        correct: 1,
+      },
+      {
+        q: "Evaluate the improper integral ∬ over the unit disk x² + y² ≤ 1 of 1/√(x² + y²) dA.",
+        options: ["π", "4π", "It diverges", "2π"],
+        correct: 3,
+      },
+      {
+        q: "Using Γ(1/2) = √π, evaluate ∫₀^∞ √x e^(−x) dx.",
+        options: ["√π", "2√π", "√π/2", "π/2"],
+        correct: 2,
+      },
+      {
+        q: "What is the Euler–Lagrange equation for J[y] = ∫ (y′² + y²) dx?",
+        options: ["y″ = −y", "y″ = y", "y″ = 0", "y′ = y"],
+        correct: 1,
+      },
+      {
+        q: "Over functions with y(0) = 0 and y(1) = 2, what is the minimum value of J[y] = ∫₀¹ y′² dx?",
+        options: ["4", "2", "8", "1"],
+        correct: 0,
+      },
+      {
+        q: "If the Lagrangian L(y, y′) has no explicit x-dependence, which quantity is constant along extremals (Beltrami identity)?",
+        options: ["L + y′ ∂L/∂y′", "∂L/∂y", "L − y′ ∂L/∂y′", "y′ ∂L/∂y"],
+        correct: 2,
+      },
+      {
+        q: "What is the Euler–Lagrange equation for L = y′² − y² + 2xy?",
+        options: ["y″ − y = x", "y″ + y = −x", "y″ = x", "y″ + y = x"],
+        correct: 3,
+      },
     ],
   },
 
