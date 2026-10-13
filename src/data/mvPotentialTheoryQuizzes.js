@@ -1,6 +1,7 @@
 // src/data/mvPotentialTheoryQuizzes.js
 // Potential Theory (Multivariable Calculus)
 // The Laplacian & Harmonic Functions — 20 MCQs
+// Maxwell's Equations & the Continuity Equation — 20 MCQs
 // Format used by GuideMcqSection: { id, prompt, options[4], answer: "A" | "B" | "C" | "D", explanation }
 
 export const MV_PT_LAPLACIAN_QUIZ = [
@@ -263,5 +264,233 @@ export const MV_PT_LAPLACIAN_QUIZ = [
     answer: "B",
     explanation:
       "$\\nabla\\cdot\\mathbf{F}=\\nabla\\cdot\\nabla\\varphi=\\nabla^2\\varphi=0$: the velocity potential of an ideal flow is harmonic.",
+  },
+];
+
+export const MV_PT_MAXWELL_QUIZ = [
+  {
+    id: "pt-maxwell-1",
+    prompt: "Which equation expresses local conservation of electric charge?",
+    options: [
+      "$\\dfrac{\\partial \\rho}{\\partial t}+\\nabla\\cdot\\mathbf{J}=0$",
+      "$\\dfrac{\\partial \\rho}{\\partial t}=\\nabla\\times\\mathbf{J}$",
+      "$\\nabla\\cdot\\mathbf{J}=\\rho$",
+      "$\\dfrac{\\partial \\mathbf{J}}{\\partial t}+\\nabla\\rho=\\mathbf{0}$",
+    ],
+    answer: "A",
+    explanation:
+      "Charge lost from a region equals the net current out of it: $\\frac{d}{dt}\\iiint_E\\rho\\,dV=-\\iint_S\\mathbf J\\cdot\\mathbf n\\,dS$. The Divergence Theorem turns this into $\\partial_t\\rho+\\nabla\\cdot\\mathbf J=0$.",
+  },
+  {
+    id: "pt-maxwell-2",
+    prompt: "A current density is $\\mathbf{J}=\\langle x^2,\\,y^2,\\,z^2\\rangle$. What is $\\partial\\rho/\\partial t$ at $(1,1,1)$?",
+    options: ["$6$", "$-6$", "$3$", "$0$"],
+    answer: "B",
+    explanation:
+      "$\\nabla\\cdot\\mathbf J=2x+2y+2z=6$ at $(1,1,1)$. The continuity equation gives $\\partial_t\\rho=-\\nabla\\cdot\\mathbf J=-6$: charge density is decreasing there.",
+  },
+  {
+    id: "pt-maxwell-3",
+    prompt: "For a steady current (charge density not changing in time), the continuity equation reduces to:",
+    options: [
+      "$\\nabla\\times\\mathbf J=\\mathbf 0$",
+      "$\\mathbf J=\\mathbf 0$",
+      "$\\nabla\\cdot\\mathbf J=0$",
+      "$\\nabla^2\\mathbf J=\\mathbf 0$",
+    ],
+    answer: "C",
+    explanation:
+      "With $\\partial_t\\rho=0$, $\\nabla\\cdot\\mathbf J=0$: steady current is divergence-free, so whatever flows into a region flows out.",
+  },
+  {
+    id: "pt-maxwell-4",
+    prompt: "Gauss's law for the electric field in differential form is:",
+    options: [
+      "$\\nabla\\times\\mathbf E=\\rho/\\varepsilon_0$",
+      "$\\nabla\\cdot\\mathbf E=0$",
+      "$\\nabla\\cdot\\mathbf E=\\varepsilon_0\\rho$",
+      "$\\nabla\\cdot\\mathbf E=\\rho/\\varepsilon_0$",
+    ],
+    answer: "D",
+    explanation:
+      "Applying the Divergence Theorem to $\\iint_S\\mathbf E\\cdot d\\mathbf S=Q_{\\text{enc}}/\\varepsilon_0$ for every small region gives $\\nabla\\cdot\\mathbf E=\\rho/\\varepsilon_0$.",
+  },
+  {
+    id: "pt-maxwell-5",
+    prompt: "In some region $\\mathbf E=k\\langle x,y,z\\rangle$ for a constant $k$. What charge density produces it?",
+    options: ["$\\rho=3k\\varepsilon_0$", "$\\rho=k\\varepsilon_0$", "$\\rho=3k/\\varepsilon_0$", "$\\rho=0$"],
+    answer: "A",
+    explanation:
+      "$\\nabla\\cdot\\mathbf E=k+k+k=3k$, and Gauss's law gives $\\rho=\\varepsilon_0\\nabla\\cdot\\mathbf E=3k\\varepsilon_0$. This is the field inside a uniformly charged ball.",
+  },
+  {
+    id: "pt-maxwell-6",
+    prompt: "A point charge $q$ sits inside a closed surface $S$ of arbitrary shape. The outward flux of $\\mathbf E$ through $S$ is:",
+    options: [
+      "$\\dfrac{q}{4\\pi\\varepsilon_0}$",
+      "$\\dfrac{q}{\\varepsilon_0}$",
+      "$0$",
+      "It depends on the shape of $S$",
+    ],
+    answer: "B",
+    explanation:
+      "Gauss's law: the flux depends only on the enclosed charge, $\\iint_S\\mathbf E\\cdot d\\mathbf S=q/\\varepsilon_0$, whatever the shape.",
+  },
+  {
+    id: "pt-maxwell-7",
+    prompt: "What does $\\nabla\\cdot\\mathbf B=0$ say physically?",
+    options: [
+      "Magnetic fields are always uniform",
+      "Magnetic fields do no work",
+      "There are no magnetic monopoles: field lines have no sources or sinks",
+      "Magnetic fields are conservative",
+    ],
+    answer: "C",
+    explanation:
+      "Zero divergence means zero net flux out of every closed surface, so there is no isolated magnetic charge. Field lines close on themselves.",
+  },
+  {
+    id: "pt-maxwell-8",
+    prompt: "Which of these could be a magnetic field $\\mathbf B$?",
+    options: [
+      "$\\langle x,\\,y,\\,z\\rangle$",
+      "$\\langle x^2,\\,y,\\,-2xz\\rangle$",
+      "$\\langle x,\\,0,\\,0\\rangle$",
+      "$\\langle yz,\\,xz,\\,xy\\rangle$",
+    ],
+    answer: "D",
+    explanation:
+      "A magnetic field must have $\\nabla\\cdot\\mathbf B=0$. The divergences are $3$, $2x+1-2x=1$, $1$ and $0$; only $\\langle yz,xz,xy\\rangle$ qualifies.",
+  },
+  {
+    id: "pt-maxwell-9",
+    prompt: "Faraday's law in differential form is:",
+    options: [
+      "$\\nabla\\times\\mathbf E=-\\dfrac{\\partial\\mathbf B}{\\partial t}$",
+      "$\\nabla\\times\\mathbf B=-\\dfrac{\\partial\\mathbf E}{\\partial t}$",
+      "$\\nabla\\cdot\\mathbf E=-\\dfrac{\\partial\\mathbf B}{\\partial t}$",
+      "$\\nabla\\times\\mathbf E=\\dfrac{\\partial\\mathbf B}{\\partial t}$",
+    ],
+    answer: "A",
+    explanation:
+      "A changing magnetic field produces a circulating electric field: $\\nabla\\times\\mathbf E=-\\partial_t\\mathbf B$. The minus sign is Lenz's law.",
+  },
+  {
+    id: "pt-maxwell-10",
+    prompt: "Which theorem converts the integral form $\\oint_C\\mathbf E\\cdot d\\mathbf r=-\\frac{d}{dt}\\iint_S\\mathbf B\\cdot d\\mathbf S$ into the differential form?",
+    options: ["The Divergence Theorem", "Stokes' Theorem", "Green's first identity", "The Fundamental Theorem for line integrals"],
+    answer: "B",
+    explanation:
+      "Stokes' Theorem rewrites the circulation as $\\iint_S(\\nabla\\times\\mathbf E)\\cdot d\\mathbf S$. Since this holds for every surface, $\\nabla\\times\\mathbf E=-\\partial_t\\mathbf B$.",
+  },
+  {
+    id: "pt-maxwell-11",
+    prompt: "A circular loop of radius $0.1$ m lies in a uniform field $\\mathbf B=0.5\\sin(100t)\\,\\mathbf k$ T perpendicular to it. The maximum induced emf is about:",
+    options: ["$0.157$ V", "$0.5$ V", "$1.57$ V", "$15.7$ V"],
+    answer: "C",
+    explanation:
+      "$\\Phi_B=\\pi(0.1)^2(0.5\\sin100t)=0.005\\pi\\sin100t$, so $|\\mathcal E|=|d\\Phi_B/dt|=0.5\\pi|\\cos100t|\\le 0.5\\pi\\approx1.57$ V.",
+  },
+  {
+    id: "pt-maxwell-12",
+    prompt: "In electrostatics ($\\partial\\mathbf B/\\partial t=\\mathbf 0$), Faraday's law implies:",
+    options: [
+      "$\\mathbf E=\\mathbf 0$ everywhere",
+      "$\\nabla\\cdot\\mathbf E=0$",
+      "$\\mathbf E=\\nabla\\times\\mathbf A$ for some $\\mathbf A$",
+      "$\\mathbf E=-\\nabla\\phi$ for some potential $\\phi$",
+    ],
+    answer: "D",
+    explanation:
+      "$\\nabla\\times\\mathbf E=\\mathbf 0$ means $\\mathbf E$ is conservative (on a simply connected region), so $\\mathbf E=-\\nabla\\phi$ for an electric potential $\\phi$.",
+  },
+  {
+    id: "pt-maxwell-13",
+    prompt: "Maxwell added which term to Ampère's law $\\nabla\\times\\mathbf B=\\mu_0\\mathbf J$?",
+    options: [
+      "$\\mu_0\\varepsilon_0\\dfrac{\\partial\\mathbf E}{\\partial t}$",
+      "$-\\dfrac{\\partial\\mathbf B}{\\partial t}$",
+      "$\\mu_0\\rho\\,\\mathbf E$",
+      "$\\varepsilon_0\\nabla\\cdot\\mathbf E$",
+    ],
+    answer: "A",
+    explanation:
+      "The displacement-current term $\\mu_0\\varepsilon_0\\,\\partial_t\\mathbf E$ gives $\\nabla\\times\\mathbf B=\\mu_0\\mathbf J+\\mu_0\\varepsilon_0\\,\\partial_t\\mathbf E$.",
+  },
+  {
+    id: "pt-maxwell-14",
+    prompt: "Taking the divergence of both sides of the Ampère–Maxwell law and using Gauss's law gives:",
+    options: [
+      "Faraday's law",
+      "The continuity equation $\\partial_t\\rho+\\nabla\\cdot\\mathbf J=0$",
+      "$\\nabla\\cdot\\mathbf B=0$",
+      "Laplace's equation for $\\phi$",
+    ],
+    answer: "B",
+    explanation:
+      "$0=\\nabla\\cdot(\\nabla\\times\\mathbf B)=\\mu_0\\nabla\\cdot\\mathbf J+\\mu_0\\varepsilon_0\\partial_t(\\nabla\\cdot\\mathbf E)=\\mu_0(\\nabla\\cdot\\mathbf J+\\partial_t\\rho)$. Without Maxwell's term this would force $\\nabla\\cdot\\mathbf J=0$ always.",
+  },
+  {
+    id: "pt-maxwell-15",
+    prompt: "A long straight wire carries $I=10$ A. Using $\\mu_0=4\\pi\\times10^{-7}$ T·m/A, the field strength $5$ cm from the wire is:",
+    options: ["$4\\times10^{-6}$ T", "$2\\times10^{-5}$ T", "$4\\times10^{-5}$ T", "$4\\times10^{-4}$ T"],
+    answer: "C",
+    explanation:
+      "Ampère's law on a circle of radius $r$: $B(2\\pi r)=\\mu_0I$, so $B=\\dfrac{\\mu_0I}{2\\pi r}=\\dfrac{4\\pi\\times10^{-7}\\cdot10}{2\\pi\\cdot0.05}=4\\times10^{-5}$ T.",
+  },
+  {
+    id: "pt-maxwell-16",
+    prompt: "Between the plates of a charging capacitor, the displacement current $\\varepsilon_0\\,d\\Phi_E/dt$ equals:",
+    options: [
+      "Zero, since no charge crosses the gap",
+      "Half the current in the wires",
+      "The charge on the plates",
+      "The conduction current $I$ in the connecting wires",
+    ],
+    answer: "D",
+    explanation:
+      "With $E=Q/(\\varepsilon_0A)$, $\\Phi_E=Q/\\varepsilon_0$, so $\\varepsilon_0\\,d\\Phi_E/dt=dQ/dt=I$. This keeps $\\nabla\\times\\mathbf B$ continuous across the gap.",
+  },
+  {
+    id: "pt-maxwell-17",
+    prompt: "Combining $\\mathbf E=-\\nabla\\phi$ with Gauss's law $\\nabla\\cdot\\mathbf E=\\rho/\\varepsilon_0$ gives:",
+    options: [
+      "$\\nabla^2\\phi=-\\rho/\\varepsilon_0$",
+      "$\\nabla^2\\phi=\\rho/\\varepsilon_0$",
+      "$\\nabla\\phi=\\rho\\,\\mathbf E$",
+      "$\\nabla^2\\phi=0$ always",
+    ],
+    answer: "A",
+    explanation:
+      "$\\nabla\\cdot(-\\nabla\\phi)=-\\nabla^2\\phi=\\rho/\\varepsilon_0$: Poisson's equation, which reduces to Laplace's equation where $\\rho=0$.",
+  },
+  {
+    id: "pt-maxwell-18",
+    prompt: "In vacuum, Maxwell's equations imply each component of $\\mathbf E$ satisfies a wave equation with speed:",
+    options: ["$\\mu_0\\varepsilon_0$", "$\\dfrac{1}{\\sqrt{\\mu_0\\varepsilon_0}}$", "$\\sqrt{\\mu_0\\varepsilon_0}$", "$\\dfrac{\\mu_0}{\\varepsilon_0}$"],
+    answer: "B",
+    explanation:
+      "Taking the curl of Faraday's law gives $\\nabla^2\\mathbf E=\\mu_0\\varepsilon_0\\,\\partial_t^2\\mathbf E$, a wave equation with $c=1/\\sqrt{\\mu_0\\varepsilon_0}\\approx3.00\\times10^8$ m/s.",
+  },
+  {
+    id: "pt-maxwell-19",
+    prompt: "Inside an ohmic conductor ($\\mathbf J=\\sigma\\mathbf E$), an initial charge density $\\rho_0$ evolves as:",
+    options: [
+      "$\\rho=\\rho_0$ (constant)",
+      "$\\rho=\\rho_0\\,e^{\\sigma t/\\varepsilon_0}$",
+      "$\\rho=\\rho_0\\,e^{-\\sigma t/\\varepsilon_0}$",
+      "$\\rho=\\rho_0\\cos(\\sigma t/\\varepsilon_0)$",
+    ],
+    answer: "C",
+    explanation:
+      "$\\partial_t\\rho=-\\nabla\\cdot(\\sigma\\mathbf E)=-\\sigma\\rho/\\varepsilon_0$, so $\\rho=\\rho_0e^{-\\sigma t/\\varepsilon_0}$: free charge decays and moves to the surface.",
+  },
+  {
+    id: "pt-maxwell-20",
+    prompt: "A uniform field $\\mathbf B=B_0\\mathbf k$. What is its upward flux through the upper hemisphere $x^2+y^2+z^2=R^2$, $z\\ge0$?",
+    options: ["$0$", "$2\\pi R^2B_0$", "$4\\pi R^2B_0$", "$\\pi R^2B_0$"],
+    answer: "D",
+    explanation:
+      "Since $\\nabla\\cdot\\mathbf B=0$, the flux through the hemisphere equals the flux through the flat disk with the same boundary: $\\pi R^2B_0$.",
   },
 ];
