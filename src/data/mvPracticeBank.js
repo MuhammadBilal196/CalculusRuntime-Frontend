@@ -8,10 +8,12 @@ import {
 
 import { MV_OPTIMIZATION_PRACTICE_BANK } from "./mvOptimizationPracticeBank";
 import { MV_VECTOR_FIELDS_APPROXIMATION_PRACTICE_BANK } from "./mvVectorFieldsApproximationPracticeBank";
+import { MV_POTENTIAL_THEORY_PRACTICE_BANK } from "./mvPotentialTheoryPracticeBank";
 export const MV_PRACTICE_BANK = [
   ...MV_COORDINATE_TRANSFORMATIONS_PRACTICE_BANK,
   ...MV_OPTIMIZATION_PRACTICE_BANK,
   ...MV_VECTOR_FIELDS_APPROXIMATION_PRACTICE_BANK,
+  ...MV_POTENTIAL_THEORY_PRACTICE_BANK,
   {
     "id": 20000,
     "topic": "Partial Derivatives",
