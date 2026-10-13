@@ -44,6 +44,9 @@ const TOPIC_COLORS = {
   "optimization": "#f6d365",
   "constrained-unconstrained-optimization": "#f6d365",
   "vector-fields-approximation": "#f093fb",
+  "potential-theory": "#4facfe",
+  "differential-forms": "#a18cd1",
+  "advanced-integration": "#fa709a",
 };
 
 // ── Main page ─────────────────────────────────────────────────
