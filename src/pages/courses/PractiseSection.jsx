@@ -51,6 +51,7 @@ const TOPICS = [
   "Vector Fields & Approximation Theory",
   "Potential Theory",
   "Differential Forms",
+  "Advanced Integration & Variational Methods",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -374,6 +375,12 @@ const PRACTICE_SELECTIONS = {
     type: "module",
     banks: ["mv"],
     moduleName: "Differential Forms",
+  },
+
+  "Advanced Integration & Variational Methods": {
+    type: "module",
+    banks: ["mv"],
+    moduleName: "Advanced Integration & Variational Methods",
   },
 
   // ============================================================
