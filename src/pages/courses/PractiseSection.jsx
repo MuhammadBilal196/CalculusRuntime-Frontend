@@ -50,6 +50,7 @@ const TOPICS = [
   "Constrained & Unconstrained Optimization",
   "Vector Fields & Approximation Theory",
   "Potential Theory",
+  "Differential Forms",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -367,6 +368,12 @@ const PRACTICE_SELECTIONS = {
     type: "module",
     banks: ["mv"],
     moduleName: "Potential Theory",
+  },
+
+  "Differential Forms": {
+    type: "module",
+    banks: ["mv"],
+    moduleName: "Differential Forms",
   },
 
   // ============================================================
