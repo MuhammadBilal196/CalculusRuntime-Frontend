@@ -50,6 +50,7 @@ import ConstrainedOptimizationPart2 from "./pages/multivariableCalculus/Constrai
 import VectorFieldsApproximationPart1 from "./pages/multivariableCalculus/VectorFieldsApproximationPart1";
 import VectorFieldsApproximationPart2 from "./pages/multivariableCalculus/VectorFieldsApproximationPart2";
 import PotentialTheoryPage from "./pages/multivariableCalculus/PotentialTheoryPage";
+import DifferentialFormsPage from "./pages/multivariableCalculus/DifferentialFormsPage";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -489,6 +490,10 @@ function App() {
                 <Route
                   path="/multivariable-calculus/potential-theory"
                   element={<Layout body={<PotentialTheoryPage />} />}
+                />
+                <Route
+                  path="/multivariable-calculus/differential-forms"
+                  element={<Layout body={<DifferentialFormsPage />} />}
                 />
 
                 {/* Taylor Series */}
