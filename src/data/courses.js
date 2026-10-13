@@ -351,7 +351,8 @@ export const COURSES = [
     heroImageAlt: "Multivariable Calculus 3D Surface and Gradient Field",
     overview: {
       longDescription: [
-        "Multivariable Calculus extends single-variable analysis to multidimensional coordinate spaces and physical vector field theory. The curriculum begins with functions of several variables, level surfaces, and partial derivatives, formalizing tangent planes, total differentials, gradient vectors, and directional derivatives. We analyze unconstrained multivariable optimization alongside Lagrange Multipliers for constrained systems. The course develops multiple integration across Cartesian, polar, cylindrical, and spherical coordinates using Fubini's Theorem and Jacobian transformations. Finally, vector calculus formalizes line and surface integrals, conservative work fields, and the cornerstone integral theorems—Green's, Gauss's Divergence, and Stokes' Theorems—connecting differential field divergence and curl to macro-scale boundary fluxes across science.",
+        "Multivariable Calculus extends single-variable analysis to multidimensional coordinate spaces and physical vector field theory. The curriculum begins with functions of several variables, level surfaces, and partial derivatives, formalizing tangent planes, total differentials, gradient vectors, and directional derivatives. We analyze unconstrained multivariable optimization alongside Lagrange Multipliers for constrained systems. The course develops multiple integration across Cartesian, polar, cylindrical, and spherical coordinates using Fubini's Theorem and Jacobian transformations. Vector calculus then formalizes line and surface integrals, conservative work fields, and the cornerstone integral theorems—Green's, Gauss's Divergence, and Stokes' Theorems—connecting differential field divergence and curl to macro-scale boundary fluxes across science.",
+        "Additional-depth modules extend the core path: 3D analytical geometry and quadric surfaces; space curves with Frenet–Serret frames, curvature and torsion; coordinate transformations, curvilinear systems and flux through parameterized surfaces; the Hessian, KKT conditions, global extrema and gradient descent; and vector potentials, multivariable Taylor series, the Implicit Function Theorem and n-dimensional directional derivatives. The course closes with potential theory (the Laplacian, harmonic functions, Maxwell's equations and the continuity equation), differential forms with the exterior derivative and the generalized Stokes' theorem, and advanced integration—improper multiple integrals, the Gaussian integral and the calculus of variations via the Euler–Lagrange equation.",
       ],
       highlights: [
         "Partial derivatives, gradients & tangent planes",
@@ -360,7 +361,16 @@ export const COURSES = [
         "Line integrals, conservative fields & Green's theorem",
         "Divergence, curl & the Divergence Theorem",
         "Stokes' Theorem & surface integrals",
+        "3D analytical geometry & quadric surfaces",
+        "Space curves, Frenet–Serret frames, curvature & torsion",
+        "Jacobians, curvilinear coordinates & flux integrals",
+        "Hessian, KKT conditions & gradient descent",
+        "Vector potentials, Taylor series & the Implicit Function Theorem",
+        "Laplacian, harmonic functions & Maxwell's equations",
+        "Differential forms & the generalized Stokes' theorem",
+        "Gaussian integral & the Euler–Lagrange equation",
         "Extreme-value finder, volume calculator & vector-field visualizer",
+        "Certificate quiz — 100 MCQs, 80% to pass",
       ],
       prerequisites:
         "Single-variable calculus (limits, derivatives, integrals) and basic linear algebra.",
@@ -553,11 +563,11 @@ export const COURSES = [
       {
         title: "Certification Quiz",
         description:
-          "30 MCQs covering the full course. Score 80%+ to unlock your certificate.",
+          "100 MCQs covering the full course. Score 80%+ to unlock your certificate.",
         path: "/quiz/multivariable-calculus",
-        meta: "30 questions · 80% to pass",
+        meta: "100 questions · 80% to pass",
         icon: "✓",
-        logo: <span className="math-logo">✓ 30 MCQs · 80%</span>,
+        logo: <span className="math-logo">✓ 100 MCQs · 80%</span>,
       },
     ],
   },
