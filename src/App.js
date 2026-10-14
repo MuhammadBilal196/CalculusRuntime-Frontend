@@ -201,6 +201,20 @@ import {
   FourierPart1,
   FourierPart2,
 } from "./pages/calculus/CalcDev3Parts";
+import {
+  GammaBetaPart1,
+  GammaBetaPart2,
+  LeibnizRulePart1,
+  LeibnizRulePart2,
+  FourierTransformPart1,
+  FourierTransformPart2,
+  ZTransformPart1,
+  ZTransformPart2,
+  IntroPdesPart1,
+  IntroPdesPart2,
+  OrthogonalPolyPart1,
+  OrthogonalPolyPart2,
+} from "./pages/calculus/CalcSpecialParts";
 
 // three.js is large, so the 3D explorer loads in its own chunk only when visited.
 const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
@@ -743,6 +757,85 @@ function App() {
                 <Route
                   path="/fourier-series/2"
                   element={<Layout body={<FourierPart2 />} />}
+                />
+
+                {/* Developer 3 — Expansion: Special Functions, Transform Methods & PDEs */}
+                <Route
+                  path="/gamma-beta-functions"
+                  element={<Navigate to="/gamma-beta-functions/1" replace />}
+                />
+                <Route
+                  path="/gamma-beta-functions/1"
+                  element={<Layout body={<GammaBetaPart1 />} />}
+                />
+                <Route
+                  path="/gamma-beta-functions/2"
+                  element={<Layout body={<GammaBetaPart2 />} />}
+                />
+
+                <Route
+                  path="/leibniz-rule"
+                  element={<Navigate to="/leibniz-rule/1" replace />}
+                />
+                <Route
+                  path="/leibniz-rule/1"
+                  element={<Layout body={<LeibnizRulePart1 />} />}
+                />
+                <Route
+                  path="/leibniz-rule/2"
+                  element={<Layout body={<LeibnizRulePart2 />} />}
+                />
+
+                <Route
+                  path="/fourier-transforms"
+                  element={<Navigate to="/fourier-transforms/1" replace />}
+                />
+                <Route
+                  path="/fourier-transforms/1"
+                  element={<Layout body={<FourierTransformPart1 />} />}
+                />
+                <Route
+                  path="/fourier-transforms/2"
+                  element={<Layout body={<FourierTransformPart2 />} />}
+                />
+
+                <Route
+                  path="/z-transforms"
+                  element={<Navigate to="/z-transforms/1" replace />}
+                />
+                <Route
+                  path="/z-transforms/1"
+                  element={<Layout body={<ZTransformPart1 />} />}
+                />
+                <Route
+                  path="/z-transforms/2"
+                  element={<Layout body={<ZTransformPart2 />} />}
+                />
+
+                <Route
+                  path="/intro-pdes"
+                  element={<Navigate to="/intro-pdes/1" replace />}
+                />
+                <Route
+                  path="/intro-pdes/1"
+                  element={<Layout body={<IntroPdesPart1 />} />}
+                />
+                <Route
+                  path="/intro-pdes/2"
+                  element={<Layout body={<IntroPdesPart2 />} />}
+                />
+
+                <Route
+                  path="/orthogonal-polynomials"
+                  element={<Navigate to="/orthogonal-polynomials/1" replace />}
+                />
+                <Route
+                  path="/orthogonal-polynomials/1"
+                  element={<Layout body={<OrthogonalPolyPart1 />} />}
+                />
+                <Route
+                  path="/orthogonal-polynomials/2"
+                  element={<Layout body={<OrthogonalPolyPart2 />} />}
                 />
 
                 <Route

@@ -61,6 +61,20 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "fourier-series-1": [],
   "fourier-series-2": ["fourier-series-checkpoint"],
 
+  // Developer 3 (Expansion) — Special Functions, Transform Methods & PDEs
+  "gamma-beta-1": [],
+  "gamma-beta-2": ["gamma-beta-checkpoint"],
+  "leibniz-rule-1": [],
+  "leibniz-rule-2": ["leibniz-rule-checkpoint"],
+  "fourier-transforms-1": [],
+  "fourier-transforms-2": ["fourier-transform-checkpoint"],
+  "z-transforms-1": [],
+  "z-transforms-2": ["z-transform-checkpoint"],
+  "intro-pdes-1": [],
+  "intro-pdes-2": ["intro-pdes-checkpoint"],
+  "orthogonal-polynomials-1": [],
+  "orthogonal-polynomials-2": ["orthogonal-poly-checkpoint"],
+
   // Multivariable Calculus
   "partial-1": ["141", "142", "143"],
   "partial-2": ["144", "145", "146", "147"],
