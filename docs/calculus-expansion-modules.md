@@ -27,3 +27,6 @@ Module C formalizes boundary value problems in continuous media and orthogonal p
 ### 4.1 Introduction to PDEs (Separation of Variables)
 Specifies classification via $B^2 - 4AC$ discriminant into parabolic, hyperbolic, and elliptic regimes. Focuses explicitly on product solutions $u(x, t) = X(x)T(t)$ for the 1D Heat Equation ($u_t = \alpha^2 u_{xx}$) and 1D Wave Equation ($u_{tt} = c^2 u_{xx}$) under homogeneous Dirichlet and Neumann boundary conditions.
 
+### 4.2 Orthogonal Polynomial Families
+Analyzes Legendre polynomials $P_n(x)$ on $[-1, 1]$ ($w(x)=1$), Chebyshev polynomials $T_n(x)$ on $[-1, 1]$ ($w(x)=(1-x^2)^{-1/2}$), and Hermite polynomials $H_n(x)$ on $\mathbb{R}$ ($w(x)=e^{-x^2}$), detailing Rodrigues formulas, 3-term recurrence relations, and orthogonality norms.
+
