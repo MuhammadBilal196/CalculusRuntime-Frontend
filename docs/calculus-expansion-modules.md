@@ -134,3 +134,6 @@ Inversion of rational $Z$-transforms is standardized by expanding $Y(z)/z = \sum
 
 ### Cauchy Residue Theorem for Inverse Z-Transform Contours
 The analytical sequence recovery integral $x[n] = \frac{1}{2\pi i} \oint_C X(z) z^{n-1}\,dz$ is evaluated by summing the Cauchy residues of $X(z)z^{n-1}$ at all poles enclosed within a counterclockwise contour $C$ residing inside the ROC.
+
+### Difference Equation Characteristic Roots & System Stability
+A linear constant-coefficient difference equation is bounded-input bounded-output (BIBO) stable if and only if all poles of the system transfer function $H(z)$ reside strictly inside the unit circle: $|p_k| < 1$ for all $k$.
