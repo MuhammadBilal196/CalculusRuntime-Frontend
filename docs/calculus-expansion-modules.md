@@ -188,3 +188,6 @@ Physicists' Hermite polynomials $H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n}e^{-x^2
 
 ### Generating Functions for Classical Orthogonal Systems
 Generating functions condense entire polynomial sequences into single analytic kernels: $\frac{1}{\sqrt{1 - 2xt + t^2}} = \sum_{n=0}^\infty P_n(x)t^n$ for Legendre, and $e^{2xt - t^2} = \sum_{n=0}^\infty \frac{H_n(x)}{n!}t^n$ for Hermite.
+
+### Riemann Sum Partition Algorithms & Strip Coordinates
+The Riemann visualizer evaluates regular partitions $x_k = a + k\Delta x$ with $\Delta x = (b-a)/n$. Left, Right, and Midpoint algorithms query $f(x_k^*)$, generating polygonal SVG `<rect>` primitives scaled via affine viewbox mappings.
