@@ -74,3 +74,6 @@ The lower incomplete Gamma $\gamma(s, x) = \int_0^x t^{s-1}e^{-t}\,dt$ and upper
 
 ### Digamma & Polygamma Differential Properties
 The logarithmic derivative of the Gamma function defines the Digamma function $\psi(z) = \frac{d}{dz}\ln\Gamma(z) = \frac{\Gamma'(z)}{\Gamma(z)}$. Higher derivatives $\psi^{(m)}(z)$ provide exact closed-form sum evaluations for harmonic-type reciprocal series.
+
+### Uniform Convergence Criteria for Parametric Integrals
+Differentiation under the integral requires $f(x, t)$ and $\frac{\partial f}{\partial t}$ to be continuous on $[a, b] \times [c, d]$. For infinite intervals, the Weierstrass $M$-test for integrals ensures uniform convergence: $|\frac{\partial f}{\partial t}(x, t)| \le M(x)$ with $\int M(x)\,dx < \infty$.
