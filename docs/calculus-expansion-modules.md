@@ -173,3 +173,6 @@ For a Hilbert space $L^2([a, b], w)$, the weighted inner product is $\langle f, 
 
 ### Legendre Differential Equation & Rodrigues Formula
 Legendre polynomials $P_n(x)$ solve $(1-x^2)y'' - 2xy' + n(n+1)y = 0$ on $[-1, 1]$. Rodrigues' compact formula gives $P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n}(x^2 - 1)^n$, with normalization $h_n = \frac{2}{2n+1}$.
+
+### Bonnet Recurrence Formula for Legendre Polynomials
+The 3-term Bonnet recurrence $(n+1)P_{n+1}(x) = (2n+1)x P_n(x) - n P_{n-1}(x)$ facilitates $\mathcal{O}(n)$ stable numerical generation without higher-order derivative evaluations.
