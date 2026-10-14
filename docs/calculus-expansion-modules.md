@@ -137,3 +137,6 @@ The analytical sequence recovery integral $x[n] = \frac{1}{2\pi i} \oint_C X(z) 
 
 ### Difference Equation Characteristic Roots & System Stability
 A linear constant-coefficient difference equation is bounded-input bounded-output (BIBO) stable if and only if all poles of the system transfer function $H(z)$ reside strictly inside the unit circle: $|p_k| < 1$ for all $k$.
+
+### Classification of Second-Order PDEs via Discriminant Criterion
+The canonical 2-variable second-order equation $A u_{xx} + B u_{xt} + C u_{tt} + \dots = 0$ is categorized by the discriminant $\Delta = B^2 - 4AC$: Parabolic ($\Delta = 0$), Hyperbolic ($\Delta > 0$), and Elliptic ($\Delta < 0$).
