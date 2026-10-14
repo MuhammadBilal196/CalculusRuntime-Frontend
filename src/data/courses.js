@@ -33,7 +33,7 @@ export const COURSES = [
         "Convergence tests, power series & Taylor expansions",
         "Parabolas, ellipses, hyperbolas & analytic geometry",
         "TaylorX interactive derivative visualizer",
-        "Certificate quiz — 60 MCQs, 80% to pass",
+        "Certificate quiz — 120 MCQs, 80% to pass",
       ],
       prerequisites: "Algebra, basic trigonometry, and function notation.",
     },
