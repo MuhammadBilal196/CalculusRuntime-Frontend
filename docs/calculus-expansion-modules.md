@@ -45,3 +45,6 @@ Extends certificate question coverage to 120 total questions (adding 30 Hard MCQ
 ## 9. Practice Arena Dataset & Topic Allocation
 Introduces 150 practice questions (50 Easy, 50 Medium, 50 Hard; 25 per topic) in safe range `82300–82449`. Completely collision-free and registered in `calcAgPracticeBank.js` and `PractiseSection.jsx` under active course filtering.
 
+## 10. Study Guide Navigation & Routing Architecture
+Details top-level route definitions (`/gamma-beta-functions`, `/leibniz-rule`, `/fourier-transforms`, `/z-transforms`, `/intro-pdes`, `/orthogonal-polynomials`) paired with part segments `:partId` in `App.js` and canonical redirects.
+
