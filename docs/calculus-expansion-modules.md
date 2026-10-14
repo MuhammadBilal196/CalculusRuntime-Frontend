@@ -95,3 +95,6 @@ By introducing the damping parameter $\alpha > 0$ into $I(\alpha) = \int_0^\inft
 
 ### Laplace Transform of Parameterized Integrals
 Applying the Leibniz rule in conjunction with the Laplace transform enables solving integral equations of Volterra convolution type $y(t) = f(t) + \int_0^t K(t-\tau)y(\tau)\,d\tau$, converting convolution operations into algebraic division.
+
+### Continuous Fourier Transform Existence Conditions ($L^1$ & $L^2$)
+A signal $f(t)$ possesses a classical continuous Fourier transform if $f \in L^1(\mathbb{R})$ (absolutely integrable). Under the Plancherel extension, the Fourier transform uniquely extends to a unitary automorphism on the Hilbert space $L^2(\mathbb{R})$.
