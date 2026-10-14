@@ -62,3 +62,6 @@ For large values of $|z|$ in $|\arg z| < \pi$, Stirling's asymptotic formula pro
 
 ### Weierstrass Infinite Product Representation of Gamma
 The reciprocal Gamma function is an entire function expressible via Weierstrass product: $\frac{1}{\Gamma(z)} = z e^{\gamma z} \prod_{k=1}^\infty \left(1 + \frac{z}{k}\right) e^{-z/k}$, where $\gamma \approx 0.5772156649$ is the Euler-Mascheroni constant.
+
+### Beta Function Symmetry & Trigonometric Integrals
+The Beta function satisfies intrinsic reflection symmetry $B(x, y) = B(y, x)$. Substituting $t = \sin^2 \theta$ produces the fundamental trigonometric identity $B(x, y) = 2 \int_0^{\pi/2} \sin^{2x-1}(\theta) \cos^{2y-1}(\theta)\,d\theta$, solving Wallis-type integrals in closed algebraic forms.
