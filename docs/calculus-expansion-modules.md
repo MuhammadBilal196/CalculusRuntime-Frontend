@@ -56,3 +56,6 @@ Details full suite verification: ESLint zero-warning validation, Webpack product
 
 ### Euler Integral Formulations & Analytic Continuation
 The Gamma function $\Gamma(z)$ extends the discrete factorial operator to the complex half-plane $\text{Re}(z) > 0$. Using the fundamental recurrence $\Gamma(z+1) = z\Gamma(z)$, meromorphic continuation is achieved across the entire complex plane with simple poles at non-positive integers $z \in \{0, -1, -2, \dots\}$.
+
+### Asymptotic Expansion of the Gamma Function (Stirling's Formula)
+For large values of $|z|$ in $|\arg z| < \pi$, Stirling's asymptotic formula provides $\Gamma(z) \sim \sqrt{\frac{2\pi}{z}} \left(\frac{z}{e}\right)^z \left(1 + \frac{1}{12z} + \frac{1}{288z^2} - \dots\right)$, enabling high-precision computational estimation of factorial products.
