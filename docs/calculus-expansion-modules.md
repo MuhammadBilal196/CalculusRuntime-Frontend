@@ -197,3 +197,6 @@ The composite Simpson rule error is bounded by $|E_S| \le \frac{(b-a)^5}{180 n^4
 
 ### Live Harmonic Synthesis via Web Audio API AudioNodes
 The Fourier visualizer synthesizer dynamically allocates Web Audio `PeriodicWave` buffers, passing real Fourier cosine/sine coefficients to drive an `OscillatorNode` at 220Hz fundamental through an exponential gain envelope.
+
+### Gibbs Phenomenon Sine Integral Asymptotics Analysis
+At jump discontinuities, truncated Fourier series overshoot the function step by an asymptotic limit of $\frac{1}{\pi}\int_0^\pi \frac{\sin x}{x}\,dx - \frac{1}{2} = \frac{\text{Si}(\pi)}{\pi} - \frac{1}{2} \approx 8.949\%$, persisting regardless of harmonic order $N$.
