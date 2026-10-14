@@ -149,3 +149,6 @@ The standard boundary value problem specifies $u_t = \alpha^2 u_{xx}$ on $0 < x 
 
 ### Sturm-Liouville Eigenvalue Problem for Spatial Diffusion
 Setting $u(x, t) = X(x)T(t)$ yields $X'' + \lambda X = 0$ with $X(0) = X(L) = 0$. This eigenvalue problem forces discrete spectrum $\lambda_n = (n\pi/L)^2$ and orthogonal spatial modes $X_n(x) = \sin(n\pi x/L)$ for $n \ge 1$.
+
+### Fourier Series Coefficient Determination for Thermal Distribution
+By orthogonality of the sine modes, temporal amplitudes decay exponentially: $T_n(t) = c_n e^{-\alpha^2 (n\pi/L)^2 t}$, with coefficients determined by $c_n = \frac{2}{L}\int_0^L f(x)\sin(n\pi x/L)\,dx$.
