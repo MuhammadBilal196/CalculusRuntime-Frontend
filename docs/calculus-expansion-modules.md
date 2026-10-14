@@ -161,3 +161,6 @@ For the unbounded wave equation $u_{tt} = c^2 u_{xx}$ with initial displacement 
 
 ### Separation of Variables for Fixed-Endpoint Vibrating String
 On a bounded domain $[0, L]$, separation of variables yields harmonic temporal oscillation: $u(x, t) = \sum_{n=1}^\infty [A_n \cos(n\pi c t/L) + B_n \sin(n\pi c t/L)] \sin(n\pi x/L)$, representing standing standing wave modes.
+
+### Energy Conservation in Continuous Wave Propagation
+The total Hamiltonian energy $E(t) = \frac{1}{2} \int_0^L [\rho (u_t)^2 + T (u_x)^2]\,dx$ satisfies $\frac{dE}{dt} = 0$, proving that kinetic and elastic potential energies oscillate in perpetual conservation.
