@@ -131,3 +131,6 @@ The unilateral right-shift property $\mathcal{Z}\{y[n-k]\} = z^{-k}Y(z) + \sum_{
 
 ### Partial Fraction Decomposition in $z^{-1}$ Sequences
 Inversion of rational $Z$-transforms is standardized by expanding $Y(z)/z = \sum \frac{A_k}{z - p_k}$. Multiplying through by $z$ yields canonical terms $\frac{A_k z}{z - p_k} \leftrightarrow A_k (p_k)^n u[n]$ for distinct poles.
+
+### Cauchy Residue Theorem for Inverse Z-Transform Contours
+The analytical sequence recovery integral $x[n] = \frac{1}{2\pi i} \oint_C X(z) z^{n-1}\,dz$ is evaluated by summing the Cauchy residues of $X(z)z^{n-1}$ at all poles enclosed within a counterclockwise contour $C$ residing inside the ROC.
