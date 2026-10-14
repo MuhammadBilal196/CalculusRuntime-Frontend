@@ -119,3 +119,6 @@ The Hilbert transform $\mathcal{H}\{f\}(t) = \frac{1}{\pi} \text{p.v.} \int_{-\i
 
 ### Discrete Sequence Mapping & Sampling Foundations ($z = e^{s T_s}$)
 Under periodic sampling with interval $T_s$, the continuous Laplace transform domain maps to the discrete complex $z$-plane via conformal map $z = e^{s T_s}$. The imaginary $j\omega$ axis wraps infinitely onto the unit circle $|z| = 1$.
+
+### Region of Convergence (ROC) Boundary Theorems
+The Region of Convergence for a Laurent series in $z$ is an open annulus $R_1 < |z| < R_2$. The ROC cannot contain any poles of the transfer function $X(z)$, and its outer and inner boundaries are strictly delineated by the locations of closest singularities.
