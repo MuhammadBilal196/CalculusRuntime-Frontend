@@ -191,3 +191,6 @@ Generating functions condense entire polynomial sequences into single analytic k
 
 ### Riemann Sum Partition Algorithms & Strip Coordinates
 The Riemann visualizer evaluates regular partitions $x_k = a + k\Delta x$ with $\Delta x = (b-a)/n$. Left, Right, and Midpoint algorithms query $f(x_k^*)$, generating polygonal SVG `<rect>` primitives scaled via affine viewbox mappings.
+
+### Composite Simpson 1/3 Rule Error Metric Formulation
+The composite Simpson rule error is bounded by $|E_S| \le \frac{(b-a)^5}{180 n^4} \max_{\xi} |f^{(4)}(\xi)| = \mathcal{O}(\Delta x^4)$, providing quadratic parabolic accuracy over 3-point segment triples.
