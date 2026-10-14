@@ -33,3 +33,6 @@ Analyzes Legendre polynomials $P_n(x)$ on $[-1, 1]$ ($w(x)=1$), Chebyshev polyno
 ## 5. Riemann Sum & Numerical Integral Visualizer
 Interactive visualization workbench mounted at `/riemann-visualizer`. Employs dynamic SVG vector rendering for 5 partition rules (Left, Right, Midpoint, Trapezoid, Simpson), live parameter sliders ($n \in [1, 100]$), exact analytical comparisons, and theoretical asymptotic error order indicators ($\mathcal{O}(\Delta x)$, $\mathcal{O}(\Delta x^2)$, $\mathcal{O}(\Delta x^4)$).
 
+## 6. Fourier Harmonic Synthesizer & Gibbs Visualizer
+Mounted at `/fourier-visualizer`. Features real-time parameter synthesis over Square, Sawtooth, Triangle, and Rectified waveforms ($N \in [1, 50]$ harmonics), live frequency spectrum bar chart, Gibbs phenomenon overshoot metric ($pprox 8.949\%$), and interactive Web Audio API additive audio synthesis at 220Hz.
+
