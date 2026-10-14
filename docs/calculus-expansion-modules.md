@@ -179,3 +179,6 @@ The 3-term Bonnet recurrence $(n+1)P_{n+1}(x) = (2n+1)x P_n(x) - n P_{n-1}(x)$ f
 
 ### Chebyshev Polynomials of the First Kind & Minimax Property
 Chebyshev polynomials $T_n(x) = \cos(n \arccos x)$ solve $(1-x^2)y'' - xy' + n^2 y = 0$ with weight $w(x)=(1-x^2)^{-1/2}$. They minimize maximum deviation $\|P_n\|_\infty$ among all monic degree-$n$ polynomials on $[-1, 1]$.
+
+### Chebyshev Extremal Nodes & Runge Phenomenon Mitigation
+Interpolating continuous functions at Chebyshev roots $x_k = \cos\left(\frac{2k-1}{2n}\pi\right)$ minimizes the Lebesgue constant $\Lambda_n = \mathcal{O}(\ln n)$, suppressing the exponential Runge boundary oscillations seen in uniform grids.
