@@ -51,3 +51,5 @@ Details top-level route definitions (`/gamma-beta-functions`, `/leibniz-rule`, `
 ## 11. Section Quiz Gate Thresholds & Verification
 Implements strict 80% passing thresholds in `sectionQuizGates.js` across all 6 new topics. Gated check-in prevents premature progression until mastery is proven via 20-question checkpoint exams.
 
+## 12. Verification & Automated Quality Assurance
+Details full suite verification: ESLint zero-warning validation, Webpack production bundle generation, Jest automated test suites (`courseCompletion.test.js`, `GuideMcq.test.jsx`, `PractiseSection.test.jsx`, `App.test.js`), and Python AST compilation.
