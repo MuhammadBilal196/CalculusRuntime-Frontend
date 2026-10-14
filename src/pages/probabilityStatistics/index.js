@@ -47,3 +47,9 @@ export { default as StochasticProcessesPart2 } from "./StochasticProcessesPart2"
 export { default as CentralLimitTheoremGuide } from "./CentralLimitTheoremGuide";
 export { default as CentralLimitTheoremPart1 } from "./CentralLimitTheoremPart1";
 export { default as CentralLimitTheoremPart2 } from "./CentralLimitTheoremPart2";
+export { default as LogisticRegressionGuide } from "./LogisticRegressionGuide";
+export { default as TimeSeriesGuide } from "./TimeSeriesGuide";
+export { default as MonteCarloGuide } from "./MonteCarloGuide";
+export { default as BootstrapGuide } from "./BootstrapGuide";
+export { default as OrderStatisticsGuide } from "./OrderStatisticsGuide";
+export { default as QueueingTheoryGuide } from "./QueueingTheoryGuide";

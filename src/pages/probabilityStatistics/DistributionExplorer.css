@@ -1,0 +1,31 @@
+.de-page { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; color: inherit; }
+.de-hdr { margin-bottom: 20px; }
+.de-eye { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin: 0 0 4px; }
+.de-hdr h1 { margin: 0 0 6px; font-size: 1.8rem; }
+.de-sub { margin: 0 0 10px; opacity: 0.85; }
+.de-back { color: var(--accent, #6c63ff); text-decoration: none; font-size: 0.95rem; }
+.de-grid { display: grid; grid-template-columns: 300px 1fr; gap: 16px; }
+.de-card { background: rgba(127, 127, 127, 0.08); border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 12px; padding: 16px; }
+.de-card h2 { margin: 0 0 12px; font-size: 1rem; }
+.de-field { display: block; margin-bottom: 12px; font-size: 0.9rem; }
+.de-field span { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.de-field input[type="range"] { width: 100%; accent-color: var(--accent, #6c63ff); }
+.de-select { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid rgba(127, 127, 127, 0.4); background: transparent; color: inherit; font-size: 0.95rem; margin-bottom: 14px; }
+.de-select option { color: #111; }
+.de-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.de-stat { background: rgba(127, 127, 127, 0.08); border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 12px; padding: 12px; }
+.de-stat small { display: block; opacity: 0.75; margin-bottom: 4px; }
+.de-stat strong { font-size: 1.25rem; }
+.de-plot-title { font-size: 0.9rem; opacity: 0.85; margin: 0 0 6px; }
+.de-svg { width: 100%; height: auto; display: block; }
+.de-axis { stroke: currentColor; opacity: 0.45; }
+.de-tick { fill: currentColor; opacity: 0.7; font-size: 11px; }
+.de-curve { fill: none; stroke: var(--accent, #6c63ff); stroke-width: 2; }
+.de-shade { fill: var(--accent, #6c63ff); opacity: 0.35; }
+.de-bar { fill: currentColor; opacity: 0.25; }
+.de-bar-on { fill: var(--accent, #6c63ff); opacity: 0.8; }
+.de-note { font-size: 0.8rem; opacity: 0.7; margin-top: 8px; }
+@media (max-width: 760px) {
+  .de-grid { grid-template-columns: 1fr; }
+  .de-stats { grid-template-columns: 1fr; }
+}

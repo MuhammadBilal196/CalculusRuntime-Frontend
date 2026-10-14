@@ -119,8 +119,19 @@ import {
   HypothesisPart1,
   HypothesisPart2,
   RegressionPart1,
-  RegressionPart2,
-} from "./pages/probabilityStatistics/PsParts";
+  RegressionPart2,LogisticPart1,
+  LogisticPart2,
+  TimeSeriesPart1,
+  TimeSeriesPart2,
+  MonteCarloPart1,
+  MonteCarloPart2,
+  BootstrapPart1,
+  BootstrapPart2,
+  OrderStatsPart1,
+  OrderStatsPart2,
+  QueueingPart1,
+  QueueingPart2,
+  } from "./pages/probabilityStatistics/PsParts";
 import BayesianInferencePart1 from "./pages/probabilityStatistics/BayesianInferencePart1";
 import BayesianInferencePart2 from "./pages/probabilityStatistics/BayesianInferencePart2";
 import MaximumLikelihoodPart1 from "./pages/probabilityStatistics/MaximumLikelihoodPart1";
@@ -193,7 +204,9 @@ import {
 
 // three.js is large, so the 3D explorer loads in its own chunk only when visited.
 const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
-
+const DistributionExplorer = lazy(() => import("./pages/probabilityStatistics/DistributionExplorer"));
+const StatsCalculator = lazy(() => import("./pages/probabilityStatistics/StatsCalculator"));
+const Achievements = lazy(() => import("./pages/dashboard/Achievements"));
 function App() {
   return (
     <ThemeProvider>
@@ -1062,6 +1075,61 @@ function App() {
                 />
 
                 {/* Dev4 PS new modules */}
+                <Route path="/probability-statistics/bayesian-inference" element={<Navigate to="/probability-statistics/bayesian-inference/1" replace />} />
+                <Route path="/probability-statistics/bayesian-inference/1" element={<Layout body={<BayesianInferencePart1 />} />} />
+                <Route path="/probability-statistics/bayesian-inference/2" element={<Layout body={<BayesianInferencePart2 />} />} />
+                <Route path="/probability-statistics/maximum-likelihood" element={<Navigate to="/probability-statistics/maximum-likelihood/1" replace />} />
+                <Route path="/probability-statistics/maximum-likelihood/1" element={<Layout body={<MaximumLikelihoodPart1 />} />} />
+                <Route path="/probability-statistics/maximum-likelihood/2" element={<Layout body={<MaximumLikelihoodPart2 />} />} />
+                <Route path="/probability-statistics/confidence-intervals" element={<Navigate to="/probability-statistics/confidence-intervals/1" replace />} />
+                <Route path="/probability-statistics/confidence-intervals/1" element={<Layout body={<ConfidenceIntervalsPart1 />} />} />
+                <Route path="/probability-statistics/confidence-intervals/2" element={<Layout body={<ConfidenceIntervalsPart2 />} />} />
+                <Route path="/probability-statistics/moment-generating-functions" element={<Navigate to="/probability-statistics/moment-generating-functions/1" replace />} />
+                <Route path="/probability-statistics/moment-generating-functions/1" element={<Layout body={<MomentGeneratingFunctionsPart1 />} />} />
+                <Route path="/probability-statistics/moment-generating-functions/2" element={<Layout body={<MomentGeneratingFunctionsPart2 />} />} />
+                <Route path="/probability-statistics/anova" element={<Navigate to="/probability-statistics/anova/1" replace />} />
+                <Route path="/probability-statistics/anova/1" element={<Layout body={<AnovaPart1 />} />} />
+                <Route path="/probability-statistics/anova/2" element={<Layout body={<AnovaPart2 />} />} />
+                <Route path="/probability-statistics/chi-square-tests" element={<Navigate to="/probability-statistics/chi-square-tests/1" replace />} />
+                <Route path="/probability-statistics/chi-square-tests/1" element={<Layout body={<ChiSquareTestsPart1 />} />} />
+                <Route path="/probability-statistics/chi-square-tests/2" element={<Layout body={<ChiSquareTestsPart2 />} />} />
+                <Route path="/probability-statistics/nonparametric-tests" element={<Navigate to="/probability-statistics/nonparametric-tests/1" replace />} />
+                <Route path="/probability-statistics/nonparametric-tests/1" element={<Layout body={<NonparametricTestsPart1 />} />} />
+                <Route path="/probability-statistics/nonparametric-tests/2" element={<Layout body={<NonparametricTestsPart2 />} />} />
+                <Route path="/probability-statistics/multiple-linear-regression" element={<Navigate to="/probability-statistics/multiple-linear-regression/1" replace />} />
+                <Route path="/probability-statistics/multiple-linear-regression/1" element={<Layout body={<MultipleLinearRegressionPart1 />} />} />
+                <Route path="/probability-statistics/multiple-linear-regression/2" element={<Layout body={<MultipleLinearRegressionPart2 />} />} />
+                <Route path="/probability-statistics/joint-marginal-distributions" element={<Navigate to="/probability-statistics/joint-marginal-distributions/1" replace />} />
+                <Route path="/probability-statistics/joint-marginal-distributions/1" element={<Layout body={<JointMarginalDistributionsPart1 />} />} />
+                <Route path="/probability-statistics/joint-marginal-distributions/2" element={<Layout body={<JointMarginalDistributionsPart2 />} />} />
+                <Route path="/probability-statistics/multivariate-normal" element={<Navigate to="/probability-statistics/multivariate-normal/1" replace />} />
+                <Route path="/probability-statistics/multivariate-normal/1" element={<Layout body={<MultivariateNormalPart1 />} />} />
+                <Route path="/probability-statistics/multivariate-normal/2" element={<Layout body={<MultivariateNormalPart2 />} />} />
+                <Route path="/probability-statistics/stochastic-processes" element={<Navigate to="/probability-statistics/stochastic-processes/1" replace />} />
+                <Route path="/probability-statistics/stochastic-processes/1" element={<Layout body={<StochasticProcessesPart1 />} />} />
+                <Route path="/probability-statistics/stochastic-processes/2" element={<Layout body={<StochasticProcessesPart2 />} />} />
+                <Route path="/probability-statistics/central-limit-theorem" element={<Navigate to="/probability-statistics/central-limit-theorem/1" replace />} />
+                <Route path="/probability-statistics/central-limit-theorem/1" element={<Layout body={<CentralLimitTheoremPart1 />} />} />
+                <Route path="/probability-statistics/central-limit-theorem/2" element={<Layout body={<CentralLimitTheoremPart2 />} />} />
+                                {/* Dev 4 - Logistic, Time Series, Monte Carlo, Bootstrap, Order Stats, Queueing */}
+                                <Route path="/probability-statistics/logistic-regression" element={<Navigate to="/probability-statistics/logistic-regression/1" replace />} />
+                <Route path="/probability-statistics/logistic-regression/1" element={<Layout body={<LogisticPart1 />} />} />
+                <Route path="/probability-statistics/logistic-regression/2" element={<Layout body={<LogisticPart2 />} />} />
+                <Route path="/probability-statistics/time-series" element={<Navigate to="/probability-statistics/time-series/1" replace />} />
+                <Route path="/probability-statistics/time-series/1" element={<Layout body={<TimeSeriesPart1 />} />} />
+                <Route path="/probability-statistics/time-series/2" element={<Layout body={<TimeSeriesPart2 />} />} />
+                <Route path="/probability-statistics/monte-carlo" element={<Navigate to="/probability-statistics/monte-carlo/1" replace />} />
+                <Route path="/probability-statistics/monte-carlo/1" element={<Layout body={<MonteCarloPart1 />} />} />
+                <Route path="/probability-statistics/monte-carlo/2" element={<Layout body={<MonteCarloPart2 />} />} />
+                <Route path="/probability-statistics/bootstrap" element={<Navigate to="/probability-statistics/bootstrap/1" replace />} />
+                <Route path="/probability-statistics/bootstrap/1" element={<Layout body={<BootstrapPart1 />} />} />
+                <Route path="/probability-statistics/bootstrap/2" element={<Layout body={<BootstrapPart2 />} />} />
+                <Route path="/probability-statistics/order-statistics" element={<Navigate to="/probability-statistics/order-statistics/1" replace />} />
+                <Route path="/probability-statistics/order-statistics/1" element={<Layout body={<OrderStatsPart1 />} />} />
+                <Route path="/probability-statistics/order-statistics/2" element={<Layout body={<OrderStatsPart2 />} />} />
+                <Route path="/probability-statistics/queueing-theory" element={<Navigate to="/probability-statistics/queueing-theory/1" replace />} />
+                <Route path="/probability-statistics/queueing-theory/1" element={<Layout body={<QueueingPart1 />} />} />
+                <Route path="/probability-statistics/queueing-theory/2" element={<Layout body={<QueueingPart2 />} />} />
                 <Route
                   path="/probability-statistics/bayesian-inference"
                   element={
@@ -1280,6 +1348,10 @@ function App() {
                   path="/volumecalculator"
                   element={<Layout body={<VolumeCalculator />} />}
                 />
+                <Route 
+                path="/distribution-explorer" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading explorer…" fullPage />}><DistributionExplorer /></Suspense>} />} />
+                <Route path="/stats-calculator" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading calculator…" fullPage />}><StatsCalculator /></Suspense>} />} />
+                <Route path="/achievements" element={<Layout body={<Suspense fallback={<LoadingSpinner size="lg" text="Loading badges…" fullPage />}><Achievements /></Suspense>} />} />
                 <Route
                   path="/analytic-vector-lab"
                   element={<Layout body={<AnalyticVectorLab />} />}

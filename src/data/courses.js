@@ -802,6 +802,32 @@ export const COURSES = [
         ),
       },
       {
+        title: "Distribution Explorer",
+        description:
+          "Explore Normal, Binomial, Poisson, Exponential, t and chi-square distributions with live sliders.",
+        path: "/distribution-explorer",
+        meta: "Interactive tool",
+        icon: "📈",
+        logo: <span className="math-logo">f(x) = P(X = x)</span>,
+      },
+      {
+        title: "Statistics Calculator",
+        description:
+          "Descriptive statistics, t-tests and regression from your own data, with the working shown.",
+        path: "/stats-calculator",
+        meta: "Interactive tool",
+        icon: "🧮",
+        logo: <span className="math-logo">x̄ ± t*·s/√n</span>,
+      },
+      {
+        title: "Badges & Achievements",
+        description: "See which badges you have unlocked and how close you are to the next one.",
+        path: "/achievements",
+        meta: "Your progress",
+        icon: "🏅",
+        logo: <span className="math-logo">🏅 5 badges</span>,
+      },
+      {
         title: "Random Variables & Distributions",
         description:
           "Discrete and continuous random variables, PMFs, PDFs, expectation, and variance.",

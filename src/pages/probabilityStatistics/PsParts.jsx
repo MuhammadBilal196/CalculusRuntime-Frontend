@@ -1,3 +1,9 @@
+import LogisticRegressionGuide from "./LogisticRegressionGuide";
+import TimeSeriesGuide from "./TimeSeriesGuide";
+import MonteCarloGuide from "./MonteCarloGuide";
+import BootstrapGuide from "./BootstrapGuide";
+import OrderStatisticsGuide from "./OrderStatisticsGuide";
+import QueueingTheoryGuide from "./QueueingTheoryGuide";
 import PsTopicPart from "./PsTopicPart";
 import ProbabilityBasicsGuide from "./ProbabilityBasicsGuide";
 import RandomVariablesGuide from "./RandomVariablesGuide";
@@ -138,6 +144,171 @@ export function RegressionPart2() {
       title="Regression & Correlation — Section 2"
       path="/probability-statistics/regression-correlation/2"
       Guide={RegressionGuide}
+      part={2}
+      courseId="probability-statistics"
+      nextPath="/courses/probability-statistics"
+      nextLabel="Back to Probability & Statistics course hub"
+    />
+  );
+}
+// A: Statistical Modelling
+export function LogisticPart1() {
+  return (
+    <PsTopicPart
+      sectionId="ps-logistic-1"
+      title="Logistic Regression — Section 1"
+      path="/probability-statistics/logistic-regression/1"
+      Guide={LogisticRegressionGuide}
+      part={1}
+      nextPath="/probability-statistics/logistic-regression/2"
+      nextLabel="GLMs & Interpretation"
+    />
+  );
+}
+export function LogisticPart2() {
+  return (
+    <PsTopicPart
+      sectionId="ps-logistic-2"
+      title="Logistic Regression — Section 2"
+      path="/probability-statistics/logistic-regression/2"
+      Guide={LogisticRegressionGuide}
+      part={2}
+      nextPath="/probability-statistics/time-series/1"
+      nextLabel="Time Series Analysis"
+    />
+  );
+}
+
+export function TimeSeriesPart1() {
+  return (
+    <PsTopicPart
+      sectionId="ps-timeseries-1"
+      title="Time Series — Section 1"
+      path="/probability-statistics/time-series/1"
+      Guide={TimeSeriesGuide}
+      part={1}
+      nextPath="/probability-statistics/time-series/2"
+      nextLabel="ARIMA & Forecasting"
+    />
+  );
+}
+export function TimeSeriesPart2() {
+  return (
+    <PsTopicPart
+      sectionId="ps-timeseries-2"
+      title="Time Series — Section 2"
+      path="/probability-statistics/time-series/2"
+      Guide={TimeSeriesGuide}
+      part={2}
+      nextPath="/probability-statistics/monte-carlo/1"
+      nextLabel="Monte Carlo Simulation"
+    />
+  );
+}
+
+// B: Computational Statistics
+export function MonteCarloPart1() {
+  return (
+    <PsTopicPart
+      sectionId="ps-montecarlo-1"
+      title="Monte Carlo — Section 1"
+      path="/probability-statistics/monte-carlo/1"
+      Guide={MonteCarloGuide}
+      part={1}
+      nextPath="/probability-statistics/monte-carlo/2"
+      nextLabel="Random Variate Generation"
+    />
+  );
+}
+export function MonteCarloPart2() {
+  return (
+    <PsTopicPart
+      sectionId="ps-montecarlo-2"
+      title="Monte Carlo — Section 2"
+      path="/probability-statistics/monte-carlo/2"
+      Guide={MonteCarloGuide}
+      part={2}
+      nextPath="/probability-statistics/bootstrap/1"
+      nextLabel="Bootstrap & Resampling"
+    />
+  );
+}
+
+export function BootstrapPart1() {
+  return (
+    <PsTopicPart
+      sectionId="ps-bootstrap-1"
+      title="Bootstrap — Section 1"
+      path="/probability-statistics/bootstrap/1"
+      Guide={BootstrapGuide}
+      part={1}
+      nextPath="/probability-statistics/bootstrap/2"
+      nextLabel="Confidence Intervals & Tests"
+    />
+  );
+}
+export function BootstrapPart2() {
+  return (
+    <PsTopicPart
+      sectionId="ps-bootstrap-2"
+      title="Bootstrap — Section 2"
+      path="/probability-statistics/bootstrap/2"
+      Guide={BootstrapGuide}
+      part={2}
+      nextPath="/probability-statistics/order-statistics/1"
+      nextLabel="Order Statistics"
+    />
+  );
+}
+
+// C: Applied Probability
+export function OrderStatsPart1() {
+  return (
+    <PsTopicPart
+      sectionId="ps-orderstats-1"
+      title="Order Statistics — Section 1"
+      path="/probability-statistics/order-statistics/1"
+      Guide={OrderStatisticsGuide}
+      part={1}
+      nextPath="/probability-statistics/order-statistics/2"
+      nextLabel="Extreme Values"
+    />
+  );
+}
+export function OrderStatsPart2() {
+  return (
+    <PsTopicPart
+      sectionId="ps-orderstats-2"
+      title="Order Statistics — Section 2"
+      path="/probability-statistics/order-statistics/2"
+      Guide={OrderStatisticsGuide}
+      part={2}
+      nextPath="/probability-statistics/queueing-theory/1"
+      nextLabel="Queueing Theory"
+    />
+  );
+}
+
+export function QueueingPart1() {
+  return (
+    <PsTopicPart
+      sectionId="ps-queueing-1"
+      title="Queueing Theory — Section 1"
+      path="/probability-statistics/queueing-theory/1"
+      Guide={QueueingTheoryGuide}
+      part={1}
+      nextPath="/probability-statistics/queueing-theory/2"
+      nextLabel="M/M/c Models"
+    />
+  );
+}
+export function QueueingPart2() {
+  return (
+    <PsTopicPart
+      sectionId="ps-queueing-2"
+      title="Queueing Theory — Section 2"
+      path="/probability-statistics/queueing-theory/2"
+      Guide={QueueingTheoryGuide}
       part={2}
       courseId="probability-statistics"
       nextPath="/courses/probability-statistics"

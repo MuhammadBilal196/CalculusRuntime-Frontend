@@ -1,0 +1,37 @@
+.sc-page { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; color: inherit; }
+.sc-hdr { margin-bottom: 18px; }
+.sc-eye { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin: 0 0 4px; }
+.sc-hdr h1 { margin: 0 0 6px; font-size: 1.8rem; }
+.sc-sub { margin: 0 0 10px; opacity: 0.85; }
+.sc-back { color: var(--accent, #6c63ff); text-decoration: none; font-size: 0.95rem; }
+.sc-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.sc-tab { padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(127, 127, 127, 0.4); background: transparent; color: inherit; cursor: pointer; font-size: 0.9rem; }
+.sc-tab.on { background: var(--accent, #6c63ff); border-color: var(--accent, #6c63ff); color: #fff; }
+.sc-card { background: rgba(127, 127, 127, 0.08); border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+.sc-card h2 { margin: 0 0 10px; font-size: 1rem; }
+.sc-label { display: block; font-size: 0.85rem; opacity: 0.85; margin: 8px 0 4px; }
+.sc-area, .sc-input, .sc-select { width: 100%; box-sizing: border-box; padding: 8px; border-radius: 8px; border: 1px solid rgba(127, 127, 127, 0.4); background: transparent; color: inherit; font: inherit; }
+.sc-area { min-height: 100px; font-family: ui-monospace, Menlo, monospace; font-size: 0.85rem; }
+.sc-select option { color: #111; }
+.sc-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.sc-check { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 0.9rem; }
+.sc-warn { color: #e0902f; font-size: 0.85rem; margin-top: 6px; }
+.sc-error { color: #e5484d; margin: 0; }
+.sc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.sc-stat { border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 10px; padding: 10px; }
+.sc-stat small { display: block; opacity: 0.75; margin-bottom: 2px; }
+.sc-stat strong { font-size: 1.1rem; }
+.sc-verdict { margin: 12px 0 0; font-weight: 600; }
+.sc-work { margin-top: 12px; }
+.sc-work summary { cursor: pointer; font-weight: 600; }
+.sc-work ol { margin: 8px 0 0; padding-left: 20px; line-height: 1.6; font-size: 0.9rem; }
+.sc-svg { width: 100%; height: auto; display: block; margin-top: 10px; }
+.sc-axis { stroke: currentColor; opacity: 0.45; }
+.sc-tick { fill: currentColor; opacity: 0.7; font-size: 11px; }
+.sc-bar { fill: var(--accent, #6c63ff); opacity: 0.75; }
+.sc-dot { fill: var(--accent, #6c63ff); }
+.sc-line { stroke: #e5484d; stroke-width: 2; }
+@media (max-width: 760px) {
+  .sc-row { grid-template-columns: 1fr; }
+  .sc-grid { grid-template-columns: repeat(2, 1fr); }
+}
