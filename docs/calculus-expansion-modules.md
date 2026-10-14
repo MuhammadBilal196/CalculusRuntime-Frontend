@@ -200,3 +200,6 @@ The Fourier visualizer synthesizer dynamically allocates Web Audio `PeriodicWave
 
 ### Gibbs Phenomenon Sine Integral Asymptotics Analysis
 At jump discontinuities, truncated Fourier series overshoot the function step by an asymptotic limit of $\frac{1}{\pi}\int_0^\pi \frac{\sin x}{x}\,dx - \frac{1}{2} = \frac{\text{Si}(\pi)}{\pi} - \frac{1}{2} \approx 8.949\%$, persisting regardless of harmonic order $N$.
+
+### Deterministic Calendar Hashing & Activity Streak Engine
+Daily challenges compute a deterministic hash $H = \sum_{i=0}^9 s[i] \times 31^{9-i} \pmod M$ on the ISO date `YYYY-MM-DD`. The resulting integer selects the daily problem, while `localStorage` activity arrays maintain uninterrupted streak counters.
