@@ -125,3 +125,6 @@ The Region of Convergence for a Laurent series in $z$ is an open annulus $R_1 < 
 
 ### Unilateral vs Bilateral Z-Transform Formulations
 While the bilateral transform spans $n \in (-\infty, \infty)$, the unilateral transform $X(z) = \sum_{n=0}^\infty x[n]z^{-n}$ intrinsically encodes initial conditions $x[-1], x[-2]$ for causal dynamical systems and recursive filters.
+
+### Z-Domain Shift Properties & Initial Condition Ingestion
+The unilateral right-shift property $\mathcal{Z}\{y[n-k]\} = z^{-k}Y(z) + \sum_{m=1}^k y[-m]z^{-(k-m)}$ enables exact algebraic conversion of initial value difference equations into closed polynomial forms.
