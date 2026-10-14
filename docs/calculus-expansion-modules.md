@@ -167,3 +167,6 @@ The total Hamiltonian energy $E(t) = \frac{1}{2} \int_0^L [\rho (u_t)^2 + T (u_x
 
 ### Sturm-Liouville Theory & Self-Adjoint Differential Operators
 Linear differential operators of the form $L[y] = -[p(x)y']' + q(x)y = \lambda w(x)y$ are formally self-adjoint. Their eigenvalues are real, countable, and bounded from below, with strictly orthogonal eigenfunctions under weight $w(x)$.
+
+### Orthogonality Weight Functions & Inner Product Definitions
+For a Hilbert space $L^2([a, b], w)$, the weighted inner product is $\langle f, g \rangle_w = \int_a^b f(x)g(x)w(x)\,dx$. Orthogonal polynomial sequences satisfy $\langle \phi_m, \phi_n \rangle_w = h_n \delta_{mn}$.
