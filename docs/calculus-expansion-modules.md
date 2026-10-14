@@ -104,3 +104,6 @@ The Riemann-Lebesgue lemma asserts that if $f \in L^1(\mathbb{R})$, then $\lim_{
 
 ### Fourier Transform of Derivatives & Polynomial Multiplications
 Operational symmetries state $\mathcal{F}\{f^{(n)}(t)\} = (i\omega)^n F(\omega)$ and $\mathcal{F}\{(-it)^n f(t)\} = F^{(n)}(\omega)$, transforming ordinary and partial differential operators into multiplication by algebraic polynomials.
+
+### Convolution Theorem Derivation via Fubini-Tonelli
+By expressing $(f * g)(t) = \int_{-\infty}^\infty f(\tau)g(t-\tau)\,d\tau$, Fubini's theorem permits exchanging integration order: $\int_{-\infty}^\infty e^{-i\omega t} \int f(\tau)g(t-\tau)\,d\tau dt = \int f(\tau) e^{-i\omega \tau} [\int g(u) e^{-i\omega u} du] d\tau = F(\omega)G(\omega)$.
