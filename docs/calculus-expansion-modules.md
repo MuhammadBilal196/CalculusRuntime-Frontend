@@ -122,3 +122,6 @@ Under periodic sampling with interval $T_s$, the continuous Laplace transform do
 
 ### Region of Convergence (ROC) Boundary Theorems
 The Region of Convergence for a Laurent series in $z$ is an open annulus $R_1 < |z| < R_2$. The ROC cannot contain any poles of the transfer function $X(z)$, and its outer and inner boundaries are strictly delineated by the locations of closest singularities.
+
+### Unilateral vs Bilateral Z-Transform Formulations
+While the bilateral transform spans $n \in (-\infty, \infty)$, the unilateral transform $X(z) = \sum_{n=0}^\infty x[n]z^{-n}$ intrinsically encodes initial conditions $x[-1], x[-2]$ for causal dynamical systems and recursive filters.
