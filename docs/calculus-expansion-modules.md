@@ -176,3 +176,6 @@ Legendre polynomials $P_n(x)$ solve $(1-x^2)y'' - 2xy' + n(n+1)y = 0$ on $[-1, 1
 
 ### Bonnet Recurrence Formula for Legendre Polynomials
 The 3-term Bonnet recurrence $(n+1)P_{n+1}(x) = (2n+1)x P_n(x) - n P_{n-1}(x)$ facilitates $\mathcal{O}(n)$ stable numerical generation without higher-order derivative evaluations.
+
+### Chebyshev Polynomials of the First Kind & Minimax Property
+Chebyshev polynomials $T_n(x) = \cos(n \arccos x)$ solve $(1-x^2)y'' - xy' + n^2 y = 0$ with weight $w(x)=(1-x^2)^{-1/2}$. They minimize maximum deviation $\|P_n\|_\infty$ among all monic degree-$n$ polynomials on $[-1, 1]$.
