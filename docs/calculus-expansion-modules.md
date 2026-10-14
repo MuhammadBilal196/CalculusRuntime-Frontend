@@ -158,3 +158,6 @@ The weak and strong maximum principles dictate that temperature extrema in a bou
 
 ### 1D Wave Equation Cauchy Problem & d'Alembert Formula
 For the unbounded wave equation $u_{tt} = c^2 u_{xx}$ with initial displacement $u(x,0) = f(x)$ and velocity $u_t(x,0) = g(x)$, d'Alembert's closed form gives $u(x,t) = \frac{1}{2}[f(x-ct) + f(x+ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} g(s)\,ds$.
+
+### Separation of Variables for Fixed-Endpoint Vibrating String
+On a bounded domain $[0, L]$, separation of variables yields harmonic temporal oscillation: $u(x, t) = \sum_{n=1}^\infty [A_n \cos(n\pi c t/L) + B_n \sin(n\pi c t/L)] \sin(n\pi x/L)$, representing standing standing wave modes.
