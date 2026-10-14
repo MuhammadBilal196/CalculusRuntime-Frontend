@@ -170,3 +170,6 @@ Linear differential operators of the form $L[y] = -[p(x)y']' + q(x)y = \lambda w
 
 ### Orthogonality Weight Functions & Inner Product Definitions
 For a Hilbert space $L^2([a, b], w)$, the weighted inner product is $\langle f, g \rangle_w = \int_a^b f(x)g(x)w(x)\,dx$. Orthogonal polynomial sequences satisfy $\langle \phi_m, \phi_n \rangle_w = h_n \delta_{mn}$.
+
+### Legendre Differential Equation & Rodrigues Formula
+Legendre polynomials $P_n(x)$ solve $(1-x^2)y'' - 2xy' + n(n+1)y = 0$ on $[-1, 1]$. Rodrigues' compact formula gives $P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n}(x^2 - 1)^n$, with normalization $h_n = \frac{2}{2n+1}$.
