@@ -83,3 +83,6 @@ The difference quotient $\frac{I(t+h) - I(t)}{h} = \int_a^b \frac{f(x, t+h) - f(
 
 ### Variable Limits Differentiation & Chain Rule Application
 When integration bounds $a(t)$ and $b(t)$ are themselves differentiable functions of parameter $t$, Leibniz's complete rule combines the fundamental theorem of calculus with partial differentiation: $I'(t) = f(b(t), t)b'(t) - f(a(t), t)a'(t) + \int_{a(t)}^{b(t)} \frac{\partial f}{\partial t}\,dx$.
+
+### Feynman Parametric Integration: The Frullani Integral
+Frullani integrals of the archetype $\int_0^\infty \frac{f(ax) - f(bx)}{x}\,dx$ are resolved by expressing the integrand as a parametric derivative $\int_b^a f'(xy)\,dy$ and interchanging limits to yield $(f(\infty) - f(0))\ln(a/b)$.
