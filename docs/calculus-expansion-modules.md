@@ -24,3 +24,6 @@ Covers the discrete complex Laurent transform $X(z) = \sum_{n=-\infty}^\infty x[
 ## 4. Partial Differential Equations & Polynomial Families (Module C)
 Module C formalizes boundary value problems in continuous media and orthogonal polynomial expansions under Sturm-Liouville inner product spaces.
 
+### 4.1 Introduction to PDEs (Separation of Variables)
+Specifies classification via $B^2 - 4AC$ discriminant into parabolic, hyperbolic, and elliptic regimes. Focuses explicitly on product solutions $u(x, t) = X(x)T(t)$ for the 1D Heat Equation ($u_t = \alpha^2 u_{xx}$) and 1D Wave Equation ($u_{tt} = c^2 u_{xx}$) under homogeneous Dirichlet and Neumann boundary conditions.
+
