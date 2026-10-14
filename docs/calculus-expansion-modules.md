@@ -152,3 +152,6 @@ Setting $u(x, t) = X(x)T(t)$ yields $X'' + \lambda X = 0$ with $X(0) = X(L) = 0$
 
 ### Fourier Series Coefficient Determination for Thermal Distribution
 By orthogonality of the sine modes, temporal amplitudes decay exponentially: $T_n(t) = c_n e^{-\alpha^2 (n\pi/L)^2 t}$, with coefficients determined by $c_n = \frac{2}{L}\int_0^L f(x)\sin(n\pi x/L)\,dx$.
+
+### Maximum Principle & Uniqueness of Heat Conduction
+The weak and strong maximum principles dictate that temperature extrema in a bounded spatio-temporal cylinder $\bar{\Omega}_T$ occur strictly on the initial line $t=0$ or lateral boundaries $x \in \{0, L\}$, guaranteeing uniqueness of physical solutions.
