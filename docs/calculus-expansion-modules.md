@@ -113,3 +113,6 @@ The Fourier transform preserves inner products on $L^2$: $\langle f, g \rangle =
 
 ### Fourier Transform of the Gaussian & Minimum Uncertainty
 The standard Gaussian $f(t) = e^{-a t^2}$ has the invariant transform $F(\omega) = \sqrt{\frac{\pi}{a}} e^{-\frac{\omega^2}{4a}}$. It uniquely minimizes the Heisenberg-Gabor uncertainty product $\Delta t \cdot \Delta \omega = 1/2$.
+
+### Cauchy Principal Value & Hilbert Transform Relationships
+The Hilbert transform $\mathcal{H}\{f\}(t) = \frac{1}{\pi} \text{p.v.} \int_{-\infty}^\infty \frac{f(\tau)}{t-\tau}\,d\tau$ corresponds in the frequency domain to multiplication by $-i \,\text{sgn}(\omega)$, forming analytic signals in single-sideband communications.
