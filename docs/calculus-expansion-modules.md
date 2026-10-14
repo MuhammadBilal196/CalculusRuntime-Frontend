@@ -71,3 +71,6 @@ Dirichlet's integral extends Euler Beta integrals to $n$-dimensional simplices: 
 
 ### Incomplete Gamma & Beta Functions in Statistical Applications
 The lower incomplete Gamma $\gamma(s, x) = \int_0^x t^{s-1}e^{-t}\,dt$ and upper incomplete Gamma $\Gamma(s, x) = \int_x^\infty t^{s-1}e^{-t}\,dt$ govern cumulative chi-square, Poisson, and gamma distributions across numerical probability theory.
+
+### Digamma & Polygamma Differential Properties
+The logarithmic derivative of the Gamma function defines the Digamma function $\psi(z) = \frac{d}{dz}\ln\Gamma(z) = \frac{\Gamma'(z)}{\Gamma(z)}$. Higher derivatives $\psi^{(m)}(z)$ provide exact closed-form sum evaluations for harmonic-type reciprocal series.
