@@ -164,3 +164,6 @@ On a bounded domain $[0, L]$, separation of variables yields harmonic temporal o
 
 ### Energy Conservation in Continuous Wave Propagation
 The total Hamiltonian energy $E(t) = \frac{1}{2} \int_0^L [\rho (u_t)^2 + T (u_x)^2]\,dx$ satisfies $\frac{dE}{dt} = 0$, proving that kinetic and elastic potential energies oscillate in perpetual conservation.
+
+### Sturm-Liouville Theory & Self-Adjoint Differential Operators
+Linear differential operators of the form $L[y] = -[p(x)y']' + q(x)y = \lambda w(x)y$ are formally self-adjoint. Their eigenvalues are real, countable, and bounded from below, with strictly orthogonal eigenfunctions under weight $w(x)$.
