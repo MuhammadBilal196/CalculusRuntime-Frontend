@@ -116,3 +116,6 @@ The standard Gaussian $f(t) = e^{-a t^2}$ has the invariant transform $F(\omega)
 
 ### Cauchy Principal Value & Hilbert Transform Relationships
 The Hilbert transform $\mathcal{H}\{f\}(t) = \frac{1}{\pi} \text{p.v.} \int_{-\infty}^\infty \frac{f(\tau)}{t-\tau}\,d\tau$ corresponds in the frequency domain to multiplication by $-i \,\text{sgn}(\omega)$, forming analytic signals in single-sideband communications.
+
+### Discrete Sequence Mapping & Sampling Foundations ($z = e^{s T_s}$)
+Under periodic sampling with interval $T_s$, the continuous Laplace transform domain maps to the discrete complex $z$-plane via conformal map $z = e^{s T_s}$. The imaginary $j\omega$ axis wraps infinitely onto the unit circle $|z| = 1$.
