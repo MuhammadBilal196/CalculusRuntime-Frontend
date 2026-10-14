@@ -128,3 +128,6 @@ While the bilateral transform spans $n \in (-\infty, \infty)$, the unilateral tr
 
 ### Z-Domain Shift Properties & Initial Condition Ingestion
 The unilateral right-shift property $\mathcal{Z}\{y[n-k]\} = z^{-k}Y(z) + \sum_{m=1}^k y[-m]z^{-(k-m)}$ enables exact algebraic conversion of initial value difference equations into closed polynomial forms.
+
+### Partial Fraction Decomposition in $z^{-1}$ Sequences
+Inversion of rational $Z$-transforms is standardized by expanding $Y(z)/z = \sum \frac{A_k}{z - p_k}$. Multiplying through by $z$ yields canonical terms $\frac{A_k z}{z - p_k} \leftrightarrow A_k (p_k)^n u[n]$ for distinct poles.
