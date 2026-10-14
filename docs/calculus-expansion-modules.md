@@ -18,3 +18,6 @@ Module B bridges time/spatial domain representations into frequency and complex 
 ### 3.1 Continuous Fourier Transform & Convolution
 Covers forward $\mathcal{F}\{f(t)\} = \int_{-\infty}^\infty f(t) e^{-i\omega t}\,dt$ and inverse $\mathcal{F}^{-1}$ transforms, the time-convolution to spectral-multiplication theorem $(f * g)(t) \leftrightarrow F(\omega)G(\omega)$, and Parseval-Plancherel energy conservation $\|f\|_{L^2}^2 = \frac{1}{2\pi}\|F\|_{L^2}^2$.
 
+### 3.2 Z-Transform & Difference Equations
+Covers the discrete complex Laurent transform $X(z) = \sum_{n=-\infty}^\infty x[n]z^{-n}$, region of convergence (ROC) annular geometry, stability mapping via $z = e^{s T_s}$, and algebraic solution of $N$-th order linear difference equations using partial fractions.
+
