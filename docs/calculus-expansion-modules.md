@@ -110,3 +110,6 @@ By expressing $(f * g)(t) = \int_{-\infty}^\infty f(\tau)g(t-\tau)\,d\tau$, Fubi
 
 ### Parseval-Plancherel Energy Isometry & Hilbert Space Norms
 The Fourier transform preserves inner products on $L^2$: $\langle f, g \rangle = \frac{1}{2\pi} \langle F, G \rangle$. Consequently, total signal energy in time equals the area under the energy spectral density curve $\frac{1}{2\pi}\int |F(\omega)|^2\,d\omega$.
+
+### Fourier Transform of the Gaussian & Minimum Uncertainty
+The standard Gaussian $f(t) = e^{-a t^2}$ has the invariant transform $F(\omega) = \sqrt{\frac{\pi}{a}} e^{-\frac{\omega^2}{4a}}$. It uniquely minimizes the Heisenberg-Gabor uncertainty product $\Delta t \cdot \Delta \omega = 1/2$.
