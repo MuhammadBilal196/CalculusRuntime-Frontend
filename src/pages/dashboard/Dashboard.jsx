@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
 import { formatCompletionDate } from "../../utils/progressUtils";
+import { DailyChallengePromo } from "../challenge/DailyChallenge";
 import "./Dashboard.css";
 
 export const CURRICULUM = [
@@ -718,6 +719,9 @@ function Dashboard() {
           </button>
         </div>
       </section>
+
+      {/* Daily Challenge Widget */}
+      <DailyChallengePromo compact />
 
       {/* ── KPI Metric Cards ── */}
       <section className="db-kpi-grid">

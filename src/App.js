@@ -62,6 +62,7 @@ import VectorFieldVisualizer from "./pages/tools/VectorFieldVisualizer";
 import AnalyticVectorLab from "./pages/tools/AnalyticVectorLab";
 import RiemannVisualizer from "./pages/tools/RiemannVisualizer";
 import FourierVisualizer from "./pages/tools/FourierVisualizer";
+import DailyChallenge from "./pages/challenge/DailyChallenge";
 
 import CheatSheet from "./pages/courses/CheatSheet";
 import Leaderboard from "./pages/dashboard/Leaderboard";
@@ -1487,6 +1488,10 @@ function App() {
                 <Route
                   path="/fourier-visualizer"
                   element={<Layout body={<FourierVisualizer />} />}
+                />
+                <Route
+                  path="/daily-challenge"
+                  element={<Layout body={<DailyChallenge />} />}
                 />
                 <Route
                   path="/cheatsheet"
