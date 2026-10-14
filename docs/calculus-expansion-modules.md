@@ -21,3 +21,6 @@ Covers forward $\mathcal{F}\{f(t)\} = \int_{-\infty}^\infty f(t) e^{-i\omega t}\
 ### 3.2 Z-Transform & Difference Equations
 Covers the discrete complex Laurent transform $X(z) = \sum_{n=-\infty}^\infty x[n]z^{-n}$, region of convergence (ROC) annular geometry, stability mapping via $z = e^{s T_s}$, and algebraic solution of $N$-th order linear difference equations using partial fractions.
 
+## 4. Partial Differential Equations & Polynomial Families (Module C)
+Module C formalizes boundary value problems in continuous media and orthogonal polynomial expansions under Sturm-Liouville inner product spaces.
+
