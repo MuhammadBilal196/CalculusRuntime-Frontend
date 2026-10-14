@@ -140,3 +140,6 @@ A linear constant-coefficient difference equation is bounded-input bounded-outpu
 
 ### Classification of Second-Order PDEs via Discriminant Criterion
 The canonical 2-variable second-order equation $A u_{xx} + B u_{xt} + C u_{tt} + \dots = 0$ is categorized by the discriminant $\Delta = B^2 - 4AC$: Parabolic ($\Delta = 0$), Hyperbolic ($\Delta > 0$), and Elliptic ($\Delta < 0$).
+
+### Canonical Transformation to Normal Coordinates
+Through characteristic coordinates $\xi = \phi(x, t)$ and $\eta = \psi(x, t)$, hyperbolic PDEs decouple to wave form $u_{\xi\eta} = 0$, parabolic to diffusion form $u_{\eta\eta} = \Phi$, and elliptic to Laplace form $u_{\xi\xi} + u_{\eta\eta} = 0$.
