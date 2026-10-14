@@ -155,3 +155,6 @@ By orthogonality of the sine modes, temporal amplitudes decay exponentially: $T_
 
 ### Maximum Principle & Uniqueness of Heat Conduction
 The weak and strong maximum principles dictate that temperature extrema in a bounded spatio-temporal cylinder $\bar{\Omega}_T$ occur strictly on the initial line $t=0$ or lateral boundaries $x \in \{0, L\}$, guaranteeing uniqueness of physical solutions.
+
+### 1D Wave Equation Cauchy Problem & d'Alembert Formula
+For the unbounded wave equation $u_{tt} = c^2 u_{xx}$ with initial displacement $u(x,0) = f(x)$ and velocity $u_t(x,0) = g(x)$, d'Alembert's closed form gives $u(x,t) = \frac{1}{2}[f(x-ct) + f(x+ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct} g(s)\,ds$.
