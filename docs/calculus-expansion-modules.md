@@ -143,3 +143,6 @@ The canonical 2-variable second-order equation $A u_{xx} + B u_{xt} + C u_{tt} +
 
 ### Canonical Transformation to Normal Coordinates
 Through characteristic coordinates $\xi = \phi(x, t)$ and $\eta = \psi(x, t)$, hyperbolic PDEs decouple to wave form $u_{\xi\eta} = 0$, parabolic to diffusion form $u_{\eta\eta} = \Phi$, and elliptic to Laplace form $u_{\xi\xi} + u_{\eta\eta} = 0$.
+
+### 1D Heat Equation Boundary Value Problem Formulation
+The standard boundary value problem specifies $u_t = \alpha^2 u_{xx}$ on $0 < x < L, t > 0$, constrained by initial temperature profile $u(x, 0) = f(x)$ and zero-temperature ends $u(0, t) = u(L, t) = 0$.
