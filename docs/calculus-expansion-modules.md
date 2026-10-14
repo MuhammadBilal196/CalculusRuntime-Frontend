@@ -185,3 +185,6 @@ Interpolating continuous functions at Chebyshev roots $x_k = \cos\left(\frac{2k-
 
 ### Hermite Polynomials & Quantum Harmonic Oscillator Eigenstates
 Physicists' Hermite polynomials $H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n}e^{-x^2}$ solve $y'' - 2xy' + 2ny = 0$ with weight $e^{-x^2}$ and norm $\sqrt{\pi}2^n n!$. Wavefunctions $\psi_n(x) = e^{-x^2/2}H_n(x)$ form stationary quantum states.
+
+### Generating Functions for Classical Orthogonal Systems
+Generating functions condense entire polynomial sequences into single analytic kernels: $\frac{1}{\sqrt{1 - 2xt + t^2}} = \sum_{n=0}^\infty P_n(x)t^n$ for Legendre, and $e^{2xt - t^2} = \sum_{n=0}^\infty \frac{H_n(x)}{n!}t^n$ for Hermite.
