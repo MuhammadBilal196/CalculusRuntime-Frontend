@@ -39,3 +39,6 @@ Mounted at `/fourier-visualizer`. Features real-time parameter synthesis over Sq
 ## 7. Daily Challenge & Streak Retention Engine
 Mounted at `/daily-challenge`. Uses deterministic calendar date hashing (`YYYY-MM-DD`) to cycle curated questions with zero repeat bias. Connects directly to `progressUtils.js` for streak counting and 30-day active date tracking, surfaced via promotional cards on the Home and Dashboard views.
 
+## 8. Certificate Quiz Bank 1:1 Parity Architecture
+Extends certificate question coverage to 120 total questions (adding 30 Hard MCQs across the 6 new topics). Maintains exact 1:1 question order, option order, and correct answer parity between Frontend (`courseQuizzes.js`) and Backend Python service (`quiz_bank.py`).
+
