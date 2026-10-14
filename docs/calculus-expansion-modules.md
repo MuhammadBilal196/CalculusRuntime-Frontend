@@ -59,3 +59,6 @@ The Gamma function $\Gamma(z)$ extends the discrete factorial operator to the co
 
 ### Asymptotic Expansion of the Gamma Function (Stirling's Formula)
 For large values of $|z|$ in $|\arg z| < \pi$, Stirling's asymptotic formula provides $\Gamma(z) \sim \sqrt{\frac{2\pi}{z}} \left(\frac{z}{e}\right)^z \left(1 + \frac{1}{12z} + \frac{1}{288z^2} - \dots\right)$, enabling high-precision computational estimation of factorial products.
+
+### Weierstrass Infinite Product Representation of Gamma
+The reciprocal Gamma function is an entire function expressible via Weierstrass product: $\frac{1}{\Gamma(z)} = z e^{\gamma z} \prod_{k=1}^\infty \left(1 + \frac{z}{k}\right) e^{-z/k}$, where $\gamma \approx 0.5772156649$ is the Euler-Mascheroni constant.
