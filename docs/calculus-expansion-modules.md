@@ -36,3 +36,6 @@ Interactive visualization workbench mounted at `/riemann-visualizer`. Employs dy
 ## 6. Fourier Harmonic Synthesizer & Gibbs Visualizer
 Mounted at `/fourier-visualizer`. Features real-time parameter synthesis over Square, Sawtooth, Triangle, and Rectified waveforms ($N \in [1, 50]$ harmonics), live frequency spectrum bar chart, Gibbs phenomenon overshoot metric ($pprox 8.949\%$), and interactive Web Audio API additive audio synthesis at 220Hz.
 
+## 7. Daily Challenge & Streak Retention Engine
+Mounted at `/daily-challenge`. Uses deterministic calendar date hashing (`YYYY-MM-DD`) to cycle curated questions with zero repeat bias. Connects directly to `progressUtils.js` for streak counting and 30-day active date tracking, surfaced via promotional cards on the Home and Dashboard views.
+
