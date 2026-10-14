@@ -48,3 +48,6 @@ Introduces 150 practice questions (50 Easy, 50 Medium, 50 Hard; 25 per topic) in
 ## 10. Study Guide Navigation & Routing Architecture
 Details top-level route definitions (`/gamma-beta-functions`, `/leibniz-rule`, `/fourier-transforms`, `/z-transforms`, `/intro-pdes`, `/orthogonal-polynomials`) paired with part segments `:partId` in `App.js` and canonical redirects.
 
+## 11. Section Quiz Gate Thresholds & Verification
+Implements strict 80% passing thresholds in `sectionQuizGates.js` across all 6 new topics. Gated check-in prevents premature progression until mastery is proven via 20-question checkpoint exams.
+
