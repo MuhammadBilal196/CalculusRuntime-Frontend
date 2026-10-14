@@ -15,3 +15,6 @@ Formalizes the Leibniz integral rule for variable boundaries $\frac{d}{dt} \int_
 ## 3. Transform Methods Module (Module B)
 Module B bridges time/spatial domain representations into frequency and complex $z$-planes for continuous and discrete linear invariant systems.
 
+### 3.1 Continuous Fourier Transform & Convolution
+Covers forward $\mathcal{F}\{f(t)\} = \int_{-\infty}^\infty f(t) e^{-i\omega t}\,dt$ and inverse $\mathcal{F}^{-1}$ transforms, the time-convolution to spectral-multiplication theorem $(f * g)(t) \leftrightarrow F(\omega)G(\omega)$, and Parseval-Plancherel energy conservation $\|f\|_{L^2}^2 = \frac{1}{2\pi}\|F\|_{L^2}^2$.
+
