@@ -101,3 +101,6 @@ A signal $f(t)$ possesses a classical continuous Fourier transform if $f \in L^1
 
 ### Riemann-Lebesgue Lemma & High-Frequency Decay
 The Riemann-Lebesgue lemma asserts that if $f \in L^1(\mathbb{R})$, then $\lim_{|\omega| \to \infty} F(\omega) = 0$. Furthermore, if $f$ has $k$ continuous derivatives in $L^1$, then $F(\omega) = \mathcal{O}(|\omega|^{-k})$, directly linking smoothness to spectral rolloff.
+
+### Fourier Transform of Derivatives & Polynomial Multiplications
+Operational symmetries state $\mathcal{F}\{f^{(n)}(t)\} = (i\omega)^n F(\omega)$ and $\mathcal{F}\{(-it)^n f(t)\} = F^{(n)}(\omega)$, transforming ordinary and partial differential operators into multiplication by algebraic polynomials.
