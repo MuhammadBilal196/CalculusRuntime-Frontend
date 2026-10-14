@@ -65,3 +65,6 @@ The reciprocal Gamma function is an entire function expressible via Weierstrass 
 
 ### Beta Function Symmetry & Trigonometric Integrals
 The Beta function satisfies intrinsic reflection symmetry $B(x, y) = B(y, x)$. Substituting $t = \sin^2 \theta$ produces the fundamental trigonometric identity $B(x, y) = 2 \int_0^{\pi/2} \sin^{2x-1}(\theta) \cos^{2y-1}(\theta)\,d\theta$, solving Wallis-type integrals in closed algebraic forms.
+
+### Dirichlet Multiple Integral Generalization
+Dirichlet's integral extends Euler Beta integrals to $n$-dimensional simplices: $\int\dots\int x_1^{p_1-1}\dots x_n^{p_n-1}\,dx_1\dots dx_n = \frac{\Gamma(p_1)\dots\Gamma(p_n)}{\Gamma(1 + \sum p_k)}$, crucial for computing hypersphere volumes and multivariate statistical moments.
