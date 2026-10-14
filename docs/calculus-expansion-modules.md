@@ -86,3 +86,6 @@ When integration bounds $a(t)$ and $b(t)$ are themselves differentiable function
 
 ### Feynman Parametric Integration: The Frullani Integral
 Frullani integrals of the archetype $\int_0^\infty \frac{f(ax) - f(bx)}{x}\,dx$ are resolved by expressing the integrand as a parametric derivative $\int_b^a f'(xy)\,dy$ and interchanging limits to yield $(f(\infty) - f(0))\ln(a/b)$.
+
+### Feynman Technique for Gaussian Moments
+Introducing parameter $\alpha$ into $I(\alpha) = \int_{-\infty}^\infty e^{-\alpha x^2}\,dx = \sqrt{\frac{\pi}{\alpha}}$ allows evaluating all even Gaussian moments $\int_{-\infty}^\infty x^{2k} e^{-x^2}\,dx$ by differentiating $k$ times with respect to $\alpha$.
