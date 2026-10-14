@@ -89,3 +89,6 @@ Frullani integrals of the archetype $\int_0^\infty \frac{f(ax) - f(bx)}{x}\,dx$ 
 
 ### Feynman Technique for Gaussian Moments
 Introducing parameter $\alpha$ into $I(\alpha) = \int_{-\infty}^\infty e^{-\alpha x^2}\,dx = \sqrt{\frac{\pi}{\alpha}}$ allows evaluating all even Gaussian moments $\int_{-\infty}^\infty x^{2k} e^{-x^2}\,dx$ by differentiating $k$ times with respect to $\alpha$.
+
+### Dirichlet Discontinuous Factor Integral Evaluation
+By introducing the damping parameter $\alpha > 0$ into $I(\alpha) = \int_0^\infty e^{-\alpha x} \frac{\sin x}{x}\,dx$, differentiating yields $I'(\alpha) = -\frac{1}{1 + \alpha^2}$. Integrating back and taking $\alpha \to 0^+$ rigorously establishes $\int_0^\infty \frac{\sin x}{x}\,dx = \frac{\pi}{2}$.
