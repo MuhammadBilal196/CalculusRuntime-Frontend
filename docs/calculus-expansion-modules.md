@@ -182,3 +182,6 @@ Chebyshev polynomials $T_n(x) = \cos(n \arccos x)$ solve $(1-x^2)y'' - xy' + n^2
 
 ### Chebyshev Extremal Nodes & Runge Phenomenon Mitigation
 Interpolating continuous functions at Chebyshev roots $x_k = \cos\left(\frac{2k-1}{2n}\pi\right)$ minimizes the Lebesgue constant $\Lambda_n = \mathcal{O}(\ln n)$, suppressing the exponential Runge boundary oscillations seen in uniform grids.
+
+### Hermite Polynomials & Quantum Harmonic Oscillator Eigenstates
+Physicists' Hermite polynomials $H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n}e^{-x^2}$ solve $y'' - 2xy' + 2ny = 0$ with weight $e^{-x^2}$ and norm $\sqrt{\pi}2^n n!$. Wavefunctions $\psi_n(x) = e^{-x^2/2}H_n(x)$ form stationary quantum states.
