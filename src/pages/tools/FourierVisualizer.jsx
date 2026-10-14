@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./Visualizers.css";
 
@@ -214,8 +214,14 @@ export default function FourierVisualizer() {
   const yMin = -1.5;
   const yMax = 1.5;
 
-  const scaleT = (t) => padLeft + ((t - tMin) / (tMax - tMin)) * plotW;
-  const scaleY = (y) => padTop + plotH - ((y - yMin) / (yMax - yMin)) * plotH;
+  const scaleT = useCallback(
+    (t) => padLeft + ((t - tMin) / (tMax - tMin)) * plotW,
+    [plotW, tMin, tMax]
+  );
+  const scaleY = useCallback(
+    (y) => padTop + plotH - ((y - yMin) / (yMax - yMin)) * plotH,
+    [plotH, yMin, yMax]
+  );
   const yMid = scaleY(0);
 
   // Exact target waveform path
@@ -230,7 +236,7 @@ export default function FourierVisualizer() {
       d += i === 0 ? `M ${sx} ${sy}` : ` L ${sx} ${sy}`;
     }
     return d;
-  }, [currentWave, tMin, tMax]);
+  }, [currentWave, tMin, tMax, scaleT, scaleY]);
 
   // Synthesized Fourier Series curve
   const synthPath = useMemo(() => {
@@ -244,7 +250,7 @@ export default function FourierVisualizer() {
       d += i === 0 ? `M ${sx} ${sy}` : ` L ${sx} ${sy}`;
     }
     return d;
-  }, [synthFn, tMin, tMax]);
+  }, [synthFn, tMin, tMax, scaleT, scaleY]);
 
   // Max magnitude for frequency spectrum scaling
   const maxMag = useMemo(() => {

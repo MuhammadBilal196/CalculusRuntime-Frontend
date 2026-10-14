@@ -73,14 +73,14 @@ export default function ZTransformGuide({ part = 1 }) {
             <TheoryBox title="Core Methods of Reconstruction">
               <ul>
                 <li>
-                  <strong>Partial Fraction Expansion (Standard Engineering Practice):</strong> Expand $X(z)/z$ into partial fractions $\frac{X(z)}{z} = \sum \frac{A_k}{z - p_k}$, then multiply through by $z$ to obtain term-by-term inverses $A_k p_k^n u[n]$.
+                  <strong>{"Partial Fraction Expansion (Standard Engineering Practice):"}</strong> {"Expand $X(z)/z$ into partial fractions $\\frac{X(z)}{z} = \\sum \\frac{A_k}{z - p_k}$, then multiply through by $z$ to obtain term-by-term inverses $A_k p_k^n u[n]$."}
                 </li>
                 <li>
                   <strong>Cauchy Residue Inversion Integral:</strong>{" "}
                   {"$x[n] = \\frac{1}{2\\pi i} \\oint_C X(z) z^{n-1}\\,dz = \\sum \\text{Res}\\left( X(z) z^{n-1}, p_k \\right)$ inside contour $C$ enclosing all poles."}
                 </li>
                 <li>
-                  <strong>Power Series (Long Division):</strong> Divide numerator by denominator in descending powers of $z^{-1}$ to directly read off sequence coefficients $x[0], x[1], x[2], \dots$.
+                  <strong>{"Power Series (Long Division):"}</strong> {"Divide numerator by denominator in descending powers of $z^{-1}$ to directly read off sequence coefficients $x[0], x[1], x[2], \\dots$."}
                 </li>
               </ul>
             </TheoryBox>
@@ -114,16 +114,16 @@ export default function ZTransformGuide({ part = 1 }) {
             <ProcedureBox title="Algorithmic Solution of Initial Value Problems">
               <ol>
                 <li>
-                  <strong>Shift Property with Initial Conditions:</strong> For causal systems, use $\mathcal{Z}\{y[n-1]\} = z^{-1}Y(z) + y[-1]$ and $\mathcal{Z}\{y[n-2]\} = z^{-2}Y(z) + z^{-1}y[-1] + y[-2]$.
+                  <strong>{"Shift Property with Initial Conditions:"}</strong> {"For causal systems, use $\\mathcal{Z}\\{y[n-1]\\} = z^{-1}Y(z) + y[-1]$ and $\\mathcal{Z}\\{y[n-2]\\} = z^{-2}Y(z) + z^{-1}y[-1] + y[-2]$."}
                 </li>
                 <li>
-                  <strong>Apply Z-Transform:</strong> Transform both sides of the recurrence equation $\sum_{k=0}^N a_k y[n-k] = \sum_{m=0}^M b_m x[n-m]$.
+                  <strong>{"Apply Z-Transform:"}</strong> {"Transform both sides of the recurrence equation $\\sum_{k=0}^N a_k y[n-k] = \\sum_{m=0}^M b_m x[n-m]$."}
                 </li>
                 <li>
-                  <strong>Algebraic Isolation:</strong> Solve explicitly for the rational function $Y(z)$.
+                  <strong>{"Algebraic Isolation:"}</strong> {"Solve explicitly for the rational function $Y(z)$."}
                 </li>
                 <li>
-                  <strong>Invert to Time Domain:</strong> Expand $Y(z)/z$ in partial fractions and match with known pairs to find the closed-form sequence $y[n]$.
+                  <strong>{"Invert to Time Domain:"}</strong> {"Expand $Y(z)/z$ in partial fractions and match with known pairs to find the closed-form sequence $y[n]$."}
                 </li>
               </ol>
             </ProcedureBox>
@@ -248,9 +248,9 @@ export default function ZTransformGuide({ part = 1 }) {
               {"$$z = e^{s T_s} = e^{(\\sigma + i\\omega) T_s} = e^{\\sigma T_s} e^{i\\omega T_s}$$"}
             </p>
             <ul>
-              <li><strong>Left-Half s-Plane ($\sigma < 0$):</strong> Maps into the **interior of the unit disc** ($|z| = e^{\sigma T_s} < 1$).</li>
-              <li><strong>Imaginary Axis ($\sigma = 0$):</strong> Maps onto the **unit circle boundary** ($|z| = 1$), representing the discrete-time Fourier transform (DTFT).</li>
-              <li><strong>Right-Half s-Plane ($\sigma > 0$):</strong> Maps into the **exterior of the unit disc** ($|z| > 1$).</li>
+              <li><strong>{"Left-Half s-Plane ($\\sigma < 0$):"}</strong> {"Maps into the **interior of the unit disc** ($|z| = e^{\\sigma T_s} < 1$)."}</li>
+              <li><strong>{"Imaginary Axis ($\\sigma = 0$):"}</strong> {"Maps onto the **unit circle boundary** ($|z| = 1$), representing the discrete-time Fourier transform (DTFT)."}</li>
+              <li><strong>{"Right-Half s-Plane ($\\sigma > 0$):"}</strong> {"Maps into the **exterior of the unit disc** ($|z| > 1$)."}</li>
             </ul>
           </TheoryBox>
         </section>
@@ -263,11 +263,11 @@ export default function ZTransformGuide({ part = 1 }) {
               {"Because $X(z)$ is a power series in $z^{-1}$, its Region of Convergence consists of concentric annular rings centered at the origin $z = 0$:"}
             </p>
             <ul>
-              <li><strong>Right-Sided (Causal) Sequences:</strong> ROC is the exterior of a circle: $|z| > R_{\max}$.</li>
-              <li><strong>Left-Sided (Anti-causal) Sequences:</strong> ROC is the interior of a circle: $|z| < R_{\min}$.</li>
-              <li><strong>Two-Sided (Non-causal) Sequences:</strong> ROC is an open annular strip: $R_{\min} < |z| < R_{\max}$.</li>
-              <li><strong>Finite-Duration Sequences:</strong> ROC is the entire complex plane, except possibly $z = 0$ and/or $z = \infty$.</li>
-              <li><strong>Pole Invariance:</strong> The ROC **never contains any poles** of $X(z)$.</li>
+              <li><strong>{"Right-Sided (Causal) Sequences:"}</strong> {"ROC is the exterior of a circle: $|z| > R_{\\max}$."}</li>
+              <li><strong>{"Left-Sided (Anti-causal) Sequences:"}</strong> {"ROC is the interior of a circle: $|z| < R_{\\min}$."}</li>
+              <li><strong>{"Two-Sided (Non-causal) Sequences:"}</strong> {"ROC is an open annular strip: $R_{\\min} < |z| < R_{\\max}$."}</li>
+              <li><strong>{"Finite-Duration Sequences:"}</strong> {"ROC is the entire complex plane, except possibly $z = 0$ and/or $z = \\infty$."}</li>
+              <li><strong>{"Pole Invariance:"}</strong> {"The ROC **never contains any poles** of $X(z)$."}</li>
             </ul>
           </TheoryBox>
         </section>

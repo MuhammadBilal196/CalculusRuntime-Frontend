@@ -155,13 +155,13 @@ export default function OrthogonalPolyGuide({ part = 1 }) {
             <ProcedureBox title="Summary of Canonical Orthogonal Polynomials">
               <ol>
                 <li>
-                  <strong>Legendre:</strong> Domain $[-1, 1]$, $w(x) = 1$, Norm $h_n = \frac{2}{2n+1}$, Governing Physics: Spherical Harmonics &amp; Gravitational Potentials.
+                  <strong>Legendre:</strong> {"Domain $[-1, 1]$, $w(x) = 1$, Norm $h_n = \\frac{2}{2n+1}$, Governing Physics: Spherical Harmonics & Gravitational Potentials."}
                 </li>
                 <li>
-                  <strong>Chebyshev:</strong> Domain $[-1, 1]$, $w(x) = (1 - x^2)^{-1/2}$, Norm $h_n = \pi/2$ ($n \ge 1$), Governing Physics: Numerical Approximation &amp; Filter Design.
+                  <strong>Chebyshev:</strong> {"Domain $[-1, 1]$, $w(x) = (1 - x^2)^{-1/2}$, Norm $h_n = \\pi/2$ ($n \\ge 1$), Governing Physics: Numerical Approximation & Filter Design."}
                 </li>
                 <li>
-                  <strong>Hermite:</strong> Domain $(-\infty, \infty)$, $w(x) = e^{-x^2}$, Norm $h_n = \sqrt{\pi} 2^n n!$, Governing Physics: Quantum Harmonic Oscillator &amp; Normal Probability.
+                  <strong>Hermite:</strong> {"Domain $(-\\infty, \\infty)$, $w(x) = e^{-x^2}$, Norm $h_n = \\sqrt{\\pi} 2^n n!$, Governing Physics: Quantum Harmonic Oscillator & Normal Probability."}
                 </li>
               </ol>
             </ProcedureBox>

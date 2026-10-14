@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./Visualizers.css";
 
@@ -151,7 +151,7 @@ export default function RiemannVisualizer() {
       xs,
       midStrips,
     };
-  }, [currentFunc, a, b, effectiveN, deltaX]);
+  }, [currentFunc, a, effectiveN, deltaX]);
 
   const approxVal = evaluations[rule] ?? evaluations.midpoint;
   const errorVal = approxVal - exactVal;
@@ -180,8 +180,14 @@ export default function RiemannVisualizer() {
     return { minY: Math.min(0, min), maxY: max * 1.15 };
   }, [currentFunc, a, b]);
 
-  const scaleX = (x) => padLeft + ((x - a) / (b - a)) * plotWidth;
-  const scaleY = (y) => padTop + plotHeight - ((y - minY) / (maxY - minY)) * plotHeight;
+  const scaleX = useCallback(
+    (x) => padLeft + ((x - a) / (b - a)) * plotWidth,
+    [a, b, plotWidth]
+  );
+  const scaleY = useCallback(
+    (y) => padTop + plotHeight - ((y - minY) / (maxY - minY)) * plotHeight,
+    [minY, maxY, plotHeight]
+  );
   const yZero = scaleY(0);
 
   // Generate smooth function curve path
@@ -196,7 +202,7 @@ export default function RiemannVisualizer() {
       d += i === 0 ? `M ${sx} ${sy}` : ` L ${sx} ${sy}`;
     }
     return d;
-  }, [currentFunc, a, b, minY, maxY]);
+  }, [currentFunc, a, b, scaleX, scaleY]);
 
   // Strip rendering elements according to active rule
   const stripElements = useMemo(() => {
@@ -350,7 +356,7 @@ export default function RiemannVisualizer() {
       }
     }
     return elements;
-  }, [rule, effectiveN, deltaX, currentFunc, evaluations.xs, yZero, minY, maxY]);
+  }, [rule, effectiveN, deltaX, currentFunc, evaluations.xs, yZero, scaleX, scaleY]);
 
   return (
     <div className="viz-container">

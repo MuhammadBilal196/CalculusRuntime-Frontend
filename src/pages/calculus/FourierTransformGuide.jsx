@@ -164,16 +164,16 @@ export default function FourierTransformGuide({ part = 1 }) {
             <ProcedureBox title="Input-Output Spectral Synthesis">
               <ol>
                 <li>
-                  <strong>Impulse Response $h(t)$:</strong> An LTI system is completely characterized by its response to Dirac impulse $\delta(t)$.
+                  <strong>{"Impulse Response $h(t)$:"}</strong> {"An LTI system is completely characterized by its response to Dirac impulse $\\delta(t)$."}
                 </li>
                 <li>
-                  <strong>Output Convolution:</strong> For any arbitrary driving input $x(t)$, system output is $y(t) = (x * h)(t)$.
+                  <strong>{"Output Convolution:"}</strong> {"For any arbitrary driving input $x(t)$, system output is $y(t) = (x * h)(t)$."}
                 </li>
                 <li>
-                  <strong>Transfer Function $H(\\omega)$:</strong> Taking transforms yields $Y(\\omega) = X(\\omega) H(\\omega)$, where $H(\\omega) = \\mathcal{F}\\{h(t)\\}$.
+                  <strong>{"Transfer Function $H(\\omega)$:"}</strong> {"Taking transforms yields $Y(\\omega) = X(\\omega) H(\\omega)$, where $H(\\omega) = \\mathcal{F}\\{h(t)\\}$."}
                 </li>
                 <li>
-                  <strong>Inverse Reconstruction:</strong> Recover output time history via $y(t) = \\frac{1}{2\\pi} \\int_{-\\infty}^\\infty X(\\omega) H(\\omega) e^{i\\omega t}\\,d\\omega$.
+                  <strong>{"Inverse Reconstruction:"}</strong> {"Recover output time history via $y(t) = \\frac{1}{2\\pi} \\int_{-\\infty}^\\infty X(\\omega) H(\\omega) e^{i\\omega t}\\,d\\omega$."}
                 </li>
               </ol>
             </ProcedureBox>

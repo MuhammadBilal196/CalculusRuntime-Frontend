@@ -3,7 +3,7 @@ import StudyGuideShell from "../courses/StudyGuideShell";
 import "../multivariableCalculus/PartialDerivativesGuide.css";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { useProgress } from "../../context/ProgressContext";
-import { TheoryBox, ProcedureBox, CertificateExample } from "./CalcBlocks";
+import { TheoryBox, CertificateExample } from "./CalcBlocks";
 import { CALC_A_GAMMA_BETA_QUIZ } from "../../data/calcAgSpecialQuizzes";
 
 function Divider() {

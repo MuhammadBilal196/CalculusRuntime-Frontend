@@ -202,9 +202,9 @@ export default function IntroPdesGuide({ part = 1 }) {
               {"$$A u_{xx} + B u_{xt} + C u_{tt} + D u_x + E u_t + F u = G$$"}
             </p>
             <ul>
-              <li><strong>Parabolic ($B^2 - 4AC = 0$):</strong> Governs diffusion, conduction, and dissipative transport. Canonical prototype: the **1D Heat Equation** $\frac{\partial u}{\partial t} = \alpha^2 \frac{\partial^2 u}{\partial x^2}$.</li>
-              <li><strong>Hyperbolic ($B^2 - 4AC > 0$):</strong> Governs propagation, acoustics, and electrodynamics. Canonical prototype: the **1D Wave Equation** $\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}$.</li>
-              <li><strong>Elliptic ($B^2 - 4AC < 0$):</strong> Governs static equilibrium and gravitational/electrostatic potentials (Laplace and Poisson equations).</li>
+              <li><strong>{"Parabolic ($B^2 - 4AC = 0$):"}</strong> {"Governs diffusion, conduction, and dissipative transport. Canonical prototype: the **1D Heat Equation** $\\frac{\\partial u}{\\partial t} = \\alpha^2 \\frac{\\partial^2 u}{\\partial x^2}$."}</li>
+              <li><strong>{"Hyperbolic ($B^2 - 4AC > 0$):"}</strong> {"Governs propagation, acoustics, and electrodynamics. Canonical prototype: the **1D Wave Equation** $\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\frac{\\partial^2 u}{\\partial x^2}$."}</li>
+              <li><strong>{"Elliptic ($B^2 - 4AC < 0$):"}</strong> {"Governs static equilibrium and gravitational/electrostatic potentials (Laplace and Poisson equations)."}</li>
             </ul>
           </TheoryBox>
         </section>
@@ -236,9 +236,9 @@ export default function IntroPdesGuide({ part = 1 }) {
               {"The spatial ODE $X''(x) + \\lambda X(x) = 0$ must satisfy homogeneous boundary conditions on $0 \\le x \\le L$:"}
             </p>
             <ul>
-              <li><strong>Case $\lambda < 0$ ($\lambda = -\mu^2$):</strong> $X(x) = c_1 \cosh(\mu x) + c_2 \sinh(\mu x)$. Boundary conditions $X(0) = X(L) = 0$ force $c_1 = c_2 = 0$ (trivial solution only).</li>
-              <li><strong>Case $\lambda = 0$:</strong> $X(x) = c_1 x + c_2$. Zero boundary values force $c_1 = c_2 = 0$ (trivial solution).</li>
-              <li><strong>Case $\lambda > 0$ ($\lambda = \beta^2$):</strong> $X(x) = c_1 \cos(\beta x) + c_2 \sin(\beta x)$. $X(0) = 0 \implies c_1 = 0$, and $X(L) = c_2 \sin(\beta L) = 0$ yields non-trivial solutions whenever $\beta L = n\pi$."</li>
+              <li><strong>{"Case $\\lambda < 0$ ($\\lambda = -\\mu^2$):"}</strong> {"$X(x) = c_1 \\cosh(\\mu x) + c_2 \\sinh(\\mu x)$. Boundary conditions $X(0) = X(L) = 0$ force $c_1 = c_2 = 0$ (trivial solution only)."}</li>
+              <li><strong>{"Case $\\lambda = 0$:"}</strong> {"$X(x) = c_1 x + c_2$. Zero boundary values force $c_1 = c_2 = 0$ (trivial solution)."}</li>
+              <li><strong>{"Case $\\lambda > 0$ ($\\lambda = \\beta^2$):"}</strong> {"$X(x) = c_1 \\cos(\\beta x) + c_2 \\sin(\\beta x)$. $X(0) = 0 \\implies c_1 = 0$, and $X(L) = c_2 \\sin(\\beta L) = 0$ yields non-trivial solutions whenever $\\beta L = n\\pi$."}</li>
             </ul>
             <p>
               {"Thus, the discrete eigenvalues and eigenfunctions are:"}
