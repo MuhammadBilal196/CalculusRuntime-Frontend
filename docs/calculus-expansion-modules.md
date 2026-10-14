@@ -53,3 +53,6 @@ Implements strict 80% passing thresholds in `sectionQuizGates.js` across all 6 n
 
 ## 12. Verification & Automated Quality Assurance
 Details full suite verification: ESLint zero-warning validation, Webpack production bundle generation, Jest automated test suites (`courseCompletion.test.js`, `GuideMcq.test.jsx`, `PractiseSection.test.jsx`, `App.test.js`), and Python AST compilation.
+
+### Euler Integral Formulations & Analytic Continuation
+The Gamma function $\Gamma(z)$ extends the discrete factorial operator to the complex half-plane $\text{Re}(z) > 0$. Using the fundamental recurrence $\Gamma(z+1) = z\Gamma(z)$, meromorphic continuation is achieved across the entire complex plane with simple poles at non-positive integers $z \in \{0, -1, -2, \dots\}$.
