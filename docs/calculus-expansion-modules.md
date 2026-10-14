@@ -146,3 +146,6 @@ Through characteristic coordinates $\xi = \phi(x, t)$ and $\eta = \psi(x, t)$, h
 
 ### 1D Heat Equation Boundary Value Problem Formulation
 The standard boundary value problem specifies $u_t = \alpha^2 u_{xx}$ on $0 < x < L, t > 0$, constrained by initial temperature profile $u(x, 0) = f(x)$ and zero-temperature ends $u(0, t) = u(L, t) = 0$.
+
+### Sturm-Liouville Eigenvalue Problem for Spatial Diffusion
+Setting $u(x, t) = X(x)T(t)$ yields $X'' + \lambda X = 0$ with $X(0) = X(L) = 0$. This eigenvalue problem forces discrete spectrum $\lambda_n = (n\pi/L)^2$ and orthogonal spatial modes $X_n(x) = \sin(n\pi x/L)$ for $n \ge 1$.
