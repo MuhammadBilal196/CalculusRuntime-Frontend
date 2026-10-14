@@ -42,3 +42,6 @@ Mounted at `/daily-challenge`. Uses deterministic calendar date hashing (`YYYY-M
 ## 8. Certificate Quiz Bank 1:1 Parity Architecture
 Extends certificate question coverage to 120 total questions (adding 30 Hard MCQs across the 6 new topics). Maintains exact 1:1 question order, option order, and correct answer parity between Frontend (`courseQuizzes.js`) and Backend Python service (`quiz_bank.py`).
 
+## 9. Practice Arena Dataset & Topic Allocation
+Introduces 150 practice questions (50 Easy, 50 Medium, 50 Hard; 25 per topic) in safe range `82300–82449`. Completely collision-free and registered in `calcAgPracticeBank.js` and `PractiseSection.jsx` under active course filtering.
+
