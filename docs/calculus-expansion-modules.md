@@ -80,3 +80,6 @@ Differentiation under the integral requires $f(x, t)$ and $\frac{\partial f}{\pa
 
 ### Leibniz Rule Proof via Mean Value Theorem
 The difference quotient $\frac{I(t+h) - I(t)}{h} = \int_a^b \frac{f(x, t+h) - f(x, t)}{h}\,dx$ admits an application of the Mean Value Theorem to yield $f_t(x, \xi_h)$. Uniform continuity allows passing the limit $h \to 0$ beneath the integral sign.
+
+### Variable Limits Differentiation & Chain Rule Application
+When integration bounds $a(t)$ and $b(t)$ are themselves differentiable functions of parameter $t$, Leibniz's complete rule combines the fundamental theorem of calculus with partial differentiation: $I'(t) = f(b(t), t)b'(t) - f(a(t), t)a'(t) + \int_{a(t)}^{b(t)} \frac{\partial f}{\partial t}\,dx$.
