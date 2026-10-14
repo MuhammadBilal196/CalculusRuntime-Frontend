@@ -68,3 +68,6 @@ The Beta function satisfies intrinsic reflection symmetry $B(x, y) = B(y, x)$. S
 
 ### Dirichlet Multiple Integral Generalization
 Dirichlet's integral extends Euler Beta integrals to $n$-dimensional simplices: $\int\dots\int x_1^{p_1-1}\dots x_n^{p_n-1}\,dx_1\dots dx_n = \frac{\Gamma(p_1)\dots\Gamma(p_n)}{\Gamma(1 + \sum p_k)}$, crucial for computing hypersphere volumes and multivariate statistical moments.
+
+### Incomplete Gamma & Beta Functions in Statistical Applications
+The lower incomplete Gamma $\gamma(s, x) = \int_0^x t^{s-1}e^{-t}\,dt$ and upper incomplete Gamma $\Gamma(s, x) = \int_x^\infty t^{s-1}e^{-t}\,dt$ govern cumulative chi-square, Poisson, and gamma distributions across numerical probability theory.
