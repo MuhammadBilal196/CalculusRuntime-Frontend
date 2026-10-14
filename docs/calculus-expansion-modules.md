@@ -92,3 +92,6 @@ Introducing parameter $\alpha$ into $I(\alpha) = \int_{-\infty}^\infty e^{-\alph
 
 ### Dirichlet Discontinuous Factor Integral Evaluation
 By introducing the damping parameter $\alpha > 0$ into $I(\alpha) = \int_0^\infty e^{-\alpha x} \frac{\sin x}{x}\,dx$, differentiating yields $I'(\alpha) = -\frac{1}{1 + \alpha^2}$. Integrating back and taking $\alpha \to 0^+$ rigorously establishes $\int_0^\infty \frac{\sin x}{x}\,dx = \frac{\pi}{2}$.
+
+### Laplace Transform of Parameterized Integrals
+Applying the Leibniz rule in conjunction with the Laplace transform enables solving integral equations of Volterra convolution type $y(t) = f(t) + \int_0^t K(t-\tau)y(\tau)\,d\tau$, converting convolution operations into algebraic division.
