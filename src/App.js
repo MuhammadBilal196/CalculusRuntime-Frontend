@@ -60,6 +60,8 @@ import VolumeCalculator from "./pages/tools/VolumeCalculator";
 import DerivativeTool from "./components/tools/DerivativeTool";
 import VectorFieldVisualizer from "./pages/tools/VectorFieldVisualizer";
 import AnalyticVectorLab from "./pages/tools/AnalyticVectorLab";
+import RiemannVisualizer from "./pages/tools/RiemannVisualizer";
+import FourierVisualizer from "./pages/tools/FourierVisualizer";
 
 import CheatSheet from "./pages/courses/CheatSheet";
 import Leaderboard from "./pages/dashboard/Leaderboard";
@@ -1477,6 +1479,14 @@ function App() {
                 <Route
                   path="/taylorx"
                   element={<Layout body={<DerivativeTool />} />}
+                />
+                <Route
+                  path="/riemann-visualizer"
+                  element={<Layout body={<RiemannVisualizer />} />}
+                />
+                <Route
+                  path="/fourier-visualizer"
+                  element={<Layout body={<FourierVisualizer />} />}
                 />
                 <Route
                   path="/cheatsheet"

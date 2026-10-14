@@ -53,6 +53,18 @@ const toolLinks = [
     desc: "Neural solver for derivatives, integrals, gradients and more",
   },
   {
+    label: "Riemann Visualizer",
+    path: "/riemann-visualizer",
+    icon: "📊",
+    desc: "Interactive Left, Right, Midpoint, Trapezoid & Simpson partition slices",
+  },
+  {
+    label: "Fourier Visualizer",
+    path: "/fourier-visualizer",
+    icon: "〰️",
+    desc: "Dual time/frequency spectrum synthesis with Gibbs overshoot analysis",
+  },
+  {
     label: "Cheat Sheet",
     path: "/cheatsheet",
     icon: "∑",
