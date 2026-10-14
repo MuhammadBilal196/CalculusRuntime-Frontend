@@ -77,3 +77,6 @@ The logarithmic derivative of the Gamma function defines the Digamma function $\
 
 ### Uniform Convergence Criteria for Parametric Integrals
 Differentiation under the integral requires $f(x, t)$ and $\frac{\partial f}{\partial t}$ to be continuous on $[a, b] \times [c, d]$. For infinite intervals, the Weierstrass $M$-test for integrals ensures uniform convergence: $|\frac{\partial f}{\partial t}(x, t)| \le M(x)$ with $\int M(x)\,dx < \infty$.
+
+### Leibniz Rule Proof via Mean Value Theorem
+The difference quotient $\frac{I(t+h) - I(t)}{h} = \int_a^b \frac{f(x, t+h) - f(x, t)}{h}\,dx$ admits an application of the Mean Value Theorem to yield $f_t(x, \xi_h)$. Uniform continuity allows passing the limit $h \to 0$ beneath the integral sign.
