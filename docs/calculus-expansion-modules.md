@@ -194,3 +194,6 @@ The Riemann visualizer evaluates regular partitions $x_k = a + k\Delta x$ with $
 
 ### Composite Simpson 1/3 Rule Error Metric Formulation
 The composite Simpson rule error is bounded by $|E_S| \le \frac{(b-a)^5}{180 n^4} \max_{\xi} |f^{(4)}(\xi)| = \mathcal{O}(\Delta x^4)$, providing quadratic parabolic accuracy over 3-point segment triples.
+
+### Live Harmonic Synthesis via Web Audio API AudioNodes
+The Fourier visualizer synthesizer dynamically allocates Web Audio `PeriodicWave` buffers, passing real Fourier cosine/sine coefficients to drive an `OscillatorNode` at 220Hz fundamental through an exponential gain envelope.
