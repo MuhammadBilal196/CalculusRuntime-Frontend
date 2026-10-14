@@ -98,3 +98,6 @@ Applying the Leibniz rule in conjunction with the Laplace transform enables solv
 
 ### Continuous Fourier Transform Existence Conditions ($L^1$ & $L^2$)
 A signal $f(t)$ possesses a classical continuous Fourier transform if $f \in L^1(\mathbb{R})$ (absolutely integrable). Under the Plancherel extension, the Fourier transform uniquely extends to a unitary automorphism on the Hilbert space $L^2(\mathbb{R})$.
+
+### Riemann-Lebesgue Lemma & High-Frequency Decay
+The Riemann-Lebesgue lemma asserts that if $f \in L^1(\mathbb{R})$, then $\lim_{|\omega| \to \infty} F(\omega) = 0$. Furthermore, if $f$ has $k$ continuous derivatives in $L^1$, then $F(\omega) = \mathcal{O}(|\omega|^{-k})$, directly linking smoothness to spectral rolloff.
