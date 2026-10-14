@@ -107,3 +107,6 @@ Operational symmetries state $\mathcal{F}\{f^{(n)}(t)\} = (i\omega)^n F(\omega)$
 
 ### Convolution Theorem Derivation via Fubini-Tonelli
 By expressing $(f * g)(t) = \int_{-\infty}^\infty f(\tau)g(t-\tau)\,d\tau$, Fubini's theorem permits exchanging integration order: $\int_{-\infty}^\infty e^{-i\omega t} \int f(\tau)g(t-\tau)\,d\tau dt = \int f(\tau) e^{-i\omega \tau} [\int g(u) e^{-i\omega u} du] d\tau = F(\omega)G(\omega)$.
+
+### Parseval-Plancherel Energy Isometry & Hilbert Space Norms
+The Fourier transform preserves inner products on $L^2$: $\langle f, g \rangle = \frac{1}{2\pi} \langle F, G \rangle$. Consequently, total signal energy in time equals the area under the energy spectral density curve $\frac{1}{2\pi}\int |F(\omega)|^2\,d\omega$.
