@@ -64,3 +64,9 @@ Implemented clear pedagogical boundaries differentiating function sequences from
 
 ---
 
+## 11. Constructing 20 High-Rigor Checkpoint Questions for Topic 1
+
+Authored 20 distinct, university-grade multiple-choice questions for Pointwise and Uniform Convergence (`CALC_A_UNIFORM_CONV_QUIZ`). Each question includes four unique options, mathematically complete step-by-step explanations, and verified single-choice correct answers.
+
+---
+
