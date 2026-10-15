@@ -124,3 +124,9 @@ Implemented detailed worked solutions for classic mathematical physics equations
 
 ---
 
+## 21. Constructing 20 High-Rigor Checkpoint Questions for Topic 3
+
+Created 20 comprehensive assessment questions for Power-Series Solutions at Ordinary Points (`CALC_B_POWER_SERIES_ODE_QUIZ`), examining radius of convergence derivations, coefficient recurrences, and initial-value closed forms.
+
+---
+
