@@ -112,3 +112,9 @@ Documented Fuchs' theorem guaranteeing that the radius of convergence of the pow
 
 ---
 
+## 19. Power-Series Recurrence Relation Derivations at x0 = 0
+
+Built systematic step-by-step procedures for shifting summation indices in power-series substitutions. Derived two-term and three-term recurrence relations linking higher-order coefficients $a_{n+2}$ to preceding coefficients $a_n$ and $a_{n+1}$.
+
+---
+
