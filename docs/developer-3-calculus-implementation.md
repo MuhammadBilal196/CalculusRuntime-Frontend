@@ -130,3 +130,9 @@ Created 20 comprehensive assessment questions for Power-Series Solutions at Ordi
 
 ---
 
+## 22. The Frobenius Method at Regular Singular Points
+
+Extended series solutions to differential equations with regular singular points where standard Taylor series diverge, formalizing the method of Ferdinand Georg Frobenius.
+
+---
+
