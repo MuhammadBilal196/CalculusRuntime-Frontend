@@ -244,3 +244,9 @@ Documented Laurent series expansions $f(z) = \sum_{n=-\infty}^\infty a_n (z - z_
 
 ---
 
+## 41. Residue Theorems and Closed Contour Integral Calculations
+
+Formulated Cauchy's Residue Theorem: $\oint_C f(z)\,dz = 2\pi i \sum_{k=1}^N \text{Res}(f, z_k)$. Derived efficient limit formulas for calculating residues at simple and higher-order poles.
+
+---
+
