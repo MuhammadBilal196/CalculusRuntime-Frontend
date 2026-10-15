@@ -82,3 +82,9 @@ Codified the subtle requirements of the Termwise Differentiation Theorem. Emphas
 
 ---
 
+## 14. Failure Modes of Termwise Integration: Area Conservation vs Disappearance
+
+Engineered constructive counterexamples demonstrating the catastrophic breakdown of limit-integral interchange when uniform convergence is violated, such as $f_n(x) = n^2 x (1-x)^n$ where $\lim \int f_n = 1$ while $\int \lim f_n = 0$.
+
+---
+
