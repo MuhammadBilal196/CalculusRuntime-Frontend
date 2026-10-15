@@ -226,3 +226,9 @@ Authored 20 checkpoint questions for Analytic Functions and Cauchy-Riemann Equat
 
 ---
 
+## 38. Cauchy-Goursat Theorem and Deformation of Integration Paths
+
+Formulated the Cauchy-Goursat theorem: if $f(z)$ is analytic on and inside a simple closed contour $C$, then $\oint_C f(z)\,dz = 0$. Established the principle of path deformation for multi-connected domains.
+
+---
+
