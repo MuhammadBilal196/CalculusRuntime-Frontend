@@ -292,3 +292,9 @@ Generated and registered 150 unique, collision-free MCQs (IDs `82450`–`82599`)
 
 ---
 
+## 49. Authoritative Certificate Bank Expansion: 24 Questions with 2:1:1 Difficulty Ratio
+
+Expanded the calculus certificate bank from 120 to 144 questions by adding 24 balanced questions (12 Easy, 6 Medium, 6 Hard) across the six new topics. Synchronized backend authoritative `quiz_bank.py` and frontend fallback `courseQuizzes.js` with verified 100% parity across prompts, options, and answers.
+
+---
+
