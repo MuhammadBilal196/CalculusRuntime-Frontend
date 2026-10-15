@@ -100,3 +100,9 @@ Developed 20 authoritative checkpoint questions for Interchanging Limits, Deriva
 
 ---
 
+## 17. Module B: Ordinary Points of Second-Order Linear Differential Equations
+
+Formulated power-series solution methods for homogeneous linear ODEs $y'' + P(x)y' + Q(x)y = 0$. Defined an ordinary point $x_0$ as any point where coefficient functions $P(x)$ and $Q(x)$ admit convergent Taylor series expansions.
+
+---
+
