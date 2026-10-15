@@ -34,3 +34,9 @@ Documented the classical Uniform Limit Theorem: if a sequence of continuous func
 
 ---
 
+## 6. Classic Topological Counterexample: Boundary Jump Discontinuity
+
+Analyzed the geometric sequence $f_n(x) = x^n$ on the closed unit interval $[0, 1]$. Demonstrated how continuous polynomial functions converge pointwise to a discontinuous step function $f(x) = 0$ for $x < 1$ and $f(1) = 1$, illustrating non-uniform convergence due to a constant supremum norm of 1.
+
+---
+
