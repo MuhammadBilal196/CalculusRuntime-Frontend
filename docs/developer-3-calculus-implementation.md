@@ -136,3 +136,9 @@ Extended series solutions to differential equations with regular singular points
 
 ---
 
+## 23. Fuchs' Regular Singularity Ratio Limits Test
+
+Engineered the diagnostic criteria verifying regular singular points: $x = x_0$ is regular singular if and only if $(x - x_0)P(x)$ and $(x - x_0)^2 Q(x)$ are analytic at $x_0$.
+
+---
+
