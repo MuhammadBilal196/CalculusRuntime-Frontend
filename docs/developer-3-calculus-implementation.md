@@ -172,3 +172,9 @@ Formulated Case 3 where roots differ by a positive integer $r_1 - r_2 = N \in \m
 
 ---
 
+## 29. Bessel's Differential Equation of Order Zero and Neumann Function Singularity
+
+Worked through the complete Frobenius derivation of Bessel's equation of order zero $x^2 y'' + x y' + x^2 y = 0$. Established the regular singularity at $x = 0$, derived the $J_0(x)$ Bessel function, and proved the necessity of the logarithmic Neumann function $Y_0(x)$.
+
+---
+
