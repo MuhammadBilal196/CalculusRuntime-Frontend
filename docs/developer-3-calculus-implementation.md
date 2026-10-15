@@ -46,3 +46,9 @@ Investigated the rational wave packet sequence $f_n(x) = \frac{2nx}{1 + n^2 x^2}
 
 ---
 
+## 8. Dini's Monotone Uniform Convergence Criterion
+
+Integrated Dini's Theorem as an operational shortcut in study guides: on a compact domain $K$, any monotonic sequence of continuous functions converging pointwise to a continuous limit function converges uniformly, bypassing difficult supremum norm derivations.
+
+---
+
