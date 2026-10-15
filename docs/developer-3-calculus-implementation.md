@@ -106,3 +106,9 @@ Formulated power-series solution methods for homogeneous linear ODEs $y'' + P(x)
 
 ---
 
+## 18. Analyticity Criteria and Minimum Radius of Convergence Guarantees
+
+Documented Fuchs' theorem guaranteeing that the radius of convergence of the power-series solution is at least equal to the distance in the complex plane from the expansion center $x_0$ to the nearest singular point of $P(x)$ or $Q(x)$.
+
+---
+
