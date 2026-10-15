@@ -214,3 +214,9 @@ Implemented the Milne-Thomson method for directly recovering full analytic funct
 
 ---
 
+## 36. Conformal Orthogonality of Potential and Streamlines
+
+Demonstrated that the gradient vectors $\nabla u$ and $\nabla v$ are orthogonal ($\nabla u \cdot \nabla v = 0$), establishing that level curves of harmonic potentials and stream functions form orthogonal curvilinear coordinate nets.
+
+---
+
