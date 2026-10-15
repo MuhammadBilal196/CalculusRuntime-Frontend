@@ -118,3 +118,9 @@ Built systematic step-by-step procedures for shifting summation indices in power
 
 ---
 
+## 20. Initial Value Problem Solutions: Hermite and Airy Equation Case Studies
+
+Implemented detailed worked solutions for classic mathematical physics equations, including the Airy equation $y'' - xy = 0$ and Hermite polynomials $y'' - 2xy' + 2ny = 0$, demonstrating truncation to orthogonal polynomials.
+
+---
+
