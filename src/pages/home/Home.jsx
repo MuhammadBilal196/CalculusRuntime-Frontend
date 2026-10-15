@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { COURSES } from "../../data/courses";
 import { searchSite } from "../../data/siteSearchIndex";
 import HeroGraph from "./HeroGraph";
+import { DailyChallengePromo } from "../challenge/DailyChallenge";
 
 const guideCards = COURSES.map((c) => ({
   title: c.title,
@@ -51,6 +52,24 @@ const toolLinks = [
     path: "/ai-solver",
     icon: "🤖",
     desc: "Neural solver for derivatives, integrals, gradients and more",
+  },
+  {
+    label: "Riemann Visualizer",
+    path: "/riemann-visualizer",
+    icon: "📊",
+    desc: "Interactive Left, Right, Midpoint, Trapezoid & Simpson partition slices",
+  },
+  {
+    label: "Fourier Visualizer",
+    path: "/fourier-visualizer",
+    icon: "〰️",
+    desc: "Dual time/frequency spectrum synthesis with Gibbs overshoot analysis",
+  },
+  {
+    label: "Daily Challenge",
+    path: "/daily-challenge",
+    icon: "🔥",
+    desc: "Daily calculus problems, streaks, and 30-day activity calendar",
   },
   {
     label: "Cheat Sheet",
@@ -126,6 +145,9 @@ function Home() {
         <span className="trust-icon" aria-hidden="true">🏛️</span>
         <p>Trusted by students at leading universities and institutions.</p>
       </div>
+
+      {/* Daily Challenge Promo */}
+      <DailyChallengePromo />
 
       {/* Search */}
       <div className="home-search-wrap" ref={searchRef}>

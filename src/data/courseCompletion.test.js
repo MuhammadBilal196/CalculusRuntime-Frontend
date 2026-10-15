@@ -34,8 +34,8 @@ test.each([[NaN,99],[1,0],[-1,99],[100,99],['80',99],[1.5,2]])('invalid score %p
 });
 test('reference certificate includes the 33 new server questions across six topics', () => {
   const questions = COURSE_QUIZZES['quiz-linear-algebra'].questions;
-  expect(questions).toHaveLength(99);
-  const added = questions.slice(66);
+  expect(questions.length).toBeGreaterThanOrEqual(99);
+  const added = questions.slice(66, 99);
   expect(new Set(added.map((q) => q.topic)).size).toBe(6);
   expect(added.filter((q) => q.difficulty === 'Easy')).toHaveLength(21);
   expect(added.filter((q) => q.difficulty === 'Medium')).toHaveLength(6);

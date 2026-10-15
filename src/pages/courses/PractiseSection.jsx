@@ -68,6 +68,12 @@ const TOPICS = [
   "Hyperbolic Functions",
   "Laplace Transforms",
   "Fourier Series",
+  "Gamma & Beta Functions",
+  "Differentiation Under the Integral Sign (Leibniz Rule)",
+  "Fourier Transform & Convolution",
+  "Z-Transform & Difference Equations",
+  "Introduction to PDEs (Heat & Wave Equations)",
+  "Orthogonal Polynomials (Legendre, Chebyshev, Hermite)",
   "Multiple Integrals",
   "Vectors & Vector Spaces",
   "Matrices & Determinants",
@@ -270,6 +276,36 @@ const PRACTICE_SELECTIONS = {
   },
 
   "Fourier Series": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Gamma & Beta Functions": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Differentiation Under the Integral Sign (Leibniz Rule)": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Fourier Transform & Convolution": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Z-Transform & Difference Equations": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Introduction to PDEs (Heat & Wave Equations)": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Orthogonal Polynomials (Legendre, Chebyshev, Hermite)": {
     type: "topic",
     banks: ["calcAg"],
   },

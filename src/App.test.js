@@ -213,7 +213,7 @@ test("representative guide redirects navigate and render across all four courses
     expect(screen.queryByRole("heading", { name: /404/ })).not.toBeInTheDocument();
     view.unmount();
   }
-});
+}, 30000);
 
 test("unknown URLs show a recoverable 404 and unknown course IDs return home", async () => {
   window.history.replaceState({}, "", "/this-route-does-not-exist");

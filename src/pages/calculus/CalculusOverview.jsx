@@ -24,6 +24,12 @@ const CORE_CERT_PATHS = new Set([
   "/hyperbolic-functions/1",
   "/laplace-transforms/1",
   "/fourier-series/1",
+  "/gamma-beta-functions/1",
+  "/leibniz-rule/1",
+  "/fourier-transforms/1",
+  "/z-transforms/1",
+  "/intro-pdes/1",
+  "/orthogonal-polynomials/1",
 ]);
 
 const EXCLUDED_FROM_ROADMAP = new Set([

@@ -33,7 +33,7 @@ export const COURSES = [
         "Convergence tests, power series & Taylor expansions",
         "Parabolas, ellipses, hyperbolas & analytic geometry",
         "TaylorX interactive derivative visualizer",
-        "Certificate quiz — 60 MCQs, 80% to pass",
+        "Certificate quiz — 120 MCQs, 80% to pass",
       ],
       prerequisites: "Algebra, basic trigonometry, and function notation.",
     },
@@ -267,6 +267,60 @@ export const COURSES = [
         meta: "2 parts · 20 MCQs",
         icon: "📈",
         logo: <span className="math-logo">½a₀ + ∑(aₙcos + bₙsin)</span>,
+      },
+      {
+        title: "Gamma & Beta Functions",
+        description:
+          "Euler's first and second integrals, factorial continuation, reflection and duplication identities, and Stirling asymptotics.",
+        path: "/gamma-beta-functions/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "Γ",
+        logo: <span className="math-logo">Γ(z) = ∫₀^∞ t^(z-1)e^(-t)dt</span>,
+      },
+      {
+        title: "Differentiation Under Integral Sign",
+        description:
+          "Leibniz integral rule with fixed and variable limits, dominated convergence, and Feynman's parametric evaluation trick.",
+        path: "/leibniz-rule/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "∂",
+        logo: <span className="math-logo">d/dx ∫ f(x,t)dt</span>,
+      },
+      {
+        title: "Fourier Transform & Convolution",
+        description:
+          "Continuous frequency spectrum, inverse Fourier transform, continuous convolution theorem, and Plancherel energy conservation.",
+        path: "/fourier-transforms/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "📡",
+        logo: <span className="math-logo">F(ω) = ∫ f(t)e^(-iωt)dt</span>,
+      },
+      {
+        title: "Z-Transform & Difference Equations",
+        description:
+          "Discrete Laurent series, ROC convergence topology, difference equations, inverse Z-transforms, and filter stability.",
+        path: "/z-transforms/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🔲",
+        logo: <span className="math-logo">X(z) = ∑ x[n]z^(-n)</span>,
+      },
+      {
+        title: "Introduction to PDEs (Heat & Wave)",
+        description:
+          "Separation of variables for 1D heat diffusion and 1D acoustic waves, spatial eigenvalues, and Fourier modal expansions.",
+        path: "/intro-pdes/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🌊",
+        logo: <span className="math-logo">u_t = α²u_xx &amp; u_tt = c²u_xx</span>,
+      },
+      {
+        title: "Orthogonal Polynomials",
+        description:
+          "Legendre, Chebyshev, and Hermite families, Rodrigues differential formulas, 3-term recurrences, and Chebyshev nodes.",
+        path: "/orthogonal-polynomials/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🏛️",
+        logo: <span className="math-logo">Pₙ(x), Tₙ(x), Hₙ(x)</span>,
       },
       {
         title: "Analytic & 3D Vector Lab",
