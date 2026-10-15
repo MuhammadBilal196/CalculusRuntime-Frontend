@@ -94,3 +94,9 @@ Introduced advanced upper-division concepts connecting uniform convergence to th
 
 ---
 
+## 16. Constructing 20 High-Rigor Checkpoint Questions for Topic 2
+
+Developed 20 authoritative checkpoint questions for Interchanging Limits, Derivatives, and Integrals (`CALC_A_INTERCHANGE_LIMITS_QUIZ`), testing Cauchy criterion applications, termwise integration validity, and pathological failure cases.
+
+---
+
