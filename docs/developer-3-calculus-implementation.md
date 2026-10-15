@@ -22,3 +22,9 @@ Formalized the transition from numerical series to function spaces. Defined poin
 
 ---
 
+## 4. Banach Space Supremum-Norm Diagnostics
+
+Formulated the uniform convergence criterion through the lens of functional analysis. Employed the supremum norm $\|f_n - f\|_\infty = \sup_{x \in S} |f_n(x) - f(x)|$, establishing that uniform convergence is equivalent to convergence in the Banach space $(\mathcal{B}(S), \|\cdot\|_\infty)$.
+
+---
+
