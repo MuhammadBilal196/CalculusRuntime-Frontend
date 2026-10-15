@@ -232,3 +232,9 @@ Formulated the Cauchy-Goursat theorem: if $f(z)$ is analytic on and inside a sim
 
 ---
 
+## 39. Cauchy Integral Formula for Functions and Higher-Order Derivatives
+
+Codified Cauchy's Integral Formula $f(z_0) = \frac{1}{2\pi i}\oint_C \frac{f(z)}{z - z_0}\,dz$ and its derivative generalizations $f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint_C \frac{f(z)}{(z - z_0)^{n+1}}\,dz$.
+
+---
+
