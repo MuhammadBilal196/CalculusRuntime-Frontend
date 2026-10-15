@@ -58,3 +58,9 @@ Codified the Weierstrass M-Test for infinite series of functions $\sum_{n=1}^\in
 
 ---
 
+## 10. Separating Function Sequence Metrics from Numerical Series Tests
+
+Implemented clear pedagogical boundaries differentiating function sequences from numerical scalar series. Clarified that ratio, root, and integral tests assess scalar convergence, whereas uniform function convergence evaluates global topological uniformity.
+
+---
+
