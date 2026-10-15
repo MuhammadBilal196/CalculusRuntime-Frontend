@@ -40,3 +40,9 @@ Analyzed the geometric sequence $f_n(x) = x^n$ on the closed unit interval $[0, 
 
 ---
 
+## 7. Classic Topological Counterexample: The Moving Escaping Spike
+
+Investigated the rational wave packet sequence $f_n(x) = \frac{2nx}{1 + n^2 x^2}$ on $[0, 1]$. Established that while the pointwise limit is identically zero and everywhere continuous, an escaping spike with constant peak height 1 migrates toward the origin at $x_n = 1/n$, demonstrating that continuity of the limit function is necessary but not sufficient for uniform convergence.
+
+---
+
