@@ -220,3 +220,9 @@ Demonstrated that the gradient vectors $\nabla u$ and $\nabla v$ are orthogonal 
 
 ---
 
+## 37. Constructing 20 High-Rigor Checkpoint Questions for Topic 5
+
+Authored 20 checkpoint questions for Analytic Functions and Cauchy-Riemann Equations (`CALC_C_ANALYTIC_CR_QUIZ`), covering polar forms, harmonic conjugates, Milne-Thomson reconstructions, and analyticity domains.
+
+---
+
