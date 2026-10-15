@@ -148,3 +148,9 @@ Formulated the Frobenius ansatz $y(x) = x^r \sum_{n=0}^\infty a_n x^n$ with $a_0
 
 ---
 
+## 25. Euler-Cauchy Equidimensional Equations as Frobenius Prototypes
+
+Analyzed the Euler-Cauchy equation $x^2 y'' + p_0 x y' + q_0 y = 0$ as the canonical prototype that isolates the leading-order indicial behavior of general Frobenius differential equations.
+
+---
+
