@@ -262,3 +262,9 @@ Authored 20 checkpoint questions for Contour Integrals and Residues (`CALC_C_CON
 
 ---
 
+## 44. Interactive Refinements: Riemann Sum Visualizer Signed Intervals and Simpson Enforcement
+
+Enhanced `RiemannVisualizer.jsx` with full support for reversed integration intervals ($b < a$) yielding negative signed widths $\Delta x < 0$, automated even-subdivision enforcement for Simpson's rule with user warning pills, distinct analytical vs numerical reference benchmarks, and real-time singularity detection.
+
+---
+
