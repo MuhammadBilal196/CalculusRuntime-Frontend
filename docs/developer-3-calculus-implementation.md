@@ -202,3 +202,9 @@ Transformed the Cauchy-Riemann equations into polar coordinates: $\frac{\partial
 
 ---
 
+## 34. Harmonic Functions and Laplace's Equation in Two Dimensions
+
+Proved that the real and imaginary components $u(x, y)$ and $v(x, y)$ of any holomorphic function are harmonic, satisfying Laplace's partial differential equation $\nabla^2 u = u_{xx} + u_{yy} = 0$.
+
+---
+
