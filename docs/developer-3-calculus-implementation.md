@@ -16,3 +16,9 @@ The six newly implemented topics are integrated directly as first-class citizens
 
 ---
 
+## 3. Module A: Pointwise Convergence Formalization
+
+Formalized the transition from numerical series to function spaces. Defined pointwise convergence $f_n \to f$ on an arbitrary domain $S \subseteq \mathbb{R}$, demonstrating how the convergence rate $N(\epsilon, x)$ depends locally upon each spatial evaluation coordinate $x$.
+
+---
+
