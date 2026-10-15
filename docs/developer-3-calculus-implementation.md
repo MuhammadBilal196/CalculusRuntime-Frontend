@@ -184,3 +184,9 @@ Authored 20 checkpoint questions for the Frobenius Method (`CALC_B_FROBENIUS_MET
 
 ---
 
+## 31. Module C: Complex Differentiability and Holomorphic Functions
+
+Formulated complex function theory, contrasting real differentiability with the rigid requirements of complex differentiability (holomorphicity) where limits must be independent of path in $\mathbb{C}$.
+
+---
+
