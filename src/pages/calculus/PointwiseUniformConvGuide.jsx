@@ -151,9 +151,11 @@ export default function PointwiseUniformConvGuide({ part = 1 }) {
               Verify your mastery of pointwise convergence, supremum-norm bounds, and topological continuity. 80% passing threshold required.
             </p>
             <GuideMcqSection
-              quizId="calc-a-uniform-conv-checkpoint"
+              id="quiz-pointwise-uniform-conv-checkpoint"
+              scoreId="score-pointwise-uniform-conv-checkpoint"
+              section="pointwise-uniform-conv-checkpoint"
               questions={CALC_A_UNIFORM_CONV_QUIZ}
-              onComplete={(score, total) => saveQuizScore("calc-a-uniform-conv-checkpoint", score, total)}
+              onComplete={(score, total) => saveQuizScore("guide-mcq-pointwise-uniform-conv-checkpoint", score, total)}
             />
           </section>
         </div>

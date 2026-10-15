@@ -323,6 +323,60 @@ export const COURSES = [
         logo: <span className="math-logo">Pₙ(x), Tₙ(x), Hₙ(x)</span>,
       },
       {
+        title: "Pointwise & Uniform Convergence",
+        description:
+          "Pointwise vs uniform convergence of function sequences, supremum-norm bounds, uniform-limit continuity, and Dirichlet/Weierstrass tests.",
+        path: "/pointwise-uniform-convergence/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "📏",
+        logo: <span className="math-logo">||fₙ - f||_∞ → 0</span>,
+      },
+      {
+        title: "Interchanging Limits, Derivatives & Integrals",
+        description:
+          "Sufficient conditions for termwise integration and differentiation, classic failure cases, and bounded convergence foundations.",
+        path: "/interchanging-limits/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🔄",
+        logo: <span className="math-logo">lim ∫ = ∫ lim</span>,
+      },
+      {
+        title: "Power-Series Solutions of ODEs",
+        description:
+          "Analytic ODE solutions at ordinary points, recurrence relations, fundamental solution bases, and convergence radii.",
+        path: "/power-series-ode/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "📜",
+        logo: <span className="math-logo">y = ∑ aₙxⁿ</span>,
+      },
+      {
+        title: "Frobenius Method (Singular ODEs)",
+        description:
+          "Regular singular points, indicial equations, distinct roots, repeated roots, and integer difference logarithmic solutions.",
+        path: "/frobenius-method/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "🔍",
+        logo: <span className="math-logo">xʳ ∑ aₙxⁿ &amp; F(r)=0</span>,
+      },
+      {
+        title: "Analytic Functions & Cauchy-Riemann",
+        description:
+          "Complex differentiability, Cartesian and polar Cauchy-Riemann equations, harmonic functions, conjugates, and Milne-Thomson method.",
+        path: "/analytic-functions/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "⚡",
+        logo: <span className="math-logo">u_x=v_y, u_y=-v_x</span>,
+      },
+      {
+        title: "Contour Integrals & Residues",
+        description:
+          "Cauchy-Goursat theorem, Cauchy integral formulas, Laurent series singularity classification, and real integral evaluations.",
+        path: "/contour-integrals/1",
+        meta: "2 parts · 20 MCQs",
+        icon: "∮",
+        logo: <span className="math-logo">∮ f(z)dz = 2πi ∑Res</span>,
+      },
+      {
         title: "Analytic & 3D Vector Lab",
         description:
           "Interactive laboratory for 2D conic rotation of axes, polar conics, scalar triple product, and skew line distance.",

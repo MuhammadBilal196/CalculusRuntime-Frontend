@@ -142,9 +142,11 @@ export default function PowerSeriesOdeGuide({ part = 1 }) {
               Validate your ability to derive recurrence relations, find fundamental bases, and establish convergence bounds. 80% passing threshold required.
             </p>
             <GuideMcqSection
-              quizId="calc-b-power-series-checkpoint"
+              id="quiz-power-series-ode-checkpoint"
+              scoreId="score-power-series-ode-checkpoint"
+              section="power-series-ode-checkpoint"
               questions={CALC_B_POWER_SERIES_ODE_QUIZ}
-              onComplete={(score, total) => saveQuizScore("calc-b-power-series-checkpoint", score, total)}
+              onComplete={(score, total) => saveQuizScore("guide-mcq-power-series-ode-checkpoint", score, total)}
             />
           </section>
         </div>

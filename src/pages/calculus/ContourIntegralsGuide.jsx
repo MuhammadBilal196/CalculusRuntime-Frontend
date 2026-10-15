@@ -202,9 +202,11 @@ export default function ContourIntegralsGuide({ part = 1 }) {
               Evaluate your understanding of Cauchy&apos;s theorem, Cauchy integral formulas, Laurent expansions, and residue evaluations of real integrals. 80% passing threshold required.
             </p>
             <GuideMcqSection
-              quizId="calc-c-contour-residues-checkpoint"
+              id="quiz-contour-integrals-checkpoint"
+              scoreId="score-contour-integrals-checkpoint"
+              section="contour-integrals-checkpoint"
               questions={CALC_C_CONTOUR_RESIDUES_QUIZ}
-              onComplete={(score, total) => saveQuizScore("calc-c-contour-residues-checkpoint", score, total)}
+              onComplete={(score, total) => saveQuizScore("guide-mcq-contour-integrals-checkpoint", score, total)}
             />
           </section>
         </div>

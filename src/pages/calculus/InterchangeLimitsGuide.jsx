@@ -150,9 +150,11 @@ export default function InterchangeLimitsGuide({ part = 1 }) {
               Evaluate your comprehension of termwise integration, differentiation prerequisites, and non-uniform failure modes. 80% passing threshold required.
             </p>
             <GuideMcqSection
-              quizId="calc-a-interchange-limits-checkpoint"
+              id="quiz-interchange-limits-checkpoint"
+              scoreId="score-interchange-limits-checkpoint"
+              section="interchange-limits-checkpoint"
               questions={CALC_A_INTERCHANGE_LIMITS_QUIZ}
-              onComplete={(score, total) => saveQuizScore("calc-a-interchange-limits-checkpoint", score, total)}
+              onComplete={(score, total) => saveQuizScore("guide-mcq-interchange-limits-checkpoint", score, total)}
             />
           </section>
         </div>

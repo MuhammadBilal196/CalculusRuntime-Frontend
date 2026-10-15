@@ -195,9 +195,11 @@ export default function AnalyticFunctionsGuide({ part = 1 }) {
               Verify your mastery of complex differentiability, polar Cauchy-Riemann forms, harmonic conjugates, and Milne-Thomson shortcuts. 80% passing threshold required.
             </p>
             <GuideMcqSection
-              quizId="calc-c-analytic-cr-checkpoint"
+              id="quiz-analytic-functions-checkpoint"
+              scoreId="score-analytic-functions-checkpoint"
+              section="analytic-functions-checkpoint"
               questions={CALC_C_ANALYTIC_CR_QUIZ}
-              onComplete={(score, total) => saveQuizScore("calc-c-analytic-cr-checkpoint", score, total)}
+              onComplete={(score, total) => saveQuizScore("guide-mcq-analytic-functions-checkpoint", score, total)}
             />
           </section>
         </div>

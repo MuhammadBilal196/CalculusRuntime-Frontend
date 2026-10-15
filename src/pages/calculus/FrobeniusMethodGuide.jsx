@@ -138,9 +138,11 @@ export default function FrobeniusMethodGuide({ part = 1 }) {
               Evaluate your proficiency in indicial root classification, recurrence derivations, and singular Frobenius solutions. 80% passing threshold required.
             </p>
             <GuideMcqSection
-              quizId="calc-b-frobenius-checkpoint"
+              id="quiz-frobenius-method-checkpoint"
+              scoreId="score-frobenius-method-checkpoint"
+              section="frobenius-method-checkpoint"
               questions={CALC_B_FROBENIUS_METHOD_QUIZ}
-              onComplete={(score, total) => saveQuizScore("calc-b-frobenius-checkpoint", score, total)}
+              onComplete={(score, total) => saveQuizScore("guide-mcq-frobenius-method-checkpoint", score, total)}
             />
           </section>
         </div>
