@@ -286,3 +286,9 @@ Integrated extensive mathematical formula catalogs for all six new topics into `
 
 ---
 
+## 48. Practice Arena Question Bank: 150 Unique MCQs with Collision-Free IDs
+
+Generated and registered 150 unique, collision-free MCQs (IDs `82450`–`82599`) in `calcAgSeriesComplexPracticeBank.js` and `PractiseSection.jsx`, balanced with exactly 50 Easy, 50 Medium, and 50 Hard questions across all six topics (25 per topic).
+
+---
+
