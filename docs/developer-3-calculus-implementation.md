@@ -160,3 +160,9 @@ Documented Case 1 where roots $r_1, r_2$ do not differ by an integer ($r_1 - r_2
 
 ---
 
+## 27. Indicial Root Classification: Case 2 Repeated Roots and Parameter Differentiation
+
+Derived the second linearly independent solution for repeated indicial roots $r_1 = r_2 = r$. Demonstrated parameter differentiation $y_2(x) = \left.\frac{\partial}{\partial r} y(x, r)\right|_{r=r_1}$ yielding the fundamental logarithmic singularity $y_1(x)\ln x$.
+
+---
+
