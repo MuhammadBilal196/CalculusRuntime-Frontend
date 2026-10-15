@@ -208,3 +208,9 @@ Proved that the real and imaginary components $u(x, y)$ and $v(x, y)$ of any hol
 
 ---
 
+## 35. Harmonic Conjugate Construction via Milne-Thomson Method
+
+Implemented the Milne-Thomson method for directly recovering full analytic functions $f(z)$ from known real parts $u(x, y)$ using the identity $f'(z) = u_x(z, 0) - i u_y(z, 0)$ without integrating multi-variable ODEs.
+
+---
+
