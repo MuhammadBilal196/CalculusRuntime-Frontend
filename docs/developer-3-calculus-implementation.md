@@ -52,3 +52,9 @@ Integrated Dini's Theorem as an operational shortcut in study guides: on a compa
 
 ---
 
+## 9. Weierstrass M-Test for Uniform Convergence of Series
+
+Codified the Weierstrass M-Test for infinite series of functions $\sum_{n=1}^\infty u_n(x)$. If bounded by summable positive constants $|u_n(x)| \le M_n$ with $\sum M_n < \infty$, the series converges uniformly and absolutely across the entire spatial domain.
+
+---
+
