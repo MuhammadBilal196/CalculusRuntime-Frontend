@@ -250,3 +250,9 @@ Formulated Cauchy's Residue Theorem: $\oint_C f(z)\,dz = 2\pi i \sum_{k=1}^N \te
 
 ---
 
+## 42. Evaluating Real Improper Integrals via Semicircular Upper Half-Plane Contours
+
+Implemented standard Jordan contour techniques to evaluate difficult real improper integrals $\int_{-\infty}^\infty f(x)\,dx$ by closing contours with semicircles in the upper half-plane and computing enclosed residues.
+
+---
+
