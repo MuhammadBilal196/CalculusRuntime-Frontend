@@ -88,3 +88,9 @@ Engineered constructive counterexamples demonstrating the catastrophic breakdown
 
 ---
 
+## 15. Lebesgue Dominated Convergence Theorem Analogy and Bounds
+
+Introduced advanced upper-division concepts connecting uniform convergence to the Lebesgue Dominated Convergence Theorem, providing learners with an intuitive stepping stone to measure theory and $L^p$ spaces.
+
+---
+
