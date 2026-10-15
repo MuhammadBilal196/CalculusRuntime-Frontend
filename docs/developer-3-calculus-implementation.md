@@ -280,3 +280,9 @@ Refactored `DailyChallenge.jsx` to enforce deterministic UTC calendar day keys, 
 
 ---
 
+## 47. Formula Catalog Integration into formulaData.js and Flashcard Engine
+
+Integrated extensive mathematical formula catalogs for all six new topics into `formulaData.js`, enabling automatic card mapping and spaced-repetition study support in `flashcards.js`.
+
+---
+
