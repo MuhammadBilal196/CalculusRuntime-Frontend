@@ -70,3 +70,9 @@ Authored 20 distinct, university-grade multiple-choice questions for Pointwise a
 
 ---
 
+## 12. Interchanging Limits and Integrals: The Termwise Integration Theorem
+
+Formulated the Termwise Integration Theorem for sequences of functions on a compact interval $[a, b]$. Demonstrated that uniform convergence $f_n \rightrightarrows f$ provides the sufficient foundation to swap limit and integral operators: $\lim_{n \to \infty} \int_a^b f_n(x)\,dx = \int_a^b \lim_{n \to \infty} f_n(x)\,dx$.
+
+---
+
