@@ -895,3 +895,449 @@ export const CALC_B_FROBENIUS_METHOD_QUIZ = [
   }
 ];
 
+export const CALC_C_ANALYTIC_CR_QUIZ = [
+  {
+    "prompt": "What is the formal definition of complex differentiability for $f: U \\subseteq \\mathbb{C} \\to \\mathbb{C}$ at a point $z_0$?",
+    "options": [
+      "$f'(z_0) = \\lim_{\\Delta z \\to 0} \\frac{f(z_0 + \\Delta z) - f(z_0)}{\\Delta z}$ exists and is independent of the direction in which $\\Delta z \\to 0$",
+      "The real and imaginary parts $u, v$ simply have continuous partial derivatives with no further conditions",
+      "$\\lim_{z \\to z_0} |f(z)| = |f(z_0)|$",
+      "$f(z_0) = 0$"
+    ],
+    "answer": "A",
+    "explanation": "Complex differentiability requires the difference quotient limit to exist identically along EVERY possible 2D path in the complex plane as $\\Delta z = \\Delta x + i\\Delta y \\to 0$."
+  },
+  {
+    "prompt": "What are the Cauchy-Riemann equations for $f(z) = u(x, y) + i v(x, y)$ in Cartesian coordinates?",
+    "options": [
+      "$\\frac{\\partial u}{\\partial x} = \\frac{\\partial v}{\\partial y}$ and $\\frac{\\partial u}{\\partial y} = -\\frac{\\partial v}{\\partial x}$",
+      "$\\frac{\\partial u}{\\partial x} = -\\frac{\\partial v}{\\partial y}$ and $\\frac{\\partial u}{\\partial y} = \\frac{\\partial v}{\\partial x}$",
+      "$\\frac{\\partial u}{\\partial x} = \\frac{\\partial u}{\\partial y}$ and $\\frac{\\partial v}{\\partial x} = \\frac{\\partial v}{\\partial y}$",
+      "$\\frac{\\partial^2 u}{\\partial x^2} = \\frac{\\partial^2 v}{\\partial y^2}$"
+    ],
+    "answer": "A",
+    "explanation": "Equating the limits along the real direction $\\Delta z = \\Delta x$ ($f' = u_x + iv_x$) and imaginary direction $\\Delta z = i\\Delta y$ ($f' = v_y - iu_y$) yields $u_x = v_y$ and $u_y = -v_x$."
+  },
+  {
+    "prompt": "What are the sufficient conditions for $f(z) = u + iv$ to be complex differentiable at $z_0 = x_0 + i y_0$?",
+    "options": [
+      "The first partial derivatives $u_x, u_y, v_x, v_y$ exist and are continuous in a neighborhood of $(x_0, y_0)$, and satisfy the Cauchy-Riemann equations at $(x_0, y_0)$",
+      "The function is bounded",
+      "$u$ and $v$ are polynomials",
+      "Only that $u_x = v_y$ holds at that single isolated point"
+    ],
+    "answer": "A",
+    "explanation": "Continuity of the first partial derivatives ($\\,\\mathcal{C}^1$ regularity) together with the algebraic Cauchy-Riemann equations guarantees complex differentiability."
+  },
+  {
+    "prompt": "Is the complex conjugate function $f(z) = \\bar{z} = x - iy$ analytic anywhere in $\\mathbb{C}$?",
+    "options": [
+      "No, because $u_x = 1 \\ne v_y = -1$, violating the Cauchy-Riemann equations everywhere",
+      "Yes, it is analytic on the entire complex plane",
+      "Only along the real axis $y = 0$",
+      "Only at the origin $z = 0$"
+    ],
+    "answer": "A",
+    "explanation": "Here $u(x, y) = x$ and $v(x, y) = -y$. Then $u_x = 1$ while $v_y = -1$. Because $1 \\ne -1$ everywhere, the Cauchy-Riemann equations fail at every point in $\\mathbb{C}$, so $\\bar{z}$ is nowhere differentiable."
+  },
+  {
+    "prompt": "What are the Cauchy-Riemann equations in polar coordinates $(r, \\theta)$ where $z = r e^{i\\theta}$?",
+    "options": [
+      "$\\frac{\\partial u}{\\partial r} = \\frac{1}{r}\\frac{\\partial v}{\\partial \\theta}$ and $\\frac{\\partial v}{\\partial r} = -\\frac{1}{r}\\frac{\\partial u}{\\partial \\theta}$",
+      "$\\frac{\\partial u}{\\partial r} = \\frac{\\partial v}{\\partial \\theta}$ and $\\frac{\\partial u}{\\partial \\theta} = -\\frac{\\partial v}{\\partial r}$",
+      "$\\frac{\\partial u}{\\partial r} = r\\frac{\\partial v}{\\partial \\theta}$ and $\\frac{\\partial v}{\\partial r} = r\\frac{\\partial u}{\\partial \\theta}$",
+      "$\\frac{\\partial^2 u}{\\partial r^2} + \\frac{\\partial^2 v}{\\partial \\theta^2} = 0$"
+    ],
+    "answer": "A",
+    "explanation": "By applying the chain rule to $x = r\\cos\\theta$ and $y = r\\sin\\theta$, the Cauchy-Riemann conditions become $u_r = \\frac{1}{r}v_\\theta$ and $v_r = -\\frac{1}{r}u_\\theta$."
+  },
+  {
+    "prompt": "What differential equation must the real part $u(x, y)$ of an analytic function $f(z) = u + iv$ satisfy?",
+    "options": [
+      "Laplace's equation: $\\nabla^2 u = \\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2} = 0$ (harmonic function)",
+      "The wave equation: $u_{xx} - u_{yy} = 0$",
+      "The heat equation: $u_t = u_{xx}$",
+      "Helmholtz's equation: $\\nabla^2 u + k^2 u = 0$"
+    ],
+    "answer": "A",
+    "explanation": "Differentiating $u_x = v_y$ with respect to $x$ gives $u_{xx} = v_{yx}$. Differentiating $u_y = -v_x$ with respect to $y$ gives $u_{yy} = -v_{xy}$. Adding them gives $u_{xx} + u_{yy} = 0$ by Clairaut's theorem."
+  },
+  {
+    "prompt": "Given the harmonic function $u(x, y) = x^2 - y^2 + 2x$, find its harmonic conjugate $v(x, y)$ such that $f(z) = u + iv$ is analytic with $v(0, 0) = 0$:",
+    "options": [
+      "$v(x, y) = 2xy + 2y$",
+      "$v(x, y) = 2xy - 2y$",
+      "$v(x, y) = x^2 + y^2$",
+      "$v(x, y) = 2xy$"
+    ],
+    "answer": "A",
+    "explanation": "$u_x = 2x + 2 = v_y \\implies v(x, y) = 2xy + 2y + g(x)$. Then $v_x = 2y + g'(x) = -u_y = -(-2y) = 2y \\implies g'(x) = 0 \\implies g(x) = C$. With $v(0, 0) = 0$, $C = 0$. Thus $v(x, y) = 2xy + 2y$."
+  },
+  {
+    "prompt": "What geometric property does the mapping $w = f(z)$ possess at any point $z_0$ where $f$ is analytic and $f'(z_0) \\ne 0$?",
+    "options": [
+      "It is conformal (preserves both the magnitude and sense of angles between intersecting curves)",
+      "It only preserves lengths (isometry)",
+      "It reverses orientation",
+      "It collapses 2D areas into lines"
+    ],
+    "answer": "A",
+    "explanation": "If $f'(z_0) = R e^{i\\phi} \\ne 0$, the tangent vector to any curve passing through $z_0$ is scaled by $R$ and rotated by the constant angle $\\phi$. Hence angles and orientations are strictly preserved (conformal mapping)."
+  },
+  {
+    "prompt": "What happens to conformality at a critical point where $f'(z_0) = 0$ with $f''(z_0) \\ne 0$?",
+    "options": [
+      "Angles between intersecting curves are doubled ($2\\theta$)",
+      "Angles are preserved",
+      "Angles are halved",
+      "Conformality is unchanged"
+    ],
+    "answer": "A",
+    "explanation": "If the first non-vanishing derivative at $z_0$ is of order $k \\ge 2$, the mapping locally behaves like $(z - z_0)^k$, multiplying angles between tangent vectors by $k$. For $k = 2$, angles are doubled."
+  },
+  {
+    "prompt": "An ENTIRE function is defined as a complex function that:",
+    "options": [
+      "Is analytic on the entire complex plane $\\mathbb{C}$",
+      "Has only real values",
+      "Is bounded everywhere",
+      "Has poles of infinite order"
+    ],
+    "answer": "A",
+    "explanation": "Functions such as polynomials, $e^z$, $\\sin z$, and $\\cos z$ are analytic throughout all of $\\mathbb{C}$ and are termed entire (integral) functions."
+  },
+  {
+    "prompt": "Liouville's Theorem states that any bounded entire function must be:",
+    "options": [
+      "Constant",
+      "A polynomial of degree 1",
+      "Zero everywhere",
+      "Periodic"
+    ],
+    "answer": "A",
+    "explanation": "If $f(z)$ is entire and $|f(z)| \\le M$ for all $z \\in \\mathbb{C}$, then by Cauchy's Estimate $|f'(z)| \\le M/R \\to 0$ as $R \\to \\infty$, forcing $f'(z) \\equiv 0$, so $f(z)$ is constant."
+  },
+  {
+    "prompt": "How does the Fundamental Theorem of Algebra follow as a direct corollary of Liouville's Theorem?",
+    "options": [
+      "If a non-constant polynomial $P(z)$ had no roots, $f(z) = 1/P(z)$ would be a bounded entire function, hence constant, a contradiction",
+      "By integrating $P(z)$ around a unit circle",
+      "By differentiating $P(z)$ until it vanishes",
+      "By applying the ratio test to the coefficients"
+    ],
+    "answer": "A",
+    "explanation": "If $P(z)$ has degree $n \\ge 1$ and no roots, $1/P(z)$ has no poles and tends to $0$ as $|z| \\to \\infty$, making it a bounded entire function. By Liouville's theorem, $1/P(z)$ must be constant, which contradicts $\\deg P \\ge 1$."
+  },
+  {
+    "prompt": "If $f(z) = u + iv$ is analytic on a connected domain $D$ and $|f(z)|$ is constant, what can be deduced about $f(z)$?",
+    "options": [
+      "$f(z)$ must be constant on $D$",
+      "$f(z)$ can be any linear function",
+      "$u$ and $v$ must be zero",
+      "$f(z)$ is periodic"
+    ],
+    "answer": "A",
+    "explanation": "If $u^2 + v^2 = C$, differentiating with respect to $x$ and $y$ and applying Cauchy-Riemann equations yields $(u^2 + v^2)(u_x^2 + u_y^2) = 0$. For $C > 0$, $u_x = u_y = v_x = v_y = 0$, so $f(z)$ is constant."
+  },
+  {
+    "prompt": "What are the level curves of the real part $u(x, y) = c_1$ and imaginary part $v(x, y) = c_2$ of an analytic function with $f'(z) \\ne 0$?",
+    "options": [
+      "They form mutually orthogonal families of curves everywhere in the domain",
+      "They are always concentric circles",
+      "They are parallel lines",
+      "They never intersect"
+    ],
+    "answer": "A",
+    "explanation": "The gradient vectors are $\\nabla u = (u_x, u_y)$ and $\\nabla v = (v_x, v_y)$. By Cauchy-Riemann, $\\nabla u \\cdot \\nabla v = u_x v_x + u_y v_y = u_x(-u_y) + u_y(u_x) = 0$. The normal vectors are orthogonal, so the level curves intersect at right angles."
+  },
+  {
+    "prompt": "For $f(z) = z^2 = (x^2 - y^2) + i(2xy)$, verify the Cauchy-Riemann equations:",
+    "options": [
+      "$u_x = 2x = v_y$ and $u_y = -2y = -v_x$",
+      "$u_x = 2y$ and $u_y = 2x$",
+      "$u_x = x$ and $v_y = y$",
+      "$u_x = -2x$ and $v_y = 2x$"
+    ],
+    "answer": "A",
+    "explanation": "$u = x^2 - y^2 \\implies u_x = 2x, u_y = -2y$. $v = 2xy \\implies v_x = 2y, v_y = 2x$. We see $u_x = v_y = 2x$ and $u_y = -v_x = -2y$. The equations hold everywhere, confirming $z^2$ is entire."
+  },
+  {
+    "prompt": "What is the complex derivative of $f(z) = e^z = e^x \\cos y + i e^x \\sin y$?",
+    "options": [
+      "$f'(z) = e^z$",
+      "$f'(z) = i e^z$",
+      "$f'(z) = e^x$",
+      "$f'(z) = \\cos y - i \\sin y$"
+    ],
+    "answer": "A",
+    "explanation": "$f'(z) = u_x + i v_x = e^x \\cos y + i e^x \\sin y = e^z$. The exponential function is its own derivative in $\\mathbb{C}$."
+  },
+  {
+    "prompt": "Consider $f(z) = |z|^2 = x^2 + y^2$. Where is $f$ complex differentiable?",
+    "options": [
+      "Only at the single point $z = 0$, and nowhere else",
+      "Everywhere in $\\mathbb{C}$",
+      "Along the unit circle $|z| = 1$",
+      "Nowhere"
+    ],
+    "answer": "A",
+    "explanation": "$u = x^2 + y^2, v = 0$. $u_x = 2x, u_y = 2y, v_x = 0, v_y = 0$. Cauchy-Riemann requires $2x = 0$ and $2y = 0 \\implies x = y = 0$. It is differentiable ONLY at $z = 0$ (and analytic nowhere, since analyticity requires an open neighborhood)."
+  },
+  {
+    "prompt": "The Morera Theorem states that if $f$ is continuous on a simply connected domain $D$ and $\\oint_C f(z)\\,dz = 0$ for every closed contour $C \\subset D$, then:",
+    "options": [
+      "$f$ is analytic on $D$",
+      "$f$ must be identically zero",
+      "$f$ must be bounded",
+      "$f$ has poles on the boundary"
+    ],
+    "answer": "A",
+    "explanation": "Morera's theorem is the exact converse of Cauchy's integral theorem: path-independence of contour integrals for continuous functions implies analyticity."
+  },
+  {
+    "prompt": "If $f(z) = u + iv$ is analytic and $u(x, y) = e^{-y}\\cos x$, what is $f'(z)$ expressed purely in terms of $z$?",
+    "options": [
+      "$f'(z) = -\\sin z$",
+      "$f'(z) = \\cos z$",
+      "$f'(z) = e^z$",
+      "$f'(z) = i e^{-z}$"
+    ],
+    "answer": "A",
+    "explanation": "By Milne-Thomson's method, setting $x = z, y = 0$: $u(z, 0) = \\cos z$. Since $f(z) = \\cos z$, the derivative is $f'(z) = -\\sin z$."
+  },
+  {
+    "prompt": "What role do harmonic conjugates play in fluid dynamics and electrostatic potential theory?",
+    "options": [
+      "If $u(x, y)$ represents the velocity potential (or electrostatic potential), its harmonic conjugate $v(x, y)$ represents the stream function (or electric flux lines), forming orthogonal physical field lines",
+      "They describe turbulent viscosity",
+      "They only determine temperature at infinity",
+      "They are used to normalize coordinate origins"
+    ],
+    "answer": "A",
+    "explanation": "The complex potential $\\Omega(z) = \\Phi + i\\Psi$ unifies the scalar velocity potential $\\Phi$ and the stream function $\\Psi$. Orthogonality of their level curves guarantees that fluid streamlines never cross equipotential contours."
+  }
+];
+
+export const CALC_C_CONTOUR_RESIDUES_QUIZ = [
+  {
+    "prompt": "What does Cauchy's Integral Theorem state for an analytic function $f(z)$ on and within a simple closed contour $\\gamma$ in a simply connected domain?",
+    "options": [
+      "$\\oint_\\gamma f(z)\\,dz = 0$",
+      "$\\oint_\\gamma f(z)\\,dz = 2\\pi i$",
+      "$\\oint_\\gamma f(z)\\,dz = f(0)$",
+      "$\\oint_\\gamma f(z)\\,dz = \\text{Length}(\\gamma)$"
+    ],
+    "answer": "A",
+    "explanation": "If $f(z)$ is holomorphic everywhere inside and on a closed contour $\\gamma$, Cauchy's integral theorem guarantees that the path integral vanishes identically."
+  },
+  {
+    "prompt": "What is Cauchy's Integral Formula for $f(z_0)$ when $\\gamma$ is a positively oriented simple closed contour enclosing $z_0$?",
+    "options": [
+      "$f(z_0) = \\frac{1}{2\\pi i} \\oint_\\gamma \\frac{f(z)}{z - z_0}\\,dz$",
+      "$f(z_0) = \\oint_\\gamma \\frac{f(z)}{z - z_0}\\,dz$",
+      "$f(z_0) = \\frac{1}{2\\pi} \\oint_\\gamma f(z)\\,dz$",
+      "$f(z_0) = 2\\pi i \\oint_\\gamma (z - z_0)f(z)\\,dz$"
+    ],
+    "answer": "A",
+    "explanation": "Cauchy's integral formula states that values of an analytic function in the interior of a domain are completely determined by its boundary values: $f(z_0) = \\frac{1}{2\\pi i} \\oint_\\gamma \\frac{f(z)}{z - z_0}\\,dz$."
+  },
+  {
+    "prompt": "Evaluate $\\oint_{|z|=2} \\frac{e^z}{z - 1}\\,dz$ where the circular contour is oriented counterclockwise:",
+    "options": [
+      "$2\\pi i e$",
+      "$2\\pi i$",
+      "$e$",
+      "$0$"
+    ],
+    "answer": "A",
+    "explanation": "Here $z_0 = 1$ lies inside the circle $|z| = 2$. By Cauchy's Integral Formula with $f(z) = e^z$: $\\oint \\frac{e^z}{z - 1}\\,dz = 2\\pi i f(1) = 2\\pi i e$."
+  },
+  {
+    "prompt": "What is Cauchy's Differentiation Formula for the $n$-th derivative $f^{(n)}(z_0)$?",
+    "options": [
+      "$f^{(n)}(z_0) = \\frac{n!}{2\\pi i} \\oint_\\gamma \\frac{f(z)}{(z - z_0)^{n+1}}\\,dz$",
+      "$f^{(n)}(z_0) = \\frac{1}{2\\pi i n!} \\oint_\\gamma \\frac{f(z)}{(z - z_0)^n}\\,dz$",
+      "$f^{(n)}(z_0) = \\frac{n!}{2\\pi} \\oint_\\gamma f(z)\\,dz$",
+      "$f^{(n)}(z_0) = 0$ always"
+    ],
+    "answer": "A",
+    "explanation": "Differentiating under the integral sign $n$ times yields $f^{(n)}(z_0) = \\frac{n!}{2\\pi i} \\oint_\\gamma \\frac{f(z)}{(z - z_0)^{n+1}}\\,dz$."
+  },
+  {
+    "prompt": "Evaluate $\\oint_{|z|=1} \\frac{\\sin z}{z^3}\\,dz$:",
+    "options": [
+      "$0$",
+      "$\\pi i$",
+      "$2\\pi i$",
+      "$-\\pi i$"
+    ],
+    "answer": "A",
+    "explanation": "By Cauchy's formula for $n = 2$: $\\oint \\frac{\\sin z}{z^3}\\,dz = \\frac{2\\pi i}{2!} \\left. \\frac{d^2}{dz^2}(\\sin z) \\right|_{z=0} = \\pi i (-\\sin 0) = 0$."
+  },
+  {
+    "prompt": "In the Laurent series expansion $f(z) = \\sum_{n=-\\infty}^\\infty a_n (z - z_0)^n$, which coefficient is defined as the residue $\\text{Res}(f, z_0)$?",
+    "options": [
+      "The coefficient $a_{-1}$ of the $(z - z_0)^{-1}$ term",
+      "The constant term $a_0$",
+      "The leading coefficient $a_1$",
+      "The coefficient $a_{-2}$"
+    ],
+    "answer": "A",
+    "explanation": "Because $\\oint (z - z_0)^n\\,dz = 2\\pi i$ for $n = -1$ and vanishes for all other integers $n \\ne -1$, the coefficient $a_{-1}$ is precisely the residue."
+  },
+  {
+    "prompt": "How is the residue of a SIMPLE pole (order 1) at $z_0$ computed?",
+    "options": [
+      "$\\text{Res}(f, z_0) = \\lim_{z \\to z_0} (z - z_0) f(z)$",
+      "$\\text{Res}(f, z_0) = \\lim_{z \\to z_0} \\frac{f(z)}{z - z_0}$",
+      "$\\text{Res}(f, z_0) = f(z_0)$",
+      "$\\text{Res}(f, z_0) = \\lim_{z \\to z_0} (z - z_0)^2 f'(z)$"
+    ],
+    "answer": "A",
+    "explanation": "Multiplying by $(z - z_0)$ clears the simple denominator, leaving $a_{-1} + a_0(z - z_0) + \\dots$, whose limit as $z \\to z_0$ is $a_{-1}$."
+  },
+  {
+    "prompt": "For a pole of order $k$ at $z_0$, what is the general residue formula?",
+    "options": [
+      "$\\text{Res}(f, z_0) = \\frac{1}{(k-1)!} \\lim_{z \\to z_0} \\frac{d^{k-1}}{dz^{k-1}} \\left[ (z - z_0)^k f(z) \\right]$",
+      "$\\text{Res}(f, z_0) = \\frac{1}{k!} \\lim_{z \\to z_0} (z - z_0)^k f(z)$",
+      "$\\text{Res}(f, z_0) = \\lim_{z \\to z_0} \\frac{d^k}{dz^k} f(z)$",
+      "$\\text{Res}(f, z_0) = (k-1)! f^{(k)}(z_0)$"
+    ],
+    "answer": "A",
+    "explanation": "Multiplying by $(z - z_0)^k$ leaves $a_{-1}(z - z_0)^{k-1} + \\dots$. Differentiating $k-1$ times and dividing by $(k-1)!$ isolates $a_{-1}$."
+  },
+  {
+    "prompt": "Find the residue of $f(z) = \\frac{1}{z^2 + 1}$ at the pole $z = i$:",
+    "options": [
+      "$-i/2$",
+      "$i/2$",
+      "$1$",
+      "$-1$"
+    ],
+    "answer": "A",
+    "explanation": "Factor denominator: $z^2 + 1 = (z - i)(z + i)$. At the simple pole $z = i$: $\\text{Res}(f, i) = \\lim_{z \\to i} (z - i) \\frac{1}{(z - i)(z + i)} = \\frac{1}{2i} = -\\frac{i}{2}$."
+  },
+  {
+    "prompt": "What does Cauchy's Residue Theorem state for a positively oriented contour $\\gamma$ enclosing isolated singularities $z_1, z_2, \\dots, z_m$?",
+    "options": [
+      "$\\oint_\\gamma f(z)\\,dz = 2\\pi i \\sum_{k=1}^m \\text{Res}(f, z_k)$",
+      "$\\oint_\\gamma f(z)\\,dz = \\sum_{k=1}^m \\text{Res}(f, z_k)$",
+      "$\\oint_\\gamma f(z)\\,dz = 2\\pi \\prod_{k=1}^m \\text{Res}(f, z_k)$",
+      "$\\oint_\\gamma f(z)\\,dz = 0$ always"
+    ],
+    "answer": "A",
+    "explanation": "Cauchy's Residue Theorem generalizes Cauchy's integral theorem, stating that the contour integral equals $2\\pi i$ times the sum of the residues of all enclosed singularities."
+  },
+  {
+    "prompt": "Evaluate the real improper integral $\\int_{-\\infty}^\\infty \\frac{1}{x^2 + 4}\\,dx$ using contour integration:",
+    "options": [
+      "$\\pi / 2$",
+      "$\\pi$",
+      "$2\\pi$",
+      "$\\pi / 4$"
+    ],
+    "answer": "A",
+    "explanation": "Close contour in upper half-plane. Poles at $z = \\pm 2i$; only $z = 2i$ is in the upper half-plane. $\\text{Res}(f, 2i) = \\frac{1}{2(2i)} = \\frac{1}{4i}$. By Residue Theorem: $\\int_{-\\infty}^\\infty = 2\\pi i (1/(4i)) = \\pi/2$."
+  },
+  {
+    "prompt": "Classify the isolated singularity of $f(z) = \\frac{\\sin z}{z}$ at $z = 0$:",
+    "options": [
+      "Removable singularity",
+      "Simple pole",
+      "Pole of order 2",
+      "Essential singularity"
+    ],
+    "answer": "A",
+    "explanation": "$\\sin z / z = 1 - z^2/6 + z^4/120 - \\dots$. The Laurent series contains no negative powers of $z$, and $\\lim_{z \\to 0} f(z) = 1$, making $z = 0$ a removable singularity with residue $0$."
+  },
+  {
+    "prompt": "Classify the isolated singularity of $f(z) = e^{1/z}$ at $z = 0$:",
+    "options": [
+      "Essential singularity",
+      "Pole of order 1",
+      "Pole of order $\\infty$",
+      "Removable singularity"
+    ],
+    "answer": "A",
+    "explanation": "The Laurent series $e^{1/z} = 1 + \\frac{1}{z} + \\frac{1}{2!z^2} + \\frac{1}{3!z^3} + \\dots$ has infinitely many negative powers of $z$, defining an essential singularity."
+  },
+  {
+    "prompt": "What does the Casorati-Weierstrass Theorem state about the behavior of $f(z)$ near an essential singularity $z_0$?",
+    "options": [
+      "In every neighborhood of $z_0$, the image $f(U \\setminus \\{z_0\\})$ is dense in the entire complex plane $\\mathbb{C}$",
+      "$f(z) \\to \\infty$ uniformly",
+      "$f(z)$ is bounded",
+      "$f(z) \\to 0$ along all rays"
+    ],
+    "answer": "A",
+    "explanation": "Near an essential singularity, $f(z)$ comes arbitrarily close to any complex number $w \\in \\mathbb{C}$ in every punctured neighborhood."
+  },
+  {
+    "prompt": "Evaluate $\\oint_{|z|=3} \\frac{z^2}{z^2 - 1}\\,dz$:",
+    "options": [
+      "$0$",
+      "$2\\pi i$",
+      "$\\pi i$",
+      "$4\\pi i$"
+    ],
+    "answer": "A",
+    "explanation": "Poles at $z = 1$ and $z = -1$, both inside $|z|=3$. $\\text{Res}(f, 1) = \\frac{1^2}{2(1)} = 1/2$. $\\text{Res}(f, -1) = \\frac{(-1)^2}{2(-1)} = -1/2$. Sum of residues $= 1/2 - 1/2 = 0$. Hence $\\oint = 2\\pi i (0) = 0$."
+  },
+  {
+    "prompt": "What is the ML Inequality (Estimation Lemma) for a contour integral $\\int_\\gamma f(z)\\,dz$?",
+    "options": [
+      "$\\left| \\int_\\gamma f(z)\\,dz \\right| \\le M \\cdot L$, where $M = \\max_{z \\in \\gamma} |f(z)|$ and $L = \\text{Length}(\\gamma)$",
+      "$\\left| \\int_\\gamma f(z)\\,dz \\right| \\le M / L$",
+      "$\\left| \\int_\\gamma f(z)\\,dz \\right| = M \\cdot L$",
+      "$\\left| \\int_\\gamma f(z)\\,dz \\right| \\ge M \\cdot L$"
+    ],
+    "answer": "A",
+    "explanation": "The modulus of an integral is bounded by the supremum of the integrand times the arc length of the path: $|\\int_\\gamma f\\,dz| \\le \\int_a^b |f(z(t))||z'(t)|\\,dt \\le M \\int_a^b |z'(t)|\\,dt = ML$."
+  },
+  {
+    "prompt": "Evaluate the residue of $f(z) = \\frac{1}{(z - 2)^2 (z + 1)}$ at the double pole $z = 2$:",
+    "options": [
+      "$-1/9$",
+      "$1/9$",
+      "$1/3$",
+      "$-1/3$"
+    ],
+    "answer": "A",
+    "explanation": "At the order 2 pole $z = 2$: $\\text{Res}(f, 2) = \\frac{1}{1!} \\left. \\frac{d}{dz} \\left( \\frac{1}{z + 1} \\right) \\right|_{z=2} = \\left. -\\frac{1}{(z + 1)^2} \\right|_{z=2} = -\\frac{1}{(2 + 1)^2} = -\\frac{1}{9}$."
+  },
+  {
+    "prompt": "Jordan's Lemma is used in contour integration to prove that along a semicircle $C_R$ in the upper half-plane:",
+    "options": [
+      "$\\lim_{R \\to \\infty} \\int_{C_R} f(z) e^{i a z}\\,dz = 0$ for $a > 0$ when $\\max_{C_R} |f(z)| \\to 0$",
+      "The integral is always equal to $2\\pi i$",
+      "Trigonometric functions diverge",
+      "The pole order increases with $R$"
+    ],
+    "answer": "A",
+    "explanation": "Jordan's lemma exploits the exponential decay $e^{i a z} = e^{i a x} e^{-a y}$ on the upper half-plane ($y > 0$) to show that $\\int_{C_R} f(z) e^{iaz}\\,dz \\to 0$ even when $|f(z)|$ decays as slowly as $1/R$."
+  },
+  {
+    "prompt": "Evaluate $\\oint_{|z|=1} z^3 e^{1/z}\\,dz$:",
+    "options": [
+      "$\\pi i / 12$",
+      "$2\\pi i$",
+      "$0$",
+      "$\\pi i / 6$"
+    ],
+    "answer": "A",
+    "explanation": "$z^3 e^{1/z} = z^3 (1 + 1/z + 1/(2z^2) + 1/(6z^3) + 1/(24z^4) + \\dots) = z^3 + z^2 + z/2 + 1/6 + \\frac{1}{24z} + \\dots$. The coefficient of $1/z$ is $a_{-1} = 1/24$. By Residue Theorem: $\\oint = 2\\pi i (1/24) = \\pi i / 12$."
+  },
+  {
+    "prompt": "How is a real integral of the form $\\int_0^{2\\pi} R(\\cos\\theta, \\sin\\theta)\\,d\\theta$ evaluated via residue calculus?",
+    "options": [
+      "Substitute $z = e^{i\\theta}$, so $\\cos\\theta = \\frac{z + z^{-1}}{2}$, $\\sin\\theta = \\frac{z - z^{-1}}{2i}$, and $d\\theta = \\frac{dz}{i z}$, converting it to a contour integral around unit circle $|z| = 1$",
+      "Substitute $\\theta = x^2$",
+      "Integrate by parts twice",
+      "Convert into a Laplace transform"
+    ],
+    "answer": "A",
+    "explanation": "The Euler substitution $z = e^{i\\theta}$ maps the interval $[0, 2\\pi]$ directly to the counterclockwise unit circle $|z| = 1$, turning trigonometric integrals into rational residue problems."
+  }
+];
+
