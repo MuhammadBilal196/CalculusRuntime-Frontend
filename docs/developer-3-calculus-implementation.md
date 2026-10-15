@@ -256,3 +256,9 @@ Implemented standard Jordan contour techniques to evaluate difficult real improp
 
 ---
 
+## 43. Constructing 20 High-Rigor Checkpoint Questions for Topic 6
+
+Authored 20 checkpoint questions for Contour Integrals and Residues (`CALC_C_CONTOUR_RESIDUES_QUIZ`), evaluating Cauchy's Integral Formula, winding numbers, Laurent series principal parts, and Jordan contour integrals.
+
+---
+
