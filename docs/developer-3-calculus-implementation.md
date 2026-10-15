@@ -196,3 +196,9 @@ Derived the Cauchy-Riemann equations $\frac{\partial u}{\partial x} = \frac{\par
 
 ---
 
+## 33. Polar Coordinate Cauchy-Riemann System and Logarithmic Branch Cuts
+
+Transformed the Cauchy-Riemann equations into polar coordinates: $\frac{\partial u}{\partial r} = \frac{1}{r}\frac{\partial v}{\partial \theta}$ and $\frac{\partial v}{\partial r} = -\frac{1}{r}\frac{\partial u}{\partial \theta}$. Analyzed principal logarithmic branches and branch cuts.
+
+---
+
