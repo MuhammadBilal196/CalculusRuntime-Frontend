@@ -154,3 +154,9 @@ Analyzed the Euler-Cauchy equation $x^2 y'' + p_0 x y' + q_0 y = 0$ as the canon
 
 ---
 
+## 26. Indicial Root Classification: Case 1 Nonresonant Roots
+
+Documented Case 1 where roots $r_1, r_2$ do not differ by an integer ($r_1 - r_2 \notin \mathbb{Z}$). Derived the two independent series solutions $y_1(x) = x^{r_1}\sum a_n x^n$ and $y_2(x) = x^{r_2}\sum b_n x^n$.
+
+---
+
