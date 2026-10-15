@@ -76,3 +76,9 @@ Formulated the Termwise Integration Theorem for sequences of functions on a comp
 
 ---
 
+## 13. Uniform Derivative Convergence and Limit Differentiation
+
+Codified the subtle requirements of the Termwise Differentiation Theorem. Emphasized that uniform convergence of $f_n$ alone does not guarantee differentiability of the limit; rather, uniform convergence of the derivative sequence $(f_n')$ combined with pointwise convergence of $(f_n)$ at a single point is required.
+
+---
+
