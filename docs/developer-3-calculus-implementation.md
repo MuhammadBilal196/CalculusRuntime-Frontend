@@ -238,3 +238,9 @@ Codified Cauchy's Integral Formula $f(z_0) = \frac{1}{2\pi i}\oint_C \frac{f(z)}
 
 ---
 
+## 40. Laurent Series Expansions: Classifying Removable Singularities, Poles, and Essential Singularities
+
+Documented Laurent series expansions $f(z) = \sum_{n=-\infty}^\infty a_n (z - z_0)^n$ in annular domains. Classified isolated singularities into removable singularities, poles of order $m$, and essential singularities via the Casorati-Weierstrass theorem.
+
+---
+
