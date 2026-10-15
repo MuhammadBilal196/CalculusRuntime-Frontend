@@ -53,3 +53,7 @@ export { default as MonteCarloGuide } from "./MonteCarloGuide";
 export { default as BootstrapGuide } from "./BootstrapGuide";
 export { default as OrderStatisticsGuide } from "./OrderStatisticsGuide";
 export { default as QueueingTheoryGuide } from "./QueueingTheoryGuide";
+export { default as EntropyMutualInformationGuide } from "./EntropyMutualInformationGuide";
+export { default as CrossEntropyKlGuide } from "./CrossEntropyKlGuide";
+export { default as InformationTheoryPart1 } from "./InformationTheoryPart1";
+export { default as InformationTheoryPart2 } from "./InformationTheoryPart2";
