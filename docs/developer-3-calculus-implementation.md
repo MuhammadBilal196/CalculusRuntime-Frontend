@@ -190,3 +190,9 @@ Formulated complex function theory, contrasting real differentiability with the 
 
 ---
 
+## 32. Derivation of the Cauchy-Riemann Equations in Cartesian Coordinates
+
+Derived the Cauchy-Riemann equations $\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}$ and $\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}$ by equating complex derivatives along horizontal and vertical increment paths.
+
+---
+
