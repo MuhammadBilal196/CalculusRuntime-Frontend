@@ -429,3 +429,36 @@ export default function DailyChallenge() {
     </div>
   );
 }
+
+/**
+ * Reusable Promo Card for Home and Dashboard
+ */
+export function DailyChallengePromo({ compact = false }) {
+  const streak = getStreak();
+  const todayKey = getUtcTodayKey();
+  let isDoneToday = false;
+  try {
+    const completed = JSON.parse(localStorage.getItem("calculus-daily-challenges") || "{}");
+    isDoneToday = Boolean(completed[todayKey]?.isCompleted);
+  } catch {}
+
+  return (
+    <div className="dc-promo-card" style={compact ? { padding: "1.2rem", margin: "1rem 0" } : {}}>
+      <div className="dc-promo-content">
+        <span className="dc-promo-icon">{isDoneToday ? "✅" : "🔥"}</span>
+        <div className="dc-promo-text">
+          <h3>Daily Calculus Challenge</h3>
+          <p>
+            {isDoneToday
+              ? `You solved today's problem! Current streak: ${streak} day${streak === 1 ? "" : "s"}.`
+              : `Solve today's challenge to maintain your ${streak}-day streak!`}
+          </p>
+        </div>
+      </div>
+      <Link to="/daily-challenge" className="dc-promo-btn">
+        {isDoneToday ? "Review Challenge →" : "Play Today's Problem →"}
+      </Link>
+    </div>
+  );
+}
+

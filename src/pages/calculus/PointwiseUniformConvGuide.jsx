@@ -123,6 +123,21 @@ export default function PointwiseUniformConvGuide({ part = 1 }) {
             </ProcedureBox>
           </section>
 
+          <section className="section" id="dini-weierstrass">
+            <div className="sec-badge">Section 1.7</div>
+            <h2 className="sec-title">Dini and Weierstrass Uniform Convergence Criteria</h2>
+            <TheoryBox title="Dini's Monotone Convergence Theorem">
+              <p>
+                {"Let $K \\subset \\mathbb{R}$ be a **compact** set, and let $(f_n)$ be a sequence of continuous functions on $K$ converging pointwise to a continuous function $f$. If $(f_n)$ is **monotonic** (i.e., $f_n(x) \\le f_{n+1}(x)$ or $f_n(x) \\ge f_{n+1}(x)$ for all $x \\in K$), then $f_n \\to f$ **uniformly** on $K$."}
+              </p>
+            </TheoryBox>
+            <TheoryBox title="Weierstrass M-Test for Series">
+              <p>
+                {"Suppose $\\sum u_n(x)$ is a series of functions on $S$. If there exist positive constants $M_n$ such that $|u_n(x)| \\le M_n$ for all $x \\in S$ and $\\sum_{n=1}^\\infty M_n < \\infty$, then $\\sum u_n(x)$ converges uniformly and absolutely on $S$."}
+              </p>
+            </TheoryBox>
+          </section>
+
           <section className="section" id="worked-examples">
             <h2 className="sec-title">Certificate Worked Examples</h2>
             <CertificateExample

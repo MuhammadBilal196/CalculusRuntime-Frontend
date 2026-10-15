@@ -110,6 +110,38 @@ export default function FrobeniusMethodGuide({ part = 1 }) {
             </ProcedureBox>
           </section>
 
+          <section className="section" id="case2-repeated">
+            <div className="sec-badge">Section 4.6</div>
+            <h2 className="sec-title">Case 2: Repeated Indicial Roots (Logarithmic Solutions)</h2>
+            <ProcedureBox title="Algorithmic Construction for r₁ = r₂">
+              <ol>
+                <li>
+                  <strong>{"Construct First Solution $y_1(x)$:"}</strong> {"Obtain $y_1(x) = x^r \\sum_{n=0}^\\infty a_n(r) x^n$ evaluated at repeated root $r$."}
+                </li>
+                <li>
+                  <strong>{"Differentiate with Respect to Parameter $r$:"}</strong> {"Form the second solution via parameter differentiation:"}
+                  <br />
+                  {"$$y_2(x) = \\left. \\frac{\\partial}{\\partial r} y(x, r) \\right|_{r=r_1} = y_1(x) \\ln x + x^r \\sum_{n=1}^\\infty a_n'(r_1) x^n$$"}
+                </li>
+              </ol>
+            </ProcedureBox>
+          </section>
+
+          <section className="section" id="case3-integer-diff">
+            <div className="sec-badge">Section 4.7</div>
+            <h2 className="sec-title">Case 3: Indicial Roots Differing by an Integer (r₁ - r₂ = N)</h2>
+            <ProcedureBox title="Algorithmic Construction for r₁ - r₂ = N ∈ ℕ">
+              <ol>
+                <li>
+                  <strong>{"Larger Root $r_1$:"}</strong> {"Always produces the first valid Frobenius series $y_1(x) = x^{r_1}\\sum_{n=0}^\\infty a_n x^n$ with $a_0 \\ne 0$."}
+                </li>
+                <li>
+                  <strong>{"Smaller Root $r_2$:"}</strong> {"At step $n = N$, the recurrence denominator $F(r_2 + N) = F(r_1) = 0$. If the numerator also vanishes, $a_N$ is arbitrary and no logarithm is needed. Otherwise, the second solution takes the logarithmic form $y_2(x) = C y_1(x) \\ln x + x^{r_2}\\sum b_n x^n$."}
+                </li>
+              </ol>
+            </ProcedureBox>
+          </section>
+
           <section className="section" id="worked-examples">
             <h2 className="sec-title">Certificate Worked Examples</h2>
             <CertificateExample
