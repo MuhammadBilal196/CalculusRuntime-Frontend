@@ -178,3 +178,9 @@ Worked through the complete Frobenius derivation of Bessel's equation of order z
 
 ---
 
+## 30. Constructing 20 High-Rigor Checkpoint Questions for Topic 4
+
+Authored 20 checkpoint questions for the Frobenius Method (`CALC_B_FROBENIUS_METHOD_QUIZ`), examining indicial roots, Bessel functions, recurrence denominators, and logarithmic expansions.
+
+---
+
