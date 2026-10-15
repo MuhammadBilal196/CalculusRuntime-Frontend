@@ -142,3 +142,9 @@ Engineered the diagnostic criteria verifying regular singular points: $x = x_0$ 
 
 ---
 
+## 24. Generalized Power Series Ansatz and Indicial Equation Derivation
+
+Formulated the Frobenius ansatz $y(x) = x^r \sum_{n=0}^\infty a_n x^n$ with $a_0 \ne 0$. Derived the quadratic indicial polynomial $F(r) = r(r-1) + p_0 r + q_0 = 0$ determining the foundational growth rates of the basis solutions.
+
+---
+
