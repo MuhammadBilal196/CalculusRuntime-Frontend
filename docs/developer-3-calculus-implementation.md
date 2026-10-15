@@ -166,3 +166,9 @@ Derived the second linearly independent solution for repeated indicial roots $r_
 
 ---
 
+## 28. Indicial Root Classification: Case 3 Integer Root Differences and Logarithmic Resonance
+
+Formulated Case 3 where roots differ by a positive integer $r_1 - r_2 = N \in \mathbb{N}$. Analyzed potential division by zero in recurrence denominators, constructing the general solution form $y_2(x) = C y_1(x)\ln x + x^{r_2}\sum b_n x^n$.
+
+---
+
