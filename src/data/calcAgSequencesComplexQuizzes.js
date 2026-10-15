@@ -449,3 +449,449 @@ export const CALC_A_INTERCHANGE_LIMITS_QUIZ = [
   }
 ];
 
+export const CALC_B_POWER_SERIES_ODE_QUIZ = [
+  {
+    "prompt": "For the linear second-order homogeneous ODE $P(x)y'' + Q(x)y' + R(x)y = 0$, what condition defines $x_0$ as an ordinary point?",
+    "options": [
+      "$P(x_0) = 0$",
+      "The coefficient functions $p(x) = Q(x)/P(x)$ and $q(x) = R(x)/P(x)$ are analytic at $x_0$",
+      "$Q(x_0) = 0$ and $R(x_0) = 0$",
+      "The Wronskian of the equation vanishes at $x_0$"
+    ],
+    "answer": "B",
+    "explanation": "A point $x_0$ is an ordinary point if and only if both normalized coefficient functions $p(x) = Q(x)/P(x)$ and $q(x) = R(x)/P(x)$ possess convergent Taylor series in an open neighborhood around $x_0$."
+  },
+  {
+    "prompt": "What does Fuchs's theorem guarantee about power-series solutions at an ordinary point $x_0$?",
+    "options": [
+      "There exists at least one singular solution",
+      "There exist two linearly independent power-series solutions $y_1(x) = \\sum a_n(x-x_0)^n$ and $y_2(x) = \\sum b_n(x-x_0)^n$ with radius of convergence at least the distance to the nearest complex singularity",
+      "The solution must always terminate after finitely many polynomial terms",
+      "Solutions only exist if the differential equation is constant-coefficient"
+    ],
+    "answer": "B",
+    "explanation": "At an ordinary point, Fuchs's theorem guarantees two linearly independent analytic solutions with a radius of convergence at least equal to the distance from $x_0$ to the nearest singular point in the complex plane."
+  },
+  {
+    "prompt": "What is the distance to the nearest singularity from the expansion point $x_0 = 0$ for $(x^2 + 9)y'' + x y' - 4y = 0$?",
+    "options": [
+      "$9$",
+      "$3$",
+      "$\\sqrt{3}$",
+      "$\\infty$"
+    ],
+    "answer": "B",
+    "explanation": "Singularities occur where $P(x) = x^2 + 9 = 0 \\implies x = \\pm 3i$. The distance from $0$ to $\\pm 3i$ in the complex plane is $|\\pm 3i| = 3$. Hence the minimum guaranteed radius of convergence is $R = 3$."
+  },
+  {
+    "prompt": "When substituting the power series $y = \\sum_{n=0}^\\infty a_n x^n$ into $y'' + y = 0$, what recurrence relation is obtained?",
+    "options": [
+      "$a_{n+2} = \\frac{-a_n}{(n+2)(n+1)}$",
+      "$a_{n+2} = \\frac{a_n}{n+2}$",
+      "$a_{n+1} = -a_n$",
+      "$a_{n+2} = -(n+1)a_n$"
+    ],
+    "answer": "A",
+    "explanation": "$y'' = \\sum_{n=0}^\\infty (n+2)(n+1)a_{n+2}x^n$. Adding $y = \\sum_{n=0}^\\infty a_n x^n$ yields $\\sum_{n=0}^\\infty [(n+2)(n+1)a_{n+2} + a_n]x^n = 0$, giving $a_{n+2} = \\frac{-a_n}{(n+2)(n+1)}$."
+  },
+  {
+    "prompt": "For Airy's equation $y'' - xy = 0$ expanded around $x_0 = 0$, what is the recurrence relation for $a_{n+2}$?",
+    "options": [
+      "$a_2 = 0$ and $a_{n+2} = \\frac{a_{n-1}}{(n+2)(n+1)}$ for $n \\ge 1$",
+      "$a_{n+2} = \\frac{a_n}{n+2}$ for all $n \\ge 0$",
+      "$a_{n+2} = \\frac{-a_{n-1}}{(n+2)(n+1)}$",
+      "$a_{n+1} = a_n / n$"
+    ],
+    "answer": "A",
+    "explanation": "$y'' = 2a_2 + \\sum_{k=1}^\\infty (k+2)(k+1)a_{k+2}x^k$ and $xy = \\sum_{k=1}^\\infty a_{k-1}x^k$. Matching powers gives $2a_2 = 0 \\implies a_2 = 0$, and $(k+2)(k+1)a_{k+2} - a_{k-1} = 0$, so $a_{k+2} = \\frac{a_{k-1}}{(k+2)(k+1)}$."
+  },
+  {
+    "prompt": "How do initial conditions $y(x_0) = y_0$ and $y'(x_0) = y_1$ determine the leading coefficients of $y = \\sum_{n=0}^\\infty a_n (x-x_0)^n$?",
+    "options": [
+      "$a_0 = y_0$ and $a_1 = y_1$",
+      "$a_0 = y_1$ and $a_1 = y_0$",
+      "$a_0 = 0$ and $a_1 = 1$ always",
+      "$a_0 = y_0 / 2$ and $a_1 = y_1 / 2$"
+    ],
+    "answer": "A",
+    "explanation": "Evaluating at $x = x_0$ yields $y(x_0) = a_0 = y_0$, and differentiating gives $y'(x_0) = a_1 = y_1$."
+  },
+  {
+    "prompt": "In the power-series solution of $y'' - 2x y' + 2p y = 0$ (Hermite's ODE) with $p$ a non-negative integer, what remarkable phenomenon occurs?",
+    "options": [
+      "One of the two independent series terminates into a polynomial of degree $p$",
+      "The series diverges for all $x \\ne 0$",
+      "Both series become identical",
+      "The solutions are purely imaginary"
+    ],
+    "answer": "A",
+    "explanation": "The recurrence relation is $a_{n+2} = \\frac{2(n - p)}{(n+2)(n+1)} a_n$. When $n = p$, $a_{p+2} = 0$, causing all subsequent terms of that parity to vanish, generating the Hermite polynomials $H_p(x)$."
+  },
+  {
+    "prompt": "For Legendre's equation $(1 - x^2)y'' - 2xy' + \\alpha(\\alpha + 1)y = 0$, what are the singular points in the complex plane?",
+    "options": [
+      "$x = \\pm 1$",
+      "$x = \\pm i$",
+      "$x = 0$",
+      "$x = \\pm \\alpha$"
+    ],
+    "answer": "A",
+    "explanation": "Singular points occur where $P(x) = 1 - x^2 = 0 \\implies x = 1$ and $x = -1$."
+  },
+  {
+    "prompt": "What is the guaranteed radius of convergence for a power-series solution of $(x^2 - 4x + 5)y'' + y' - y = 0$ centered at $x_0 = 1$?",
+    "options": [
+      "$\\sqrt{5}$",
+      "$\\sqrt{2}$",
+      "$2$",
+      "$1$"
+    ],
+    "answer": "B",
+    "explanation": "Singular points: $x^2 - 4x + 5 = 0 \\implies (x - 2)^2 + 1 = 0 \\implies x = 2 \\pm i$. The distance from expansion center $x_0 = 1$ to $2 \\pm i$ is $|(2 \\pm i) - 1| = |1 \\pm i| = \\sqrt{1^2 + 1^2} = \\sqrt{2}$."
+  },
+  {
+    "prompt": "When shifting summation indices, which of the following is equivalent to $\\sum_{n=1}^\\infty n a_n x^{n-1}$?",
+    "options": [
+      "$\\sum_{k=0}^\\infty (k+1) a_{k+1} x^k$",
+      "$\\sum_{k=0}^\\infty k a_k x^k$",
+      "$\\sum_{k=1}^\\infty (k-1) a_k x^{k-1}$",
+      "$\\sum_{k=2}^\\infty (k+1) a_k x^k$"
+    ],
+    "answer": "A",
+    "explanation": "Let $k = n - 1$. When $n = 1$, $k = 0$. Replacing $n = k + 1$ gives $\\sum_{k=0}^\\infty (k+1) a_{k+1} x^k$."
+  },
+  {
+    "prompt": "For the differential equation $y'' + x^2 y = 0$, what is the step size between non-zero coefficients in each linearly independent series?",
+    "options": [
+      "$4$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "answer": "A",
+    "explanation": "$y'' = \\sum (n+2)(n+1)a_{n+2}x^n$ and $x^2 y = \\sum a_{n-2}x^n$. The recurrence relates $a_{n+2}$ to $a_{n-2}$, so indices advance by step $\\Delta n = 4$."
+  },
+  {
+    "prompt": "What is polynomial truncation in power-series ODE solutions?",
+    "options": [
+      "Approximating the infinite series solution by its $N$-th degree Taylor polynomial $y_N(x) = \\sum_{n=0}^N a_n(x-x_0)^n$",
+      "Dividing the differential equation by $x^N$",
+      "Setting the highest derivative to zero",
+      "Removing all odd powers of $x$"
+    ],
+    "answer": "A",
+    "explanation": "Truncating an infinite power series after $N$ terms yields an explicit polynomial approximation whose error decays rapidly within the radius of convergence according to Taylor's remainder theorem."
+  },
+  {
+    "prompt": "For Chebyshev's equation $(1 - x^2)y'' - xy' + p^2 y = 0$, what recurrence relation governs the series coefficients centered at $0$?",
+    "options": [
+      "$a_{n+2} = \\frac{n^2 - p^2}{(n+2)(n+1)} a_n$",
+      "$a_{n+2} = \\frac{p^2}{(n+2)(n+1)} a_n$",
+      "$a_{n+1} = \\frac{n - p}{n+1} a_n$",
+      "$a_{n+2} = -(n^2 - p^2) a_n$"
+    ],
+    "answer": "A",
+    "explanation": "Substituting $y = \\sum a_n x^n$ gives $(n+2)(n+1)a_{n+2} - n(n-1)a_n - na_n + p^2 a_n = 0$, simplifying to $(n+2)(n+1)a_{n+2} = (n^2 - p^2)a_n$."
+  },
+  {
+    "prompt": "If $x_0 = 0$ is an ordinary point of $y'' + P(x)y' + Q(x)y = 0$, the two fundamental solutions $y_1(x)$ and $y_2(x)$ satisfy which Wronskian at $x = 0$?",
+    "options": [
+      "$W(y_1, y_2)(0) = 1$ when $y_1(0)=1, y_1'(0)=0$ and $y_2(0)=0, y_2'(0)=1$",
+      "$W(y_1, y_2)(0) = 0$",
+      "$W(y_1, y_2)(0) = \\infty$",
+      "$W(y_1, y_2)(0) = -1$ always"
+    ],
+    "answer": "A",
+    "explanation": "Normalized canonical initial conditions give $W(y_1, y_2)(0) = y_1(0)y_2'(0) - y_1'(0)y_2(0) = (1)(1) - (0)(0) = 1 \\ne 0$, proving linear independence."
+  },
+  {
+    "prompt": "Solve for $a_2$ and $a_3$ in $y'' + 2x y' + 4y = 0$ with $y(0) = 1, y'(0) = 0$:",
+    "options": [
+      "$a_2 = -2, \\; a_3 = 0$",
+      "$a_2 = 2, \\; a_3 = 1$",
+      "$a_2 = 0, \\; a_3 = -2$",
+      "$a_2 = -4, \\; a_3 = 0$"
+    ],
+    "answer": "A",
+    "explanation": "For $n = 0$: $2a_2 + 4a_0 = 0 \\implies a_2 = -2a_0 = -2(1) = -2$. For $n = 1$: $6a_3 + 2(1)a_1 + 4a_1 = 0 \\implies 6a_3 + 6a_1 = 0 \\implies a_3 = -a_1 = 0$."
+  },
+  {
+    "prompt": "What happens if we attempt to find a power series solution of $x^2 y'' + y = 0$ centered at $x_0 = 0$?",
+    "options": [
+      "It fails because $x_0 = 0$ is a singular point ($P(0) = 0$), so power-series methods do not apply",
+      "It yields two analytic solutions valid everywhere",
+      "It converges with radius $R = \\infty$",
+      "The recurrence relation gives $a_n = 1$ for all $n$"
+    ],
+    "answer": "A",
+    "explanation": "$P(x) = x^2$ vanishes at $x = 0$, and $R(x)/P(x) = 1/x^2$ is not analytic at $0$. An ordinary power series cannot represent solutions around this singular point."
+  },
+  {
+    "prompt": "Can a power-series solution have a radius of convergence LARGER than the distance to the nearest singular point?",
+    "options": [
+      "Yes, Fuchs's theorem only provides a lower bound; the series solution can sometimes converge everywhere (e.g. if it terminates into a polynomial)",
+      "No, the radius of convergence must strictly equal the distance",
+      "No, the series must diverge at half the distance",
+      "Only for first-order equations"
+    ],
+    "answer": "A",
+    "explanation": "The distance to the nearest singular point guarantees the minimum radius of convergence. If the recurrence causes the series to terminate into a polynomial, the solution converges on all of $\\mathbb{R}$ ($R = \\infty$)."
+  },
+  {
+    "prompt": "For the differential equation $y'' - x y = 0$, what are the first three non-zero terms of $y_1(x)$ with $y_1(0) = 1, y_1'(0) = 0$?",
+    "options": [
+      "$1 + \\frac{x^3}{6} + \\frac{x^6}{180}$",
+      "$1 + x + \\frac{x^2}{2}$",
+      "$1 + \\frac{x^2}{2} + \\frac{x^4}{24}$",
+      "$1 + \\frac{x^3}{3} + \\frac{x^6}{6}$"
+    ],
+    "answer": "A",
+    "explanation": "$a_0 = 1, a_1 = 0, a_2 = 0$. $a_3 = a_0/(3 \\cdot 2) = 1/6$. $a_4 = a_1/12 = 0$. $a_5 = a_2/20 = 0$. $a_6 = a_3/(6 \\cdot 5) = (1/6)/30 = 1/180$. Thus $y_1(x) = 1 + \\frac{x^3}{6} + \\frac{x^6}{180} + \\dots$."
+  },
+  {
+    "prompt": "In an ordinary point recurrence $a_{n+2} = f(n) a_n$, what determines whether the solution decomposes into even and odd functions?",
+    "options": [
+      "The recurrence connects terms with index differing by $2$, decoupling even indices $\\{a_0, a_2, a_4, \\dots\\}$ from odd indices $\\{a_1, a_3, a_5, \\dots\\}$",
+      "The coefficient functions are both odd",
+      "The boundary condition $y(0) = 0$",
+      "The differential equation must have constant coefficients"
+    ],
+    "answer": "A",
+    "explanation": "A two-step recurrence $a_{n+2} = C_n a_n$ cleanly splits the general solution $y = a_0 y_{\\text{even}}(x) + a_1 y_{\\text{odd}}(x)$ into pure even and odd functions."
+  },
+  {
+    "prompt": "What is the primary computational advantage of power-series solutions over numerical Runge-Kutta integration near an ordinary point?",
+    "options": [
+      "Power series provide a closed-form analytic representation that can be differentiated and integrated symbolically with exact error bounds",
+      "Power series require no arithmetic operations",
+      "Runge-Kutta cannot solve second-order equations",
+      "Power series only work on infinite computers"
+    ],
+    "answer": "A",
+    "explanation": "A truncated power series yields a symbolic polynomial approximation with explicit truncation error bounds, enabling continuous analytical evaluation, symbolic differentiation, and stability analysis without step-size accumulation error."
+  }
+];
+
+export const CALC_B_FROBENIUS_METHOD_QUIZ = [
+  {
+    "prompt": "For $P(x)y'' + Q(x)y' + R(x)y = 0$, what criterion defines $x_0$ as a REGULAR singular point?",
+    "options": [
+      "$P(x_0) = 0$, but both $(x - x_0)\\frac{Q(x)}{P(x)}$ and $(x - x_0)^2\\frac{R(x)}{P(x)}$ are analytic at $x_0$",
+      "$P(x_0) \\ne 0$",
+      "$(x - x_0)\\frac{Q(x)}{P(x)}$ has an essential singularity at $x_0$",
+      "Both $Q(x_0) = 0$ and $R(x_0) = 0$"
+    ],
+    "answer": "A",
+    "explanation": "A singular point $x_0$ is regular if the singularities in the coefficients are at most of first order in $Q/P$ and at most of second order in $R/P$."
+  },
+  {
+    "prompt": "What is the Frobenius series ansatz for solving an ODE around a regular singular point $x_0 = 0$?",
+    "options": [
+      "$y(x) = x^r \\sum_{n=0}^\\infty a_n x^n = \\sum_{n=0}^\\infty a_n x^{n+r}$, where $a_0 \\ne 0$ and $r$ is an indicial exponent",
+      "$y(x) = \\sum_{n=0}^\\infty a_n x^{-n}$",
+      "$y(x) = e^{rx} \\sum_{n=0}^\\infty a_n x^n$",
+      "$y(x) = \\sum_{n=0}^\\infty a_n (\\ln x)^n$"
+    ],
+    "answer": "A",
+    "explanation": "The Frobenius method factors out a power $x^r$, where $r$ is a real or complex index chosen to balance the lowest powers in the differential equation, with $a_0 \\ne 0$ by convention."
+  },
+  {
+    "prompt": "How is the indicial equation obtained in the Frobenius method?",
+    "options": [
+      "By equating the coefficient of the lowest power of $x$ (namely $x^{r-2}$ or $x^r$) to zero",
+      "By setting $x = 0$ in the original differential equation",
+      "By integrating the ODE from $0$ to $1$",
+      "By computing the determinant of the Wronskian"
+    ],
+    "answer": "A",
+    "explanation": "Substituting $y = \\sum a_n x^{n+r}$ into the ODE and collecting terms yields the coefficient of the lowest power of $x$, which must vanish for $a_0 \\ne 0$. This gives the quadratic indicial polynomial $F(r) = 0$."
+  },
+  {
+    "prompt": "For the differential equation $2x^2 y'' - x y' + (x - 5)y = 0$, what is the indicial equation at $x = 0$?",
+    "options": [
+      "$2r(r - 1) - r - 5 = 0 \\implies 2r^2 - 3r - 5 = 0$",
+      "$2r^2 - r - 5 = 0$",
+      "$r(r - 1) - 5 = 0$",
+      "$2r^2 + 3r - 5 = 0$"
+    ],
+    "answer": "A",
+    "explanation": "$p_0 = \\lim_{x \\to 0} x(-x/(2x^2)) = -1/2$, and $q_0 = \\lim_{x \\to 0} x^2((x-5)/(2x^2)) = -5/2$. The indicial equation is $r(r-1) + p_0 r + q_0 = 0 \\implies r(r-1) - \\frac{1}{2}r - \\frac{5}{2} = 0 \\implies 2r(r-1) - r - 5 = 0 \\implies 2r^2 - 3r - 5 = 0$."
+  },
+  {
+    "prompt": "What are the roots of the indicial equation $2r^2 - 3r - 5 = 0$?",
+    "options": [
+      "$r_1 = 5/2, \\; r_2 = -1$",
+      "$r_1 = 5, \\; r_2 = -1/2$",
+      "$r_1 = 1, \\; r_2 = -5/2$",
+      "$r_1 = 3/2, \\; r_2 = -5/2$"
+    ],
+    "answer": "A",
+    "explanation": "Factoring $(2r - 5)(r + 1) = 0$ yields $r_1 = 5/2$ and $r_2 = -1$."
+  },
+  {
+    "prompt": "In Frobenius Case 1, where the roots of the indicial equation satisfy $r_1 - r_2 \\notin \\mathbb{Z}$, what is the form of the general solution?",
+    "options": [
+      "Two linearly independent Frobenius series: $y(x) = c_1 x^{r_1}\\sum a_n x^n + c_2 x^{r_2}\\sum b_n x^n$",
+      "One Frobenius series and one logarithmic solution: $y = c_1 y_1 + c_2 (y_1 \\ln x + \\sum b_n x^{n+r_2})$",
+      "Two polynomial solutions",
+      "A single solution; the second solution does not exist"
+    ],
+    "answer": "A",
+    "explanation": "When the indicial roots do not differ by an integer ($r_1 - r_2 \\notin \\mathbb{Z}$), no denominator in the recurrence relations can vanish, yielding two distinct, linearly independent Frobenius series."
+  },
+  {
+    "prompt": "In Frobenius Case 2, where the indicial roots are equal ($r_1 = r_2 = r$), what is the structure of the second linearly independent solution?",
+    "options": [
+      "$y_2(x) = y_1(x) \\ln x + x^r \\sum_{n=1}^\\infty b_n x^n$",
+      "$y_2(x) = y_1(x) e^x$",
+      "$y_2(x) = x^{-r} \\sum_{n=0}^\\infty a_n x^n$",
+      "$y_2(x) = y_1'(x)$"
+    ],
+    "answer": "A",
+    "explanation": "For repeated roots, differentiating the parameterized solution with respect to the root index $r$ produces an unavoidable logarithmic term $y_1(x) \\ln x$ paired with a secondary series."
+  },
+  {
+    "prompt": "In Frobenius Case 3, where $r_1 - r_2 = N \\in \\mathbb{Z}^+$ (positive integer), why does the smaller root $r_2$ sometimes fail to produce a second Frobenius series directly?",
+    "options": [
+      "The recurrence relation denominator contains a factor $(r_2 + N - r_1) = 0$, potentially dividing by zero at $n = N$",
+      "The radius of convergence drops to zero immediately",
+      "The functions become complex-valued",
+      "The Wronskian becomes identically 1"
+    ],
+    "answer": "A",
+    "explanation": "At step $n = N = r_1 - r_2$, the recurrence coefficient denominator contains $F(r_2 + N) = F(r_1) = 0$. Unless the numerator also vanishes simultaneously, division by zero forces the introduction of a logarithmic term."
+  },
+  {
+    "prompt": "For Bessel's equation of order zero, $x^2 y'' + x y' + x^2 y = 0$, what are the indicial roots at $x = 0$?",
+    "options": [
+      "$r_1 = r_2 = 0$ (repeated roots)",
+      "$r_1 = 1, \\; r_2 = -1$",
+      "$r_1 = 1/2, \\; r_2 = -1/2$",
+      "$r_1 = 2, \\; r_2 = 0$"
+    ],
+    "answer": "A",
+    "explanation": "$p_0 = 1, q_0 = 0$. The indicial equation is $r(r - 1) + r = r^2 = 0$, which has repeated roots $r_1 = r_2 = 0$. This leads to the Bessel function $J_0(x)$ and Neumann function $Y_0(x)$ with a logarithmic singularity."
+  },
+  {
+    "prompt": "For Bessel's equation of order $1/2$, $x^2 y'' + x y' + (x^2 - 1/4)y = 0$, what are the indicial roots?",
+    "options": [
+      "$r = \\pm 1/2$",
+      "$r = 0, 1$",
+      "$r = \\pm 1$",
+      "$r = \\pm 1/4$"
+    ],
+    "answer": "A",
+    "explanation": "The indicial equation is $r(r - 1) + r - 1/4 = r^2 - 1/4 = 0 \\implies r = \\pm 1/2$. The difference is $1/2 - (-1/2) = 1 \\in \\mathbb{Z}$, but the numerator also vanishes, giving elementary sine and cosine solutions: $J_{1/2}(x) = \\sqrt{\\frac{2}{\\pi x}}\\sin x$."
+  },
+  {
+    "prompt": "Consider $x^2 y'' + 3x y' + (1 + x)y = 0$. What is the indicial equation at $x = 0$?",
+    "options": [
+      "$r(r - 1) + 3r + 1 = 0 \\implies (r + 1)^2 = 0$",
+      "$r(r - 1) + r + 1 = 0$",
+      "$r^2 + 3r + 1 = 0$",
+      "$r(r - 1) + 3r = 0$"
+    ],
+    "answer": "A",
+    "explanation": "$p_0 = \\lim x(3x/x^2) = 3$ and $q_0 = \\lim x^2((1+x)/x^2) = 1$. The indicial equation is $r(r - 1) + 3r + 1 = r^2 + 2r + 1 = (r + 1)^2 = 0$."
+  },
+  {
+    "prompt": "What is an IRREGULAR singular point for $y'' + P(x)y' + Q(x)y = 0$?",
+    "options": [
+      "A singular point that fails the regular singular point test (i.e. $(x-x_0)P(x)$ or $(x-x_0)^2 Q(x)$ is not analytic)",
+      "A point where all derivatives vanish",
+      "An ordinary point with complex coordinates",
+      "A point where solutions are polynomials"
+    ],
+    "answer": "A",
+    "explanation": "If the singularity in $P(x)$ is worse than a simple pole, or the singularity in $Q(x)$ is worse than a double pole, the point is irregular (essential singularity in the ODE), and Frobenius series generally fail to converge."
+  },
+  {
+    "prompt": "Classify the point $x = 0$ for the equation $x^3 y'' + y = 0$:",
+    "options": [
+      "Irregular singular point",
+      "Regular singular point",
+      "Ordinary point",
+      "Removable point"
+    ],
+    "answer": "A",
+    "explanation": "$R(x)/P(x) = 1/x^3$. Then $x^2(R/P) = 1/x$, which is not analytic at $x = 0$ (pole of order 3). Thus $x = 0$ is an irregular singular point."
+  },
+  {
+    "prompt": "What is the guaranteed radius of convergence for a Frobenius series solution $y = x^r \\sum a_n x^n$ at $x_0 = 0$ for $(x^2 - 1)x^2 y'' + 2x y' + 3y = 0$?",
+    "options": [
+      "$R = 1$, the distance from $0$ to the nearest singular points at $x = \\pm 1$",
+      "$R = \\infty$",
+      "$R = 2$",
+      "$R = 0$"
+    ],
+    "answer": "A",
+    "explanation": "The coefficient $P(x) = x^2(x^2 - 1)$ has other roots at $x = \\pm 1$. The distance from $x_0 = 0$ to $\\pm 1$ is $1$, so the Frobenius series converges at least on $0 < |x| < 1$."
+  },
+  {
+    "prompt": "When using reduction of order to find the second solution $y_2(x) = y_1(x) v(x)$ from a known Frobenius solution $y_1(x)$, what formula gives $v(x)$?",
+    "options": [
+      "$v(x) = \\int \\frac{e^{-\\int P(x)\\,dx}}{(y_1(x))^2}\\,dx$",
+      "$v(x) = \\int y_1(x)\\,dx$",
+      "$v(x) = \\frac{1}{y_1(x)}$",
+      "$v(x) = \\int (y_1(x))^2\\,dx$"
+    ],
+    "answer": "A",
+    "explanation": "Abel's formula for the Wronskian leads directly to the classical reduction-of-order integral $v(x) = \\int \\frac{W(x)}{(y_1(x))^2}\\,dx = \\int \\frac{e^{-\\int p(x)\\,dx}}{(y_1(x))^2}\\,dx$."
+  },
+  {
+    "prompt": "For the Euler-Cauchy equation $x^2 y'' + a x y' + b y = 0$, how is it related to the Frobenius method?",
+    "options": [
+      "It is the exact prototype/limiting ODE whose characteristic equation is identical to the indicial equation of the general Frobenius problem",
+      "It has only polynomial solutions",
+      "It can only be solved by Laplace transforms",
+      "It has no singular points"
+    ],
+    "answer": "A",
+    "explanation": "The Euler-Cauchy equation represents the leading-order terms of any differential equation near a regular singular point; its solution $y = x^r$ produces the identical indicial equation $r(r - 1) + ar + b = 0$."
+  },
+  {
+    "prompt": "Why is the Frobenius method typically formulated on the interval $x > 0$?",
+    "options": [
+      "Because non-integer powers $x^r$ and $\\ln x$ are multivalued in the complex plane and require a branch cut along the negative real axis",
+      "Because differential equations cannot exist for negative numbers",
+      "Because $a_0$ must be positive",
+      "Because derivatives do not exist for $x < 0$"
+    ],
+    "answer": "A",
+    "explanation": "For fractional or complex $r$, $x^r = e^{r \\ln x}$ requires choosing a branch of the logarithm, conventionally setting the branch cut on the negative real axis and evaluating solutions for real $x > 0$ (or replacing $x$ with $|x|$)."
+  },
+  {
+    "prompt": "In the Frobenius solution for $x y'' + 2y' + x y = 0$, what are the indicial roots?",
+    "options": [
+      "$r_1 = 0, \\; r_2 = -1$",
+      "$r_1 = 1, \\; r_2 = 0$",
+      "$r_1 = 1/2, \\; r_2 = -1/2$",
+      "$r_1 = 2, \\; r_2 = 1$"
+    ],
+    "answer": "A",
+    "explanation": "Multiply by $x$: $x^2 y'' + 2x y' + x^2 y = 0$. Here $p_0 = 2, q_0 = 0$. The indicial equation is $r(r - 1) + 2r = r^2 + r = r(r + 1) = 0 \\implies r_1 = 0, r_2 = -1$."
+  },
+  {
+    "prompt": "For $x y'' + 2y' + x y = 0$ with $r_1 = 0$, what familiar function is the first Frobenius solution $y_1(x)$?",
+    "options": [
+      "$y_1(x) = \\frac{\\sin x}{x}$",
+      "$y_1(x) = \\cos x$",
+      "$y_1(x) = e^x$",
+      "$y_1(x) = \\ln x$"
+    ],
+    "answer": "A",
+    "explanation": "Substituting $y = \\sum a_n x^n$ with $a_0 = 1$ produces $a_{2k} = \\frac{(-1)^k}{(2k+1)!}$, which is the Taylor series for $\\frac{\\sin x}{x} = \\sum_{k=0}^\\infty \\frac{(-1)^k x^{2k}}{(2k+1)!}$."
+  },
+  {
+    "prompt": "What is the primary physical significance of the Frobenius method in engineering and physics?",
+    "options": [
+      "It provides the exact series representations for Bessel functions, Legendre functions, and Laguerre polynomials governing cylindrical/spherical wave potentials and quantum orbitals",
+      "It is used exclusively to balance financial ledgers",
+      "It replaces calculus with matrix multiplication",
+      "It only applies to linear algebra problems"
+    ],
+    "answer": "A",
+    "explanation": "Separation of variables in cylindrical and spherical coordinates for the Helmholtz, Laplace, and Schr\u00f6dinger equations inevitably leads to radial equations with regular singular points at the origin, solved via the Frobenius method."
+  }
+];
+
