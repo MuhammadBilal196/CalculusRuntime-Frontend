@@ -445,6 +445,214 @@ const formulaData = {
     ],
   },
 
+  "pointwise-uniform-convergence": {
+    title: "Pointwise & Uniform Convergence",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      {
+        name: "Pointwise Convergence Definition",
+        formula: "f_n → f pointwise on S ⟺ ∀x ∈ S, ∀ε > 0, ∃N(ε, x) such that n > N ⟹ |f_n(x) - f(x)| < ε",
+        note: "Limit index N may vary with location x",
+      },
+      {
+        name: "Uniform Convergence (Supremum Norm)",
+        formula: "f_n → f uniformly on S ⟺ lim_(n→∞) ||f_n - f||_∞ = lim_(n→∞) sup_(x∈S) |f_n(x) - f(x)| = 0",
+        note: "Global convergence across the entire set S at a uniform rate",
+      },
+      {
+        name: "The Uniform Limit Theorem",
+        formula: "If each f_n is continuous on S and f_n → f uniformly on S ⟹ limit function f is continuous on S",
+        note: "Preservation of continuity under uniform convergence (3ε-proof)",
+      },
+      {
+        name: "Weierstrass M-Test for Series",
+        formula: "If |u_n(x)| ≤ M_n on S and ∑ M_n < ∞ ⟹ ∑ u_n(x) converges uniformly and absolutely on S",
+        note: "Master test for proving uniform convergence of function series",
+      },
+      {
+        name: "Cauchy Criterion for Uniform Convergence",
+        formula: "f_n → f uniformly on S ⟺ ∀ε > 0, ∃N such that m, n > N ⟹ |f_n(x) - f_m(x)| < ε  ∀x ∈ S",
+        note: "Intrinsic convergence check without explicit reference to the limit function",
+      },
+    ],
+  },
+
+  "interchanging-limits": {
+    title: "Interchanging Limits, Derivatives & Integrals",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      {
+        name: "Termwise Integration Theorem",
+        formula: "If f_n → f uniformly on [a, b] ⟹ lim_(n→∞) ∫_a^b f_n(x) dx = ∫_a^b [lim_(n→∞) f_n(x)] dx = ∫_a^b f(x) dx",
+        note: "Uniform convergence justifies switching integral and limit signs",
+      },
+      {
+        name: "Termwise Differentiation Theorem",
+        formula: "If f_n(x_0) converges and f_n' → g uniformly on (a, b) ⟹ f_n → f uniformly and f'(x) = lim f_n'(x) = g(x)",
+        note: "Crucial: uniform convergence of derivatives f_n', not original f_n, is required",
+      },
+      {
+        name: "Bounded Convergence Theorem",
+        formula: "If |f_n(x)| ≤ M on [a, b] and f_n → f pointwise ⟹ lim_(n→∞) ∫_a^b f_n(x) dx = ∫_a^b f(x) dx",
+        note: "Arzelà-Osgood theorem: bounded pointwise convergence suffices for Riemann integrals",
+      },
+      {
+        name: "Dominated Convergence (DCT)",
+        formula: "If |f_n(x)| ≤ g(x) on E with ∫_E g dx < ∞ and f_n → f pointwise ⟹ lim ∫_E f_n dx = ∫_E f dx",
+        note: "Lebesgue dominated convergence theorem with integrable dominating envelope g(x)",
+      },
+    ],
+  },
+
+  "power-series-ode": {
+    title: "Power-Series Solutions of ODEs",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      {
+        name: "Ordinary Point Criterion",
+        formula: "In y'' + P(x)y' + Q(x)y = 0, x_0 is an ordinary point iff P(x) and Q(x) are analytic at x_0",
+        note: "Taylor series expansions of coefficients have positive radii of convergence",
+      },
+      {
+        name: "Power Series Ansatz & Derivatives",
+        formula: "y(x) = ∑_(n=0)^∞ a_n (x - x_0)ⁿ · y' = ∑_(n=1)^∞ n a_n (x - x_0)ⁿ⁻¹ · y'' = ∑_(n=2)^∞ n(n-1)a_n (x - x_0)ⁿ⁻²",
+        note: "Substituted into ODE to align powers of (x - x_0)",
+      },
+      {
+        name: "Index Shift for Second Derivatives",
+        formula: "∑_(n=2)^∞ n(n-1) a_n xⁿ⁻² = ∑_(k=0)^∞ (k+2)(k+1) a_(k+2) x^k",
+        note: "Re-indexing shifts all terms to common dummy power x^k",
+      },
+      {
+        name: "Fundamental Solution Basis",
+        formula: "y(x) = a_0 y_1(x) + a_1 y_2(x) with y_1(0)=1, y_1'(0)=0 and y_2(0)=0, y_2'(0)=1",
+        note: "a_0 and a_1 serve as the two independent arbitrary constants",
+      },
+      {
+        name: "Fuchs Lower Bound on Convergence Radius",
+        formula: "R ≥ min { |x_0 - z_k| : z_k is a complex singular point of P(x) or Q(x) }",
+        note: "Guarantees minimum domain of validity for truncated power-series approximations",
+      },
+    ],
+  },
+
+  "frobenius-method": {
+    title: "Frobenius Method (Singular ODEs)",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      {
+        name: "Regular Singular Point Test",
+        formula: "x=0 is regular singular for y'' + P(x)y' + Q(x)y = 0 iff x P(x) and x² Q(x) are analytic at 0",
+        note: "Singularity has at most a first-order pole in P and second-order pole in Q",
+      },
+      {
+        name: "Frobenius Generalized Series Ansatz",
+        formula: "y(x) = x^r ∑_(n=0)^∞ a_n xⁿ = ∑_(n=0)^∞ a_n x^(n+r)  with a_0 ≠ 0",
+        note: "Index r is determined by the lowest-power coefficient balance",
+      },
+      {
+        name: "Indicial Equation",
+        formula: "F(r) = r(r - 1) + p_0 r + q_0 = 0,  where p_0 = lim_(x→0) x P(x), q_0 = lim_(x→0) x² Q(x)",
+        note: "Quadratic equation whose roots r_1, r_2 govern solution forms",
+      },
+      {
+        name: "Distinct Roots (Non-Integer Difference)",
+        formula: "r_1 - r_2 ∉ ℤ ⟹ y_1(x) = x^(r_1) ∑ a_n xⁿ  and  y_2(x) = x^(r_2) ∑ b_n xⁿ",
+        note: "Yields two linearly independent Frobenius power series directly",
+      },
+      {
+        name: "Repeated Indicial Roots Case",
+        formula: "r_1 = r_2 = r ⟹ y_1(x) = x^r ∑ a_n xⁿ  and  y_2(x) = y_1(x) ln(x) + x^r ∑ c_n xⁿ",
+        note: "Second solution arises from derivative ∂y(x,r)/∂r and contains a logarithmic branch",
+      },
+    ],
+  },
+
+  "analytic-functions": {
+    title: "Analytic Functions & Cauchy-Riemann",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      {
+        name: "Complex Derivative Definition",
+        formula: "f'(z_0) = lim_(Δz→0) [f(z_0 + Δz) - f(z_0)] / Δz",
+        note: "Limit must be independent of path direction in the complex plane",
+      },
+      {
+        name: "Cartesian Cauchy-Riemann Equations",
+        formula: "∂u/∂x = ∂v/∂y   and   ∂u/∂y = -∂v/∂x   (with continuous first partials)",
+        note: "Necessary and sufficient conditions for complex differentiability of f = u + iv",
+      },
+      {
+        name: "Polar Cauchy-Riemann Equations",
+        formula: "∂u/∂r = (1/r) ∂v/∂θ   and   ∂v/∂r = -(1/r) ∂u/∂θ",
+        note: "Polar form for z = r e^(iθ) with derivative f'(z) = e^(-iθ)(u_r + i v_r)",
+      },
+      {
+        name: "Harmonic Potential & Laplace Equation",
+        formula: "∇²u = ∂²u/∂x² + ∂²u/∂y² = 0   and   ∇²v = 0",
+        note: "Real and imaginary parts of holomorphic functions are automatically harmonic",
+      },
+      {
+        name: "Milne-Thomson Reconstruction Method",
+        formula: "f'(z) = u_x(z, 0) - i u_y(z, 0) ⟹ f(z) = ∫ [u_x(z, 0) - i u_y(z, 0)] dz + C",
+        note: "Constructs entire analytic f(z) directly from u(x, y) without integrating v(x, y)",
+      },
+      {
+        name: "Orthogonality of Level Trajectories",
+        formula: "∇u · ∇v = u_x v_x + u_y v_y = u_x(-u_y) + u_y(u_x) = 0",
+        note: "Equipotential curves u(x, y) = c_1 and streamlines v(x, y) = c_2 intersect at 90°",
+      },
+    ],
+  },
+
+  "contour-integrals": {
+    title: "Contour Integrals & Residues",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      {
+        name: "Parametric Complex Line Integral",
+        formula: "∫_γ f(z) dz = ∫_a^b f(γ(t)) γ'(t) dt = ∫_γ (u dx - v dy) + i ∫_γ (v dx + u dy)",
+        note: "Reduction of complex contour integral to real parametric line integrals",
+      },
+      {
+        name: "The ML-Inequality (Darboux Bound)",
+        formula: "|∫_γ f(z) dz| ≤ M · L,   where M = max_(z∈γ) |f(z)|  and  L = length(γ)",
+        note: "Fundamental inequality for proving vanishing integrals on large semicircular arcs",
+      },
+      {
+        name: "Cauchy-Goursat Theorem",
+        formula: "If f is analytic in simply connected D, then ∮_γ f(z) dz = 0 for every closed contour γ",
+        note: "Vanishing of closed loop integrals in holomorphic domains",
+      },
+      {
+        name: "Cauchy's Integral Formula (CIF)",
+        formula: "f(z_0) = (1 / 2πi) ∮_γ [f(z) / (z - z_0)] dz",
+        note: "Values on the boundary contour uniquely dictate interior function values",
+      },
+      {
+        name: "Higher Derivative CIF",
+        formula: "f^(n)(z_0) = (n! / 2πi) ∮_γ [f(z) / (z - z_0)^(n+1)] dz ⟹ ∮_γ [f(z)/(z - z_0)^(n+1)] dz = (2πi/n!) f^(n)(z_0)",
+        note: "Holomorphic functions possess derivatives of all orders",
+      },
+      {
+        name: "Cauchy's Residue Theorem",
+        formula: "∮_γ f(z) dz = 2πi ∑_(k=1)^N Res(f, z_k)",
+        note: "Integrals around isolated singularities equal 2πi times the sum of enclosed residues",
+      },
+      {
+        name: "Residue Calculation Formulas",
+        formula: "Simple pole: Res(f, z_0) = lim_(z→z_0) (z - z_0)f(z) · Order m: Res = (1/(m-1)!) lim d^(m-1)/dz^(m-1) [(z - z_0)ᵐ f(z)]",
+        note: "Quotient rule for P(z)/Q(z): Res(z_0) = P(z_0) / Q'(z_0) when Q'(z_0) ≠ 0",
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════
   // 2. Multivariable Calculus
   // ═══════════════════════════════════════════════════════════════════════════

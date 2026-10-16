@@ -12,6 +12,7 @@ const PRESET_FUNCTIONS = [
     defaultA: 0,
     defaultB: Math.PI,
     displayB: "π",
+    hasSingularity: false,
   },
   {
     id: "x_squared",
@@ -22,6 +23,7 @@ const PRESET_FUNCTIONS = [
     defaultA: 0,
     defaultB: 3,
     displayB: "3",
+    hasSingularity: false,
   },
   {
     id: "exp_neg",
@@ -32,6 +34,7 @@ const PRESET_FUNCTIONS = [
     defaultA: 0,
     defaultB: 2,
     displayB: "2",
+    hasSingularity: false,
   },
   {
     id: "sqrt_x",
@@ -42,6 +45,7 @@ const PRESET_FUNCTIONS = [
     defaultA: 0,
     defaultB: 4,
     displayB: "4",
+    hasSingularity: false,
   },
   {
     id: "arctan_deriv",
@@ -52,6 +56,7 @@ const PRESET_FUNCTIONS = [
     defaultA: 0,
     defaultB: 1,
     displayB: "1",
+    hasSingularity: false,
   },
   {
     id: "parabola_down",
@@ -62,6 +67,18 @@ const PRESET_FUNCTIONS = [
     defaultA: 0,
     defaultB: 2,
     displayB: "2",
+    hasSingularity: false,
+  },
+  {
+    id: "reciprocal_x",
+    label: "f(x) = 1 / x (Singular at x=0)",
+    latex: "\\frac{1}{x}",
+    fn: (x) => (Math.abs(x) < 1e-6 ? (x >= 0 ? 1e6 : -1e6) : 1 / x),
+    antideriv: (x) => (x > 0 ? Math.log(x) : NaN),
+    defaultA: 0.5,
+    defaultB: 3,
+    displayB: "3",
+    hasSingularity: true,
   },
 ];
 
@@ -84,23 +101,88 @@ export default function RiemannVisualizer() {
     [selectedFuncId]
   );
 
-  const a = currentFunc.defaultA;
-  const b = currentFunc.defaultB;
+  // Limits of integration (supports reversed intervals b < a)
+  const [a, setA] = useState(currentFunc.defaultA);
+  const [b, setB] = useState(currentFunc.defaultB);
+
+  // When changing preset, update default limits
+  const handleFuncChange = (id) => {
+    setSelectedFuncId(id);
+    const fnObj = PRESET_FUNCTIONS.find((f) => f.id === id) || PRESET_FUNCTIONS[0];
+    setA(fnObj.defaultA);
+    setB(fnObj.defaultB);
+  };
+
+  const isReversed = b < a;
 
   // Actual number of partitions (Simpson requires even n)
+  const isSimpsonOdd = rule === "simpson" && partitions % 2 !== 0;
   const effectiveN = rule === "simpson" ? (partitions % 2 === 0 ? partitions : partitions + 1) : partitions;
+
+  // Signed deltaX: negative when b < a!
   const deltaX = (b - a) / effectiveN;
 
-  // Exact integral
+  // Discontinuity / Singularity detector over the domain [min(a,b), max(a,b)]
+  const discontinuityInfo = useMemo(() => {
+    const minX = Math.min(a, b);
+    const maxX = Math.max(a, b);
+    if (minX === maxX) return null;
+
+    let hasInfinity = false;
+    let hasZeroCrossingPole = false;
+    let badX = null;
+
+    const testSamples = 300;
+    for (let i = 0; i <= testSamples; i++) {
+      const x = minX + (i / testSamples) * (maxX - minX);
+      const val = currentFunc.fn(x);
+      if (!isFinite(val) || Math.abs(val) > 1e4) {
+        hasInfinity = true;
+        badX = x;
+        break;
+      }
+    }
+
+    if (currentFunc.id === "reciprocal_x" && minX <= 0 && maxX >= 0) {
+      hasZeroCrossingPole = true;
+    }
+
+    if (hasInfinity || hasZeroCrossingPole) {
+      return {
+        detected: true,
+        badX: badX !== null ? badX.toFixed(3) : "0",
+        message:
+          "Integrand contains a non-integrable pole/asymptote in [a, b]. Riemann sum is mathematically divergent or improper.",
+      };
+    }
+    return null;
+  }, [currentFunc, a, b]);
+
+  // Exact integral via closed-form antiderivative
   const exactVal = useMemo(() => {
-    return currentFunc.antideriv(b) - currentFunc.antideriv(a);
+    const F_b = currentFunc.antideriv(b);
+    const F_a = currentFunc.antideriv(a);
+    if (!isFinite(F_b) || !isFinite(F_a)) return NaN;
+    return F_b - F_a;
+  }, [currentFunc, a, b]);
+
+  // High-precision Romberg / 1024-node reference benchmark
+  const numericalReferenceVal = useMemo(() => {
+    const f = currentFunc.fn;
+    const refN = 1024;
+    const h = (b - a) / refN;
+    let sum = f(a) + f(b);
+    for (let i = 1; i < refN; i++) {
+      sum += (i % 2 === 1 ? 4 : 2) * f(a + i * h);
+    }
+    return (sum * h) / 3;
   }, [currentFunc, a, b]);
 
   // Compute all 5 rules for comparison table and active approximation
   const evaluations = useMemo(() => {
     const f = currentFunc.fn;
 
-    // Grid points
+    // Grid points starting at a and stepping by signed deltaX
     const xs = [];
     for (let i = 0; i <= effectiveN; i++) {
       xs.push(a + i * deltaX);
@@ -154,8 +236,17 @@ export default function RiemannVisualizer() {
   }, [currentFunc, a, effectiveN, deltaX]);
 
   const approxVal = evaluations[rule] ?? evaluations.midpoint;
-  const errorVal = approxVal - exactVal;
-  const relErrorPct = exactVal !== 0 ? Math.abs(errorVal / exactVal) * 100 : 0;
+  const targetExact = isFinite(exactVal) ? exactVal : numericalReferenceVal;
+  const errorVal = approxVal - targetExact;
+  const relErrorPct = targetExact !== 0 ? Math.abs(errorVal / targetExact) * 100 : 0;
+
+  // Swap limits helper
+  const handleSwapLimits = () => {
+    const prevA = a;
+    const prevB = b;
+    setA(prevB);
+    setB(prevA);
+  };
 
   // SVG Geometry Settings
   const svgWidth = 840;
@@ -167,25 +258,34 @@ export default function RiemannVisualizer() {
   const plotWidth = svgWidth - padLeft - padRight;
   const plotHeight = svgHeight - padTop - padBottom;
 
-  // Sample y extremes over interval for nice auto-scaling
+  // Visual domain boundaries for geometry
+  const domainMinX = Math.min(a, b);
+  const domainMaxX = Math.max(a, b) === Math.min(a, b) ? Math.min(a, b) + 1 : Math.max(a, b);
+
+  // Sample y extremes over domain for auto-scaling
   const { minY, maxY } = useMemo(() => {
     let min = 0;
     let max = 0.5;
     for (let i = 0; i <= 100; i++) {
-      const x = a + (i / 100) * (b - a);
+      const x = domainMinX + (i / 100) * (domainMaxX - domainMinX);
       const y = currentFunc.fn(x);
-      if (y < min) min = y;
-      if (y > max) max = y;
+      if (isFinite(y)) {
+        if (y < min) min = y;
+        if (y > max) max = y;
+      }
     }
-    return { minY: Math.min(0, min), maxY: max * 1.15 };
-  }, [currentFunc, a, b]);
+    return { minY: Math.min(0, min), maxY: Math.max(1, max * 1.15) };
+  }, [currentFunc, domainMinX, domainMaxX]);
 
   const scaleX = useCallback(
-    (x) => padLeft + ((x - a) / (b - a)) * plotWidth,
-    [a, b, plotWidth]
+    (x) => padLeft + ((x - domainMinX) / (domainMaxX - domainMinX)) * plotWidth,
+    [domainMinX, domainMaxX, plotWidth]
   );
   const scaleY = useCallback(
-    (y) => padTop + plotHeight - ((y - minY) / (maxY - minY)) * plotHeight,
+    (y) => {
+      const clampedY = Math.max(minY, Math.min(maxY, isFinite(y) ? y : 0));
+      return padTop + plotHeight - ((clampedY - minY) / (maxY - minY)) * plotHeight;
+    },
     [minY, maxY, plotHeight]
   );
   const yZero = scaleY(0);
@@ -195,14 +295,14 @@ export default function RiemannVisualizer() {
     let d = "";
     const samples = 150;
     for (let i = 0; i <= samples; i++) {
-      const x = a + (i / samples) * (b - a);
+      const x = domainMinX + (i / samples) * (domainMaxX - domainMinX);
       const y = currentFunc.fn(x);
       const sx = scaleX(x);
       const sy = scaleY(y);
       d += i === 0 ? `M ${sx} ${sy}` : ` L ${sx} ${sy}`;
     }
     return d;
-  }, [currentFunc, a, b, scaleX, scaleY]);
+  }, [currentFunc, domainMinX, domainMaxX, scaleX, scaleY]);
 
   // Strip rendering elements according to active rule
   const stripElements = useMemo(() => {
@@ -215,186 +315,163 @@ export default function RiemannVisualizer() {
       const x1 = xs[i + 1];
       const sx0 = scaleX(x0);
       const sx1 = scaleX(x1);
-      const width = sx1 - sx0;
+      const minSx = Math.min(sx0, sx1);
+      const width = Math.abs(sx1 - sx0);
+
+      let heightVal = 0;
+      let sampleX = x0;
 
       if (rule === "left") {
-        const heightVal = f(x0);
-        const sy = scaleY(heightVal);
-        const rectY = Math.min(sy, yZero);
-        const rectHeight = Math.abs(sy - yZero);
-        elements.push(
-          <rect
-            key={i}
-            x={sx0}
-            y={rectY}
-            width={width}
-            height={rectHeight}
-            fill="rgba(56, 189, 248, 0.28)"
-            stroke="#0284c7"
-            strokeWidth="1.2"
-            onMouseEnter={() =>
-              setHoveredStrip({
-                index: i + 1,
-                range: `[${x0.toFixed(2)}, ${x1.toFixed(2)}]`,
-                height: heightVal.toFixed(4),
-                area: (heightVal * deltaX).toFixed(4),
-              })
-            }
-            onMouseLeave={() => setHoveredStrip(null)}
-          />
-        );
+        heightVal = f(x0);
+        sampleX = x0;
       } else if (rule === "right") {
-        const heightVal = f(x1);
-        const sy = scaleY(heightVal);
-        const rectY = Math.min(sy, yZero);
-        const rectHeight = Math.abs(sy - yZero);
-        elements.push(
+        heightVal = f(x1);
+        sampleX = x1;
+      } else if (rule === "midpoint") {
+        sampleX = (x0 + x1) / 2;
+        heightVal = f(sampleX);
+      } else {
+        heightVal = (f(x0) + f(x1)) / 2;
+        sampleX = (x0 + x1) / 2;
+      }
+
+      const sy = scaleY(heightVal);
+      const rectY = Math.min(sy, yZero);
+      const rectHeight = Math.abs(sy - yZero);
+
+      elements.push(
+        <g key={i}>
           <rect
-            key={i}
-            x={sx0}
+            x={minSx}
             y={rectY}
             width={width}
             height={rectHeight}
-            fill="rgba(14, 165, 233, 0.28)"
-            stroke="#0369a1"
+            fill={isReversed ? "rgba(239, 68, 68, 0.25)" : "rgba(56, 189, 248, 0.28)"}
+            stroke={isReversed ? "#ef4444" : "#0284c7"}
             strokeWidth="1.2"
             onMouseEnter={() =>
               setHoveredStrip({
                 index: i + 1,
-                range: `[${x0.toFixed(2)}, ${x1.toFixed(2)}]`,
+                range: `[${Math.min(x0, x1).toFixed(2)}, ${Math.max(x0, x1).toFixed(2)}]`,
                 height: heightVal.toFixed(4),
                 area: (heightVal * deltaX).toFixed(4),
               })
             }
             onMouseLeave={() => setHoveredStrip(null)}
           />
-        );
-      } else if (rule === "midpoint") {
-        const midX = (x0 + x1) / 2;
-        const heightVal = f(midX);
-        const sy = scaleY(heightVal);
-        const rectY = Math.min(sy, yZero);
-        const rectHeight = Math.abs(sy - yZero);
-        elements.push(
-          <g key={i}>
-            <rect
-              x={sx0}
-              y={rectY}
-              width={width}
-              height={rectHeight}
-              fill="rgba(16, 185, 129, 0.28)"
-              stroke="#059669"
-              strokeWidth="1.2"
-              onMouseEnter={() =>
-                setHoveredStrip({
-                  index: i + 1,
-                  range: `[${x0.toFixed(2)}, ${x1.toFixed(2)}]`,
-                  height: heightVal.toFixed(4),
-                  area: (heightVal * deltaX).toFixed(4),
-                })
-              }
-              onMouseLeave={() => setHoveredStrip(null)}
-            />
-            <circle cx={scaleX(midX)} cy={sy} r="3" fill="#10b981" />
-          </g>
-        );
-      } else if (rule === "trapezoid") {
-        const y0Val = f(x0);
-        const y1Val = f(x1);
-        const sy0 = scaleY(y0Val);
-        const sy1 = scaleY(y1Val);
-        const points = `${sx0},${yZero} ${sx0},${sy0} ${sx1},${sy1} ${sx1},${yZero}`;
-        const area = ((y0Val + y1Val) / 2) * deltaX;
-        elements.push(
-          <polygon
-            key={i}
-            points={points}
-            fill="rgba(168, 85, 247, 0.28)"
-            stroke="#9333ea"
-            strokeWidth="1.2"
-            onMouseEnter={() =>
-              setHoveredStrip({
-                index: i + 1,
-                range: `[${x0.toFixed(2)}, ${x1.toFixed(2)}]`,
-                height: `y₀=${y0Val.toFixed(3)}, y₁=${y1Val.toFixed(3)}`,
-                area: area.toFixed(4),
-              })
-            }
-            onMouseLeave={() => setHoveredStrip(null)}
-          />
-        );
-      } else if (rule === "simpson") {
-        if (i % 2 === 0 && i + 1 < effectiveN) {
-          const x2 = xs[i + 2];
-          const sx2 = scaleX(x2);
-          const y0Val = f(x0);
-          const y1Val = f(xs[i + 1]);
-          const y2Val = f(x2);
-          const sy0 = scaleY(y0Val);
-          const sy1 = scaleY(y1Val);
-          const sy2 = scaleY(y2Val);
-          const polyPath = `M ${sx0} ${yZero} L ${sx0} ${sy0} Q ${scaleX(xs[i + 1])} ${sy1} ${sx2} ${sy2} L ${sx2} ${yZero} Z`;
-          elements.push(
-            <path
-              key={i}
-              d={polyPath}
-              fill="rgba(245, 158, 11, 0.25)"
-              stroke="#d97706"
-              strokeWidth="1.2"
-              onMouseEnter={() =>
-                setHoveredStrip({
-                  index: `${i + 1}-${i + 2}`,
-                  range: `[${x0.toFixed(2)}, ${x2.toFixed(2)}]`,
-                  height: `Parabolic arc over 3 points`,
-                  area: (((y0Val + 4 * y1Val + y2Val) * deltaX) / 3).toFixed(4),
-                })
-              }
-              onMouseLeave={() => setHoveredStrip(null)}
-            />
-          );
-        }
-      }
+          {rule === "midpoint" && <circle cx={scaleX(sampleX)} cy={sy} r="3" fill="#10b981" />}
+        </g>
+      );
     }
     return elements;
-  }, [rule, effectiveN, deltaX, currentFunc, evaluations.xs, yZero, scaleX, scaleY]);
+  }, [currentFunc, evaluations, effectiveN, rule, deltaX, isReversed, scaleX, scaleY, yZero]);
 
   return (
     <div className="viz-container">
       <header className="viz-header">
-        <span className="viz-eyebrow">Interactive Calculus Lab</span>
-        <h1 className="viz-title">Riemann Sum &amp; Integral Visualizer</h1>
+        <span className="viz-eyebrow">Interactive Calculus Laboratory</span>
+        <h1 className="viz-title">Riemann Sum &amp; Numerical Integration Suite</h1>
         <p className="viz-subtitle">
-          Explore numerical integration from discrete rectangular partitions to quadratic parabolic arcs.
-          Visualize approximation convergence, error bounds, and exact Riemann slice geometries in real time.
+          Explore single-variable accumulation across Left, Right, Midpoint, Trapezoidal, and Simpson rules.
+          Features reversed intervals ($b &lt; a$), composite even Simpson enforcement, and analytical vs reference verification.
         </p>
       </header>
+
+      {/* Discontinuity Warning Banner */}
+      {discontinuityInfo && (
+        <div
+          style={{
+            background: "rgba(239, 68, 68, 0.15)",
+            border: "1px solid rgba(239, 68, 68, 0.4)",
+            borderRadius: "10px",
+            padding: "0.85rem 1.25rem",
+            color: "#fca5a5",
+            marginBottom: "1rem",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+          }}
+        >
+          <span style={{ fontSize: "1.4rem" }}>⚠️</span>
+          <div>
+            <strong>Mathematical Discontinuity Detected:</strong> {discontinuityInfo.message} (near x ≈ {discontinuityInfo.badX})
+          </div>
+        </div>
+      )}
+
+      {/* Reversed Interval Notice Banner */}
+      {isReversed && (
+        <div
+          style={{
+            background: "rgba(245, 158, 11, 0.15)",
+            border: "1px solid rgba(245, 158, 11, 0.4)",
+            borderRadius: "10px",
+            padding: "0.75rem 1.25rem",
+            color: "#fcd34d",
+            marginBottom: "1rem",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+          }}
+        >
+          <span style={{ fontSize: "1.3rem" }}>🔄</span>
+          <div>
+            <strong>Reversed Limits Active (b &lt; a):</strong> Interval step is negative ($\Delta x = {deltaX.toFixed(4)} &lt; 0$). The signed definite integral obeys $\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx$.
+          </div>
+        </div>
+      )}
+
+      {/* Simpson Rule Even Subdivisions Pill */}
+      {rule === "simpson" && (
+        <div
+          style={{
+            background: isSimpsonOdd ? "rgba(147, 51, 234, 0.15)" : "rgba(16, 185, 129, 0.15)",
+            border: `1px solid ${isSimpsonOdd ? "rgba(147, 51, 234, 0.4)" : "rgba(16, 185, 129, 0.4)"}`,
+            borderRadius: "10px",
+            padding: "0.6rem 1rem",
+            color: isSimpsonOdd ? "#c084fc" : "#6ee7b7",
+            marginBottom: "1rem",
+            fontSize: "0.88rem",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+          }}
+        >
+          <span>ℹ️</span>
+          <span>
+            {isSimpsonOdd
+              ? `Simpson's 1/3 Rule requires even subintervals (parabolic pair rule). Slider input (${partitions}) automatically adjusted to even n = ${effectiveN}.`
+              : `Composite Simpson's 1/3 Rule active with ${effectiveN} even subdivisions (${effectiveN / 2} parabolic pairs).`}
+          </span>
+        </div>
+      )}
 
       {/* Control Panel */}
       <div className="viz-panel">
         <div className="viz-tabs">
-          {RULES.map((r) => (
+          {PRESET_FUNCTIONS.map((f) => (
             <button
-              key={r.id}
-              className={`viz-tab ${rule === r.id ? "active" : ""}`}
-              onClick={() => setRule(r.id)}
+              key={f.id}
+              className={`viz-tab ${selectedFuncId === f.id ? "active" : ""}`}
+              onClick={() => handleFuncChange(f.id)}
             >
-              {r.label} ({r.order})
+              {f.label}
             </button>
           ))}
         </div>
 
         <div className="viz-grid-controls">
           <div className="viz-control-group">
-            <label className="viz-label" htmlFor="function-select">Function f(x)</label>
+            <label className="viz-label" htmlFor="riemann-rule-select">Approximation Rule</label>
             <select
-              id="function-select"
+              id="riemann-rule-select"
               className="viz-select"
-              value={selectedFuncId}
-              onChange={(e) => setSelectedFuncId(e.target.value)}
+              value={rule}
+              onChange={(e) => setRule(e.target.value)}
             >
-              {PRESET_FUNCTIONS.map((f) => (
-                <option key={f.id} value={f.id}>
-                  {f.label} on [{f.defaultA}, {f.displayB}]
+              {RULES.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.label} ({r.order})
                 </option>
               ))}
             </select>
@@ -402,7 +479,7 @@ export default function RiemannVisualizer() {
 
           <div className="viz-control-group">
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <label className="viz-label" htmlFor="partitions-slider">Partitions n</label>
+              <label className="viz-label" htmlFor="partitions-slider">Subdivisions n</label>
               <span className="viz-slider-val">{effectiveN}</span>
             </div>
             <input
@@ -418,9 +495,28 @@ export default function RiemannVisualizer() {
           </div>
 
           <div className="viz-control-group">
-            <span className="viz-label">Interval Width Δx</span>
-            <div className="viz-input" style={{ background: "rgba(15, 23, 42, 0.4)", cursor: "default" }}>
-              Δx = {deltaX.toFixed(4)}
+            <span className="viz-label">Limits &amp; Signed Step Δx</span>
+            <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+              <button
+                type="button"
+                onClick={handleSwapLimits}
+                style={{
+                  background: "rgba(56, 189, 248, 0.15)",
+                  border: "1px solid rgba(56, 189, 248, 0.3)",
+                  color: "#38bdf8",
+                  borderRadius: "6px",
+                  padding: "0.4rem 0.6rem",
+                  fontSize: "0.85rem",
+                  cursor: "pointer",
+                  fontWeight: 600,
+                }}
+                title="Swap limits of integration to test reversed interval"
+              >
+                ⇄ Swap [a ↔ b]
+              </button>
+              <div className="viz-input" style={{ background: "rgba(15, 23, 42, 0.4)", cursor: "default", flex: 1 }}>
+                Δx = {deltaX.toFixed(4)}
+              </div>
             </div>
           </div>
         </div>
@@ -439,9 +535,9 @@ export default function RiemannVisualizer() {
             strokeWidth="1.5"
           />
           <line
-            x1={scaleX(a)}
+            x1={scaleX(domainMinX)}
             y1={padTop}
-            x2={scaleX(a)}
+            x2={scaleX(domainMinX)}
             y2={padTop + plotHeight}
             stroke="rgba(148, 163, 184, 0.4)"
             strokeWidth="1.5"
@@ -454,11 +550,11 @@ export default function RiemannVisualizer() {
           <path d={curvePath} fill="none" stroke="#f59e0b" strokeWidth="2.8" />
 
           {/* Axes labels & ticks */}
-          <text x={scaleX(a)} y={svgHeight - 15} fill="#94a3b8" fontSize="12" textAnchor="middle">
-            a = {a}
+          <text x={scaleX(a)} y={svgHeight - 15} fill="#38bdf8" fontSize="12" fontWeight="700" textAnchor="middle">
+            a = {Number(a).toFixed(2)} {isReversed ? "→" : "←"}
           </text>
-          <text x={scaleX(b)} y={svgHeight - 15} fill="#94a3b8" fontSize="12" textAnchor="middle">
-            b = {currentFunc.displayB}
+          <text x={scaleX(b)} y={svgHeight - 15} fill="#f59e0b" fontSize="12" fontWeight="700" textAnchor="middle">
+            b = {Number(b).toFixed(2)}
           </text>
           <text x={padLeft - 10} y={scaleY(0) + 4} fill="#94a3b8" fontSize="12" textAnchor="end">
             0
@@ -468,12 +564,22 @@ export default function RiemannVisualizer() {
           </text>
 
           {/* Legend */}
-          <g transform={`translate(${svgWidth - 220}, 20)`}>
-            <rect width="200" height="60" fill="rgba(15, 23, 42, 0.85)" rx="6" stroke="rgba(148, 163, 184, 0.2)" />
+          <g transform={`translate(${svgWidth - 230}, 20)`}>
+            <rect width="210" height="64" fill="rgba(15, 23, 42, 0.85)" rx="6" stroke="rgba(148, 163, 184, 0.2)" />
             <line x1="15" y1="20" x2="45" y2="20" stroke="#f59e0b" strokeWidth="2.5" />
             <text x="55" y="24" fill="#cbd5e1" fontSize="12">f(x) exact curve</text>
-            <rect x="15" y="35" width="30" height="12" fill="rgba(56, 189, 248, 0.4)" stroke="#38bdf8" strokeWidth="1" />
-            <text x="55" y="45" fill="#cbd5e1" fontSize="12">{RULES.find((r) => r.id === rule)?.label}</text>
+            <rect
+              x="15"
+              y="36"
+              width="30"
+              height="12"
+              fill={isReversed ? "rgba(239, 68, 68, 0.4)" : "rgba(56, 189, 248, 0.4)"}
+              stroke={isReversed ? "#ef4444" : "#38bdf8"}
+              strokeWidth="1"
+            />
+            <text x="55" y="47" fill="#cbd5e1" fontSize="12">
+              {RULES.find((r) => r.id === rule)?.label} {isReversed ? "(−)" : "(+)"}
+            </text>
           </g>
         </svg>
 
@@ -497,34 +603,38 @@ export default function RiemannVisualizer() {
         )}
       </div>
 
-      {/* Metrics Dashboard */}
+      {/* Metrics Dashboard: Exact Analytical vs High-Precision Reference */}
       <div className="viz-metrics">
         <div className="viz-metric-card">
-          <span className="viz-metric-title">Exact Value (∫ f dx)</span>
-          <span className="viz-metric-num exact">{exactVal.toFixed(6)}</span>
-          <span className="viz-metric-foot">Closed-form antiderivative</span>
+          <span className="viz-metric-title">Exact Analytical (FTC ∫ f dx)</span>
+          <span className="viz-metric-num exact">
+            {isFinite(exactVal) ? exactVal.toFixed(6) : "Non-elementary"}
+          </span>
+          <span className="viz-metric-foot">Closed-form: F(b) − F(a)</span>
+        </div>
+
+        <div className="viz-metric-card">
+          <span className="viz-metric-title">High-Precision Reference</span>
+          <span className="viz-metric-num" style={{ color: "#a855f7" }}>
+            {isFinite(numericalReferenceVal) ? numericalReferenceVal.toFixed(6) : "Divergent"}
+          </span>
+          <span className="viz-metric-foot">1024-step Romberg benchmark</span>
         </div>
 
         <div className="viz-metric-card">
           <span className="viz-metric-title">Approximation ({RULES.find((r) => r.id === rule)?.label})</span>
-          <span className="viz-metric-num approx">{approxVal.toFixed(6)}</span>
-          <span className="viz-metric-foot">{effectiveN} subintervals</span>
-        </div>
-
-        <div className="viz-metric-card">
-          <span className="viz-metric-title">Signed Error (Approx − Exact)</span>
-          <span className="viz-metric-num error">
-            {errorVal >= 0 ? "+" : ""}{errorVal.toFixed(6)}
+          <span className="viz-metric-num approx">
+            {isFinite(approxVal) ? approxVal.toFixed(6) : "NaN"}
           </span>
-          <span className="viz-metric-foot">{errorVal >= 0 ? "Overestimate" : "Underestimate"}</span>
+          <span className="viz-metric-foot">{effectiveN} subintervals · Δx = {deltaX.toFixed(4)}</span>
         </div>
 
         <div className="viz-metric-card">
           <span className="viz-metric-title">Relative Error</span>
           <span className="viz-metric-num" style={{ color: relErrorPct < 0.1 ? "#10b981" : "#f59e0b" }}>
-            {relErrorPct.toFixed(4)}%
+            {isFinite(relErrorPct) ? `${relErrorPct.toFixed(4)}%` : "N/A"}
           </span>
-          <span className="viz-metric-foot">|Error / Exact| × 100%</span>
+          <span className="viz-metric-foot">|Error / Reference| × 100%</span>
         </div>
       </div>
 
@@ -540,15 +650,15 @@ export default function RiemannVisualizer() {
                 <th style={{ padding: "0.5rem" }}>Method</th>
                 <th style={{ padding: "0.5rem" }}>Order</th>
                 <th style={{ padding: "0.5rem" }}>Approximation</th>
-                <th style={{ padding: "0.5rem" }}>Error</th>
+                <th style={{ padding: "0.5rem" }}>Signed Error</th>
                 <th style={{ padding: "0.5rem" }}>Error %</th>
               </tr>
             </thead>
             <tbody>
               {RULES.map((r) => {
                 const val = evaluations[r.id];
-                const err = val - exactVal;
-                const pct = exactVal !== 0 ? Math.abs(err / exactVal) * 100 : 0;
+                const err = val - targetExact;
+                const pct = targetExact !== 0 ? Math.abs(err / targetExact) * 100 : 0;
                 const isSelected = r.id === rule;
                 return (
                   <tr
@@ -562,11 +672,13 @@ export default function RiemannVisualizer() {
                       {r.label}
                     </td>
                     <td style={{ padding: "0.6rem 0.5rem", color: "#94a3b8" }}>{r.order}</td>
-                    <td style={{ padding: "0.6rem 0.5rem", fontVariantNumeric: "tabular-nums" }}>{val.toFixed(6)}</td>
+                    <td style={{ padding: "0.6rem 0.5rem", fontVariantNumeric: "tabular-nums" }}>{isFinite(val) ? val.toFixed(6) : "NaN"}</td>
                     <td style={{ padding: "0.6rem 0.5rem", color: err >= 0 ? "#38bdf8" : "#f59e0b", fontVariantNumeric: "tabular-nums" }}>
-                      {err >= 0 ? "+" : ""}{err.toFixed(6)}
+                      {isFinite(err) ? `${err >= 0 ? "+" : ""}${err.toFixed(6)}` : "N/A"}
                     </td>
-                    <td style={{ padding: "0.6rem 0.5rem", fontVariantNumeric: "tabular-nums" }}>{pct.toFixed(4)}%</td>
+                    <td style={{ padding: "0.6rem 0.5rem", fontVariantNumeric: "tabular-nums" }}>
+                      {isFinite(pct) ? `${pct.toFixed(4)}%` : "N/A"}
+                    </td>
                   </tr>
                 );
               })}
@@ -584,7 +696,7 @@ export default function RiemannVisualizer() {
           As partition count $n \to \infty$, the width $\Delta x = (b - a)/n \to 0$. The error bounds depend directly on the regularity of the integrand:
           <strong> Left &amp; Right sums</strong> are first-order $O(1/n)$, bounded by $\frac{(b-a)^2}{2n} M_1$;
           <strong> Midpoint &amp; Trapezoidal rules</strong> are second-order $O(1/n^2)$, bounded by $\frac{(b-a)^3}{24n^2} M_2$ and $\frac{(b-a)^3}{12n^2} M_2$;
-          and <strong>Simpson's 1/3 Rule</strong> achieves fourth-order $O(1/n^4)$, bounded by $\frac{(b-a)^5}{180n^4} M_4$.
+          and <strong>Simpson&apos;s 1/3 Rule</strong> achieves fourth-order $O(1/n^4)$, bounded by $\frac{(b-a)^5}{180n^4} M_4$.
         </p>
         <Link
           to="/numerical-methods/1"

@@ -75,6 +75,20 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "orthogonal-polynomials-1": [],
   "orthogonal-polynomials-2": ["orthogonal-poly-checkpoint"],
 
+  // Developer 3 — Sequences of Functions, Series Solutions of ODEs & Complex Analysis
+  "pointwise-uniform-convergence-1": [],
+  "pointwise-uniform-convergence-2": ["pointwise-uniform-conv-checkpoint"],
+  "interchanging-limits-1": [],
+  "interchanging-limits-2": ["interchange-limits-checkpoint"],
+  "power-series-ode-1": [],
+  "power-series-ode-2": ["power-series-ode-checkpoint"],
+  "frobenius-method-1": [],
+  "frobenius-method-2": ["frobenius-method-checkpoint"],
+  "analytic-functions-1": [],
+  "analytic-functions-2": ["analytic-functions-checkpoint"],
+  "contour-integrals-1": [],
+  "contour-integrals-2": ["contour-integrals-checkpoint"],
+
   // Multivariable Calculus
   "partial-1": ["141", "142", "143"],
   "partial-2": ["144", "145", "146", "147"],

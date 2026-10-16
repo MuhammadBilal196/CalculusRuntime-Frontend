@@ -30,6 +30,12 @@ const CORE_CERT_PATHS = new Set([
   "/z-transforms/1",
   "/intro-pdes/1",
   "/orthogonal-polynomials/1",
+  "/pointwise-uniform-convergence/1",
+  "/interchanging-limits/1",
+  "/power-series-ode/1",
+  "/frobenius-method/1",
+  "/analytic-functions/1",
+  "/contour-integrals/1",
 ]);
 
 const EXCLUDED_FROM_ROADMAP = new Set([

@@ -218,6 +218,20 @@ import {
   OrthogonalPolyPart1,
   OrthogonalPolyPart2,
 } from "./pages/calculus/CalcSpecialParts";
+import {
+  PointwiseUniformConvPart1,
+  PointwiseUniformConvPart2,
+  InterchangeLimitsPart1,
+  InterchangeLimitsPart2,
+  PowerSeriesOdePart1,
+  PowerSeriesOdePart2,
+  FrobeniusMethodPart1,
+  FrobeniusMethodPart2,
+  AnalyticFunctionsPart1,
+  AnalyticFunctionsPart2,
+  ContourIntegralsPart1,
+  ContourIntegralsPart2,
+} from "./pages/calculus/CalcSeriesComplexParts";
 
 // three.js is large, so the 3D explorer loads in its own chunk only when visited.
 const SurfaceExplorer = lazy(() => import("./pages/tools/SurfaceExplorer"));
@@ -839,6 +853,85 @@ function App() {
                 <Route
                   path="/orthogonal-polynomials/2"
                   element={<Layout body={<OrthogonalPolyPart2 />} />}
+                />
+
+                {/* Developer 3 — Sequences of Functions, Series Solutions of ODEs & Complex Analysis */}
+                <Route
+                  path="/pointwise-uniform-convergence"
+                  element={<Navigate to="/pointwise-uniform-convergence/1" replace />}
+                />
+                <Route
+                  path="/pointwise-uniform-convergence/1"
+                  element={<Layout body={<PointwiseUniformConvPart1 />} />}
+                />
+                <Route
+                  path="/pointwise-uniform-convergence/2"
+                  element={<Layout body={<PointwiseUniformConvPart2 />} />}
+                />
+
+                <Route
+                  path="/interchanging-limits"
+                  element={<Navigate to="/interchanging-limits/1" replace />}
+                />
+                <Route
+                  path="/interchanging-limits/1"
+                  element={<Layout body={<InterchangeLimitsPart1 />} />}
+                />
+                <Route
+                  path="/interchanging-limits/2"
+                  element={<Layout body={<InterchangeLimitsPart2 />} />}
+                />
+
+                <Route
+                  path="/power-series-ode"
+                  element={<Navigate to="/power-series-ode/1" replace />}
+                />
+                <Route
+                  path="/power-series-ode/1"
+                  element={<Layout body={<PowerSeriesOdePart1 />} />}
+                />
+                <Route
+                  path="/power-series-ode/2"
+                  element={<Layout body={<PowerSeriesOdePart2 />} />}
+                />
+
+                <Route
+                  path="/frobenius-method"
+                  element={<Navigate to="/frobenius-method/1" replace />}
+                />
+                <Route
+                  path="/frobenius-method/1"
+                  element={<Layout body={<FrobeniusMethodPart1 />} />}
+                />
+                <Route
+                  path="/frobenius-method/2"
+                  element={<Layout body={<FrobeniusMethodPart2 />} />}
+                />
+
+                <Route
+                  path="/analytic-functions"
+                  element={<Navigate to="/analytic-functions/1" replace />}
+                />
+                <Route
+                  path="/analytic-functions/1"
+                  element={<Layout body={<AnalyticFunctionsPart1 />} />}
+                />
+                <Route
+                  path="/analytic-functions/2"
+                  element={<Layout body={<AnalyticFunctionsPart2 />} />}
+                />
+
+                <Route
+                  path="/contour-integrals"
+                  element={<Navigate to="/contour-integrals/1" replace />}
+                />
+                <Route
+                  path="/contour-integrals/1"
+                  element={<Layout body={<ContourIntegralsPart1 />} />}
+                />
+                <Route
+                  path="/contour-integrals/2"
+                  element={<Layout body={<ContourIntegralsPart2 />} />}
                 />
 
                 <Route

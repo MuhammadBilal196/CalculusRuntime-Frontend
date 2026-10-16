@@ -74,6 +74,12 @@ const TOPICS = [
   "Z-Transform & Difference Equations",
   "Introduction to PDEs (Heat & Wave Equations)",
   "Orthogonal Polynomials (Legendre, Chebyshev, Hermite)",
+  "Pointwise and Uniform Convergence",
+  "Interchanging Limits, Derivatives and Integrals",
+  "Power-Series Solutions at Ordinary Points",
+  "Frobenius Method at Regular Singular Points",
+  "Analytic Functions and Cauchy-Riemann Equations",
+  "Contour Integrals and Residues",
   "Multiple Integrals",
   "Vectors & Vector Spaces",
   "Matrices & Determinants",
@@ -306,6 +312,36 @@ const PRACTICE_SELECTIONS = {
   },
 
   "Orthogonal Polynomials (Legendre, Chebyshev, Hermite)": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Pointwise and Uniform Convergence": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Interchanging Limits, Derivatives and Integrals": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Power-Series Solutions at Ordinary Points": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Frobenius Method at Regular Singular Points": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Analytic Functions and Cauchy-Riemann Equations": {
+    type: "topic",
+    banks: ["calcAg"],
+  },
+
+  "Contour Integrals and Residues": {
     type: "topic",
     banks: ["calcAg"],
   },
