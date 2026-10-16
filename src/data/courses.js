@@ -477,7 +477,7 @@ export const COURSES = [
         "Laplacian, harmonic functions & Maxwell's equations",
         "Differential forms & the generalized Stokes' theorem",
         "Gaussian integral & the Euler–Lagrange equation",
-        "Surface metrics, the first fundamental form & surface curvature",
+        "Surface metrics, the first fundamental form, surface curvature & geodesics",
         "Extreme-value finder, volume calculator & vector-field visualizer",
         "Certificate quiz — 100 MCQs, 80% to pass",
       ],
@@ -671,7 +671,7 @@ export const COURSES = [
       {
         title: "Geometry of Surfaces",
         description:
-          "Surface metrics & the first fundamental form, then surface curvature & geodesics.",
+          "Surface Metrics and the First Fundamental Form, then Surface Curvature and Geodesics.",
         path: "/multivariable-calculus/surface-geometry",
         meta: "Metrics & Curvature · 20 MCQs each",
         icon: "𝐈",

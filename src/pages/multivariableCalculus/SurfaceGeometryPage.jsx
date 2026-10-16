@@ -6,6 +6,7 @@ import SectionCompleteBar from "../../components/SectionCompleteBar";
 import StudyGuideShell from "../courses/StudyGuideShell";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { SG_METRIC_QUIZ } from "../../data/mvSurfaceGeometryQuizzes";
+import SurfaceCurvatureTopic from "./SurfaceCurvatureTopic";
 import {
   getQuizAttemptPercent,
   guideQuizId,
@@ -55,6 +56,12 @@ function Sidebar() {
       <a className="sb-link" href="#mcq-sg-metric"><span className="sn">✎</span>Surface Metrics Quiz</a>
       <div className="sb-group">Curvature &amp; Geodesics</div>
       <a className="sb-link" href="#sg-curvature"><span className="sn">🔒</span>Surface Curvature &amp; Geodesics</a>
+      <a className="sb-link" href="#sg2-second-form">Second Fundamental Form</a>
+      <a className="sb-link" href="#sg2-principal">Principal, Gaussian &amp; Mean Curvature</a>
+      <a className="sb-link" href="#sg2-geodesics">Geodesics</a>
+      <a className="sb-link" href="#sg2-examples">Worked Examples</a>
+      <a className="sb-link" href="#sg2-mistakes">Limitations &amp; Mistakes</a>
+      <a className="sb-link" href="#mcq-sg-curvature"><span className="sn">✎</span>Curvature &amp; Geodesics Quiz</a>
     </nav>
   );
 }
@@ -588,6 +595,8 @@ function SectionMistakes() {
 /* ─────────────────── Topic 2: locked until Topic 1 quiz ─────────────────── */
 
 function TopicTwo({ unlocked, topicOnePct }) {
+  if (unlocked) return <SurfaceCurvatureTopic />;
+
   return (
     <section className="section" id="sg-curvature">
       <div className="sec-badge">Curvature &amp; Geodesics</div>

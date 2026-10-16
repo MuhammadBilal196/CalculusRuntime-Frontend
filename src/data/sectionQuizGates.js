@@ -112,8 +112,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
 
   "advanced-integration": ["ai-improper", "ai-variations"],
 
-  // Geometry of Surfaces — add "sg-curvature" once the second topic's quiz ships.
-  "surface-geometry": ["sg-metric"],
+  // Geometry of Surfaces
+  "surface-geometry": ["sg-metric", "sg-curvature"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
