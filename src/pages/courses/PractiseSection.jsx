@@ -97,6 +97,7 @@ const TOPICS = [
   "Regression & Correlation",
   "Probability Theory & Random Variables",
   "Mathematical Statistics & Inference",
+  "Entropy and Mutual Information",
 ];
 
 /*
@@ -507,6 +508,11 @@ const PRACTICE_SELECTIONS = {
   },
 
   "Mathematical Statistics & Inference": {
+    type: "topic",
+    banks: ["ps"],
+  },
+
+  "Entropy and Mutual Information": {
     type: "topic",
     banks: ["ps"],
   },
