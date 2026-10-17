@@ -98,6 +98,7 @@ const TOPICS = [
   "Probability Theory & Random Variables",
   "Mathematical Statistics & Inference",
   "Entropy and Mutual Information",
+  "Cross-Entropy and KL Divergence",
 ];
 
 /*
@@ -513,6 +514,11 @@ const PRACTICE_SELECTIONS = {
   },
 
   "Entropy and Mutual Information": {
+    type: "topic",
+    banks: ["ps"],
+  },
+
+  "Cross-Entropy and KL Divergence": {
     type: "topic",
     banks: ["ps"],
   },
