@@ -1896,7 +1896,72 @@ const formulaData = {
       }
     ]
   },
+  
+  "prob-entropy-mutual-information": {
+    title: "Entropy and Mutual Information",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      {
+        name: "Shannon Entropy",
+        formula: "H(X) = −Σ p(x) log p(x) · 0 ≤ H(X) ≤ log n",
+        note: "Base 2 gives bits, base e gives nats; convention 0 log 0 = 0; maximum log n only for the uniform distribution",
+      },
+      {
+        name: "Joint Entropy & Chain Rule",
+        formula: "H(X,Y) = H(X) + H(Y|X) · H(Y|X) = Σ p(x) H(Y|X=x)",
+        note: "H(X,Y) = H(X) + H(Y) only when X and Y are independent; conditioning never increases entropy on average",
+      },
+      {
+        name: "Mutual Information",
+        formula: "I(X;Y) = Σ p(x,y) log[p(x,y)/(p(x)p(y))] = H(X) − H(X|Y) = H(X) + H(Y) − H(X,Y)",
+        note: "Symmetric and nonnegative; I(X;Y) = 0 if and only if X and Y are independent (stronger than zero correlation)",
+      },
+      {
+        name: "Data-Processing Inequality",
+        formula: "X → Y → Z (Markov chain) ⟹ I(X;Z) ≤ I(X;Y)",
+        note: "Post-processing a variable cannot create information about the source",
+      },
+    ],
+  },
 
+  "prob-cross-entropy-kl": {
+    title: "Cross-Entropy and KL Divergence",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      {
+        name: "KL Divergence",
+        formula: "D(P‖Q) = Σ p(x) log[p(x)/q(x)]",
+        note: "Finite only if supp(P) ⊆ supp(Q); not symmetric, so D(P‖Q) ≠ D(Q‖P) in general",
+      },
+      {
+        name: "Cross-Entropy",
+        formula: "H(P,Q) = −Σ p(x) log q(x) = H(P) + D(P‖Q)",
+        note: "Expected log loss when data come from P but the model predicts Q; its minimum over Q is H(P)",
+      },
+      {
+        name: "Gibbs' Inequality",
+        formula: "D(P‖Q) ≥ 0, with equality if and only if P = Q",
+        note: "Proved with Jensen's inequality for the concave logarithm",
+      },
+      {
+        name: "KL to a Uniform Distribution",
+        formula: "D(P‖U_n) = log n − H(P)",
+        note: "Zero only when P itself is uniform on the n outcomes",
+      },
+      {
+        name: "Mutual Information as KL",
+        formula: "I(X;Y) = D( p(x,y) ‖ p(x)p(y) )",
+        note: "Distance of the joint distribution from independence",
+      },
+      {
+        name: "Cross-Entropy and Maximum Likelihood",
+        formula: "H(P̂, Q_θ) = −(1/N) Σᵢ log Q_θ(xᵢ)",
+        note: "Minimizing empirical cross-entropy over θ is the same as maximizing the likelihood of the data",
+      },
+    ],
+  },
 };
 
 export default formulaData;
