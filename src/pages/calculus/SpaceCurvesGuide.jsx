@@ -62,7 +62,7 @@ export default function SpaceCurvesGuide({ part = 1 }) {
           <div className="opening-note-box">
             <p className="opening-note">
               <strong>Operational Blueprint:</strong>{" "}
-              {"In this second section, we formalize the complete local geometry of 3D curves via the Frenet-Serret moving frame $\{\\mathbf{T}, \\mathbf{N}, \\mathbf{B}\}$. We examine how torsion $\\tau$ governs non-planarity, construct the osculating, normal, and rectifying planes, and calculate the radius and center of curvature."}
+              {"In this second section, we formalize the complete local geometry of 3D curves via the Frenet-Serret moving frame $\\{\\mathbf{T}, \\mathbf{N}, \\mathbf{B}\\}$. We examine how torsion $\\tau$ governs non-planarity, construct the osculating, normal, and rectifying planes, and calculate the radius and center of curvature."}
             </p>
           </div>
           <Divider />
