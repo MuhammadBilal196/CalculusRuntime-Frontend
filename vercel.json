@@ -1,5 +1,9 @@
 {
   "rewrites": [
+    {
+      "source": "/qc-api/:path*",
+      "destination": "https://quantum-chat-backend-six.vercel.app/:path*"
+    },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
