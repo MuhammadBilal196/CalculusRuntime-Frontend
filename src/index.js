@@ -3,9 +3,13 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { installBackendWake } from "./utils/backendWake";
 import "./styles/theme.css";
 import "./styles/responsive.css";
 import "./styles/partial-theme.css";
+
+// Wake the SnapDeploy backend if it is asleep (no-op locally).
+installBackendWake();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
