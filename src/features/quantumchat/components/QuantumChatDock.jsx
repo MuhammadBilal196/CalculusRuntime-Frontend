@@ -15,7 +15,6 @@ import {
   LogOut,
   MoreHorizontal,
   Send,
-  SquarePen,
 } from "lucide-react";
 import { useQuantumChatAuth } from "../context/QuantumChatAuthContext";
 import {
@@ -695,10 +694,12 @@ function ChatReadyPanel({ composeRequest, onComposeHandled, onUnreadChange }) {
     try {
       const raw = await sendDirectMessage({
         myUserId: user.id,
+        myPublishedKeys: user.publicKeys,
         peer,
         text,
       });
       setDraft("");
+      setListError("");
       if (raw) {
         setMessages((prev) => [...prev, decryptMessage(raw, user.id)]);
         const key = conversationKeyForUser(peer.id);
@@ -845,7 +846,6 @@ function QuantumChatDockInner() {
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [authMode, setAuthMode] = useState("signin");
-  const [composeTick, setComposeTick] = useState(0);
   const [unreadTotal, setUnreadTotal] = useState(0);
 
   const chatUrl = useMemo(() => getQuantumChatAppUrl(), []);
@@ -996,20 +996,6 @@ function QuantumChatDockInner() {
           <button
             type="button"
             className="quantum-chat-dock__icon-btn"
-            aria-label="Compose new message"
-            title="Compose"
-            onClick={(event) => {
-              event.stopPropagation();
-              if (!isOpen) setIsOpen(true);
-              if (user && hasLocalKeyring) setComposeTick((n) => n + 1);
-            }}
-          >
-            <SquarePen size={17} strokeWidth={2.1} />
-          </button>
-
-          <button
-            type="button"
-            className="quantum-chat-dock__icon-btn"
             aria-label={isOpen ? "Collapse QuantumChat" : "Expand QuantumChat"}
             title={isOpen ? "Collapse" : "Expand"}
             onClick={(event) => {
@@ -1035,7 +1021,7 @@ function QuantumChatDockInner() {
           style={isOpen ? undefined : { display: "none" }}
         >
           <ChatReadyPanel
-            composeRequest={composeTick}
+            composeRequest={0}
             onComposeHandled={() => {}}
             onUnreadChange={handleUnreadChange}
           />
