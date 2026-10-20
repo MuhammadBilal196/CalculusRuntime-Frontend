@@ -100,21 +100,40 @@ export function decryptMessage(raw, myUserId) {
   };
 }
 
-export async function sendDirectMessage({ myUserId, peer, text }) {
+/** My local key pairs that are still published on the server (the server rejects others). */
+function pickMySendKey(myUserId, myPublishedKeys) {
+  const local = getCurrentKeySet(myUserId);
+  const published = new Set(
+    (myPublishedKeys || []).map((k) => String(k).toLowerCase()),
+  );
+  const usable = published.size
+    ? local.filter((k) => published.has(k.publicKey))
+    : local;
+  return pickRandom(usable.length ? usable : local);
+}
+
+export async function sendDirectMessage({ myUserId, myPublishedKeys, peer, text }) {
   const trimmed = (text || "").trim();
   if (!trimmed) throw new Error("Message cannot be empty");
   if (!peer?.id && !peer?._id) throw new Error("No recipient selected");
 
   const peerId = peer.id || peer._id;
+  // Always use the recipient's current keys: contact lists are cached, and a new
+  // account (or new device) may have published different keys since they loaded.
   let recipient = peer;
-  if (!recipient.publicKeys?.length) {
-    recipient = (await fetchUser(peerId)) || recipient;
+  try {
+    recipient = (await fetchUser(peerId)) || peer;
+  } catch {
+    // Fall back to the cached keys; the server will reject them if stale.
   }
 
-  const myKey = pickRandom(getCurrentKeySet(myUserId));
+  const myKey = pickMySendKey(myUserId, myPublishedKeys);
   const recipientKeys = (recipient.publicKeys || []).filter(Boolean);
-  if (!myKey?.publicKey || recipientKeys.length === 0) {
-    throw new Error("Missing encryption keys for this conversation");
+  if (!myKey?.publicKey) {
+    throw new Error("Your encryption keys are not on this device — import your key file.");
+  }
+  if (recipientKeys.length === 0) {
+    throw new Error("This person hasn't set up encryption keys yet.");
   }
 
   const forRecipient = sealMessage(trimmed, pickRandom(recipientKeys));
