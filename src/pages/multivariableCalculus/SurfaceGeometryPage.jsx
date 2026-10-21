@@ -18,7 +18,7 @@ import "./GuidePart.css";
 /**
  * Geometry of Surfaces — module page (Multivariable Calculus).
  * Topic 1: Surface Metrics and the First Fundamental Form  (quiz key "sg-metric")
- * Topic 2: Surface Curvature and Geodesics                  (quiz key "sg-curvature", unlocks after Topic 1 quiz ≥ 80%)
+ * Topic 2: Surface Curvature and Geodesics                  (quiz key "sg-curvature"; theory always open, quiz unlocks after Topic 1 quiz ≥ 80%)
  */
 
 const T = String.raw;
@@ -55,7 +55,7 @@ function Sidebar() {
       <a className="sb-link" href="#sg-mistakes">Limitations &amp; Mistakes</a>
       <a className="sb-link" href="#mcq-sg-metric"><span className="sn">✎</span>Surface Metrics Quiz</a>
       <div className="sb-group">Curvature &amp; Geodesics</div>
-      <a className="sb-link" href="#sg-curvature"><span className="sn">🔒</span>Surface Curvature &amp; Geodesics</a>
+      <a className="sb-link" href="#sg-curvature">Surface Curvature &amp; Geodesics</a>
       <a className="sb-link" href="#sg2-second-form">Second Fundamental Form</a>
       <a className="sb-link" href="#sg2-principal">Principal, Gaussian &amp; Mean Curvature</a>
       <a className="sb-link" href="#sg2-geodesics">Geodesics</a>
@@ -104,7 +104,7 @@ function OpeningNote() {
     <div className="opening-note-box">
       <p className="opening-note">
         <strong>How this module works:</strong>{" "}
-        {"This module has two topics. Read Surface Metrics and the First Fundamental Form, then pass its 20-question quiz with at least 80% to unlock Surface Curvature and Geodesics. The first topic answers a deceptively simple question — how do you measure lengths, angles and areas on a curved surface using only its parameters? — and the second uses that answer to describe how the surface bends."}
+        {"This module has two topics. Read Surface Metrics and the First Fundamental Form, and pass its 20-question quiz with at least 80%. You can read Surface Curvature and Geodesics at any time, but its quiz unlocks only after you pass the first one. The first topic answers a deceptively simple question — how do you measure lengths, angles and areas on a curved surface using only its parameters? — and the second uses that answer to describe how the surface bends."}
       </p>
     </div>
   );
@@ -592,37 +592,15 @@ function SectionMistakes() {
   );
 }
 
-/* ─────────────────── Topic 2: locked until Topic 1 quiz ─────────────────── */
+/* ──────── Topic 2: theory always open, quiz locked until Topic 1 quiz ──────── */
 
 function TopicTwo({ unlocked, topicOnePct }) {
-  if (unlocked) return <SurfaceCurvatureTopic />;
-
   return (
-    <section className="section" id="sg-curvature">
-      <div className="sec-badge">Curvature &amp; Geodesics</div>
-      <h2 className="sec-title">Surface Curvature and Geodesics</h2>
-      {unlocked ? (
-        <div className="box tip">
-          <div className="box-lbl">Unlocked</div>
-          <p>
-            {T`You passed the Surface Metrics quiz. This topic — the second fundamental form, principal, Gaussian and mean curvature, and elementary geodesics on planes, cylinders and spheres — is being added next, together with its own 20-question quiz.`}
-          </p>
-        </div>
-      ) : (
-        <div className="box warn">
-          <div className="box-lbl">🔒 Locked</div>
-          <p>
-            {`Pass the Surface Metrics and the First Fundamental Form quiz with at least ${SECTION_QUIZ_PASS_PERCENT}% to unlock this topic.`}
-            {topicOnePct !== null ? ` Your best score so far: ${topicOnePct}%.` : " You have not attempted it yet."}
-          </p>
-          <p>
-            <a href="#mcq-sg-metric" style={{ color: "var(--gold)", fontWeight: 600 }}>
-              Go to the Surface Metrics quiz →
-            </a>
-          </p>
-        </div>
-      )}
-    </section>
+    <SurfaceCurvatureTopic
+      quizLocked={!unlocked}
+      topicOnePct={topicOnePct}
+      passPercent={SECTION_QUIZ_PASS_PERCENT}
+    />
   );
 }
 
