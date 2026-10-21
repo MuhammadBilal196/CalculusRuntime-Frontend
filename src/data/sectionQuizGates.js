@@ -115,8 +115,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   // Geometry of Surfaces
   "surface-geometry": ["sg-metric", "sg-curvature"],
 
-  // Integration on Moving Domains — add "md-reynolds" once the second topic's quiz ships.
-  "moving-domains": ["md-coarea"],
+  // Integration on Moving Domains
+  "moving-domains": ["md-coarea", "md-reynolds"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],
