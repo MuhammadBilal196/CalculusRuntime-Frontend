@@ -6,6 +6,7 @@ import SectionCompleteBar from "../../components/SectionCompleteBar";
 import StudyGuideShell from "../courses/StudyGuideShell";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MD_COAREA_QUIZ } from "../../data/mvMovingDomainsQuizzes";
+import ReynoldsTransportTopic from "./ReynoldsTransportTopic";
 import {
   getQuizAttemptPercent,
   guideQuizId,
@@ -55,6 +56,13 @@ function Sidebar() {
       <a className="sb-link" href="#mcq-md-coarea"><span className="sn">✎</span>Coarea Formula Quiz</a>
       <div className="sb-group">Reynolds Transport</div>
       <a className="sb-link" href="#md-reynolds">Reynolds Transport Theorem</a>
+      <a className="sb-link" href="#md2-leibniz">Moving Endpoints in 1D</a>
+      <a className="sb-link" href="#md2-flow">Moving Regions &amp; Expansion</a>
+      <a className="sb-link" href="#md2-theorem">The Transport Theorem</a>
+      <a className="sb-link" href="#md2-control">Fixed vs Moving Control Volumes</a>
+      <a className="sb-link" href="#md2-examples">Worked Examples</a>
+      <a className="sb-link" href="#md2-mistakes">Limitations &amp; Mistakes</a>
+      <a className="sb-link" href="#mcq-md-reynolds"><span className="sn">✎</span>Reynolds Transport Quiz</a>
     </nav>
   );
 }
@@ -504,27 +512,15 @@ function SectionMistakes() {
   );
 }
 
-/* ─────────────── Topic 2: Reynolds Transport (next PR) ─────────────── */
+/* ──────── Topic 2: theory always open, quiz locked until Topic 1 quiz ──────── */
 
 function TopicTwo({ unlocked, topicOnePct }) {
   return (
-    <section className="section" id="md-reynolds">
-      <div className="sec-badge">Reynolds Transport</div>
-      <h2 className="sec-title">Reynolds Transport Theorem</h2>
-      <div className="box tip">
-        <div className="box-lbl">Coming next</div>
-        <p>
-          {T`This topic — differentiating integrals over moving regions, boundary velocity and flux, and fixed versus moving control volumes — is being added next, together with its own 20-question quiz. Its theory will be open to everyone.`}
-        </p>
-        <p>
-          {unlocked
-            ? "You have passed the Coarea Formula quiz, so its quiz will be unlocked for you."
-            : `Its quiz will unlock after you pass the Coarea Formula quiz with at least ${SECTION_QUIZ_PASS_PERCENT}%.${
-                topicOnePct !== null ? ` Your best score so far: ${topicOnePct}%.` : ""
-              }`}
-        </p>
-      </div>
-    </section>
+    <ReynoldsTransportTopic
+      quizLocked={!unlocked}
+      topicOnePct={topicOnePct}
+      passPercent={SECTION_QUIZ_PASS_PERCENT}
+    />
   );
 }
 
