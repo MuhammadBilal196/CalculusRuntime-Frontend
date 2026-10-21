@@ -36,7 +36,7 @@ function MultivariableOverview() {
             coordinate systems, and the crown jewel theorems of vector calculus—Green's, Stokes', and
             the Divergence Theorem. Additional-depth modules then take you through 3D geometry, space
             curves, coordinate transformations, advanced optimization, approximation theory, potential
-            theory, differential forms, the calculus of variations, and the geometry of surfaces.
+            theory, differential forms, the calculus of variations, the geometry of surfaces, and integration on moving domains.
           </p>
           <div className="hero-actions">
             <Link className="secondary-action" to="/courses/multivariable-calculus">
@@ -73,6 +73,7 @@ function MultivariableOverview() {
           <li>Unify Green's, Stokes' and the Divergence Theorem into one statement with differential forms and the generalized Stokes' theorem.</li>
           <li>Evaluate the Gaussian integral behind the normal distribution, and find optimal curves and paths with the Euler–Lagrange equation.</li>
           <li>Measure true lengths, angles and areas on curved surfaces with the first fundamental form, then describe how they bend with curvature and geodesics.</li>
+          <li>Slice regions along level sets with the coarea formula, and differentiate integrals over moving regions with the Reynolds transport theorem.</li>
         </ul>
       </section>
 
@@ -113,7 +114,7 @@ function MultivariableOverview() {
         </p>
         <p className="la-overview-lead">
           The additional-depth modules—<strong>Potential Theory</strong>, <strong>Differential Forms</strong>,
-          <strong>Advanced Integration &amp; Variational Methods</strong>, and <strong>Geometry of Surfaces</strong> among them—each pair two topics
+          <strong>Advanced Integration &amp; Variational Methods</strong>, <strong>Geometry of Surfaces</strong>, and <strong>Integration on Moving Domains</strong> among them—each pair two topics
           with a 20-question quiz per topic; the second topic's quiz unlocks once you pass the first.
         </p>
         <p className="la-overview-lead">
