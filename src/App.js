@@ -53,6 +53,7 @@ import PotentialTheoryPage from "./pages/multivariableCalculus/PotentialTheoryPa
 import DifferentialFormsPage from "./pages/multivariableCalculus/DifferentialFormsPage";
 import AdvancedIntegrationPage from "./pages/multivariableCalculus/AdvancedIntegrationPage";
 import SurfaceGeometryPage from "./pages/multivariableCalculus/SurfaceGeometryPage";
+import MovingDomainsPage from "./pages/multivariableCalculus/MovingDomainsPage";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -73,8 +74,6 @@ import MyCertificates from "./pages/certificates/MyCertificates";
 import VerifyCertificate from "./pages/certificates/VerifyCertificate";
 import SavedForLater from "./pages/dashboard/SavedForLater";
 import Chatbot from "./components/Chatbot/Chatbot";
-import { QuantumChatAuthProvider } from "./features/quantumchat/context/QuantumChatAuthContext";
-import QuantumChatDock from "./features/quantumchat/components/QuantumChatDock";
 import BackToTop from "./components/common/BackToTop";
 import LoadingSpinner from "./components/common/LoadingSpinner";
 
@@ -550,6 +549,10 @@ function App() {
                 <Route
                   path="/multivariable-calculus/surface-geometry"
                   element={<Layout body={<SurfaceGeometryPage />} />}
+                />
+                <Route
+                  path="/multivariable-calculus/moving-domains"
+                  element={<Layout body={<MovingDomainsPage />} />}
                 />
 
                 {/* Taylor Series */}
@@ -1620,9 +1623,6 @@ function App() {
                 <Route path="*" element={<Layout body={<NotFound />} />} />
               </Routes>
               <Chatbot />
-              <QuantumChatAuthProvider>
-                <QuantumChatDock />
-              </QuantumChatAuthProvider>
               <BackToTop />
             </ErrorBoundary>
           </BrowserRouter>
