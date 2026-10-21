@@ -117,6 +117,9 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
 
   // Integration on Moving Domains
   "moving-domains": ["md-coarea", "md-reynolds"],
+
+  // Nonlinear Dynamical Systems
+  "nonlinear-dynamics": ["nd-phase", "nd-lyapunov"],
   "vector-1": ["vector-p1"],
   "vector-2": ["vector-p2"],
   "integrals-1": ["integrals-p1"],

@@ -84,8 +84,8 @@ function MultivariableOverview() {
             optimization via Lagrange multipliers, and the crown jewel theorems of vector
             calculus—Green's, Stokes', and the Divergence Theorem. Optional additional-depth modules then
             take you through space curves, advanced optimization, approximation theory, potential theory,
-            differential forms, the calculus of variations, the geometry of surfaces, and integration on
-            moving domains.
+            differential forms, the calculus of variations, the geometry of surfaces, integration on
+            moving domains, and nonlinear dynamical systems.
           </p>
           <div className="hero-actions">
             <Link className="secondary-action" to="/courses/multivariable-calculus">
@@ -123,6 +123,7 @@ function MultivariableOverview() {
           <li>Evaluate the Gaussian integral behind the normal distribution, and find optimal curves and paths with the Euler–Lagrange equation.</li>
           <li>Measure true lengths, angles and areas on curved surfaces with the first fundamental form, then describe how they bend with curvature and geodesics.</li>
           <li>Slice regions along level sets with the coarea formula, and differentiate integrals over moving regions with the Reynolds transport theorem.</li>
+          <li>Predict the long-term behaviour of nonlinear systems — pendulums, competing species, gradient descent — from phase portraits, Jacobians and Lyapunov functions.</li>
         </ul>
       </section>
 
@@ -172,7 +173,7 @@ function MultivariableOverview() {
           Every other guide is optional additional depth. Newer modules such as{" "}
           <strong>Potential Theory</strong>, <strong>Differential Forms</strong>,{" "}
           <strong>Advanced Integration &amp; Variational Methods</strong>, <strong>Geometry of Surfaces</strong>,
-          and <strong>Integration on Moving Domains</strong> each pair two topics with a 20-question quiz per
+          <strong>Integration on Moving Domains</strong>, and <strong>Nonlinear Dynamical Systems</strong> each pair two topics with a 20-question quiz per
           topic. Both topics are always open to read; the second topic's quiz unlocks once you pass the first.
         </p>
       </section>

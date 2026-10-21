@@ -54,6 +54,7 @@ import DifferentialFormsPage from "./pages/multivariableCalculus/DifferentialFor
 import AdvancedIntegrationPage from "./pages/multivariableCalculus/AdvancedIntegrationPage";
 import SurfaceGeometryPage from "./pages/multivariableCalculus/SurfaceGeometryPage";
 import MovingDomainsPage from "./pages/multivariableCalculus/MovingDomainsPage";
+import NonlinearDynamicsPage from "./pages/multivariableCalculus/NonlinearDynamicsPage";
 import PractiseSection from "./pages/courses/PractiseSection";
 import PersonalizedStudyPlan from "./pages/courses/PersonalizedStudyPlan";
 import ContinuityFinder from "./pages/tools/ContinuityFinder";
@@ -553,6 +554,10 @@ function App() {
                 <Route
                   path="/multivariable-calculus/moving-domains"
                   element={<Layout body={<MovingDomainsPage />} />}
+                />
+                <Route
+                  path="/multivariable-calculus/nonlinear-dynamics"
+                  element={<Layout body={<NonlinearDynamicsPage />} />}
                 />
 
                 {/* Taylor Series */}
