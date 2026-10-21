@@ -52,6 +52,9 @@ const TOPICS = [
   "Potential Theory",
   "Differential Forms",
   "Advanced Integration & Variational Methods",
+  "Geometry of Surfaces",
+  "Surface Metrics and the First Fundamental Form",
+  "Surface Curvature and Geodesics",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -456,6 +459,26 @@ const PRACTICE_SELECTIONS = {
   },
 
   // ============================================================
+  // MVC — GEOMETRY OF SURFACES (whole module + its two topics)
+  // ============================================================
+
+  "Geometry of Surfaces": {
+    type: "module",
+    banks: ["mv"],
+    moduleName: "Geometry of Surfaces",
+  },
+
+  "Surface Metrics and the First Fundamental Form": {
+    type: "topic",
+    banks: ["mv"],
+  },
+
+  "Surface Curvature and Geodesics": {
+    type: "topic",
+    banks: ["mv"],
+  },
+
+  // ============================================================
   // FUTURE NEW MVC MODULES
   // Uncomment these when their practice banks are created.
   // ============================================================
@@ -512,6 +535,46 @@ const PRACTICE_SELECTIONS = {
   },
 };
 
+/*
+ * Module dropdown in the topic picker.
+ * Each entry lists the practice selections (keys of PRACTICE_SELECTIONS) that belong
+ * to one module, in the order they should appear. "course" matches COURSE_FILTERS.
+ * To add a module: add its selections to TOPICS and PRACTICE_SELECTIONS, then list it here.
+ */
+const PRACTICE_MODULES = [
+  // Multivariable Calculus
+  { name: "Coordinate Transformations & Surfaces", course: "mv", selections: ["Coordinate Transformations & Surfaces"] },
+  { name: "Constrained & Unconstrained Optimization", course: "mv", selections: ["Constrained & Unconstrained Optimization"] },
+  { name: "Vector Fields & Approximation Theory", course: "mv", selections: ["Vector Fields & Approximation Theory"] },
+  { name: "Potential Theory", course: "mv", selections: ["Potential Theory"] },
+  { name: "Differential Forms", course: "mv", selections: ["Differential Forms"] },
+  { name: "Advanced Integration & Variational Methods", course: "mv", selections: ["Advanced Integration & Variational Methods"] },
+  {
+    name: "Geometry of Surfaces",
+    course: "mv",
+    selections: [
+      "Geometry of Surfaces",
+      "Surface Metrics and the First Fundamental Form",
+      "Surface Curvature and Geodesics",
+    ],
+  },
+  // Linear Algebra modules (topics come from laModules)
+  ...[...LA_MODULES, ...LA_EXPANSION_MODULES]
+    .filter((module) => module.title && module.topics?.length)
+    .map((module) => ({
+      name: module.title,
+      course: "la",
+      selections: module.topics.map((topic) => topic.title),
+    })),
+];
+
+const MODULE_SELECTION_LABELS = Object.fromEntries(
+  PRACTICE_MODULES.filter((module) => module.selections.length > 1).map((module) => [
+    module.name,
+    `${module.name} — all topics`,
+  ]),
+);
+
 function shuffled(list) {
   const out = [...list];
 
@@ -555,10 +618,32 @@ export default function PractiseSection() {
   const [chosenTopic, setChosenTopic] = useState(null);
   const [topicQuery, setTopicQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState("all");
-  const visibleTopics = TOPICS.filter((topic) =>
-    topic.toLowerCase().includes(topicQuery.trim().toLowerCase()) &&
-    (courseFilter === "all" || PRACTICE_SELECTIONS[topic]?.banks.includes(courseFilter))
+  const [moduleFilter, setModuleFilter] = useState("all");
+
+  // Modules offered in the dropdown for the current course filter.
+  const availableModules = PRACTICE_MODULES.filter(
+    (module) => courseFilter === "all" || module.course === courseFilter,
   );
+  const activeModule =
+    availableModules.find((module) => module.name === moduleFilter) || null;
+
+  const matchesQuery = (topic) =>
+    topic.toLowerCase().includes(topicQuery.trim().toLowerCase());
+
+  const visibleTopics = activeModule
+    ? activeModule.selections.filter((topic) => PRACTICE_SELECTIONS[topic] && matchesQuery(topic))
+    : TOPICS.filter((topic) =>
+        matchesQuery(topic) &&
+        (courseFilter === "all" || PRACTICE_SELECTIONS[topic]?.banks.includes(courseFilter))
+      );
+
+  const handleCourseFilter = (value) => {
+    setCourseFilter(value);
+    const stillAvailable = PRACTICE_MODULES.some(
+      (module) => module.name === moduleFilter && (value === "all" || module.course === value),
+    );
+    if (!stillAvailable) setModuleFilter("all");
+  };
 
   // ============================================================
   // CORE GAMEPLAY STATE
@@ -728,6 +813,7 @@ export default function PractiseSection() {
     setChosenDifficulty(null);
     setTopicQuery("");
     setCourseFilter("all");
+    setModuleFilter("all");
     setChosenTopic(null);
     setPoolProblems([]);
     setCurrentIndex(0);
@@ -952,13 +1038,44 @@ export default function PractiseSection() {
             <div role="group" aria-label="Filter topics by course" className="practice-course-filters">
               {COURSE_FILTERS.map(([value, label]) => (
                 <button key={value} type="button" className="practice-tool-btn"
-                  aria-pressed={courseFilter === value} onClick={() => setCourseFilter(value)}>{label}</button>
+                  aria-pressed={courseFilter === value} onClick={() => handleCourseFilter(value)}>{label}</button>
               ))}
             </div>
+            {availableModules.length > 0 && (
+              <div className="practice-module-filter">
+                <label htmlFor="practice-module-select">Module</label>
+                <select
+                  id="practice-module-select"
+                  className="practice-module-select"
+                  value={activeModule ? activeModule.name : "all"}
+                  onChange={(event) => setModuleFilter(event.target.value)}
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    maxWidth: "28rem",
+                    marginTop: "0.35rem",
+                    padding: "0.55rem 0.75rem",
+                    borderRadius: "8px",
+                    border: "1px solid var(--rule, #e2e8f0)",
+                    background: "var(--surface, transparent)",
+                    color: "inherit",
+                    font: "inherit",
+                  }}
+                >
+                  <option value="all">All modules and topics</option>
+                  {availableModules.map((module) => (
+                    <option key={module.name} value={module.name}>
+                      {module.name}
+                      {module.selections.length > 1 ? ` (${module.selections.length - (module.selections.includes(module.name) ? 1 : 0)} topics)` : ""}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
             <p role="status">{visibleTopics.length} topics available</p>
             {visibleTopics.length === 0 && <p>No topics match. Clear the search or choose another course.</p>}
-            {(topicQuery || courseFilter !== "all") && (
-              <button type="button" className="practice-tool-btn" onClick={() => { setTopicQuery(""); setCourseFilter("all"); }}>Clear topic filters</button>
+            {(topicQuery || courseFilter !== "all" || moduleFilter !== "all") && (
+              <button type="button" className="practice-tool-btn" onClick={() => { setTopicQuery(""); setCourseFilter("all"); setModuleFilter("all"); }}>Clear topic filters</button>
             )}
           </div>
           <div className="practice-topic-grid">
@@ -969,7 +1086,7 @@ export default function PractiseSection() {
                 className="practice-topic-btn"
                 onClick={() => setChosenTopic(topic)}
               >
-                {topic}
+                {MODULE_SELECTION_LABELS[topic] || topic}
               </button>
             ))}
           </div>
