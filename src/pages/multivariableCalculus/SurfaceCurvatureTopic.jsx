@@ -4,7 +4,8 @@ import { SG_CURVATURE_QUIZ } from "../../data/mvSurfaceGeometryQuizzes";
 
 /**
  * Geometry of Surfaces — second topic: Surface Curvature and Geodesics.
- * Rendered by SurfaceGeometryPage once the Surface Metrics quiz is passed.
+ * The theory is always visible. The quiz is shown but locked (greyed out, not clickable)
+ * until the Surface Metrics quiz is passed — pass quizLocked from SurfaceGeometryPage.
  * Quiz key: "sg-curvature" (stored as guide-mcq-sg-curvature).
  */
 
@@ -360,7 +361,9 @@ function Mistakes() {
   );
 }
 
-function SurfaceCurvatureTopic() {
+function SurfaceCurvatureTopic({ quizLocked = false, topicOnePct = null, passPercent = 80 }) {
+  const lockHint = `🔒 Locked — pass the Surface Metrics and the First Fundamental Form quiz with at least ${passPercent}% to unlock this quiz.`;
+
   return (
     <>
       <Intro />
@@ -370,14 +373,32 @@ function SurfaceCurvatureTopic() {
       <Examples />
       <Mistakes />
       <hr className="divider" />
-      <GuideMcqSection
-        id="mcq-sg-curvature"
-        badge="Checkpoint"
-        title="Surface Curvature and Geodesics — Quiz"
-        scoreId="score-sg-curvature"
-        section="sg-curvature"
-        questions={SG_CURVATURE_QUIZ}
-      />
+
+      {quizLocked && (
+        <p className="mcq-unlock-hint">
+          {topicOnePct !== null
+            ? `Your best Surface Metrics score so far: ${topicOnePct}%. `
+            : "You have not attempted the Surface Metrics quiz yet. "}
+          <a href="#mcq-sg-metric" style={{ color: "var(--gold)", fontWeight: 600 }}>
+            Go to the Surface Metrics quiz →
+          </a>
+        </p>
+      )}
+
+      <div
+        className={quizLocked ? "mcq-section mcq-section-locked" : undefined}
+        data-lock-hint={quizLocked ? lockHint : undefined}
+        aria-disabled={quizLocked || undefined}
+      >
+        <GuideMcqSection
+          id="mcq-sg-curvature"
+          badge="Checkpoint"
+          title="Surface Curvature and Geodesics — Quiz"
+          scoreId="score-sg-curvature"
+          section="sg-curvature"
+          questions={SG_CURVATURE_QUIZ}
+        />
+      </div>
     </>
   );
 }
