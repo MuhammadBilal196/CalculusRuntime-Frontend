@@ -460,7 +460,7 @@ export const COURSES = [
     overview: {
       longDescription: [
         "Multivariable Calculus extends single-variable analysis to multidimensional coordinate spaces and physical vector field theory. The curriculum begins with functions of several variables, level surfaces, and partial derivatives, formalizing tangent planes, total differentials, gradient vectors, and directional derivatives. We analyze unconstrained multivariable optimization alongside Lagrange Multipliers for constrained systems. The course develops multiple integration across Cartesian, polar, cylindrical, and spherical coordinates using Fubini's Theorem and Jacobian transformations. Vector calculus then formalizes line and surface integrals, conservative work fields, and the cornerstone integral theorems—Green's, Gauss's Divergence, and Stokes' Theorems—connecting differential field divergence and curl to macro-scale boundary fluxes across science.",
-        "Additional-depth modules extend the core path: 3D analytical geometry and quadric surfaces; space curves with Frenet–Serret frames, curvature and torsion; coordinate transformations, curvilinear systems and flux through parameterized surfaces; the Hessian, KKT conditions, global extrema and gradient descent; and vector potentials, multivariable Taylor series, the Implicit Function Theorem and n-dimensional directional derivatives. The course closes with potential theory (the Laplacian, harmonic functions, Maxwell's equations and the continuity equation), differential forms with the exterior derivative and the generalized Stokes' theorem, and advanced integration—improper multiple integrals, the Gaussian integral and the calculus of variations via the Euler–Lagrange equation. The geometry of surfaces then measures lengths, angles and areas on curved surfaces through the first fundamental form, and describes how they bend through curvature and geodesics.",
+        "Additional-depth modules extend the core path: 3D analytical geometry and quadric surfaces; space curves with Frenet–Serret frames, curvature and torsion; coordinate transformations, curvilinear systems and flux through parameterized surfaces; the Hessian, KKT conditions, global extrema and gradient descent; and vector potentials, multivariable Taylor series, the Implicit Function Theorem and n-dimensional directional derivatives. The course closes with potential theory (the Laplacian, harmonic functions, Maxwell's equations and the continuity equation), differential forms with the exterior derivative and the generalized Stokes' theorem, and advanced integration—improper multiple integrals, the Gaussian integral and the calculus of variations via the Euler–Lagrange equation. The geometry of surfaces then measures lengths, angles and areas on curved surfaces through the first fundamental form, and describes how they bend through curvature and geodesics. Integration on moving domains slices regions along level sets with the coarea formula and differentiates integrals over moving regions with the Reynolds transport theorem.",
       ],
       highlights: [
         "Partial derivatives, gradients & tangent planes",
@@ -478,6 +478,7 @@ export const COURSES = [
         "Differential forms & the generalized Stokes' theorem",
         "Gaussian integral & the Euler–Lagrange equation",
         "Surface metrics, the first fundamental form, surface curvature & geodesics",
+        "Coarea formula, level-set integration & the Reynolds transport theorem",
         "Extreme-value finder, volume calculator & vector-field visualizer",
         "Certificate quiz — 100 MCQs, 80% to pass",
       ],
@@ -676,6 +677,15 @@ export const COURSES = [
         meta: "Metrics & Curvature · 20 MCQs each",
         icon: "𝐈",
         logo: <span className="math-logo">ds² = E du² + 2F du dv + G dv²</span>,
+      },
+      {
+        title: "Integration on Moving Domains",
+        description:
+          "Coarea Formula and Level-Set Integration, then the Reynolds Transport Theorem.",
+        path: "/multivariable-calculus/moving-domains",
+        meta: "Coarea & Reynolds · 20 MCQs each",
+        icon: "∮",
+        logo: <span className="math-logo">∬ f|∇u| dA = ∫∫ f ds dt</span>,
       },
 
       {
