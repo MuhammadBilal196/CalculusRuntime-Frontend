@@ -13,6 +13,7 @@ import { MV_DIFFERENTIAL_FORMS_PRACTICE_BANK } from "./mvDifferentialFormsPracti
 import { MV_ADVANCED_INTEGRATION_PRACTICE_BANK } from "./mvAdvancedIntegrationPracticeBank";
 import { MV_SURFACE_GEOMETRY_PRACTICE_BANK } from "./mvSurfaceGeometryPracticeBank";
 import { MV_MOVING_DOMAINS_PRACTICE_BANK } from "./mvMovingDomainsPracticeBank";
+import { MV_NONLINEAR_DYNAMICS_PRACTICE_BANK } from "./mvNonlinearDynamicsPracticeBank";
 export const MV_PRACTICE_BANK = [
   ...MV_COORDINATE_TRANSFORMATIONS_PRACTICE_BANK,
   ...MV_OPTIMIZATION_PRACTICE_BANK,
@@ -22,6 +23,7 @@ export const MV_PRACTICE_BANK = [
   ...MV_ADVANCED_INTEGRATION_PRACTICE_BANK,
   ...MV_SURFACE_GEOMETRY_PRACTICE_BANK,
   ...MV_MOVING_DOMAINS_PRACTICE_BANK,
+  ...MV_NONLINEAR_DYNAMICS_PRACTICE_BANK,
   {
     "id": 20000,
     "topic": "Partial Derivatives",
