@@ -55,6 +55,9 @@ const TOPICS = [
   "Geometry of Surfaces",
   "Surface Metrics and the First Fundamental Form",
   "Surface Curvature and Geodesics",
+  "Integration on Moving Domains",
+  "Coarea Formula and Level-Set Integration",
+  "Reynolds Transport Theorem",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -479,6 +482,26 @@ const PRACTICE_SELECTIONS = {
   },
 
   // ============================================================
+  // MVC — INTEGRATION ON MOVING DOMAINS (whole module + its two topics)
+  // ============================================================
+
+  "Integration on Moving Domains": {
+    type: "module",
+    banks: ["mv"],
+    moduleName: "Integration on Moving Domains",
+  },
+
+  "Coarea Formula and Level-Set Integration": {
+    type: "topic",
+    banks: ["mv"],
+  },
+
+  "Reynolds Transport Theorem": {
+    type: "topic",
+    banks: ["mv"],
+  },
+
+  // ============================================================
   // FUTURE NEW MVC MODULES
   // Uncomment these when their practice banks are created.
   // ============================================================
@@ -556,6 +579,15 @@ const PRACTICE_MODULES = [
       "Geometry of Surfaces",
       "Surface Metrics and the First Fundamental Form",
       "Surface Curvature and Geodesics",
+    ],
+  },
+  {
+    name: "Integration on Moving Domains",
+    course: "mv",
+    selections: [
+      "Integration on Moving Domains",
+      "Coarea Formula and Level-Set Integration",
+      "Reynolds Transport Theorem",
     ],
   },
   // Linear Algebra modules (topics come from laModules)
