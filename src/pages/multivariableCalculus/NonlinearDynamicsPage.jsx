@@ -260,7 +260,7 @@ function SectionClassification() {
             <tr><td>{T`$\Delta<0$`}</td><td>real, opposite signs</td><td>Saddle</td><td>Unstable</td></tr>
             <tr><td>{T`$\Delta>0,\ \tau^2>4\Delta$`}</td><td>real, same sign</td><td>Node</td><td>{T`Stable if $\tau<0$, unstable if $\tau>0$`}</td></tr>
             <tr><td>{T`$\Delta>0,\ \tau^2=4\Delta$`}</td><td>real, repeated</td><td>Degenerate or star node</td><td>{T`Stable if $\tau<0$, unstable if $\tau>0$`}</td></tr>
-            <tr><td>{T`$\Delta>0,\ \tau^2<4\Delta,\ \tau\neq0$`}</td><td>complex, $\operatorname{Re}\lambda=\tau/2$</td><td>Spiral (focus)</td><td>{T`Stable if $\tau<0$, unstable if $\tau>0$`}</td></tr>
+            <tr><td>{T`$\Delta>0,\ \tau^2<4\Delta,\ \tau\neq0$`}</td><td>{T`complex, $\operatorname{Re}\lambda=\tau/2$`}</td><td>Spiral (focus)</td><td>{T`Stable if $\tau<0$, unstable if $\tau>0$`}</td></tr>
             <tr><td>{T`$\Delta>0,\ \tau=0$`}</td><td>purely imaginary</td><td>Centre (for the linear system)</td><td>Inconclusive for nonlinear systems</td></tr>
             <tr><td>{T`$\Delta=0$`}</td><td>at least one zero</td><td>Non-isolated (linear)</td><td>Inconclusive for nonlinear systems</td></tr>
           </tbody>
