@@ -58,6 +58,9 @@ const TOPICS = [
   "Integration on Moving Domains",
   "Coarea Formula and Level-Set Integration",
   "Reynolds Transport Theorem",
+  "Nonlinear Dynamical Systems",
+  "Phase Planes and Local Stability",
+  "Lyapunov Stability Methods",
   "2D Lines & Systems of Lines",
   "Circles & Conic Tangents",
   "Advanced Single-Variable Calculus",
@@ -502,6 +505,26 @@ const PRACTICE_SELECTIONS = {
   },
 
   // ============================================================
+  // MVC — NONLINEAR DYNAMICAL SYSTEMS (whole module + its two topics)
+  // ============================================================
+
+  "Nonlinear Dynamical Systems": {
+    type: "module",
+    banks: ["mv"],
+    moduleName: "Nonlinear Dynamical Systems",
+  },
+
+  "Phase Planes and Local Stability": {
+    type: "topic",
+    banks: ["mv"],
+  },
+
+  "Lyapunov Stability Methods": {
+    type: "topic",
+    banks: ["mv"],
+  },
+
+  // ============================================================
   // FUTURE NEW MVC MODULES
   // Uncomment these when their practice banks are created.
   // ============================================================
@@ -588,6 +611,15 @@ const PRACTICE_MODULES = [
       "Integration on Moving Domains",
       "Coarea Formula and Level-Set Integration",
       "Reynolds Transport Theorem",
+    ],
+  },
+  {
+    name: "Nonlinear Dynamical Systems",
+    course: "mv",
+    selections: [
+      "Nonlinear Dynamical Systems",
+      "Phase Planes and Local Stability",
+      "Lyapunov Stability Methods",
     ],
   },
   // Linear Algebra modules (topics come from laModules)
