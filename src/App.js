@@ -75,6 +75,8 @@ import MyCertificates from "./pages/certificates/MyCertificates";
 import VerifyCertificate from "./pages/certificates/VerifyCertificate";
 import SavedForLater from "./pages/dashboard/SavedForLater";
 import Chatbot from "./components/Chatbot/Chatbot";
+import { QuantumChatAuthProvider } from "./features/quantumchat/context/QuantumChatAuthContext";
+import QuantumChatDock from "./features/quantumchat/components/QuantumChatDock";
 import BackToTop from "./components/common/BackToTop";
 import LoadingSpinner from "./components/common/LoadingSpinner";
 
@@ -1628,6 +1630,9 @@ function App() {
                 <Route path="*" element={<Layout body={<NotFound />} />} />
               </Routes>
               <Chatbot />
+              <QuantumChatAuthProvider>
+                <QuantumChatDock />
+              </QuantumChatAuthProvider>
               <BackToTop />
             </ErrorBoundary>
           </BrowserRouter>
