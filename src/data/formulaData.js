@@ -1962,6 +1962,67 @@ const formulaData = {
       },
     ],
   },
+
+  "prob-censoring-kaplan-meier": {
+    title: "Censoring and Kaplan-Meier Estimation",
+    category: "Probability & Stats",
+    color: "#0f766e",
+    formulas: [
+      {
+        name: "Right-Censored Data",
+        formula: "Y = min(T, C), δ = 1{T ≤ C}",
+        note: "δ = 1 is an observed event; δ = 0 means only T > Y is known (censored, not an event)",
+      },
+      {
+        name: "Kaplan-Meier Estimator",
+        formula: "Ŝ(t) = Π_{t_j ≤ t} (1 − d_j / n_j)",
+        note: "n_j = number with Y ≥ t_j (censored subjects at t_j stay in the risk set); Ŝ drops only at event times",
+      },
+      {
+        name: "Median Survival",
+        formula: "t_med = min{ t : Ŝ(t) ≤ 0.5 }",
+        note: "If Ŝ never reaches 0.5 the median is not reached",
+      },
+      {
+        name: "Greenwood Variance",
+        formula: "Var(Ŝ(t)) = Ŝ(t)² Σ_{t_j ≤ t} d_j / (n_j (n_j − d_j))",
+        note: "Assumes non-informative censoring; unstable when the risk set is small",
+      },
+    ],
+  },
+
+  "prob-hazard-survival-models": {
+    title: "Hazard Functions and Survival Models",
+    category: "Probability & Stats",
+    color: "#0f766e",
+    formulas: [
+      {
+        name: "Hazard and Cumulative Hazard",
+        formula: "h(t) = f(t)/S(t) = −d ln S/dt · H(t) = ∫₀ᵗ h(u) du",
+        note: "h is a rate per unit time, not a probability, so it can exceed 1",
+      },
+      {
+        name: "Survival from Hazard",
+        formula: "S(t) = exp(−H(t)) · f(t) = h(t) S(t) · E[T] = ∫₀^∞ S(t) dt",
+        note: "Requires S(0) = 1",
+      },
+      {
+        name: "Exponential Model",
+        formula: "h = λ · S(t) = e^(−λt) · mean = 1/λ · median = ln 2/λ",
+        note: "Memoryless: P(T > s + t | T > s) = P(T > t)",
+      },
+      {
+        name: "Weibull Model",
+        formula: "S(t) = exp(−(t/η)^k) · h(t) = (k/η)(t/η)^(k−1)",
+        note: "k < 1 decreasing, k = 1 constant, k > 1 increasing hazard; mean η Γ(1 + 1/k), median η (ln 2)^(1/k)",
+      },
+      {
+        name: "System Reliability",
+        formula: "Series: R = Π R_i · Parallel: R = 1 − Π (1 − R_i)",
+        note: "Assumes independent components; in series, exponential hazards add",
+      },
+    ],
+  },
 };
 
 export default formulaData;

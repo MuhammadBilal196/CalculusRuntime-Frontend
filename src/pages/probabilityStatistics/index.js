@@ -57,3 +57,7 @@ export { default as EntropyMutualInformationGuide } from "./EntropyMutualInforma
 export { default as CrossEntropyKlGuide } from "./CrossEntropyKlGuide";
 export { default as InformationTheoryPart1 } from "./InformationTheoryPart1";
 export { default as InformationTheoryPart2 } from "./InformationTheoryPart2";
+export { default as CensoringKaplanMeierGuide } from "./CensoringKaplanMeierGuide";
+export { default as HazardSurvivalModelsGuide } from "./HazardSurvivalModelsGuide";
+export { default as SurvivalReliabilityPart1 } from "./SurvivalReliabilityPart1";
+export { default as SurvivalReliabilityPart2 } from "./SurvivalReliabilityPart2";

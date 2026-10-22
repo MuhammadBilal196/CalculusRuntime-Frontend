@@ -99,6 +99,8 @@ const TOPICS = [
   "Mathematical Statistics & Inference",
   "Entropy and Mutual Information",
   "Cross-Entropy and KL Divergence",
+  "Censoring and Kaplan-Meier Estimation",
+  "Hazard Functions and Survival Models",
 ];
 
 /*
@@ -519,6 +521,16 @@ const PRACTICE_SELECTIONS = {
   },
 
   "Cross-Entropy and KL Divergence": {
+    type: "topic",
+    banks: ["ps"],
+  },
+
+  "Censoring and Kaplan-Meier Estimation": {
+    type: "topic",
+    banks: ["ps"],
+  },
+
+  "Hazard Functions and Survival Models": {
     type: "topic",
     banks: ["ps"],
   },

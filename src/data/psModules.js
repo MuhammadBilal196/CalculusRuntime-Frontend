@@ -21,6 +21,26 @@ export const PS_EXPANSION_MODULES = [
         },
       ],
     },
+    {
+      id: "survival-reliability",
+      title: "Survival and Reliability",
+      description:
+        "Censoring, Kaplan-Meier estimation, hazard functions and exponential and Weibull survival models, with worked examples and a 20-question checkpoint per topic.",
+      logo: "S(t) = P(T > t)",
+      topicsPerPart: 1,
+      topics: [
+        {
+          id: "censoring-kaplan-meier",
+          title: "Censoring and Kaplan-Meier Estimation",
+          quizKey: "ps-sv1-checkpoint",
+        },
+        {
+          id: "hazard-survival-models",
+          title: "Hazard Functions and Survival Models",
+          quizKey: "ps-sv2-checkpoint",
+        },
+      ],
+    },
   ];
   
   export function getPsModulePath(module, part = 1) {

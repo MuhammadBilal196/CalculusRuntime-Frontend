@@ -147,6 +147,8 @@ import AnovaPart1 from "./pages/probabilityStatistics/AnovaPart1";
 import AnovaPart2 from "./pages/probabilityStatistics/AnovaPart2";
 import InformationTheoryPart1 from "./pages/probabilityStatistics/InformationTheoryPart1";
 import InformationTheoryPart2 from "./pages/probabilityStatistics/InformationTheoryPart2";
+import SurvivalReliabilityPart1 from "./pages/probabilityStatistics/SurvivalReliabilityPart1";
+import SurvivalReliabilityPart2 from "./pages/probabilityStatistics/SurvivalReliabilityPart2";
 import ChiSquareTestsPart1 from "./pages/probabilityStatistics/ChiSquareTestsPart1";
 import ChiSquareTestsPart2 from "./pages/probabilityStatistics/ChiSquareTestsPart2";
 import NonparametricTestsPart1 from "./pages/probabilityStatistics/NonparametricTestsPart1";
@@ -1284,6 +1286,9 @@ function App() {
                 <Route path="/probability-statistics/information-theory" element={<Navigate to="/probability-statistics/information-theory/1" replace />} />
                 <Route path="/probability-statistics/information-theory/1" element={<Layout body={<InformationTheoryPart1 />} />} />
                 <Route path="/probability-statistics/information-theory/2" element={<Layout body={<InformationTheoryPart2 />} />} />
+                <Route path="/probability-statistics/survival-reliability" element={<Navigate to="/probability-statistics/survival-reliability/1" replace />} />
+                <Route path="/probability-statistics/survival-reliability/1" element={<Layout body={<SurvivalReliabilityPart1 />} />} />
+                <Route path="/probability-statistics/survival-reliability/2" element={<Layout body={<SurvivalReliabilityPart2 />} />} />
                 <Route path="/probability-statistics/chi-square-tests" element={<Navigate to="/probability-statistics/chi-square-tests/1" replace />} />
                 <Route path="/probability-statistics/chi-square-tests/1" element={<Layout body={<ChiSquareTestsPart1 />} />} />
                 <Route path="/probability-statistics/chi-square-tests/2" element={<Layout body={<ChiSquareTestsPart2 />} />} />
@@ -1419,6 +1424,20 @@ function App() {
                 <Route
                   path="/probability-statistics/information-theory/2"
                   element={<Layout body={<InformationTheoryPart2 />} />}
+                />
+                <Route
+                  path="/probability-statistics/survival-reliability"
+                  element={
+                    <Navigate to="/probability-statistics/survival-reliability/1" replace />
+                  }
+                />
+                <Route
+                  path="/probability-statistics/survival-reliability/1"
+                  element={<Layout body={<SurvivalReliabilityPart1 />} />}
+                />
+                <Route
+                  path="/probability-statistics/survival-reliability/2"
+                  element={<Layout body={<SurvivalReliabilityPart2 />} />}
                 />
                 <Route
                   path="/probability-statistics/chi-square-tests"
