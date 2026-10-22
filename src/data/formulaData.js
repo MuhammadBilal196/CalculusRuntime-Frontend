@@ -2023,6 +2023,62 @@ const formulaData = {
       },
     ],
   },
+
+  "prob-sequential-probability-ratio": {
+    title: "Sequential Probability Ratio Tests",
+    category: "Probability & Stats",
+    color: "#b45309",
+    formulas: [
+      {
+        name: "Log Likelihood Ratio",
+        formula: "ln Λₙ = Σ ln[ f(xᵢ; θ₁) / f(xᵢ; θ₀) ]",
+        note: "Simple versus simple hypotheses; for Bernoulli: success adds ln(p₁/p₀), failure adds ln[(1−p₁)/(1−p₀)]",
+      },
+      {
+        name: "Wald Boundaries",
+        formula: "A = (1 − β)/α · B = β/(1 − α)",
+        note: "Reject H₀ when ln Λₙ ≥ ln A; accept H₀ when ln Λₙ ≤ ln B; otherwise continue sampling",
+      },
+      {
+        name: "Error Bounds",
+        formula: "α' + β' ≤ α + β · α' ≤ α/(1 − β) · β' ≤ β/(1 − α)",
+        note: "Nominal rates are approximate because the likelihood ratio can overshoot a boundary",
+      },
+      {
+        name: "Approximate Expected Sample Size",
+        formula: "E₁[N] ≈ [(1−β) ln A + β ln B] / E₁[z] · E₀[N] ≈ [α ln A + (1−α) ln B] / E₀[z]",
+        note: "E₁[z] = D(P₁‖P₀) > 0 and E₀[z] = −D(P₀‖P₁) < 0",
+      },
+    ],
+  },
+
+  "prob-multiple-testing": {
+    title: "Multiple Testing and False Discoveries",
+    category: "Probability & Stats",
+    color: "#b45309",
+    formulas: [
+      {
+        name: "FWER and FDR",
+        formula: "FWER = P(V ≥ 1) · FDR = E[ V / max(R, 1) ]",
+        note: "V = false rejections, R = all rejections; with all nulls true FDR = FWER",
+      },
+      {
+        name: "Bonferroni",
+        formula: "reject if pᵢ ≤ α/m · adjusted p = min(1, m pᵢ)",
+        note: "Controls the FWER under any dependence; conservative for large m",
+      },
+      {
+        name: "Holm Step-Down",
+        formula: "smallest k with p₍ₖ₎ > α/(m − k + 1); reject the first k − 1",
+        note: "Controls the FWER under any dependence and is at least as powerful as Bonferroni",
+      },
+      {
+        name: "Benjamini-Hochberg",
+        formula: "largest k with p₍ₖ₎ ≤ kα/m; reject p₍₁₎ … p₍ₖ₎",
+        note: "Controls the FDR at α·m₀/m for independent (or PRDS) p-values; does not control the FWER",
+      },
+    ],
+  },
 };
 
 export default formulaData;

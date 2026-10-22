@@ -41,6 +41,26 @@ export const PS_EXPANSION_MODULES = [
         },
       ],
     },
+    {
+      id: "sequential-multiple-decisions",
+      title: "Sequential and Multiple Decisions",
+      description:
+        "Sequential probability ratio tests, family-wise error and false discovery rate control with Bonferroni, Holm and Benjamini-Hochberg, with worked examples and a 20-question checkpoint per topic.",
+      logo: "Λₙ ≥ A · p₍ₖ₎ ≤ kα/m",
+      topicsPerPart: 1,
+      topics: [
+        {
+          id: "sequential-probability-ratio-tests",
+          title: "Sequential Probability Ratio Tests",
+          quizKey: "ps-sd1-checkpoint",
+        },
+        {
+          id: "multiple-testing-false-discoveries",
+          title: "Multiple Testing and False Discoveries",
+          quizKey: "ps-sd2-checkpoint",
+        },
+      ],
+    },
   ];
   
   export function getPsModulePath(module, part = 1) {

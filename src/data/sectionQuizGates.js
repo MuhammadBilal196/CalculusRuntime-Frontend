@@ -226,6 +226,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   "ps-it-2": ["ps-it2-checkpoint"],
   "ps-sv-1": ["ps-sv1-checkpoint"],
   "ps-sv-2": ["ps-sv2-checkpoint"],
+  "ps-sd-1": ["ps-sd1-checkpoint"],
+  "ps-sd-2": ["ps-sd2-checkpoint"],
   "ps-b-chisq-1": [],
   "ps-b-chisq-2": ["ps-b-chisq-checkpoint"],
   "ps-b-nonparam-1": [],

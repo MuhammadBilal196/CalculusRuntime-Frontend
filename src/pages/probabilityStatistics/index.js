@@ -61,3 +61,7 @@ export { default as CensoringKaplanMeierGuide } from "./CensoringKaplanMeierGuid
 export { default as HazardSurvivalModelsGuide } from "./HazardSurvivalModelsGuide";
 export { default as SurvivalReliabilityPart1 } from "./SurvivalReliabilityPart1";
 export { default as SurvivalReliabilityPart2 } from "./SurvivalReliabilityPart2";
+export { default as SequentialProbabilityRatioGuide } from "./SequentialProbabilityRatioGuide";
+export { default as MultipleTestingGuide } from "./MultipleTestingGuide";
+export { default as SequentialDecisionsPart1 } from "./SequentialDecisionsPart1";
+export { default as SequentialDecisionsPart2 } from "./SequentialDecisionsPart2";

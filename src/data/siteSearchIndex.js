@@ -35,6 +35,7 @@ const PRACTICE_TOPICS = [
   "Descriptive Statistics", "Hypothesis Testing", "Regression & Correlation",
   "Entropy and Mutual Information", "Cross-Entropy and KL Divergence",
   "Censoring and Kaplan-Meier Estimation", "Hazard Functions and Survival Models",
+  "Sequential Probability Ratio Tests", "Multiple Testing and False Discoveries",
 ];
 
 function build() {

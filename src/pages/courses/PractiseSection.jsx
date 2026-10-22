@@ -101,6 +101,8 @@ const TOPICS = [
   "Cross-Entropy and KL Divergence",
   "Censoring and Kaplan-Meier Estimation",
   "Hazard Functions and Survival Models",
+  "Sequential Probability Ratio Tests",
+  "Multiple Testing and False Discoveries",
 ];
 
 /*
@@ -531,6 +533,16 @@ const PRACTICE_SELECTIONS = {
   },
 
   "Hazard Functions and Survival Models": {
+    type: "topic",
+    banks: ["ps"],
+  },
+
+  "Sequential Probability Ratio Tests": {
+    type: "topic",
+    banks: ["ps"],
+  },
+
+  "Multiple Testing and False Discoveries": {
     type: "topic",
     banks: ["ps"],
   },

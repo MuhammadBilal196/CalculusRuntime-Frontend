@@ -149,6 +149,8 @@ import InformationTheoryPart1 from "./pages/probabilityStatistics/InformationThe
 import InformationTheoryPart2 from "./pages/probabilityStatistics/InformationTheoryPart2";
 import SurvivalReliabilityPart1 from "./pages/probabilityStatistics/SurvivalReliabilityPart1";
 import SurvivalReliabilityPart2 from "./pages/probabilityStatistics/SurvivalReliabilityPart2";
+import SequentialDecisionsPart1 from "./pages/probabilityStatistics/SequentialDecisionsPart1";
+import SequentialDecisionsPart2 from "./pages/probabilityStatistics/SequentialDecisionsPart2";
 import ChiSquareTestsPart1 from "./pages/probabilityStatistics/ChiSquareTestsPart1";
 import ChiSquareTestsPart2 from "./pages/probabilityStatistics/ChiSquareTestsPart2";
 import NonparametricTestsPart1 from "./pages/probabilityStatistics/NonparametricTestsPart1";
@@ -1289,6 +1291,9 @@ function App() {
                 <Route path="/probability-statistics/survival-reliability" element={<Navigate to="/probability-statistics/survival-reliability/1" replace />} />
                 <Route path="/probability-statistics/survival-reliability/1" element={<Layout body={<SurvivalReliabilityPart1 />} />} />
                 <Route path="/probability-statistics/survival-reliability/2" element={<Layout body={<SurvivalReliabilityPart2 />} />} />
+                <Route path="/probability-statistics/sequential-multiple-decisions" element={<Navigate to="/probability-statistics/sequential-multiple-decisions/1" replace />} />
+                <Route path="/probability-statistics/sequential-multiple-decisions/1" element={<Layout body={<SequentialDecisionsPart1 />} />} />
+                <Route path="/probability-statistics/sequential-multiple-decisions/2" element={<Layout body={<SequentialDecisionsPart2 />} />} />
                 <Route path="/probability-statistics/chi-square-tests" element={<Navigate to="/probability-statistics/chi-square-tests/1" replace />} />
                 <Route path="/probability-statistics/chi-square-tests/1" element={<Layout body={<ChiSquareTestsPart1 />} />} />
                 <Route path="/probability-statistics/chi-square-tests/2" element={<Layout body={<ChiSquareTestsPart2 />} />} />
@@ -1438,6 +1443,20 @@ function App() {
                 <Route
                   path="/probability-statistics/survival-reliability/2"
                   element={<Layout body={<SurvivalReliabilityPart2 />} />}
+                />
+                <Route
+                  path="/probability-statistics/sequential-multiple-decisions"
+                  element={
+                    <Navigate to="/probability-statistics/sequential-multiple-decisions/1" replace />
+                  }
+                />
+                <Route
+                  path="/probability-statistics/sequential-multiple-decisions/1"
+                  element={<Layout body={<SequentialDecisionsPart1 />} />}
+                />
+                <Route
+                  path="/probability-statistics/sequential-multiple-decisions/2"
+                  element={<Layout body={<SequentialDecisionsPart2 />} />}
                 />
                 <Route
                   path="/probability-statistics/chi-square-tests"
