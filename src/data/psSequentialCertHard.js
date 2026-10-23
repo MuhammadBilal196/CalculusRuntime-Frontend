@@ -1,0 +1,11 @@
+/** Hard MCQs for the PS certificate bank (Dev4, Module C: Sequential and Multiple Decisions): 3 per topic. Mirror into the backend bank. */
+export const PS_SEQUENTIAL_CERT_HARD = [
+  {"prompt": "H0: p = 0.5 against H1: p = 0.7 with alpha = 0.05 and beta = 0.10. The SPRT upper log-boundary ln A is about:", "options": ["2.251", "0.336", "1.800", "2.890"], "answer": "D", "explanation": "ln 18 = 2.890.", "topic": "Sequential Probability Ratio Tests", "difficulty": "Hard"},
+  {"prompt": "Same SPRT. After 6 successes and 2 failures the log likelihood ratio is about:", "options": ["2.018", "0.336", "0.997", "-0.511"], "answer": "C", "explanation": "6(0.3365) + 2(-0.5108) = 2.019 - 1.022 = 0.997.", "topic": "Sequential Probability Ratio Tests", "difficulty": "Hard"},
+  {"prompt": "In Wald's SPRT, which statement about the true error rates alpha' and beta' is correct?", "options": ["alpha' = alpha exactly", "alpha' + beta' <= alpha + beta", "alpha' < alpha and beta' < beta always", "alpha' + beta' > alpha + beta"], "answer": "B", "explanation": "Boundaries are approximate because of overshoot, but the sum is bounded.", "topic": "Sequential Probability Ratio Tests", "difficulty": "Hard"},
+  {"prompt": "Six p-values 0.001, 0.008, 0.012, 0.030, 0.041, 0.20 are tested at alpha = 0.05. The number of rejections by Bonferroni, Holm and BH is respectively:", "options": ["2, 3, 5", "2, 2, 3", "3, 3, 5", "1, 2, 4"], "answer": "A", "explanation": "Bonferroni threshold 0.0083; Holm stops at 0.030 > 0.0167; BH step-up gives k = 5.", "topic": "Multiple Testing and False Discoveries", "difficulty": "Hard"},
+  {"prompt": "In a study with m = 1000 tests and 900 true nulls, Bonferroni at alpha = 0.05 uses the per-test level:", "options": ["0.05", "5 x 10^-3", "5 x 10^-4", "5 x 10^-5"], "answer": "D", "explanation": "0.05/1000 = 5 x 10^-5.", "topic": "Multiple Testing and False Discoveries", "difficulty": "Hard"},
+  {"prompt": "When all m null hypotheses are true, the FDR of a procedure equals its:", "options": ["power", "Type II error", "FWER", "number of rejections"], "answer": "C", "explanation": "V/max(R,1) = 1{V >= 1} when V = R.", "topic": "Multiple Testing and False Discoveries", "difficulty": "Hard"},
+];
+
+export default PS_SEQUENTIAL_CERT_HARD;

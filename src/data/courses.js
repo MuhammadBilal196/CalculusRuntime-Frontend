@@ -4,6 +4,7 @@ import {
   getLaModuleParts,
   getLaModulePath,
 } from "./laModules";
+import { PS_EXPANSION_MODULES, getPsModulePath } from "./psModules";
 /** Top-level subject paths shown on Home ("Choose a path"). */
 export const COURSES = [
   {
@@ -1009,6 +1010,14 @@ export const COURSES = [
         icon: "ρ",
         logo: <span className="math-logo">ŷ = β₀ + β₁x</span>,
       },
+      ...PS_EXPANSION_MODULES.map((module) => ({
+        title: module.title,
+        description: module.description,
+        path: getPsModulePath(module),
+        meta: `${module.topics.length} topics · ${module.topics.length * 20} checkpoint MCQs`,
+        icon: module.logo,
+        logo: <span className="math-logo">{module.logo}</span>,
+      })),
       {
         title: "Practice Arena",
         description:

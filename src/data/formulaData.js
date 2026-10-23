@@ -1896,7 +1896,189 @@ const formulaData = {
       }
     ]
   },
+  
+  "prob-entropy-mutual-information": {
+    title: "Entropy and Mutual Information",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      {
+        name: "Shannon Entropy",
+        formula: "H(X) = −Σ p(x) log p(x) · 0 ≤ H(X) ≤ log n",
+        note: "Base 2 gives bits, base e gives nats; convention 0 log 0 = 0; maximum log n only for the uniform distribution",
+      },
+      {
+        name: "Joint Entropy & Chain Rule",
+        formula: "H(X,Y) = H(X) + H(Y|X) · H(Y|X) = Σ p(x) H(Y|X=x)",
+        note: "H(X,Y) = H(X) + H(Y) only when X and Y are independent; conditioning never increases entropy on average",
+      },
+      {
+        name: "Mutual Information",
+        formula: "I(X;Y) = Σ p(x,y) log[p(x,y)/(p(x)p(y))] = H(X) − H(X|Y) = H(X) + H(Y) − H(X,Y)",
+        note: "Symmetric and nonnegative; I(X;Y) = 0 if and only if X and Y are independent (stronger than zero correlation)",
+      },
+      {
+        name: "Data-Processing Inequality",
+        formula: "X → Y → Z (Markov chain) ⟹ I(X;Z) ≤ I(X;Y)",
+        note: "Post-processing a variable cannot create information about the source",
+      },
+    ],
+  },
 
+  "prob-cross-entropy-kl": {
+    title: "Cross-Entropy and KL Divergence",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      {
+        name: "KL Divergence",
+        formula: "D(P‖Q) = Σ p(x) log[p(x)/q(x)]",
+        note: "Finite only if supp(P) ⊆ supp(Q); not symmetric, so D(P‖Q) ≠ D(Q‖P) in general",
+      },
+      {
+        name: "Cross-Entropy",
+        formula: "H(P,Q) = −Σ p(x) log q(x) = H(P) + D(P‖Q)",
+        note: "Expected log loss when data come from P but the model predicts Q; its minimum over Q is H(P)",
+      },
+      {
+        name: "Gibbs' Inequality",
+        formula: "D(P‖Q) ≥ 0, with equality if and only if P = Q",
+        note: "Proved with Jensen's inequality for the concave logarithm",
+      },
+      {
+        name: "KL to a Uniform Distribution",
+        formula: "D(P‖U_n) = log n − H(P)",
+        note: "Zero only when P itself is uniform on the n outcomes",
+      },
+      {
+        name: "Mutual Information as KL",
+        formula: "I(X;Y) = D( p(x,y) ‖ p(x)p(y) )",
+        note: "Distance of the joint distribution from independence",
+      },
+      {
+        name: "Cross-Entropy and Maximum Likelihood",
+        formula: "H(P̂, Q_θ) = −(1/N) Σᵢ log Q_θ(xᵢ)",
+        note: "Minimizing empirical cross-entropy over θ is the same as maximizing the likelihood of the data",
+      },
+    ],
+  },
+
+  "prob-censoring-kaplan-meier": {
+    title: "Censoring and Kaplan-Meier Estimation",
+    category: "Probability & Stats",
+    color: "#0f766e",
+    formulas: [
+      {
+        name: "Right-Censored Data",
+        formula: "Y = min(T, C), δ = 1{T ≤ C}",
+        note: "δ = 1 is an observed event; δ = 0 means only T > Y is known (censored, not an event)",
+      },
+      {
+        name: "Kaplan-Meier Estimator",
+        formula: "Ŝ(t) = Π_{t_j ≤ t} (1 − d_j / n_j)",
+        note: "n_j = number with Y ≥ t_j (censored subjects at t_j stay in the risk set); Ŝ drops only at event times",
+      },
+      {
+        name: "Median Survival",
+        formula: "t_med = min{ t : Ŝ(t) ≤ 0.5 }",
+        note: "If Ŝ never reaches 0.5 the median is not reached",
+      },
+      {
+        name: "Greenwood Variance",
+        formula: "Var(Ŝ(t)) = Ŝ(t)² Σ_{t_j ≤ t} d_j / (n_j (n_j − d_j))",
+        note: "Assumes non-informative censoring; unstable when the risk set is small",
+      },
+    ],
+  },
+
+  "prob-hazard-survival-models": {
+    title: "Hazard Functions and Survival Models",
+    category: "Probability & Stats",
+    color: "#0f766e",
+    formulas: [
+      {
+        name: "Hazard and Cumulative Hazard",
+        formula: "h(t) = f(t)/S(t) = −d ln S/dt · H(t) = ∫₀ᵗ h(u) du",
+        note: "h is a rate per unit time, not a probability, so it can exceed 1",
+      },
+      {
+        name: "Survival from Hazard",
+        formula: "S(t) = exp(−H(t)) · f(t) = h(t) S(t) · E[T] = ∫₀^∞ S(t) dt",
+        note: "Requires S(0) = 1",
+      },
+      {
+        name: "Exponential Model",
+        formula: "h = λ · S(t) = e^(−λt) · mean = 1/λ · median = ln 2/λ",
+        note: "Memoryless: P(T > s + t | T > s) = P(T > t)",
+      },
+      {
+        name: "Weibull Model",
+        formula: "S(t) = exp(−(t/η)^k) · h(t) = (k/η)(t/η)^(k−1)",
+        note: "k < 1 decreasing, k = 1 constant, k > 1 increasing hazard; mean η Γ(1 + 1/k), median η (ln 2)^(1/k)",
+      },
+      {
+        name: "System Reliability",
+        formula: "Series: R = Π R_i · Parallel: R = 1 − Π (1 − R_i)",
+        note: "Assumes independent components; in series, exponential hazards add",
+      },
+    ],
+  },
+
+  "prob-sequential-probability-ratio": {
+    title: "Sequential Probability Ratio Tests",
+    category: "Probability & Stats",
+    color: "#b45309",
+    formulas: [
+      {
+        name: "Log Likelihood Ratio",
+        formula: "ln Λₙ = Σ ln[ f(xᵢ; θ₁) / f(xᵢ; θ₀) ]",
+        note: "Simple versus simple hypotheses; for Bernoulli: success adds ln(p₁/p₀), failure adds ln[(1−p₁)/(1−p₀)]",
+      },
+      {
+        name: "Wald Boundaries",
+        formula: "A = (1 − β)/α · B = β/(1 − α)",
+        note: "Reject H₀ when ln Λₙ ≥ ln A; accept H₀ when ln Λₙ ≤ ln B; otherwise continue sampling",
+      },
+      {
+        name: "Error Bounds",
+        formula: "α' + β' ≤ α + β · α' ≤ α/(1 − β) · β' ≤ β/(1 − α)",
+        note: "Nominal rates are approximate because the likelihood ratio can overshoot a boundary",
+      },
+      {
+        name: "Approximate Expected Sample Size",
+        formula: "E₁[N] ≈ [(1−β) ln A + β ln B] / E₁[z] · E₀[N] ≈ [α ln A + (1−α) ln B] / E₀[z]",
+        note: "E₁[z] = D(P₁‖P₀) > 0 and E₀[z] = −D(P₀‖P₁) < 0",
+      },
+    ],
+  },
+
+  "prob-multiple-testing": {
+    title: "Multiple Testing and False Discoveries",
+    category: "Probability & Stats",
+    color: "#b45309",
+    formulas: [
+      {
+        name: "FWER and FDR",
+        formula: "FWER = P(V ≥ 1) · FDR = E[ V / max(R, 1) ]",
+        note: "V = false rejections, R = all rejections; with all nulls true FDR = FWER",
+      },
+      {
+        name: "Bonferroni",
+        formula: "reject if pᵢ ≤ α/m · adjusted p = min(1, m pᵢ)",
+        note: "Controls the FWER under any dependence; conservative for large m",
+      },
+      {
+        name: "Holm Step-Down",
+        formula: "smallest k with p₍ₖ₎ > α/(m − k + 1); reject the first k − 1",
+        note: "Controls the FWER under any dependence and is at least as powerful as Bonferroni",
+      },
+      {
+        name: "Benjamini-Hochberg",
+        formula: "largest k with p₍ₖ₎ ≤ kα/m; reject p₍₁₎ … p₍ₖ₎",
+        note: "Controls the FDR at α·m₀/m for independent (or PRDS) p-values; does not control the FWER",
+      },
+    ],
+  },
 };
 
 export default formulaData;

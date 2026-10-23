@@ -33,6 +33,9 @@ const PRACTICE_TOPICS = [
   "Eigenvalues & Eigenvectors", "Linear Transformations", "Orthogonality & Least Squares",
   "Singular Value Decomposition", "Probability Basics", "Random Variables & Distributions",
   "Descriptive Statistics", "Hypothesis Testing", "Regression & Correlation",
+  "Entropy and Mutual Information", "Cross-Entropy and KL Divergence",
+  "Censoring and Kaplan-Meier Estimation", "Hazard Functions and Survival Models",
+  "Sequential Probability Ratio Tests", "Multiple Testing and False Discoveries",
 ];
 
 function build() {

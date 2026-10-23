@@ -4,6 +4,9 @@
  */
 import { PS_MODULE_KL_PRACTICE_BANK } from "./psModuleKL_PracticeBank";
 import { PS_NEW_MODULES_PRACTICE_BANK } from "./psNewModulesPracticeBank";
+import { PS_INFO_THEORY_PRACTICE_BANK } from "./psInfoTheoryPracticeBank";
+import { PS_SURVIVAL_PRACTICE_BANK } from "./psSurvivalPracticeBank";
+import { PS_SEQUENTIAL_PRACTICE_BANK } from "./psSequentialPracticeBank";
 import { PS_NEW_TOPICS_PRACTICE_BANK } from "./psNewTopicsPracticeBank";
 export const PS_PRACTICE_BANK = [
   {
@@ -21329,4 +21332,7 @@ PS_PRACTICE_BANK.push(
 
 PS_PRACTICE_BANK.push(...PS_MODULE_KL_PRACTICE_BANK);
 PS_PRACTICE_BANK.push(...PS_NEW_MODULES_PRACTICE_BANK);
+PS_PRACTICE_BANK.push(...PS_INFO_THEORY_PRACTICE_BANK);
+PS_PRACTICE_BANK.push(...PS_SURVIVAL_PRACTICE_BANK);
+PS_PRACTICE_BANK.push(...PS_SEQUENTIAL_PRACTICE_BANK);
 PS_PRACTICE_BANK.push(...PS_NEW_TOPICS_PRACTICE_BANK);
