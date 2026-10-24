@@ -312,7 +312,9 @@ export const COURSES = [
         path: "/intro-pdes/1",
         meta: "2 parts · 20 MCQs",
         icon: "🌊",
-        logo: <span className="math-logo">u_t = α²u_xx &amp; u_tt = c²u_xx</span>,
+        logo: (
+          <span className="math-logo">u_t = α²u_xx &amp; u_tt = c²u_xx</span>
+        ),
       },
       {
         title: "Orthogonal Polynomials",
@@ -429,6 +431,15 @@ export const COURSES = [
             T<sub>n</sub>(x) ≈ f(x)
           </span>
         ),
+      },
+      {
+        title: "Timed Mock Exam",
+        description:
+          "30 mixed practice MCQs (10 Easy · 10 Medium · 10 Hard) in 45 minutes, with a topic-by-topic breakdown.",
+        path: "/mock-exam/calculus-analytical-geometry",
+        meta: "Interactive · 30 questions · 45 min",
+        icon: "⏱",
+        logo: <span className="math-logo">⏱ 45:00</span>,
       },
       {
         title: "Certification Quiz",
@@ -698,7 +709,15 @@ export const COURSES = [
         icon: "⟳",
         logo: <span className="math-logo">x′ = F(x), V̇ = ∇V·F</span>,
       },
-
+      {
+        title: "Timed Mock Exam",
+        description:
+          "30 mixed practice MCQs (10 Easy · 10 Medium · 10 Hard) in 45 minutes, with a topic-by-topic breakdown.",
+        path: "/mock-exam/multivariable-calculus",
+        meta: "Interactive · 30 questions · 45 min",
+        icon: "⏱",
+        logo: <span className="math-logo">⏱ 45:00</span>,
+      },
       {
         title: "Certification Quiz",
         description:
@@ -861,6 +880,15 @@ export const COURSES = [
         logo: <span className="math-logo">✎ Drill Arena</span>,
       },
       {
+        title: "Timed Mock Exam",
+        description:
+          "30 mixed practice MCQs (10 Easy · 10 Medium · 10 Hard) in 45 minutes, with a topic-by-topic breakdown.",
+        path: "/mock-exam/linear-algebra",
+        meta: "Interactive · 30 questions · 45 min",
+        icon: "⏱",
+        logo: <span className="math-logo">⏱ 45:00</span>,
+      },
+      {
         title: "Certification Quiz",
         description:
           "99 MCQs covering the full course. Score 80%+ to unlock your certificate.",
@@ -960,7 +988,8 @@ export const COURSES = [
       },
       {
         title: "Badges & Achievements",
-        description: "See which badges you have unlocked and how close you are to the next one.",
+        description:
+          "See which badges you have unlocked and how close you are to the next one.",
         path: "/achievements",
         meta: "Your progress",
         icon: "🏅",
@@ -1026,6 +1055,15 @@ export const COURSES = [
         meta: "Interactive · Difficulty tiers",
         icon: "✎",
         logo: <span className="math-logo">✎ Drill Arena</span>,
+      },
+      {
+        title: "Timed Mock Exam",
+        description:
+          "30 mixed practice MCQs (10 Easy · 10 Medium · 10 Hard) in 45 minutes, with a topic-by-topic breakdown.",
+        path: "/mock-exam/probability-statistics",
+        meta: "Interactive · 30 questions · 45 min",
+        icon: "⏱",
+        logo: <span className="math-logo">⏱ 45:00</span>,
       },
       {
         title: "Certification Quiz",
