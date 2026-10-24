@@ -49,10 +49,6 @@ export const COURSE_CERTIFICATE_REQUIREMENTS = {
     "geo3d-1",
     "geo3d-2",
 
-    // Space Curves & Advanced Multivariable Mappings
-    "space-curves-1",
-    "space-curves-2",
-
     // Coordinate Transformations & Surfaces
     "jacobians-1",
     "jacobians-2",
@@ -60,13 +56,12 @@ export const COURSE_CERTIFICATE_REQUIREMENTS = {
     "parametrized-surface-area-2",
     "flux-integrals-general-surfaces-2",
 
-    // Constrained & Unconstrained Optimization
-    "optimization-1",
-    "optimization-2",
-
-    // Vector Fields & Approximation Theory
-    "vector-fields-approximation-1",
-    "vector-fields-approximation-2",
+    // Core modules only (matches CORE_PATH_ORDER in MultivariableOverview.jsx).
+    // Optional additional-depth modules are intentionally not required:
+    // Space Curves, Constrained & Unconstrained Optimization, Vector Fields &
+    // Approximation Theory, Potential Theory, Differential Forms, Advanced
+    // Integration, Geometry of Surfaces, Integration on Moving Domains and
+    // Nonlinear Dynamical Systems.
   ],
   quizId: "quiz-multivariable-calculus",
   minQuizScore: 80,
