@@ -1,8 +1,27 @@
-import StudyGuideShell from "../courses/StudyGuideShell";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_FLUX_INTEGRALS_GENERAL_SURFACES_QUIZ } from "../../data/mvCoordinateTransformationsQuiz";
-import "./PartialDerivativesGuide.css";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
+
+export const FLUX_QUIZ_KEY = "flux-integrals-general-surfaces";
+
+export const FLUX_NAV = [
+  { id: "flux-definition", label: "What Is a Flux Integral?" },
+  { id: "oriented-normal", label: "Oriented Normal-Area Vectors" },
+  { id: "flux-parameter-domain", label: "Parameter Domain & Mapping" },
+  { id: "general-flux-formula", label: "General Flux Formula" },
+  { id: "field-evaluation", label: "Evaluating the Field" },
+  { id: "worked-examples", label: "Worked Examples" },
+  { id: "flux-orientation", label: "Orientation & Sign" },
+  { id: "flux-regularity", label: "Regularity & Singular Points" },
+  { id: "piecewise-surfaces", label: "Piecewise & Closed Surfaces" },
+  { id: "divergence-theorem", label: "Divergence Theorem Link" },
+  { id: "flux-common-mistakes", label: "Common Mistakes" },
+  { id: "efficient-workflow", label: "Efficient Workflow" },
+  { id: "flux-key-formulas", label: "Key Formulas" },
+  { id: "mcq-flux-integrals-general-surfaces", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 function Divider() {
   return <hr className="divider" />;
@@ -24,143 +43,12 @@ function OpeningNote() {
         product, evaluate the vector field on the surface, take the dot product,
         and integrate over the domain.
       </p>
-
-      <div className="guide-navigation">
-        <a href="/parametrized-surface-area/2" className="guide-nav-button">
-          ← Previous Topic: Parametrized Surface Area
-        </a>
-      </div>
     </div>
   );
 }
 
-function GuideSidebar() {
-  return (
-    <nav className="sidebar">
-      <div className="sb-brand">
-        <div className="sb-title">
-          Coordinate Transformations &amp; Surfaces
-        </div>
-      </div>
 
-      <div className="sb-group">Part 2</div>
 
-      <a className="sb-link" href="/parametrized-surface-area/2">
-        Parametrized Surface Area
-      </a>
-
-      <a className="sb-link active" href="/flux-integrals-general-surfaces/2">
-        Flux Integrals over General Parameterized Surfaces
-      </a>
-    </nav>
-  );
-}
-
-function GuideHeader() {
-  return (
-    <header className="ch-hdr">
-      <div className="ch-eye">
-        Coordinate Transformations &amp; Surfaces · Part 2
-      </div>
-
-      <h1 className="ch-title">
-        Flux Integrals over General Parameterized Surfaces
-      </h1>
-
-      <p className="ch-sub">
-        Oriented surfaces, normal vectors, vector-field flux, surface
-        parameterizations, graph surfaces, cylinders, and closed-surface
-        applications
-      </p>
-
-      <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
-    </header>
-  );
-}
-
-function TableOfContents() {
-  return (
-    <nav className="toc">
-      <div className="toc-h">
-        Flux Integrals over General Parameterized Surfaces Contents
-      </div>
-
-      <div className="toc-grid">
-        <a className="toc-a" href="#flux-definition">
-          1. What Is a Flux Integral?
-        </a>
-
-        <a className="toc-a" href="#oriented-normal">
-          2. Oriented Normal-Area Vectors
-        </a>
-
-        <a className="toc-a" href="#parameter-domain">
-          3. Parameter Domain and Surface Mapping
-        </a>
-
-        <a className="toc-a" href="#general-flux-formula">
-          4. General Parameterized Flux Formula
-        </a>
-
-        <a className="toc-a" href="#field-evaluation">
-          5. Evaluating the Vector Field on the Surface
-        </a>
-
-        <a className="toc-a" href="#worked-examples">
-          Worked Examples
-        </a>
-
-        <a className="toc-a" href="#plane-flux-example">
-          6. Plane Patch Flux
-        </a>
-
-        <a className="toc-a" href="#graph-flux-example">
-          7. Graph Surface Flux
-        </a>
-
-        <a className="toc-a" href="#cylinder-flux-example">
-          8. Cylindrical Surface Flux
-        </a>
-
-        <a className="toc-a" href="#sphere-flux-example">
-          9. Spherical Flux
-        </a>
-
-        <a className="toc-a" href="#orientation">
-          10. Orientation and Sign
-        </a>
-
-        <a className="toc-a" href="#regularity">
-          11. Regularity and Singular Points
-        </a>
-
-        <a className="toc-a" href="#piecewise-surfaces">
-          12. Piecewise and Closed Surfaces
-        </a>
-
-        <a className="toc-a" href="#divergence-theorem">
-          13. Relation to the Divergence Theorem
-        </a>
-
-        <a className="toc-a" href="#common-mistakes">
-          14. Common Mistakes
-        </a>
-
-        <a className="toc-a" href="#efficient-workflow">
-          15. Efficient Flux Workflow
-        </a>
-
-        <a className="toc-a" href="#key-formulas">
-          Key Formulas
-        </a>
-
-        <a className="toc-a" href="#flux-quiz">
-          20-Question Quiz
-        </a>
-      </div>
-    </nav>
-  );
-}
 
 function SectionDefinition() {
   return (
@@ -281,7 +169,7 @@ function SectionOrientedNormal() {
 
 function SectionParameterDomain() {
   return (
-    <section className="section" id="parameter-domain">
+    <section className="section" id="flux-parameter-domain">
       <div className="sec-badge">Section</div>
       <h2 className="sec-title">3. Parameter Domain and Surface Mapping</h2>
 
@@ -805,7 +693,7 @@ function SphereFluxExample() {
 
 function SectionOrientation() {
   return (
-    <section className="section" id="orientation">
+    <section className="section" id="flux-orientation">
       <div className="sec-badge">Section</div>
       <h2 className="sec-title">10. Orientation and Sign</h2>
 
@@ -859,7 +747,7 @@ function SectionOrientation() {
 
 function SectionRegularity() {
   return (
-    <section className="section" id="regularity">
+    <section className="section" id="flux-regularity">
       <div className="sec-badge">Section</div>
       <h2 className="sec-title">11. Regularity and Singular Points</h2>
 
@@ -997,7 +885,7 @@ function SectionDivergenceTheorem() {
 
 function SectionCommonMistakes() {
   return (
-    <section className="section" id="common-mistakes">
+    <section className="section" id="flux-common-mistakes">
       <div className="sec-badge">Section</div>
       <h2 className="sec-title">14. Common Mistakes</h2>
 
@@ -1101,7 +989,7 @@ function SectionEfficientWorkflow() {
 
 function SectionKeyFormulas() {
   return (
-    <section className="section" id="key-formulas">
+    <section className="section" id="flux-key-formulas">
       <div className="sec-badge">Reference</div>
       <h2 className="sec-title">Key Formulas and Summary</h2>
 
@@ -1206,28 +1094,11 @@ function SectionKeyFormulas() {
   );
 }
 
-function GuideFooter() {
-  return (
-    <div className="pg-foot">
-      <p>End of Flux Integrals over General Parameterized Surfaces.</p>
-
-      <div className="guide-navigation">
-        <a href="/jacobians-change-of-variables/1" className="guide-nav-button">
-          ← Back to Part 1 — Page 1
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function FluxIntegralsGeneralSurfacesContent() {
+/** Topic content only — the page (sidebar, header, contents) lives in
+ *  CoordinateTransformationsPart1.jsx / CoordinateTransformationsPart2.jsx. */
+export default function FluxIntegralsGeneralSurfacesTopic({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
-      <GuideSidebar />
-
-      <main className="main">
-        <GuideHeader />
-        <TableOfContents />
         <OpeningNote />
         <Divider />
 
@@ -1283,31 +1154,17 @@ function FluxIntegralsGeneralSurfacesContent() {
         <Divider />
 
         <section id="flux-quiz" className="section">
-          <GuideMcqSection
-            id="mcq-flux-integrals-general-surfaces"
-            badge="Practice"
-            title="Flux Integrals over General Parameterized Surfaces — 20-Question Quiz"
-            scoreId="scorefluxintegralsgeneralsurfaces"
-            section="flux-integrals-general-surfaces"
-            questions={MV_FLUX_INTEGRALS_GENERAL_SURFACES_QUIZ}
-          />
+          <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-flux-integrals-general-surfaces" title="Flux Integrals over General Parameterized Surfaces — Quiz">
+            <GuideMcqSection
+              id="mcq-flux-integrals-general-surfaces"
+              badge="Practice"
+              title="Flux Integrals over General Parameterized Surfaces — 20-Question Quiz"
+              scoreId="scorefluxintegralsgeneralsurfaces"
+              section="flux-integrals-general-surfaces"
+              questions={MV_FLUX_INTEGRALS_GENERAL_SURFACES_QUIZ}
+            />
+          </QuizGate>
         </section>
-
-        <GuideFooter />
-      </main>
     </>
   );
 }
-
-function FluxIntegralsGeneralSurfacesGuide() {
-  return (
-    <StudyGuideShell
-      guideClass="partial-derivatives-guide"
-      title="Flux Integrals over General Parameterized Surfaces"
-    >
-      <FluxIntegralsGeneralSurfacesContent />
-    </StudyGuideShell>
-  );
-}
-
-export default FluxIntegralsGeneralSurfacesGuide;

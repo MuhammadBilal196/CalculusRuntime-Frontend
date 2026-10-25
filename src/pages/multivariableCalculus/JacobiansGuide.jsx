@@ -1,8 +1,25 @@
-import StudyGuideShell from "../courses/StudyGuideShell";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_JACOBIANS_QUIZ } from "../../data/mvCoordinateTransformationsQuiz";
-import "./PartialDerivativesGuide.css";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
+
+export const JACOBIANS_QUIZ_KEY = "jacobians";
+
+export const JACOBIANS_NAV = [
+  { id: "jac-1", label: "Why Change Variables?" },
+  { id: "jac-2", label: "The Jacobian Determinant" },
+  { id: "jac-3", label: "Geometric Meaning" },
+  { id: "jac-4", label: "Change-of-Variables Formula" },
+  { id: "jac-5", label: "Mapping Regions Correctly" },
+  { id: "jac-6", label: "Polar Coordinates" },
+  { id: "jac-7", label: "Nonlinear Transformations" },
+  { id: "jac-8", label: "Three-Dimensional Jacobians" },
+  { id: "jac-worked-examples", label: "Worked Examples" },
+  { id: "jac-10", label: "Common Mistakes" },
+  { id: "jac-summary-2", label: "Key Formulas" },
+  { id: "mcq-jacobians", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 function Divider() {
   return <hr className="divider" />;
@@ -542,88 +559,17 @@ function KeyFormulas() {
         <div className="fml">{"$$\\text{Spherical: }dV=\\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta.$$"}</div>
       </div>
       <p>
-        {"The next topic in Module A is Curvilinear Coordinate Systems, which develops coordinate geometry and scale factors beyond the Jacobian foundation established here."}
+        {"The next topic in this module is Curvilinear Coordinate Systems, which develops coordinate geometry and scale factors beyond the Jacobian foundation established here."}
       </p>
     </section>
   );
 }
 
-
-function GuideSidebar() {
-  return (
-    <nav className="sidebar">
-      <div className="sb-brand">
-        <div className="sb-title">Coordinate Transformations &amp; Surfaces</div>
-      </div>
-
-      <div className="sb-group">Topics</div>
-
-      <a className="sb-link" href="#jac-1">
-        Jacobians &amp; Change of Variables
-      </a>
-
-      <a className="sb-link" href="/curvilinear-coordinate-systems/1">
-        Curvilinear Coordinate Systems
-      </a>
-    </nav>
-  );
-}
-
-function GuideHeader() {
-  return (
-    <header className="ch-hdr">
-      <div className="ch-eye">Coordinate Transformations &amp; Surfaces</div>
-      <h1 className="ch-title">Jacobians &amp; Change of Variables</h1>
-      <p className="ch-sub">
-        Jacobian determinants, geometric scaling, transformed regions, and coordinate changes
-      </p>
-      <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
-    </header>
-  );
-}
-
-function TableOfContents() {
-  return (
-    <nav className="toc">
-      <div className="toc-h">Topics</div>
-      <div className="toc-grid">
-        <a className="toc-a" href="#jac-1">
-          Jacobians &amp; Change of Variables
-        </a>
-        <a className="toc-a" href="#jac-worked-examples">
-          Jacobians — Worked Examples
-        </a>
-        <a className="toc-a" href="#jac-quiz">
-          Jacobians — Quiz (20 Questions)
-        </a>
-
-        <a className="toc-a" href="/curvilinear-coordinate-systems/1">
-          Curvilinear Coordinate Systems
-        </a>
-        <a
-          className="toc-a"
-          href="/curvilinear-coordinate-systems/1#curvilinear-worked-examples"
-        >
-          Curvilinear Coordinate Systems — Worked Examples
-        </a>
-        <a
-          className="toc-a"
-          href="/curvilinear-coordinate-systems/1#curvilinear-quiz"
-        >
-          Curvilinear Coordinate Systems — Quiz (20 Questions)
-        </a>
-      </div>
-    </nav>
-  );
-}
-
-function JacobiansContent() {
+/** Topic content only — the page (sidebar, header, contents) lives in
+ *  CoordinateTransformationsPart1.jsx / CoordinateTransformationsPart2.jsx. */
+export default function JacobiansTopic({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
-      <GuideSidebar />
-      <main className="main">
-        <GuideHeader />
-        <TableOfContents />
         <OpeningNote />
         <Divider />
         <SectionJ1 />
@@ -661,47 +607,17 @@ function JacobiansContent() {
         <KeyFormulas />
         <Divider />
         <section id="jac-quiz" className="section">
-          <GuideMcqSection
-            id="mcq-jacobians"
-            badge="Practice"
-            title="Jacobians &amp; Change of Variables — 20-Question Quiz"
-            scoreId="scorejacobians"
-            section="jacobians"
-            questions={MV_JACOBIANS_QUIZ}
-          />
+          <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-jacobians" title="Jacobians & Change of Variables — Quiz">
+            <GuideMcqSection
+              id="mcq-jacobians"
+              badge="Practice"
+              title="Jacobians &amp; Change of Variables — 20-Question Quiz"
+              scoreId="scorejacobians"
+              section="jacobians"
+              questions={MV_JACOBIANS_QUIZ}
+            />
+          </QuizGate>
         </section>
-        <GuideFooter />
-      </main>
     </>
   );
 }
-
-function GuideFooter() {
-  return (
-    <div className="pg-foot">
-      <p>End of Jacobians &amp; Change of Variables.</p>
-      <div className="guide-navigation">
-  <a
-    href="/curvilinear-coordinate-systems/1"
-    className="guide-nav-button"
-  >
-    Next Topic: Curvilinear Coordinate Systems →
-  </a>
-</div>
-    </div>
-    
-  );
-}
-
-function JacobiansGuide() {
-  return (
-    <StudyGuideShell
-      guideClass="partial-derivatives-guide"
-      title="Jacobians & Change of Variables"
-    >
-      <JacobiansContent />
-    </StudyGuideShell>
-  );
-}
-
-export default JacobiansGuide;

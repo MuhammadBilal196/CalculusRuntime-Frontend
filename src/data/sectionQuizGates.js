@@ -92,6 +92,8 @@ export const SECTION_GUIDE_QUIZ_KEYS = {
   // Multivariable Calculus
   "partial-1": ["141", "142", "143"],
   "partial-2": ["144", "145", "146", "147"],
+  "coordinate-transformations-1": ["jacobians", "curvilinear"],
+  "coordinate-transformations-2": ["parametrized-surface-area", "flux-integrals-general-surfaces"],
   "jacobians-1": [],
   "jacobians-2": ["jacobians"],
   "curvilinear-1": ["curvilinear"],

@@ -110,7 +110,7 @@ function AdvancedIntegrationContent() {
         <hr className="divider" />
         <CalculusOfVariationsTopic
           quizUnlocked={improperPassed}
-          lockHint={`🔒 Score ${SECTION_QUIZ_PASS_PERCENT}%+ on the ${IMPROPER_TITLE} quiz to unlock this quiz.`}
+          lockHint={`Score ${SECTION_QUIZ_PASS_PERCENT}%+ on the ${IMPROPER_TITLE} quiz to unlock this quiz.`}
         />
         <footer className="pg-foot">Advanced Integration &amp; Variational Methods · Rendered with MathJax 3</footer>
       </main>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { isCourseCertificateEligible, isCourseComplete } from "../../data/courseCompletion";
 import {
   SECTION_QUIZ_PASS_PERCENT,
@@ -19,8 +19,26 @@ import "./SectionCompleteBar.css";
  * Mark as complete stays locked until every in-guide quiz for this section
  * is finished at ≥80% (see sectionQuizGates.js).
  */
-function SectionCompleteBar({ sectionId, nextPath, nextLabel, courseId }) {
+/** Part 2 pages link back to Part 1 automatically (/x/2 → /x/1). */
+function defaultPrevPath(pathname) {
+  const match = pathname.match(/^(.*)\/2\/?$/);
+  return match && match[1] ? `${match[1]}/1` : null;
+}
+
+function PrevLink({ to, label }) {
+  if (!to) return null;
+  return (
+    <Link to={to} className="scb-prev">
+      <span aria-hidden="true">←</span> {label || "Previous part"}
+    </Link>
+  );
+}
+
+function SectionCompleteBar({ sectionId, nextPath, nextLabel, prevPath, prevLabel, courseId }) {
   const { user } = useAuth();
+  const { pathname } = useLocation();
+  const resolvedPrev = prevPath === undefined ? defaultPrevPath(pathname) : prevPath;
+  const resolvedPrevLabel = prevLabel || (prevPath === undefined ? "Back to Part 1" : "Previous");
   const { progress, markSectionComplete } = useProgress();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -50,7 +68,8 @@ function SectionCompleteBar({ sectionId, nextPath, nextLabel, courseId }) {
   if (!user) {
     return (
       <div className="scb-wrap scb-wrap--guest">
-        <span>
+        <PrevLink to={resolvedPrev} label={resolvedPrevLabel} />
+        <span className="scb-guest-text">
           <Link to="/signup">Create a free account</Link> to track your progress.
         </span>
         {nextPath ? (
@@ -69,6 +88,7 @@ function SectionCompleteBar({ sectionId, nextPath, nextLabel, courseId }) {
         !done && gate.locked ? " scb-wrap--locked" : ""
       }`}
     >
+      <PrevLink to={resolvedPrev} label={resolvedPrevLabel} />
       {done ? (
         <span className="scb-done-label">✓ Section complete</span>
       ) : (

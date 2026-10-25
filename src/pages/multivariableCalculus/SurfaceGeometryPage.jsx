@@ -148,11 +148,11 @@ function TopicOneIntro() {
           </li>
           <li>
             {T`Jacobians and change of variables — `}
-            <Link to="/jacobians-change-of-variables/1">Jacobians &amp; Change of Variables</Link>.
+            <Link to="/coordinate-transformations/1">Jacobians &amp; Change of Variables</Link>.
           </li>
           <li>
             {T`Surface area $\iint|\mathbf r_u\times\mathbf r_v|\,dA$ — `}
-            <Link to="/parametrized-surface-area/2">Parametrized Surface Area</Link>. This topic re-reads that formula through the metric.
+            <Link to="/coordinate-transformations/2">Parametrized Surface Area</Link>. This topic re-reads that formula through the metric.
           </li>
           <li>
             {T`Arc length of space curves — `}
@@ -325,7 +325,7 @@ function SectionArea() {
 
       <p>
         {T`This is the same formula you met in `}
-        <Link to="/parametrized-surface-area/2">Parametrized Surface Area</Link>
+        <Link to="/coordinate-transformations/2">Parametrized Surface Area</Link>
         {T`, but it is now expressed purely in terms of $E,F,G$. That rewriting matters: it shows that area, like length and angle, can be computed by someone who knows only the metric and never looks at the surface from outside.`}
       </p>
 
@@ -368,7 +368,7 @@ function SectionReparam() {
 
       <p>
         {T`Combined with the change-of-variables formula $du\,dv=|\det J|\,ds\,dt$ (see `}
-        <Link to="/jacobians-change-of-variables/1">Jacobians</Link>
+        <Link to="/coordinate-transformations/1">Jacobians</Link>
         {T`), this shows $\sqrt{\det\tilde g}\,ds\,dt=\sqrt{\det g}\,du\,dv$: the `}
         <strong>area is independent of the parametrization</strong>
         {T`. Likewise lengths and angles do not change, because they are computed from the actual tangent vectors in $\mathbb R^3$.`}

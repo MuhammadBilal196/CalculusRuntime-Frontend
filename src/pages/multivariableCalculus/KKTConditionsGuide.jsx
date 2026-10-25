@@ -1,6 +1,35 @@
 import React from "react";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_KKT_CONDITIONS_QUIZ } from "../../data/mvKKTOptimizationQuiz";
+import QuizGate from "../../components/study/QuizGate";
+
+export const KKT_QUIZ_KEY = "kkt-conditions";
+
+export const KKT_NAV = [
+  { id: "kkt-opening", label: "Inequality Constraints (KKT Conditions)" },
+  { id: "kkt-1", label: "Why Inequality Constraints Need a New Tool" },
+  { id: "kkt-2", label: "Feasible Points, Active Constraints, and Slack" },
+  { id: "kkt-3", label: "The Four KKT Conditions" },
+  { id: "kkt-4", label: "The Lagrangian" },
+  { id: "kkt-5", label: "Complementary Slackness in Detail" },
+  { id: "kkt-6", label: "Interior Optima Versus Boundary Optima" },
+  { id: "kkt-7", label: "Geometric Meaning of KKT Stationarity" },
+  { id: "kkt-8", label: "Worked Example — Minimum with a Linear Inequality" },
+  { id: "kkt-9", label: "Worked Example — Active Disk Constraint" },
+  { id: "kkt-10", label: "Worked Example — Two Inequality Constraints" },
+  { id: "kkt-11", label: "Multiple Inequalities and the Active-Set Strategy" },
+  { id: "kkt-12", label: "Constraint Qualifications" },
+  { id: "kkt-13", label: "When KKT Conditions Are Sufficient" },
+  { id: "kkt-14", label: "KKT and the Hessian: First-Order Versus Second-Order Information" },
+  { id: "kkt-15", label: "Sensitivity and the Shadow-Price Interpretation" },
+  { id: "kkt-16", label: "Numerical Optimization and KKT" },
+  { id: "kkt-17", label: "Applications of Inequality-Constrained Optimization" },
+  { id: "kkt-18", label: "Common Mistakes and Diagnostic Checks" },
+  { id: "kkt-19", label: "Complete KKT Solution Strategy" },
+  { id: "kkt-20", label: "Final Concept Map" },
+  { id: "mcq-kkt-conditions", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 /**
  * Module B — Topic 2
@@ -1788,20 +1817,22 @@ function KKTQuizIntro() {
   );
 }
 
-function KKTQuiz() {
+function KKTQuiz({ quizUnlocked = true, lockHint = "" }) {
   return (
-    <GuideMcqSection
-      id="mcq-kkt-conditions"
-      badge="Practice"
-      title="Inequality Constraints (KKT Conditions) — Quiz"
-      scoreId="score-kkt-conditions"
-      section="kkt-conditions"
-      questions={MV_KKT_CONDITIONS_QUIZ}
-    />
+    <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-kkt-conditions" title="Inequality Constraints (KKT Conditions) — Quiz">
+      <GuideMcqSection
+        id="mcq-kkt-conditions"
+        badge="Practice"
+        title="Inequality Constraints (KKT Conditions) — Quiz"
+        scoreId="score-kkt-conditions"
+        section="kkt-conditions"
+        questions={MV_KKT_CONDITIONS_QUIZ}
+      />
+    </QuizGate>
   );
 }
 
-export default function KKTConditionsGuide() {
+export default function KKTConditionsGuide({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
       <TopicOpening />
@@ -1868,7 +1899,7 @@ export default function KKTConditionsGuide() {
 
       <KKTQuizIntro />
 
-      <KKTQuiz />
+      <KKTQuiz quizUnlocked={quizUnlocked} lockHint={lockHint} />
     </>
   );
-}
+}

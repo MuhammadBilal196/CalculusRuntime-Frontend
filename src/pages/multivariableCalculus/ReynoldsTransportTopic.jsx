@@ -52,11 +52,11 @@ function Intro() {
           </li>
           <li>
             {T`Jacobians and change of variables — `}
-            <Link to="/jacobians-change-of-variables/1">Jacobians &amp; Change of Variables</Link>.
+            <Link to="/coordinate-transformations/1">Jacobians &amp; Change of Variables</Link>.
           </li>
           <li>
             {T`Flux integrals $\iint\mathbf F\cdot\mathbf n\,dS$ — `}
-            <Link to="/flux-integrals-general-surfaces/2">Flux Integrals over General Surfaces</Link>.
+            <Link to="/coordinate-transformations/2">Flux Integrals over General Surfaces</Link>.
           </li>
           <li>{T`The sublevel-set derivative from the Coarea topic above, which this theorem generalises.`}</li>
         </ul>

@@ -29,6 +29,110 @@
       })();
     </script>
 
+
+    <!-- Boot loader: shown until React has painted the first screen (no blank white/dark flash). -->
+    <style>
+      #cv-boot {
+        --boot-bg: #f4f6fb;
+        --boot-grid: rgba(43, 76, 201, 0.07);
+        --boot-card: #ffffff;
+        --boot-border: #dfe5f0;
+        --boot-ink: #18213d;
+        --boot-muted: #5b6785;
+        --boot-accent: #2b4cc9;
+        --boot-mark: #fde68a;
+        position: fixed;
+        inset: 0;
+        z-index: 2147483000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--boot-bg);
+        background-image:
+          linear-gradient(var(--boot-grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--boot-grid) 1px, transparent 1px);
+        background-size: 28px 28px;
+        font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        color: var(--boot-ink);
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+      }
+      html[data-theme="dark"] #cv-boot {
+        --boot-bg: #0d1322;
+        --boot-grid: rgba(125, 160, 255, 0.07);
+        --boot-card: #141c30;
+        --boot-border: #26324d;
+        --boot-ink: #eef2fb;
+        --boot-muted: #9aa7c4;
+        --boot-accent: #8ea8ff;
+        --boot-mark: rgba(250, 204, 21, 0.35);
+      }
+      html[data-theme="sepia"] #cv-boot {
+        --boot-bg: #f3ead7;
+        --boot-grid: rgba(122, 72, 20, 0.08);
+        --boot-card: #fbf6ea;
+        --boot-border: #e0d2b3;
+        --boot-ink: #3a2c1a;
+        --boot-muted: #7a6649;
+        --boot-accent: #9a5412;
+        --boot-mark: #f6d98a;
+      }
+      #cv-boot.cv-boot--done { opacity: 0; visibility: hidden; pointer-events: none; }
+      .cv-boot__card {
+        width: min(320px, calc(100vw - 32px));
+        padding: 28px 28px 22px;
+        border: 1px solid var(--boot-border);
+        border-radius: 18px;
+        background: var(--boot-card);
+        box-shadow: 0 18px 50px rgba(20, 30, 70, 0.12);
+        text-align: center;
+      }
+      .cv-boot__plot { display: block; width: 100%; height: auto; margin: 0 auto 18px; }
+      .cv-boot__axis { stroke: var(--boot-border); stroke-width: 1.5; }
+      .cv-boot__curve {
+        fill: none;
+        stroke: var(--boot-accent);
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        stroke-dasharray: 320;
+        stroke-dashoffset: 320;
+        animation: cv-boot-draw 1.6s ease-in-out infinite;
+      }
+      .cv-boot__brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .cv-boot__logo {
+        display: inline-grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: var(--boot-accent);
+        color: #fff;
+        font-family: "Lora", Georgia, serif;
+        font-size: 19px;
+        font-style: italic;
+      }
+      .cv-boot__text { margin: 8px 0 0; font-size: 14px; color: var(--boot-muted); }
+      .cv-boot__text mark { background: var(--boot-mark); color: inherit; padding: 0 3px; border-radius: 3px; }
+      .cv-boot__slow { display: none; margin: 12px 0 0; font-size: 13px; color: var(--boot-muted); }
+      .cv-boot__slow a { color: var(--boot-accent); font-weight: 600; }
+      #cv-boot.cv-boot--slow .cv-boot__slow { display: block; }
+      @keyframes cv-boot-draw {
+        0% { stroke-dashoffset: 320; }
+        55% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -320; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cv-boot__curve { animation: none; stroke-dashoffset: 0; }
+        #cv-boot { transition: none; }
+      }
+    </style>
+
     <link rel="stylesheet" href="css/styles.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,6 +160,26 @@
 
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="cv-boot" role="status" aria-live="polite">
+      <div class="cv-boot__card">
+        <svg class="cv-boot__plot" viewBox="0 0 240 110" aria-hidden="true">
+          <line class="cv-boot__axis" x1="10" y1="55" x2="230" y2="55" />
+          <line class="cv-boot__axis" x1="20" y1="8" x2="20" y2="102" />
+          <path class="cv-boot__curve" d="M20 55 C 45 5, 70 5, 95 55 S 145 105, 170 55 S 210 15, 220 30" />
+        </svg>
+        <div class="cv-boot__brand"><span class="cv-boot__logo">∂</span>CalcVoyager</div>
+        <p class="cv-boot__text">Opening your <mark>study space</mark>…</p>
+        <p class="cv-boot__slow">This is taking longer than usual. <a href="">Reload the page</a></p>
+      </div>
+    </div>
+    <script>
+      setTimeout(function () {
+        var boot = document.getElementById("cv-boot");
+        if (boot && !boot.classList.contains("cv-boot--done")) boot.classList.add("cv-boot--slow");
+      }, 15000);
+    </script>
+
     <div id="root"></div>
   </body>
 </html>

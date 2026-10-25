@@ -1,6 +1,32 @@
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_VECTOR_POTENTIALS_QUIZ } from "../../data/mvVectorPotentialsQuiz";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
+
+export const VECTOR_POTENTIALS_QUIZ_KEY = "vector-potentials";
+
+export const VECTOR_POTENTIALS_NAV = [
+  { id: "vector-potential-opening", label: "What Is a Vector Potential?" },
+  { id: "vector-potential-1", label: "The Curl Operator" },
+  { id: "vector-potential-2", label: "The Fundamental Divergence Condition" },
+  { id: "vector-potential-3", label: "Divergence-Free Is Necessary, but Topology Also Matters" },
+  { id: "vector-potential-4", label: "A First Construction Strategy" },
+  { id: "vector-potential-5", label: "Worked Example — Constant Vertical Field" },
+  { id: "vector-potential-6", label: "Worked Example — A Field with Polynomial Components" },
+  { id: "vector-potential-7", label: "A Systematic Component-by-Component Construction" },
+  { id: "vector-potential-8", label: "Gauge Freedom" },
+  { id: "vector-potential-9", label: "Worked Example — Demonstrating Gauge Freedom" },
+  { id: "vector-potential-10", label: "Vector Potentials and Conservative Fields Are Different Ideas" },
+  { id: "vector-potential-11", label: "Geometric Meaning of a Vector Potential" },
+  { id: "vector-potential-12", label: "Connection to Surface Flux" },
+  { id: "vector-potential-13", label: "Worked Example — Using Stokes' Theorem" },
+  { id: "vector-potential-14", label: "Gauge Choices and Simplification" },
+  { id: "vector-potential-15", label: "Applications of Vector Potentials" },
+  { id: "vector-potential-16", label: "Common Mistakes and Diagnostic Checks" },
+  { id: "vector-potential-17", label: "Complete Vector-Potential Strategy and Key Formulas" },
+  { id: "mcq-vector-potentials", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 function Divider() {
   return <hr className="divider" />;
@@ -24,7 +50,7 @@ function VectorPotentialsOpening() {
   );
 }
 
-export default function VectorPotentialsGuide() {
+export default function VectorPotentialsGuide({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
       <VectorPotentialsOpening />
@@ -1295,14 +1321,16 @@ $$`}
           QUIZ
       ========================================= */}
 
-      <GuideMcqSection
-        id="mcq-vector-potentials"
-        badge="Practice"
-        title="Vector Potentials — 20-Question Quiz"
-        scoreId="score-vector-potentials"
-        section="vector-potentials"
-        questions={MV_VECTOR_POTENTIALS_QUIZ}
-      />
+      <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-vector-potentials" title="Vector Potentials — Quiz">
+        <GuideMcqSection
+          id="mcq-vector-potentials"
+          badge="Practice"
+          title="Vector Potentials — 20-Question Quiz"
+          scoreId="score-vector-potentials"
+          section="vector-potentials"
+          questions={MV_VECTOR_POTENTIALS_QUIZ}
+        />
+      </QuizGate>
     </>
   );
-}
+}

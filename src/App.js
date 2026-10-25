@@ -41,11 +41,9 @@ import DivergencePart2 from "./pages/multivariableCalculus/DivergencePart2";
 import Geometry3DPart1 from "./pages/multivariableCalculus/Geometry3DPart1";
 import Geometry3DPart2 from "./pages/multivariableCalculus/Geometry3DPart2";
 import SpaceCurvesGuide from "./pages/multivariableCalculus/SpaceCurvesGuideNew";
-import JacobiansGuide from "./pages/multivariableCalculus/JacobiansGuide";
-import CurvilinearCoordinatesGuide from "./pages/multivariableCalculus/CurvilinearCoordinatesGuide";
-import ParametrizedSurfaceAreaGuide from "./pages/multivariableCalculus/ParametrizedSurfaceAreaGuide";
-import FluxIntegralsGeneralSurfacesGuide from "./pages/multivariableCalculus/FluxIntegralsGeneralSurfacesGuide";
-import HessianOptimizationGuide from "./pages/multivariableCalculus/HessianOptimizationGuide";
+import CoordinateTransformationsPart1 from "./pages/multivariableCalculus/CoordinateTransformationsPart1";
+import CoordinateTransformationsPart2 from "./pages/multivariableCalculus/CoordinateTransformationsPart2";
+import ConstrainedOptimizationPart1 from "./pages/multivariableCalculus/ConstrainedOptimizationPart1";
 import ConstrainedOptimizationPart2 from "./pages/multivariableCalculus/ConstrainedOptimizationPart2";
 import VectorFieldsApproximationPart1 from "./pages/multivariableCalculus/VectorFieldsApproximationPart1";
 import VectorFieldsApproximationPart2 from "./pages/multivariableCalculus/VectorFieldsApproximationPart2";
@@ -469,51 +467,37 @@ function App() {
                   element={<Layout body={<IntegralsPart2 />} />}
                 />
 
-                {/* <Route
-                  path="/jacobians-change-of-variables"
-                  element={
-                    <Navigate to="/jacobians-change-of-variables/1" replace />
-                  }
-                /> */}
+                {/* Coordinate Transformations & Surfaces: 4 topics on 2 pages */}
                 <Route
-                  path="/jacobians-change-of-variables/1"
-                  element={<Layout body={<JacobiansGuide />} />}
+                  path="/coordinate-transformations"
+                  element={<Navigate to="/coordinate-transformations/1" replace />}
                 />
                 <Route
-                  path="/curvilinear-coordinate-systems"
-                  element={
-                    <Navigate to="/curvilinear-coordinate-systems/1" replace />
-                  }
-                />
-
-                <Route
-                  path="/curvilinear-coordinate-systems/1"
-                  element={<Layout body={<CurvilinearCoordinatesGuide />} />}
+                  path="/coordinate-transformations/1"
+                  element={<Layout body={<CoordinateTransformationsPart1 />} />}
                 />
                 <Route
-                  path="/parametrized-surface-area"
-                  element={
-                    <Navigate to="/parametrized-surface-area/2" replace />
-                  }
+                  path="/coordinate-transformations/2"
+                  element={<Layout body={<CoordinateTransformationsPart2 />} />}
                 />
-
-                <Route
-                  path="/parametrized-surface-area/2"
-                  element={<Layout body={<ParametrizedSurfaceAreaGuide />} />}
-                />
-                <Route
-                  path="/flux-integrals-general-surfaces"
-                  element={
-                    <Navigate to="/flux-integrals-general-surfaces/2" replace />
-                  }
-                />
-
-                <Route
-                  path="/flux-integrals-general-surfaces/2"
-                  element={
-                    <Layout body={<FluxIntegralsGeneralSurfacesGuide />} />
-                  }
-                />
+                {/* Old single-topic URLs */}
+                {[
+                  ["/jacobians-change-of-variables", 1],
+                  ["/jacobians-change-of-variables/1", 1],
+                  ["/jacobians-change-of-variables/2", 1],
+                  ["/curvilinear-coordinate-systems", 1],
+                  ["/curvilinear-coordinate-systems/1", 1],
+                  ["/parametrized-surface-area", 2],
+                  ["/parametrized-surface-area/2", 2],
+                  ["/flux-integrals-general-surfaces", 2],
+                  ["/flux-integrals-general-surfaces/2", 2],
+                ].map(([from, part]) => (
+                  <Route
+                    key={from}
+                    path={from}
+                    element={<Navigate to={`/coordinate-transformations/${part}`} replace />}
+                  />
+                ))}
                 <Route
                   path="/constrained-unconstrained-optimization"
                   element={
@@ -526,7 +510,7 @@ function App() {
 
                 <Route
                   path="/constrained-unconstrained-optimization/1"
-                  element={<Layout body={<HessianOptimizationGuide />} />}
+                  element={<Layout body={<ConstrainedOptimizationPart1 />} />}
                 />
                 <Route
                   path="/constrained-unconstrained-optimization/2"

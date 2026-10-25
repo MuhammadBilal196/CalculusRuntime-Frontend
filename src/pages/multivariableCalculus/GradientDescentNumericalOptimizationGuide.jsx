@@ -1,6 +1,34 @@
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_GRADIENT_DESCENT_QUIZ } from "../../data/mvGradientDescentQuiz";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
+
+export const GRADIENT_DESCENT_QUIZ_KEY = "gradient-descent";
+
+export const GRADIENT_DESCENT_NAV = [
+  { id: "gradient-opening", label: "Why Numerical Optimization Is Needed" },
+  { id: "gradient-1", label: "The Gradient as the Local Direction of Steepest Increase" },
+  { id: "gradient-2", label: "Deriving the Gradient-Descent Update" },
+  { id: "gradient-3", label: "Choosing the Step Size" },
+  { id: "gradient-4", label: "Worked Example — One-Dimensional Descent" },
+  { id: "gradient-5", label: "Worked Example — Two-Variable Gradient Descent" },
+  { id: "gradient-6", label: "Gradient Norm and Stopping Criteria" },
+  { id: "gradient-7", label: "Convexity and Global Convergence" },
+  { id: "gradient-8", label: "Strong Convexity and Rates of Progress" },
+  { id: "gradient-9", label: "Momentum Methods" },
+  { id: "gradient-10", label: "Line Search" },
+  { id: "gradient-11", label: "Newton's Method for Optimization" },
+  { id: "gradient-12", label: "Quasi-Newton Ideas and Hessian Approximation" },
+  { id: "gradient-13", label: "Conditioning and Zig-Zag Behavior" },
+  { id: "gradient-14", label: "Stochastic and Mini-Batch Optimization" },
+  { id: "gradient-15", label: "Constraints in Numerical Optimization" },
+  { id: "gradient-16", label: "Gradient Descent Versus Newton's Method" },
+  { id: "gradient-17", label: "Common Numerical Failure Modes" },
+  { id: "gradient-18", label: "Complete Numerical Optimization Workflow" },
+  { id: "gradient-19", label: "Key Formulas and Final Strategy" },
+  { id: "mcq-gradient-descent", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 function Divider() {
   return <hr className="divider" />;
@@ -29,7 +57,7 @@ function GradientDescentOpening() {
   );
 }
 
-export function GradientDescentNumericalOptimizationGuide() {
+export function GradientDescentNumericalOptimizationGuide({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
       <GradientDescentOpening />
@@ -1057,14 +1085,16 @@ $$`}
 
       <Divider />
 
-      <GuideMcqSection
-        id="mcq-gradient-descent"
-        badge="Practice"
-        title="Gradient Descent & Numerical Optimization — Quiz"
-        scoreId="score-gradient-descent"
-        section="gradient-descent"
-        questions={MV_GRADIENT_DESCENT_QUIZ}
-      />
+      <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-gradient-descent" title="Gradient Descent & Numerical Optimization — Quiz">
+        <GuideMcqSection
+          id="mcq-gradient-descent"
+          badge="Practice"
+          title="Gradient Descent & Numerical Optimization — Quiz"
+          scoreId="score-gradient-descent"
+          section="gradient-descent"
+          questions={MV_GRADIENT_DESCENT_QUIZ}
+        />
+      </QuizGate>
     </>
   );
-}
+}

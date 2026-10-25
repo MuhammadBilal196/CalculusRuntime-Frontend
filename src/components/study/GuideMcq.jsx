@@ -1,11 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import { mixedMathToHtml } from "../../utils/mixedMath";
 
 import { inferGuideCourse } from "../../utils/mistakeNotebook";
 import useQuizAttempts from "../../hooks/useQuizAttempts";
+import QuizGate from "./QuizGate";
 import "./GuideMcq.css";
 
-export function GuideMcqSection({ id, badge, title, scoreId, section, questions, onComplete }) {
+/**
+ * Optional quiz locks for a whole page: { [section]: "unlock hint" }.
+ * A quiz whose `section` is listed shows a locked card instead of questions.
+ */
+export const QuizLockContext = createContext(null);
+
+function GuideMcqSectionInner({ id, badge, title, scoreId, section, questions, onComplete }) {
   const { record: recordAnswer, restart: restartRecording } = useQuizAttempts();
   const responseNumber = useRef(0);
   const count = questions.length;
@@ -384,6 +391,17 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
       )}
     </section>
   );
+}
+
+export function GuideMcqSection(props) {
+  const locks = useContext(QuizLockContext);
+  const hint = locks?.[props.section];
+  if (hint) {
+    return (
+      <QuizGate unlocked={false} id={props.id} title={String(props.title || "Quiz").replace(/&amp;/g, "&")} hint={hint} />
+    );
+  }
+  return <GuideMcqSectionInner {...props} />;
 }
 
 export default GuideMcqSection;

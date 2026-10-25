@@ -151,7 +151,7 @@ function TopicOneIntro() {
           </li>
           <li>
             {T`Change of variables and the Jacobian determinant — `}
-            <Link to="/jacobians-change-of-variables/1">Jacobians &amp; Change of Variables</Link>.
+            <Link to="/coordinate-transformations/1">Jacobians &amp; Change of Variables</Link>.
           </li>
           <li>
             {T`The Implicit Function Theorem (level sets are smooth curves where $\nabla u\neq\mathbf 0$) — `}

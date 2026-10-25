@@ -12,34 +12,39 @@
    more specific than the older theme rules, so these values always win.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── 1. LIGHT (default) ─────────────────────────────────────────────────── */
+/* ── 1. LIGHT (default) — "study notebook": cool paper, ink-blue, highlighter ── */
 :root,
 :root[data-site-theme],
 :root[data-site-theme][data-theme="light"] {
   color-scheme: light;
 
   /* Surfaces */
-  --c-bg: #f6f8fb;              /* page background */
+  --c-bg: #f4f6fb;              /* page background (graph paper) */
   --c-surface: #ffffff;         /* cards, panels */
-  --c-surface-2: #f1f5f9;       /* inputs, table stripes, soft panels */
-  --c-surface-3: #e8eef5;       /* hover on soft panels */
-  --c-border: #e2e8f0;
-  --c-border-strong: #cbd5e1;
+  --c-surface-2: #eef2f9;       /* inputs, table stripes, soft panels */
+  --c-surface-3: #e3e9f4;       /* hover on soft panels */
+  --c-border: #dfe5f0;
+  --c-border-strong: #c5cfe0;
 
   /* Text */
-  --c-text: #0f172a;
-  --c-text-2: #334155;          /* body copy */
-  --c-muted: #64748b;           /* labels, meta */
-  --c-faint: #94a3b8;
+  --c-text: #18213d;            /* ink */
+  --c-text-2: #3a4560;          /* body copy */
+  --c-muted: #5b6785;           /* labels, meta */
+  --c-faint: #8a94ad;
 
-  /* Brand accent */
-  --c-accent: #0369a1;          /* links, icons, highlights (text-safe) */
-  --c-accent-strong: #0056d2;   /* filled buttons */
-  --c-accent-strong-hover: #0043a8;
+  /* Brand accent (ink blue) */
+  --c-accent: #2541b2;          /* links, icons, highlights (text-safe) */
+  --c-accent-strong: #2b4cc9;   /* filled buttons */
+  --c-accent-strong-hover: #1f3aa6;
   --c-on-accent: #ffffff;
-  --c-accent-soft: rgba(2, 132, 199, 0.09);
-  --c-accent-border: rgba(2, 132, 199, 0.28);
-  --c-focus: rgba(2, 132, 199, 0.45);
+  --c-accent-soft: rgba(43, 76, 201, 0.08);
+  --c-accent-border: rgba(43, 76, 201, 0.26);
+  --c-focus: rgba(43, 76, 201, 0.42);
+
+  /* Highlighter (active sidebar item, text selection) */
+  --c-highlight: rgba(253, 224, 71, 0.55);
+  --c-highlight-text: #18213d;
+  --c-grid: rgba(43, 76, 201, 0.055);
 
   /* Feedback */
   --c-success: #15803d;
@@ -53,40 +58,45 @@
   --c-warning: #b45309;
   --c-warning-soft: #fffbeb;
   --c-warning-border: #fde68a;
-  --c-info: #4f46e5;            /* worked examples */
-  --c-info-soft: #f5f5ff;
-  --c-info-border: #dcdcfb;
+  --c-info: #6d3fd1;            /* worked examples */
+  --c-info-soft: #f6f2ff;
+  --c-info-border: #e2d8fb;
 
   /* Chrome (header / footer / guide sidebar) */
-  --c-header-bg: #0b1120;
-  --c-header-border: rgba(255, 255, 255, 0.08);
-  --c-header-text: #f8fafc;
-  --c-header-muted: #a5b4c8;
-  --c-header-hover: rgba(255, 255, 255, 0.09);
-  --c-header-accent: #38bdf8;
-  --c-footer-bg: #0b1120;
-  --c-footer-text: #e2e8f0;
-  --c-footer-muted: #94a3b8;
-  --c-sidebar-bg: #ffffff;
-  --c-sidebar-text: #334155;
-  --c-sidebar-muted: #94a3b8;
-  --c-sidebar-active-bg: rgba(2, 132, 199, 0.09);
-  --c-sidebar-active-text: #0369a1;
-  --c-table-head-bg: #f1f5f9;
-  --c-table-head-text: #0f172a;
-  --c-code-bg: #f1f5f9;
+  --c-header-bg: rgba(255, 255, 255, 0.92);
+  --c-header-border: #dfe5f0;
+  --c-header-text: #18213d;
+  --c-header-muted: #4a5573;
+  --c-header-hover: rgba(43, 76, 201, 0.07);
+  --c-header-accent: #2b4cc9;
+  --c-header-accent-text: #ffffff;
+  --c-header-shadow: 0 1px 0 rgba(24, 33, 61, 0.04), 0 8px 24px rgba(24, 33, 61, 0.06);
+  --c-footer-bg: #131a33;
+  --c-footer-text: #e6eaf5;
+  --c-footer-muted: #a3aecb;
+  --c-footer-border: rgba(255, 255, 255, 0.08);
+  --c-footer-accent: #fde047;
+  --c-sidebar-bg: #fbfcfe;
+  --c-sidebar-text: #3a4560;
+  --c-sidebar-muted: #8a94ad;
+  --c-sidebar-active-bg: rgba(253, 224, 71, 0.55);
+  --c-sidebar-active-text: #18213d;
+  --c-table-head-bg: #eef2f9;
+  --c-table-head-text: #18213d;
+  --c-code-bg: #eef2f9;
 
   /* Elevation */
-  --c-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 6px rgba(15, 23, 42, 0.04);
-  --c-shadow-md: 0 4px 18px rgba(15, 23, 42, 0.07);
-  --c-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.11);
+  --c-shadow-sm: 0 1px 2px rgba(24, 33, 61, 0.05), 0 1px 6px rgba(24, 33, 61, 0.04);
+  --c-shadow-md: 0 4px 18px rgba(24, 33, 61, 0.07);
+  --c-shadow-lg: 0 16px 40px rgba(24, 33, 61, 0.11);
 
   /* Shape & type */
   --c-radius-sm: 6px;
   --c-radius: 10px;
   --c-radius-lg: 14px;
   --c-radius-pill: 999px;
-  --c-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --c-font-sans: "Source Sans 3", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --c-font-serif: "Lora", Georgia, "Times New Roman", serif;
   --c-font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
   --c-font-math: "Cambria Math", "KaTeX_Main", "Times New Roman", Georgia, serif;
   --c-reading-width: 72ch;
@@ -138,14 +148,21 @@
   --c-header-muted: #a5b4c8;
   --c-header-hover: rgba(255, 255, 255, 0.08);
   --c-header-accent: #38bdf8;
+  --c-header-accent-text: #0b1120;
+  --c-header-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
   --c-footer-bg: #070c18;
   --c-footer-text: #e2e8f0;
   --c-footer-muted: #94a3b8;
+  --c-footer-border: rgba(255, 255, 255, 0.07);
+  --c-footer-accent: #38bdf8;
+  --c-highlight: rgba(250, 204, 21, 0.22);
+  --c-highlight-text: #fef3c7;
+  --c-grid: rgba(125, 160, 255, 0.045);
   --c-sidebar-bg: #0d1526;
   --c-sidebar-text: #cbd5e1;
   --c-sidebar-muted: #64748b;
-  --c-sidebar-active-bg: rgba(56, 189, 248, 0.12);
-  --c-sidebar-active-text: #7dd3fc;
+  --c-sidebar-active-bg: rgba(250, 204, 21, 0.14);
+  --c-sidebar-active-text: #fde68a;
   --c-table-head-bg: #1a2740;
   --c-table-head-text: #f1f5f9;
   --c-code-bg: #162236;
@@ -201,14 +218,21 @@
   --c-header-muted: #d6c3a0;
   --c-header-hover: rgba(255, 244, 220, 0.1);
   --c-header-accent: #f2b45a;
+  --c-header-accent-text: #2b2015;
+  --c-header-shadow: 0 6px 24px rgba(43, 32, 21, 0.25);
   --c-footer-bg: #2b2015;
   --c-footer-text: #f3e7cf;
   --c-footer-muted: #c9b48e;
+  --c-footer-border: rgba(255, 244, 220, 0.1);
+  --c-footer-accent: #f2b45a;
+  --c-highlight: rgba(234, 179, 8, 0.3);
+  --c-highlight-text: #3a2c1a;
+  --c-grid: rgba(122, 72, 20, 0.06);
   --c-sidebar-bg: #f7efdd;
   --c-sidebar-text: #4f3f2a;
   --c-sidebar-muted: #a08d6c;
-  --c-sidebar-active-bg: rgba(154, 84, 18, 0.1);
-  --c-sidebar-active-text: #8a4b0f;
+  --c-sidebar-active-bg: rgba(234, 179, 8, 0.3);
+  --c-sidebar-active-text: #3a2c1a;
   --c-table-head-bg: #eadcbd;
   --c-table-head-text: #3a2c1a;
   --c-code-bg: #efe5cf;
@@ -308,8 +332,8 @@ html[data-site-theme] body {
 }
 
 html[data-site-theme][data-theme] ::selection {
-  background: var(--c-accent-soft);
-  color: inherit;
+  background: var(--c-highlight);
+  color: var(--c-highlight-text);
 }
 
 html[data-site-theme] :focus-visible {
@@ -334,8 +358,10 @@ html[data-theme="sepia"] a {
 html[data-site-theme] .site-header {
   background: var(--c-header-bg) !important;
   border-bottom: 1px solid var(--c-header-border) !important;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18) !important;
+  box-shadow: var(--c-header-shadow) !important;
   color: var(--c-header-text) !important;
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  backdrop-filter: saturate(1.4) blur(10px);
 }
 
 html[data-site-theme] .site-header::after {
@@ -408,7 +434,7 @@ html[data-site-theme][data-theme] .site-nav .dropdown-content a.active {
 
 html[data-site-theme] .header-auth-btn {
   background: var(--c-header-accent) !important;
-  color: #0b1120 !important;
+  color: var(--c-header-accent-text) !important;
   border-radius: 8px !important;
 }
 

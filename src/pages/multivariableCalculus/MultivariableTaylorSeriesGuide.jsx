@@ -1,8 +1,35 @@
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_MULTIVARIABLE_TAYLOR_QUIZ } from "../../data/mvMultivariableTaylorQuiz";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
 
-export default function MultivariableTaylorSeriesGuide() {
+export const MULTIVARIABLE_TAYLOR_QUIZ_KEY = "multivariable-taylor";
+
+export const MULTIVARIABLE_TAYLOR_NAV = [
+  { id: "multivariable-taylor-opening", label: "Multivariable Taylor Series & Second-Order Approximation" },
+  { id: "multivariable-taylor-1", label: "Why Multivariable Taylor Approximation Matters" },
+  { id: "multivariable-taylor-2", label: "The Displacement Vector" },
+  { id: "multivariable-taylor-3", label: "First-Order Taylor Approximation" },
+  { id: "multivariable-taylor-4", label: "Geometric Meaning — The Tangent Plane" },
+  { id: "multivariable-taylor-5", label: "Worked Example — First-Order Approximation" },
+  { id: "multivariable-taylor-6", label: "The Hessian Matrix" },
+  { id: "multivariable-taylor-7", label: "Second-Order Taylor Approximation" },
+  { id: "multivariable-taylor-8", label: "Expanded Second-Order Formula" },
+  { id: "multivariable-taylor-9", label: "Worked Example — Quadratic Function" },
+  { id: "multivariable-taylor-10", label: "Taylor Series in More Than Two Variables" },
+  { id: "multivariable-taylor-11", label: "The Role of Curvature" },
+  { id: "multivariable-taylor-12", label: "Mixed Partial Derivatives" },
+  { id: "multivariable-taylor-13", label: "Worked Example — A Nonlinear Approximation" },
+  { id: "multivariable-taylor-14", label: "Error and the Remainder" },
+  { id: "multivariable-taylor-15", label: "Choosing First- or Second-Order Approximation" },
+  { id: "multivariable-taylor-16", label: "Applications of Second-Order Approximation" },
+  { id: "multivariable-taylor-17", label: "Common Mistakes" },
+  { id: "multivariable-taylor-18", label: "Complete Taylor Approximation Workflow" },
+  { id: "mcq-multivariable-taylor", label: "Quiz (20 Questions)", quiz: true },
+];
+
+
+export default function MultivariableTaylorSeriesGuide({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
       <section className="section" id="multivariable-taylor-opening">
@@ -564,14 +591,16 @@ export default function MultivariableTaylorSeriesGuide() {
         </div>
       </section>
 
-      <GuideMcqSection
-        id="mcq-multivariable-taylor"
-        badge="Practice"
-        title="Multivariable Taylor Series & Second-Order Approximation — Quiz"
-        scoreId="score-multivariable-taylor"
-        section="multivariable-taylor"
-        questions={MV_MULTIVARIABLE_TAYLOR_QUIZ}
-      />
+      <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-multivariable-taylor" title="Multivariable Taylor Series & Second-Order Approximation — Quiz">
+        <GuideMcqSection
+          id="mcq-multivariable-taylor"
+          badge="Practice"
+          title="Multivariable Taylor Series & Second-Order Approximation — Quiz"
+          scoreId="score-multivariable-taylor"
+          section="multivariable-taylor"
+          questions={MV_MULTIVARIABLE_TAYLOR_QUIZ}
+        />
+      </QuizGate>
     </>
   );
-}
+}
