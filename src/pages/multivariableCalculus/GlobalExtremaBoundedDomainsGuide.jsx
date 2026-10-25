@@ -1,6 +1,35 @@
 import React from "react";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_GLOBAL_EXTREMA_QUIZ } from "../../data/mvGlobalExtremaQuiz";
+import QuizGate from "../../components/study/QuizGate";
+
+export const GLOBAL_EXTREMA_QUIZ_KEY = "global-extrema";
+
+export const GLOBAL_EXTREMA_NAV = [
+  { id: "global-opening", label: "Global Extrema on Bounded Domains" },
+  { id: "global-1", label: "Local Versus Global Extrema" },
+  { id: "global-2", label: "The Extreme Value Theorem" },
+  { id: "global-3", label: "Closed, Bounded, and Compact Sets" },
+  { id: "global-4", label: "Where Global Extrema Can Occur" },
+  { id: "global-5", label: "Interior Critical Points" },
+  { id: "global-6", label: "Boundary Analysis by Parameterization" },
+  { id: "global-7", label: "Boundary Analysis with Lagrange Multipliers" },
+  { id: "global-8", label: "Corners, Vertices, and Nonsmooth Boundary Points" },
+  { id: "global-9", label: "The Complete Candidate-Enumeration Method" },
+  { id: "global-10", label: "Worked Example — Quadratic on a Closed Disk" },
+  { id: "global-11", label: "Worked Example — Rectangle with Interior and Boundary Candidates" },
+  { id: "global-12", label: "Worked Example — Triangle Domain" },
+  { id: "global-13", label: "Boundary Parameterization in Detail" },
+  { id: "global-14", label: "Nondifferentiable Points and Singularities" },
+  { id: "global-15", label: "Global Extrema and KKT Conditions" },
+  { id: "global-16", label: "Uniqueness, Multiple Extrema, and Ties" },
+  { id: "global-17", label: "Convexity and Global Optimization" },
+  { id: "global-18", label: "Why Boundedness Matters" },
+  { id: "global-19", label: "Complete Global-Extrema Checklist" },
+  { id: "global-20", label: "Key Formulas and Final Strategy" },
+  { id: "mcq-global-extrema", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 /**
  * Module B — Topic 3
@@ -1242,20 +1271,22 @@ function QuizIntro() {
   );
 }
 
-function Quiz() {
+function Quiz({ quizUnlocked = true, lockHint = "" }) {
   return (
-    <GuideMcqSection
-      id="mcq-global-extrema"
-      badge="Practice"
-      title="Global Extrema on Bounded Domains — 20-Question Quiz"
-      scoreId="scoreglobalextrema"
-      section="global-extrema"
-      questions={MV_GLOBAL_EXTREMA_QUIZ}
-    />
+    <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-global-extrema" title="Global Extrema on Bounded Domains — Quiz">
+      <GuideMcqSection
+        id="mcq-global-extrema"
+        badge="Practice"
+        title="Global Extrema on Bounded Domains — 20-Question Quiz"
+        scoreId="scoreglobalextrema"
+        section="global-extrema"
+        questions={MV_GLOBAL_EXTREMA_QUIZ}
+      />
+    </QuizGate>
   );
 }
 
-export default function GlobalExtremaBoundedDomainsGuide() {
+export default function GlobalExtremaBoundedDomainsGuide({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
       <TopicOpening />
@@ -1321,7 +1352,7 @@ export default function GlobalExtremaBoundedDomainsGuide() {
       <Section20 />
 
       <QuizIntro />
-      <Quiz />
+      <Quiz quizUnlocked={quizUnlocked} lockHint={lockHint} />
     </>
   );
-}
+}
