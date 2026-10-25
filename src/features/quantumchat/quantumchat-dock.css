@@ -1,21 +1,27 @@
-/* QuantumChat dock — aligned with Boolforge Circuits messenger chrome */
+/* QuantumChat dock — aligned with Boolforge Circuits messenger chrome.
+   Theme colours come from the site tokens (src/styles/tokens.css). */
 
 .quantum-chat-dock {
-  --quantum-chat-bg: #ffffff;
-  --quantum-chat-header-bg: #ffffff;
-  --quantum-chat-body-bg: #f3f6f8;
-  --quantum-chat-menu-bg: #ffffff;
-  --quantum-chat-text: #191919;
-  --quantum-chat-text-muted: #666666;
-  --quantum-chat-icon: #666666;
-  --quantum-chat-icon-hover-bg: rgba(0, 0, 0, 0.06);
-  --quantum-chat-border: rgba(0, 0, 0, 0.12);
-  --quantum-chat-primary: #0a66c2;
-  --quantum-chat-primary-hover: #004182;
-  --quantum-chat-avatar-bg: #0a66c2;
-  --quantum-chat-avatar-text: #ffffff;
-  --quantum-chat-status: #057642;
-  --quantum-chat-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* Colours follow the site theme (Light / Dark / Sepia) via src/styles/tokens.css.
+     The fallbacks keep the dock readable if tokens.css is ever missing. */
+  --quantum-chat-bg: var(--c-surface, #ffffff);
+  --quantum-chat-header-bg: var(--c-surface, #ffffff);
+  --quantum-chat-body-bg: var(--c-bg, #f3f6f8);
+  --quantum-chat-menu-bg: var(--c-surface, #ffffff);
+  --quantum-chat-text: var(--c-text, #191919);
+  --quantum-chat-text-muted: var(--c-muted, #666666);
+  --quantum-chat-icon: var(--c-muted, #666666);
+  --quantum-chat-icon-hover-bg: var(--c-surface-2, rgba(0, 0, 0, 0.06));
+  --quantum-chat-border: var(--c-border, rgba(0, 0, 0, 0.12));
+  --quantum-chat-primary: var(--c-accent-strong, #0a66c2);
+  --quantum-chat-primary-hover: var(--c-accent-strong-hover, #004182);
+  --quantum-chat-on-primary: var(--c-on-accent, #ffffff);
+  --quantum-chat-link: var(--c-accent, #0a66c2);
+  --quantum-chat-avatar-bg: var(--c-accent-strong, #0a66c2);
+  --quantum-chat-avatar-text: var(--c-on-accent, #ffffff);
+  --quantum-chat-status: var(--c-success-strong, #057642);
+  --quantum-chat-error: var(--c-danger, #b42318);
+  --quantum-chat-shadow: 0 0 0 1px var(--c-border, rgba(0, 0, 0, 0.08)), var(--c-shadow-lg, 0 4px 12px rgba(0, 0, 0, 0.15));
 
   position: fixed;
   /* Clear the "Ask tutor" pill (.cb-root: right 24px, ~130px wide) */
@@ -34,25 +40,6 @@
 
 .quantum-chat-dock--open {
   z-index: 10052;
-}
-
-.app.theme-light .quantum-chat-dock {
-  --quantum-chat-bg: #ffffff;
-  --quantum-chat-header-bg: #ffffff;
-  --quantum-chat-body-bg: #f3f6f8;
-}
-
-.app:not(.theme-light) .quantum-chat-dock {
-  --quantum-chat-bg: #1b2332;
-  --quantum-chat-header-bg: #1b2332;
-  --quantum-chat-body-bg: #121826;
-  --quantum-chat-menu-bg: #243044;
-  --quantum-chat-text: #f0f4ff;
-  --quantum-chat-text-muted: #9aa6bf;
-  --quantum-chat-icon: #9aa6bf;
-  --quantum-chat-icon-hover-bg: rgba(255, 255, 255, 0.08);
-  --quantum-chat-border: rgba(255, 255, 255, 0.12);
-  --quantum-chat-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .quantum-chat-dock__header {
@@ -319,12 +306,12 @@
 .quantum-chat-fallback__btn--primary {
   background: var(--quantum-chat-primary);
   border-color: transparent;
-  color: #fff;
+  color: var(--quantum-chat-on-primary);
 }
 
 .quantum-chat-fallback__btn--primary:hover {
   background: var(--quantum-chat-primary-hover);
-  color: #fff;
+  color: var(--quantum-chat-on-primary);
 }
 
 @media (max-width: 720px) {
@@ -389,7 +376,7 @@
 .qc-auth-form__error {
   margin: 0;
   font-size: 0.8rem;
-  color: #b42318;
+  color: var(--quantum-chat-error);
   line-height: 1.4;
 }
 
@@ -401,7 +388,7 @@
   font: inherit;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--quantum-chat-on-primary);
   background: var(--quantum-chat-primary);
   cursor: pointer;
 }
@@ -414,7 +401,7 @@
 .qc-auth-form__switch {
   border: none;
   background: transparent;
-  color: var(--quantum-chat-primary);
+  color: var(--quantum-chat-link);
   font: inherit;
   font-size: 0.8rem;
   font-weight: 650;
@@ -459,7 +446,7 @@
   display: grid;
   place-items: center;
   background: var(--quantum-chat-avatar-bg);
-  color: #fff;
+  color: var(--quantum-chat-avatar-text);
   font-size: 0.72rem;
   font-weight: 700;
   flex-shrink: 0;
@@ -499,7 +486,7 @@
 }
 
 .qc-chat-list__item--unread .qc-chat-list__time {
-  color: var(--quantum-chat-primary);
+  color: var(--quantum-chat-link);
   font-weight: 700;
 }
 
@@ -577,8 +564,8 @@
 
 .qc-bubble--mine {
   align-self: flex-end;
-  background: #d0e8ff;
-  color: #0f172a;
+  background: var(--quantum-chat-primary);
+  color: var(--quantum-chat-on-primary);
 }
 
 .qc-bubble--theirs {
@@ -586,11 +573,6 @@
   background: var(--quantum-chat-bg);
   border: 1px solid var(--quantum-chat-border);
   color: var(--quantum-chat-text);
-}
-
-.app:not(.theme-light) .qc-bubble--mine {
-  background: #0a66c2;
-  color: #fff;
 }
 
 .qc-bubble__body {
@@ -635,7 +617,7 @@
   border: none;
   border-radius: 50%;
   background: var(--quantum-chat-primary);
-  color: #fff;
+  color: var(--quantum-chat-on-primary);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -649,4 +631,23 @@
 
 .quantum-chat-fallback code {
   font-size: 0.82em;
+}
+
+/* ── Dark theme: index.css forces every span/strong/p to near-white with
+   !important. That is right on the dark dock, but these items sit on a
+   coloured or muted background, so restore their intended colour. ── */
+html[data-theme="dark"] .quantum-chat-dock .qc-chat-list__preview:not(#qc-x),
+html[data-theme="dark"] .quantum-chat-dock .qc-auth-form__lead:not(#qc-x),
+html[data-theme="dark"] .quantum-chat-dock .quantum-chat-fallback__text:not(#qc-x),
+html[data-theme="dark"] .quantum-chat-dock .qc-thread__empty:not(#qc-x) {
+  color: var(--quantum-chat-text-muted) !important;
+}
+
+html[data-theme="dark"] .quantum-chat-dock .qc-auth-form__error:not(#qc-x) {
+  color: var(--quantum-chat-error) !important;
+}
+
+html[data-theme="dark"] .quantum-chat-dock .quantum-chat-dock__avatar-text:not(#qc-x),
+html[data-theme="dark"] .quantum-chat-dock .qc-chat-list__avatar:not(#qc-x) {
+  color: var(--quantum-chat-avatar-text) !important;
 }
