@@ -1,8 +1,34 @@
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_DIRECTIONAL_DERIVATIVES_QUIZ } from "../../data/mvDirectionalDerivativesQuiz";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
 
-export default function DirectionalDerivativesGuide() {
+export const DIRECTIONAL_DERIVATIVES_QUIZ_KEY = "directional-derivatives";
+
+export const DIRECTIONAL_DERIVATIVES_NAV = [
+  { id: "directional-derivatives-opening", label: "Directional Derivatives in n Dimensions" },
+  { id: "directional-derivatives-1", label: "Why a Directional Derivative Is Needed" },
+  { id: "directional-derivatives-2", label: "The Gradient in n Dimensions" },
+  { id: "directional-derivatives-3", label: "Direction Vectors and Unit Directions" },
+  { id: "directional-derivatives-4", label: "Definition of the Directional Derivative" },
+  { id: "directional-derivatives-5", label: "Worked Example — Two-Dimensional Direction" },
+  { id: "directional-derivatives-6", label: "Geometric Meaning of the Gradient" },
+  { id: "directional-derivatives-7", label: "Maximum and Minimum Directional Derivatives" },
+  { id: "directional-derivatives-8", label: "Orthogonal Directions and Zero Change" },
+  { id: "directional-derivatives-9", label: "Worked Example — Three Variables" },
+  { id: "directional-derivatives-10", label: "Directional Derivatives and the Differential" },
+  { id: "directional-derivatives-11", label: "Connection with the Tangent Hyperplane" },
+  { id: "directional-derivatives-12", label: "Worked Example — Maximum Rate of Increase" },
+  { id: "directional-derivatives-13", label: "Directional Derivatives Along Coordinate Directions" },
+  { id: "directional-derivatives-14", label: "When the Gradient Is Zero" },
+  { id: "directional-derivatives-15", label: "Applications in High-Dimensional Problems" },
+  { id: "directional-derivatives-16", label: "Common Mistakes" },
+  { id: "directional-derivatives-17", label: "Key Formulas and Complete Workflow" },
+  { id: "mcq-directional-derivatives", label: "Quiz (20 Questions)", quiz: true },
+];
+
+
+export default function DirectionalDerivativesGuide({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
       <section className="section" id="directional-derivatives-opening">
@@ -587,14 +613,16 @@ export default function DirectionalDerivativesGuide() {
         </div>
       </section>
 
-      <GuideMcqSection
-        id="mcq-directional-derivatives"
-        badge="Practice"
-        title="Directional Derivatives in n Dimensions — Quiz"
-        scoreId="score-directional-derivatives"
-        section="directional-derivatives"
-        questions={MV_DIRECTIONAL_DERIVATIVES_QUIZ}
-      />
+      <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-directional-derivatives" title="Directional Derivatives in n Dimensions — Quiz">
+        <GuideMcqSection
+          id="mcq-directional-derivatives"
+          badge="Practice"
+          title="Directional Derivatives in n Dimensions — Quiz"
+          scoreId="score-directional-derivatives"
+          section="directional-derivatives"
+          questions={MV_DIRECTIONAL_DERIVATIVES_QUIZ}
+        />
+      </QuizGate>
     </>
   );
-}
+}
