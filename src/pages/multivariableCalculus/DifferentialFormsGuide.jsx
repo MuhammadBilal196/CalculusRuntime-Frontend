@@ -110,7 +110,7 @@ function DifferentialFormsContent() {
         <hr className="divider" />
         <GeneralizedStokesTopic
           quizUnlocked={formsPassed}
-          lockHint={`🔒 Score ${SECTION_QUIZ_PASS_PERCENT}%+ on the ${FORMS_TITLE} quiz to unlock this quiz.`}
+          lockHint={`Score ${SECTION_QUIZ_PASS_PERCENT}%+ on the ${FORMS_TITLE} quiz to unlock this quiz.`}
         />
         <footer className="pg-foot">Differential Forms · Rendered with MathJax 3</footer>
       </main>
