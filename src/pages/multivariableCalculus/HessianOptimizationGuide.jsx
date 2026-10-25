@@ -1,9 +1,32 @@
-import StudyGuideShell from "../courses/StudyGuideShell";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_HESSIAN_OPTIMIZATION_QUIZ } from "../../data/mvOptimizationQuiz";
-import "./PartialDerivativesGuide.css";
 import { RealLifeUse } from "../calculus/CalcBlocks";
-import KKTConditionsGuide from "./KKTConditionsGuide";
+import QuizGate from "../../components/study/QuizGate";
+
+export const HESSIAN_QUIZ_KEY = "hessian-optimization";
+
+export const HESSIAN_NAV = [
+  { id: "hessian-optimization", label: "What Is the Hessian Matrix?" },
+  { id: "critical-points", label: "Critical Points in Several Variables" },
+  { id: "second-order", label: "Why Second-Order Information Matters" },
+  { id: "hessian-two-variable", label: "The Hessian in Two Variables" },
+  { id: "determinant-test", label: "The Two-Variable Hessian Test" },
+  { id: "positive-definite", label: "Positive Definiteness" },
+  { id: "negative-definite", label: "Negative Definiteness" },
+  { id: "indefinite", label: "Indefinite Hessians and Saddle Points" },
+  { id: "higher-dimensional", label: "Hessian Classification in Higher Dimensions" },
+  { id: "degenerate", label: "Degenerate Critical Points" },
+  { id: "optimization-worked-examples", label: "Worked Examples" },
+  { id: "worked-example-1", label: "Worked Example — Local Minimum" },
+  { id: "worked-example-2", label: "Worked Example — Local Maximum" },
+  { id: "worked-example-3", label: "Worked Example — Saddle Point" },
+  { id: "worked-example-4", label: "Worked Example — Degenerate Hessian" },
+  { id: "applications", label: "Optimization Applications" },
+  { id: "common-mistakes", label: "Common Mistakes" },
+  { id: "key-formulas", label: "Key Formulas" },
+  { id: "mcq-hessian-optimization", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 function Divider() {
   return <hr className="divider" />;
@@ -27,244 +50,10 @@ function OpeningNote() {
   );
 }
 
-function GuideSidebarPart1() {
-  return (
-    <nav className="sidebar">
-      <div className="sb-brand">
-        <div className="sb-sub">Multivariable Calculus</div>
-        <div className="sb-title">
-          Constrained &amp; Unconstrained Optimization
-        </div>
-      </div>
-
-      <div className="sb-group">PART 1</div>
-
-      {/* Topic 1 */}
-      <a className="sb-link" href="#hessian-optimization">
-        The Hessian Matrix &amp; Optimization
-      </a>
-
-      <a className="sb-link" href="#optimization-worked-examples">
-        Worked Examples
-      </a>
-
-      <a className="sb-link" href="#mcq-hessian-optimization">
-        Quiz (20 Questions)
-      </a>
-
-      {/* Topic 2 */}
-      <a className="sb-link" href="#kkt-opening">
-        Inequality Constraints (KKT Conditions)
-      </a>
-
-      <a className="sb-link" href="#kkt-7">
-        Worked Examples
-      </a>
-
-      <a className="sb-link" href="#mcq-kkt-conditions">
-        Quiz (20 Questions)
-      </a>
-
-      <a className="sb-link" href="#kkt-12">
-        Key Concepts
-      </a>
-
-      <div className="sb-group">PART 2</div>
-
-      <a
-        className="sb-link"
-        href="/constrained-unconstrained-optimization/2"
-      >
-        Global Extrema on Bounded Domains
-      </a>
-
-      <a
-        className="sb-link"
-        href="/constrained-unconstrained-optimization/2"
-      >
-        Gradient Descent &amp; Numerical Optimization
-      </a>
-    </nav>
-  );
-}
-
-function GuideHeader() {
-  return (
-    <header className="ch-hdr">
-      <div className="ch-eye">
-        Constrained &amp; Unconstrained Optimization · Part 1
-      </div>
-
-      <h1 className="ch-title">The Hessian Matrix &amp; Optimization</h1>
-
-      <p className="ch-sub">
-        Hessian matrices, second-order curvature, critical-point classification,
-        positive and negative definiteness, and multivariable optimization
-      </p>
-
-      <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
-    </header>
-  );
-}
-
-function TableOfContentsPart1() {
-  return (
-    <nav className="toc">
-      <div className="toc-h">
-        Contents — Part 1 of 2
-      </div>
-
-      <div className="toc-grid">
-        {/* =========================
-            TOPIC 1
-        ========================== */}
-
-        <a className="toc-a" href="#hessian-optimization">
-          The Hessian Matrix &amp; Optimization
-        </a>
-
-        <a className="toc-a" href="#critical-points">
-          Critical Points in Several Variables
-        </a>
-
-        <a className="toc-a" href="#second-order">
-          Why Second-Order Information Matters
-        </a>
-
-        <a className="toc-a" href="#hessian-two-variable">
-          The Hessian in Two Variables
-        </a>
-
-        <a className="toc-a" href="#determinant-test">
-          The Two-Variable Hessian Test
-        </a>
-
-        <a className="toc-a" href="#positive-definite">
-          Positive Definiteness
-        </a>
-
-        <a className="toc-a" href="#negative-definite">
-          Negative Definiteness
-        </a>
-
-        <a className="toc-a" href="#indefinite">
-          Indefinite Hessians and Saddle Points
-        </a>
-
-        <a className="toc-a" href="#higher-dimensional">
-          Hessian Classification in Higher Dimensions
-        </a>
-
-        <a className="toc-a" href="#degenerate">
-          Degenerate Critical Points
-        </a>
-
-        <a className="toc-a" href="#optimization-worked-examples">
-          Worked Examples
-        </a>
-
-        <a className="toc-a" href="#mcq-hessian-optimization">
-          Quiz (20 Questions)
-        </a>
-
-        {/* =========================
-            TOPIC 2
-        ========================== */}
-
-        <a className="toc-a" href="#kkt-opening">
-          Inequality Constraints (KKT Conditions)
-        </a>
-
-        <a className="toc-a" href="#kkt-1">
-          Why Inequality Constraints Need a New Tool
-        </a>
-
-        <a className="toc-a" href="#kkt-2">
-          Feasible Points, Active Constraints, and Slack
-        </a>
-
-        <a className="toc-a" href="#kkt-3">
-          The KKT Conditions
-        </a>
-
-        <a className="toc-a" href="#kkt-4">
-          The Lagrangian
-        </a>
-
-        <a className="toc-a" href="#kkt-5">
-          Complementary Slackness
-        </a>
-
-        <a className="toc-a" href="#kkt-6">
-          Interior Optima Versus Boundary Optima
-        </a>
-
-        <a className="toc-a" href="#kkt-7">
-          Worked Example — Minimum with a Linear Inequality
-        </a>
-
-        <a className="toc-a" href="#kkt-8">
-          Worked Example — Active Disk Constraint
-        </a>
-
-        <a className="toc-a" href="#kkt-9">
-          Multiple Inequality Constraints and Active Sets
-        </a>
-
-        <a className="toc-a" href="#kkt-10">
-          When KKT Conditions Are Sufficient
-        </a>
-
-        <a className="toc-a" href="#kkt-11">
-          Constraint Qualifications and Common Mistakes
-        </a>
-
-        <a className="toc-a" href="#kkt-12">
-          KKT Checklist
-        </a>
-
-        <a className="toc-a" href="#mcq-kkt-conditions">
-          Quiz (20 Questions)
-        </a>
-      </div>
-    </nav>
-  );
-}
-
-function GuideFooter() {
-  return (
-    <div className="pg-foot">
-      <p>
-        Constrained &amp; Unconstrained Optimization · Part 1 of 2
-      </p>
-
-      <div className="guide-navigation" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-        <a
-          href="#hessian-optimization"
-          className="guide-nav-button"
-        >
-          ↑ Back to The Hessian Matrix &amp; Optimization
-        </a>
-
-        <a
-          href="/constrained-unconstrained-optimization/2"
-          className="guide-nav-button"
-        >
-          Next Page: Global Extrema on Bounded Domains →
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function HessianOptimizationContent() {
+/** Topic content only — the page lives in ConstrainedOptimizationPart1.jsx. */
+export default function HessianOptimizationTopic({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
-      <GuideSidebarPart1 />
-
-      <main className="main">
-        <GuideHeader />
-        <TableOfContentsPart1 />
         <OpeningNote />
 
         <Divider />
@@ -1229,31 +1018,16 @@ $$`}
 
         <Divider />
 
-        <GuideMcqSection
-          id="mcq-hessian-optimization"
-          badge="Practice"
-          title="The Hessian Matrix & Optimization — 20-Question Quiz"
-          scoreId="scorehessianoptimization"
-          section="hessian-optimization"
-          questions={MV_HESSIAN_OPTIMIZATION_QUIZ}
-        />
-
-        <Divider />
-        <KKTConditionsGuide />
-
-        <GuideFooter />
-      </main>
+        <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-hessian-optimization" title="The Hessian Matrix & Optimization — Quiz">
+          <GuideMcqSection
+            id="mcq-hessian-optimization"
+            badge="Practice"
+            title="The Hessian Matrix & Optimization — 20-Question Quiz"
+            scoreId="scorehessianoptimization"
+            section="hessian-optimization"
+            questions={MV_HESSIAN_OPTIMIZATION_QUIZ}
+          />
+        </QuizGate>
     </>
-  );
-}
-
-export default function HessianOptimizationGuide() {
-  return (
-    <StudyGuideShell
-      guideClass="partial-derivatives-guide"
-      title="The Hessian Matrix & Optimization"
-    >
-      <HessianOptimizationContent />
-    </StudyGuideShell>
   );
 }
