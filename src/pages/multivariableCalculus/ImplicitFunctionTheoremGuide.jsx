@@ -1,8 +1,35 @@
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_IMPLICIT_FUNCTION_THEOREM_QUIZ } from "../../data/mvImplicitFunctionTheoremQuiz";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
 
-export default function ImplicitFunctionTheoremGuide() {
+export const IMPLICIT_FUNCTION_QUIZ_KEY = "implicit-function-theorem";
+
+export const IMPLICIT_FUNCTION_NAV = [
+  { id: "implicit-function-opening", label: "Implicit Function Theorem" },
+  { id: "implicit-function-1", label: "Explicit and Implicit Relationships" },
+  { id: "implicit-function-2", label: "The Local Nature of the Theorem" },
+  { id: "implicit-function-3", label: "Why the Partial Derivative Must Be Nonzero" },
+  { id: "implicit-function-4", label: "Deriving the Implicit Derivative Formula" },
+  { id: "implicit-function-5", label: "Worked Example — Circle" },
+  { id: "implicit-function-6", label: "Level Curves and the Gradient" },
+  { id: "implicit-function-7", label: "Regular Level Sets" },
+  { id: "implicit-function-8", label: "Worked Example — Linear Implicit Equation" },
+  { id: "implicit-function-9", label: "Solving for z in Three Variables" },
+  { id: "implicit-function-10", label: "Partial Derivatives of an Implicit Function" },
+  { id: "implicit-function-11", label: "Worked Example — Sphere" },
+  { id: "implicit-function-12", label: "The Jacobian Perspective" },
+  { id: "implicit-function-13", label: "What Happens When the Condition F_y = 0?" },
+  { id: "implicit-function-14", label: "Worked Example — Choosing the Correct Dependent Variable" },
+  { id: "implicit-function-15", label: "Local Uniqueness" },
+  { id: "implicit-function-16", label: "Applications of the Implicit Function Theorem" },
+  { id: "implicit-function-17", label: "Common Mistakes" },
+  { id: "implicit-function-18", label: "Key Formulas and Complete Workflow" },
+  { id: "mcq-implicit-function-theorem", label: "Quiz (20 Questions)", quiz: true },
+];
+
+
+export default function ImplicitFunctionTheoremGuide({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
       <section className="section" id="implicit-function-opening">
@@ -645,14 +672,16 @@ export default function ImplicitFunctionTheoremGuide() {
         </div>
       </section>
 
-      <GuideMcqSection
-        id="mcq-implicit-function-theorem"
-        badge="Practice"
-        title="Implicit Function Theorem — Quiz"
-        scoreId="score-implicit-function-theorem"
-        section="implicit-function-theorem"
-        questions={MV_IMPLICIT_FUNCTION_THEOREM_QUIZ}
-      />
+      <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-implicit-function-theorem" title="Implicit Function Theorem — Quiz">
+        <GuideMcqSection
+          id="mcq-implicit-function-theorem"
+          badge="Practice"
+          title="Implicit Function Theorem — Quiz"
+          scoreId="score-implicit-function-theorem"
+          section="implicit-function-theorem"
+          questions={MV_IMPLICIT_FUNCTION_THEOREM_QUIZ}
+        />
+      </QuizGate>
     </>
   );
-}
+}
