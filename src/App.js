@@ -72,6 +72,7 @@ import Leaderboard from "./pages/dashboard/Leaderboard";
 import Certificate from "./pages/calculus/Certificate";
 import CourseQuiz from "./pages/courses/CourseQuiz";
 import MockExam from "./pages/mockExam/MockExam";
+import Analytics from "./pages/analytics/Analytics";
 import MyCertificates from "./pages/certificates/MyCertificates";
 import VerifyCertificate from "./pages/certificates/VerifyCertificate";
 import SavedForLater from "./pages/dashboard/SavedForLater";
@@ -988,6 +989,10 @@ function App() {
                 <Route
                   path="/mock-exam/:courseId"
                   element={<Layout body={<MockExam />} />}
+                />
+                <Route
+                  path="/analytics"
+                  element={<Layout body={<Analytics />} />}
                 />
 
                 {/* Lagrange Multipliers */}

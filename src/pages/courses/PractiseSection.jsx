@@ -98,7 +98,9 @@ const TOPICS = [
   "Linear Transformations",
   "Orthogonality & Least Squares",
   "Singular Value Decomposition",
-  ...[...LA_MODULES, ...LA_EXPANSION_MODULES].flatMap((module) => module.topics.map((topic) => topic.title)),
+  ...[...LA_MODULES, ...LA_EXPANSION_MODULES].flatMap((module) =>
+    module.topics.map((topic) => topic.title),
+  ),
   "Probability Basics",
   "Random Variables & Distributions",
   "Descriptive Statistics",
@@ -129,17 +131,19 @@ const TOPICS = [
  * banks:
  *   → one or more practice banks are searched
  */
-const PRACTICE_SELECTIONS = {
-  ...Object.fromEntries([
-    "Vectors & Vector Spaces",
-    "Matrices & Determinants",
-    "Systems of Linear Equations",
-    "Fundamental Subspaces & Rank-Nullity",
-    "Eigenvalues & Eigenvectors",
-    "Linear Transformations",
-    "Orthogonality & Least Squares",
-    "Singular Value Decomposition",
-  ].map((topic) => [topic, { type: "topic", banks: ["la"] }])),
+export const PRACTICE_SELECTIONS = {
+  ...Object.fromEntries(
+    [
+      "Vectors & Vector Spaces",
+      "Matrices & Determinants",
+      "Systems of Linear Equations",
+      "Fundamental Subspaces & Rank-Nullity",
+      "Eigenvalues & Eigenvectors",
+      "Linear Transformations",
+      "Orthogonality & Least Squares",
+      "Singular Value Decomposition",
+    ].map((topic) => [topic, { type: "topic", banks: ["la"] }]),
+  ),
 
   // ============================================================
   // LINEAR ALGEBRA — preserve dynamic existing modules
@@ -442,10 +446,10 @@ const PRACTICE_SELECTIONS = {
     moduleName: "Constrained & Unconstrained Optimization",
   },
   "Vector Fields & Approximation Theory": {
-  type: "module",
-  banks: ["mv"],
-  moduleName: "Vector Fields & Approximation Theory",
-},
+    type: "module",
+    banks: ["mv"],
+    moduleName: "Vector Fields & Approximation Theory",
+  },
 
   // ============================================================
   // NEW MVC MODULES — Potential Theory, Differential Forms,
@@ -625,12 +629,32 @@ const PRACTICE_SELECTIONS = {
  */
 const PRACTICE_MODULES = [
   // Multivariable Calculus
-  { name: "Coordinate Transformations & Surfaces", course: "mv", selections: ["Coordinate Transformations & Surfaces"] },
-  { name: "Constrained & Unconstrained Optimization", course: "mv", selections: ["Constrained & Unconstrained Optimization"] },
-  { name: "Vector Fields & Approximation Theory", course: "mv", selections: ["Vector Fields & Approximation Theory"] },
+  {
+    name: "Coordinate Transformations & Surfaces",
+    course: "mv",
+    selections: ["Coordinate Transformations & Surfaces"],
+  },
+  {
+    name: "Constrained & Unconstrained Optimization",
+    course: "mv",
+    selections: ["Constrained & Unconstrained Optimization"],
+  },
+  {
+    name: "Vector Fields & Approximation Theory",
+    course: "mv",
+    selections: ["Vector Fields & Approximation Theory"],
+  },
   { name: "Potential Theory", course: "mv", selections: ["Potential Theory"] },
-  { name: "Differential Forms", course: "mv", selections: ["Differential Forms"] },
-  { name: "Advanced Integration & Variational Methods", course: "mv", selections: ["Advanced Integration & Variational Methods"] },
+  {
+    name: "Differential Forms",
+    course: "mv",
+    selections: ["Differential Forms"],
+  },
+  {
+    name: "Advanced Integration & Variational Methods",
+    course: "mv",
+    selections: ["Advanced Integration & Variational Methods"],
+  },
   {
     name: "Geometry of Surfaces",
     course: "mv",
@@ -669,10 +693,9 @@ const PRACTICE_MODULES = [
 ];
 
 const MODULE_SELECTION_LABELS = Object.fromEntries(
-  PRACTICE_MODULES.filter((module) => module.selections.length > 1).map((module) => [
-    module.name,
-    `${module.name} — all topics`,
-  ]),
+  PRACTICE_MODULES.filter((module) => module.selections.length > 1).map(
+    (module) => [module.name, `${module.name} — all topics`],
+  ),
 );
 
 function shuffled(list) {
@@ -715,7 +738,10 @@ export default function PractiseSection() {
   // LAYER 2: TOPIC / MODULE SELECTION
   // ============================================================
 
-  const [chosenTopic, setChosenTopic] = useState(null);
+  const [chosenTopic, setChosenTopic] = useState(() => {
+    const fromLink = new URLSearchParams(window.location.search).get("topic");
+    return fromLink && PRACTICE_SELECTIONS[fromLink] ? fromLink : null;
+  });
   const [topicQuery, setTopicQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState("all");
   const [moduleFilter, setModuleFilter] = useState("all");
@@ -731,16 +757,22 @@ export default function PractiseSection() {
     topic.toLowerCase().includes(topicQuery.trim().toLowerCase());
 
   const visibleTopics = activeModule
-    ? activeModule.selections.filter((topic) => PRACTICE_SELECTIONS[topic] && matchesQuery(topic))
-    : TOPICS.filter((topic) =>
-        matchesQuery(topic) &&
-        (courseFilter === "all" || PRACTICE_SELECTIONS[topic]?.banks.includes(courseFilter))
+    ? activeModule.selections.filter(
+        (topic) => PRACTICE_SELECTIONS[topic] && matchesQuery(topic),
+      )
+    : TOPICS.filter(
+        (topic) =>
+          matchesQuery(topic) &&
+          (courseFilter === "all" ||
+            PRACTICE_SELECTIONS[topic]?.banks.includes(courseFilter)),
       );
 
   const handleCourseFilter = (value) => {
     setCourseFilter(value);
     const stillAvailable = PRACTICE_MODULES.some(
-      (module) => module.name === moduleFilter && (value === "all" || module.course === value),
+      (module) =>
+        module.name === moduleFilter &&
+        (value === "all" || module.course === value),
     );
     if (!stillAvailable) setModuleFilter("all");
   };
@@ -798,8 +830,14 @@ export default function PractiseSection() {
     resetQuizTurn();
 
     const selectedLoaders = (selection.banks || [])
-      .map((bankName) => BANK_LOADERS[bankName] && (() => BANK_LOADERS[bankName]().then((questions) =>
-        questions.map((question) => ({ ...question, bankName })))))
+      .map(
+        (bankName) =>
+          BANK_LOADERS[bankName] &&
+          (() =>
+            BANK_LOADERS[bankName]().then((questions) =>
+              questions.map((question) => ({ ...question, bankName })),
+            )),
+      )
       .filter(Boolean);
 
     Promise.all(selectedLoaders.map((loader) => loader()))
@@ -848,7 +886,12 @@ export default function PractiseSection() {
         // ========================================================
 
         const uniqueQuestions = Array.from(
-          new Map(filtered.map((question) => [`${question.bankName}:${question.id}`, question])).values(),
+          new Map(
+            filtered.map((question) => [
+              `${question.bankName}:${question.id}`,
+              question,
+            ]),
+          ).values(),
         );
 
         // ========================================================
@@ -944,13 +987,25 @@ export default function PractiseSection() {
   // ============================================================
 
   const recordPracticeAnswer = (question, selectedIndex) => {
-    const courseIds = { la: "linear-algebra", calcAg: "calculus-analytical-geometry",
-      mv: "multivariable-calculus", ps: "probability-statistics" };
-    recordAnswer({ source: "practice", courseId: courseIds[question.bankName] || null,
+    const courseIds = {
+      la: "linear-algebra",
+      calcAg: "calculus-analytical-geometry",
+      mv: "multivariable-calculus",
+      ps: "probability-statistics",
+    };
+    recordAnswer({
+      source: "practice",
+      courseId: courseIds[question.bankName] || null,
       quizId: `practice:${chosenTopic}:${chosenDifficulty}`,
-      questionId: question.id, responseId: `${question.bankName}:${question.id}`,
-      prompt: question.question, options: question.options, selectedIndex,
-      correctIndex: question.correctAnswer, topic: question.topic, difficulty: question.difficulty });
+      questionId: question.id,
+      responseId: `${question.bankName}:${question.id}`,
+      prompt: question.question,
+      options: question.options,
+      selectedIndex,
+      correctIndex: question.correctAnswer,
+      topic: question.topic,
+      difficulty: question.difficulty,
+    });
   };
 
   const handleAnswerClick = (index) => {
@@ -1132,13 +1187,31 @@ export default function PractiseSection() {
           <h3>Select Practice Topic</h3>
 
           <div className="practice-topic-filters">
-            <label htmlFor="practice-topic-search">Search practice topics</label>
-            <input id="practice-topic-search" type="search" value={topicQuery}
-              onChange={(event) => setTopicQuery(event.target.value)} placeholder="For example: PCA or vectors" />
-            <div role="group" aria-label="Filter topics by course" className="practice-course-filters">
+            <label htmlFor="practice-topic-search">
+              Search practice topics
+            </label>
+            <input
+              id="practice-topic-search"
+              type="search"
+              value={topicQuery}
+              onChange={(event) => setTopicQuery(event.target.value)}
+              placeholder="For example: PCA or vectors"
+            />
+            <div
+              role="group"
+              aria-label="Filter topics by course"
+              className="practice-course-filters"
+            >
               {COURSE_FILTERS.map(([value, label]) => (
-                <button key={value} type="button" className="practice-tool-btn"
-                  aria-pressed={courseFilter === value} onClick={() => handleCourseFilter(value)}>{label}</button>
+                <button
+                  key={value}
+                  type="button"
+                  className="practice-tool-btn"
+                  aria-pressed={courseFilter === value}
+                  onClick={() => handleCourseFilter(value)}
+                >
+                  {label}
+                </button>
               ))}
             </div>
             {availableModules.length > 0 && (
@@ -1166,16 +1239,32 @@ export default function PractiseSection() {
                   {availableModules.map((module) => (
                     <option key={module.name} value={module.name}>
                       {module.name}
-                      {module.selections.length > 1 ? ` (${module.selections.length - (module.selections.includes(module.name) ? 1 : 0)} topics)` : ""}
+                      {module.selections.length > 1
+                        ? ` (${module.selections.length - (module.selections.includes(module.name) ? 1 : 0)} topics)`
+                        : ""}
                     </option>
                   ))}
                 </select>
               </div>
             )}
             <p role="status">{visibleTopics.length} topics available</p>
-            {visibleTopics.length === 0 && <p>No topics match. Clear the search or choose another course.</p>}
-            {(topicQuery || courseFilter !== "all" || moduleFilter !== "all") && (
-              <button type="button" className="practice-tool-btn" onClick={() => { setTopicQuery(""); setCourseFilter("all"); setModuleFilter("all"); }}>Clear topic filters</button>
+            {visibleTopics.length === 0 && (
+              <p>No topics match. Clear the search or choose another course.</p>
+            )}
+            {(topicQuery ||
+              courseFilter !== "all" ||
+              moduleFilter !== "all") && (
+              <button
+                type="button"
+                className="practice-tool-btn"
+                onClick={() => {
+                  setTopicQuery("");
+                  setCourseFilter("all");
+                  setModuleFilter("all");
+                }}
+              >
+                Clear topic filters
+              </button>
             )}
           </div>
           <div className="practice-topic-grid">

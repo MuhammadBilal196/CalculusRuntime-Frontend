@@ -10,7 +10,7 @@ const nonempty = (s) => typeof s === "string" && s.trim().length > 0;
 export function validAttempt(record) {
   const index = (i) => Number.isInteger(i) && i >= 0 && i < record.options.length;
   return record?.schemaVersion === 1 && nonempty(record.attemptId) && nonempty(record.responseId)
-    && ["guide", "practice", "certificate"].includes(record.source)
+    && ["guide", "practice", "certificate","mock"].includes(record.source)
     && nonempty(record.quizId) && nonempty(record.questionId) && nonempty(record.prompt)
     && Array.isArray(record.options) && record.options.length >= 2 && record.options.every(nonempty)
     && (record.selectedIndex === null || index(record.selectedIndex)) && index(record.correctIndex)
