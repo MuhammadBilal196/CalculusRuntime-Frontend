@@ -1,0 +1,256 @@
+/* Function Grapher — all classes prefixed "fg-" so they never affect other pages.
+   The canvas reads --fg-canvas / --fg-grid / --fg-axis / --fg-muted for its colours. */
+
+.fg-page {
+  --fg-ink: var(--ink, #0f172a);
+  --fg-muted: var(--muted, #64748b);
+  --fg-accent: var(--accent, #0284c7);
+  --fg-surface: var(--card, #ffffff);
+  --fg-rule: var(--rule, #e2e8f0);
+  --fg-soft: rgba(2, 132, 199, 0.08);
+  --fg-bad: #e11d48;
+  --fg-canvas: #ffffff;
+  --fg-grid: #f1f5f9;
+  --fg-grid-major: #dde4ee;
+  --fg-axis: #475569;
+  --fg-cursor: rgba(100, 116, 139, 0.6);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+  color: var(--fg-ink);
+}
+
+[data-theme="dark"] .fg-page {
+  --fg-ink: #f8fafc;
+  --fg-muted: #94a3b8;
+  --fg-accent: #38bdf8;
+  --fg-surface: #111827;
+  --fg-rule: #1e293b;
+  --fg-soft: rgba(56, 189, 248, 0.12);
+  --fg-bad: #fb7185;
+  --fg-canvas: #0b1120;
+  --fg-grid: #111a2e;
+  --fg-grid-major: #1e293b;
+  --fg-axis: #94a3b8;
+  --fg-cursor: rgba(148, 163, 184, 0.55);
+}
+
+.fg-head { margin-bottom: 1.25rem; }
+.fg-eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-accent);
+}
+.fg-title { margin: 0 0 0.5rem; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; }
+.fg-h2 { display: block; margin: 0 0 0.75rem; font-size: 1rem; font-weight: 750; }
+.fg-muted { color: var(--fg-muted); margin: 0.25rem 0; }
+.fg-small { font-size: 0.8rem; font-weight: 500; }
+
+.fg-page *, .fg-page *::before, .fg-page *::after { box-sizing: border-box; }
+
+.fg-layout {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  grid-template-areas:
+    "side graph"
+    "side below";
+  gap: 0 1.25rem;
+  align-items: start;
+}
+.fg-side { grid-area: side; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; min-width: 0; }
+.fg-help li { overflow-wrap: anywhere; }
+.fg-main { grid-area: graph; min-width: 0; }
+.fg-below { grid-area: below; min-width: 0; }
+
+.fg-panel {
+  background: var(--fg-surface);
+  border: 1px solid var(--fg-rule);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Function list ── */
+.fg-fn-list { list-style: none; margin: 0 0 0.75rem; padding: 0; display: grid; gap: 0.6rem; }
+.fg-fn {
+  border: 1px solid var(--fg-rule);
+  border-left: 4px solid var(--fg-fn-color);
+  border-radius: 10px;
+  padding: 0.55rem 0.6rem;
+}
+.fg-fn--active { background: var(--fg-soft); }
+.fg-fn-row { display: flex; align-items: center; gap: 0.45rem; }
+.fg-fn-label { font-weight: 700; font-size: 0.85rem; white-space: nowrap; color: var(--fg-fn-color); }
+
+.fg-swatch {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  border: 2px solid var(--fg-fn-color);
+  background: var(--fg-fn-color);
+  cursor: pointer;
+  padding: 0;
+}
+.fg-swatch--off { background: transparent; }
+
+.fg-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 2.2rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--fg-rule);
+  border-radius: 7px;
+  background: var(--fg-surface);
+  color: var(--fg-ink);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+}
+.fg-input--error { border-color: var(--fg-bad); }
+.fg-error { margin: 0.35rem 0 0; font-size: 0.78rem; color: var(--fg-bad); }
+
+.fg-icon-btn {
+  flex-shrink: 0;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid var(--fg-rule);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.fg-icon-btn:hover { color: var(--fg-bad); border-color: var(--fg-bad); }
+
+.fg-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  cursor: pointer;
+}
+
+/* ── Buttons & chips ── */
+.fg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  min-width: 2.2rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--fg-rule);
+  border-radius: 8px;
+  background: var(--fg-surface);
+  color: var(--fg-ink);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.fg-btn:hover:not(:disabled) { border-color: var(--fg-accent); color: var(--fg-accent); }
+.fg-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.fg-btn--ghost { width: 100%; border-style: dashed; }
+
+.fg-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.fg-chip {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--fg-rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fg-ink);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.fg-chip:hover { border-color: var(--fg-accent); color: var(--fg-accent); }
+
+.fg-range { width: 100%; accent-color: var(--fg-accent); }
+
+.fg-help summary { cursor: pointer; font-weight: 700; font-size: 0.9rem; }
+.fg-help ul { margin: 0.6rem 0 0; padding-left: 1.1rem; font-size: 0.82rem; line-height: 1.7; color: var(--fg-muted); }
+.fg-help code { font-size: 0.8rem; color: var(--fg-ink); }
+
+.fg-btn:focus-visible,
+.fg-chip:focus-visible,
+.fg-swatch:focus-visible,
+.fg-icon-btn:focus-visible,
+.fg-input:focus-visible,
+.fg-canvas:focus-visible { outline: 3px solid var(--fg-accent); outline-offset: 2px; }
+
+/* ── Graph ── */
+.fg-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.fg-toolbar-group { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; }
+.fg-toolbar-group .fg-check { margin-top: 0; }
+
+.fg-canvas-wrap {
+  width: 100%;
+  border: 1px solid var(--fg-rule);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--fg-canvas);
+}
+.fg-canvas {
+  display: block;
+  touch-action: none; /* we handle pan / pinch ourselves */
+  cursor: crosshair;
+}
+.fg-canvas:active { cursor: grabbing; }
+
+.fg-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  min-height: 2.4rem;
+  align-items: center;
+  margin: 0.6rem 0 1rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--fg-rule);
+  border-radius: 10px;
+  background: var(--fg-surface);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.fg-readout-x { font-weight: 700; }
+.fg-readout-item { display: inline-flex; align-items: center; gap: 0.35rem; }
+.fg-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--fg-fn-color); }
+
+.fg-keys-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+.fg-keys-grid h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+}
+.fg-keys-grid p { margin: 0; font-size: 0.88rem; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.fg-foot { margin-top: 1rem; }
+.fg-foot a { color: var(--fg-accent); }
+
+@media (max-width: 960px) {
+  /* Phones and tablets: graph, then the function boxes, then key points */
+  .fg-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "graph" "side" "below";
+  }
+  .fg-below { margin-top: 1rem; }
+  .fg-keys-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .fg-keys-grid { grid-template-columns: 1fr; }
+  .fg-readout { font-size: 0.78rem; }
+}
