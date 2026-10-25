@@ -11,7 +11,7 @@ const CORE_PATH_ORDER = [
   "/3d-geometry/1",
   "/partial-derivatives/1",
   "/multiple-integrals/1",
-  "/jacobians-change-of-variables/1",
+  "/coordinate-transformations/1",
   "/lagrange-multipliers/1",
   "/vector-calculus/1",
   "/divergence-curl/1",
