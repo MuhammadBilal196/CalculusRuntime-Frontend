@@ -15,6 +15,7 @@ const toolLinks = [
   { to: "/ai-solver", label: "AI Solver" },
   { to: "/cheatsheet", label: "Cheat Sheet" },
   { to: "/practice", label: "Practice" },
+  { to: "/analytics", label: "Analytics" },
   { to: "/saved", label: "Saved" },
 ];
 
