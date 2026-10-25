@@ -3,6 +3,7 @@ import { mixedMathToHtml } from "../../utils/mixedMath";
 
 import { inferGuideCourse } from "../../utils/mistakeNotebook";
 import useQuizAttempts from "../../hooks/useQuizAttempts";
+import "./GuideMcq.css";
 
 export function GuideMcqSection({ id, badge, title, scoreId, section, questions, onComplete }) {
   const { record: recordAnswer, restart: restartRecording } = useQuizAttempts();
@@ -180,383 +181,207 @@ export function GuideMcqSection({ id, badge, title, scoreId, section, questions,
     if (index <= unlockedIndex) revisit(index);
   };
 
+  // Per-question status for the progress bar and the number buttons.
+  const statusOf = (idx) => {
+    const a = attemptsRef.current[idx];
+    if (!a) return "todo";
+    return a.correct ? "right" : "wrong";
+  };
+  const wrongCount = answeredCount - score;
+  const answeredPct = count ? Math.round((answeredCount / count) * 100) : 0;
+  const scorePct = count ? Math.round((score / count) * 100) : 0;
+  const isAttemptDone = answeredCount === count;
+  const answerIsRight = isSubmitted && letterLabels[selectedOption] === currentQ.answer;
+
   return (
-    <section className="la-quiz-container" id={id} data-section={section} ref={containerRef}>
-      
-      {/* FLOATING SIDE SCORE BAR */}
+    <section className="gmq la-quiz-container" id={id} data-section={section} ref={containerRef}>
+      {/* Floating score card (wide screens, while the quiz is on screen) */}
       {isVisible && (
-        <div className="la-floating-score">
-          <div className="la-fs-fraction">{score} / {count}</div>
-          <div className="la-fs-label">Score: {score}</div>
-          <div className="la-fs-percent">Score: {Math.round((score / count) * 100)}%</div>
-        </div>
+        <aside className="gmq-float" aria-hidden="true">
+          <span className="gmq-float__label">Score</span>
+          <span className="gmq-float__fraction">{score} / {count}</span>
+          <span className="gmq-float__pct">{scorePct}%</span>
+          <span className="gmq-float__track">
+            <span className="gmq-float__fill gmq-float__fill--right" style={{ height: `${count ? (score / count) * 100 : 0}%` }} />
+            <span
+              className="gmq-float__fill gmq-float__fill--wrong"
+              style={{ height: `${count ? (wrongCount / count) * 100 : 0}%`, bottom: `${count ? (score / count) * 100 : 0}%` }}
+            />
+          </span>
+          <span className="gmq-float__answered">{answeredCount}/{count} done</span>
+        </aside>
       )}
 
-      {/* Header Area */}
-      <div className="la-quiz-header">
-        <span style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '0.5rem', display: 'block' }}>
-          {badge} · {title}
-        </span>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="la-quiz-score">
-            Score <span>{score}</span> / {count}
-          </div>
-          <div className="la-quiz-instruction">
-            Submit each answer to unlock the next
-          </div>
+      {/* Header */}
+      <header className="gmq-head">
+        <p className="gmq-kicker">{[badge, title].filter(Boolean).join(" · ")}</p>
+        <div className="gmq-head__row">
+          <p className="gmq-score">
+            Score <strong>{score}</strong> / {count}
+          </p>
+          <p className="gmq-hint">Submit each answer to unlock the next question</p>
+        </div>
+      </header>
+
+      {/* Progress bar: one segment per question — green correct, red wrong */}
+      <div className="gmq-progress">
+        <div className="gmq-progress__meta">
+          <span>
+            <strong>{answeredCount}</strong> of {count} answered
+          </span>
+          <span className="gmq-progress__legend">
+            <span className="gmq-legend gmq-legend--right">{score} correct</span>
+            <span className="gmq-legend gmq-legend--wrong">{wrongCount} wrong</span>
+            <span className="gmq-progress__pct">{answeredPct}%</span>
+          </span>
+        </div>
+        <div
+          className="gmq-progress__bar"
+          role="progressbar"
+          aria-label="Quiz completion"
+          aria-valuemin={0}
+          aria-valuemax={count}
+          aria-valuenow={answeredCount}
+          aria-valuetext={`${answeredCount} of ${count} answered, ${score} correct, ${wrongCount} wrong`}
+          style={{ "--gmq-count": count }}
+        >
+          {questions.map((_, idx) => (
+            <span
+              key={idx}
+              className={`gmq-seg gmq-seg--${statusOf(idx)}${idx === currentIndex ? " gmq-seg--current" : ""}`}
+            />
+          ))}
         </div>
       </div>
 
-      {/* Circular Pagination */}
-      <div className="la-quiz-pagination" role="tablist">
-        {questions.map((_, idx) => (
-          <button
-            key={idx}
-            type="button"
-            className={`la-page-dot ${idx === currentIndex ? "active" : ""} ${idx > unlockedIndex ? "locked" : ""}`}
-            onClick={() => jumpToQuestion(idx)}
-            disabled={idx > unlockedIndex}
-            aria-label={`Go to question ${idx + 1}`}
-          >
-            {idx + 1}
-          </button>
-        ))}
-      </div>
-
-      <p className="la-quiz-progress-text" aria-live="polite">
-        Progress: {answeredCount} of {count} answered ({Math.round(answeredCount / count * 100)}%).
-        {" "}Score: {score} correct out of {count}.
+      {/* Spoken progress for screen readers (same wording as before) */}
+      <p className="gmq-sr" aria-live="polite">
+        Progress: {answeredCount} of {count} answered ({answeredPct}%). Score: {score} correct out of {count}.
       </p>
-      <progress aria-label="Quiz completion" value={answeredCount} max={count} style={{ width: "100%" }} />
-      {restoreNotice && <p role="status">{restoreNotice}</p>}
-      {storageError && <p role="alert">Progress could not be saved on this device. Keep this page open to continue.</p>}
-      {!checkpointMode && answeredCount === count && (
-        <div>
-          <p role="status">Attempt complete: {score}/{count}. Review your answers or start a new attempt.</p>
-          <button type="button" className="la-nav-btn" onClick={restartAttempt}>Retake quiz</button>
+
+      {/* Question number buttons */}
+      <nav className="gmq-dots" aria-label="Questions">
+        {questions.map((_, idx) => {
+          const status = statusOf(idx);
+          const locked = idx > unlockedIndex;
+          return (
+            <button
+              key={idx}
+              type="button"
+              className={`gmq-dot gmq-dot--${status}${idx === currentIndex ? " gmq-dot--current" : ""}`}
+              onClick={() => jumpToQuestion(idx)}
+              disabled={locked}
+              aria-current={idx === currentIndex ? "step" : undefined}
+              aria-label={`Question ${idx + 1}${status === "right" ? ", correct" : status === "wrong" ? ", wrong" : ""}${locked ? ", locked" : ""}`}
+            >
+              {idx + 1}
+            </button>
+          );
+        })}
+      </nav>
+
+      {restoreNotice && <p className="gmq-notice" role="status">{restoreNotice}</p>}
+      {storageError && (
+        <p className="gmq-notice gmq-notice--error" role="alert">
+          Progress could not be saved on this device. Keep this page open to continue.
+        </p>
+      )}
+      {!checkpointMode && isAttemptDone && (
+        <div className="gmq-done" role="status">
+          <span>
+            Attempt complete: <strong>{score}/{count}</strong> ({scorePct}%). Review your answers or start again.
+          </span>
+          <button type="button" className="gmq-btn" onClick={restartAttempt}>Retake quiz</button>
         </div>
       )}
 
-      {/* Main MCQ Card */}
-      <div className="la-quiz-card">
-        <div className="la-q-number">{currentIndex + 1}</div>
-        <div 
-          className="la-q-prompt" 
-          dangerouslySetInnerHTML={{ __html: formatText(currentQ.prompt) }}
-        />
+      {/* Question card */}
+      <article className="gmq-card">
+        <div className="gmq-card__top">
+          <span className="gmq-qnum">{currentIndex + 1}</span>
+          <span className="gmq-qof">Question {currentIndex + 1} of {count}</span>
+        </div>
+        <div className="gmq-prompt" dangerouslySetInnerHTML={{ __html: formatText(currentQ.prompt) }} />
 
-        <div className="la-options-list">
+        <div className="gmq-options" role="group" aria-label="Answer choices">
           {currentQ.options.map((opt, idx) => {
-            const isSelected = selectedOption === idx;
             const letter = letterLabels[idx];
-            let optionClass = "la-option-card ";
-            
-            if (isSelected) optionClass += "selected ";
+            const isSelected = selectedOption === idx;
+            let state = "";
             if (isSubmitted) {
-              if (letter === currentQ.answer) optionClass += "correct ";
-              else if (isSelected) optionClass += "incorrect ";
+              if (letter === currentQ.answer) state = " gmq-opt--right";
+              else if (isSelected) state = " gmq-opt--wrong";
+              else state = " gmq-opt--dim";
+            } else if (isSelected) {
+              state = " gmq-opt--selected";
             }
-
             return (
               <button
                 key={letter}
                 type="button"
-                className={optionClass}
+                className={`gmq-opt${state}`}
                 onClick={() => handleSelect(idx)}
                 disabled={isSubmitted}
+                aria-pressed={isSelected}
               >
-                <span className="la-opt-letter">{letter}</span>
-                <span className="la-opt-text" dangerouslySetInnerHTML={{ __html: formatText(opt) }} />
+                <span className="gmq-opt__letter">{letter}</span>
+                <span className="gmq-opt__text" dangerouslySetInnerHTML={{ __html: formatText(opt) }} />
               </button>
             );
           })}
         </div>
 
-        {/* Submit Button & Explanation Guard Logic */}
         {!isSubmitted ? (
           <button
             type="button"
-            className="la-submit-btn"
+            className="gmq-btn gmq-btn--primary"
             onClick={handleSubmit}
             disabled={selectedOption === null}
           >
             Submit Answer
           </button>
         ) : (
-          <div className={`la-explanation-box ${letterLabels[selectedOption] === currentQ.answer ? "success" : "error"}`}>
-            <strong>{letterLabels[selectedOption] === currentQ.answer ? "Correct!" : "Incorrect."}</strong> 
-            {" "}Option {currentQ.answer} is the right answer.
-            <div className="la-explanation-text" dangerouslySetInnerHTML={{ __html: formatText(currentQ.explanation) }} />
+          <div className={`gmq-feedback ${answerIsRight ? "gmq-feedback--right" : "gmq-feedback--wrong"}`}>
+            <p className="gmq-feedback__verdict">
+              <span aria-hidden="true">{answerIsRight ? "✓ " : "✗ "}</span>
+              <strong>{answerIsRight ? "Correct!" : "Incorrect."}</strong> Option {currentQ.answer} is the right answer.
+            </p>
+            <div className="gmq-feedback__text" dangerouslySetInnerHTML={{ __html: formatText(currentQ.explanation) }} />
           </div>
         )}
-      </div>
+      </article>
 
-      {/* Bottom Navigation */}
-      <div className="la-quiz-footer">
-        <button
-          type="button"
-          className="la-nav-btn"
-          onClick={handlePrev}
-          disabled={currentIndex === 0}
-        >
-          &lsaquo; PREVIOUS
+      {/* Previous / Next */}
+      <div className="gmq-nav">
+        <button type="button" className="gmq-btn" onClick={handlePrev} disabled={currentIndex === 0}>
+          ← Previous
         </button>
-        <div className="la-footer-tracker">
-          Question {currentIndex + 1} / {count}
-        </div>
+        <span className="gmq-nav__pos">{currentIndex + 1} / {count}</span>
         <button
           type="button"
-          className="la-nav-btn"
+          className="gmq-btn"
           onClick={handleNext}
-          disabled={
-            currentIndex >= count - 1 ||
-            (currentIndex >= unlockedIndex && !isSubmitted)
-          }
+          disabled={currentIndex >= count - 1 || (currentIndex >= unlockedIndex && !isSubmitted)}
         >
-          NEXT &rsaquo;
+          Next →
         </button>
       </div>
 
       {checkpointMode && Object.keys(attemptsRef.current).length === count && (
-        <div>
-          <p className="la-quiz-progress-text" role="status">
-            Attempt complete: {score}/{count} ({Math.round(score / count * 100)}%).
+        <div className={`gmq-done ${score / count >= 0.8 ? "gmq-done--pass" : "gmq-done--fail"}`} role="status">
+          <span>
+            Attempt complete: <strong>{score}/{count}</strong> ({scorePct}%).
             {score / count >= 0.8 ? " Checkpoint passed." : " Score at least 80% to pass. Review the explanations and try again."}
-          </p>
+          </span>
           {saveError && (
-            <p role="alert">Your result could not be saved. <button type="button" className="la-nav-btn" onClick={() => persistAttempt(score)}>Save result again</button></p>
+            <span role="alert">
+              Your result could not be saved.{" "}
+              <button type="button" className="gmq-btn" onClick={() => persistAttempt(score)}>Save result again</button>
+            </span>
           )}
-          <button type="button" className="la-nav-btn" onClick={restartAttempt}>Retake checkpoint</button>
+          <button type="button" className="gmq-btn" onClick={restartAttempt}>Retake checkpoint</button>
         </div>
       )}
-
-      {/* Linear Algebra Module Style Definitions */}
-      <style>{`
-        .la-quiz-container {
-          background-color: #0f172a;
-          color: #e2e8f0;
-          border-radius: 12px;
-          padding: 2.5rem 2rem;
-          font-family: Inter, -apple-system, sans-serif;
-          margin: 3rem 0;
-          position: relative;
-        }
-        
-        /* Floating Side Score Bar Styles */
-        .la-floating-score {
-          position: fixed;
-          right: 20px;
-          top: 50%;
-          transform: translateY(-50%);
-          background-color: #0B1120;
-          border: 1px solid #1e293b;
-          border-radius: 12px;
-          padding: 1.25rem 1rem;
-          text-align: center;
-          z-index: 50;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-          width: 85px;
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-          animation: slideInRight 0.3s ease-out forwards;
-        }
-        @keyframes slideInRight {
-          from { opacity: 0; transform: translate(30px, -50%); }
-          to { opacity: 1; transform: translate(0, -50%); }
-        }
-        .la-fs-fraction {
-          font-size: 1.1rem;
-          font-weight: bold;
-          color: #ffffff;
-        }
-        .la-fs-label {
-          font-size: 0.75rem;
-          color: #94a3b8;
-        }
-        .la-fs-percent {
-          font-size: 1.4rem;
-          font-weight: 800;
-          color: #0ea5e9;
-          margin-top: 0.25rem;
-        }
-        /* Hide floating bar on smaller screens */
-        @media (max-width: 1200px) {
-          .la-floating-score { display: none; }
-        }
-
-        .la-quiz-header {
-          margin-bottom: 1.5rem;
-        }
-        .la-quiz-score {
-          font-size: 1.1rem;
-          font-weight: 600;
-        }
-        .la-quiz-score span {
-          font-size: 1.4rem;
-          color: #ffffff;
-        }
-        .la-quiz-instruction {
-          color: #64748b;
-          font-size: 0.9rem;
-        }
-        .la-quiz-pagination {
-          display: flex;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-          margin-bottom: 1rem;
-        }
-        .la-page-dot {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          border: none;
-          background-color: #1e293b;
-          color: #94a3b8;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-        .la-page-dot.active {
-          background-color: #0ea5e9;
-          color: #ffffff;
-        }
-        .la-page-dot.locked {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
-        .la-quiz-progress-text {
-          font-size: 0.85rem;
-          color: #94a3b8;
-          margin-bottom: 2rem;
-        }
-        .la-quiz-card {
-          background-color: #0B1120;
-          border: 1px solid #1e293b;
-          border-radius: 12px;
-          padding: 2rem;
-        }
-        .la-q-number {
-          background-color: #0ea5e9;
-          color: #ffffff;
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: bold;
-          font-size: 0.85rem;
-          margin-bottom: 1rem;
-        }
-        .la-q-prompt {
-          font-size: 1.15rem;
-          margin-bottom: 1.5rem;
-          line-height: 1.6;
-          color: #f8fafc;
-        }
-        .la-options-list {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-        }
-        .la-option-card {
-          display: flex;
-          align-items: center;
-          background-color: transparent;
-          border: 1px solid #334155;
-          border-radius: 8px;
-          padding: 1rem 1.25rem;
-          color: #cbd5e1;
-          font-size: 1rem;
-          text-align: left;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-        .la-option-card:hover:not(:disabled) {
-          border-color: #64748b;
-          background-color: rgba(255,255,255,0.03);
-        }
-        .la-option-card.selected {
-          border-color: #0ea5e9;
-          background-color: rgba(14, 165, 233, 0.1);
-        }
-        .la-option-card.correct {
-          border-color: #10b981;
-          background-color: rgba(16, 185, 129, 0.1);
-        }
-        .la-option-card.incorrect {
-          border-color: #ef4444;
-          background-color: rgba(239, 68, 68, 0.1);
-        }
-        .la-opt-letter {
-          font-weight: bold;
-          margin-right: 1rem;
-          color: #94a3b8;
-        }
-        .la-submit-btn {
-          background-color: #0ea5e9;
-          color: #ffffff;
-          border: none;
-          padding: 0.75rem 1.5rem;
-          border-radius: 6px;
-          font-weight: 600;
-          cursor: pointer;
-          font-size: 1rem;
-        }
-        .la-submit-btn:disabled {
-          background-color: #1e293b;
-          color: #64748b;
-          cursor: not-allowed;
-        }
-        .la-explanation-box {
-          margin-top: 1.5rem;
-          padding: 1.25rem;
-          border-radius: 8px;
-          font-size: 0.95rem;
-          line-height: 1.6;
-        }
-        .la-explanation-box.success {
-          background-color: rgba(16, 185, 129, 0.1);
-          border: 1px solid #10b981;
-          color: #a7f3d0;
-        }
-        .la-explanation-box.error {
-          background-color: rgba(239, 68, 68, 0.1);
-          border: 1px solid #ef4444;
-          color: #fecaca;
-        }
-        .la-explanation-text {
-          margin-top: 0.5rem;
-          color: #e2e8f0;
-        }
-        .la-quiz-footer {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 2rem;
-        }
-        .la-nav-btn {
-          background-color: #1e293b;
-          color: #cbd5e1;
-          border: none;
-          padding: 0.6rem 1.25rem;
-          border-radius: 6px;
-          font-size: 0.85rem;
-          font-weight: 600;
-          cursor: pointer;
-        }
-        .la-nav-btn:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-        .la-footer-tracker {
-          font-size: 0.9rem;
-          color: #94a3b8;
-          font-weight: 600;
-        }
-      `}</style>
     </section>
   );
 }
