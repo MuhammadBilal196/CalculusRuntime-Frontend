@@ -1,38 +1,57 @@
 <!doctype html>
-<html lang="en" data-site-theme="partial">
+<html lang="en" data-site-theme="default" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <!-- MathQuill CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.css"
+    <meta name="theme-color" content="#0b1120" />
+    <meta
+      name="description"
+      content="CalcVoyager — study guides, practice questions, mock exams and interactive tools for calculus, multivariable calculus, linear algebra and statistics."
     />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Apply the saved theme before anything paints (prevents a white flash in dark/sepia). -->
+    <script>
+      (function () {
+        var themes = ["light", "dark", "sepia"];
+        var theme = "light";
+        try {
+          var saved = localStorage.getItem("calcvoyager-theme");
+          var legacy = localStorage.getItem("calculus-dark");
+          if (themes.indexOf(saved) !== -1) theme = saved;
+          else if (legacy !== null) theme = legacy === "true" ? "dark" : "light";
+          else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) theme = "dark";
+        } catch (e) {}
+        var root = document.documentElement;
+        root.setAttribute("data-theme", theme);
+        if (theme === "dark") root.classList.add("dark");
+      })();
+    </script>
+
+    <link rel="stylesheet" href="css/styles.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Lora:wght@400;600;700&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-    <!-- KaTeX CSS -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Lora:wght@400;600;700&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
     />
 
-    <!-- jQuery (required by MathQuill) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- KaTeX + MathQuill styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.css" />
 
-    <!-- MathQuill JS -->
-    <script src="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.min.js"></script>
+    <!--
+      "defer" lets the page render while these download. Deferred scripts still run
+      in this order (jQuery → MathQuill → KaTeX) and before the React app starts.
+    -->
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 
-    <!-- KaTeX JS -->
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css" />
-    <title>Limit Calculator - CalcVoyager</title>
+    <title>CalcVoyager — Learn Calculus, Linear Algebra & Statistics</title>
   </head>
 
   <body>
