@@ -73,6 +73,7 @@ import Certificate from "./pages/calculus/Certificate";
 import CourseQuiz from "./pages/courses/CourseQuiz";
 import MockExam from "./pages/mockExam/MockExam";
 import Analytics from "./pages/analytics/Analytics";
+import FunctionGrapher from "./pages/grapher/FunctionGrapher";
 import MyCertificates from "./pages/certificates/MyCertificates";
 import VerifyCertificate from "./pages/certificates/VerifyCertificate";
 import SavedForLater from "./pages/dashboard/SavedForLater";
@@ -993,6 +994,10 @@ function App() {
                 <Route
                   path="/analytics"
                   element={<Layout body={<Analytics />} />}
+                />
+                <Route
+                  path="/grapher"
+                  element={<Layout body={<FunctionGrapher />} />}
                 />
 
                 {/* Lagrange Multipliers */}
