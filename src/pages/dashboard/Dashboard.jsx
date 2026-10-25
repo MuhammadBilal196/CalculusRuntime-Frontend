@@ -659,6 +659,7 @@ const TOOLS = [
     icon: "▦",
   },
   { label: "Practice Section", path: "/practice", icon: "✎" },
+  { label: "My Analytics", path: "/analytics", icon: "📊" },
   { label: "Leaderboard", path: "/leaderboard", icon: "🏆" },
   { label: "My Certificates", path: "/certificates", icon: "🎓" },
 ];
