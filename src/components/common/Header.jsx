@@ -16,6 +16,7 @@ const toolLinks = [
   { to: "/cheatsheet", label: "Cheat Sheet" },
   { to: "/practice", label: "Practice" },
   { to: "/analytics", label: "Analytics" },
+    { to: "/grapher", label: "Grapher" },
   { to: "/saved", label: "Saved" },
 ];
 
