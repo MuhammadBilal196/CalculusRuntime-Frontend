@@ -1,8 +1,26 @@
-import StudyGuideShell from "../courses/StudyGuideShell";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_PARAMETRIZED_SURFACE_AREA_QUIZ } from "../../data/mvCoordinateTransformationsQuiz";
-import "./PartialDerivativesGuide.css";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
+
+export const PARAMETRIZED_SURFACE_AREA_QUIZ_KEY = "parametrized-surface-area";
+
+export const PARAMETRIZED_SURFACE_AREA_NAV = [
+  { id: "surface-parameterization", label: "What Is a Parametrized Surface?" },
+  { id: "parameter-domain", label: "The Parameter Domain" },
+  { id: "tangent-vectors", label: "Tangent Vectors" },
+  { id: "normal-vector", label: "Constructing a Normal Vector" },
+  { id: "surface-area-element", label: "The Surface Area Element" },
+  { id: "surface-worked-examples", label: "Worked Examples" },
+  { id: "graph-surfaces", label: "Graphs z = f(x, y)" },
+  { id: "regularity", label: "Regular Parametrizations" },
+  { id: "orientation", label: "Orientation & Normals" },
+  { id: "common-mistakes", label: "Common Mistakes" },
+  { id: "choosing-parameterization", label: "Choosing a Parameterization" },
+  { id: "key-formulas", label: "Key Formulas" },
+  { id: "mcq-parametrized-surface-area", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 function Divider() {
   return <hr className="divider" />;
@@ -23,162 +41,15 @@ function OpeningNote() {
         compute tangent vectors, form the cross product, take its magnitude,
         and integrate over the domain.
       </p>
-
-      <div className="guide-navigation">
-        <a
-          href="/jacobians-change-of-variables/1"
-          className="guide-nav-button"
-        >
-          ← Back to Part 1 — Page 1
-        </a>
-      </div>
     </div>
   );
 }
 
-function GuideSidebar() {
-  return (
-    <nav className="sidebar">
-      <div className="sb-brand">
-        <div className="sb-title">
-          Coordinate Transformations &amp; Surfaces
-        </div>
-      </div>
-
-      <div className="sb-group"> Part 2</div>
-
-      <a
-        className="sb-link active"
-        href="/parametrized-surface-area/2"
-      >
-        Parametrized Surface Area
-      </a>
-
-      <a
-        className="sb-link"
-        href="/flux-integrals-general-surfaces/2"
-      >
-        Flux Integrals over General Parameterized Surfaces
-      </a>
-    </nav>
-  );
-}
-
-function GuideHeader() {
-  return (
-    <header className="ch-hdr">
-      <div className="ch-eye">
-        Coordinate Transformations &amp; Surfaces · Module A · Part 2
-      </div>
-      <h1 className="ch-title">Parametrized Surface Area</h1>
-      <p className="ch-sub">
-        Surface parameterizations, tangent vectors, normal vectors, surface
-        area elements, and worked area calculations
-      </p>
-      <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
-    </header>
-  );
-}
-
-function TableOfContents() {
-  return (
-    <nav className="toc">
-      <div className="toc-h">Topic 3 Contents</div>
-
-      <div className="toc-grid">
-        <a className="toc-a" href="#surface-parameterization">
-          1. What Is a Parametrized Surface?
-        </a>
-
-        <a className="toc-a" href="#parameter-domain">
-          2. The Parameter Domain
-        </a>
-
-        <a className="toc-a" href="#tangent-vectors">
-          3. Tangent Vectors
-        </a>
-
-        <a className="toc-a" href="#normal-vector">
-          4. Constructing a Normal Vector
-        </a>
-
-        <a className="toc-a" href="#surface-area-element">
-          5. The Surface Area Element
-        </a>
-
-        <a className="toc-a" href="#surface-worked-examples">
-          Worked Examples
-        </a>
-
-        <a className="toc-a" href="#worked-example-1">
-          6. Plane Patch Example
-        </a>
-
-        <a className="toc-a" href="#graph-surfaces">
-          7. Graphs z=f(x,y)
-        </a>
-
-        <a className="toc-a" href="#worked-example-2">
-          8. Graph Surface Example
-        </a>
-
-        <a className="toc-a" href="#surface-area-cylinder">
-          9. Cylindrical Surface Example
-        </a>
-
-        <a className="toc-a" href="#regularity">
-          10. Regular Parametrizations
-        </a>
-
-        <a className="toc-a" href="#orientation">
-          11. Orientation and Surface Normals
-        </a>
-
-        <a className="toc-a" href="#common-mistakes">
-          12. Common Mistakes
-        </a>
-
-        <a className="toc-a" href="#choosing-parameterization">
-          13. Choosing a Useful Parameterization
-        </a>
-
-        <a className="toc-a" href="#key-formulas">
-          14. Key Formulas
-        </a>
-
-        <a className="toc-a" href="#mcq-parametrized-surface-area">
-          20-Question Quiz
-        </a>
-      </div>
-    </nav>
-  );
-}
-
-function GuideFooter() {
-  return (
-    <div className="pg-foot">
-      <p>End of Parametrized Surface Area.</p>
-
-      <div className="guide-navigation">
-        <a
-          href="/flux-integrals-general-surfaces/2"
-          className="guide-nav-button"
-        >
-          Next Topic: Flux Integrals over General Parameterized Surfaces →
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function ParametrizedSurfaceAreaContent() {
+/** Topic content only — the page (sidebar, header, contents) lives in
+ *  CoordinateTransformationsPart1.jsx / CoordinateTransformationsPart2.jsx. */
+export default function ParametrizedSurfaceAreaTopic({ quizUnlocked = true, lockHint = "" }) {
   return (
     <>
-      <GuideSidebar />
-
-      <main className="main">
-        <GuideHeader />
-        <TableOfContents />
         <OpeningNote />
 
         <Divider />
@@ -979,30 +850,18 @@ $$`}
 
         <Divider />
 
-        <section id="mcq-parametrized-surface-area" className="section">
-          <GuideMcqSection
-            id="mcq-parametrized-surface-area"
-            badge="Practice"
-            title="Parametrized Surface Area — 20-Question Quiz"
-            scoreId="scoreparametrizedsurfacearea"
-            section="parametrized-surface-area"
-            questions={MV_PARAMETRIZED_SURFACE_AREA_QUIZ}
-          />
+        <section id="psa-quiz" className="section">
+          <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-parametrized-surface-area" title="Parametrized Surface Area — Quiz">
+            <GuideMcqSection
+              id="mcq-parametrized-surface-area"
+              badge="Practice"
+              title="Parametrized Surface Area — 20-Question Quiz"
+              scoreId="scoreparametrizedsurfacearea"
+              section="parametrized-surface-area"
+              questions={MV_PARAMETRIZED_SURFACE_AREA_QUIZ}
+            />
+          </QuizGate>
         </section>
-
-        <GuideFooter />
-      </main>
     </>
-  );
-}
-
-export default function ParametrizedSurfaceAreaGuide() {
-  return (
-    <StudyGuideShell
-      guideClass="partial-derivatives-guide"
-      title="Parametrized Surface Area"
-    >
-      <ParametrizedSurfaceAreaContent />
-    </StudyGuideShell>
   );
 }
