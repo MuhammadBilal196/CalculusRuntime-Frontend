@@ -110,7 +110,7 @@ function PotentialTheoryContent() {
         <hr className="divider" />
         <MaxwellContinuityTopic
           quizUnlocked={laplacianPassed}
-          lockHint={`🔒 Score ${SECTION_QUIZ_PASS_PERCENT}%+ on the ${LAPLACIAN_TITLE} quiz to unlock this quiz.`}
+          lockHint={`Score ${SECTION_QUIZ_PASS_PERCENT}%+ on the ${LAPLACIAN_TITLE} quiz to unlock this quiz.`}
         />
         <footer className="pg-foot">Potential Theory · Rendered with MathJax 3</footer>
       </main>
