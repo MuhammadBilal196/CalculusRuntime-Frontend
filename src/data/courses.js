@@ -433,6 +433,15 @@ export const COURSES = [
         ),
       },
       {
+        title: "Function Grapher",
+        description:
+          "Plot functions, trace values, and see derivatives, tangents, roots and turning points.",
+        path: "/grapher",
+        meta: "Interactive · tool",
+        icon: "📈",
+        logo: <span className="math-logo">y = f(x)</span>,
+      },
+      {
         title: "Timed Mock Exam",
         description:
           "30 mixed practice MCQs (10 Easy · 10 Medium · 10 Hard) in 45 minutes, with a topic-by-topic breakdown.",
@@ -710,6 +719,15 @@ export const COURSES = [
         logo: <span className="math-logo">x′ = F(x), V̇ = ∇V·F</span>,
       },
       {
+        title: "Function Grapher",
+        description:
+          "Plot functions, trace values, and see derivatives, tangents, roots and turning points.",
+        path: "/grapher",
+        meta: "Interactive · tool",
+        icon: "📈",
+        logo: <span className="math-logo">y = f(x)</span>,
+      },
+      {
         title: "Timed Mock Exam",
         description:
           "30 mixed practice MCQs (10 Easy · 10 Medium · 10 Hard) in 45 minutes, with a topic-by-topic breakdown.",
@@ -878,6 +896,15 @@ export const COURSES = [
         meta: "Interactive · Difficulty tiers",
         icon: "✎",
         logo: <span className="math-logo">✎ Drill Arena</span>,
+      },
+      {
+        title: "Function Grapher",
+        description:
+          "Plot functions, trace values, and see derivatives, tangents, roots and turning points.",
+        path: "/grapher",
+        meta: "Interactive · tool",
+        icon: "📈",
+        logo: <span className="math-logo">y = f(x)</span>,
       },
       {
         title: "Timed Mock Exam",
@@ -1055,6 +1082,15 @@ export const COURSES = [
         meta: "Interactive · Difficulty tiers",
         icon: "✎",
         logo: <span className="math-logo">✎ Drill Arena</span>,
+      },
+      {
+        title: "Function Grapher",
+        description:
+          "Plot functions, trace values, and see derivatives, tangents, roots and turning points.",
+        path: "/grapher",
+        meta: "Interactive · tool",
+        icon: "📈",
+        logo: <span className="math-logo">y = f(x)</span>,
       },
       {
         title: "Timed Mock Exam",
