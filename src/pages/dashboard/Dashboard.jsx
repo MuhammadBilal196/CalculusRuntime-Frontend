@@ -300,29 +300,14 @@ export const CURRICULUM = [
     courseId: "multivariable-calculus",
     parts: [
       {
-        id: "jacobians-1",
-        label: "Part 1 — Jacobians & Change of Variables",
-        path: "/jacobians-change-of-variables/1",
+        id: "coordinate-transformations-1",
+        label: "Part 1 — Jacobians & Curvilinear Coordinates",
+        path: "/coordinate-transformations/1",
       },
       {
-        id: "jacobians-2",
-        label: "Part 2 — Jacobians & Change of Variables",
-        path: "/jacobians-change-of-variables/2",
-      },
-      {
-        id: "curvilinear-1",
-        label: "Part 1 — Curvilinear Coordinate Systems",
-        path: "/curvilinear-coordinate-systems/1",
-      },
-      {
-        id: "parametrized-surface-area-2",
-        label: "Part 2 — Parametrized Surface Area",
-        path: "/parametrized-surface-area/2",
-      },
-      {
-        id: "flux-integrals-general-surfaces-2",
-        label: "Part 2 — Flux Integrals over General Parameterized Surfaces",
-        path: "/flux-integrals-general-surfaces/2",
+        id: "coordinate-transformations-2",
+        label: "Part 2 — Surface Area & Flux Integrals",
+        path: "/coordinate-transformations/2",
       },
     ],
   },
