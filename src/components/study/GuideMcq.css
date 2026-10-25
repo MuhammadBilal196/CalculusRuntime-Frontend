@@ -1,0 +1,613 @@
+/* GuideMcq — topic quiz used by every study guide.
+   All classes start with "gmq-". Colours come from src/styles/tokens.css,
+   so the quiz matches Light, Dark and Sepia. */
+
+.gmq {
+  position: relative;
+  margin: 3rem 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
+  box-shadow: var(--c-shadow-md);
+  color: var(--c-text);
+  font-family: var(--c-font-sans);
+}
+
+.gmq p {
+  max-width: none;
+}
+
+/* ── Header ── */
+.gmq-head {
+  margin-bottom: 1.25rem;
+}
+
+.gmq-kicker {
+  margin: 0 0 0.5rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.gmq-head__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.gmq-score {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--c-text-2);
+}
+
+.gmq-score strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--c-text);
+}
+
+.gmq-hint {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--c-muted);
+}
+
+/* ── Segmented progress bar ── */
+.gmq-progress {
+  margin-bottom: 1rem;
+}
+
+.gmq-progress__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--c-text-2);
+}
+
+.gmq-progress__meta strong {
+  color: var(--c-text);
+}
+
+.gmq-progress__legend {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.9rem;
+}
+
+.gmq-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 650;
+}
+
+.gmq-legend::before {
+  content: "";
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 3px;
+}
+
+.gmq-legend--right::before { background: var(--c-success-strong); }
+.gmq-legend--wrong::before { background: var(--c-danger-strong); }
+
+.gmq-progress__pct {
+  font-weight: 800;
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.gmq-progress__bar {
+  display: grid;
+  grid-template-columns: repeat(var(--gmq-count, 10), minmax(0, 1fr));
+  gap: 4px;
+  height: 14px;
+  padding: 3px;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-pill);
+}
+
+.gmq-seg {
+  border-radius: var(--c-radius-pill);
+  background: var(--c-surface-3);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.gmq-seg--right { background: var(--c-success-strong); }
+.gmq-seg--wrong { background: var(--c-danger-strong); }
+
+.gmq-seg--current {
+  box-shadow: 0 0 0 2px var(--c-surface), 0 0 0 4px var(--c-accent);
+}
+
+.gmq-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Question number buttons ── */
+.gmq-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.25rem 0 1.25rem;
+}
+
+.gmq-dot {
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-muted);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.gmq-dot:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: var(--c-accent);
+}
+
+.gmq-dot:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gmq-dot--right {
+  border-color: var(--c-success-strong);
+  background: var(--c-success-soft);
+  color: var(--c-success);
+}
+
+.gmq-dot--wrong {
+  border-color: var(--c-danger-strong);
+  background: var(--c-danger-soft);
+  color: var(--c-danger);
+}
+
+.gmq-dot--current {
+  background: var(--c-accent-strong);
+  border-color: var(--c-accent-strong);
+  color: var(--c-on-accent);
+}
+
+/* ── Notices ── */
+.gmq-notice {
+  margin: 0 0 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--c-radius);
+  background: var(--c-accent-soft);
+  border: 1px solid var(--c-accent-border);
+  color: var(--c-text-2);
+  font-size: 0.9rem;
+}
+
+.gmq-notice--error {
+  background: var(--c-danger-soft);
+  border-color: var(--c-danger-border);
+}
+
+.gmq-done {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--c-radius);
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  color: var(--c-text-2);
+  font-size: 0.92rem;
+}
+
+.gmq-done--pass {
+  background: var(--c-success-soft);
+  border-color: var(--c-success-border);
+  margin: 1.25rem 0 0;
+}
+
+.gmq-done--fail {
+  background: var(--c-warning-soft);
+  border-color: var(--c-warning-border);
+  margin: 1.25rem 0 0;
+}
+
+/* ── Question card ── */
+.gmq-card {
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
+  padding: clamp(1.1rem, 3vw, 1.75rem);
+}
+
+.gmq-card__top {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.9rem;
+}
+
+.gmq-qnum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--c-accent-strong);
+  color: var(--c-on-accent);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.gmq-qof {
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--c-muted);
+}
+
+.gmq-prompt {
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--c-text);
+}
+
+.gmq-options {
+  display: grid;
+  gap: 0.7rem;
+  margin-bottom: 1.25rem;
+}
+
+.gmq-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.85rem 1.05rem;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--c-radius);
+  background: var(--c-surface);
+  color: var(--c-text);
+  font: inherit;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.gmq-opt:hover:not(:disabled) {
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
+}
+
+.gmq-opt:disabled {
+  cursor: default;
+}
+
+.gmq-opt__letter {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 50%;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  color: var(--c-text-2);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.gmq-opt__text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.gmq-opt--selected {
+  border-color: var(--c-accent-strong);
+  background: var(--c-accent-soft);
+}
+
+.gmq-opt--selected .gmq-opt__letter {
+  background: var(--c-accent-strong);
+  border-color: var(--c-accent-strong);
+  color: var(--c-on-accent);
+}
+
+.gmq-opt--right {
+  border-color: var(--c-success-strong);
+  background: var(--c-success-soft);
+}
+
+.gmq-opt--right .gmq-opt__letter {
+  background: var(--c-success-strong);
+  border-color: var(--c-success-strong);
+  color: #ffffff;
+}
+
+.gmq-opt--wrong {
+  border-color: var(--c-danger-strong);
+  background: var(--c-danger-soft);
+}
+
+.gmq-opt--wrong .gmq-opt__letter {
+  background: var(--c-danger-strong);
+  border-color: var(--c-danger-strong);
+  color: #ffffff;
+}
+
+.gmq-opt--dim {
+  opacity: 0.6;
+}
+
+/* ── Buttons ── */
+.gmq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.55rem 1.15rem;
+  border: 1px solid var(--c-border-strong);
+  border-radius: 8px;
+  background: var(--c-surface);
+  color: var(--c-text);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.gmq-btn:hover:not(:disabled) {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+.gmq-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.gmq-btn--primary {
+  background: var(--c-accent-strong);
+  border-color: var(--c-accent-strong);
+  color: var(--c-on-accent);
+}
+
+.gmq-btn--primary:hover:not(:disabled) {
+  background: var(--c-accent-strong-hover);
+  border-color: var(--c-accent-strong-hover);
+  color: var(--c-on-accent);
+}
+
+.gmq-btn:focus-visible,
+.gmq-opt:focus-visible,
+.gmq-dot:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+}
+
+/* ── Feedback ── */
+.gmq-feedback {
+  padding: 1.05rem 1.2rem;
+  border-radius: var(--c-radius);
+  border: 1px solid var(--c-border);
+  border-left-width: 4px;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--c-text-2);
+}
+
+.gmq-feedback--right {
+  background: var(--c-success-soft);
+  border-color: var(--c-success-border);
+  border-left-color: var(--c-success-strong);
+}
+
+.gmq-feedback--wrong {
+  background: var(--c-danger-soft);
+  border-color: var(--c-danger-border);
+  border-left-color: var(--c-danger-strong);
+}
+
+.gmq-feedback__verdict {
+  margin: 0 0 0.4rem;
+  font-weight: 750;
+  color: var(--c-text);
+}
+
+.gmq-feedback--right .gmq-feedback__verdict { color: var(--c-success); }
+.gmq-feedback--wrong .gmq-feedback__verdict { color: var(--c-danger); }
+
+.gmq .gmq-feedback__verdict strong {
+  color: inherit;
+}
+
+.gmq-feedback__text {
+  color: var(--c-text-2);
+}
+
+/* ── Previous / Next ── */
+.gmq-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.gmq-nav__pos {
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--c-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Floating score card (wide screens only) ── */
+.gmq-float {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 92px;
+  padding: 1rem 0.75rem;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
+  box-shadow: var(--c-shadow-lg);
+  text-align: center;
+  animation: gmqFloatIn 0.25s ease-out both;
+}
+
+@keyframes gmqFloatIn {
+  from { opacity: 0; transform: translate(24px, -50%); }
+  to { opacity: 1; transform: translate(0, -50%); }
+}
+
+.gmq-float__label {
+  font-family: var(--c-font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.gmq-float__fraction {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-text);
+}
+
+.gmq-float__pct {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: var(--c-accent);
+  line-height: 1;
+}
+
+.gmq-float__track {
+  position: relative;
+  width: 12px;
+  height: 120px;
+  margin: 0.35rem 0;
+  border-radius: 6px;
+  background: var(--c-surface-3);
+  overflow: hidden;
+}
+
+.gmq-float__fill {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transition: height 0.35s ease, bottom 0.35s ease;
+}
+
+.gmq-float__fill--right {
+  bottom: 0;
+  background: var(--c-success-strong);
+}
+
+.gmq-float__fill--wrong {
+  background: var(--c-danger-strong);
+}
+
+.gmq-float__answered {
+  font-size: 0.72rem;
+  color: var(--c-muted);
+}
+
+/* Only on very wide screens, where it cannot cover the lesson text */
+@media (max-width: 1599px) {
+  .gmq-float {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .gmq {
+    margin: 2rem 0;
+    border-radius: var(--c-radius);
+  }
+  .gmq-hint {
+    display: none;
+  }
+  .gmq-dot {
+    width: 1.95rem;
+    height: 1.95rem;
+  }
+  .gmq-progress__bar {
+    gap: 2px;
+  }
+  .gmq-nav .gmq-btn {
+    flex: 1;
+  }
+  .gmq-nav__pos {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gmq-float { animation: none; }
+  .gmq-seg, .gmq-float__fill { transition: none; }
+}
+
+/* ── Dark theme: index.css forces every p/span to white with !important.
+   These rules (one id-level :not() each) restore the accent / muted colours
+   only inside the quiz, so labels keep their meaning. ── */
+html[data-theme="dark"] .gmq .gmq-kicker:not(#gmq-x),
+html[data-theme="dark"] .gmq .gmq-float__label:not(#gmq-x),
+html[data-theme="dark"] .gmq .gmq-float__pct:not(#gmq-x) {
+  color: var(--c-accent) !important;
+}
+
+html[data-theme="dark"] .gmq .gmq-hint:not(#gmq-x),
+html[data-theme="dark"] .gmq .gmq-qof:not(#gmq-x),
+html[data-theme="dark"] .gmq .gmq-float__answered:not(#gmq-x),
+html[data-theme="dark"] .gmq .gmq-nav__pos:not(#gmq-x) {
+  color: var(--c-muted) !important;
+}
+
+html[data-theme="dark"] .gmq .gmq-feedback--right .gmq-feedback__verdict:not(#gmq-x),
+html[data-theme="dark"] .gmq .gmq-feedback--right .gmq-feedback__verdict strong:not(#gmq-x) {
+  color: var(--c-success) !important;
+}
+
+html[data-theme="dark"] .gmq .gmq-feedback--wrong .gmq-feedback__verdict:not(#gmq-x),
+html[data-theme="dark"] .gmq .gmq-feedback--wrong .gmq-feedback__verdict strong:not(#gmq-x) {
+  color: var(--c-danger) !important;
+}
