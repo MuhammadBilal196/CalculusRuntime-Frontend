@@ -1,8 +1,25 @@
-import StudyGuideShell from "../courses/StudyGuideShell";
 import { GuideMcqSection } from "../../components/GuideMcq";
 import { MV_CURVILINEAR_QUIZ } from "../../data/mvCoordinateTransformationsQuiz";
-import "./PartialDerivativesGuide.css";
 import { RealLifeUse } from "../calculus/CalcBlocks";
+import QuizGate from "../../components/study/QuizGate";
+
+export const CURVILINEAR_QUIZ_KEY = "curvilinear";
+
+export const CURVILINEAR_NAV = [
+  { id: "curvilinear-1", label: "What Are Curvilinear Coordinates?" },
+  { id: "curvilinear-2", label: "Polar Coordinates" },
+  { id: "curvilinear-3", label: "Basis Vectors & Scale Factors" },
+  { id: "curvilinear-4", label: "Cylindrical Coordinates" },
+  { id: "curvilinear-5", label: "Spherical Coordinates" },
+  { id: "curvilinear-6", label: "Orthogonal Coordinates" },
+  { id: "curvilinear-7", label: "Coordinate Dependence" },
+  { id: "curvilinear-8", label: "Choosing a System" },
+  { id: "curvilinear-worked-examples", label: "Worked Examples" },
+  { id: "curvilinear-9", label: "Common Mistakes" },
+  { id: "curvilinear-10", label: "Key Formulas" },
+  { id: "mcq-curvilinear", label: "Quiz (20 Questions)", quiz: true },
+];
+
 
 function Divider() {
   return <hr className="divider" />;
@@ -26,12 +43,6 @@ function OpeningNote() {
         <p>
           Curvilinear coordinates provide a natural way to describe geometry...
         </p>
-      </div>
-
-      <div className="guide-navigation">
-        <a href="/jacobians-change-of-variables/1" className="guide-nav-button">
-          ← Previous Topic: Jacobians & Change of Variables
-        </a>
       </div>
     </div>
   );
@@ -748,112 +759,11 @@ function SectionC10() {
   );
 }
 
-function GuideSidebar() {
+/** Topic content only — the page (sidebar, header, contents) lives in
+ *  CoordinateTransformationsPart1.jsx / CoordinateTransformationsPart2.jsx. */
+export default function CurvilinearCoordinatesTopic({ quizUnlocked = true, lockHint = "" }) {
   return (
-    <nav className="sidebar">
-      <div className="sb-brand">
-        <div className="sb-title">
-          Coordinate Transformations &amp; Surfaces
-        </div>
-      </div>
-
-      <div className="sb-group">Module A · Part 1</div>
-
-      <a className="sb-link" href="/jacobians-change-of-variables/1">
-        Jacobians &amp; Change of Variables
-      </a>
-      <a className="sb-link" href="#curvilinear-1">
-        Curvilinear Coordinate Systems
-      </a>
-    </nav>
-  );
-}
-
-function GuideHeader() {
-  return (
-    <header className="ch-hdr">
-      <div className="ch-eye">
-        Coordinate Transformations &amp; Surfaces · Module A · Part 1
-      </div>
-      <h1 className="ch-title">Curvilinear Coordinate Systems</h1>
-      <p className="ch-sub">
-        Polar, cylindrical, and spherical coordinates, scale factors, basis
-        vectors, and geometric reasoning
-      </p>
-      <span className="ch-orn">✦ &nbsp; ✦ &nbsp; ✦</span>
-    </header>
-  );
-}
-
-function TableOfContents() {
-  return (
-    <nav className="toc">
-      <div className="toc-h">Topic 2 Contents</div>
-      <div className="toc-grid">
-        <a className="toc-a" href="#curvilinear-1">
-          What Are Curvilinear Coordinates?
-        </a>
-        <a className="toc-a" href="#curvilinear-2">
-          Polar Coordinates
-        </a>
-        <a className="toc-a" href="#curvilinear-3">
-          Basis Vectors &amp; Scale Factors
-        </a>
-        <a className="toc-a" href="#curvilinear-4">
-          Cylindrical Coordinates
-        </a>
-        <a className="toc-a" href="#curvilinear-5">
-          Spherical Coordinates
-        </a>
-        <a className="toc-a" href="#curvilinear-6">
-          Orthogonal Coordinates
-        </a>
-        <a className="toc-a" href="#curvilinear-7">
-          Basis Vectors &amp; Coordinate Dependence
-        </a>
-        <a className="toc-a" href="#curvilinear-8">
-          Choosing a Coordinate System
-        </a>
-        <a className="toc-a" href="#curvilinear-9">
-          Common Mistakes
-        </a>
-        <a className="toc-a" href="#curvilinear-10">
-          Key Formulas
-        </a>
-        <a className="toc-a" href="#curvilinear-worked-examples">
-          Worked Examples
-        </a>
-        <a className="toc-a" href="#curvilinear-quiz">
-          20-Question Quiz
-        </a>
-      </div>
-    </nav>
-  );
-}
-
-function GuideFooter() {
-  return (
-    <div className="pg-foot">
-      <p>End of Curvilinear Coordinate Systems.</p>
-      <div className="guide-navigation">
-        <a href="/parametrized-surface-area/2" className="guide-nav-button">
-          Next Part: Parametrized Surface Area →
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function CurvilinearCoordinatesGuide() {
-  return (
-    <StudyGuideShell
-      guideClass="partial-derivatives-guide"
-      title="Curvilinear Coordinate Systems"
-    >
-      <GuideSidebar />
-      <main className="main">
-        <GuideHeader />
-        <TableOfContents />
+    <>
         <OpeningNote />
         <Divider />
         <SectionC1 />
@@ -891,19 +801,17 @@ function CurvilinearCoordinatesGuide() {
         <SectionC10 />
         <Divider />
         <section id="curvilinear-quiz" className="section">
-          <GuideMcqSection
-            id="mcq-curvilinear"
-            badge="Practice"
-            title="Curvilinear Coordinate Systems — 20-Question Quiz"
-            scoreId="scorecurvilinear"
-            section="curvilinear"
-            questions={MV_CURVILINEAR_QUIZ}
-          />
+          <QuizGate unlocked={quizUnlocked} hint={lockHint} id="mcq-curvilinear" title="Curvilinear Coordinate Systems — Quiz">
+            <GuideMcqSection
+              id="mcq-curvilinear"
+              badge="Practice"
+              title="Curvilinear Coordinate Systems — 20-Question Quiz"
+              scoreId="scorecurvilinear"
+              section="curvilinear"
+              questions={MV_CURVILINEAR_QUIZ}
+            />
+          </QuizGate>
         </section>
-        <GuideFooter />
-      </main>
-    </StudyGuideShell>
+    </>
   );
 }
-
-export default CurvilinearCoordinatesGuide;
