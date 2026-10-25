@@ -1,6 +1,9 @@
 import { guideAnchors, setupReadableAnchors } from "../../utils/ScrollToTop";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { createPortal } from "react-dom";
+import GuidePartSwitch from "../../components/study/GuidePartSwitch";
+import { findGuideModule } from "../../utils/guideParts";
 import { saveExample, unsaveExample, isExampleSaved, exampleAnchorId } from "../../utils/saveForLaterStorage";
 import renderMathInElement from "katex/contrib/auto-render";
 import "katex/dist/katex.min.css";
@@ -13,7 +16,7 @@ const integrationStyles = `
 .study-guide-page {
   min-height: 100vh;
   overflow: visible;
-  background: #ffffff;
+  background: var(--c-bg, #ffffff);
 }
 `;
 
@@ -26,9 +29,9 @@ const saveForLaterStyles = `
   position: absolute;
   top: 0.9rem;
   right: 0.9rem;
-  background: #ffffff;
-  border: 1px solid #0284c7;
-  color: #0284c7;
+  background: var(--c-surface, #ffffff);
+  border: 1px solid var(--c-accent-border, #0284c7);
+  color: var(--c-accent, #0284c7);
   border-radius: 6px;
   padding: 0.35rem 0.75rem;
   font-size: 0.78rem;
@@ -38,22 +41,22 @@ const saveForLaterStyles = `
   transition: all 0.15s ease;
 }
 .save-example-btn:hover {
-  background: #f0f9ff;
-  border-color: #0284c7;
+  background: var(--c-accent-soft, #f0f9ff);
+  border-color: var(--c-accent, #0284c7);
   transform: translateY(-1px);
 }
 .save-example-btn.saved {
-  background: #0284c7;
-  color: #ffffff;
-  border-color: #0284c7;
+  background: var(--c-accent-strong, #0284c7);
+  color: var(--c-on-accent, #ffffff);
+  border-color: var(--c-accent-strong, #0284c7);
 }
 .save-example-btn.saved:hover {
-  background: #0369a1;
+  background: var(--c-accent-strong-hover, #0369a1);
 }
 .box.exm.exm-flash {
-  outline: 3px solid #0284c7;
+  outline: 3px solid var(--c-accent, #0284c7);
   outline-offset: 4px;
-  box-shadow: 0 0 0 8px rgba(2, 132, 199, 0.2);
+  box-shadow: 0 0 0 8px var(--c-accent-soft, rgba(2, 132, 199, 0.2));
   transition: outline 0.2s, box-shadow 0.2s;
 }
 `;
@@ -889,6 +892,23 @@ function StudyGuideShell({
   const location = useLocation();
   const resolvedClass = guideClass || "partial-derivatives-guide";
   const guidePath = location.pathname;
+  const partInfo = findGuideModule(guidePath);
+  const [partHost, setPartHost] = useState(null);
+
+  // Put the shared Part 1 / Part 2 switcher at the top of the guide sidebar.
+  useLayoutEffect(() => {
+    if (!partInfo) return undefined;
+    const sidebar = rootRef.current?.querySelector(".sidebar");
+    if (!sidebar) return undefined;
+    const host = document.createElement("div");
+    host.className = "sb-parts-host";
+    sidebar.insertBefore(host, sidebar.firstChild);
+    setPartHost(host);
+    return () => {
+      host.remove();
+      setPartHost(null);
+    };
+  }, [guidePath, Boolean(partInfo)]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSaveAsPDF = async () => {
     const element = rootRef.current;
@@ -1014,10 +1034,10 @@ function StudyGuideShell({
           bottom: "5.5rem",
           right: "2rem",
           zIndex: 200,
-          background: "#0056D2",
-          color: "#ffffff",
+          background: "var(--c-accent-strong, #0056D2)",
+          color: "var(--c-on-accent, #ffffff)",
           border: "none",
-          boxShadow: "0 4px 14px rgba(0, 86, 210, 0.3)",
+          boxShadow: "var(--c-shadow-md)",
           borderRadius: "6px",
           padding: "0.6rem 1.1rem",
           fontSize: "0.85rem",
@@ -1033,6 +1053,9 @@ function StudyGuideShell({
       ) : (
         <div ref={rootRef}>{children}</div>
       )}
+      {partHost && partInfo
+        ? createPortal(<GuidePartSwitch info={partInfo} />, partHost)
+        : null}
     </main>
   );
 }
