@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, Link,  } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { Sun, Moon, Menu, X, ChevronDown, Award, Trophy } from "lucide-react";
+import { Sun, Moon, BookOpen, Menu, X, ChevronDown, Award, Trophy } from "lucide-react";
 
 const courseLinks = [
   { to: "/courses/calculus-analytical-geometry", label: "Calc & Geometry" },
@@ -16,11 +16,62 @@ const toolLinks = [
   { to: "/cheatsheet", label: "Cheat Sheet" },
   { to: "/practice", label: "Practice" },
   { to: "/analytics", label: "Analytics" },
-    { to: "/grapher", label: "Grapher" },
+  { to: "/grapher", label: "Grapher" },
   { to: "/saved", label: "Saved" },
 ];
 
-function Header({ darkMode, onToggleDark }) {
+const THEME_OPTIONS = [
+  { id: "light", label: "Light", Icon: Sun },
+  { id: "dark", label: "Dark", Icon: Moon },
+  { id: "sepia", label: "Sepia", Icon: BookOpen },
+];
+
+/** Three-way theme switch: Light · Dark · Sepia (arrow keys move between them). */
+function ThemePicker({ theme, onChange }) {
+  const onKeyDown = (event) => {
+    const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
+    if (!(event.key in keys)) return;
+    event.preventDefault();
+    const index = THEME_OPTIONS.findIndex((o) => o.id === theme);
+    const next = THEME_OPTIONS[(index + keys[event.key] + THEME_OPTIONS.length) % THEME_OPTIONS.length];
+    onChange(next.id);
+    const group = event.currentTarget;
+    window.requestAnimationFrame(() => group.querySelector(`[data-theme-id="${next.id}"]`)?.focus());
+  };
+
+  return (
+    <div className="theme-picker" role="radiogroup" aria-label="Colour theme" onKeyDown={onKeyDown}>
+      {THEME_OPTIONS.map(({ id, label, Icon }) => {
+        const checked = theme === id;
+        return (
+          <button
+            key={id}
+            type="button"
+            role="radio"
+            aria-checked={checked}
+            aria-label={`${label} theme`}
+            title={`${label} theme`}
+            tabIndex={checked ? 0 : -1}
+            data-theme-id={id}
+            className="theme-picker__btn"
+            onClick={() => onChange(id)}
+          >
+            <Icon size={15} strokeWidth={2.2} aria-hidden="true" />
+            <span className="theme-picker__label">{label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function Header({ theme: themeProp, onThemeChange, darkMode, onToggleDark }) {
+  // Works with the new Layout (theme + onThemeChange) and the old one (darkMode + onToggleDark).
+  const theme = themeProp || (darkMode ? "dark" : "light");
+  const changeTheme = (next) => {
+    if (onThemeChange) onThemeChange(next);
+    else if ((next === "dark") !== Boolean(darkMode)) onToggleDark?.();
+  };
   const { user, logout } = useAuth();
   
   const [menuOpen, setMenuOpen] = useState(false);
@@ -102,23 +153,7 @@ function Header({ darkMode, onToggleDark }) {
 
       {/* Controls: theme toggle + auth + hamburger */}
       <div className="header-controls">
-        <button
-          className="theme-toggle"
-          onClick={onToggleDark}
-          aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-        >
-          {darkMode ? (
-            <>
-              <Sun size={16} strokeWidth={2} />
-              <span> Light</span>
-            </>
-          ) : (
-            <>
-              <Moon size={16} strokeWidth={2} />
-              <span> Dark</span>
-            </>
-          )}
-        </button>
+        <ThemePicker theme={theme} onChange={changeTheme} />
 
         {user ? (
           <div className="header-user">
@@ -170,6 +205,10 @@ function Header({ darkMode, onToggleDark }) {
         <div className="mobile-nav-divider" />
         <NavLink to="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</NavLink>
         <NavLink to="/certificates" onClick={() => setMenuOpen(false)}>Certificates</NavLink>
+
+        <div className="mobile-nav-divider" />
+        <div className="mobile-nav-group-title">Theme</div>
+        <ThemePicker theme={theme} onChange={changeTheme} />
 
         <div className="mobile-nav-divider" />
         {user ? (

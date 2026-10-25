@@ -3,11 +3,16 @@ import Footer from "./Footer";
 import { useTheme } from "../../context/ThemeContext";
 
 function Layout({ body }) {
-  const { darkMode, toggleTheme } = useTheme();
+  const { theme, setTheme, darkMode, toggleTheme } = useTheme();
 
   return (
     <>
-      <Header darkMode={darkMode} onToggleDark={toggleTheme} />
+      <Header
+        theme={theme}
+        onThemeChange={setTheme}
+        darkMode={darkMode}
+        onToggleDark={toggleTheme}
+      />
       {body}
       <Footer />
     </>
