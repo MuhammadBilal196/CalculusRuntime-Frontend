@@ -1,55 +1,58 @@
+/* FormulaViewer — colours from src/styles/tokens.css. */
+
 .formula-viewer-scalable {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
   padding: 1.25rem;
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  box-shadow: var(--c-shadow-sm);
 }
 
 .formula-viewer-title {
   font-size: 1rem;
-  font-weight: 600;
-  color: #f8fafc;
+  font-weight: 700;
+  color: var(--c-text);
 }
 
 .formula-display-area {
   position: relative;
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 10px;
-  padding: 1.25rem 1rem;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-accent-border);
+  border-radius: var(--c-radius);
+  padding: 1.4rem 1rem 1.2rem;
   overflow-x: auto;
+  color: var(--c-text);
 }
 
 .formula-copy-btn {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #94a3b8;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  color: var(--c-muted);
   font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.5rem;
+  font-weight: 650;
+  padding: 0.25rem 0.55rem;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .formula-copy-btn:hover {
-  background: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
-  border-color: rgba(59, 130, 246, 0.4);
+  color: var(--c-accent);
+  border-color: var(--c-accent-border);
 }
 
 .formula-description {
   margin: 0;
-  font-size: 0.875rem;
-  color: #cbd5e1;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  color: var(--c-text-2);
+  line-height: 1.55;
 }
 
 .formula-breakdown-section {
@@ -61,36 +64,36 @@
 .formula-toggle-btn {
   align-self: flex-start;
   padding: 0.25rem 0.5rem !important;
-  font-size: 0.8125rem !important;
+  font-size: 0.82rem !important;
 }
 
 .formula-breakdown-list {
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
   border-radius: 8px;
   padding: 0.75rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  animation: fadeIn 0.2s ease-out;
 }
 
 .formula-breakdown-item {
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
 }
 
 .breakdown-symbol {
-  font-family: monospace;
+  font-family: var(--c-font-mono);
   font-weight: 700;
-  color: #38bdf8;
+  color: var(--c-accent);
 }
 
 .breakdown-sep {
-  color: #64748b;
+  color: var(--c-faint);
 }
 
 .breakdown-meaning {
-  color: #cbd5e1;
+  color: var(--c-text-2);
 }
