@@ -1,0 +1,584 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CalcVoyager — Design tokens for the three site themes
+   Light · Dark · Sepia   (set on <html data-theme="light|dark|sepia">)
+
+   ► Import this file LAST in src/index.js so it wins over older theme files.
+   ► Every older variable name (--ink, --paper, --card, --line, --rule, --muted,
+     --gold, --teal, --blue, --cv-*) is mapped onto these tokens, so existing
+     pages follow the chosen theme without any other change.
+   ► New CSS should use the --c-* tokens only.
+
+   Selectors use :root[data-site-theme] (+ [data-theme]) on purpose: that is
+   more specific than the older theme rules, so these values always win.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. LIGHT (default) ─────────────────────────────────────────────────── */
+:root,
+:root[data-site-theme],
+:root[data-site-theme][data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --c-bg: #f6f8fb;              /* page background */
+  --c-surface: #ffffff;         /* cards, panels */
+  --c-surface-2: #f1f5f9;       /* inputs, table stripes, soft panels */
+  --c-surface-3: #e8eef5;       /* hover on soft panels */
+  --c-border: #e2e8f0;
+  --c-border-strong: #cbd5e1;
+
+  /* Text */
+  --c-text: #0f172a;
+  --c-text-2: #334155;          /* body copy */
+  --c-muted: #64748b;           /* labels, meta */
+  --c-faint: #94a3b8;
+
+  /* Brand accent */
+  --c-accent: #0369a1;          /* links, icons, highlights (text-safe) */
+  --c-accent-strong: #0056d2;   /* filled buttons */
+  --c-accent-strong-hover: #0043a8;
+  --c-on-accent: #ffffff;
+  --c-accent-soft: rgba(2, 132, 199, 0.09);
+  --c-accent-border: rgba(2, 132, 199, 0.28);
+  --c-focus: rgba(2, 132, 199, 0.45);
+
+  /* Feedback */
+  --c-success: #15803d;
+  --c-success-strong: #16a34a;
+  --c-success-soft: #ecfdf3;
+  --c-success-border: #a7f3c4;
+  --c-danger: #be123c;
+  --c-danger-strong: #e11d48;
+  --c-danger-soft: #fff1f3;
+  --c-danger-border: #fecdd6;
+  --c-warning: #b45309;
+  --c-warning-soft: #fffbeb;
+  --c-warning-border: #fde68a;
+  --c-info: #4f46e5;            /* worked examples */
+  --c-info-soft: #f5f5ff;
+  --c-info-border: #dcdcfb;
+
+  /* Chrome (header / footer / guide sidebar) */
+  --c-header-bg: #0b1120;
+  --c-header-border: rgba(255, 255, 255, 0.08);
+  --c-header-text: #f8fafc;
+  --c-header-muted: #a5b4c8;
+  --c-header-hover: rgba(255, 255, 255, 0.09);
+  --c-header-accent: #38bdf8;
+  --c-footer-bg: #0b1120;
+  --c-footer-text: #e2e8f0;
+  --c-footer-muted: #94a3b8;
+  --c-sidebar-bg: #ffffff;
+  --c-sidebar-text: #334155;
+  --c-sidebar-muted: #94a3b8;
+  --c-sidebar-active-bg: rgba(2, 132, 199, 0.09);
+  --c-sidebar-active-text: #0369a1;
+  --c-table-head-bg: #f1f5f9;
+  --c-table-head-text: #0f172a;
+  --c-code-bg: #f1f5f9;
+
+  /* Elevation */
+  --c-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 6px rgba(15, 23, 42, 0.04);
+  --c-shadow-md: 0 4px 18px rgba(15, 23, 42, 0.07);
+  --c-shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.11);
+
+  /* Shape & type */
+  --c-radius-sm: 6px;
+  --c-radius: 10px;
+  --c-radius-lg: 14px;
+  --c-radius-pill: 999px;
+  --c-font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --c-font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --c-font-math: "Cambria Math", "KaTeX_Main", "Times New Roman", Georgia, serif;
+  --c-reading-width: 72ch;
+}
+
+/* ── 2. DARK ────────────────────────────────────────────────────────────── */
+:root[data-theme="dark"],
+:root[data-site-theme][data-theme="dark"] {
+  color-scheme: dark;
+
+  --c-bg: #0b1120;
+  --c-surface: #111a2c;
+  --c-surface-2: #162236;
+  --c-surface-3: #1d2b42;
+  --c-border: #233148;
+  --c-border-strong: #33445f;
+
+  --c-text: #f1f5f9;
+  --c-text-2: #cbd5e1;
+  --c-muted: #94a3b8;
+  --c-faint: #64748b;
+
+  --c-accent: #38bdf8;
+  --c-accent-strong: #0284c7;
+  --c-accent-strong-hover: #0369a1;
+  --c-on-accent: #ffffff;
+  --c-accent-soft: rgba(56, 189, 248, 0.12);
+  --c-accent-border: rgba(56, 189, 248, 0.35);
+  --c-focus: rgba(56, 189, 248, 0.55);
+
+  --c-success: #4ade80;
+  --c-success-strong: #22c55e;
+  --c-success-soft: rgba(34, 197, 94, 0.13);
+  --c-success-border: rgba(74, 222, 128, 0.4);
+  --c-danger: #fb7185;
+  --c-danger-strong: #f43f5e;
+  --c-danger-soft: rgba(244, 63, 94, 0.13);
+  --c-danger-border: rgba(251, 113, 133, 0.4);
+  --c-warning: #fbbf24;
+  --c-warning-soft: rgba(251, 191, 36, 0.12);
+  --c-warning-border: rgba(251, 191, 36, 0.35);
+  --c-info: #a5b4fc;
+  --c-info-soft: rgba(129, 140, 248, 0.12);
+  --c-info-border: rgba(165, 180, 252, 0.32);
+
+  --c-header-bg: #070c18;
+  --c-header-border: rgba(255, 255, 255, 0.07);
+  --c-header-text: #f8fafc;
+  --c-header-muted: #a5b4c8;
+  --c-header-hover: rgba(255, 255, 255, 0.08);
+  --c-header-accent: #38bdf8;
+  --c-footer-bg: #070c18;
+  --c-footer-text: #e2e8f0;
+  --c-footer-muted: #94a3b8;
+  --c-sidebar-bg: #0d1526;
+  --c-sidebar-text: #cbd5e1;
+  --c-sidebar-muted: #64748b;
+  --c-sidebar-active-bg: rgba(56, 189, 248, 0.12);
+  --c-sidebar-active-text: #7dd3fc;
+  --c-table-head-bg: #1a2740;
+  --c-table-head-text: #f1f5f9;
+  --c-code-bg: #162236;
+
+  --c-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --c-shadow-md: 0 6px 22px rgba(0, 0, 0, 0.45);
+  --c-shadow-lg: 0 18px 44px rgba(0, 0, 0, 0.55);
+}
+
+/* ── 3. SEPIA (warm paper, for long reading) ───────────────────────────── */
+:root[data-theme="sepia"],
+:root[data-site-theme][data-theme="sepia"] {
+  color-scheme: light;
+
+  --c-bg: #f3ead7;
+  --c-surface: #fbf6ea;
+  --c-surface-2: #efe5cf;
+  --c-surface-3: #e7dbc0;
+  --c-border: #e0d2b3;
+  --c-border-strong: #cdb98f;
+
+  --c-text: #3a2c1a;
+  --c-text-2: #4f3f2a;
+  --c-muted: #7a6649;
+  --c-faint: #a08d6c;
+
+  --c-accent: #8a4b0f;
+  --c-accent-strong: #9a5412;
+  --c-accent-strong-hover: #7c430c;
+  --c-on-accent: #fffaf0;
+  --c-accent-soft: rgba(154, 84, 18, 0.1);
+  --c-accent-border: rgba(154, 84, 18, 0.3);
+  --c-focus: rgba(154, 84, 18, 0.45);
+
+  --c-success: #3f6212;
+  --c-success-strong: #4d7c0f;
+  --c-success-soft: #eef3dc;
+  --c-success-border: #c9d9a0;
+  --c-danger: #9f1d1d;
+  --c-danger-strong: #b42318;
+  --c-danger-soft: #f8e4dc;
+  --c-danger-border: #e8bfb0;
+  --c-warning: #92400e;
+  --c-warning-soft: #f7ead0;
+  --c-warning-border: #e6cc95;
+  --c-info: #5b4a9a;
+  --c-info-soft: #efe9f3;
+  --c-info-border: #d9cfe4;
+
+  --c-header-bg: #2b2015;
+  --c-header-border: rgba(255, 244, 220, 0.1);
+  --c-header-text: #fbf3e2;
+  --c-header-muted: #d6c3a0;
+  --c-header-hover: rgba(255, 244, 220, 0.1);
+  --c-header-accent: #f2b45a;
+  --c-footer-bg: #2b2015;
+  --c-footer-text: #f3e7cf;
+  --c-footer-muted: #c9b48e;
+  --c-sidebar-bg: #f7efdd;
+  --c-sidebar-text: #4f3f2a;
+  --c-sidebar-muted: #a08d6c;
+  --c-sidebar-active-bg: rgba(154, 84, 18, 0.1);
+  --c-sidebar-active-text: #8a4b0f;
+  --c-table-head-bg: #eadcbd;
+  --c-table-head-text: #3a2c1a;
+  --c-code-bg: #efe5cf;
+
+  --c-shadow-sm: 0 1px 2px rgba(80, 55, 20, 0.07), 0 1px 6px rgba(80, 55, 20, 0.05);
+  --c-shadow-md: 0 4px 18px rgba(80, 55, 20, 0.09);
+  --c-shadow-lg: 0 16px 40px rgba(80, 55, 20, 0.13);
+}
+
+/* ── 4. Legacy variable mapping (all themes) ───────────────────────────────
+   Older CSS across the site reads these names; pointing them at the tokens
+   makes every page follow the active theme. */
+:root,
+:root[data-site-theme],
+:root[data-site-theme][data-theme] {
+  /* index.css / partial-theme.css names */
+  --ink: var(--c-text);
+  --ink-2: var(--c-text-2);
+  --paper: var(--c-bg);
+  --paper-2: var(--c-surface-2);
+  --card: var(--c-surface);
+  --line: var(--c-border);
+  --rule: var(--c-border);
+  --muted: var(--c-muted);
+  --gold: var(--c-accent);
+  --gold-2: var(--c-accent-strong);
+  --teal: var(--c-accent);
+  --blue: var(--c-accent-strong);
+  --plum: var(--c-info);
+  --accent: var(--c-accent);
+  --surface: var(--c-surface);
+  --error: var(--c-danger);
+  --shadow: var(--c-shadow-md);
+  --shadow-sm: var(--c-shadow-sm);
+  --shadow-hard: var(--c-shadow-lg);
+  --radius: var(--c-radius);
+  --header-h: 70px;
+  --chat-on-accent: var(--c-on-accent);
+  --chat-header-bg: var(--c-header-bg);
+  --chat-text-on-fill: var(--c-text);
+
+  /* theme.css / design-tokens.css (tools, calculators, keyboard) */
+  --cv-bg-page: var(--c-bg);
+  --cv-bg-surface: var(--c-surface);
+  --cv-bg-raised: var(--c-surface);
+  --cv-bg-subtle: var(--c-surface-2);
+  --cv-bg-sunken: var(--c-surface-2);
+  --cv-bg-overlay: var(--c-accent-soft);
+  --cv-border: var(--c-border);
+  --cv-border-strong: var(--c-border-strong);
+  --cv-border-focus: var(--c-accent);
+  --cv-text-primary: var(--c-text);
+  --cv-text-secondary: var(--c-text-2);
+  --cv-text-muted: var(--c-muted);
+  --cv-accent: var(--c-accent-strong);
+  --cv-accent-hover: var(--c-accent-strong-hover);
+  --cv-accent-light: var(--c-accent-soft);
+  --cv-accent-text: var(--c-accent);
+  --cv-success: var(--c-success);
+  --cv-success-light: var(--c-success-soft);
+  --cv-error: var(--c-danger);
+  --cv-error-light: var(--c-danger-soft);
+  --cv-warning: var(--c-warning);
+  --cv-warning-light: var(--c-warning-soft);
+  --cv-input-bg: var(--c-surface);
+  --cv-input-border: var(--c-border-strong);
+  --cv-input-focus: var(--c-accent);
+  --cv-input-placeholder: var(--c-faint);
+  --cv-btn-digit-bg: var(--c-surface);
+  --cv-btn-digit-text: var(--c-text);
+  --cv-btn-digit-hover: var(--c-surface-2);
+  --cv-btn-op-bg: var(--c-accent-soft);
+  --cv-btn-op-text: var(--c-accent);
+  --cv-btn-op-hover: var(--c-surface-3);
+  --cv-btn-fn-bg: var(--c-surface-2);
+  --cv-btn-fn-text: var(--c-text-2);
+  --cv-btn-fn-hover: var(--c-surface-3);
+  --cv-btn-eq-bg: var(--c-accent-strong);
+  --cv-btn-eq-hover: var(--c-accent-strong-hover);
+  --cv-btn-eq-text: var(--c-on-accent);
+  --cv-btn-clear-bg: var(--c-danger-soft);
+  --cv-btn-clear-text: var(--c-danger);
+  --cv-btn-clear-hover: var(--c-danger-border);
+  --cv-shadow-sm: var(--c-shadow-sm);
+  --cv-shadow-md: var(--c-shadow-md);
+  --cv-shadow-lg: var(--c-shadow-lg);
+  --cv-font-ui: var(--c-font-sans);
+  --cv-font-sans: var(--c-font-sans);
+  --cv-font-mono: var(--c-font-mono);
+}
+
+/* ── 5. Base page ──────────────────────────────────────────────────────── */
+html[data-site-theme] body {
+  background: var(--c-bg) !important;
+  color: var(--c-text) !important;
+  font-family: var(--c-font-sans);
+}
+
+html[data-site-theme][data-theme] ::selection {
+  background: var(--c-accent-soft);
+  color: inherit;
+}
+
+html[data-site-theme] :focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+}
+
+/* Page wrappers that used to hard-code white or navy */
+html[data-site-theme] .home-page,
+html[data-site-theme] .study-guide-page {
+  background: var(--c-bg) !important;
+  color: var(--c-text) !important;
+}
+
+/* Sepia and light: older pages that hard-code dark-only text in dark mode
+   are untouched; sepia only needs readable text on warm paper. */
+html[data-theme="sepia"] a {
+  color: inherit;
+}
+
+/* ── 6. Header (same look in every theme, colours from tokens) ─────────── */
+html[data-site-theme] .site-header {
+  background: var(--c-header-bg) !important;
+  border-bottom: 1px solid var(--c-header-border) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18) !important;
+  color: var(--c-header-text) !important;
+}
+
+html[data-site-theme] .site-header::after {
+  display: none;
+}
+
+html[data-site-theme] .site-brand,
+html[data-site-theme] .brand-text span {
+  color: var(--c-header-text) !important;
+}
+
+html[data-site-theme] .brand-text small {
+  color: var(--c-header-muted) !important;
+}
+
+html[data-site-theme] .brand-mark {
+  background: var(--c-accent-strong) !important;
+  color: var(--c-on-accent) !important;
+  box-shadow: none !important;
+}
+
+html[data-site-theme] .site-nav > a,
+html[data-site-theme] .site-nav .dropdown-trigger {
+  color: var(--c-header-muted) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+html[data-site-theme] .site-nav > a:hover,
+html[data-site-theme] .site-nav .dropdown-trigger:hover,
+html[data-site-theme] .nav-dropdown:focus-within .dropdown-trigger {
+  background: var(--c-header-hover) !important;
+  color: var(--c-header-text) !important;
+}
+
+html[data-site-theme] .site-nav > a.active {
+  background: var(--c-header-hover) !important;
+  color: var(--c-header-text) !important;
+  box-shadow: inset 0 -2px 0 var(--c-header-accent) !important;
+}
+
+/* Dropdown panel follows the page theme (light panel in light/sepia, dark in dark) */
+html[data-site-theme] .dropdown-content {
+  background: var(--c-surface) !important;
+  border: 1px solid var(--c-border) !important;
+  box-shadow: var(--c-shadow-lg) !important;
+}
+
+/* Open the dropdown for keyboard users too */
+html[data-site-theme] .nav-dropdown:focus-within .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* [data-theme] is included so these beat index.css's light-only dropdown rules */
+html[data-site-theme][data-theme] .site-nav .dropdown-content a {
+  color: var(--c-text) !important;
+  background: transparent !important;
+  text-align: left !important;
+  transform: none !important;
+}
+
+html[data-site-theme][data-theme] .site-nav .dropdown-content a:hover,
+html[data-site-theme][data-theme] .site-nav .dropdown-content a.active {
+  background: var(--c-accent-soft) !important;
+  color: var(--c-accent) !important;
+}
+
+html[data-site-theme] .header-auth-btn {
+  background: var(--c-header-accent) !important;
+  color: #0b1120 !important;
+  border-radius: 8px !important;
+}
+
+html[data-site-theme] .hamburger {
+  background: var(--c-header-hover) !important;
+  border: 1px solid var(--c-header-border) !important;
+  color: var(--c-header-text) !important;
+}
+
+html[data-site-theme] .mobile-nav {
+  background: var(--c-header-bg) !important;
+  border-bottom: 1px solid var(--c-header-border) !important;
+  /* Long menus scroll instead of running off the screen */
+  max-height: calc(100dvh - var(--header-h, 70px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* While the phone menu is open, keep it above the chat dock and tutor button */
+html[data-site-theme] .site-header:has(.mobile-nav--open) {
+  z-index: 10100 !important;
+}
+
+html[data-site-theme] .mobile-nav a,
+html[data-site-theme] .mobile-nav-logout {
+  color: var(--c-header-muted) !important;
+}
+
+html[data-site-theme] .mobile-nav a:hover,
+html[data-site-theme] .mobile-nav a.active {
+  background: var(--c-header-hover) !important;
+  color: var(--c-header-text) !important;
+  border-left-color: var(--c-header-accent) !important;
+}
+
+html[data-site-theme] .mobile-nav-group-title {
+  color: var(--c-header-muted) !important;
+  opacity: 0.8;
+}
+
+html[data-site-theme] .mobile-nav-divider {
+  background: var(--c-header-border) !important;
+}
+
+/* ── 7. Theme picker (Light · Dark · Sepia) ────────────────────────────── */
+.theme-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--c-header-hover);
+  border: 1px solid var(--c-header-border);
+}
+
+.theme-picker__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  height: 30px;
+  min-width: 32px;
+  padding: 0 0.55rem;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--c-header-muted);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.theme-picker__btn:hover {
+  color: var(--c-header-text);
+  background: var(--c-header-hover);
+}
+
+.theme-picker__btn[aria-checked="true"] {
+  background: var(--c-accent-strong);
+  color: var(--c-on-accent);
+}
+
+.theme-picker__btn:focus-visible {
+  outline: 2px solid var(--c-header-accent);
+  outline-offset: 1px;
+}
+
+.theme-picker__label {
+  display: none;
+}
+
+@media (min-width: 1180px) {
+  .theme-picker__label {
+    display: inline;
+  }
+}
+
+/* Mobile drawer copy of the picker */
+.mobile-nav .theme-picker {
+  margin: 0.5rem clamp(1rem, 4vw, 3rem) 0.25rem;
+  align-self: flex-start;
+}
+
+.mobile-nav .theme-picker__label {
+  display: inline;
+}
+
+@media (max-width: 560px) {
+  .header-controls .theme-picker {
+    display: none; /* moved into the menu on small phones */
+  }
+}
+
+/* ── 8. Footer ─────────────────────────────────────────────────────────── */
+html[data-site-theme] .site-footer {
+  background: var(--c-footer-bg) !important;
+  border-top: 1px solid var(--c-header-border) !important;
+  color: var(--c-footer-text) !important;
+}
+
+html[data-site-theme] .footer-brand p {
+  color: var(--c-footer-text) !important;
+}
+
+html[data-site-theme] .footer-brand span,
+html[data-site-theme] .footer-tagline,
+html[data-site-theme] .footer-copy {
+  color: var(--c-footer-muted) !important;
+}
+
+html[data-site-theme] .footer-logo {
+  color: var(--c-header-accent) !important;
+}
+
+html[data-site-theme] .footer-nav a {
+  color: var(--c-footer-muted) !important;
+}
+
+html[data-site-theme] .footer-nav a:hover,
+html[data-site-theme] .footer-nav a.active {
+  color: var(--c-header-accent) !important;
+}
+
+/* ── 9. Shared form controls ───────────────────────────────────────────── */
+html[data-theme="sepia"] input,
+html[data-theme="sepia"] textarea,
+html[data-theme="sepia"] select {
+  background: var(--c-surface);
+  border-color: var(--c-border-strong);
+  color: var(--c-text);
+}
+
+html[data-theme="sepia"] input::placeholder,
+html[data-theme="sepia"] textarea::placeholder {
+  color: var(--c-faint);
+}
+
+/* ── 10. Smooth theme switch (not on first paint) ─────────────────────── */
+html.theme-ready body,
+html.theme-ready .site-header,
+html.theme-ready .site-footer {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-ready body,
+  html.theme-ready .site-header,
+  html.theme-ready .site-footer {
+    transition: none;
+  }
+}
