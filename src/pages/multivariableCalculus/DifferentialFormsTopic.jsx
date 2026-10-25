@@ -430,7 +430,7 @@ function SectionPullback() {
         {"To integrate a form over a parametrized curve or surface, we "}
         <strong>{"pull it back"}</strong>
         {" to the parameter domain: substitute the parametrization into the coefficients and into every $dx_i$. The wedge product then produces the Jacobian automatically (compare "}
-        <a href="/jacobians-change-of-variables/1" style={LINK_STYLE}>{"Jacobians & Change of Variables"}</a>
+        <a href="/coordinate-transformations/1" style={LINK_STYLE}>{"Jacobians & Change of Variables"}</a>
         {")."}
       </p>
 
