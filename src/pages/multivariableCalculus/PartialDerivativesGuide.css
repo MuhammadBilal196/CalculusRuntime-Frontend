@@ -1,24 +1,27 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   PartialDerivativesGuide.css — Unified Modern White/Blue/Dark-Nav Theme
-   Applied to all study guides across Calculus, Multivariable, Linear Algebra, & Stats
+   PartialDerivativesGuide.css — the ONE study-guide stylesheet
+   Used by every guide in Calculus, Multivariable, Linear Algebra and Statistics.
+   All colours come from src/styles/tokens.css, so Light / Dark / Sepia work
+   automatically. Do not hard-code colours here — add a token instead.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .partial-derivatives-guide {
-  --ink: #0f172a;
-  --parchment: #ffffff;
-  --cream: #ffffff;
-  --gold: #0284c7;
-  --gold-lt: #38bdf8;
-  --gold-bg: rgba(2, 132, 199, 0.08);
-  --rust: #0284c7;
-  --sage: #059669;
-  --sage-bg: rgba(5, 150, 105, 0.08);
-  --navy: #0f172a;
-  --navy-bg: #f8fafc;
-  --rule: #e2e8f0;
-  --sh: 0 4px 16px rgba(0, 0, 0, 0.06);
-  --sh-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --sw: 260px;
+  /* Local names kept for older guide markup; they now point at the theme tokens */
+  --ink: var(--c-text);
+  --parchment: var(--c-surface);
+  --cream: var(--c-surface);
+  --gold: var(--c-accent);
+  --gold-lt: var(--c-accent);
+  --gold-bg: var(--c-accent-soft);
+  --rust: var(--c-accent);
+  --sage: var(--c-success);
+  --sage-bg: var(--c-success-soft);
+  --navy: var(--c-text);
+  --navy-bg: var(--c-surface-2);
+  --rule: var(--c-border);
+  --sh: var(--c-shadow-md);
+  --sh-sm: var(--c-shadow-sm);
+  --sw: 268px;
 }
 
 .partial-derivatives-guide *,
@@ -29,201 +32,185 @@
 
 .partial-derivatives-guide {
   scroll-behavior: smooth;
-  background: #ffffff !important;
-  color: var(--ink);
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 16px;
-  line-height: 1.75;
+  background: var(--c-bg) !important;
+  color: var(--c-text);
+  font-family: var(--c-font-sans);
+  font-size: 16.5px;
+  line-height: 1.78;
 }
 
-[data-theme="dark"] .partial-derivatives-guide {
-  background: #0B1120 !important;
-  color: #f8fafc !important;
-}
-
-[data-theme="dark"] .partial-derivatives-guide p {
-  color: #cbd5e1 !important;
-}
-
-[data-theme="dark"] .partial-derivatives-guide .ch-title {
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .partial-derivatives-guide .sec-title {
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .partial-derivatives-guide .sec-badge {
-  background: rgba(56, 189, 248, 0.15) !important;
-  color: #38bdf8 !important;
-  border-color: rgba(56, 189, 248, 0.3) !important;
-}
-
-[data-theme="dark"] .partial-derivatives-guide .divider {
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* ── Fixed Sidebar ──────────────────────────────────────────────────────── */
+/* ── Sidebar (fixed on desktop, chip bar on mobile) ───────────────────── */
 .partial-derivatives-guide .sidebar {
   position: fixed;
   top: var(--sidebar-top, var(--header-h, 70px));
   left: 0;
   bottom: 0;
   width: var(--sw);
-  background: #0B1120 !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: var(--c-sidebar-bg) !important;
+  border-right: 1px solid var(--c-border) !important;
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 120;
   padding: 1.25rem 0 2rem;
   scrollbar-width: thin;
+  scrollbar-color: var(--c-border-strong) transparent;
 }
 
 .partial-derivatives-guide .sidebar::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 .partial-derivatives-guide .sidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
+  background: var(--c-border-strong);
+  border-radius: 3px;
 }
 
 .partial-derivatives-guide .sb-brand {
-  padding: 0.5rem 1.25rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 0.75rem;
+  padding: 0.4rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: 0.6rem;
 }
 
 .partial-derivatives-guide .sb-sub {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.66rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #38bdf8;
+  color: var(--c-accent);
   margin-bottom: 0.25rem;
 }
 
 .partial-derivatives-guide .sb-title {
-  font-family: Inter, -apple-system, sans-serif;
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 750;
+  color: var(--c-text);
   line-height: 1.35;
 }
 
 .partial-derivatives-guide .sb-group {
-  padding: 0.75rem 1.25rem 0.25rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  padding: 0.9rem 1.25rem 0.3rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.62rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--c-sidebar-muted);
 }
 
 .partial-derivatives-guide .sb-link {
   display: block;
-  padding: 0.45rem 1.25rem 0.45rem 1rem;
+  margin: 1px 0.6rem;
+  padding: 0.45rem 0.75rem;
   border-left: 3px solid transparent;
-  color: #94a3b8;
+  border-radius: 0 8px 8px 0;
+  color: var(--c-sidebar-text);
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 500;
   line-height: 1.4;
-  transition: all 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-.partial-derivatives-guide .sb-link:hover,
+.partial-derivatives-guide .sb-link:hover {
+  background: var(--c-surface-2);
+  color: var(--c-text);
+}
+
 .partial-derivatives-guide .sb-link.active {
-  color: #ffffff;
-  border-left-color: #38bdf8;
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--c-sidebar-active-text);
+  border-left-color: var(--c-accent);
+  background: var(--c-sidebar-active-bg);
+  font-weight: 650;
 }
 
 .partial-derivatives-guide .sb-link .sn {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--c-font-mono);
   font-size: 0.72rem;
-  color: #38bdf8;
-  margin-right: 0.35em;
+  color: var(--c-accent);
+  margin-right: 0.4em;
 }
 
-/* ── Main Content Area ─────────────────────────────────────────────────── */
+/* ── Main column ───────────────────────────────────────────────────────── */
 .partial-derivatives-guide .main {
   margin-left: var(--sw);
-  padding: 0 clamp(2rem, 5vw, 4rem) 5rem;
-  max-width: min(100%, calc(var(--sw) + 960px));
+  padding: 0 clamp(1.5rem, 5vw, 4rem) 5rem;
+  max-width: min(100%, calc(var(--sw) + 980px));
 }
 
 .partial-derivatives-guide .ch-hdr {
   text-align: center;
-  padding: 3.5rem 0 2.5rem;
-  border-bottom: 1px solid var(--rule);
+  padding: 3.25rem 0 2.25rem;
+  border-bottom: 1px solid var(--c-border);
   margin-bottom: 2.5rem;
 }
 
 .partial-derivatives-guide .ch-eye {
-  font-family: 'JetBrains Mono', monospace;
+  display: inline-block;
+  font-family: var(--c-font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
+  border: 1px solid var(--c-accent-border);
+  border-radius: var(--c-radius-pill);
+  padding: 0.3rem 0.85rem;
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .partial-derivatives-guide .ch-title {
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(2.1rem, 5vw, 3.1rem);
   font-weight: 850;
   letter-spacing: -0.025em;
   line-height: 1.15;
-  color: var(--ink);
-  margin-bottom: 0.75rem;
+  color: var(--c-text);
+  margin: 0 0 0.75rem;
 }
 
 .partial-derivatives-guide .ch-sub {
-  font-size: 1.05rem;
-  color: #64748b;
-  margin-bottom: 1.25rem;
+  font-size: 1.08rem;
+  color: var(--c-muted);
+  margin: 0 auto 1.25rem;
+  max-width: 62ch;
 }
 
 .partial-derivatives-guide .ch-orn {
   display: none !important;
 }
 
-/* ── Opening Note / Blueprint ─────────────────────────────────────────── */
+/* ── Opening note ──────────────────────────────────────────────────────── */
 .opening-note-box {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-left: 4px solid var(--gold);
-  border-radius: 10px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-left: 4px solid var(--c-accent);
+  border-radius: var(--c-radius);
   padding: 1.25rem 1.5rem;
   margin-bottom: 2.5rem;
-  box-shadow: var(--sh-sm);
+  box-shadow: var(--c-shadow-sm);
 }
 
 .opening-note {
   margin: 0;
-  color: #334155;
-  font-size: 0.95rem;
-  line-height: 1.65;
+  color: var(--c-text-2);
+  font-size: 0.97rem;
+  line-height: 1.7;
 }
 
-/* ── Table of Contents (TOC) ─────────────────────────────────────────── */
+/* ── Table of contents ─────────────────────────────────────────────────── */
 .partial-derivatives-guide .toc {
-  background: #f8fafc;
-  border: 1px solid var(--rule);
-  border-radius: 12px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
   padding: 1.5rem 1.75rem;
   margin-bottom: 3rem;
-  box-shadow: var(--sh-sm);
+  box-shadow: var(--c-shadow-sm);
 }
 
 .partial-derivatives-guide .toc-h {
-  font-family: Inter, -apple-system, sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 750;
-  letter-spacing: 0.1em;
-  color: var(--ink);
+  letter-spacing: 0.12em;
+  color: var(--c-muted);
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 1rem;
@@ -233,41 +220,42 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
-  row-gap: 0.25rem;
+  row-gap: 0.15rem;
 }
 
 .partial-derivatives-guide .toc-a {
   display: flex;
   align-items: baseline;
-  gap: 0.4rem;
-  padding: 0.35rem 0;
-  border-bottom: 1px solid #e2e8f0;
+  gap: 0.5rem;
+  padding: 0.45rem 0.35rem;
+  border-bottom: 1px solid var(--c-border);
+  border-radius: 6px;
   text-decoration: none;
-  color: var(--gold);
-  font-size: 0.86rem;
-  font-weight: 500;
-  transition: color 0.15s ease;
+  color: var(--c-text-2);
+  font-size: 0.9rem;
+  font-weight: 550;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .partial-derivatives-guide .toc-a:hover {
-  color: #0369a1;
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
 }
 
 .partial-derivatives-guide .toc-a .tn {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--c-font-mono);
   font-size: 0.75rem;
-  color: var(--gold);
+  color: var(--c-accent);
   flex-shrink: 0;
 }
 
-/* ── Section Dividers ─────────────────────────────────────────────────── */
+/* ── Dividers & sections ───────────────────────────────────────────────── */
 .partial-derivatives-guide .divider {
   border: none;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--c-border);
   margin: 3.5rem 0;
 }
 
-/* ── Guide Sections ───────────────────────────────────────────────────── */
 .partial-derivatives-guide .section {
   margin-bottom: 4.5rem;
   scroll-margin-top: calc(var(--header-h, 70px) + 1.5rem);
@@ -275,64 +263,86 @@
 
 .partial-derivatives-guide .sec-badge {
   display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--c-font-mono);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--c-accent);
   margin-bottom: 0.4rem;
 }
 
 .partial-derivatives-guide .sec-title {
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 1.85rem;
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--ink);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.4rem;
-  border-bottom: 2px solid var(--rule);
+  line-height: 1.25;
+  color: var(--c-text);
+  padding-bottom: 0.55rem;
+  margin: 0 0 1.4rem;
+  border-bottom: 2px solid var(--c-border);
   position: relative;
 }
 
 .partial-derivatives-guide .sec-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 50px;
+  width: 56px;
   height: 2px;
-  background: var(--gold);
+  background: var(--c-accent);
 }
 
 .partial-derivatives-guide .subsec {
-  font-family: Inter, -apple-system, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.22rem;
   font-weight: 750;
-  color: var(--ink);
-  margin: 2rem 0 0.85rem;
+  color: var(--c-text);
+  margin: 2.1rem 0 0.85rem;
 }
 
 .partial-derivatives-guide p {
-  margin-bottom: 1.15rem;
-  color: #334155;
+  margin: 0 0 1.15rem;
+  color: var(--c-text-2);
+  max-width: var(--c-reading-width);
 }
 
-/* ── Content Callout Boxes ────────────────────────────────────────────── */
+.partial-derivatives-guide strong {
+  color: var(--c-text);
+}
+
+.partial-derivatives-guide a:not([class]) {
+  color: var(--c-accent);
+  text-underline-offset: 3px;
+}
+
+.partial-derivatives-guide code {
+  font-family: var(--c-font-mono);
+  font-size: 0.88em;
+  background: var(--c-code-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 5px;
+  padding: 0.05em 0.35em;
+}
+
+/* ── Callout boxes ─────────────────────────────────────────────────────── */
 .partial-derivatives-guide .box {
   padding: 1.25rem 1.5rem;
   margin: 1.5rem 0;
-  border-radius: 10px;
-  border: 1px solid var(--rule);
+  border-radius: var(--c-radius);
+  border: 1px solid var(--c-border);
   border-left-width: 4px;
-  box-shadow: var(--sh-sm);
-  background: #ffffff;
+  box-shadow: var(--c-shadow-sm);
+  background: var(--c-surface);
+}
+
+.partial-derivatives-guide .box p {
+  max-width: none;
 }
 
 .partial-derivatives-guide .box-lbl {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.66rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 700;
@@ -340,93 +350,78 @@
 }
 
 .partial-derivatives-guide .def {
-  background: #f8fafc;
-  border-color: #e2e8f0;
-  border-left-color: var(--gold);
+  background: var(--c-surface);
+  border-color: var(--c-border);
+  border-left-color: var(--c-accent);
 }
-
-.partial-derivatives-guide .def .box-lbl {
-  color: var(--gold);
-}
+.partial-derivatives-guide .def .box-lbl { color: var(--c-accent); }
 
 .partial-derivatives-guide .thm {
-  background: #f0fdf4;
-  border-color: #bbf7d0;
-  border-left-color: #16a34a;
+  background: var(--c-success-soft);
+  border-color: var(--c-success-border);
+  border-left-color: var(--c-success-strong);
 }
-
-.partial-derivatives-guide .thm .box-lbl {
-  color: #16a34a;
-}
+.partial-derivatives-guide .thm .box-lbl { color: var(--c-success); }
 
 .partial-derivatives-guide .exm {
-  background: #f8fafc;
-  border-color: #e2e8f0;
-  border-left-color: #6366f1;
+  background: var(--c-info-soft);
+  border-color: var(--c-info-border);
+  border-left-color: var(--c-info);
 }
-
-.partial-derivatives-guide .exm .box-lbl {
-  color: #6366f1;
-}
+.partial-derivatives-guide .exm .box-lbl { color: var(--c-info); }
 
 .partial-derivatives-guide .warn {
-  background: #fff1f2;
-  border-color: #fecdd3;
-  border-left-color: #e11d48;
+  background: var(--c-danger-soft);
+  border-color: var(--c-danger-border);
+  border-left-color: var(--c-danger-strong);
 }
-
-.partial-derivatives-guide .warn .box-lbl {
-  color: #e11d48;
-}
+.partial-derivatives-guide .warn .box-lbl { color: var(--c-danger); }
 
 .partial-derivatives-guide .tip {
-  background: #f0fdf4;
-  border-color: #bbf7d0;
-  border-left-color: #16a34a;
+  background: var(--c-success-soft);
+  border-color: var(--c-success-border);
+  border-left-color: var(--c-success-strong);
 }
-
-.partial-derivatives-guide .tip .box-lbl {
-  color: #16a34a;
-}
+.partial-derivatives-guide .tip .box-lbl { color: var(--c-success); }
 
 .partial-derivatives-guide .exm-title {
-  font-family: Inter, -apple-system, sans-serif;
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--c-text);
   margin-bottom: 0.75rem;
 }
 
 .partial-derivatives-guide .sol {
   margin-top: 1rem;
   padding-top: 0.85rem;
-  border-top: 1px dashed var(--rule);
+  border-top: 1px dashed var(--c-border-strong);
 }
 
 .partial-derivatives-guide .sol-lbl {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.66rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #64748b;
+  color: var(--c-muted);
   font-weight: 700;
   margin-bottom: 0.45rem;
 }
 
 .partial-derivatives-guide .note {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-left: 4px solid var(--gold);
+  background: var(--c-accent-soft);
+  border: 1px solid var(--c-accent-border);
+  border-left: 4px solid var(--c-accent);
   border-radius: 8px;
   padding: 1rem 1.25rem;
   margin: 1.25rem 0;
-  font-size: 0.94rem;
-  color: #334155;
+  font-size: 0.95rem;
+  color: var(--c-text-2);
 }
 
 .partial-derivatives-guide .note::before {
-  content: 'ℹ️ ';
-  font-weight: 700;
+  content: "Note · ";
+  font-weight: 750;
+  color: var(--c-accent);
 }
 
 .partial-derivatives-guide .box ul,
@@ -459,59 +454,61 @@
   flex-shrink: 0;
   width: 1.75rem;
   height: 1.75rem;
-  background: var(--gold);
-  color: #ffffff;
+  background: var(--c-accent-strong);
+  color: var(--c-on-accent);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--c-font-mono);
   font-size: 0.75rem;
   font-weight: 700;
   margin-top: 0.15rem;
 }
 
 .partial-derivatives-guide .fml {
-  background: #f8fafc;
-  border: 1px solid var(--rule);
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
   border-radius: 8px;
   padding: 1rem 1.5rem;
   margin: 1rem 0;
   text-align: center;
   overflow-x: auto;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+  color: var(--c-text);
 }
 
+/* ── Tables ────────────────────────────────────────────────────────────── */
 .partial-derivatives-guide .tbl-wrap {
   overflow-x: auto;
   margin: 1.5rem 0;
-  border-radius: 10px;
-  border: 1px solid var(--rule);
-  box-shadow: var(--sh-sm);
+  border-radius: var(--c-radius);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--c-shadow-sm);
+  background: var(--c-surface);
 }
 
 .partial-derivatives-guide table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 
 .partial-derivatives-guide thead th {
-  background: #0B1120;
-  color: #ffffff;
+  background: var(--c-table-head-bg);
+  color: var(--c-table-head-text);
   padding: 0.75rem 1rem;
   text-align: left;
-  font-family: Inter, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 700;
   white-space: nowrap;
+  border-bottom: 1px solid var(--c-border);
 }
 
 .partial-derivatives-guide tbody td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--c-border);
   vertical-align: top;
-  color: #334155;
+  color: var(--c-text-2);
 }
 
 .partial-derivatives-guide tbody tr:last-child td {
@@ -519,9 +516,10 @@
 }
 
 .partial-derivatives-guide tbody tr:nth-child(even) td {
-  background: #f8fafc;
+  background: var(--c-surface-2);
 }
 
+/* ── Summary cards ─────────────────────────────────────────────────────── */
 .partial-derivatives-guide .sum-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -530,30 +528,30 @@
 }
 
 .partial-derivatives-guide .sum-card {
-  background: #ffffff;
-  border: 1px solid var(--rule);
-  border-top: 3px solid var(--gold);
-  border-radius: 0 0 10px 10px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-top: 3px solid var(--c-accent);
+  border-radius: 0 0 var(--c-radius) var(--c-radius);
   padding: 1.1rem 1.25rem;
-  box-shadow: var(--sh-sm);
+  box-shadow: var(--c-shadow-sm);
 }
 
 .partial-derivatives-guide .sum-card .sc-lbl {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.66rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--c-accent);
   font-weight: 700;
   margin-bottom: 0.35rem;
 }
 
 .partial-derivatives-guide .sum-card p {
   margin-bottom: 0;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 
-/* ── MCQ Quizzes ───────────────────────────────────────────────────────── */
+/* ── Older HTML-driven MCQ blocks (mcq-section / mcq-card) ─────────────── */
 .partial-derivatives-guide .mcq-section {
   margin-bottom: 4.5rem;
   scroll-margin-top: calc(var(--header-h, 70px) + 1.5rem);
@@ -562,59 +560,61 @@
 .partial-derivatives-guide .mcq-section-head {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.9rem;
   margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--rule);
+  padding-bottom: 0.55rem;
+  border-bottom: 2px solid var(--c-border);
   position: relative;
 }
 
 .partial-derivatives-guide .mcq-section-head::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 50px;
+  width: 56px;
   height: 2px;
-  background: var(--gold);
+  background: var(--c-accent);
 }
 
 .partial-derivatives-guide .mcq-section-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.66rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #0284c7;
-  background: rgba(2, 132, 199, 0.08);
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
+  border: 1px solid var(--c-accent-border);
   border-radius: 6px;
   padding: 0.25rem 0.6rem;
   font-weight: 700;
 }
 
 .partial-derivatives-guide .mcq-section-title {
-  font-family: Inter, -apple-system, sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--c-text);
 }
 
 .partial-derivatives-guide .mcq-score-strip {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
-  background: #0B1120;
-  color: #ffffff;
-  border-radius: 10px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  color: var(--c-text-2);
+  border-radius: var(--c-radius);
   padding: 0.85rem 1.35rem;
   margin-bottom: 1.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.78rem;
 }
 
 .partial-derivatives-guide .mcq-score-strip .score-val {
   font-size: 1.15rem;
-  color: #38bdf8;
+  color: var(--c-accent);
   font-weight: 700;
 }
 
@@ -626,46 +626,45 @@
 }
 
 .partial-derivatives-guide .mcq-dot {
-  width: 2rem;
-  height: 2rem;
+  width: 2.1rem;
+  height: 2.1rem;
   border-radius: 50%;
-  border: 1px solid var(--rule);
-  background: #f8fafc;
-  color: #64748b;
-  opacity: 0.5;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface-2);
+  color: var(--c-muted);
+  opacity: 0.55;
+  font-family: var(--c-font-mono);
+  font-size: 0.74rem;
   font-weight: 700;
   cursor: not-allowed;
-  transition: all 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
 .partial-derivatives-guide .mcq-dot.reached {
   opacity: 1;
   cursor: pointer;
-  border-color: #0284c7;
-  background: rgba(2, 132, 199, 0.08);
-  color: #0284c7;
+  border-color: var(--c-accent-border);
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
 }
 
 .partial-derivatives-guide .mcq-dot.reached:hover {
   transform: translateY(-1px);
-  box-shadow: var(--sh-sm);
 }
 
 .partial-derivatives-guide .mcq-dot.active {
-  background: #0056D2;
-  border-color: #0056D2;
-  color: #ffffff;
+  background: var(--c-accent-strong);
+  border-color: var(--c-accent-strong);
+  color: var(--c-on-accent);
 }
 
 .partial-derivatives-guide .mcq-card {
-  background: #ffffff;
-  border: 1px solid var(--rule);
-  border-radius: 12px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
   padding: 1.5rem 1.75rem;
   margin-bottom: 1.5rem;
-  box-shadow: var(--sh-sm);
+  box-shadow: var(--c-shadow-sm);
 }
 
 .partial-derivatives-guide .mcq-slide-nav {
@@ -678,37 +677,34 @@
 
 .partial-derivatives-guide .mcq-slide-prev,
 .partial-derivatives-guide .mcq-slide-next {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: #ffffff;
-  color: #0f172a;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 650;
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 8px;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
 }
 
 .partial-derivatives-guide .mcq-slide-prev:hover:not(:disabled),
 .partial-derivatives-guide .mcq-slide-next:hover:not(:disabled) {
-  border-color: #0284c7;
-  color: #0284c7;
-  background: #f0f9ff;
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
 }
 
 .partial-derivatives-guide .mcq-slide-prev:disabled,
 .partial-derivatives-guide .mcq-slide-next:disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
 .partial-derivatives-guide .mcq-slide-pos {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: #64748b;
+  font-family: var(--c-font-mono);
+  font-size: 0.78rem;
+  color: var(--c-muted);
   font-weight: 600;
 }
 
@@ -716,13 +712,13 @@
   flex-shrink: 0;
   width: 2rem;
   height: 2rem;
-  background: #0056D2;
-  color: #ffffff;
+  background: var(--c-accent-strong);
+  color: var(--c-on-accent);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--c-font-mono);
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -731,102 +727,98 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   margin-bottom: 0.6rem;
-  border: 1.5px solid var(--rule);
-  border-radius: 8px;
-  background: #f8fafc;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--c-radius);
+  background: var(--c-surface);
+  color: var(--c-text);
   cursor: pointer;
-  transition: all 0.15s ease;
-  font-size: 0.92rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  font-size: 0.95rem;
 }
 
 .partial-derivatives-guide .mcq-opt:hover {
-  border-color: #0284c7;
-  background: #f0f9ff;
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
 }
 
 .partial-derivatives-guide .mcq-opt.selected {
-  border-color: #0056D2;
-  background: #eff6ff;
+  border-color: var(--c-accent-strong);
+  background: var(--c-accent-soft);
 }
 
 .partial-derivatives-guide .mcq-opt.correct {
-  border-color: #16a34a !important;
-  background: #f0fdf4 !important;
-  color: #166534 !important;
+  border-color: var(--c-success-strong) !important;
+  background: var(--c-success-soft) !important;
+  color: var(--c-text) !important;
 }
 
 .partial-derivatives-guide .mcq-opt.wrong {
-  border-color: #e11d48 !important;
-  background: #fff1f2 !important;
-  color: #9f1239 !important;
+  border-color: var(--c-danger-strong) !important;
+  background: var(--c-danger-soft) !important;
+  color: var(--c-text) !important;
 }
 
 .partial-derivatives-guide .mcq-reveal-btn {
-  background: #0056D2;
-  color: #ffffff;
+  background: var(--c-accent-strong);
+  color: var(--c-on-accent);
   border: none;
-  border-radius: 6px;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.88rem;
-  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.65rem 1.3rem;
+  font-size: 0.9rem;
+  font-weight: 650;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 86, 210, 0.2);
-  transition: all 0.15s ease;
+  transition: background 0.15s ease;
 }
 
 .partial-derivatives-guide .mcq-reveal-btn:hover {
-  background: #0043a8;
+  background: var(--c-accent-strong-hover);
 }
 
-/* ── MCQ Locking & One-at-a-time Slider ────────────────────────────────── */
-.partial-derivatives-guide .mcq-card.mcq-slide-hide {
-  display: none !important;
-}
-
+/* One-at-a-time slider + locking */
+.partial-derivatives-guide .mcq-card.mcq-slide-hide,
 .partial-derivatives-guide .mcq-card.mcq-locked {
   display: none !important;
 }
 
+/* A locked quiz stays visible (greyed) but cannot be used */
 .partial-derivatives-guide .mcq-section.mcq-section-locked {
   position: relative;
   opacity: 0.55;
   pointer-events: none;
-  filter: grayscale(0.25);
+  filter: grayscale(0.3);
+  user-select: none;
 }
 
 .partial-derivatives-guide .mcq-section.mcq-section-locked::before {
-  content: attr(data-lock-hint);
+  content: "🔒  " attr(data-lock-hint);
   display: block;
   margin: 0 0 1.25rem;
-  padding: 0.85rem 1.25rem;
-  border-radius: 8px;
-  border: 1px dashed #0284c7;
-  background: rgba(2, 132, 199, 0.08);
-  color: #0284c7;
-  font-family: Inter, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--c-radius);
+  border: 1px dashed var(--c-accent-border);
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
+  font-size: 0.92rem;
+  font-weight: 650;
 }
 
 .partial-derivatives-guide .mcq-unlock-hint {
   margin: 0.35rem 0 1.25rem;
-  color: #64748b;
-  font-size: 0.88rem;
-  font-family: Inter, sans-serif;
+  color: var(--c-muted);
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
-/* ── MCQ Answer & Explanation (Hidden until answered / revealed) ──────── */
 .partial-derivatives-guide .mcq-answer {
   display: none;
   margin-top: 1.25rem;
   padding: 1.1rem 1.25rem;
   border-radius: 8px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-left: 4px solid #16a34a;
+  background: var(--c-success-soft);
+  border: 1px solid var(--c-success-border);
+  border-left: 4px solid var(--c-success-strong);
 }
 
 .partial-derivatives-guide .mcq-answer.visible {
@@ -841,41 +833,39 @@
 
 .partial-derivatives-guide .mcq-correct-badge {
   display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.8rem;
   font-weight: 700;
-  color: #166534;
+  color: var(--c-success);
   margin-bottom: 0.5rem;
 }
 
 .partial-derivatives-guide .mcq-explanation {
-  color: #334155;
-  font-size: 0.92rem;
-  line-height: 1.65;
+  color: var(--c-text-2);
+  font-size: 0.94rem;
+  line-height: 1.68;
 }
 
-/* ── Floating MCQ Progress Sidebar ─────────────────────────────────────── */
+/* ── Floating progress card for the older MCQ blocks ──────────────────── */
 .mcq-progress-sidebar {
   position: fixed;
-  right: 1.5rem;
+  right: 1.25rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 180;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.65rem;
-  padding: 1.1rem 0.85rem 1.2rem;
-  background: #0B1120;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 14px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(56, 189, 248, 0.15);
-  min-width: 62px;
+  gap: 0.6rem;
+  padding: 1rem 0.85rem 1.1rem;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-lg);
+  box-shadow: var(--c-shadow-lg);
+  min-width: 76px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .mcq-progress-sidebar.visible {
@@ -884,21 +874,21 @@
 }
 
 .mcq-progress-sidebar__label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #38bdf8;
+  color: var(--c-accent);
   white-space: nowrap;
 }
 
 .mcq-progress-sidebar__track {
   position: relative;
-  width: 6px;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 3px;
+  width: 10px;
+  height: 140px;
+  background: var(--c-surface-3);
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -907,55 +897,43 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(to top, #0284c7, #38bdf8);
-  border-radius: 3px;
-  transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: var(--c-accent-strong);
+  border-radius: 5px;
+  transition: height 0.4s ease;
 }
 
 .mcq-progress-sidebar__count {
-  font-family: Inter, sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 750;
+  color: var(--c-text);
   white-space: nowrap;
 }
 
 .mcq-progress-sidebar__score {
-  font-family: Inter, sans-serif;
-  font-size: 0.7rem;
-  color: #94a3b8;
+  font-size: 0.72rem;
+  color: var(--c-muted);
   white-space: nowrap;
 }
 
 .mcq-progress-sidebar__pct {
-  font-family: Inter, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  color: #38bdf8;
+  color: var(--c-accent);
   line-height: 1;
 }
 
 .mcq-progress-sidebar__check {
   font-size: 1.25rem;
   line-height: 1;
-  animation: mcq-check-pop 0.4s ease;
-}
-
-@keyframes mcq-check-pop {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.3); }
-  100% { transform: scale(1); opacity: 1; }
 }
 
 @media (max-width: 920px) {
   .mcq-progress-sidebar {
     right: 0.75rem;
-    padding: 0.75rem 0.6rem;
-    min-width: 48px;
-    border-radius: 10px;
+    min-width: 58px;
   }
   .mcq-progress-sidebar__track {
-    height: 80px;
+    height: 96px;
   }
 }
 
@@ -966,30 +944,27 @@
     right: 0.5rem;
     transform: none;
     flex-direction: row;
-    padding: 0.5rem 0.75rem;
-    gap: 0.5rem;
-    border-radius: 8px;
+    padding: 0.55rem 0.8rem;
+    gap: 0.55rem;
   }
   .mcq-progress-sidebar__track {
-    width: 60px;
-    height: 5px;
+    width: 72px;
+    height: 8px;
   }
   .mcq-progress-sidebar__fill {
-    bottom: 0;
-    left: 0;
     height: 100% !important;
     width: var(--fill-w, 0%);
-    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: width 0.4s ease;
   }
 }
 
-/* ── Leaderboard Submit Box ────────────────────────────────────────────── */
+/* ── Leaderboard submit box ────────────────────────────────────────────── */
 .lb-submit {
   margin-top: 1.5rem;
   padding: 1.25rem 1.5rem;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  background: var(--c-surface) !important;
+  border: 1px solid var(--c-border) !important;
+  border-radius: var(--c-radius);
 }
 
 .lb-submit__row {
@@ -1000,32 +975,31 @@
 }
 
 .lb-submit__btn {
-  background: #0056D2;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
+  background: var(--c-accent-strong) !important;
+  color: var(--c-on-accent) !important;
+  border: none !important;
+  border-radius: 8px;
   padding: 0.6rem 1.2rem;
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 650;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 86, 210, 0.2);
-  transition: all 0.15s ease;
+  box-shadow: none !important;
+  transition: background 0.15s ease;
 }
 
 .lb-submit__btn:hover:not(:disabled) {
-  background: #0043a8;
+  background: var(--c-accent-strong-hover) !important;
 }
 
 .lb-submit__btn:disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  box-shadow: none;
 }
 
 .lb-submit__link {
-  color: #0284c7;
-  font-size: 0.88rem;
-  font-weight: 600;
+  color: var(--c-accent) !important;
+  font-size: 0.9rem;
+  font-weight: 650;
   text-decoration: none;
 }
 
@@ -1036,60 +1010,16 @@
 .lb-submit__hint,
 .lb-submit__status {
   margin: 0.6rem 0 0;
-  font-size: 0.82rem;
-  color: #64748b;
+  font-size: 0.85rem;
+  color: var(--c-muted) !important;
 }
 
 .lb-submit__status {
-  color: #16a34a;
-  font-weight: 600;
+  color: var(--c-success) !important;
+  font-weight: 650;
 }
 
-[data-theme="dark"] .partial-derivatives-guide .mcq-reveal-btn {
-  background: #0284c7 !important;
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .opening-note-box {
-      background: #0f172a !important;
-    border-color: #1e293b !important;
-    border-left-color: #38bdf8 !important;
-}
-
-[data-theme="dark"] .opening-note {
-  color: #334155 !important;
-}
-
-[data-theme="dark"] .lb-submit {
-  background: #111827 !important;
-  border-color: #1e293b !important;
-}
-
-[data-theme="dark"] .lb-submit__btn {
-  background: #0284c7 !important;
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .lb-submit__btn:disabled {
-  background: #1e293b !important;
-  color: #94a3b8 !important;
-  border: 1px solid #334155 !important;
-}
-
-[data-theme="dark"] .lb-submit__link {
-  color: #38bdf8 !important;
-}
-
-[data-theme="dark"] .lb-submit__hint {
-  color: #94a3b8 !important;
-}
-
-[data-theme="dark"] .lb-submit__status {
-  color: #34d399 !important;
-}
-
-
-/* ── Mobile View ───────────────────────────────────────────────────────── */
+/* ── Phones & tablets ──────────────────────────────────────────────────── */
 @media (max-width: 860px) {
   .partial-derivatives-guide .sidebar {
     position: sticky;
@@ -1100,13 +1030,13 @@
     max-width: 100%;
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
     overflow-x: auto;
     overflow-y: hidden;
-    background: #0B1120 !important;
+    background: var(--c-sidebar-bg) !important;
     border-right: 0 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid var(--c-border) !important;
+    padding: 0.55rem 0.8rem;
     z-index: 110;
     scrollbar-width: none;
   }
@@ -1118,45 +1048,48 @@
   .partial-derivatives-guide .sb-brand {
     flex: 0 0 auto;
     border-bottom: 0;
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-right: 1px solid var(--c-border);
     padding: 0.1rem 0.8rem 0.1rem 0;
-    margin-right: 0.35rem;
-    margin-bottom: 0;
+    margin: 0 0.35rem 0 0;
   }
 
-  .partial-derivatives-guide .sb-sub {
-    display: none;
-  }
-
+  .partial-derivatives-guide .sb-sub,
   .partial-derivatives-guide .sb-group {
     display: none;
   }
 
-  .partial-derivatives-guide .sb-link {
-    flex: 0 0 auto;
-    border-left: 0;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    padding: 0.35rem 0.75rem;
-    background: rgba(255, 255, 255, 0.04);
-    font-size: 0.78rem;
+  .partial-derivatives-guide .sb-title {
+    font-size: 0.88rem;
     white-space: nowrap;
   }
 
-  .partial-derivatives-guide .sb-link:hover,
+  .partial-derivatives-guide .sb-link {
+    flex: 0 0 auto;
+    margin: 0;
+    border: 1px solid var(--c-border);
+    border-radius: var(--c-radius-pill);
+    padding: 0.35rem 0.8rem;
+    background: var(--c-surface);
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
   .partial-derivatives-guide .sb-link.active {
-    border-color: #38bdf8;
-    background: rgba(56, 189, 248, 0.15);
+    border-color: var(--c-accent);
   }
 
   .partial-derivatives-guide .main {
     margin-left: 0;
-    padding: 0 1.25rem 3.5rem;
+    padding: 0 1.15rem 3.5rem;
     max-width: 100%;
   }
 
-  .partial-derivatives-guide .ch-title {
-    font-size: 2rem;
+  .partial-derivatives-guide .ch-hdr {
+    padding: 2.25rem 0 1.75rem;
+  }
+
+  .partial-derivatives-guide .box {
+    padding: 1.05rem 1.1rem;
   }
 
   .partial-derivatives-guide .toc-grid,
