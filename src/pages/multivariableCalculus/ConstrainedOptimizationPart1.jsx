@@ -9,6 +9,12 @@ export default function ConstrainedOptimizationPart1() {
       part={1}
       moduleTopics={OPTIMIZATION_TOPICS}
       basePath={OPTIMIZATION_BASE}
+      completion={{
+        sectionId: "optimization-1",
+        nextPath: "/constrained-unconstrained-optimization/2",
+        nextLabel: "Continue to Part 2",
+        courseId: "multivariable-calculus",
+      }}
     />
   );
 }
