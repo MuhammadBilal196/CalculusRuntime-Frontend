@@ -4,6 +4,7 @@ import useLearningHistory from "../../hooks/useLearningHistory";
 import { FLASHCARDS, FLASHCARD_COURSES, flashcardProgress, dueCounts } from "../../utils/flashcards";
 import { newAttemptId } from "../../utils/quizAttempts";
 import "./Flashcards.css";
+import "./StudyPages.css";
 
 export default function Flashcards() {
   const { user, events, pending, error, append, retry } = useLearningHistory();
@@ -20,8 +21,8 @@ export default function Flashcards() {
   const counts = dueCounts(cards, progress, now);
   const card = cards.find((c) => !progress[c.id] || progress[c.id].dueAt <= now);
   useEffect(() => { setRevealed(false); setMessage(""); }, [card?.id, user?.username]);
-  if (!user?.accessToken) return <main className="flashcards-page"><h1>Flashcards</h1><p>Sign in to save your review schedule.</p><Link to="/login">Log in</Link></main>;
-  return <main className="flashcards-page"><h1>Flashcards</h1><p>Recall a formula or definition, reveal it, then rate your answer.</p>
+  if (!user?.accessToken) return <main className="flashcards-page study-page cvx"><h1>Flashcards</h1><p>Sign in to save your review schedule.</p><Link to="/login">Log in</Link></main>;
+  return <main className="flashcards-page study-page cvx"><h1>Flashcards</h1><p>Recall a formula or definition, reveal it, then rate your answer.</p>
     <div className="flashcards-controls"><label>Course<select value={course} onChange={(e) => { setCourse(e.target.value); setTopic(""); setRevealed(false); }}>
       {Object.entries(FLASHCARD_COURSES).map(([name,id]) => <option key={id} value={id}>{name}</option>)}
     </select></label><label>Topic<select value={topic} onChange={(e) => { setTopic(e.target.value); setRevealed(false); }}>
