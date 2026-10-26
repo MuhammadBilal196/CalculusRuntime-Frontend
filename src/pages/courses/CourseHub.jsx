@@ -1,6 +1,9 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { getCourseById } from "../../data/courses";
 import { useProgress } from "../../context/ProgressContext";
+import { useAuth } from "../../context/AuthContext";
+import { CourseRegisterButton } from "../../components/study/CourseRegister";
+import { CATALOG_COURSE_IDS } from "../../data/courseCatalog";
 import {
   isCourseCertificateEligible,
   isCourseComplete,
@@ -11,6 +14,7 @@ function CourseHub() {
   const { courseId } = useParams();
   const course = getCourseById(courseId);
   const { progress } = useProgress();
+  const { user } = useAuth();
 
   if (!course) {
     return <Navigate to="/" replace />;
@@ -38,6 +42,17 @@ function CourseHub() {
               </Link>
             )}
           </div>
+          {CATALOG_COURSE_IDS.includes(courseId) ? (
+            <div className="hero-register cvx">
+              {user ? (
+                <CourseRegisterButton courseId={courseId} />
+              ) : (
+                <Link className="crg-btn" to="/signup">
+                  Sign up to register for this course
+                </Link>
+              )}
+            </div>
+          ) : null}
         </div>
         {course.heroImage && (
           <div className="hero-image-container course-hero-image-container">
