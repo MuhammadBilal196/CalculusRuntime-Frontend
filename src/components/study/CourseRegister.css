@@ -1,0 +1,134 @@
+/* Course registration cards — tokens from tokens.css, text via --tc (.cvx). */
+
+.crg {
+  margin: 2rem 0;
+}
+
+.crg-title {
+  margin: 0 0 0.9rem;
+  font-family: var(--c-font-serif);
+  font-size: 1.25rem;
+}
+
+.crg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.9rem;
+}
+
+.crg-card {
+  --tone: var(--c-accent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.1rem;
+  border: 1px dashed var(--c-border-strong);
+  border-radius: 14px;
+  background: var(--c-surface);
+}
+
+.crg-card--gold { --tone: #b7791f; }
+.crg-card--teal { --tone: #0f8b8d; }
+.crg-card--blue { --tone: #2b4cc9; }
+.crg-card--purple { --tone: #7c3aed; }
+
+html[data-theme="dark"] .crg-card--gold { --tone: #f6c35b; }
+html[data-theme="dark"] .crg-card--teal { --tone: #2dd4bf; }
+html[data-theme="dark"] .crg-card--blue { --tone: #8ea8ff; }
+html[data-theme="dark"] .crg-card--purple { --tone: #c4a1ff; }
+
+.crg-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 10px;
+  background: var(--c-surface-2);
+  font-family: var(--c-font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  --tc: var(--tone);
+}
+
+.crg-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.crg-desc {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  --tc: var(--c-text-2);
+}
+
+.crg-meta {
+  margin: 0.4rem 0 0;
+  font-size: 0.78rem;
+  --tc: var(--c-muted);
+}
+
+.crg-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.crg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border: 0;
+  border-radius: 9px;
+  background: var(--c-accent-strong);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  --tc: var(--c-on-accent);
+  transition: background 0.15s ease;
+}
+
+.crg-btn:hover {
+  background: var(--c-accent-strong-hover);
+}
+
+.crg-link {
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-decoration: none !important;
+  --tc: var(--c-accent);
+}
+
+.crg-link:hover {
+  text-decoration: underline !important;
+}
+
+.crg-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--c-success-border);
+  border-radius: 999px;
+  background: var(--c-success-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+  --tc: var(--c-success);
+}
+
+.crg--compact .crg-card {
+  flex-direction: row;
+  align-items: center;
+}
+
+.crg--compact .crg-actions {
+  margin: 0 0 0 auto;
+}
+
+.crg--compact .crg-body {
+  min-width: 0;
+}
