@@ -1,45 +1,120 @@
 // src/pages/courses/CheatSheet.jsx
 import { useState, useRef, useMemo } from "react";
+import { Check, Copy, Download, Search } from "lucide-react";
 import { useProgress } from "../../context/ProgressContext";
 import formulaData from "../../data/formulaData.js";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import "./CheatSheet.css";
 
-// ─── Topic key → progress key mapping ────────────────────────────────────────
+// ─── Topic key → section ids that mark the topic as studied ─────────────────
+const two = (prefix) => [`${prefix}-1`, `${prefix}-2`];
+
 const TOPIC_PROGRESS_KEYS = {
-  "limits-continuity":   ["limits-1", "limits-2"],
-  differentiation:       ["calc-diff-1", "calc-diff-2"],
-  integration:           ["calc-int-1", "calc-int-2"],
-  "sequences-series":    ["calc-series-1", "calc-series-2"],
-  "conic-sections":      ["calc-conics-1", "calc-conics-2"],
-  "lines-geometry":      ["lines-1", "lines-2"],
-  "circles-tangents":    ["circles-1", "circles-2"],
-  "advanced-calculus":   ["advcalc-1", "advcalc-2"],
-  "differential-equations": ["ode-1", "ode-2"],
-  "taylor-series":       ["taylor-1", "taylor-2"],
-  "partial-derivatives": ["partial-1", "partial-2"],
-  extrema:               ["extreme", "extrema"],
-  "lagrange-multipliers": ["lagrange-1", "lagrange-2"],
-  "multiple-integrals":  ["integrals-1", "integrals-2"],
-  "vector-calculus":     ["vector-1", "vector-2"],
-  "divergence-curl":     ["divergence-1", "divergence-2"],
-  "stokes-theorem":      ["stokes-1", "stokes-2"],
-  "la-equations":        ["la-eq-1", "la-eq-2"],
-  "la-subspaces":        ["la-sys-2", "la-vec-2"],
-  "la-vectors":          ["la-vec-1", "la-vec-2"],
-  "la-matrices":         ["la-mat-1", "la-mat-2"],
-  "la-systems":          ["la-sys-1", "la-sys-2"],
-  "la-transformations":  ["la-trans-1", "la-trans-2"],
-  "la-orthogonality":    ["la-ortho-1", "la-ortho-2"],
-  "la-eigen":            ["la-eigen-1", "la-eigen-2"],
-  "la-svd":              ["la-svd-1", "la-svd-2"],
-  "prob-basics":         ["ps-prob-1", "ps-prob-2"],
-  "prob-random-vars":    ["ps-rv-1", "ps-rv-2"],
-  "prob-distributions":  ["ps-rv-1", "ps-rv-2"],
-  "prob-descriptive":    ["ps-desc-1", "ps-desc-2"],
-  "prob-hypothesis":     ["ps-hyp-1", "ps-hyp-2"],
-  "prob-regression":     ["ps-reg-1", "ps-reg-2"],
+  // Calculus & Analytical Geometry
+  "limits-continuity": two("limits"),
+  differentiation: two("calc-diff"),
+  integration: two("calc-int"),
+  "sequences-series": two("calc-series"),
+  "conic-sections": two("calc-conics"),
+  "lines-geometry": two("lines"),
+  "circles-tangents": two("circles"),
+  "advanced-calculus": two("advcalc"),
+  "differential-equations": two("ode"),
+  "taylor-series": two("taylor"),
+  "pointwise-uniform-convergence": two("pointwise-uniform-convergence"),
+  "interchanging-limits": two("interchanging-limits"),
+  "power-series-ode": two("power-series-ode"),
+  "frobenius-method": two("frobenius-method"),
+  "analytic-functions": two("analytic-functions"),
+  "contour-integrals": two("contour-integrals"),
+  "space-curves": two("space-curves"),
+  "vector-motion": two("vector-motion"),
+  "parametric-surfaces": two("parametric-surfaces"),
+  "polar-calculus": two("polar-calculus"),
+  "solids-revolution": two("solids-revolution"),
+  "volume-cross-sections": two("volume-cross-sections"),
+  "numerical-methods": two("numerical-methods"),
+  "improper-integrals-advanced": two("improper-integrals"),
+  "complex-numbers": two("complex-numbers"),
+  "hyperbolic-functions": two("hyperbolic-functions"),
+  "laplace-transforms": two("laplace-transforms"),
+  "fourier-series": two("fourier-series"),
+  "gamma-beta-functions": two("gamma-beta"),
+  "leibniz-rule": two("leibniz-rule"),
+  "fourier-transforms": two("fourier-transforms"),
+  "z-transforms": two("z-transforms"),
+  "intro-pdes": two("intro-pdes"),
+  "orthogonal-polynomials": two("orthogonal-polynomials"),
+  // Multivariable Calculus
+  "partial-derivatives": two("partial"),
+  extrema: ["extreme", "extrema"],
+  "lagrange-multipliers": two("lagrange"),
+  "multiple-integrals": two("integrals"),
+  "vector-calculus": two("vector"),
+  "divergence-curl": two("divergence"),
+  "stokes-theorem": two("stokes"),
+  "3d-geometry": two("geo3d"),
+  "coordinate-transformations": two("coordinate-transformations"),
+  "constrained-optimization": two("optimization"),
+  "vector-fields-approximation": two("vector-fields-approximation"),
+  "potential-theory": ["potential-theory"],
+  "differential-forms": ["differential-forms"],
+  "advanced-integration": ["advanced-integration"],
+  "surface-geometry": ["surface-geometry"],
+  "moving-domains": ["moving-domains"],
+  "nonlinear-dynamics": ["nonlinear-dynamics"],
+  // Linear Algebra
+  "la-equations": two("la-lineq"),
+  "la-subspaces": [...two("la-systems"), ...two("la-vectors")],
+  "la-vectors": two("la-vectors"),
+  "la-matrices": two("la-matrices"),
+  "la-systems": two("la-systems"),
+  "la-transformations": two("la-transform"),
+  "la-orthogonality": two("la-ortho"),
+  "la-eigen": two("la-eigen"),
+  "la-svd": two("la-svd"),
+  "la-lu-decomposition": two("la-a-lu"),
+  "la-cholesky-decomposition": two("la-a-cholesky"),
+  "la-jordan-normal-form": two("la-a-jordan"),
+  "la-matrix-norms-conditioning": two("la-a-norms"),
+  "la-complex-vector-spaces": two("la-complex"),
+  "la-quadratic-forms-definiteness": two("la-quadratic"),
+  "la-change-of-basis-similarity": two("la-change-basis"),
+  "la-affine-homogeneous": two("la-affine"),
+  "la-principal-component-analysis": two("la-pca"),
+  "la-markov-chains-steady-states": two("la-markov"),
+  "la-linear-programming-simplex": two("la-linear-programming"),
+  // Probability & Statistics
+  "prob-basics": two("ps-basics"),
+  "prob-random-vars": two("ps-rv"),
+  "prob-distributions": two("ps-rv"),
+  "prob-descriptive": two("ps-desc"),
+  "prob-hypothesis": [...two("ps-hyp"), ...two("ps-b-anova")],
+  "prob-regression": two("ps-reg"),
+  "prob-entropy-mutual-information": two("ps-it"),
+  "prob-cross-entropy-kl": two("ps-it"),
+  "prob-censoring-kaplan-meier": two("ps-sv"),
+  "prob-hazard-survival-models": two("ps-sv"),
+  "prob-sequential-probability-ratio": two("ps-sd"),
+  "prob-multiple-testing": two("ps-sd"),
+  "prob-bayesian-inference": two("ps-a-bayes"),
+  "prob-maximum-likelihood": two("ps-a-mle"),
+  "prob-confidence-intervals": two("ps-a-ci"),
+  "prob-mgf": two("ps-a-mgf"),
+  "prob-chi-square": two("ps-b-chisq"),
+  "prob-nonparametric": two("ps-b-nonparam"),
+  "prob-multiple-regression": two("ps-b-mlr"),
+  "prob-joint-distributions": two("ps-c-joint"),
+  "prob-multivariate-normal": two("ps-c-mvn"),
+  "prob-stochastic-processes": two("ps-c-stoch"),
+  "prob-clt": two("ps-c-clt"),
+  "prob-logistic-regression": two("ps-logistic"),
+  "prob-time-series": two("ps-timeseries"),
+  "prob-monte-carlo": two("ps-montecarlo"),
+  "prob-bootstrap": two("ps-bootstrap"),
+  "prob-order-statistics": two("ps-orderstats"),
+  "prob-queueing": two("ps-queueing"),
 };
 
 const CATEGORIES = [
@@ -50,15 +125,19 @@ const CATEGORIES = [
   "Probability & Stats",
 ];
 
+const ALL_KEYS = Object.keys(formulaData);
+
+const nextFrame = () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
 export default function CheatSheet() {
   const { progress } = useProgress();
   const completedSections = progress?.completedSections || {};
   const sheetRef = useRef(null);
-  
+
   const [activeCategory, setActiveCategory] = useState("All Subjects");
   const [downloading, setDownloading] = useState(false);
-  const [copiedIndex, setCopiedIndex] = useState(null);
-  const [selectedTopics, setSelectedTopics] = useState(() => Object.keys(formulaData));
+  const [copiedId, setCopiedId] = useState(null);
+  const [selectedTopics, setSelectedTopics] = useState(() => ALL_KEYS);
   const [searchTerm, setSearchTerm] = useState("");
 
   // ── Which topics has the student completed? ──────────────────────────────
@@ -67,74 +146,84 @@ export default function CheatSheet() {
     return keys.some((k) => !!completedSections[k]);
   };
 
-  // ── Toggle topic selection ───────────────────────────────────────────────
+  const inCategory = (topic) => activeCategory === "All Subjects" || topic.category === activeCategory;
+
+  const categoryCounts = useMemo(() => {
+    const counts = { "All Subjects": ALL_KEYS.length };
+    Object.values(formulaData).forEach((topic) => {
+      counts[topic.category] = (counts[topic.category] || 0) + 1;
+    });
+    return counts;
+  }, []);
+
+  const visibleTopics = Object.entries(formulaData).filter(([, topic]) => inCategory(topic));
+  const selectedInView = visibleTopics.filter(([key]) => selectedTopics.includes(key)).length;
+
+  // ── Topic selection ──────────────────────────────────────────────────────
   const toggleTopic = (key) => {
-    setSelectedTopics((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-    );
+    setSelectedTopics((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
   };
 
-  const selectAll = () => setSelectedTopics(Object.keys(formulaData));
-  const selectDone = () =>
-    setSelectedTopics(Object.keys(formulaData).filter(isCompleted));
+  const selectAll = () => setSelectedTopics(ALL_KEYS);
+  const selectDone = () => setSelectedTopics(ALL_KEYS.filter(isCompleted));
   const clearAll = () => setSelectedTopics([]);
 
-  // Copy formula text to clipboard
-  const copyFormula = (formulaText, id) => {
-    navigator.clipboard.writeText(formulaText);
-    setCopiedIndex(id);
-    setTimeout(() => setCopiedIndex(null), 2000);
+  const copyFormula = async (formulaText, id) => {
+    try {
+      await navigator.clipboard.writeText(formulaText);
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2000);
+    } catch {
+      /* clipboard blocked (insecure context or permissions) */
+    }
   };
 
   // ── Filtered formulas by search and category ──────────────────────────────
   const filteredData = useMemo(() => {
+    const q = searchTerm.trim().toLowerCase();
     return Object.entries(formulaData)
-      .filter(([key, topic]) => {
-        const matchesSelection = selectedTopics.includes(key);
-        const matchesCategory =
-          activeCategory === "All Subjects" || topic.category === activeCategory;
-        return matchesSelection && matchesCategory;
-      })
+      .filter(
+        ([key, topic]) =>
+          selectedTopics.includes(key) &&
+          (activeCategory === "All Subjects" || topic.category === activeCategory),
+      )
       .map(([key, topic]) => ({
         key,
         ...topic,
         formulas: topic.formulas.filter(
           (f) =>
-            searchTerm === "" ||
-            f.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            f.formula.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            (f.note && f.note.toLowerCase().includes(searchTerm.toLowerCase()))
+            q === "" ||
+            topic.title.toLowerCase().includes(q) ||
+            f.name.toLowerCase().includes(q) ||
+            f.formula.toLowerCase().includes(q) ||
+            (f.note && f.note.toLowerCase().includes(q)),
         ),
       }))
       .filter((t) => t.formulas.length > 0);
   }, [selectedTopics, activeCategory, searchTerm]);
 
-  // Total formulas count
-  const totalFormulasCount = useMemo(() => {
-    return filteredData.reduce((acc, t) => acc + t.formulas.length, 0);
-  }, [filteredData]);
+  const totalFormulasCount = useMemo(
+    () => filteredData.reduce((acc, t) => acc + t.formulas.length, 0),
+    [filteredData],
+  );
 
-  // ── PDF Download ─────────────────────────────────────────────────────────
+  // ── PDF Download (always rendered on light paper) ──────────────────────────
   const downloadPDF = async () => {
     if (!sheetRef.current) return;
     setDownloading(true);
     try {
+      await nextFrame(); // let the light "print" styling apply first
       const canvas = await html2canvas(sheetRef.current, {
         scale: 2,
         useCORS: true,
         backgroundColor: "#ffffff",
       });
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: "a4",
-      });
+      const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
       const pageW = pdf.internal.pageSize.getWidth();
       const pageH = pdf.internal.pageSize.getHeight();
-      const ratio = canvas.width / canvas.height;
       const imgW = pageW - 20;
-      const imgH = imgW / ratio;
+      const imgH = imgW / (canvas.width / canvas.height);
       let heightLeft = imgH;
       let position = 10;
 
@@ -155,161 +244,172 @@ export default function CheatSheet() {
   };
 
   return (
-    <div className="cheat-page">
-      {/* ── Page Hero ── */}
-      <div className="cs-hero">
-        <div className="cs-hero-kicker">Formula Reference &amp; Study Guide</div>
-        <h1 className="cs-hero-title">Mathematical Formula Cheat Sheet</h1>
-        <p className="cs-hero-desc">
-          Comprehensive catalog of definitions, identities, theorems, and computational formulas across Single-Variable Calculus, Multivariable Calculus, Linear Algebra, and Probability &amp; Statistics.
-        </p>
-      </div>
-
-      {/* ── Category Filter Tabs ── */}
-      <div className="cs-category-tabs">
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            className={`cs-cat-tab ${activeCategory === cat ? "cs-cat-tab--active" : ""}`}
-            onClick={() => setActiveCategory(cat)}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* ── Controls Bar ── */}
-      <div className="cs-controls-bar">
-        {/* Search */}
-        <div className="cs-search-box">
-          <span className="cs-search-icon">🔍</span>
-          <input
-            type="text"
-            className="cs-search-input"
-            placeholder="Search formulas, theorems, variables (e.g. Stokes, Bayes, Eigen, Taylor)..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+    <main className="chs cvx">
+      <section className="chs-hero">
+        <div className="chs-wrap">
+          <p className="chs-kicker">Formula reference &amp; study guide</p>
+          <h1 className="chs-hero__title">Mathematical Formula Cheat Sheet</h1>
+          <p className="chs-hero__desc">
+            Definitions, identities, theorems and computational formulas across Calculus &amp; Analytical
+            Geometry, Multivariable Calculus, Linear Algebra, and Probability &amp; Statistics.
+          </p>
+          <dl className="chs-hero__stats">
+            <div>
+              <dt>Topics</dt>
+              <dd>{ALL_KEYS.length}</dd>
+            </div>
+            <div>
+              <dt>Formulas</dt>
+              <dd>{Object.values(formulaData).reduce((n, t) => n + t.formulas.length, 0)}</dd>
+            </div>
+            <div>
+              <dt>Studied</dt>
+              <dd>{ALL_KEYS.filter(isCompleted).length}</dd>
+            </div>
+          </dl>
         </div>
+      </section>
 
-        {/* Action Buttons */}
-        <div className="cs-btn-group">
-          <button onClick={selectAll} className="cs-action-btn">
-            All Topics
-          </button>
-          <button onClick={selectDone} className="cs-action-btn">
-            ✓ Mastered Only
-          </button>
-          <button onClick={clearAll} className="cs-action-btn">
-            Clear
-          </button>
-          <button
-            onClick={downloadPDF}
-            disabled={downloading || totalFormulasCount === 0}
-            className="cs-action-btn cs-download-btn"
-          >
-            {downloading ? "⏳ Building PDF..." : `⬇ Export PDF (${totalFormulasCount})`}
-          </button>
-        </div>
-      </div>
-
-      {/* ── Topic Filter Chips ── */}
-      <div className="cs-chips-container">
-        {Object.entries(formulaData)
-          .filter(
-            ([, topic]) =>
-              activeCategory === "All Subjects" || topic.category === activeCategory
-          )
-          .map(([key, topic]) => {
-            const active = selectedTopics.includes(key);
-            const completed = isCompleted(key);
-            return (
-              <button
-                key={key}
-                onClick={() => toggleTopic(key)}
-                className={`cs-chip ${active ? "cs-chip--active" : ""}`}
-              >
-                {completed ? "✓ " : ""}
-                {topic.title}
-              </button>
-            );
-          })}
-      </div>
-
-      {/* ── Formula Sheet (Rendered on page & Exported to PDF) ── */}
-      {filteredData.length === 0 ? (
-        <div className="cs-empty-state">
-          <span className="cs-empty-icon">📭</span>
-          <h3>No matching formulas found</h3>
-          <p>Try clearing your search or selecting different topics above.</p>
-        </div>
-      ) : (
-        <div className="cs-sheet-container" ref={sheetRef}>
-          {/* PDF Brand Header */}
-          <div className="cs-sheet-header">
-            <h2 className="cs-sheet-logo">CalcVoyager — Comprehensive Mathematical Reference Sheet</h2>
-            <p className="cs-sheet-date">
-              Curated Reference Guide · Generated on {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-            </p>
+      <div className="chs-wrap">
+        {/* ── Subject selector + controls ── */}
+        <div className="chs-panel">
+          <div className="chs-tabs" role="tablist" aria-label="Filter by subject">
+            {CATEGORIES.map((cat) => {
+              const active = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  className={`chs-tab${active ? " is-active" : ""}`}
+                  onClick={() => setActiveCategory(cat)}
+                >
+                  {cat}
+                  <span className="chs-tab__count">{categoryCounts[cat] || 0}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Topics & Formula Cards */}
-          {filteredData.map((topic) => (
-            <div key={topic.key} className="cs-topic-block">
-              {/* Topic Header */}
-              <div className="cs-topic-header">
-                <div
-                  className="cs-topic-color-bar"
-                  style={{ background: topic.color || "#0284c7" }}
-                />
-                <h3 className="cs-topic-title">{topic.title}</h3>
-                <span className="cs-topic-badge">{topic.category}</span>
-                <span className="cs-topic-count">
-                  {topic.formulas.length} formula{topic.formulas.length === 1 ? "" : "s"}
-                </span>
-              </div>
+          <div className="chs-controls">
+            <label className="chs-search">
+              <Search size={16} aria-hidden="true" />
+              <input
+                type="search"
+                placeholder="Search formulas, theorems or topics (e.g. Stokes, Bayes, Eigen, Laplace)"
+                aria-label="Search formulas"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </label>
 
-              {/* Formulas Grid */}
-              <div className="cs-formula-grid">
-                {topic.formulas.map((f, i) => {
-                  const cardId = `${topic.key}-${i}`;
-                  return (
-                    <div
-                      key={i}
-                      className="cs-formula-card"
-                      style={{ borderLeft: `4px solid ${topic.color || "#0284c7"}` }}
-                    >
-                      <div className="cs-formula-top">
-                        <span
-                          className="cs-formula-name"
-                          style={{ color: topic.color || "#0284c7" }}
-                        >
-                          {f.name}
-                        </span>
-                        <button
-                          className="cs-copy-btn"
-                          onClick={() => copyFormula(f.formula, cardId)}
-                          title="Copy formula expression"
-                        >
-                          {copiedIndex === cardId ? "✓ Copied" : "Copy"}
-                        </button>
-                      </div>
-
-                      <div className="cs-formula-box">{f.formula}</div>
-
-                      {f.note && (
-                        <div className="cs-formula-note">
-                          💡 <strong>Note:</strong> {f.note}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+            <div className="chs-actions">
+              <button type="button" onClick={selectAll} className="chs-btn">
+                All topics
+              </button>
+              <button type="button" onClick={selectDone} className="chs-btn">
+                <Check size={15} aria-hidden="true" /> Studied only
+              </button>
+              <button type="button" onClick={clearAll} className="chs-btn">
+                Clear
+              </button>
+              <button
+                type="button"
+                onClick={downloadPDF}
+                disabled={downloading || totalFormulasCount === 0}
+                className="chs-btn chs-btn--primary"
+              >
+                <Download size={15} aria-hidden="true" />
+                {downloading ? "Building PDF…" : `Export PDF (${totalFormulasCount})`}
+              </button>
             </div>
-          ))}
+          </div>
+
+          <div className="chs-chips__head">
+            <span>
+              Topics in view: {selectedInView} of {visibleTopics.length} selected
+            </span>
+            <span className="chs-chips__legend">
+              <Check size={13} aria-hidden="true" /> = studied
+            </span>
+          </div>
+          <div className="chs-chips">
+            {visibleTopics.map(([key, topic]) => {
+              const active = selectedTopics.includes(key);
+              const completed = isCompleted(key);
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => toggleTopic(key)}
+                  className={`chs-chip${active ? " is-active" : ""}${completed ? " is-done" : ""}`}
+                >
+                  {completed && <Check size={13} aria-hidden="true" />}
+                  {topic.title}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      )}
-    </div>
+
+        {/* ── Formula sheet (rendered on page and exported to PDF) ── */}
+        {filteredData.length === 0 ? (
+          <div className="chs-empty">
+            <h2>No matching formulas found</h2>
+            <p>Try clearing your search or selecting different topics above.</p>
+          </div>
+        ) : (
+          <div className={`chs-sheet${downloading ? " is-exporting" : ""}`} ref={sheetRef}>
+            <header className="chs-sheet__head">
+              <h2>CalcVoyager — Mathematical Reference Sheet</h2>
+              <p>
+                {filteredData.length} topic{filteredData.length === 1 ? "" : "s"} · {totalFormulasCount} formula
+                {totalFormulasCount === 1 ? "" : "s"} · Generated{" "}
+                {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+              </p>
+            </header>
+
+            {filteredData.map((topic) => (
+              <section key={topic.key} className="chs-topic" style={{ "--topic": topic.color || "#2b4cc9" }}>
+                <div className="chs-topic__head">
+                  <h3>{topic.title}</h3>
+                  <span className="chs-badge">{topic.category}</span>
+                  <span className="chs-topic__count">
+                    {topic.formulas.length} formula{topic.formulas.length === 1 ? "" : "s"}
+                  </span>
+                </div>
+
+                <div className="chs-grid">
+                  {topic.formulas.map((f, i) => {
+                    const cardId = `${topic.key}-${i}`;
+                    const copied = copiedId === cardId;
+                    return (
+                      <article key={cardId} className="chs-card">
+                        <div className="chs-card__top">
+                          <h4>{f.name}</h4>
+                          <button
+                            type="button"
+                            className={`chs-copy${copied ? " is-copied" : ""}`}
+                            onClick={() => copyFormula(f.formula, cardId)}
+                            aria-label={copied ? `${f.name} copied` : `Copy ${f.name}`}
+                          >
+                            {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
+                            {copied ? "Copied" : "Copy"}
+                          </button>
+                        </div>
+                        <div className="chs-card__formula">{f.formula}</div>
+                        {f.note && <p className="chs-card__note">{f.note}</p>}
+                      </article>
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
   );
 }

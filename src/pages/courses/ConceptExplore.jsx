@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { BlockMath, InlineMath } from "../../components/Math";
-import { conceptGroups, getConceptSlug } from "./SimpleConcepts";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { BlockMath } from "../../components/Math";
+import { getAllConcepts } from "./SimpleConcepts";
+import { CONCEPT_COURSES } from "../../data/conceptLibrary";
 import "./ConceptExplore.css";
 
 const conceptDetails = {
@@ -283,158 +285,210 @@ const conceptDetails = {
   },
 };
 
-function flattenConcepts() {
-  return conceptGroups.flatMap((group) =>
-    group.items.map((item) => ({
-      ...item,
-      groupKicker: group.kicker,
-      groupTitle: group.title,
-      slug: getConceptSlug(item.title),
-    }))
-  );
+const FALLBACK_DETAIL = {
+  formula: "",
+  examples: [
+    {
+      label: "Main idea",
+      math: "",
+      note: "Read the concept slowly, then connect each sentence to a graph, formula, or calculation you already know.",
+    },
+  ],
+  checks: ["State the concept in one sentence.", "Name the inputs and outputs.", "Try one small example by hand."],
+};
+
+function detailFor(concept) {
+  if (conceptDetails[concept.slug]) return conceptDetails[concept.slug];
+  if (concept.examples?.length) {
+    return { formula: concept.formula || "", examples: concept.examples, checks: concept.checks || FALLBACK_DETAIL.checks };
+  }
+  return FALLBACK_DETAIL;
 }
 
 function ConceptExplore() {
   const { slug } = useParams();
-  const concepts = useMemo(() => flattenConcepts(), []);
-  const concept = concepts.find((item) => item.slug === slug);
+  const concepts = useMemo(() => getAllConcepts(), []);
+  const index = concepts.findIndex((item) => item.slug === slug);
+  const concept = concepts[index];
   const [exampleIndex, setExampleIndex] = useState(0);
   const [showChecks, setShowChecks] = useState(false);
+  const [lastSlug, setLastSlug] = useState(slug);
+
+  // Reset the explorer when moving to another concept.
+  if (lastSlug !== slug) {
+    setLastSlug(slug);
+    setExampleIndex(0);
+    setShowChecks(false);
+  }
 
   if (!concept) {
     return <Navigate to="/simple-concepts" replace />;
   }
 
-  const detail = conceptDetails[concept.slug] || {
-    formula: "",
-    examples: [
-      {
-        label: "Main idea",
-        math: "",
-        note: "Read the concept slowly, then connect each sentence to a graph, formula, or calculation you already know.",
-      },
-    ],
-    checks: ["State the concept in one sentence.", "Name the inputs and outputs.", "Try one small example by hand."],
-  };
+  const course = CONCEPT_COURSES.find((c) => c.id === concept.course);
+  const backTo = `/simple-concepts?course=${concept.course}`;
+  const siblings = concepts.filter((item) => item.course === concept.course);
+  const position = siblings.findIndex((item) => item.slug === concept.slug);
+  const prev = siblings[position - 1];
+  const next = siblings[position + 1];
+
+  const detail = detailFor(concept);
   const selectedExample = detail.examples[exampleIndex] || detail.examples[0];
 
   return (
-    <main className="concept-explore-page">
-      <section className="concept-explore-hero">
-        <Link className="concept-back-link" to="/simple-concepts">
-          Back to concepts
-        </Link>
-        <p className="concept-explore-kicker">{concept.groupTitle}</p>
-        <h1>{concept.title}</h1>
-        <p>{concept.body}</p>
-      </section>
-
-      <section className="concept-workspace" aria-label={`${concept.title} interactive explorer`}>
-        <div className="concept-focus-panel">
-          <p className="concept-explore-kicker">Core pattern</p>
-          {detail.formula && (
-            <div className="concept-formula">
-              <InlineMath latex={detail.formula} />
-            </div>
-          )}
-          <p>
-            Use this page in three passes: recognize the pattern, test one example, then check whether you can explain the result without memorizing wording.
+    <main className="cxp cvx">
+      <section className="cxp-hero">
+        <div className="cxp-wrap">
+          <nav className="cxp-crumbs" aria-label="Breadcrumb">
+            <Link to={backTo}>
+              <ArrowLeft size={15} aria-hidden="true" /> {course?.short || "Concepts"} concepts
+            </Link>
+            <span aria-hidden="true">/</span>
+            <span>{concept.groupTitle}</span>
+          </nav>
+          <h1>{concept.title}</h1>
+          <p className="cxp-hero__lead">{concept.body}</p>
+          <p className="cxp-hero__meta">
+            Concept {position + 1} of {siblings.length} in {course?.title}
           </p>
         </div>
-
-        <div className="concept-example-panel">
-          <div className="concept-example-head">
-            <div>
-              <p className="concept-explore-kicker">Try it</p>
-              <h2>{selectedExample.label}</h2>
-            </div>
-            <div className="concept-example-tabs" aria-label="Example choices">
-              {detail.examples.map((example, index) => (
-                <button
-                  className={index === exampleIndex ? "is-active" : ""}
-                  key={example.label}
-                  onClick={() => setExampleIndex(index)}
-                  type="button"
-                >
-                  {index + 1}
-                </button>
-              ))}
-            </div>
-          </div>
-          {selectedExample.math && (
-            <div className="concept-example-math">
-              <InlineMath latex={selectedExample.math} />
-            </div>
-          )}
-          <p>{selectedExample.note}</p>
-        </div>
-
-        <div className="concept-check-panel">
-          <label>
-            <input
-              checked={showChecks}
-              onChange={(event) => setShowChecks(event.target.checked)}
-              type="checkbox"
-            />
-            Show self-check steps
-          </label>
-          {showChecks && (
-            <ol>
-              {detail.checks.map((check) => (
-                <li key={check}>{check}</li>
-              ))}
-            </ol>
-          )}
-        </div>
       </section>
 
-      {detail.deepDive && (
-        <section className="concept-deep-dive" aria-label={`${concept.title} deeper explanation`}>
-          <div className="concept-deep-head">
-            <p className="concept-explore-kicker">From basic to advanced</p>
-            <h2>Build the idea layer by layer</h2>
+      <div className="cxp-wrap">
+        <section className="cxp-workspace" aria-label={`${concept.title} interactive explorer`}>
+          <div className="cxp-panel cxp-panel--focus">
+            <p className="cxp-kicker">Core pattern</p>
+            {detail.formula && (
+              <div className="cxp-formula">
+                <BlockMath latex={detail.formula} />
+              </div>
+            )}
             <p>
-              Epsilon-delta continuity is a precision statement: output error is controlled by input distance.
-              The cards below move from intuition to proof technique and then to higher-dimensional continuity.
+              Use this page in three passes: recognise the pattern, test one example, then check
+              whether you can explain the result without memorising wording.
             </p>
           </div>
 
-          <div className="concept-deep-grid">
-            {detail.deepDive.map((section) => (
-              <article className="concept-deep-card" key={section.title}>
-                <h3>{section.title}</h3>
-                <p>{section.body}</p>
-                <div className="concept-deep-math">
-                  <BlockMath latex={section.math} />
+          <div className="cxp-panel">
+            <div className="cxp-example__head">
+              <div>
+                <p className="cxp-kicker">Try it</p>
+                <h2>{selectedExample.label}</h2>
+              </div>
+              {detail.examples.length > 1 && (
+                <div className="cxp-example__tabs" role="group" aria-label="Example choices">
+                  {detail.examples.map((example, i) => (
+                    <button
+                      className={i === exampleIndex ? "is-active" : ""}
+                      key={example.label}
+                      onClick={() => setExampleIndex(i)}
+                      aria-pressed={i === exampleIndex}
+                      aria-label={`Example ${i + 1}: ${example.label}`}
+                      type="button"
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
                 </div>
-              </article>
-            ))}
+              )}
+            </div>
+            {selectedExample.math && (
+              <div className="cxp-example__math">
+                <BlockMath latex={selectedExample.math} />
+              </div>
+            )}
+            <p>{selectedExample.note}</p>
           </div>
 
-          <div className="concept-proof-row">
-            <div className="concept-proof-panel">
-              <h3>How to Prove It</h3>
+          <div className="cxp-panel cxp-panel--check">
+            <label className="cxp-switch">
+              <input
+                checked={showChecks}
+                onChange={(event) => setShowChecks(event.target.checked)}
+                type="checkbox"
+              />
+              <span>Show self-check steps</span>
+            </label>
+            {showChecks ? (
               <ol>
-                {detail.proofSteps.map((step) => (
-                  <li key={step}>{step}</li>
+                {detail.checks.map((check) => (
+                  <li key={check}>{check}</li>
                 ))}
               </ol>
-            </div>
-
-            <div className="concept-proof-panel concept-proof-panel--accent">
-              <h3>The Three Conditions</h3>
-              <ul>
-                {detail.conditions.map((condition) => (
-                  <li key={condition}>{condition}</li>
-                ))}
-              </ul>
-              <p>
-                Holes, jumps, vertical asymptotes, and path-dependent limits break one of these conditions.
-              </p>
-            </div>
+            ) : (
+              <p className="cxp-muted">Try the example first, then reveal the steps to check your reasoning.</p>
+            )}
           </div>
         </section>
-      )}
+
+        {detail.deepDive && (
+          <section className="cxp-deep" aria-label={`${concept.title} deeper explanation`}>
+            <div className="cxp-deep__head">
+              <p className="cxp-kicker">From basic to advanced</p>
+              <h2>Build the idea layer by layer</h2>
+              <p>
+                Epsilon-delta continuity is a precision statement: output error is controlled by input distance.
+                The cards below move from intuition to proof technique and then to higher-dimensional continuity.
+              </p>
+            </div>
+
+            <div className="cxp-deep__grid">
+              {detail.deepDive.map((section) => (
+                <article className="cxp-panel" key={section.title}>
+                  <h3>{section.title}</h3>
+                  <p>{section.body}</p>
+                  <div className="cxp-example__math">
+                    <BlockMath latex={section.math} />
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="cxp-deep__row">
+              <div className="cxp-panel">
+                <h3>How to Prove It</h3>
+                <ol>
+                  {detail.proofSteps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="cxp-panel cxp-panel--accent">
+                <h3>The Three Conditions</h3>
+                <ul>
+                  {detail.conditions.map((condition) => (
+                    <li key={condition}>{condition}</li>
+                  ))}
+                </ul>
+                <p>Holes, jumps, vertical asymptotes, and path-dependent limits break one of these conditions.</p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <nav className="cxp-pager" aria-label="More concepts">
+          {prev ? (
+            <Link className="cxp-pager__link" to={`/simple-concepts/${prev.slug}`}>
+              <span className="cxp-pager__dir"><ArrowLeft size={14} aria-hidden="true" /> Previous</span>
+              <span className="cxp-pager__title">{prev.title}</span>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next ? (
+            <Link className="cxp-pager__link cxp-pager__link--next" to={`/simple-concepts/${next.slug}`}>
+              <span className="cxp-pager__dir">Next <ArrowRight size={14} aria-hidden="true" /></span>
+              <span className="cxp-pager__title">{next.title}</span>
+            </Link>
+          ) : (
+            <Link className="cxp-pager__link cxp-pager__link--next" to={backTo}>
+              <span className="cxp-pager__dir">Done <ArrowRight size={14} aria-hidden="true" /></span>
+              <span className="cxp-pager__title">Back to all {course?.short} concepts</span>
+            </Link>
+          )}
+        </nav>
+      </div>
     </main>
   );
 }

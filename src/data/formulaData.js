@@ -654,6 +654,223 @@ const formulaData = {
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
+  // Calculus and Analytical Geometry — further modules
+  // ═══════════════════════════════════════════════════════════════════════════
+  "space-curves": {
+    title: "Space Curves (Frenet-Serret)",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Unit Tangent", formula: "T = r′(t) / |r′(t)|", note: "Direction of motion along the curve" },
+      { name: "Arc Length", formula: "s = ∫ₐᵇ |r′(t)| dt", note: "Parametrize by arc length to get unit speed" },
+      { name: "Curvature", formula: "κ = |r′ × r″| / |r′|³ = |dT/ds|", note: "Circle of radius R has κ = 1/R" },
+      { name: "Torsion", formula: "τ = (r′ × r″) · r‴ / |r′ × r″|²", note: "τ = 0 for every planar curve" },
+      { name: "Frenet-Serret Equations", formula: "T′ = κN,  N′ = −κT + τB,  B′ = −τN  (′ = d/ds)", note: "B = T × N completes the moving frame" },
+    ],
+  },
+  "vector-motion": {
+    title: "Vector-Valued Functions & Motion",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Velocity & Acceleration", formula: "v = r′(t),  a = r″(t),  speed = |v|", note: "Differentiate each component separately" },
+      { name: "Tangential / Normal Split", formula: "a = (d|v|/dt) T + κ|v|² N", note: "aₜ = (v·a)/|v|,  aₙ = |v × a|/|v|" },
+      { name: "Projectile Motion", formula: "r(t) = ⟨v₀cos α · t, h + v₀sin α · t − ½gt²⟩", note: "Range on level ground: v₀² sin 2α / g" },
+      { name: "Integrating Back", formula: "v(t) = v(0) + ∫₀ᵗ a dτ,  r(t) = r(0) + ∫₀ᵗ v dτ", note: "Initial conditions fix the constants" },
+    ],
+  },
+  "parametric-surfaces": {
+    title: "Parametric Surfaces",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Parametrization", formula: "r(u, v) = ⟨x(u, v), y(u, v), z(u, v)⟩", note: "Two parameters trace out a surface" },
+      { name: "Normal Vector", formula: "n = r_u × r_v", note: "Tangent plane: n · (r − r₀) = 0" },
+      { name: "Surface Area", formula: "A = ∬_D |r_u × r_v| du dv", note: "For z = f(x, y): ∬ √(1 + fₓ² + f_y²) dA" },
+      { name: "Sphere", formula: "r(φ, θ) = ⟨a sin φ cos θ, a sin φ sin θ, a cos φ⟩,  |r_φ × r_θ| = a² sin φ", note: "Surface area 4πa²" },
+    ],
+  },
+  "polar-calculus": {
+    title: "Polar Coordinate Calculus",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Conversion", formula: "x = r cos θ,  y = r sin θ,  r² = x² + y²", note: "Choose θ by the quadrant of (x, y)" },
+      { name: "Slope of r = f(θ)", formula: "dy/dx = (r′ sin θ + r cos θ) / (r′ cos θ − r sin θ)", note: "Horizontal tangents where the numerator is 0" },
+      { name: "Area", formula: "A = ½ ∫_α^β r² dθ", note: "Between curves: ½ ∫ (r_out² − r_in²) dθ" },
+      { name: "Arc Length", formula: "L = ∫_α^β √(r² + (dr/dθ)²) dθ", note: "Cardioid r = 1 + cos θ has length 8" },
+    ],
+  },
+  "solids-revolution": {
+    title: "Solids of Revolution",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Disc Method", formula: "V = π ∫ₐᵇ [R(x)]² dx", note: "Slices perpendicular to the axis" },
+      { name: "Washer Method", formula: "V = π ∫ₐᵇ ([R(x)]² − [r(x)]²) dx", note: "Subtract the hole" },
+      { name: "Shell Method", formula: "V = 2π ∫ₐᵇ (radius)(height) dx", note: "Slices parallel to the axis" },
+      { name: "Surface Area of Revolution", formula: "S = 2π ∫ₐᵇ f(x) √(1 + [f′(x)]²) dx", note: "Rotating y = f(x) about the x-axis" },
+      { name: "Pappus's Theorem", formula: "V = 2π ȳ A", note: "ȳ = distance from the centroid to the axis" },
+    ],
+  },
+  "volume-cross-sections": {
+    title: "Volume by Cross-Sections",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Slicing Formula", formula: "V = ∫ₐᵇ A(x) dx", note: "A(x) = area of the slice at x" },
+      { name: "Square Slices", formula: "A(x) = s(x)²", note: "s = side length across the base" },
+      { name: "Equilateral Triangle Slices", formula: "A(x) = (√3/4) s(x)²", note: "s = side across the base" },
+      { name: "Semicircle Slices", formula: "A(x) = (π/8) d(x)²", note: "d = diameter across the base" },
+      { name: "Cavalieri's Principle", formula: "A₁(x) = A₂(x) for all x ⟹ V₁ = V₂", note: "Equal slices give equal volumes" },
+    ],
+  },
+  "numerical-methods": {
+    title: "Numerical Methods",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Newton's Method", formula: "xₙ₊₁ = xₙ − f(xₙ) / f′(xₙ)", note: "Quadratic convergence near a simple root" },
+      { name: "Bisection", formula: "c = (a + b)/2; keep the half where f changes sign", note: "Error after n steps ≤ (b − a)/2ⁿ" },
+      { name: "Trapezoidal Rule", formula: "∫ₐᵇ f ≈ (h/2)[f₀ + 2f₁ + … + 2fₙ₋₁ + fₙ]", note: "Error ≤ (b − a)h² max|f″| / 12" },
+      { name: "Simpson's Rule", formula: "∫ₐᵇ f ≈ (h/3)[f₀ + 4f₁ + 2f₂ + … + 4fₙ₋₁ + fₙ]", note: "n even; error ≤ (b − a)h⁴ max|f⁽⁴⁾| / 180" },
+      { name: "Euler's Method", formula: "yₙ₊₁ = yₙ + h f(xₙ, yₙ)", note: "First-order: halving h roughly halves the error" },
+    ],
+  },
+  "improper-integrals-advanced": {
+    title: "Improper Integrals — Advanced Tests",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Definition", formula: "∫ₐ^∞ f dx = lim_(b→∞) ∫ₐᵇ f dx", note: "Converges only if the limit is finite" },
+      { name: "p-Integrals", formula: "∫₁^∞ dx/xᵖ < ∞ ⟺ p > 1;  ∫₀¹ dx/xᵖ < ∞ ⟺ p < 1", note: "The two benchmark families" },
+      { name: "Direct Comparison", formula: "0 ≤ f ≤ g: ∫g converges ⟹ ∫f converges", note: "And ∫f diverges ⟹ ∫g diverges" },
+      { name: "Limit Comparison", formula: "lim f/g = L ∈ (0, ∞) ⟹ both converge or both diverge", note: "Compare with the dominant power" },
+      { name: "Absolute Convergence", formula: "∫|f| < ∞ ⟹ ∫f converges", note: "∫₁^∞ sin x / x converges, but not absolutely" },
+    ],
+  },
+  "complex-numbers": {
+    title: "Complex Numbers & De Moivre",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Modulus & Argument", formula: "z = x + iy,  |z| = √(x² + y²),  arg z = atan2(y, x)", note: "z z̄ = |z|²" },
+      { name: "Euler's Formula", formula: "e^(iθ) = cos θ + i sin θ", note: "z = r e^(iθ) is the polar form" },
+      { name: "Multiplication", formula: "r₁e^(iθ₁) · r₂e^(iθ₂) = r₁r₂ e^(i(θ₁+θ₂))", note: "Multiply moduli, add arguments" },
+      { name: "De Moivre's Theorem", formula: "(cos θ + i sin θ)ⁿ = cos nθ + i sin nθ", note: "Expands cos nθ and sin nθ" },
+      { name: "nth Roots", formula: "z^(1/n) = r^(1/n) e^(i(θ + 2πk)/n),  k = 0, …, n − 1", note: "n roots equally spaced on a circle" },
+    ],
+  },
+  "hyperbolic-functions": {
+    title: "Hyperbolic Functions & Inverses",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Definitions", formula: "sinh x = (eˣ − e⁻ˣ)/2,  cosh x = (eˣ + e⁻ˣ)/2,  tanh x = sinh x / cosh x", note: "cosh is even, sinh is odd" },
+      { name: "Fundamental Identity", formula: "cosh²x − sinh²x = 1", note: "Compare cos² + sin² = 1" },
+      { name: "Derivatives", formula: "(sinh x)′ = cosh x,  (cosh x)′ = sinh x,  (tanh x)′ = sech²x", note: "No minus sign for cosh" },
+      { name: "Inverses", formula: "sinh⁻¹x = ln(x + √(x² + 1)),  cosh⁻¹x = ln(x + √(x² − 1))", note: "tanh⁻¹x = ½ ln((1 + x)/(1 − x)), |x| < 1" },
+      { name: "Useful Integrals", formula: "∫ dx/√(x² + a²) = sinh⁻¹(x/a) + C", note: "∫ dx/√(x² − a²) = cosh⁻¹(x/a) + C" },
+    ],
+  },
+  "laplace-transforms": {
+    title: "Laplace Transforms",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Definition", formula: "F(s) = ∫₀^∞ e^(−st) f(t) dt", note: "Exists for s beyond the growth rate of f" },
+      { name: "Basic Pairs", formula: "L{1} = 1/s,  L{tⁿ} = n!/sⁿ⁺¹,  L{e^(at)} = 1/(s − a)", note: "L{sin bt} = b/(s² + b²),  L{cos bt} = s/(s² + b²)" },
+      { name: "Derivatives", formula: "L{f′} = sF − f(0),  L{f″} = s²F − s f(0) − f′(0)", note: "Turns ODEs into algebra" },
+      { name: "Shifting Theorems", formula: "L{e^(at)f(t)} = F(s − a),  L{u(t − c) f(t − c)} = e^(−cs)F(s)", note: "s-shift and t-shift" },
+      { name: "Convolution", formula: "L{(f * g)(t)} = F(s) G(s),  (f * g)(t) = ∫₀ᵗ f(τ) g(t − τ) dτ", note: "Products in s are convolutions in t" },
+    ],
+  },
+  "fourier-series": {
+    title: "Fourier Series",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Series (period 2L)", formula: "f(x) = a₀/2 + Σ [aₙ cos(nπx/L) + bₙ sin(nπx/L)]", note: "Valid where f is piecewise smooth" },
+      { name: "Coefficients", formula: "aₙ = (1/L) ∫₋ₗᴸ f cos(nπx/L) dx,  bₙ = (1/L) ∫₋ₗᴸ f sin(nπx/L) dx", note: "a₀ uses n = 0" },
+      { name: "Even / Odd Shortcuts", formula: "f even ⟹ bₙ = 0;  f odd ⟹ aₙ = 0", note: "Cosine series and sine series" },
+      { name: "Dirichlet Convergence", formula: "Series → [f(x⁻) + f(x⁺)] / 2", note: "Midpoint of any jump" },
+      { name: "Parseval's Identity", formula: "(1/L) ∫₋ₗᴸ f² dx = a₀²/2 + Σ (aₙ² + bₙ²)", note: "Energy is shared among the harmonics" },
+    ],
+  },
+  "gamma-beta-functions": {
+    title: "Gamma & Beta Functions",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Gamma Function", formula: "Γ(x) = ∫₀^∞ t^(x−1) e^(−t) dt,  x > 0", note: "Γ(n + 1) = n! for integers n ≥ 0" },
+      { name: "Recursion & Half Value", formula: "Γ(x + 1) = x Γ(x),  Γ(½) = √π", note: "Γ(3/2) = √π / 2" },
+      { name: "Beta Function", formula: "B(a, b) = ∫₀¹ t^(a−1) (1 − t)^(b−1) dt = Γ(a)Γ(b) / Γ(a + b)", note: "Symmetric: B(a, b) = B(b, a)" },
+      { name: "Trigonometric Form", formula: "∫₀^(π/2) sin^(2a−1)θ cos^(2b−1)θ dθ = ½ B(a, b)", note: "Evaluates Wallis-type integrals" },
+      { name: "Reflection Formula", formula: "Γ(x) Γ(1 − x) = π / sin(πx)", note: "Valid for non-integer x" },
+    ],
+  },
+  "leibniz-rule": {
+    title: "Differentiation Under the Integral Sign",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Constant Limits", formula: "d/dx ∫ₐᵇ f(x, t) dt = ∫ₐᵇ ∂f/∂x (x, t) dt", note: "Needs f and ∂f/∂x continuous" },
+      { name: "General Leibniz Rule", formula: "d/dx ∫_(a(x))^(b(x)) f(x, t) dt = f(x, b) b′ − f(x, a) a′ + ∫ₐᵇ ∂f/∂x dt", note: "Moving limits add boundary terms" },
+      { name: "Feynman's Trick", formula: "I(α) = ∫₀^∞ e^(−t) sin(αt)/t dt ⟹ I′(α) = 1/(1 + α²)", note: "So I(α) = arctan α" },
+      { name: "Classic Result", formula: "∫₀^∞ sin x / x dx = π/2", note: "Found by differentiating with respect to a parameter" },
+    ],
+  },
+  "fourier-transforms": {
+    title: "Fourier Transform & Convolution",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Transform Pair", formula: "F(ω) = ∫ f(x) e^(−iωx) dx,  f(x) = (1/2π) ∫ F(ω) e^(iωx) dω", note: "Conventions for 2π vary between books" },
+      { name: "Derivative Rule", formula: "F{f′} = iω F(ω)", note: "Differentiation becomes multiplication" },
+      { name: "Convolution Theorem", formula: "F{f * g} = F(ω) G(ω)", note: "Filtering in time is multiplying in frequency" },
+      { name: "Gaussian", formula: "F{e^(−x²/2)} = √(2π) e^(−ω²/2)", note: "A Gaussian transforms into a Gaussian" },
+      { name: "Plancherel", formula: "∫ |f|² dx = (1/2π) ∫ |F|² dω", note: "Energy is the same in both domains" },
+    ],
+  },
+  "z-transforms": {
+    title: "Z-Transform & Difference Equations",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Definition", formula: "X(z) = Σₙ₌₀^∞ x[n] z⁻ⁿ", note: "Discrete analogue of the Laplace transform" },
+      { name: "Basic Pairs", formula: "Z{aⁿ} = z / (z − a),  Z{1} = z / (z − 1)", note: "Region of convergence |z| > |a|" },
+      { name: "Shift Property", formula: "Z{x[n + 1]} = zX(z) − z x[0]", note: "Turns difference equations into algebra" },
+      { name: "Final Value Theorem", formula: "lim_(n→∞) x[n] = lim_(z→1) (z − 1) X(z)", note: "If the limit exists" },
+      { name: "Stability", formula: "All poles inside |z| < 1", note: "The discrete system's response decays" },
+    ],
+  },
+  "intro-pdes": {
+    title: "Introduction to PDEs (Heat & Wave)",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Heat Equation", formula: "u_t = k u_xx", note: "Diffusion: sharp features smooth out" },
+      { name: "Heat Solution on [0, L]", formula: "u = Σ bₙ e^(−k(nπ/L)²t) sin(nπx/L)", note: "Ends held at 0; bₙ from the initial profile" },
+      { name: "Wave Equation", formula: "u_tt = c² u_xx", note: "Disturbances travel at speed c" },
+      { name: "d'Alembert's Formula", formula: "u = ½[f(x − ct) + f(x + ct)] + (1/2c) ∫_(x−ct)^(x+ct) g(s) ds", note: "f = initial shape, g = initial velocity" },
+      { name: "Laplace's Equation", formula: "u_xx + u_yy = 0", note: "Steady state of the heat equation" },
+    ],
+  },
+  "orthogonal-polynomials": {
+    title: "Orthogonal Polynomials",
+    category: "Calculus & Geometry",
+    color: "#0284c7",
+    formulas: [
+      { name: "Orthogonality", formula: "∫ₐᵇ pₘ(x) pₙ(x) w(x) dx = 0  (m ≠ n)", note: "w(x) is the weight function" },
+      { name: "Legendre", formula: "P₀ = 1, P₁ = x, (n + 1)Pₙ₊₁ = (2n + 1)x Pₙ − n Pₙ₋₁", note: "On [−1, 1] with w = 1; ∫ Pₙ² = 2/(2n + 1)" },
+      { name: "Chebyshev", formula: "Tₙ(cos θ) = cos nθ,  Tₙ₊₁ = 2x Tₙ − Tₙ₋₁", note: "w = 1/√(1 − x²); best for interpolation" },
+      { name: "Hermite", formula: "Hₙ₊₁ = 2x Hₙ − 2n Hₙ₋₁", note: "On ℝ with w = e^(−x²)" },
+      { name: "Rodrigues' Formula", formula: "Pₙ(x) = (1 / 2ⁿn!) dⁿ/dxⁿ (x² − 1)ⁿ", note: "Generates every Legendre polynomial" },
+    ],
+  },
+
+
+  // ═══════════════════════════════════════════════════════════════════════════
   // 2. Multivariable Calculus
   // ═══════════════════════════════════════════════════════════════════════════
   "partial-derivatives": {
@@ -866,6 +1083,131 @@ const formulaData = {
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Multivariable Calculus — further modules
+  // ═══════════════════════════════════════════════════════════════════════════
+  "3d-geometry": {
+    title: "3D Analytical Geometry & Quadric Surfaces",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Line in Space", formula: "r = r₀ + t v  ⟺  (x − x₀)/a = (y − y₀)/b = (z − z₀)/c", note: "v = ⟨a, b, c⟩ is the direction" },
+      { name: "Plane", formula: "a(x − x₀) + b(y − y₀) + c(z − z₀) = 0", note: "n = ⟨a, b, c⟩ is the normal" },
+      { name: "Point-to-Plane Distance", formula: "d = |ax₀ + by₀ + cz₀ + d| / √(a² + b² + c²)", note: "For the plane ax + by + cz + d = 0" },
+      { name: "Ellipsoid & Hyperboloids", formula: "x²/a² + y²/b² ± z²/c² = 1,  x²/a² − y²/b² − z²/c² = 1", note: "+ ellipsoid, one minus: one sheet, two minuses: two sheets" },
+      { name: "Paraboloids & Cone", formula: "z = x²/a² ± y²/b²,  z² = x²/a² + y²/b²", note: "Same signs: bowl; opposite signs: saddle" },
+    ],
+  },
+  "coordinate-transformations": {
+    title: "Coordinate Transformations & Jacobians",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Jacobian", formula: "J = ∂(x, y)/∂(u, v) = xᵤ y_v − x_v yᵤ", note: "Local area scaling factor" },
+      { name: "Change of Variables", formula: "∬_R f dx dy = ∬_S f(x(u,v), y(u,v)) |J| du dv", note: "Use the absolute value of J" },
+      { name: "Polar & Cylindrical", formula: "dA = r dr dθ,  dV = r dr dθ dz", note: "x = r cos θ, y = r sin θ" },
+      { name: "Spherical", formula: "x = ρ sin φ cos θ, y = ρ sin φ sin θ, z = ρ cos φ,  dV = ρ² sin φ dρ dφ dθ", note: "φ measured from the positive z-axis" },
+      { name: "Inverse Jacobian", formula: "∂(u, v)/∂(x, y) = 1 / [∂(x, y)/∂(u, v)]", note: "Handy when u, v are given in terms of x, y" },
+    ],
+  },
+  "constrained-optimization": {
+    title: "Constrained & Unconstrained Optimization",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Hessian Test (n variables)", formula: "∇f = 0;  H positive definite ⟹ min,  negative definite ⟹ max", note: "Indefinite H ⟹ saddle point" },
+      { name: "Global Extrema on a Closed Set", formula: "Compare f at interior critical points and on the boundary", note: "Extreme Value Theorem guarantees both exist" },
+      { name: "Gradient Descent", formula: "x_(k+1) = x_k − α ∇f(x_k)", note: "For quadratics converges if 0 < α < 2/λ_max" },
+      { name: "KKT Conditions", formula: "∇f + Σ μᵢ∇gᵢ + Σ λⱼ∇hⱼ = 0,  gᵢ ≤ 0,  μᵢ ≥ 0,  μᵢgᵢ = 0", note: "Minimize f subject to gᵢ ≤ 0, hⱼ = 0" },
+      { name: "Bordered Hessian (2 variables, 1 constraint)", formula: "det [[0, gₓ, g_y], [gₓ, Lₓₓ, Lₓ_y], [g_y, L_yₓ, L_yy]] > 0 ⟹ local max", note: "< 0 ⟹ local min, with L = f − λg" },
+    ],
+  },
+  "vector-fields-approximation": {
+    title: "Vector Fields & Approximation Theory",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Directional Derivative", formula: "D_u f = ∇f · u,  |u| = 1", note: "Maximum value |∇f| in the direction of ∇f" },
+      { name: "Multivariable Taylor (2nd order)", formula: "f(a + h) ≈ f(a) + ∇f(a)·h + ½ hᵀ H(a) h", note: "H is the Hessian matrix" },
+      { name: "Implicit Function Theorem", formula: "F(x, y) = 0, F_y ≠ 0 ⟹ dy/dx = −Fₓ / F_y", note: "Three variables: ∂z/∂x = −Fₓ / F_z" },
+      { name: "Vector Potential", formula: "∇ · B = 0 ⟹ B = ∇ × A", note: "On simply connected domains (no holes)" },
+      { name: "Helmholtz Decomposition", formula: "F = −∇φ + ∇ × A", note: "Every smooth decaying field = curl-free + divergence-free" },
+    ],
+  },
+  "potential-theory": {
+    title: "Potential Theory",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Laplace & Poisson Equations", formula: "∇²u = 0,   ∇²u = −ρ/ε₀", note: "Harmonic functions solve Laplace's equation" },
+      { name: "Mean Value Property", formula: "u(x₀) = (1 / area of sphere) ∯_(|x−x₀|=r) u dS", note: "Harmonic u equals its average on any sphere" },
+      { name: "Fundamental Solutions", formula: "2D: (1/2π) ln r,   3D: −1/(4πr)", note: "∇² of these is the delta function" },
+      { name: "Green's Identities", formula: "∭ (u∇²v − v∇²u) dV = ∯ (u ∂v/∂n − v ∂u/∂n) dS", note: "Second identity; basis for Green's functions" },
+      { name: "Maximum Principle", formula: "max over D of u = max over ∂D of u", note: "No interior maxima or minima for harmonic u" },
+    ],
+  },
+  "differential-forms": {
+    title: "Differential Forms",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Wedge Product", formula: "dx ∧ dy = −dy ∧ dx,  dx ∧ dx = 0", note: "Antisymmetric product of 1-forms" },
+      { name: "Exterior Derivative of a 1-form", formula: "d(P dx + Q dy) = (Qₓ − P_y) dx ∧ dy", note: "Green's theorem integrand" },
+      { name: "d Squared Is Zero", formula: "d(dω) = 0", note: "Encodes curl(grad f) = 0 and div(curl F) = 0" },
+      { name: "Generalized Stokes' Theorem", formula: "∫_∂M ω = ∫_M dω", note: "FTC, Green, Stokes and Gauss are all special cases" },
+      { name: "Pullback", formula: "∫_(φ(D)) ω = ∫_D φ*ω", note: "Change of variables for forms" },
+    ],
+  },
+  "advanced-integration": {
+    title: "Advanced Integration & Variational Methods",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Gaussian Integral", formula: "∫₋∞^∞ e^(−x²) dx = √π", note: "Squared and evaluated in polar coordinates" },
+      { name: "Functional", formula: "J[y] = ∫ₐᵇ F(x, y, y′) dx", note: "A number assigned to each function y" },
+      { name: "Euler–Lagrange Equation", formula: "∂F/∂y − d/dx (∂F/∂y′) = 0", note: "Condition for J to be stationary" },
+      { name: "Beltrami Identity", formula: "F − y′ ∂F/∂y′ = C  (F has no explicit x)", note: "Solves the brachistochrone quickly" },
+      { name: "Constrained Variation", formula: "Stationary points of J[y] − λ K[y]", note: "Isoperimetric problems use a multiplier" },
+    ],
+  },
+  "surface-geometry": {
+    title: "Geometry of Surfaces",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "First Fundamental Form", formula: "ds² = E du² + 2F du dv + G dv²,  E = r_u·r_u, F = r_u·r_v, G = r_v·r_v", note: "Measures lengths and angles on the surface" },
+      { name: "Second Fundamental Form", formula: "L = r_uu·n,  M = r_uv·n,  N = r_vv·n", note: "Measures how the surface bends" },
+      { name: "Gaussian Curvature", formula: "K = (LN − M²) / (EG − F²) = κ₁κ₂", note: "Sphere 1/R²; cylinder 0; saddle < 0" },
+      { name: "Mean Curvature", formula: "H = (EN − 2FM + GL) / (2(EG − F²)) = (κ₁ + κ₂)/2", note: "Minimal surfaces have H = 0" },
+      { name: "Gauss–Bonnet (closed surface)", formula: "∬_S K dA = 2π χ(S)", note: "Sphere: χ = 2, so ∬ K dA = 4π" },
+    ],
+  },
+  "moving-domains": {
+    title: "Integration on Moving Domains",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Leibniz Rule (1D)", formula: "d/dt ∫_(a(t))^(b(t)) f dx = ∫ₐᵇ f_t dx + f(b) b′ − f(a) a′", note: "Boundary terms come from moving limits" },
+      { name: "Reynolds Transport Theorem", formula: "d/dt ∭_(V(t)) f dV = ∭ ∂f/∂t dV + ∯ f (v · n) dS", note: "Local change + flux through the moving boundary" },
+      { name: "Material Derivative", formula: "Df/Dt = ∂f/∂t + v · ∇f", note: "Rate of change following a fluid particle" },
+      { name: "Continuity Equation", formula: "∂ρ/∂t + ∇ · (ρv) = 0", note: "Conservation of mass" },
+      { name: "Volume Change", formula: "d/dt |V(t)| = ∭ ∇ · v dV", note: "Divergence-free flow keeps volume fixed" },
+    ],
+  },
+  "nonlinear-dynamics": {
+    title: "Nonlinear Dynamical Systems",
+    category: "Multivariable Calculus",
+    color: "#0d9488",
+    formulas: [
+      { name: "Equilibria & Linearization", formula: "F(x*) = 0,  ẋ ≈ J(x*)(x − x*),  J = DF", note: "Hartman–Grobman: valid when no eigenvalue has Re λ = 0" },
+      { name: "2D Classification", formula: "τ = tr J, Δ = det J: Δ < 0 saddle; Δ > 0, τ < 0 stable; τ > 0 unstable", note: "τ² < 4Δ gives spirals, τ² > 4Δ nodes" },
+      { name: "Lyapunov Function", formula: "V > 0, V̇ = ∇V · F ≤ 0 ⟹ stable", note: "V̇ < 0 (except at x*) ⟹ asymptotically stable" },
+      { name: "Conserved Quantity", formula: "dH/dt = 0 along trajectories", note: "Orbits lie on level sets of H" },
+      { name: "Hopf Bifurcation", formula: "Eigenvalues λ = μ ± iω cross Re λ = 0", note: "A limit cycle is born" },
+    ],
+  },
+
 
   // ═══════════════════════════════════════════════════════════════════════════
   // 3. Linear Algebra
@@ -2079,6 +2421,213 @@ const formulaData = {
       },
     ],
   },
+  // ═══════════════════════════════════════════════════════════════════════════
+  // Probability and Statistics — further modules
+  // ═══════════════════════════════════════════════════════════════════════════
+  "prob-bayesian-inference": {
+    title: "Bayesian Inference",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Posterior", formula: "p(θ | x) ∝ p(x | θ) p(θ)", note: "Posterior ∝ likelihood × prior" },
+      { name: "Beta–Binomial", formula: "Beta(α, β) prior + k successes in n ⟹ Beta(α + k, β + n − k)", note: "Conjugate pair" },
+      { name: "Normal–Normal (known σ²)", formula: "μ_post = (μ₀/τ₀² + n x̄/σ²) / (1/τ₀² + n/σ²)", note: "Precision-weighted average of prior and data" },
+      { name: "Posterior Mean (Beta)", formula: "E[p | x] = (α + k) / (α + β + n)", note: "Shrinks k/n toward the prior mean" },
+      { name: "Credible Interval", formula: "P(a ≤ θ ≤ b | x) = 0.95", note: "A direct probability statement about θ" },
+    ],
+  },
+  "prob-maximum-likelihood": {
+    title: "Maximum Likelihood Estimation",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Log-Likelihood", formula: "ℓ(θ) = Σᵢ log f(xᵢ | θ),  θ̂ = argmax ℓ(θ)", note: "Solve ℓ′(θ) = 0 and check it is a maximum" },
+      { name: "Common MLEs", formula: "Bernoulli p̂ = x̄;  Poisson λ̂ = x̄;  Exponential λ̂ = 1/x̄", note: "Normal: μ̂ = x̄, σ̂² = (1/n) Σ(xᵢ − x̄)²" },
+      { name: "Fisher Information", formula: "I(θ) = −E[∂²ℓ/∂θ²]", note: "Curvature of the log-likelihood" },
+      { name: "Asymptotic Normality", formula: "θ̂ ≈ N(θ, 1 / (n I₁(θ)))", note: "Gives approximate standard errors" },
+      { name: "Invariance", formula: "MLE of g(θ) is g(θ̂)", note: "e.g. MLE of σ is √σ̂²" },
+    ],
+  },
+  "prob-confidence-intervals": {
+    title: "Confidence Intervals",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Mean, σ known", formula: "x̄ ± z_(α/2) σ/√n", note: "z₀.₀₂₅ = 1.96 for 95%" },
+      { name: "Mean, σ unknown", formula: "x̄ ± t_(α/2, n−1) s/√n", note: "Use the t distribution with n − 1 df" },
+      { name: "Proportion", formula: "p̂ ± z_(α/2) √(p̂(1 − p̂)/n)", note: "Needs np̂ and n(1 − p̂) ≥ 10" },
+      { name: "Variance", formula: "[(n − 1)s² / χ²_(α/2),  (n − 1)s² / χ²_(1−α/2)]", note: "Normal data only" },
+      { name: "Sample Size", formula: "n = (z_(α/2) σ / E)²", note: "E = desired margin of error; round up" },
+    ],
+  },
+  "prob-mgf": {
+    title: "Moment Generating Functions",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Definition", formula: "M_X(t) = E[e^(tX)]", note: "Exists in an open interval around t = 0" },
+      { name: "Moments", formula: "E[Xⁿ] = M_X⁽ⁿ⁾(0)", note: "Differentiate n times and set t = 0" },
+      { name: "Sums of Independent Variables", formula: "M_(X+Y)(t) = M_X(t) M_Y(t)", note: "Identifies the distribution of a sum" },
+      { name: "Common MGFs", formula: "Bin: (1 − p + peᵗ)ⁿ;  Pois: e^(λ(eᵗ−1));  N: e^(μt + σ²t²/2)", note: "Exponential(λ): λ/(λ − t), t < λ" },
+      { name: "Uniqueness", formula: "M_X = M_Y near 0 ⟹ X and Y have the same distribution", note: "Basis of many proofs, including the CLT" },
+    ],
+  },
+  "prob-chi-square": {
+    title: "Chi-Square Tests",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Test Statistic", formula: "χ² = Σ (O − E)² / E", note: "Large values mean poor agreement" },
+      { name: "Goodness of Fit", formula: "df = k − 1 − (number of estimated parameters)", note: "k = number of categories" },
+      { name: "Independence (r × c table)", formula: "Eᵢⱼ = (row total)(column total) / n,  df = (r − 1)(c − 1)", note: "Tests whether two categorical variables are related" },
+      { name: "Validity Check", formula: "All expected counts Eᵢ ≥ 5", note: "Otherwise combine categories or use Fisher's exact test" },
+      { name: "Effect Size", formula: "Cramér's V = √(χ² / (n · min(r − 1, c − 1)))", note: "0 = no association, 1 = perfect" },
+    ],
+  },
+  "prob-nonparametric": {
+    title: "Nonparametric Tests",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Sign Test", formula: "S = #(xᵢ > m₀) ~ Bin(n, ½) under H₀", note: "Tests the median; drop values equal to m₀" },
+      { name: "Wilcoxon Signed-Rank", formula: "W⁺ = Σ ranks of |dᵢ| with dᵢ > 0", note: "E[W⁺] = n(n + 1)/4 under H₀" },
+      { name: "Mann–Whitney U", formula: "U = R₁ − n₁(n₁ + 1)/2", note: "Two independent samples; E[U] = n₁n₂/2" },
+      { name: "Kruskal–Wallis", formula: "H = 12/(N(N + 1)) Σ Rⱼ²/nⱼ − 3(N + 1)", note: "Rank-based one-way ANOVA; H ≈ χ²(k − 1)" },
+      { name: "Spearman's Rank Correlation", formula: "r_s = 1 − 6 Σ dᵢ² / (n(n² − 1))", note: "Pearson correlation of the ranks (no ties)" },
+    ],
+  },
+  "prob-multiple-regression": {
+    title: "Multiple Linear Regression",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Model", formula: "y = Xβ + ε,  ε ~ N(0, σ²I)", note: "X includes a column of 1s for the intercept" },
+      { name: "OLS Estimate", formula: "β̂ = (XᵀX)⁻¹ Xᵀy", note: "Minimizes the sum of squared residuals" },
+      { name: "Coefficient Variance", formula: "Var(β̂) = σ²(XᵀX)⁻¹,  σ̂² = SSE / (n − p − 1)", note: "p = number of predictors" },
+      { name: "Adjusted R²", formula: "R²_adj = 1 − (1 − R²)(n − 1)/(n − p − 1)", note: "Penalizes adding useless predictors" },
+      { name: "Overall F-Test", formula: "F = (SSR/p) / (SSE/(n − p − 1))", note: "Tests whether any predictor matters" },
+      { name: "Multicollinearity", formula: "VIFⱼ = 1 / (1 − Rⱼ²)", note: "VIF > 10 is a common warning sign" },
+    ],
+  },
+  "prob-joint-distributions": {
+    title: "Joint & Marginal Distributions",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Marginals", formula: "f_X(x) = ∫ f(x, y) dy,  p_X(x) = Σ_y p(x, y)", note: "Integrate or sum out the other variable" },
+      { name: "Conditional", formula: "f(y | x) = f(x, y) / f_X(x)", note: "Slice of the joint, renormalized" },
+      { name: "Independence", formula: "f(x, y) = f_X(x) f_Y(y) for all x, y", note: "Joint factorizes into marginals" },
+      { name: "Covariance", formula: "Cov(X, Y) = E[XY] − E[X]E[Y]", note: "ρ = Cov / (σ_X σ_Y)" },
+      { name: "Variance of a Sum", formula: "Var(X + Y) = Var X + Var Y + 2 Cov(X, Y)", note: "Covariance term vanishes when independent" },
+    ],
+  },
+  "prob-multivariate-normal": {
+    title: "Multivariate Normal Distribution",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Density", formula: "f(x) = (2π)^(−k/2) |Σ|^(−1/2) exp(−½ (x − μ)ᵀ Σ⁻¹ (x − μ))", note: "μ = mean vector, Σ = covariance matrix" },
+      { name: "Linear Transformations", formula: "X ~ N(μ, Σ) ⟹ AX + b ~ N(Aμ + b, AΣAᵀ)", note: "Every linear combination is normal" },
+      { name: "Conditional Distribution", formula: "X₁ | X₂ = x₂ ~ N(μ₁ + Σ₁₂Σ₂₂⁻¹(x₂ − μ₂), Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁)", note: "Basis of Gaussian regression" },
+      { name: "Zero Covariance", formula: "Σ₁₂ = 0 ⟹ X₁ and X₂ independent", note: "True for jointly normal variables only" },
+      { name: "Mahalanobis Distance", formula: "D² = (x − μ)ᵀ Σ⁻¹ (x − μ) ~ χ²(k)", note: "Used for outlier detection" },
+    ],
+  },
+  "prob-stochastic-processes": {
+    title: "Stochastic Processes & Markov Chains",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Markov Property", formula: "P(Xₙ₊₁ | Xₙ, …, X₀) = P(Xₙ₊₁ | Xₙ)", note: "Future depends only on the present" },
+      { name: "n-Step Transitions", formula: "P⁽ⁿ⁾ = Pⁿ  (Chapman–Kolmogorov)", note: "Rows of P sum to 1" },
+      { name: "Stationary Distribution", formula: "πP = π,  Σ πᵢ = 1", note: "Irreducible aperiodic chains converge to π" },
+      { name: "Poisson Process", formula: "N(t) ~ Poisson(λt),  inter-arrival times ~ Exp(λ)", note: "Independent increments" },
+      { name: "Random Walk", formula: "Sₙ = X₁ + … + Xₙ,  E[Sₙ] = nμ,  Var(Sₙ) = nσ²", note: "Symmetric walk returns to 0 in 1D and 2D" },
+    ],
+  },
+  "prob-clt": {
+    title: "Central Limit Theorem",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "CLT", formula: "(X̄ₙ − μ) / (σ/√n) → N(0, 1)", note: "For i.i.d. data with finite variance" },
+      { name: "Sum Form", formula: "Sₙ ≈ N(nμ, nσ²)", note: "Totals as well as averages" },
+      { name: "Standard Error", formula: "SE(X̄) = σ/√n", note: "Quadruple n to halve the error" },
+      { name: "Normal Approximation to Binomial", formula: "Bin(n, p) ≈ N(np, np(1 − p))", note: "Use continuity correction ±0.5" },
+      { name: "Law of Large Numbers", formula: "X̄ₙ → μ as n → ∞", note: "Averages settle at the true mean" },
+    ],
+  },
+  "prob-logistic-regression": {
+    title: "Logistic Regression",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Model", formula: "P(y = 1 | x) = 1 / (1 + e^(−(β₀ + βᵀx)))", note: "The sigmoid keeps outputs in (0, 1)" },
+      { name: "Log-Odds", formula: "log(p / (1 − p)) = β₀ + βᵀx", note: "Linear on the logit scale" },
+      { name: "Odds Ratio", formula: "OR = e^(βⱼ)", note: "Multiplicative change in odds per unit of xⱼ" },
+      { name: "Log-Loss", formula: "−Σ [yᵢ log pᵢ + (1 − yᵢ) log(1 − pᵢ)]", note: "Minimized by maximum likelihood" },
+      { name: "Gradient", formula: "∇ = Xᵀ(p − y)", note: "No closed form; solved iteratively" },
+    ],
+  },
+  "prob-time-series": {
+    title: "Time Series",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Autocorrelation", formula: "ρ(k) = Cov(Xₜ, Xₜ₊ₖ) / Var(Xₜ)", note: "For a stationary series" },
+      { name: "AR(1)", formula: "Xₜ = φXₜ₋₁ + εₜ,  stationary if |φ| < 1", note: "ρ(k) = φᵏ" },
+      { name: "MA(1)", formula: "Xₜ = εₜ + θεₜ₋₁", note: "ρ(1) = θ/(1 + θ²), ρ(k) = 0 for k > 1" },
+      { name: "Differencing", formula: "∇Xₜ = Xₜ − Xₜ₋₁", note: "Removes trends; the I in ARIMA" },
+      { name: "Exponential Smoothing", formula: "ŝₜ = αxₜ + (1 − α)ŝₜ₋₁", note: "0 < α < 1; larger α reacts faster" },
+    ],
+  },
+  "prob-monte-carlo": {
+    title: "Monte Carlo Methods",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Monte Carlo Integration", formula: "∫ₐᵇ g(x) dx ≈ (b − a)/N · Σ g(Uᵢ),  Uᵢ ~ U(a, b)", note: "Works in any dimension" },
+      { name: "Error Rate", formula: "SE ≈ σ / √N", note: "10× accuracy needs 100× samples" },
+      { name: "Inverse Transform Sampling", formula: "X = F⁻¹(U),  U ~ U(0, 1)", note: "Exponential: X = −ln(U)/λ" },
+      { name: "Importance Sampling", formula: "E_p[g] = E_q[g p/q]", note: "Sample from q where g·p is large" },
+      { name: "Acceptance–Rejection", formula: "Accept Y ~ q with probability f(Y) / (M q(Y))", note: "Needs f ≤ M q everywhere" },
+    ],
+  },
+  "prob-bootstrap": {
+    title: "Bootstrap Methods",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Resampling", formula: "Draw x*₁, …, x*ₙ with replacement from the data; compute θ̂*", note: "Repeat B times (often 1,000–10,000)" },
+      { name: "Bootstrap Standard Error", formula: "SE* = √(Σ (θ̂*_b − θ̄*)² / (B − 1))", note: "Spread of the bootstrap estimates" },
+      { name: "Percentile Interval", formula: "[θ̂*_(α/2),  θ̂*_(1−α/2)]", note: "Quantiles of the bootstrap distribution" },
+      { name: "Bias Estimate", formula: "bias* = θ̄* − θ̂", note: "Bias-corrected estimate: 2θ̂ − θ̄*" },
+    ],
+  },
+  "prob-order-statistics": {
+    title: "Order Statistics",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Maximum", formula: "F_(X₍ₙ₎)(x) = [F(x)]ⁿ", note: "All n values must be ≤ x" },
+      { name: "Minimum", formula: "F_(X₍₁₎)(x) = 1 − [1 − F(x)]ⁿ", note: "Min of exponentials is Exp(nλ)" },
+      { name: "kth Order Statistic", formula: "f₍ₖ₎(x) = n!/((k − 1)!(n − k)!) F^(k−1) (1 − F)^(n−k) f(x)", note: "k − 1 below, n − k above" },
+      { name: "Uniform Case", formula: "U₍ₖ₎ ~ Beta(k, n − k + 1),  E[U₍ₖ₎] = k/(n + 1)", note: "Order statistics of U(0, 1)" },
+      { name: "Sample Range", formula: "R = X₍ₙ₎ − X₍₁₎", note: "Simple spread measure" },
+    ],
+  },
+  "prob-queueing": {
+    title: "Queueing Theory",
+    category: "Probability & Stats",
+    color: "#7c3aed",
+    formulas: [
+      { name: "Utilization", formula: "ρ = λ / μ  (stable if ρ < 1)", note: "λ = arrival rate, μ = service rate" },
+      { name: "Little's Law", formula: "L = λW,  L_q = λW_q", note: "Holds for almost any queue" },
+      { name: "M/M/1 Averages", formula: "L = ρ/(1 − ρ),  W = 1/(μ − λ)", note: "W_q = ρ/(μ − λ)" },
+      { name: "M/M/1 Distribution", formula: "P(n in system) = (1 − ρ) ρⁿ", note: "Geometric number in system" },
+      { name: "M/M/c Utilization", formula: "ρ = λ / (cμ)", note: "Use the Erlang C formula for waiting probability" },
+    ],
+  },
 };
 
-export default formulaData;
+export default formulaData;
