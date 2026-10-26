@@ -1,89 +1,192 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { Check, Lock, Download, Eye, ArrowRight, Pencil, Award } from "lucide-react";
+import { useAuth, getDisplayName } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
+import { useEnrollments } from "../../context/EnrollmentContext";
+import useCertificates from "../../hooks/useCertificates";
 import {
-  COURSE_CERTIFICATE_REQUIREMENTS,
   getCourseTitle,
-  getRemainingSections,
-  getRequiredSections,
+  getMinQuizScore,
+  getQuizId,
 } from "../../data/courseCompletion";
-import { COURSES } from "../../data/courses";
-import { CURRICULUM } from "../dashboard/Dashboard";
+import { getCourseTopics, getCourseProgress, getNextStep, COURSE_META } from "../../data/courseCatalog";
+import CourseRegister from "../../components/study/CourseRegister";
 import "./MyCertificates.css";
-import { fetchWithTimeout } from "../../utils/fetchWithTimeout";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8002";
-const COURSE_IDS = Object.keys(COURSE_CERTIFICATE_REQUIREMENTS);
 
 function formatDate(ts) {
   if (!ts) return "";
-  let d;
-  if (typeof ts === "number") {
-    d = new Date(ts < 10000000000 ? ts * 1000 : ts);
-  } else {
-    d = new Date(ts);
-  }
-  return isNaN(d.getTime())
+  const value = typeof ts === "number" ? (ts < 1e11 ? ts * 1000 : ts) : ts;
+  const d = new Date(value);
+  return Number.isNaN(d.getTime())
     ? ""
-    : d.toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
+    : d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+}
+
+function examResult(quizScores, courseId) {
+  const quizId = getQuizId(courseId);
+  const attempt = quizId ? quizScores?.[quizId] : null;
+  const pct = attempt?.total ? Math.round((attempt.score / attempt.total) * 100) : null;
+  return { pct, passed: pct !== null && pct >= getMinQuizScore(courseId) };
+}
+
+function TopicRow({ topic, index, completed }) {
+  const done = topic.sectionIds.filter((id) => completed[id]).length;
+  const total = topic.sectionIds.length;
+  const state = done === total ? "done" : done > 0 ? "partial" : "todo";
+  return (
+    <li className={`mc-topic mc-topic--${state}`}>
+      <span className="mc-topic__num">{index + 1}</span>
+      <div className="mc-topic__body">
+        <Link to={topic.path} className="mc-topic__title">
+          {topic.title}
+        </Link>
+        <span className="mc-topic__parts" aria-label={`${done} of ${total} parts complete`}>
+          {topic.sectionIds.map((id, i) => (
+            <span key={id} className={`mc-dot${completed[id] ? " is-done" : ""}`} title={`Part ${i + 1}`} />
+          ))}
+          <span className="mc-topic__count">
+            {done}/{total} part{total === 1 ? "" : "s"}
+          </span>
+        </span>
+      </div>
+      <span className="mc-topic__status" aria-hidden="true">
+        {state === "done" ? <Check size={15} strokeWidth={3} /> : state === "partial" ? "…" : ""}
+      </span>
+    </li>
+  );
+}
+
+function CertificatePanel({ courseId, record, completed, quizScores, name }) {
+  const p = getCourseProgress(courseId, completed);
+  const exam = examResult(quizScores, courseId);
+  const next = getNextStep(courseId, completed);
+  const coreDone = p.coreTotal > 0 && p.coreDone === p.coreTotal;
+  const state = record ? "earned" : coreDone ? (exam.passed ? "claim" : "exam") : "locked";
+  const title = getCourseTitle(courseId);
+  const pdfUrl = record?.pdf_url ? (record.pdf_url.startsWith("http") ? record.pdf_url : `${API_URL}${record.pdf_url}`) : null;
+
+  return (
+    <section className="mc-panel" aria-label={`${title} certificate`}>
+      <div className={`mc-cert mc-cert--${state}`}>
+        <div className="mc-cert__inner">
+          <span className="mc-cert__seal" aria-hidden="true">
+            <Award size={22} />
+          </span>
+          <span className="mc-cert__kicker">Certificate of Completion</span>
+          <span className="mc-cert__small">This certifies that</span>
+          <span className="mc-cert__name">{record?.full_name || name}</span>
+          <span className="mc-cert__small">has successfully completed</span>
+          <span className="mc-cert__course">{title}</span>
+          <span className="mc-cert__date">
+            {record ? `Issued ${formatDate(record.issued_at)}` : "CalcVoyager"}
+          </span>
+        </div>
+        {state === "locked" ? (
+          <span className="mc-cert__lock">
+            <Lock size={16} aria-hidden="true" /> Locked
+          </span>
+        ) : null}
+      </div>
+
+      <ol className="mc-steps">
+        <li className={coreDone ? "is-done" : "is-current"}>
+          <span className="mc-steps__mark">{coreDone ? <Check size={13} strokeWidth={3} /> : "1"}</span>
+          <span>
+            Complete the core modules
+            <small>
+              {p.coreDone} of {p.coreTotal} core parts done
+            </small>
+          </span>
+        </li>
+        <li className={exam.passed || record ? "is-done" : coreDone ? "is-current" : ""}>
+          <span className="mc-steps__mark">{exam.passed || record ? <Check size={13} strokeWidth={3} /> : "2"}</span>
+          <span>
+            Pass the final exam ({getMinQuizScore(courseId)}%+)
+            <small>{exam.pct === null ? "Not attempted yet" : `Best score ${exam.pct}%`}</small>
+          </span>
+        </li>
+        <li className={record ? "is-done" : state === "claim" ? "is-current" : ""}>
+          <span className="mc-steps__mark">{record ? <Check size={13} strokeWidth={3} /> : "3"}</span>
+          <span>
+            Claim your certificate
+            <small>{record ? `ID ${String(record.cert_id).slice(0, 8)}…` : "Printed in your full name"}</small>
+          </span>
+        </li>
+      </ol>
+
+      <div className="mc-panel__actions">
+        {state === "earned" ? (
+          <>
+            <Link to={`/certificate/${courseId}`} className="mc-btn mc-btn--primary">
+              <Eye size={15} aria-hidden="true" /> View certificate
+            </Link>
+            {pdfUrl ? (
+              <a href={pdfUrl} className="mc-btn" download>
+                <Download size={15} aria-hidden="true" /> Download PDF
+              </a>
+            ) : null}
+          </>
+        ) : state === "claim" ? (
+          <Link to={`/certificate/${courseId}`} className="mc-btn mc-btn--primary">
+            Claim certificate <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        ) : state === "exam" ? (
+          <Link to={`/quiz/${courseId}`} className="mc-btn mc-btn--primary">
+            Take the final exam <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        ) : (
+          <Link to={next?.path || `/courses/${courseId}`} className="mc-btn mc-btn--primary">
+            Continue: {next?.topic.title || "course"} <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        )}
+        <Link to={`/mock-exam/${courseId}`} className="mc-btn">
+          Practise with a mock exam
+        </Link>
+      </div>
+    </section>
+  );
 }
 
 function MyCertificates() {
   const { user, isHydrated } = useAuth();
   const { progress } = useProgress();
-  const [earned, setEarned] = useState(null); // null = loading, else map courseId -> record
-  const [loadError, setLoadError] = useState(false);
-  const [retryCount, setRetryCount] = useState(0);
-  const [selectedCourseId, setSelectedCourseId] = useState(COURSE_IDS[0]);
+  const { courses, loaded } = useEnrollments();
+  const { earned, error, reload } = useCertificates();
+  const [params, setParams] = useSearchParams();
+  const requested = params.get("course");
+  const [selected, setSelected] = useState(requested || "");
 
+  // Keep the selection on a registered course.
   useEffect(() => {
-    if (!isHydrated || !user) return;
-    let cancelled = false;
-    setLoadError(false);
+    if (!courses.length) return;
+    if (!courses.includes(selected)) {
+      setSelected(courses.includes(requested) ? requested : courses[0]);
+    }
+  }, [courses, selected, requested]);
 
-    (async () => {
-      try {
-        const res = await fetchWithTimeout(`${API_URL}/api/certificates/mine`, {
-          headers: { Authorization: `Bearer ${user.accessToken}` },
-        });
-        if (!res.ok) throw new Error();
-        const list = await res.json();
-        if (cancelled) return;
-        const byCourseId = {};
-        list.forEach((c) => {
-          byCourseId[c.course_id] = c;
-        });
-        setEarned(byCourseId);
-      } catch {
-        if (!cancelled) setLoadError(true);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [isHydrated, user, retryCount]);
+  const completed = progress?.completedSections || {};
+  const topics = useMemo(() => (selected ? getCourseTopics(selected) : []), [selected]);
+  const core = topics.filter((t) => t.core);
+  const optional = topics.filter((t) => !t.core);
 
   if (!isHydrated) {
     return (
-      <main className="mycerts-page">
-        <div className="mycerts-state">Loading…</div>
+      <main className="mc-page cvx">
+        <div className="mc-state">Loading…</div>
       </main>
     );
   }
 
   if (!user) {
     return (
-      <main className="mycerts-page">
-        <div className="mycerts-state">
-          <h2>Sign in required</h2>
-          <p>Sign in to see your course progress and certificates.</p>
-          <Link className="mycerts-btn mycerts-btn--primary" to="/login">
+      <main className="mc-page cvx">
+        <div className="mc-state">
+          <h1>Sign in to see your certificates</h1>
+          <p>Your course progress and certificates are saved to your account.</p>
+          <Link className="mc-btn mc-btn--primary" to="/login">
             Sign in
           </Link>
         </div>
@@ -91,313 +194,124 @@ function MyCertificates() {
     );
   }
 
-  // Selected course data & curriculum topics
-  const selectedCourseTitle = getCourseTitle(selectedCourseId);
-  const selectedCourseTopics = CURRICULUM.filter(
-    (topic) => topic.courseId === selectedCourseId
-  );
-  const selectedCourseParts = selectedCourseTopics.flatMap((t) => t.parts);
-  const selectedDonePartsCount = selectedCourseParts.filter(
-    (p) => progress?.completedSections?.[p.id]
-  ).length;
-  const selectedCoursePct =
-    selectedCourseParts.length > 0
-      ? Math.round((selectedDonePartsCount / selectedCourseParts.length) * 100)
-      : 0;
+  const choose = (id) => {
+    setSelected(id);
+    setParams(id ? { course: id } : {}, { replace: true });
+  };
+
+  const name = getDisplayName(user);
 
   return (
-    <main className="mycerts-page">
-      {loadError && (
-        <div className="mycerts-error-banner">
-          <span>
-            Couldn't reach the server (it may be waking up from sleep — this can take up to a minute).
-          </span>
-          <button
-            type="button"
-            className="mycerts-btn mycerts-btn--primary"
-            onClick={() => setRetryCount((n) => n + 1)}
-          >
+    <main className="mc-page cvx">
+      <header className="mc-hero">
+        <div>
+          <h1 className="mc-hero__title">My certificates</h1>
+          <p className="mc-hero__sub">
+            Certificates are issued to <strong>{name}</strong>.{" "}
+            <Link to="/settings" className="mc-hero__edit">
+              <Pencil size={13} aria-hidden="true" /> {user.fullName ? "Change name" : "Add your full name"}
+            </Link>
+          </p>
+        </div>
+      </header>
+
+      {error ? (
+        <div className="mc-alert" role="alert">
+          <span>Couldn't reach the server for issued certificates. It may be waking up.</span>
+          <button type="button" className="mc-btn" onClick={reload}>
             Try again
           </button>
         </div>
-      )}
+      ) : null}
 
-      <div className="mycerts-layout">
-        {/* Left Column: Course Progress & Content Checklist */}
-        <div className="mycerts-col-main">
-          <section className="mycerts-section">
-            <h2 className="mycerts-section-title">In Progress Courses:</h2>
-            <div className="mycerts-in-progress-list">
-              {COURSE_IDS.map((courseId) => {
-                const courseTitle = getCourseTitle(courseId);
-                const courseObj = COURSES.find((c) => c.id === courseId);
-                const reqs = getRequiredSections(courseId);
-                const totalSecs = reqs.length || 1;
-                const completedCount = reqs.filter(
-                  (s) => progress?.completedSections?.[s]
-                ).length;
-                const pct = Math.round((completedCount / totalSecs) * 100);
-                const isEarned = !!(earned && earned[courseId]);
-                const nextRemaining = getRemainingSections(
-                  courseId,
-                  progress?.completedSections || {}
-                );
-                const isSelected = selectedCourseId === courseId;
-
+      {courses.length === 0 ? (
+        loaded ? (
+          <>
+            <div className="mc-state mc-state--inline">
+              <h2>You haven't registered for a course yet</h2>
+              <p>Register for a course to track its modules and work towards its certificate.</p>
+            </div>
+            <CourseRegister title="Choose a course" />
+          </>
+        ) : null
+      ) : (
+        <>
+          {courses.length > 1 ? (
+            <div className="mc-courses" role="tablist" aria-label="Registered courses">
+              {courses.map((id) => {
+                const cp = getCourseProgress(id, completed);
+                const isEarned = Boolean(earned?.[id]);
                 return (
-                  <div
-                    className={`mycerts-course-card ${isSelected ? "mycerts-course-card--selected" : ""}`}
-                    key={courseId}
-                    onClick={() => setSelectedCourseId(courseId)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        setSelectedCourseId(courseId);
-                      }
-                    }}
+                  <button
+                    key={id}
+                    type="button"
+                    role="tab"
+                    aria-selected={selected === id}
+                    className={`mc-course mc-tone--${COURSE_META[id].tone}${selected === id ? " is-active" : ""}`}
+                    onClick={() => choose(id)}
                   >
-                    <div className={`mycerts-course-icon-wrap mycerts-course-icon-wrap--${courseId}`}>
-                      {courseObj?.logo ? (
-                        <div className="mycerts-math-logo">{courseObj.logo}</div>
-                      ) : (
-                        <span className="mycerts-math-glyph">{courseObj?.icon || "∫"}</span>
-                      )}
-                    </div>
-
-                    <div className="mycerts-course-body">
-                      <div className="mycerts-course-title-row">
-                        <h3 className="mycerts-course-title">{courseTitle}</h3>
-                        {isSelected && (
-                          <span className="mycerts-active-badge">Active View</span>
-                        )}
-                      </div>
-
-                      <div className="mycerts-progress-row">
-                        <div className="mycerts-progress-track">
-                          <div
-                            className="mycerts-progress-fill"
-                            style={{ width: `${isEarned ? 100 : pct}%` }}
-                          />
-                        </div>
-                        <span className="mycerts-pct-label">
-                          {isEarned ? "100" : pct}% Complete
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="mycerts-course-action" onClick={(e) => e.stopPropagation()}>
-                      {isEarned ? (
-                        <Link
-                          to={`/certificate/${courseId}`}
-                          className="mycerts-btn mycerts-btn--continue"
-                        >
-                          View Certificate
-                        </Link>
-                      ) : nextRemaining.length === 0 ? (
-                        <Link
-                          to={`/quiz/${courseId}`}
-                          className="mycerts-btn mycerts-btn--continue"
-                        >
-                          Take Quiz
-                        </Link>
-                      ) : (
-                        <Link
-                          to={`/courses/${courseId}`}
-                          className="mycerts-btn mycerts-btn--continue"
-                        >
-                          Continue
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Dynamic Course Content Checklist for Selected Course */}
-          <section className="mycerts-section">
-            <div className="mycerts-content-header">
-              <div>
-                <h2 className="mycerts-section-title">Course Content: {selectedCourseTitle}</h2>
-                <p className="mycerts-content-subtitle">
-                  {selectedDonePartsCount} of {selectedCourseParts.length} parts completed ({selectedCoursePct}%)
-                </p>
-              </div>
-              <div className="mycerts-course-switcher">
-                {COURSE_IDS.map((cId) => {
-                  const cObj = COURSES.find((c) => c.id === cId);
-                  return (
-                    <button
-                      key={cId}
-                      type="button"
-                      className={`mycerts-tab-pill ${selectedCourseId === cId ? "mycerts-tab-pill--active" : ""}`}
-                      onClick={() => setSelectedCourseId(cId)}
-                    >
-                      {cObj?.icon || "✦"} {cObj?.title.split(" ")[0]}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="mycerts-content-checklist">
-              {selectedCourseTopics.map((topic, i) => {
-                const topicParts = topic.parts || [];
-                const doneParts = topicParts.filter(
-                  (p) => !!progress?.completedSections?.[p.id]
-                ).length;
-                const isAllDone = topicParts.length > 0 && doneParts === topicParts.length;
-                const firstPart = topicParts[0];
-
-                return (
-                  <div className="mycerts-checklist-item" key={topic.id}>
-                    <div className="mycerts-checklist-info">
-                      <span className="mycerts-checklist-num">
-                        {i + 1}
+                    <span className="mc-course__icon" aria-hidden="true">
+                      {COURSE_META[id].icon}
+                    </span>
+                    <span className="mc-course__text">
+                      <span className="mc-course__name">{getCourseTitle(id)}</span>
+                      <span className="mc-course__meta">
+                        {isEarned ? "Certificate earned" : `Core ${cp.corePct}% complete`}
                       </span>
-                      <div>
-                        <div className="mycerts-checklist-title">
-                          {firstPart ? (
-                            <Link to={firstPart.path} className="mycerts-topic-link">
-                              {topic.title}
-                            </Link>
-                          ) : (
-                            topic.title
-                          )}
-                        </div>
-                        <div className="mycerts-checklist-sub">
-                          {topicParts.map((p) => p.label.split("—")[1]?.trim() || p.label).join(" · ")}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mycerts-checklist-status">
-                      {isAllDone ? (
-                        <span className="mycerts-check-icon" title="All parts completed">✓</span>
-                      ) : doneParts > 0 ? (
-                        <span className="mycerts-partial-badge">{doneParts}/{topicParts.length}</span>
-                      ) : (
-                        <span className="mycerts-pending-dash" title="Not yet completed">−</span>
-                      )}
-                    </div>
-                  </div>
+                    </span>
+                    <span className="mc-course__ring" style={{ "--pct": `${isEarned ? 100 : cp.corePct}%` }} aria-hidden="true" />
+                  </button>
                 );
               })}
             </div>
-          </section>
-        </div>
+          ) : null}
 
-        {/* Right Column: Earned Certificates */}
-        <div className="mycerts-col-side">
-          <section className="mycerts-section">
-            <h2 className="mycerts-section-title">Earned Certificates:</h2>
-            <div className="mycerts-certs-grid">
-              {COURSE_IDS.map((courseId) => {
-                const courseTitle = getCourseTitle(courseId);
-                const record = earned ? earned[courseId] : undefined;
-                const reqs = getRequiredSections(courseId);
-                const completedCount = reqs.filter(
-                  (s) => progress?.completedSections?.[s]
-                ).length;
-                const isComplete = reqs.length > 0 && completedCount === reqs.length;
+          {selected ? (
+            <div className="mc-layout">
+              <CertificatePanel
+                courseId={selected}
+                record={earned?.[selected]}
+                completed={completed}
+                quizScores={progress?.quizScores}
+                name={name}
+              />
 
-                const isSelected = selectedCourseId === courseId;
+              <section className="mc-modules" aria-label={`${getCourseTitle(selected)} modules`}>
+                <div className="mc-modules__head">
+                  <h2 className="mc-modules__title">{getCourseTitle(selected)}</h2>
+                  <span className="mc-modules__meta">
+                    {topics.length} modules · {core.length} core · {optional.length} optional
+                  </span>
+                </div>
 
-                return (
-                  <div
-                    className={`mycerts-cert-card ${isSelected ? "mycerts-cert-card--selected" : ""}`}
-                    key={courseId}
-                    onClick={() => setSelectedCourseId(courseId)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        setSelectedCourseId(courseId);
-                      }
-                    }}
-                  >
-                    {/* Realistic Certificate Thumbnail */}
-                    <div className="mycerts-cert-thumb">
-                      <div className="mycerts-cert-thumb-inner">
-                        <div className="mycerts-cert-thumb-badge">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                          >
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 7v5l3 3" />
-                          </svg>
-                        </div>
-                        <div className="mycerts-cert-thumb-ribbon">
-                          <span className="ribbon-tail" />
-                        </div>
-                        <div className="mycerts-cert-thumb-header">
-                          Certificate of Completion
-                        </div>
-                        <div className="mycerts-cert-thumb-line" />
-                        <div className="mycerts-cert-thumb-name">
-                          {user?.username || user?.displayName || user?.email?.split("@")[0] || "Student"}
-                        </div>
-                        <div className="mycerts-cert-thumb-sub">
-                          {courseTitle}
-                        </div>
-                      </div>
-                    </div>
+                <h3 className="mc-group">
+                  Core modules <span>required for the certificate</span>
+                </h3>
+                <ol className="mc-topics">
+                  {core.map((topic, i) => (
+                    <TopicRow key={topic.id} topic={topic} index={i} completed={completed} />
+                  ))}
+                </ol>
 
-                    <div className="mycerts-cert-card-meta">
-                      <h4 className="mycerts-cert-card-title">
-                        Certificate of Completion – {courseTitle}
-                      </h4>
-                      {record ? (
-                        <>
-                          {record.issued_at ? (
-                            <div className="mycerts-cert-sub" style={{ marginBottom: "0.35rem" }}>
-                              Issued {formatDate(record.issued_at)}
-                            </div>
-                          ) : null}
-                          <div className="mycerts-cert-links">
-                            <a
-                              href={record.pdf_url?.startsWith("http") ? record.pdf_url : `${API_URL}${record.pdf_url}`}
-                              className="mycerts-download-link"
-                              download
-                            >
-                              Download
-                            </a>
-                            <span className="mycerts-link-sep">·</span>
-                            <Link
-                              to={`/certificate/${courseId}`}
-                              className="mycerts-view-link"
-                            >
-                              View
-                            </Link>
-                          </div>
-                        </>
-                      ) : isComplete ? (
-                        <Link
-                          to={`/quiz/${courseId}`}
-                          className="mycerts-download-link"
-                        >
-                          Pass final quiz to unlock →
-                        </Link>
-                      ) : (
-                        <Link
-                          to={`/courses/${courseId}`}
-                          className="mycerts-download-link mycerts-download-link--locked"
-                        >
-                          {reqs.length - completedCount} modules left to unlock
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+                {optional.length ? (
+                  <>
+                    <h3 className="mc-group">
+                      Optional modules <span>extra depth, points and practice</span>
+                    </h3>
+                    <ol className="mc-topics mc-topics--optional">
+                      {optional.map((topic, i) => (
+                        <TopicRow key={topic.id} topic={topic} index={i} completed={completed} />
+                      ))}
+                    </ol>
+                  </>
+                ) : null}
+              </section>
             </div>
-          </section>
-        </div>
-      </div>
+          ) : null}
+
+          <CourseRegister title="Register for another course" compact />
+        </>
+      )}
     </main>
   );
 }
