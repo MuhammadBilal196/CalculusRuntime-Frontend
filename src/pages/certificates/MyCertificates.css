@@ -1,661 +1,508 @@
-/* ═══════════════════════════════════════════════════════════════════════════
-   MyCertificates — Modern Two-Column Dashboard & Certificate Gallery
-   ═══════════════════════════════════════════════════════════════════════════ */
+/* My certificates — tokens from tokens.css, text via --tc (.cvx). */
 
-.mycerts-page {
-  max-width: 1280px;
-  margin: 2rem auto;
-  padding: 0 1.5rem 4rem;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #0f172a;
+.mc-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 2rem) 4rem;
+  font-family: var(--c-font-sans);
 }
 
-.mycerts-state {
-  text-align: center;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 3.5rem 2rem;
-  max-width: 520px;
-  margin: 4rem auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
+.mc-tone--gold { --tone: #b7791f; }
+.mc-tone--teal { --tone: #0f8b8d; }
+.mc-tone--blue { --tone: #2b4cc9; }
+.mc-tone--purple { --tone: #7c3aed; }
+html[data-theme="dark"] .mc-tone--gold { --tone: #f6c35b; }
+html[data-theme="dark"] .mc-tone--teal { --tone: #2dd4bf; }
+html[data-theme="dark"] .mc-tone--blue { --tone: #8ea8ff; }
+html[data-theme="dark"] .mc-tone--purple { --tone: #c4a1ff; }
 
-.mycerts-state h2 {
-  margin: 0 0 0.6rem;
-  font-weight: 750;
-  color: #0f172a;
-}
-
-.mycerts-state p {
-  color: #64748b;
-  margin: 0 0 1.5rem;
-}
-
-.mycerts-error-banner {
-  display: flex;
+.mc-btn {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  background: #fff1f2;
-  border: 1px solid #fecdd3;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--c-border-strong);
   border-radius: 10px;
-  padding: 0.9rem 1.2rem;
+  background: var(--c-surface);
+  font: inherit;
   font-size: 0.88rem;
-  color: #be123c;
+  font-weight: 700;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.mc-btn:hover {
+  border-color: var(--c-accent);
+}
+
+.mc-btn--primary {
+  border-color: var(--c-accent-strong);
+  background: var(--c-accent-strong);
+  --tc: var(--c-on-accent);
+}
+
+.mc-btn--primary:hover {
+  background: var(--c-accent-strong-hover);
+}
+
+/* Header */
+.mc-hero {
   margin-bottom: 1.5rem;
 }
 
-/* Two-column layout */
-.mycerts-layout {
+.mc-hero__title {
+  margin: 0 0 0.35rem;
+  font-family: var(--c-font-serif);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.mc-hero__sub {
+  margin: 0;
+  --tc: var(--c-text-2);
+}
+
+.mc-hero__edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  --tc: var(--c-accent);
+}
+
+.mc-alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--c-warning-border);
+  border-radius: 12px;
+  background: var(--c-warning-soft);
+  font-size: 0.9rem;
+  --tc: var(--c-warning);
+}
+
+.mc-state {
+  max-width: 520px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 1px solid var(--c-border);
+  border-radius: 18px;
+  background: var(--c-surface);
+  text-align: center;
+}
+
+.mc-state--inline {
+  max-width: none;
+  margin: 0 0 1rem;
+  text-align: left;
+}
+
+.mc-state h1,
+.mc-state h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.3rem;
+}
+
+.mc-state p {
+  margin: 0 0 1rem;
+  --tc: var(--c-muted);
+}
+
+/* Course switcher */
+.mc-courses {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.95fr);
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.mc-course {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 0.95rem;
+  border: 1.5px solid var(--c-border);
+  border-radius: 14px;
+  background: var(--c-surface);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mc-course:hover {
+  border-color: var(--tone);
+}
+
+.mc-course.is-active {
+  border-color: var(--tone);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tone) 18%, transparent);
+}
+
+.mc-course__icon {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 10px;
+  background: var(--c-surface-2);
+  font-family: var(--c-font-serif);
+  font-weight: 700;
+  --tc: var(--tone);
+}
+
+.mc-course__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.mc-course__name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.mc-course__meta {
+  font-size: 0.76rem;
+  --tc: var(--c-muted);
+}
+
+.mc-course__ring {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, var(--c-surface) 72%, transparent 74%),
+    conic-gradient(var(--tone) var(--pct), var(--c-surface-3) 0);
+}
+
+/* Main layout */
+.mc-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+  gap: 1.25rem;
   align-items: start;
 }
 
-.mycerts-section {
-  margin-bottom: 2.5rem;
+.mc-panel {
+  position: sticky;
+  top: calc(var(--header-h, 70px) + 1rem);
+  padding: 1.1rem;
+  border: 1px solid var(--c-border);
+  border-radius: 18px;
+  background: var(--c-surface);
+  box-shadow: var(--c-shadow-sm);
 }
 
-.mycerts-section-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: #0f172a;
-  margin: 0 0 1.25rem;
-  letter-spacing: -0.01em;
-}
-
-/* In Progress Course Cards */
-.mycerts-in-progress-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-}
-
-.mycerts-course-card {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 1.5rem 1.6rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-}
-
-.mycerts-course-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.07);
-  transform: translateY(-2px);
-}
-
-.mycerts-course-card--selected {
-  border-color: #0284c7 !important;
-  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25), 0 8px 24px rgba(2, 132, 199, 0.08) !important;
-  background: #f8fafc;
-}
-
-.mycerts-active-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: rgba(2, 132, 199, 0.12);
-  color: #0284c7;
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.mycerts-course-icon-wrap {
-  min-width: 110px;
-  height: 54px;
-  padding: 0.4rem 0.9rem;
+/* Certificate preview */
+.mc-cert {
+  position: relative;
+  padding: 0.65rem;
   border-radius: 12px;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: #0f172a;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: linear-gradient(135deg, #f6ecd2, #fffaf0 40%, #efe0bb);
+  box-shadow: inset 0 0 0 1px rgba(150, 110, 40, 0.35);
 }
 
-.mycerts-course-icon-wrap--calculus-analytical-geometry {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(2, 132, 199, 0.22));
-  border-color: rgba(14, 165, 233, 0.3);
-}
-
-.mycerts-course-icon-wrap--multivariable-calculus {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(5, 150, 105, 0.22));
-  border-color: rgba(16, 185, 129, 0.3);
-}
-
-.mycerts-course-icon-wrap--linear-algebra {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(147, 51, 234, 0.22));
-  border-color: rgba(99, 102, 241, 0.3);
-}
-
-.mycerts-course-icon-wrap--probability-statistics {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(234, 88, 12, 0.22));
-  border-color: rgba(249, 115, 22, 0.3);
-}
-
-.mycerts-math-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-.mycerts-math-logo .math-logo-card,
-.mycerts-math-logo .math-logo {
-  font-family: 'Cambria Math', 'KaTeX_Main', 'Times New Roman', Georgia, serif !important;
-  font-size: 1.25rem !important;
-  font-weight: 800 !important;
-  line-height: 1 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0.25rem !important;
-  white-space: nowrap !important;
-}
-
-.mycerts-math-logo .math-sym-big {
-  font-size: 1.45rem !important;
-  line-height: 1 !important;
-  font-weight: 800 !important;
-}
-
-.mycerts-math-glyph {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-}
-
-.mycerts-course-body {
-  flex: 1;
-  min-width: 0;
+.mc-cert__inner {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-}
-
-.mycerts-course-title {
-  margin: 0;
-  font-size: 1.12rem;
-  font-weight: 750;
-  color: #0f172a;
-  line-height: 1.35;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mycerts-progress-row {
-  display: flex;
   align-items: center;
-  gap: 0.95rem;
+  gap: 0.25rem;
+  padding: 1.2rem 1rem 1rem;
+  border: 2px double rgba(150, 110, 40, 0.55);
+  border-radius: 8px;
+  text-align: center;
+  --tc: #3a2c1a;
 }
 
-.mycerts-progress-track {
-  flex: 1;
-  height: 8px;
-  background: #e2e8f0;
-  border-radius: 99px;
-  overflow: hidden;
+.mc-cert__seal {
+  display: inline-grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: 0.25rem;
+  border-radius: 50%;
+  background: #b7791f;
+  box-shadow: 0 0 0 3px #f6ecd2, 0 0 0 4px #b7791f;
+  --tc: #fffaf0;
 }
 
-.mycerts-progress-fill {
-  height: 100%;
-  background: #16a34a;
-  border-radius: 99px;
-  transition: width 0.4s ease;
+.mc-cert__kicker {
+  font-family: var(--c-font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
-.mycerts-progress-fill[style*="width: 0%"] {
-  display: none;
+.mc-cert__small {
+  font-size: 0.72rem;
+  font-style: italic;
+  --tc: #7a6649;
 }
 
-.mycerts-pct-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #64748b;
-  white-space: nowrap;
-  min-width: 85px;
+.mc-cert__name {
+  margin: 0.15rem 0;
+  font-family: var(--c-font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  --tc: #8a4b0f;
 }
 
-.mycerts-course-action {
-  flex-shrink: 0;
+.mc-cert__course {
+  font-size: 0.92rem;
+  font-weight: 700;
 }
 
-.mycerts-btn {
+.mc-cert__date {
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  --tc: #7a6649;
+}
+
+.mc-cert--locked .mc-cert__inner {
+  filter: grayscale(0.9);
+  opacity: 0.55;
+}
+
+.mc-cert__lock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.86rem;
-  font-weight: 600;
-  padding: 0.55rem 1.25rem;
-  border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
-  border: 1px solid transparent;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-}
-
-.mycerts-btn--continue,
-.mycerts-btn--primary {
-  background: #0056D2;
-  color: #ffffff !important;
-  box-shadow: 0 2px 6px rgba(0, 86, 210, 0.2);
-}
-
-.mycerts-btn--continue:hover,
-.mycerts-btn--primary:hover {
-  background: #0043a8;
-  transform: translateY(-1px);
-}
-
-.mycerts-content-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.mycerts-content-subtitle {
-  font-size: 0.88rem;
-  color: #64748b;
-  margin: 0.25rem 0 0;
-}
-
-.mycerts-course-switcher {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.mycerts-tab-pill {
-  padding: 0.4rem 0.8rem;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
   border-radius: 999px;
-  font-size: 0.8rem;
+  background: rgba(24, 33, 61, 0.88);
+  font-size: 0.85rem;
   font-weight: 700;
-  border: 1.5px solid #e2e8f0;
-  background: #f8fafc;
-  color: #64748b;
-  cursor: pointer;
-  transition: all 0.15s ease;
+  transform: translate(-50%, -50%);
+  --tc: #ffffff;
 }
 
-.mycerts-tab-pill:hover {
-  border-color: #0284c7;
-  color: #0284c7;
+/* Steps */
+.mc-steps {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.1rem 0;
+  padding: 0;
+  list-style: none;
 }
 
-.mycerts-tab-pill--active {
-  background: #0284c7 !important;
-  border-color: #0284c7 !important;
-  color: #ffffff !important;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
-}
-
-/* Course Content Checklist */
-.mycerts-content-checklist {
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-}
-
-.mycerts-checklist-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.1rem 1.4rem;
-  border-bottom: 1px solid #f1f5f9;
-  font-size: 0.95rem;
-  transition: background 0.15s;
-}
-
-.mycerts-checklist-item:last-child {
-  border-bottom: none;
-}
-
-.mycerts-checklist-item:hover {
-  background: #f8fafc;
-}
-
-.mycerts-checklist-info {
+.mc-steps li {
   display: flex;
   align-items: flex-start;
-  gap: 0.9rem;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 650;
+  --tc: var(--c-muted);
 }
 
-.mycerts-checklist-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #0284c7;
-  padding-top: 0.1rem;
-}
-
-.mycerts-checklist-title {
-  font-weight: 750;
-  color: #0f172a;
-  font-size: 1rem;
-}
-
-.mycerts-topic-link {
-  color: #0f172a;
-  text-decoration: none;
-  font-weight: 750;
-  transition: color 0.15s ease;
-}
-
-.mycerts-topic-link:hover {
-  color: #0284c7;
-  text-decoration: underline;
-}
-
-.mycerts-checklist-sub {
-  font-size: 0.82rem;
-  color: #64748b;
-  margin-top: 0.25rem;
-  line-height: 1.4;
-}
-
-.mycerts-checklist-status {
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-}
-
-.mycerts-check-icon {
-  color: #16a34a;
-  font-size: 1.1rem;
-}
-
-.mycerts-pending-dash {
-  color: #cbd5e1;
-  font-size: 1.1rem;
-}
-
-/* Right Column: Earned Certificates Cards */
-.mycerts-certs-grid {
+.mc-steps li > span:last-child {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
 }
 
-.mycerts-cert-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.25rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+.mc-steps small {
+  font-size: 0.78rem;
+  font-weight: 500;
+  --tc: var(--c-muted);
 }
 
-.mycerts-cert-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-  transform: translateY(-1px);
+.mc-steps__mark {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1.5px solid var(--c-border-strong);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 800;
 }
 
-/* Realistic Certificate Thumbnail */
-.mycerts-cert-thumb {
-  background: #f8fafc;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 1rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: inset 0 0 0 4px #ffffff, inset 0 0 0 5px #e2e8f0;
-  margin-bottom: 1rem;
+.mc-steps li.is-current {
+  --tc: var(--c-text);
 }
 
-.mycerts-cert-thumb-inner {
-  position: relative;
-  z-index: 1;
+.mc-steps li.is-current .mc-steps__mark {
+  border-color: var(--c-accent);
+  --tc: var(--c-accent);
 }
 
-.mycerts-cert-thumb-ribbon {
-  position: absolute;
-  top: -1rem;
-  right: 1.25rem;
-  width: 28px;
-  height: 48px;
-  background: #3b82f6;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+.mc-steps li.is-done {
+  --tc: var(--c-text);
 }
 
-.mycerts-cert-thumb-ribbon::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-bottom: 8px solid #f8fafc;
+.mc-steps li.is-done .mc-steps__mark {
+  border-color: var(--c-success-strong);
+  background: var(--c-success-strong);
+  --tc: #ffffff;
 }
 
-.mycerts-cert-thumb-header {
-  font-family: 'Times New Roman', serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #1e293b;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
-}
-
-.mycerts-cert-thumb-line {
-  height: 1px;
-  background: #cbd5e1;
-  width: 60%;
-  margin-bottom: 0.65rem;
-}
-
-.mycerts-cert-thumb-name {
-  font-family: 'Times New Roman', serif;
-  font-style: italic;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.2rem;
-}
-
-.mycerts-cert-thumb-sub {
-  font-size: 0.72rem;
-  color: #64748b;
-}
-
-.mycerts-cert-card-title {
-  margin: 0 0 0.45rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0f172a;
-  line-height: 1.35;
-}
-
-.mycerts-cert-links {
+.mc-panel__actions {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
-.mycerts-download-link {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #0056D2;
-  text-decoration: none;
+/* Modules */
+.mc-modules {
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--c-border);
+  border-radius: 18px;
+  background: var(--c-surface);
+  box-shadow: var(--c-shadow-sm);
 }
 
-.mycerts-download-link:hover {
-  text-decoration: underline;
+.mc-modules__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
 }
 
-.mycerts-download-link--locked {
-  color: #64748b;
+.mc-modules__title {
+  margin: 0;
+  font-family: var(--c-font-serif);
+  font-size: 1.3rem;
+}
+
+.mc-modules__meta {
   font-size: 0.82rem;
+  --tc: var(--c-muted);
+}
+
+.mc-group {
+  margin: 1.25rem 0 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+
+.mc-group span {
+  margin-left: 0.4rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  --tc: var(--c-muted);
 }
 
-.mycerts-view-link {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #475569;
-  text-decoration: none;
+.mc-topics {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.mycerts-view-link:hover {
-  color: #0f172a;
+.mc-topic {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--c-border);
+  border-radius: 11px;
 }
 
-.mycerts-link-sep {
-  color: #cbd5e1;
+.mc-topic--done {
+  border-color: var(--c-success-border);
+  background: var(--c-success-soft);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   Dark Mode Support for Certificates Page
-   ═══════════════════════════════════════════════════════════════════════════ */
-[data-theme="dark"] .mycerts-page {
-  color: #f8fafc;
+.mc-topic__num {
+  flex: 0 0 auto;
+  width: 1.6rem;
+  font-family: var(--c-font-mono);
+  font-size: 0.8rem;
+  text-align: center;
+  --tc: var(--c-muted);
 }
 
-[data-theme="dark"] .mycerts-section-title,
-[data-theme="dark"] .mycerts-course-title,
-[data-theme="dark"] .mycerts-checklist-title,
-[data-theme="dark"] .mycerts-cert-card-title {
-  color: #f8fafc;
+.mc-topic__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
-[data-theme="dark"] .mycerts-course-card,
-[data-theme="dark"] .mycerts-content-checklist,
-[data-theme="dark"] .mycerts-cert-card,
-[data-theme="dark"] .mycerts-state {
-  background: #111827;
-  border-color: #1e293b;
+.mc-topic__title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none !important;
 }
 
-[data-theme="dark"] .mycerts-course-icon-wrap {
-  background: #1e293b;
-  border-color: #334155;
-  color: #f8fafc;
+.mc-topic__title:hover {
+  --tc: var(--c-accent);
 }
 
-[data-theme="dark"] .mycerts-course-icon-wrap--calculus-analytical-geometry {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(2, 132, 199, 0.35));
-  border-color: rgba(56, 189, 248, 0.4);
+.mc-topic__parts {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
 }
 
-[data-theme="dark"] .mycerts-course-icon-wrap--multivariable-calculus {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.35));
-  border-color: rgba(52, 211, 153, 0.4);
+.mc-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c-border-strong);
 }
 
-[data-theme="dark"] .mycerts-course-icon-wrap--linear-algebra {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(147, 51, 234, 0.35));
-  border-color: rgba(129, 140, 248, 0.4);
+.mc-dot.is-done {
+  background: var(--c-success-strong);
 }
 
-[data-theme="dark"] .mycerts-course-icon-wrap--probability-statistics {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 88, 12, 0.35));
-  border-color: rgba(251, 146, 60, 0.4);
+.mc-topic__count {
+  margin-left: 0.3rem;
+  font-size: 0.75rem;
+  --tc: var(--c-muted);
 }
 
-[data-theme="dark"] .mycerts-progress-track {
-  background: #1e293b;
+.mc-topic__status {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  font-weight: 800;
+  --tc: var(--c-muted);
 }
 
-[data-theme="dark"] .mycerts-course-card--selected,
-[data-theme="dark"] .mycerts-cert-card--selected {
-  background: #1e293b !important;
-  border-color: #38bdf8 !important;
-  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35) !important;
+.mc-topic--done .mc-topic__status {
+  background: var(--c-success-strong);
+  --tc: #ffffff;
 }
 
-[data-theme="dark"] .mycerts-content-subtitle {
-  color: #cbd5e1;
+.mc-topic--partial .mc-topic__status {
+  background: var(--c-warning-soft);
+  --tc: var(--c-warning);
 }
 
-[data-theme="dark"] .mycerts-tab-pill {
-  background: #1e293b;
-  border-color: #334155;
-  color: #cbd5e1;
+.mc-topics--optional .mc-topic:not(.mc-topic--done) {
+  border-style: dashed;
 }
 
-[data-theme="dark"] .mycerts-tab-pill:hover {
-  border-color: #38bdf8;
-  color: #38bdf8;
-}
-
-[data-theme="dark"] .mycerts-tab-pill--active {
-  background: #0284c7 !important;
-  border-color: #0284c7 !important;
-  color: #ffffff !important;
-}
-
-[data-theme="dark"] .mycerts-checklist-item {
-  border-bottom-color: #1e293b;
-}
-
-[data-theme="dark"] .mycerts-checklist-item:hover {
-  background: #1e293b;
-}
-
-[data-theme="dark"] .mycerts-topic-link {
-  color: #f8fafc;
-}
-
-[data-theme="dark"] .mycerts-topic-link:hover {
-  color: #38bdf8;
-}
-
-[data-theme="dark"] .mycerts-checklist-sub {
-  color: #94a3b8;
-}
-
-[data-theme="dark"] .mycerts-cert-thumb {
-  background: #0f172a;
-  border-color: #334155;
-  box-shadow: inset 0 0 0 4px #111827, inset 0 0 0 5px #1e293b;
-}
-
-[data-theme="dark"] .mycerts-cert-thumb-ribbon::after {
-  border-bottom-color: #0f172a;
-}
-
-[data-theme="dark"] .mycerts-cert-thumb-header {
-  color: #cbd5e1;
-}
-
-[data-theme="dark"] .mycerts-cert-thumb-name {
-  color: #f8fafc;
-}
-
-[data-theme="dark"] .mycerts-download-link {
-  color: #38bdf8;
-}
-
-[data-theme="dark"] .mycerts-view-link {
-  color: #94a3b8;
-}
-
-/* Responsive */
-@media (max-width: 860px) {
-  .mycerts-layout {
+@media (max-width: 900px) {
+  .mc-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+  }
+
+  .mc-panel {
+    position: static;
   }
 }

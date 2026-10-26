@@ -9,6 +9,12 @@ export default function VectorFieldsApproximationPart1() {
       part={1}
       moduleTopics={VECTOR_FIELDS_TOPICS}
       basePath={VECTOR_FIELDS_BASE}
+      completion={{
+        sectionId: "vector-fields-approximation-1",
+        nextPath: "/vector-fields-approximation/2",
+        nextLabel: "Continue to Part 2",
+        courseId: "multivariable-calculus",
+      }}
     />
   );
 }

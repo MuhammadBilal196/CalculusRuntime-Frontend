@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import useQuizAttempts from "../../hooks/useQuizAttempts";
+import { useProgress } from "../../context/ProgressContext";
 import { getCourseById } from "../../data/courses";
 import {
   MOCK_EXAM_COURSES,
@@ -48,6 +49,7 @@ function MockExam() {
   const { courseId } = useParams();
   const user = useAuth()?.user;
   const { record: recordAnswer, restart: restartRecording } = useQuizAttempts();
+  const { saveQuizScore } = useProgress() || {};
 
   const bankKey = MOCK_EXAM_COURSES[courseId];
   const courseTitle = getCourseById(courseId)?.title || courseId;
@@ -94,8 +96,13 @@ function MockExam() {
         difficulty: q.difficulty,
       });
     });
+    // Best mock score counts toward leaderboard points (2 per correct answer).
+    if (saveQuizScore && shown.length) {
+      const graded = gradeMockAttempt(submitted, shown);
+      saveQuizScore(`mock-${courseId}`, graded.score, graded.total);
+    }
     return { ...submitted, recorded: true };
-  }, [courseId, recordAnswer]);
+  }, [courseId, recordAnswer, saveQuizScore]);
 
   /** Submit exactly once — guarded in memory, in storage, and across tabs. */
   const submit = useCallback((reason = "manual") => {

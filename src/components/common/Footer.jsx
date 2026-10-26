@@ -64,7 +64,8 @@ function Footer() {
 
   const accountLinks = user
     ? [
-        { to: "/dashboard", label: "Dashboard" },
+        { to: "/dashboard", label: "My profile" },
+        { to: "/settings", label: "Settings" },
         { to: "/analytics", label: "Topic analytics" },
         { to: "/my-certificates", label: "My certificates" },
         { to: "/leaderboard", label: "Leaderboard" },

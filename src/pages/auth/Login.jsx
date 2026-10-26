@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
-import "./Auth.css";
+import AuthShell from "./AuthShell";
 
 function Login() {
   const { login } = useAuth();
@@ -32,64 +32,61 @@ function Login() {
   };
 
   return (
-    <main className="auth-page">
-      <div className="auth-card">
-        <div className="auth-logo">
-          <span className="auth-logo-mark">∂</span>
-          <span className="auth-logo-text">CalcVoyager</span>
-        </div>
-        <h1 className="auth-title">Welcome back</h1>
-        <p className="auth-sub">Sign in to track your progress and bookmarks.</p>
-
-        <form className="auth-form" onSubmit={submit} noValidate>
-          <label className="auth-label">
-            Username
+    <AuthShell
+      title="Welcome back"
+      subtitle="Sign in to continue your courses, quizzes and certificates."
+      footer={
+        <>
+          New to CalcVoyager? <Link to="/signup">Create an account</Link>
+        </>
+      }
+    >
+      <form className="auth-form" onSubmit={submit} noValidate>
+        <label className="auth-label">
+          Username
+          <input
+            className="auth-input"
+            type="text"
+            name="username"
+            value={form.username}
+            onChange={handle}
+            autoComplete="username"
+            autoFocus
+          />
+        </label>
+        <label className="auth-label">
+          Password
+          <div className="auth-input-wrap">
             <input
               className="auth-input"
-              type="text"
-              name="username"
-              value={form.username}
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={form.password}
               onChange={handle}
-              autoComplete="username"
-              autoFocus
+              autoComplete="current-password"
             />
-          </label>
-          <label className="auth-label">
-            Password
-            <div className="auth-input-wrap">
-              <input
-                className="auth-input"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={form.password}
-                onChange={handle}
-                autoComplete="current-password"
-              />
-              <button
-                type="button"
-                className="auth-pw-toggle"
-                onClick={() => setShowPassword((v) => !v)}
-                aria-label={showPassword ? "Hide password" : "Show password"}
-                tabIndex={-1}
-              >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
-            </div>
-          </label>
+            <button
+              type="button"
+              className="auth-pw-toggle"
+              onClick={() => setShowPassword((v) => !v)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
+        </label>
 
-          {error && <p className="auth-error" role="alert">{error}</p>}
+        {error && (
+          <p className="auth-error" role="alert">
+            {error}
+          </p>
+        )}
 
-          <button className="auth-btn" type="submit" disabled={loading}>
-            {loading ? "Signing in…" : "Sign in"}
-          </button>
-        </form>
-
-        <p className="auth-switch">
-          Don't have an account?{" "}
-          <Link to="/signup">Create one</Link>
-        </p>
-      </div>
-    </main>
+        <button className="auth-btn" type="submit" disabled={loading}>
+          {loading ? "Signing in…" : "Sign in"}
+        </button>
+      </form>
+    </AuthShell>
   );
 }
 

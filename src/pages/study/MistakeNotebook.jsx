@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { getCourseTitle } from "../../data/courseCompletion";
 import useLearningHistory from "../../hooks/useLearningHistory";
 import { unresolvedMistakes, questionKey } from "../../utils/mistakeNotebook";
 import { newAttemptId } from "../../utils/quizAttempts";
 import "./MistakeNotebook.css";
+import "./StudyPages.css";
 import { mixedMathToHtml } from "../../utils/mixedMath";
 import "katex/dist/katex.min.css";
 
@@ -33,10 +35,10 @@ export default function MistakeNotebook() {
   const courses = [...new Set(mistakes.map((q) => q.courseId || "Unclassified"))].sort();
   const topics = [...new Set(mistakes.filter((q) => !course || (q.courseId || "Unclassified") === course).map((q) => q.topic || "Other topic"))].sort();
   const visible = mistakes.filter((q) => (!course || (q.courseId || "Unclassified") === course) && (!topic || (q.topic || "Other topic") === topic));
-  if (!user?.accessToken) return <main className="mistakes-page"><h1>Mistake Notebook</h1><p>Sign in to save and review your mistakes.</p><Link to="/login">Log in</Link></main>;
-  return <main className="mistakes-page"><header><p className="mistakes-meta">YOUR STUDY HISTORY</p><h1>Mistake Notebook</h1>
+  if (!user?.accessToken) return <main className="mistakes-page study-page cvx"><h1>Mistake Notebook</h1><p>Sign in to save and review your mistakes.</p><Link to="/login">Log in</Link></main>;
+  return <main className="mistakes-page study-page cvx"><header><p className="mistakes-meta">Your study history</p><h1>Mistake Notebook</h1>
     <p>Retry missed questions from guides, practice and course quizzes. Correct answers remove them from this list.</p></header>
-    <div className="mistakes-controls"><label>Course<select value={course} onChange={(e) => { setCourse(e.target.value); setTopic(""); }}><option value="">All courses</option>{courses.map((id) => <option key={id}>{id}</option>)}</select></label>
+    <div className="mistakes-controls"><label>Course<select value={course} onChange={(e) => { setCourse(e.target.value); setTopic(""); }}><option value="">All courses</option>{courses.map((id) => <option key={id} value={id}>{id === "Unclassified" ? id : getCourseTitle(id)}</option>)}</select></label>
     <label>Topic<select value={topic} onChange={(e) => setTopic(e.target.value)}><option value="">All topics</option>{topics.map((id) => <option key={id}>{id}</option>)}</select></label>
     <button onClick={retry}>Sync history</button></div>
     <p role="status">{feedback || `${visible.length} questions to review.`} {pending.length > 0 ? `${pending.length} changes waiting to sync.` : ""}</p>

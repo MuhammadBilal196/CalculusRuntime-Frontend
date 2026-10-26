@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth, getDisplayName } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
 import {
   getCourseTitle,
@@ -177,7 +177,7 @@ function Certificate() {
         const completedAt = timestamps.length ? Math.max(...timestamps) : Date.now();
 
         setPendingCompletedAt(completedAt);
-        setFullName((prev) => prev || user.username);
+        setFullName((prev) => prev || getDisplayName(user));
         setStatus("confirm_name");
       } catch (e) {
         // Anything above (a sleeping/unresponsive backend, a network drop,
@@ -206,9 +206,14 @@ function Certificate() {
 
   const qrSrc = certificate?.qrImage || null;
 
-  async function handleConfirmName(e) {
-    e.preventDefault();
-    if (!fullName.trim()) return;
+  const profileName = user ? getDisplayName(user) : "";
+  const nameOutOfDate =
+    status === "success" && certificate && user?.fullName && certificate.studentName !== profileName;
+
+  async function handleConfirmName(e, nameOverride) {
+    e?.preventDefault?.();
+    const name = (nameOverride || fullName).trim();
+    if (!name) return;
     setStatus("issuing");
     try {
       const quizId = getQuizId(courseId);
@@ -216,7 +221,7 @@ function Certificate() {
         user.accessToken,
         courseId,
         courseTitle,
-        fullName.trim(),
+        name,
         quizId,
         getMinQuizScore(courseId)
       );
@@ -226,7 +231,7 @@ function Certificate() {
       setCertificate({
         id: data.cert_id,
         courseTitle,
-        studentName: data.full_name || fullName.trim(),
+        studentName: data.full_name || name,
         completedAt: data.issued_at || pendingCompletedAt || Date.now(),
         verifyUrl: data.verify_url,
         qrImage: data.qr_png_base64,
@@ -380,6 +385,21 @@ function Certificate() {
               </div>
             </div>
           </div>
+
+          {nameOutOfDate ? (
+            <div className="cert-name-update" role="status">
+              <span>
+                This certificate shows “{certificate.studentName}”. Your profile name is “{profileName}”.
+              </span>
+              <button
+                type="button"
+                className="cert-btn"
+                onClick={() => handleConfirmName(null, profileName)}
+              >
+                Update the name
+              </button>
+            </div>
+          ) : null}
 
           <div className="cert-actions">
             {certificate.pdfUrl && (

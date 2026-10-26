@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-import { NavLink, Link,  } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import { useAuth, getDisplayName, getInitials } from "../../context/AuthContext";
+import AccountDrawer from "./AccountDrawer";
 import { Sun, Moon, BookOpen, Menu, X, ChevronDown, Award, Trophy } from "lucide-react";
 
 const courseLinks = [
@@ -76,23 +78,13 @@ function Header({ theme: themeProp, onThemeChange, darkMode, onToggleDark }) {
   
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef(null);
+  const { pathname } = useLocation();
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
+  // Close the drawer whenever the page changes.
   useEffect(() => {
-    const handleClick = (e) => {
-      if (headerRef.current && !headerRef.current.contains(e.target)) {
-        setMenuOpen(false);
-      }
-    };
-    const handleKey = (e) => {
-      if (e.key === "Escape") setMenuOpen(false);
-    };
-    document.addEventListener("mousedown", handleClick);
-    document.addEventListener("keydown", handleKey);
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-      document.removeEventListener("keydown", handleKey);
-    };
-  }, []);
+    setMenuOpen(false);
+  }, [pathname]);
 
   const handleLogout = () => {
     try {
@@ -156,11 +148,18 @@ function Header({ theme: themeProp, onThemeChange, darkMode, onToggleDark }) {
         <ThemePicker theme={theme} onChange={changeTheme} />
 
         {user ? (
-          <div className="header-user">
-            <Link to="/dashboard" className="header-auth-btn" title="Dashboard">
-              Profile
-            </Link>
-          </div>
+          <button
+            type="button"
+            className="header-account"
+            onClick={() => setMenuOpen(true)}
+            aria-label={`Account menu for ${getDisplayName(user)}`}
+            title={getDisplayName(user)}
+          >
+            <span className="header-account__avatar" aria-hidden="true">
+              {getInitials(user)}
+            </span>
+            <span className="header-account__name">{getDisplayName(user).split(" ")[0]}</span>
+          </button>
         ) : (
           <div className="header-auth">
             <Link to="/signup" className="header-auth-btn">
@@ -170,7 +169,7 @@ function Header({ theme: themeProp, onThemeChange, darkMode, onToggleDark }) {
         )}
 
         <button
-          className={`hamburger${menuOpen ? " hamburger--open" : ""}`}
+          className={`hamburger header-more${menuOpen ? " hamburger--open" : ""}`}
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Toggle navigation"
           aria-expanded={menuOpen}
@@ -180,51 +179,21 @@ function Header({ theme: themeProp, onThemeChange, darkMode, onToggleDark }) {
         </button>
       </div>
 
-      {/* Mobile nav */}
-      <nav
-        id="mobile-nav"
-        className={`mobile-nav${menuOpen ? " mobile-nav--open" : ""}`}
-        aria-label="Mobile navigation"
-        aria-hidden={!menuOpen}
-      >
-        <div className="mobile-nav-group-title">Courses</div>
-        {courseLinks.map(({ to, label }) => (
-          <NavLink key={to} to={to} onClick={() => setMenuOpen(false)}>
-            {label}
-          </NavLink>
-        ))}
-
-        <div className="mobile-nav-divider" />
-        <div className="mobile-nav-group-title">Tools & Resources</div>
-        {toolLinks.map(({ to, label }) => (
-          <NavLink key={to} to={to} onClick={() => setMenuOpen(false)}>
-            {label}
-          </NavLink>
-        ))}
-
-        <div className="mobile-nav-divider" />
-        <NavLink to="/leaderboard" onClick={() => setMenuOpen(false)}>Leaderboard</NavLink>
-        <NavLink to="/certificates" onClick={() => setMenuOpen(false)}>Certificates</NavLink>
-
-        <div className="mobile-nav-divider" />
-        <div className="mobile-nav-group-title">Theme</div>
-        <ThemePicker theme={theme} onChange={changeTheme} />
-
-        <div className="mobile-nav-divider" />
-        {user ? (
-          <>
-            <Link to="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
-            <button className="mobile-nav-logout" onClick={handleLogout}>Sign out</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login" onClick={() => setMenuOpen(false)}>Sign in</Link>
-            <Link to="/signup" onClick={() => setMenuOpen(false)}>Sign up</Link>
-          </>
-        )}
-      </nav>
+      {typeof document !== "undefined"
+        ? createPortal(
+            <AccountDrawer
+              open={menuOpen}
+              onClose={closeMenu}
+              courseLinks={courseLinks}
+              toolLinks={toolLinks}
+              themePicker={<ThemePicker theme={theme} onChange={changeTheme} />}
+              onLogout={handleLogout}
+            />,
+            document.body,
+          )
+        : null}
     </header>
   );
 }
 
-export default Header;
+export default Header;
