@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { ArrowRight, Search } from "lucide-react";
 import "./SimpleConcepts.css";
 import { InlineMath } from "../../components/Math";
+import { CONCEPT_COURSES, extraConceptGroups } from "../../data/conceptLibrary";
 
 const M = ({ latex }) => <InlineMath latex={latex} />;
 
@@ -12,6 +15,7 @@ export const getConceptSlug = (title) =>
 
 export const conceptGroups = [
   {
+    course: "multivariable-calculus",
     kicker: "Before multivariable calculus",
     title: "Functions, dimensions, continuity, and derivatives",
     items: [
@@ -49,6 +53,7 @@ export const conceptGroups = [
     ],
   },
   {
+    course: "multivariable-calculus",
     kicker: "Geometry in space",
     title: "Quadric surfaces",
     items: [
@@ -93,6 +98,7 @@ export const conceptGroups = [
     ],
   },
   {
+    course: "multivariable-calculus",
     kicker: "Core multivariable ideas",
     title: "Functions, limits, derivatives, and approximation",
     items: [
@@ -132,6 +138,7 @@ export const conceptGroups = [
     ],
   },
   {
+    course: "multivariable-calculus",
     kicker: "How surfaces change",
     title: "Partial derivatives, chain rule, gradients, and planes",
     items: [
@@ -174,6 +181,7 @@ export const conceptGroups = [
     ],
   },
   {
+    course: "multivariable-calculus",
     kicker: "Accumulation and volume",
     title: "Double and triple integrals",
     items: [
@@ -240,69 +248,223 @@ const selfReadingTopics = [
   "Riemann sums from the previous course.",
 ];
 
+/** Every concept group of every course, in reading order. */
+export const allConceptGroups = [
+  ...extraConceptGroups.filter((g) => g.course === "calculus-analytical-geometry"),
+  ...conceptGroups,
+  ...extraConceptGroups.filter((g) => g.course !== "calculus-analytical-geometry"),
+];
+
+/** Flat list of concepts with their course, group and slug. */
+export function getAllConcepts() {
+  return allConceptGroups.flatMap((group) =>
+    group.items.map((item) => ({
+      ...item,
+      course: group.course,
+      groupKicker: group.kicker,
+      groupTitle: group.title,
+      slug: getConceptSlug(item.title),
+    })),
+  );
+}
+
+const COURSE_KEY = "calcvoyager_concepts_course";
+
+function readSavedCourse() {
+  try {
+    return window.localStorage.getItem(COURSE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function saveCourse(id) {
+  try {
+    window.localStorage.setItem(COURSE_KEY, id);
+  } catch {
+    /* storage unavailable: the URL still remembers the course */
+  }
+}
+
+const isCourse = (id) => CONCEPT_COURSES.some((c) => c.id === id);
+
+/** Plain text of a card body (string or JSX) for searching. */
+function textOf(node) {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(textOf).join(" ");
+  if (node.props) return node.props.latex || textOf(node.props.children);
+  return "";
+}
+
 function SimpleConcepts() {
+  const [params, setParams] = useSearchParams();
+  const [query, setQuery] = useState("");
+
+  const fromUrl = params.get("course");
+  const saved = readSavedCourse();
+  const courseId = isCourse(fromUrl) ? fromUrl : isCourse(saved) ? saved : CONCEPT_COURSES[0].id;
+  const course = CONCEPT_COURSES.find((c) => c.id === courseId);
+
+  const counts = useMemo(() => {
+    const map = {};
+    allConceptGroups.forEach((g) => {
+      map[g.course] = (map[g.course] || 0) + g.items.length;
+    });
+    return map;
+  }, []);
+
+  const groups = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return allConceptGroups
+      .filter((g) => g.course === courseId)
+      .map((g) => ({
+        ...g,
+        items: q
+          ? g.items.filter((item) => `${item.title} ${textOf(item.body)}`.toLowerCase().includes(q))
+          : g.items,
+      }))
+      .filter((g) => g.items.length > 0);
+  }, [courseId, query]);
+
+  const shown = groups.reduce((n, g) => n + g.items.length, 0);
+
+  const pickCourse = (id) => {
+    saveCourse(id);
+    setQuery("");
+    setParams({ course: id }, { replace: true });
+  };
+
+  const onTabKey = (event, index) => {
+    const step = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+    if (!step) return;
+    event.preventDefault();
+    const next = CONCEPT_COURSES[(index + step + CONCEPT_COURSES.length) % CONCEPT_COURSES.length];
+    pickCourse(next.id);
+    document.getElementById(`scp-tab-${next.id}`)?.focus();
+  };
+
   return (
-    <main className="simple-concepts-page">
-      <section className="simple-concepts-hero">
-        <div>
-          <p className="simple-concepts-kicker">Simple terms guide</p>
-          <h1>Multivariable calculus concepts, explained plainly.</h1>
-          <p>
-            A separate overview for the listed syllabus topics: what each idea
-            means, why it matters, and how to recognize it before working
-            through formal exercises.
+    <main className="scp cvx">
+      <section className="scp-hero">
+        <div className="scp-wrap">
+          <p className="scp-kicker">Simple terms guide</p>
+          <h1>{course.title} concepts, explained plainly.</h1>
+          <p className="scp-hero__lead">
+            What each idea means, why it matters, and how to recognise it before
+            working through formal exercises. Pick a course, read the card, then
+            open it for worked patterns and a self-check.
           </p>
         </div>
       </section>
 
-      <section className="concept-map" aria-labelledby="concept-map-title">
-        <div>
-          <p className="simple-concepts-kicker">Reading order</p>
-          <h2 id="concept-map-title">Start with change, then move to surfaces and accumulation</h2>
-        </div>
-        <div className="concept-map-steps">
-          <span>Single-variable review</span>
-          <span>Surfaces and dimensions</span>
-          <span>Partial derivatives</span>
-          <span>Integrals in 2D and 3D</span>
-        </div>
-      </section>
-
-      {conceptGroups.map((group) => (
-        <section className="concept-section" key={group.title}>
-          <div className="concept-section-head">
-            <p className="simple-concepts-kicker">{group.kicker}</p>
-            <h2>{group.title}</h2>
+      <div className="scp-wrap">
+        <div className="scp-bar">
+          <div className="scp-tabs" role="tablist" aria-label="Choose a course">
+            {CONCEPT_COURSES.map((c, index) => {
+              const active = c.id === courseId;
+              return (
+                <button
+                  key={c.id}
+                  id={`scp-tab-${c.id}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  aria-controls="scp-panel"
+                  tabIndex={active ? 0 : -1}
+                  className={`scp-tab${active ? " is-active" : ""}`}
+                  onClick={() => pickCourse(c.id)}
+                  onKeyDown={(e) => onTabKey(e, index)}
+                >
+                  <span className="scp-tab__name">{c.short}</span>
+                  <span className="scp-tab__count">{counts[c.id] || 0}</span>
+                </button>
+              );
+            })}
           </div>
-          <div className="concept-grid">
-            {group.items.map((item) => (
-              <article
-                className={`concept-card${item.selfStudy ? " concept-card--self" : ""}`}
-                key={item.title}
-              >
-                {item.selfStudy && <span className="self-study-tag">Self-reading</span>}
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-                <Link className="concept-card-action" to={`/simple-concepts/${getConceptSlug(item.title)}`}>
-                  Explore more
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-      ))}
-
-      <section className="self-reading-panel" aria-labelledby="self-reading-title">
-        <div>
-          <p className="simple-concepts-kicker">Homework and self-reading</p>
-          <h2 id="self-reading-title">Topics best revised independently</h2>
+          <label className="scp-search">
+            <Search size={16} aria-hidden="true" />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={`Search ${course.short} concepts`}
+              aria-label={`Search ${course.short} concepts`}
+            />
+          </label>
         </div>
-        <ul>
-          {selfReadingTopics.map((topic) => (
-            <li key={topic}>{topic}</li>
+
+        <div id="scp-panel" role="tabpanel" aria-labelledby={`scp-tab-${courseId}`}>
+          {!query && (
+            <section className="scp-map" aria-labelledby="scp-map-title">
+              <div>
+                <p className="scp-kicker">Reading order</p>
+                <h2 id="scp-map-title">{course.roadmapTitle}</h2>
+              </div>
+              <ol className="scp-map__steps">
+                {course.roadmap.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            </section>
+          )}
+
+          {query && (
+            <p className="scp-results" aria-live="polite">
+              {shown} concept{shown === 1 ? "" : "s"} match “{query.trim()}”
+            </p>
+          )}
+
+          {groups.length === 0 && (
+            <div className="scp-empty">
+              <h2>No concepts match that search</h2>
+              <p>Try a shorter word, or clear the search to see every {course.short} concept.</p>
+              <button type="button" onClick={() => setQuery("")}>Clear search</button>
+            </div>
+          )}
+
+          {groups.map((group) => (
+            <section className="scp-section" key={group.title}>
+              <header className="scp-section__head">
+                <p className="scp-kicker">{group.kicker}</p>
+                <h2>{group.title}</h2>
+                <span className="scp-section__count">
+                  {group.items.length} concept{group.items.length === 1 ? "" : "s"}
+                </span>
+              </header>
+              <div className="scp-grid">
+                {group.items.map((item) => (
+                  <article
+                    className={`scp-card${item.selfStudy ? " scp-card--self" : ""}`}
+                    key={item.title}
+                  >
+                    {item.selfStudy && <span className="scp-tag">Self-reading</span>}
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                    <Link className="scp-card__link" to={`/simple-concepts/${getConceptSlug(item.title)}`}>
+                      Explore more <ArrowRight size={15} aria-hidden="true" />
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </section>
           ))}
-        </ul>
-      </section>
+
+          {courseId === "multivariable-calculus" && !query && (
+            <section className="scp-reading" aria-labelledby="scp-reading-title">
+              <div>
+                <p className="scp-kicker">Homework and self-reading</p>
+                <h2 id="scp-reading-title">Topics best revised independently</h2>
+              </div>
+              <ul>
+                {selfReadingTopics.map((topic) => (
+                  <li key={topic}>{topic}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </div>
+      </div>
     </main>
   );
 }
