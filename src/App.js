@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ProgressProvider } from "./pages/courses/ProgressContext";
 import { ThemeProvider } from "./context/ThemeContext";
+import { EnrollmentProvider, CourseAutoEnroll } from "./context/EnrollmentContext";
 import Layout from "./components/common/Layout";
 import ScrollToTop from "./utils/ScrollToTop";
 import ErrorBoundary from "./components/common/ErrorBoundary";
@@ -16,6 +17,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Settings from "./pages/settings/Settings";
 import AISolver from "./pages/tools/AISolver";
 import NotFound from "./pages/system/NotFound";
 import CourseHub from "./pages/courses/CourseHub";
@@ -260,9 +262,11 @@ function App() {
     <ThemeProvider>
       <AuthProvider>
         <ProgressProvider>
+          <EnrollmentProvider>
           <BrowserRouter>
             <ErrorBoundary>
               <ScrollToTop />
+              <CourseAutoEnroll />
               <SiteThemeManager />
               <GuideNotesLayer />
               <Routes>
@@ -287,6 +291,14 @@ function App() {
                 <Route
                   path="/dashboard"
                   element={<Layout body={<Dashboard />} />}
+                />
+                <Route
+                  path="/profile"
+                  element={<Navigate to="/dashboard" replace />}
+                />
+                <Route
+                  path="/settings"
+                  element={<Layout body={<Settings />} />}
                 />
                 <Route
                   path="/saved"
@@ -2059,6 +2071,7 @@ function App() {
               <BackToTop />
             </ErrorBoundary>
           </BrowserRouter>
+          </EnrollmentProvider>
         </ProgressProvider>
       </AuthProvider>
     </ThemeProvider>
