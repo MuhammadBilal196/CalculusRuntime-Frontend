@@ -1,0 +1,272 @@
+/* Account / menu drawer — slides in from the right. Tokens from tokens.css. */
+
+html.acd-lock,
+html.acd-lock body {
+  overflow: hidden;
+}
+
+.acd {
+  position: fixed;
+  inset: 0;
+  z-index: 10200;
+  pointer-events: none;
+}
+
+.acd--open {
+  pointer-events: auto;
+}
+
+.acd-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(8, 12, 28, 0.45);
+  opacity: 0;
+  cursor: default;
+  transition: opacity 0.22s ease;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.acd--open .acd-backdrop {
+  opacity: 1;
+}
+
+.acd-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(360px, 92vw);
+  border-left: 1px solid var(--c-border);
+  background: var(--c-surface);
+  box-shadow: var(--c-shadow-lg);
+  font-family: var(--c-font-sans);
+  transform: translateX(105%);
+  transition: transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.acd--open .acd-panel {
+  transform: translateX(0);
+}
+
+.acd-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 1rem 1.1rem 1.2rem;
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-surface-2);
+}
+
+.acd-user,
+.acd-guest {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+  text-decoration: none !important;
+}
+
+.acd-guest {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+}
+
+.acd-avatar {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--c-accent-strong);
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  --tc: var(--c-on-accent);
+}
+
+.acd-user__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.acd-user__name {
+  overflow: hidden;
+  font-size: 1rem;
+  font-weight: 750;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.acd-user__meta {
+  overflow: hidden;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  --tc: var(--c-muted);
+}
+
+.acd-close {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  background: var(--c-surface);
+  cursor: pointer;
+  --tc: var(--c-text-2);
+}
+
+.acd-close:hover {
+  background: var(--c-surface-3);
+}
+
+.acd-body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.75rem 0.75rem 1.25rem;
+}
+
+.acd-group {
+  padding: 0.4rem 0 0.6rem;
+}
+
+.acd-group + .acd-group {
+  border-top: 1px solid var(--c-border);
+}
+
+.acd-group__title {
+  padding: 0.55rem 0.6rem 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  --tc: var(--c-muted);
+}
+
+.acd-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 9px;
+  font-size: 0.92rem;
+  font-weight: 550;
+  text-decoration: none !important;
+  --tc: var(--c-text-2);
+  transition: background 0.15s ease;
+}
+
+.acd-link svg {
+  flex: 0 0 auto;
+  --tc: var(--c-muted);
+}
+
+.acd-link:hover {
+  background: var(--c-surface-2);
+  --tc: var(--c-text);
+}
+
+.acd-link.active {
+  background: var(--c-accent-soft);
+  --tc: var(--c-accent);
+}
+
+.acd-link.active svg {
+  --tc: var(--c-accent);
+}
+
+/* Course and tool menus repeat the header dropdowns, so only phones need them */
+@media (min-width: 921px) {
+  .acd-group--small {
+    display: none;
+  }
+}
+
+.acd-auth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  padding: 0.5rem 0.25rem 0.9rem;
+}
+
+.acd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--c-border-strong);
+  border-radius: 10px;
+  background: var(--c-surface);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.acd-btn--primary {
+  border-color: var(--c-accent-strong);
+  background: var(--c-accent-strong);
+  --tc: var(--c-on-accent);
+}
+
+/* The theme picker is styled for the dark header; give it the panel's colours */
+.acd-theme .theme-picker {
+  display: inline-flex !important;
+  margin: 0.2rem 0.6rem 0;
+  border-color: var(--c-border);
+  background: var(--c-surface-2);
+}
+
+.acd-theme .theme-picker__btn {
+  --tc: var(--c-text-2);
+}
+
+.acd-theme .theme-picker__btn[aria-checked="true"] {
+  --tc: var(--c-on-accent);
+}
+
+.acd-theme .theme-picker__label {
+  display: inline;
+}
+
+.acd-foot {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--c-border);
+}
+
+.acd-signout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--c-danger-border);
+  border-radius: 10px;
+  background: var(--c-danger-soft);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  --tc: var(--c-danger);
+}
+
+.acd-signout:hover {
+  border-color: var(--c-danger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acd-panel,
+  .acd-backdrop {
+    transition: none;
+  }
+}
