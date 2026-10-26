@@ -2,27 +2,59 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
-import "./Auth.css";
+import AuthShell from "./AuthShell";
+
+function passwordStrength(password) {
+  let score = 0;
+  if (password.length >= 8) score += 1;
+  if (/[A-Z]/.test(password) && /[a-z]/.test(password)) score += 1;
+  if (/\d/.test(password)) score += 1;
+  if (/[^A-Za-z0-9]/.test(password)) score += 1;
+  if (!password) return { score: 0, label: "" };
+  return { score, label: ["Weak", "Weak", "Fair", "Good", "Strong"][score] };
+}
 
 function Signup() {
   const { signup } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ username: "", password: "", confirm: "" });
+  const [form, setForm] = useState({
+    fullName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirm: "",
+  });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const handle = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  const strength = passwordStrength(form.password);
 
   const submit = async (e) => {
     e.preventDefault();
     setError("");
-    if (!form.username.trim() || !form.password || !form.confirm) {
-      setError("Please fill in all fields.");
+    const fullName = form.fullName.replace(/\s+/g, " ").trim();
+    const username = form.username.trim();
+    const email = form.email.trim();
+    if (!fullName || !username || !form.password || !form.confirm) {
+      setError("Please fill in your name, username and password.");
       return;
     }
-    if (form.username.trim().length < 3) {
+    if (fullName.length < 2) {
+      setError("Enter your full name as it should appear on certificates.");
+      return;
+    }
+    if (username.length < 3) {
       setError("Username must be at least 3 characters.");
+      return;
+    }
+    if (/\s/.test(username)) {
+      setError("Username can't contain spaces.");
+      return;
+    }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Enter a valid email address, or leave it empty.");
       return;
     }
     if (form.password.length < 6) {
@@ -34,7 +66,7 @@ function Signup() {
       return;
     }
     setLoading(true);
-    const result = await signup(form.username.trim(), form.password);
+    const result = await signup(username, form.password, { fullName, email });
     setLoading(false);
     if (result.error) {
       setError(result.error);
@@ -44,16 +76,32 @@ function Signup() {
   };
 
   return (
-    <main className="auth-page">
-      <div className="auth-card">
-        <div className="auth-logo">
-          <span className="auth-logo-mark">∂</span>
-          <span className="auth-logo-text">CalcVoyager</span>
-        </div>
-        <h1 className="auth-title">Create your account</h1>
-        <p className="auth-sub">Free forever. Track progress, save bookmarks, use the AI solver.</p>
+    <AuthShell
+      title="Create your account"
+      subtitle="Free forever. Track your progress, earn points and claim certificates."
+      footer={
+        <>
+          Already have an account? <Link to="/login">Sign in</Link>
+        </>
+      }
+    >
+      <form className="auth-form" onSubmit={submit} noValidate>
+        <label className="auth-label">
+          Full name
+          <input
+            className="auth-input"
+            type="text"
+            name="fullName"
+            value={form.fullName}
+            onChange={handle}
+            autoComplete="name"
+            placeholder="e.g. Muhammad Bilal"
+            autoFocus
+          />
+          <span className="auth-hint">Printed on your certificates and shown on the leaderboard.</span>
+        </label>
 
-        <form className="auth-form" onSubmit={submit} noValidate>
+        <div className="auth-row">
           <label className="auth-label">
             Username
             <input
@@ -63,9 +111,24 @@ function Signup() {
               value={form.username}
               onChange={handle}
               autoComplete="username"
-              autoFocus
+              placeholder="bilal196"
             />
           </label>
+          <label className="auth-label">
+            Email <span className="auth-optional">optional</span>
+            <input
+              className="auth-input"
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handle}
+              autoComplete="email"
+              placeholder="you@example.com"
+            />
+          </label>
+        </div>
+
+        <div className="auth-row">
           <label className="auth-label">
             Password
             <div className="auth-input-wrap">
@@ -82,7 +145,6 @@ function Signup() {
                 className="auth-pw-toggle"
                 onClick={() => setShowPassword((v) => !v)}
                 aria-label={showPassword ? "Hide password" : "Show password"}
-                tabIndex={-1}
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
@@ -90,40 +152,38 @@ function Signup() {
           </label>
           <label className="auth-label">
             Confirm password
-            <div className="auth-input-wrap">
-              <input
-                className="auth-input"
-                type={showPassword ? "text" : "password"}
-                name="confirm"
-                value={form.confirm}
-                onChange={handle}
-                autoComplete="new-password"
-              />
-              <button
-                type="button"
-                className="auth-pw-toggle"
-                onClick={() => setShowPassword((v) => !v)}
-                aria-label={showPassword ? "Hide password" : "Show password"}
-                tabIndex={-1}
-              >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
-            </div>
+            <input
+              className="auth-input"
+              type={showPassword ? "text" : "password"}
+              name="confirm"
+              value={form.confirm}
+              onChange={handle}
+              autoComplete="new-password"
+            />
           </label>
+        </div>
+        {strength.label ? (
+          <div className="auth-strength" data-score={strength.score} aria-live="polite">
+            <span className="auth-strength__bar" aria-hidden="true">
+              {[1, 2, 3, 4].map((n) => (
+                <i key={n} className={n <= strength.score ? "is-on" : ""} />
+              ))}
+            </span>
+            Password strength: {strength.label}
+          </div>
+        ) : null}
 
-          {error && <p className="auth-error" role="alert">{error}</p>}
+        {error && (
+          <p className="auth-error" role="alert">
+            {error}
+          </p>
+        )}
 
-          <button className="auth-btn" type="submit" disabled={loading}>
-            {loading ? "Creating account…" : "Create account"}
-          </button>
-        </form>
-
-        <p className="auth-switch">
-          Already have an account?{" "}
-          <Link to="/login">Sign in</Link>
-        </p>
-      </div>
-    </main>
+        <button className="auth-btn" type="submit" disabled={loading}>
+          {loading ? "Creating account…" : "Create account"}
+        </button>
+      </form>
+    </AuthShell>
   );
 }
 
