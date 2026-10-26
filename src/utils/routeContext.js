@@ -45,7 +45,7 @@ const ROUTE_MAP = [
   { match: /\/divergence-curl\/1/, topic: "Divergence and Curl Part 1", detail: "definitions of divergence and curl, del operator, computing div and curl" },
   { match: /\/divergence-curl/, topic: "Divergence and Curl", detail: "divergence, curl, and the divergence theorem" },
   { match: /\/simple-concepts\/[^/]+/, topic: "Simple Concepts (detail page)", detail: "interactive concept exploration" },
-  { match: /\/simple-concepts/, topic: "Simple Concepts", detail: "functions of several variables, level curves, surfaces in 3D" },
+  { match: /\/simple-concepts/, topic: "Simple Concepts", detail: "plain-language concept cards for every course, chosen with a course selector" },
   { match: /\/linear-algebra\/vectors\/2/, topic: "Vectors & Vector Spaces Part 2", detail: "span, basis, linear independence, dimension" },
   { match: /\/linear-algebra\/vectors\/1/, topic: "Vectors & Vector Spaces Part 1", detail: "vectors in R^n, addition, scalar multiplication, dot product" },
   { match: /\/linear-algebra\/vectors/, topic: "Vectors & Vector Spaces", detail: "vectors, span, basis, and linear independence" },
@@ -122,4 +122,4 @@ export function getContextString(pathname = getPageUrl()) {
     `The student is currently on CalcVoyager page ${pathname} (full URL: ${fullUrl}). ` +
     `Topic: "${topic}". Focus: ${detail}.`
   );
-}
+}
