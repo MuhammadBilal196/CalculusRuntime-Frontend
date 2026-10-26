@@ -248,3 +248,20 @@
     display: none;
   }
 }
+
+/* Profile name differs from the name printed on an issued certificate */
+.cert-name-update {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 1rem auto 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--c-warning-border);
+  border-radius: 12px;
+  background: var(--c-warning-soft);
+  color: var(--c-text);
+  font-size: 0.9rem;
+}
