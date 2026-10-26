@@ -609,21 +609,6 @@ html[data-site-theme] .partial-derivatives-guide .mcq-section-locked[data-lock-h
   display: none;
 }
 
-/* ── 9. Home: daily challenge card follows the theme ───────────────────── */
-html[data-site-theme] .dc-promo-card {
-  background: linear-gradient(110deg, var(--c-warning-soft), var(--c-surface) 70%) !important;
-  border: 1px solid var(--c-warning-border) !important;
-  box-shadow: var(--c-shadow-sm) !important;
-}
-
-html[data-site-theme][data-theme] .dc-promo-text h3:not(#x-x) {
-  color: var(--c-text) !important;
-}
-
-html[data-site-theme][data-theme] .dc-promo-text p:not(#x-x) {
-  color: var(--c-text-2) !important;
-}
-
 /* ── 10. Auto-numbered contents (TopicModulePage) ──────────────────────── */
 html[data-site-theme] .partial-derivatives-guide .toc-grid--auto {
   counter-reset: tocn;
@@ -643,4 +628,124 @@ html[data-site-theme] .partial-derivatives-guide .toc-grid--auto .toc-a[href*="m
 html[data-site-theme] .partial-derivatives-guide .toc-grid--auto .toc-a[href*="quiz" i]::before {
   counter-increment: none;
   content: "✎";
+}
+
+/* ── 11. Text colour for redesigned pages ─────────────────────────────────
+   index.css forces white text on p/span/h1… in dark mode with !important.
+   Pages wrapped in .cvx set colours through --tc instead, which wins here. */
+.cvx {
+  --tc: var(--c-text);
+}
+
+html[data-site-theme] .cvx:not(#cvx-none),
+html[data-site-theme] .cvx *:not(svg):not(svg *):not(.katex):not(.katex *):not(#cvx-none) {
+  color: var(--tc) !important;
+}
+
+/* ── 12. Header: account button + menu button (opens the drawer) ───────── */
+html[data-site-theme] .site-header .hamburger.header-more {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px !important;
+}
+
+.header-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 38px;
+  padding: 0 0.75rem 0 0.3rem;
+  border: 1px solid var(--c-header-border);
+  border-radius: 999px;
+  background: var(--c-header-hover);
+  color: var(--c-header-text);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.header-account:hover {
+  border-color: var(--c-header-accent);
+}
+
+.header-account:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+}
+
+html[data-site-theme] .header-account__avatar:not(#x-x) {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--c-header-accent) !important;
+  color: var(--c-header-accent-text) !important;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+html[data-site-theme] .header-account__name:not(#x-x) {
+  max-width: 9rem;
+  overflow: hidden;
+  color: var(--c-header-text) !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 640px) {
+  .header-account {
+    padding: 0 0.3rem;
+  }
+
+  .header-account__name {
+    display: none;
+  }
+}
+
+/* Course page: register button under the hero actions */
+.hero-register {
+  margin-top: 1rem;
+}
+
+.hero-register .crg-btn {
+  text-decoration: none !important;
+}
+
+/* ── 13. Floating buttons ──────────────────────────────────────────────────
+   QuantumChat docks bottom-right, so the AI tutor moves to the bottom-left
+   and back-to-top sits in the free right corner where the dock can't cover it. */
+html[data-site-theme] .cb-root {
+  right: auto;
+  left: 24px;
+  align-items: flex-start;
+}
+
+html[data-site-theme] .back-to-top {
+  right: 24px;
+  bottom: 24px;
+  z-index: 10050;
+}
+
+@media (max-width: 720px) {
+  /* The dock spans the width here: lift back-to-top above its header */
+  html[data-site-theme] .back-to-top {
+    right: 16px;
+    bottom: 80px;
+  }
+
+  html[data-site-theme] body:has(.quantum-chat-dock) .cb-root {
+    left: 16px;
+  }
+
+  html[data-site-theme] .save-as-pdf-btn {
+    right: 16px !important;
+    bottom: 136px !important;
+  }
 }
