@@ -1,0 +1,229 @@
+/* Notes, flashcards and mistake notebook — shared look.
+   Tokens from tokens.css, text via --tc (.cvx). */
+
+.study-page {
+  max-width: 900px !important;
+  margin: 0 auto;
+  padding: 2.25rem clamp(1rem, 3vw, 2rem) 4rem !important;
+  font-family: var(--c-font-sans);
+}
+
+.study-page h1 {
+  margin: 0 0 0.4rem;
+  font-family: var(--c-font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.study-page > p:first-of-type,
+.study-page header > p:last-child {
+  max-width: 62ch;
+  --tc: var(--c-text-2);
+}
+
+.study-page .mistakes-meta,
+.study-page .study-meta {
+  margin: 0 0 0.25rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  --tc: var(--c-accent);
+}
+
+.study-page [role="status"] {
+  font-size: 0.88rem;
+  --tc: var(--c-muted);
+}
+
+.study-page [role="alert"] {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--c-danger-border);
+  border-radius: 10px;
+  background: var(--c-danger-soft);
+  --tc: var(--c-danger);
+}
+
+/* Controls */
+.study-page .notes-controls,
+.study-page .flashcards-controls,
+.study-page .mistakes-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: flex-end;
+  margin: 1.5rem 0 1rem;
+  padding: 1rem;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  background: var(--c-surface);
+}
+
+.study-page label {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.study-page select,
+.study-page button,
+.study-page textarea {
+  border: 1px solid var(--c-border-strong) !important;
+  border-radius: 10px !important;
+  background: var(--c-surface) !important;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.study-page select {
+  min-width: 200px;
+  padding: 0.55rem 0.75rem !important;
+}
+
+.study-page button {
+  padding: 0.55rem 1rem !important;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.study-page button:hover:not(:disabled) {
+  border-color: var(--c-accent) !important;
+}
+
+.study-page button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.study-page select:focus-visible,
+.study-page button:focus-visible,
+.study-page textarea:focus-visible,
+.study-page input:focus-visible {
+  outline: 3px solid var(--c-focus) !important;
+  outline-offset: 2px;
+}
+
+.study-page > a,
+.study-page article a {
+  font-weight: 700;
+  --tc: var(--c-accent);
+}
+
+/* Cards */
+.study-page .notes-card,
+.study-page .flashcards-card,
+.study-page .mistakes-card {
+  margin: 1rem 0;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--c-border) !important;
+  border-radius: 16px !important;
+  background: var(--c-surface) !important;
+  box-shadow: var(--c-shadow-sm);
+}
+
+.study-page .notes-card h2,
+.study-page .mistakes-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+
+.study-page blockquote {
+  margin: 0.75rem 0;
+  padding: 0.6rem 0.9rem;
+  border-left: 4px solid var(--c-highlight);
+  border-radius: 0 10px 10px 0;
+  background: var(--c-surface-2);
+}
+
+.study-page mark {
+  background: var(--c-highlight) !important;
+  --tc: var(--c-highlight-text);
+}
+
+.study-page fieldset {
+  border: 0;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.study-page fieldset legend {
+  margin-bottom: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  --tc: var(--c-muted);
+}
+
+.study-page .mistakes-card label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0.35rem 0;
+  padding: 0.65rem 0.8rem !important;
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.study-page .mistakes-card label:has(input:checked) {
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
+}
+
+/* Flashcards */
+.study-page .flashcards-card {
+  padding: 2rem 1.5rem !important;
+  text-align: center;
+  background:
+    linear-gradient(var(--c-grid) 1px, transparent 1px) 0 0 / 22px 22px,
+    var(--c-surface) !important;
+}
+
+.study-page .flashcards-card > p:first-child {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--c-accent-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  --tc: var(--c-accent);
+}
+
+.study-page .flashcards-card h2 {
+  margin: 0.25rem auto 1.25rem;
+  max-width: 34ch;
+  font-family: var(--c-font-serif);
+  font-size: 1.35rem;
+  line-height: 1.5;
+}
+
+.study-page .flashcards-answer {
+  margin: 1rem auto 0;
+  max-width: 46ch;
+  padding: 1rem 1.2rem !important;
+  border: 1px dashed var(--c-accent-border);
+  border-radius: 12px;
+  background: var(--c-surface);
+}
+
+.study-page .flashcards-ratings button:nth-child(1):not(:disabled) {
+  border-color: var(--c-danger-border) !important;
+  --tc: var(--c-danger);
+}
+
+.study-page .flashcards-ratings button:nth-child(2):not(:disabled) {
+  border-color: var(--c-accent-border) !important;
+  --tc: var(--c-accent);
+}
+
+.study-page .flashcards-ratings button:nth-child(3):not(:disabled) {
+  border-color: var(--c-success-border) !important;
+  --tc: var(--c-success);
+}
+
+@media (max-width: 540px) {
+  .study-page select {
+    min-width: 0;
+    width: 100%;
+  }
+}
