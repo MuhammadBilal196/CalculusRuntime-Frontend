@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ArrowUp } from "lucide-react";
 import "./BackToTop.css";
 
 /** Floating control above Ask Tutor — appears after scrolling ~200px. */
@@ -29,7 +30,7 @@ export default function BackToTop() {
       tabIndex={visible ? 0 : -1}
       aria-hidden={!visible}
     >
-      ↑
+      <ArrowUp size={20} strokeWidth={2.4} aria-hidden="true" />
     </button>
   );
 }
