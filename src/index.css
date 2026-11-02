@@ -784,9 +784,13 @@ select {
 }
 
 .primary-action {
-  background: var(--ink);
+  /* Theme filled-button colours (styles/tokens.css): blue in light, sky in
+     dark, brown in sepia. --ink flips to a light colour in dark mode, which
+     put light text on a light button. */
+  background: var(--c-accent-strong, var(--ink));
+  border-color: var(--c-accent-strong, var(--ink));
   box-shadow: var(--shadow-sm);
-  color: #fffaf1;
+  color: var(--c-on-accent, #fffaf1);
 }
 
 .secondary-action {
@@ -1720,8 +1724,8 @@ select {
 }
 
 [data-site-theme="default"] .primary-action {
-  background: #0056D2 !important;
-  color: #ffffff !important;
+  background: var(--c-accent-strong, #0056D2) !important;
+  color: var(--c-on-accent, #ffffff) !important;
   font-weight: 600 !important;
   font-size: 1rem !important;
   padding: 0.82rem 1.8rem !important;
@@ -1730,14 +1734,15 @@ select {
   text-decoration: none !important;
   display: inline-flex !important;
   align-items: center !important;
-  box-shadow: 0 4px 14px rgba(0, 86, 210, 0.25) !important;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--c-accent-strong, #0056D2) 25%, transparent) !important;
   transition: all 0.2s ease !important;
 }
 
 [data-site-theme="default"] .primary-action:hover {
-  background: #0043a8 !important;
+  background: var(--c-accent-strong-hover, #0043a8) !important;
+  color: var(--c-on-accent, #ffffff) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 20px rgba(0, 86, 210, 0.35) !important;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--c-accent-strong, #0056D2) 35%, transparent) !important;
 }
 
 .hero-image-container,

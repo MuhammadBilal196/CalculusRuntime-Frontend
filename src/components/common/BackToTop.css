@@ -1,6 +1,9 @@
+/* Back-to-top button. Colours follow the site theme (src/styles/tokens.css):
+   the theme's filled-button colour with its matching icon colour.
+   Position: study-theme.css puts it in the free bottom-right corner (the AI
+   tutor sits bottom-left and the QuantumChat dock sits to its right). */
 .back-to-top {
   position: fixed;
-  /* Left of Ask Tutor pill (same corner), never stacked under it */
   right: 168px;
   bottom: 24px;
   z-index: 1100;
@@ -10,44 +13,75 @@
   width: 46px;
   height: 46px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid color-mix(in srgb, var(--c-on-accent, #ffffff) 22%, transparent);
   border-radius: 999px;
-  background: #0056D2;
-  color: #ffffff;
-  font-size: 1.25rem;
-  font-weight: 700;
+  background: var(--c-accent-strong, #2b4cc9);
+  color: var(--c-on-accent, #ffffff);
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 86, 210, 0.35);
+  box-shadow:
+    0 6px 18px color-mix(in srgb, var(--c-accent-strong, #2b4cc9) 32%, transparent),
+    0 2px 6px rgba(0, 0, 0, 0.14);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transform: translateY(8px);
-  transition: transform 0.18s ease, background 0.15s ease, opacity 0.2s ease;
+  transform: translateY(10px) scale(0.92);
+  transition:
+    transform 0.2s ease,
+    background 0.15s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease,
+    visibility 0s linear 0.2s;
+}
+
+.back-to-top svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 .back-to-top--visible {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  transition:
+    transform 0.2s ease,
+    background 0.15s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease,
+    visibility 0s;
 }
 
-.back-to-top:hover,
-.back-to-top:focus-visible {
-  background: #0043a8;
+.back-to-top--visible:hover {
+  background: var(--c-accent-strong-hover, #1f3aa6);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 86, 210, 0.45);
+  box-shadow:
+    0 10px 24px color-mix(in srgb, var(--c-accent-strong, #2b4cc9) 40%, transparent),
+    0 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+.back-to-top--visible:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.back-to-top:focus-visible {
+  outline: 3px solid var(--c-focus, rgba(43, 76, 201, 0.45));
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top,
+  .back-to-top--visible {
+    transition: opacity 0.01s, visibility 0s;
+    transform: none;
+  }
 }
 
 @media (max-width: 640px) {
   .back-to-top {
-    /* Ask Tutor is icon-only (~52px) on small screens */
     right: 76px;
     bottom: 16px;
     width: 44px;
     height: 44px;
   }
-}
-
-[data-theme="dark"] .back-to-top {
-  color: #ffffff;
 }

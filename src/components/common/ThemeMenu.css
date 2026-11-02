@@ -1,0 +1,194 @@
+/* Header theme dropdown. The trigger sits on the header bar, so it uses the
+   header tokens; the menu is a raised surface, so it uses the surface tokens.
+   (Text sits in <div>s on purpose: index.css forces every span/small to
+   white in dark mode, which would flatten the muted descriptions.) */
+
+.theme-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.theme-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 36px;
+  padding: 0 0.7rem 0 0.75rem;
+  border: 1px solid var(--c-header-border, rgba(0, 0, 0, 0.12));
+  border-radius: 10px;
+  background: var(--c-header-hover, rgba(0, 0, 0, 0.04));
+  color: var(--c-header-text, #18213d);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.theme-menu__trigger:hover,
+.theme-menu--open .theme-menu__trigger {
+  border-color: var(--c-header-accent, #2b4cc9);
+  color: var(--c-header-text, #18213d);
+}
+
+.theme-menu__trigger:focus-visible {
+  outline: 2px solid var(--c-header-accent, #2b4cc9);
+  outline-offset: 2px;
+}
+
+.theme-menu__trigger-label {
+  line-height: 1;
+}
+
+.theme-menu__chevron {
+  opacity: 0.75;
+  transition: transform 0.18s ease;
+}
+
+.theme-menu--open .theme-menu__chevron {
+  transform: rotate(180deg);
+}
+
+.theme-menu__popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 10100;
+  width: 268px;
+  padding: 6px;
+  border: 1px solid var(--c-border, #dbe2ee);
+  border-radius: 14px;
+  background: var(--c-surface, #ffffff);
+  color: var(--c-text, #18213d);
+  box-shadow: var(--c-shadow-lg, 0 16px 40px rgba(15, 23, 42, 0.16));
+  transform-origin: top right;
+  animation: theme-menu-in 0.14s ease-out both;
+}
+
+@keyframes theme-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-menu__popover {
+    animation: none;
+  }
+  .theme-menu__chevron {
+    transition: none;
+  }
+}
+
+.theme-menu__heading {
+  padding: 0.45rem 0.6rem 0.35rem;
+  color: var(--c-muted, #5d6785);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.theme-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.55rem 0.6rem;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--c-text, #18213d);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.theme-menu__item:hover,
+.theme-menu__item:focus-visible {
+  outline: none;
+  background: var(--c-surface-2, #eef2f9);
+}
+
+.theme-menu__item:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--c-focus, rgba(43, 76, 201, 0.45));
+}
+
+.theme-menu__item[aria-checked="true"] {
+  background: var(--c-accent-soft, rgba(43, 76, 201, 0.08));
+}
+
+/* Each swatch previews its theme, whatever theme is active now. */
+.theme-menu__swatch {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 9px;
+}
+
+.theme-menu__swatch--light {
+  background: linear-gradient(135deg, #ffffff 0 55%, #eef2f9 55%);
+  color: #2b4cc9;
+}
+
+.theme-menu__swatch--dark {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, #111a2c 0 55%, #070c18 55%);
+  color: #38bdf8;
+}
+
+.theme-menu__swatch--sepia {
+  background: linear-gradient(135deg, #fbf6ea 0 55%, #e7dbc0 55%);
+  color: #8a4b0f;
+}
+
+.theme-menu__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.theme-menu__label {
+  color: var(--c-text, #18213d);
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.theme-menu__desc {
+  color: var(--c-muted, #5d6785);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.theme-menu__check {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 18px;
+  color: var(--c-accent, #2541b2);
+}
+
+@media (max-width: 1180px) {
+  .theme-menu__trigger-label {
+    display: none;
+  }
+  .theme-menu__trigger {
+    padding: 0 0.55rem;
+  }
+}
+
+@media (max-width: 560px) {
+  /* On small phones the theme choice lives in the menu drawer. */
+  .header-controls .theme-menu {
+    display: none;
+  }
+}

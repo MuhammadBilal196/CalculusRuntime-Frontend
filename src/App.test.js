@@ -35,7 +35,8 @@ describe("shared interface regressions", () => {
   test("theme toggles update the document and survive navigation and remount", async () => {
     localStorage.setItem('calculus-dark', 'false');
     let view = render(<App />);
-    fireEvent.click(screen.getByRole('button', { name: 'Switch to dark mode' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Theme: Light' }));
+    fireEvent.click(screen.getByRole('menuitemradio', { name: /^Dark/ }));
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
     expect(document.documentElement).toHaveClass('dark');
     expect(document.body).toHaveClass('dark');
@@ -45,7 +46,9 @@ describe("shared interface regressions", () => {
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
     view.unmount();
     view = render(<App />);
-    fireEvent.click(screen.getByRole('button', { name: 'Switch to light mode' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Theme: Dark' }));
+    expect(screen.getByRole('menuitemradio', { name: /^Dark/ })).toHaveAttribute('aria-checked', 'true');
+    fireEvent.click(screen.getByRole('menuitemradio', { name: /^Light/ }));
     expect(document.documentElement).toHaveAttribute('data-theme', 'light');
     expect(document.documentElement).not.toHaveClass('dark');
     expect(document.body).not.toHaveClass('dark');
