@@ -1,239 +1,171 @@
-import { useEffect, useState } from "react";
-import { create, all } from "mathjs";
+import { useEffect, useMemo, useState } from "react";
+import katex from "katex";
+import "katex/dist/katex.min.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
+import { TOPICS, findOperation } from "./solverEngine";
 import "./AISolver.css";
 
 const STREAMLIT_URL =
   process.env.REACT_APP_STREAMLIT_URL ||
   "https://dapeaqzot5jtellyuyxjrf.streamlit.app/";
 
-const math = create(all, {});
-
-const OPERATIONS = [
-  { id: "diff", label: "Derivative", hint: "d/dx of an expression" },
-  { id: "integrate", label: "Integral", hint: "Indefinite integral vs x" },
-  { id: "simplify", label: "Simplify", hint: "Algebraic simplification" },
-  { id: "evaluate", label: "Evaluate", hint: "Numeric value (set x if needed)" },
-];
-
-const EXAMPLES = [
-  { op: "diff", expr: "x^3 + 2*x", note: "Polynomial derivative" },
-  { op: "diff", expr: "sin(x)*x", note: "Product rule" },
-  { op: "integrate", expr: "3*x^2", note: "Power rule integral" },
-  { op: "integrate", expr: "cos(x)", note: "Trig integral" },
-  { op: "simplify", expr: "(x^2-1)/(x-1)", note: "Cancel factors" },
-];
-
-function formatResult(value) {
-  try {
-    if (value == null) return "—";
-    if (typeof value === "number") {
-      if (!Number.isFinite(value)) return String(value);
-      return math.format(value, { precision: 12 });
+function Tex({ tex, block = false, className = "" }) {
+  const html = useMemo(() => {
+    try {
+      return katex.renderToString(tex, { throwOnError: false, displayMode: block, strict: "ignore" });
+    } catch {
+      return null;
     }
-    return math.format(value, { precision: 12 });
-  } catch {
-    return String(value);
-  }
+  }, [tex, block]);
+  if (html == null) return <code className={className}>{tex}</code>;
+  // KaTeX output is generated from our own TeX strings, not from user HTML.
+  return <span className={className} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
-function integrateNode(node, v) {
-  if (!node) throw new Error("Empty expression");
-
-  if (node.isConstantNode || (node.isOperatorNode && node.fn === "unaryMinus" && node.args[0].isConstantNode)) {
-    const c = node.evaluate();
-    return new math.OperatorNode("*", "multiply", [
-      new math.ConstantNode(c),
-      new math.SymbolNode(v),
-    ]);
-  }
-
-  if (node.isSymbolNode) {
-    if (node.name === v) {
-      return new math.OperatorNode("*", "multiply", [
-        new math.ConstantNode(0.5),
-        new math.OperatorNode("^", "pow", [new math.SymbolNode(v), new math.ConstantNode(2)]),
-      ]);
-    }
-    return new math.OperatorNode("*", "multiply", [node, new math.SymbolNode(v)]);
-  }
-
-  if (node.isOperatorNode) {
-    if (node.op === "+" || node.op === "-") {
-      const left = integrateNode(node.args[0], v);
-      const right = integrateNode(node.args[1], v);
-      return new math.OperatorNode(node.op, node.fn, [left, right]);
-    }
-    if (node.fn === "unaryMinus") {
-      return new math.OperatorNode("-", "unaryMinus", [integrateNode(node.args[0], v)]);
-    }
-    if (node.op === "*") {
-      const [a, b] = node.args;
-      if (a.isConstantNode || (!a.toString().includes(v) && !a.isFunctionNode)) {
-        return new math.OperatorNode("*", "multiply", [a, integrateNode(b, v)]);
-      }
-      if (b.isConstantNode || (!b.toString().includes(v) && !b.isFunctionNode)) {
-        return new math.OperatorNode("*", "multiply", [b, integrateNode(a, v)]);
-      }
-    }
-    if (node.op === "^" && node.args[0].isSymbolNode && node.args[0].name === v && node.args[1].isConstantNode) {
-      const n = Number(node.args[1].value);
-      if (!Number.isFinite(n) || n === -1) {
-        throw new Error("Use ln for ∫ 1/x dx — open the hosted solver for that case.");
-      }
-      return new math.OperatorNode("*", "multiply", [
-        new math.ConstantNode(1 / (n + 1)),
-        new math.OperatorNode("^", "pow", [new math.SymbolNode(v), new math.ConstantNode(n + 1)]),
-      ]);
-    }
-  }
-
-  if (node.isFunctionNode) {
-    const name = node.name;
-    const arg = node.args[0];
-    if (arg.isSymbolNode && arg.name === v) {
-      if (name === "sin") return new math.OperatorNode("-", "unaryMinus", [new math.FunctionNode("cos", [arg])]);
-      if (name === "cos") return new math.FunctionNode("sin", [arg]);
-      if (name === "exp") return new math.FunctionNode("exp", [arg]);
-      if (name === "sqrt") {
-        return new math.OperatorNode("*", "multiply", [
-          new math.ConstantNode(2 / 3),
-          new math.OperatorNode("^", "pow", [arg, new math.ConstantNode(1.5)]),
-        ]);
-      }
-    }
-  }
-
-  throw new Error(
-    `Local integral does not support "${node.toString()}" yet. Try a polynomial / sin(x) / cos(x), or open the hosted solver.`,
-  );
-}
-
-function integrateExpression(expr, v) {
-  const node = math.parse(expr);
-  const antideriv = integrateNode(node, v);
-  return math.simplify(antideriv);
-}
-
-function runLocalSolve(op, expression, variable, atValue) {
-  const expr = expression.trim();
-  if (!expr) throw new Error("Enter an expression first.");
-  const v = (variable || "x").trim() || "x";
-
-  try {
-    if (op === "diff") {
-      return { latex: null, text: formatResult(math.derivative(expr, v)), mode: "local" };
-    }
-    if (op === "integrate") {
-      return { latex: null, text: formatResult(integrateExpression(expr, v)) + " + C", mode: "local" };
-    }
-    if (op === "simplify") {
-      return { latex: null, text: formatResult(math.simplify(expr)), mode: "local" };
-    }
-    if (op === "evaluate") {
-      const scope = {};
-      if (atValue !== "" && atValue != null) {
-        const n = Number(atValue);
-        if (Number.isNaN(n)) throw new Error("Evaluation point must be a number.");
-        scope[v] = n;
-      }
-      return { latex: null, text: formatResult(math.evaluate(expr, scope)), mode: "local" };
-    }
-  } catch (err) {
-    throw new Error(err.message || `Could not ${op} that expression.`);
-  }
-  throw new Error(`Unsupported operation: ${op}`);
-}
-
-async function tryApiSolve() {
-  // Reserved for CalculusSolver SLaNg API payloads. Free-text expressions
-  // are handled locally so the page never depends on a blocked iframe.
-  return null;
+function defaultsFor(op) {
+  return Object.fromEntries(op.fields.map((f) => [f.name, f.default ?? ""]));
 }
 
 function AISolver() {
   const { user } = useAuth();
   const { addSolverHistory, recordVisit } = useProgress();
 
-  const [op, setOp] = useState("diff");
-  const [expression, setExpression] = useState("x^3 + 2*x");
-  const [variable, setVariable] = useState("x");
-  const [atValue, setAtValue] = useState("");
+  const [topicId, setTopicId] = useState(TOPICS[0].id);
+  const [opId, setOpId] = useState(TOPICS[0].ops[0].id);
+  const [values, setValues] = useState(() => defaultsFor(TOPICS[0].ops[0]));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
+
+  const topic = TOPICS.find((t) => t.id === topicId) || TOPICS[0];
+  const op = (findOperation(opId) || { op: topic.ops[0] }).op;
 
   useEffect(() => {
     recordVisit("ai-solver");
   }, [recordVisit]);
 
-  const handleOpenSolver = () => {
-    if (user) {
-      addSolverHistory({ page: "ai-solver", url: STREAMLIT_URL });
-    }
+  const selectOperation = (nextOp) => {
+    setOpId(nextOp.id);
+    setValues(defaultsFor(nextOp));
+    setError("");
+    setResult(null);
   };
 
-  const handleSolve = async () => {
+  const selectTopic = (nextTopic) => {
+    setTopicId(nextTopic.id);
+    selectOperation(nextTopic.ops[0]);
+  };
+
+  const setField = (name, value) => setValues((prev) => ({ ...prev, [name]: value }));
+
+  const handleOpenSolver = () => {
+    if (user) addSolverHistory({ page: "ai-solver", url: STREAMLIT_URL });
+  };
+
+  const handleSolve = () => {
     setBusy(true);
     setError("");
     setResult(null);
-    try {
-      const local = runLocalSolve(op, expression, variable, atValue);
-      setResult(local);
-      await tryApiSolve();
-
-      if (user) {
-        addSolverHistory({
-          page: "ai-solver",
-          op,
-          expression,
-          result: local.text,
-        });
+    // Let the "Solving…" state paint before heavier numeric work starts.
+    window.setTimeout(() => {
+      try {
+        const out = op.run(values);
+        setResult(out);
+        if (user) {
+          addSolverHistory({ page: "ai-solver", op: op.id, expression: values.expr, result: out.result.text });
+        }
+      } catch (err) {
+        setError(err.message || String(err));
+      } finally {
+        setBusy(false);
       }
-    } catch (err) {
-      setError(err.message || String(err));
-    } finally {
-      setBusy(false);
-    }
+    }, 20);
   };
 
-  const loadExample = (ex) => {
-    setOp(ex.op);
-    setExpression(ex.expr);
+  const loadExample = (expr) => {
+    setValues((prev) => ({ ...prev, expr }));
     setError("");
     setResult(null);
   };
+
+  const onKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey && e.target.tagName !== "TEXTAREA") {
+      e.preventDefault();
+      handleSolve();
+    }
+  };
+
+  const mainFields = op.fields.filter((f) => !f.short);
+  const shortFields = op.fields.filter((f) => f.short);
+
+  const renderField = (f) => (
+    <label key={f.name} className={`ai-field${f.short ? " ai-field--short" : ""}`}>
+      <span>{f.label}</span>
+      {f.type === "select" ? (
+        <select value={values[f.name] ?? ""} onChange={(e) => setField(f.name, e.target.value)}>
+          {f.options.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+      ) : f.multiline ? (
+        <textarea
+          rows={3}
+          value={values[f.name] ?? ""}
+          placeholder={f.placeholder || ""}
+          onChange={(e) => setField(f.name, e.target.value)}
+          spellCheck={false}
+        />
+      ) : (
+        <input
+          value={values[f.name] ?? ""}
+          placeholder={f.placeholder || ""}
+          onChange={(e) => setField(f.name, e.target.value)}
+          onKeyDown={onKeyDown}
+          spellCheck={false}
+          autoComplete="off"
+        />
+      )}
+    </label>
+  );
 
   return (
     <main className="ai-solver-page">
       <div className="ai-solver-header">
         <div className="ai-solver-title-row">
           <span className="ai-solver-icon" aria-hidden="true">
-            🤖
+            ∂
           </span>
           <div>
             <h1 className="ai-solver-title">AI Calculus Solver</h1>
             <p className="ai-solver-sub">
-              Instant local solving for derivatives, integrals, and simplifications.
-              Open the hosted neural solver in a new tab for the full CalculusSolver experience.
+              Derivatives, partial derivatives, gradients, integrals (single, double and triple), limits, Taylor
+              series, optimisation and Lagrange multipliers, solved step by step right in your browser.
             </p>
           </div>
         </div>
 
-        <div className="ai-solver-badges">
-          <span className="ai-badge">Partial Derivatives</span>
-          <span className="ai-badge">Integration</span>
-          <span className="ai-badge">Gradients</span>
-          <span className="ai-badge">Chain Rule</span>
-          <span className="ai-badge">Lagrange Multipliers</span>
-          <span className="ai-badge">Taylor Series</span>
+        <div className="ai-topic-tabs" role="tablist" aria-label="Topic">
+          {TOPICS.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              role="tab"
+              aria-selected={t.id === topic.id}
+              className={`ai-topic-tab${t.id === topic.id ? " ai-topic-tab--active" : ""}`}
+              onClick={() => selectTopic(t)}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
 
         {!user && (
           <div className="ai-solver-notice">
-            <span>💡</span>
+            <span aria-hidden="true">💡</span>
             <span>
               <Link to="/signup">Create a free account</Link> to save your solver history and track usage.
             </span>
@@ -242,69 +174,47 @@ function AISolver() {
       </div>
 
       <div className="ai-solver-grid">
-        <section className="ai-solver-card">
-          <div className="ai-solver-launch-kicker">Built-in solver</div>
-          <h2>Solve a problem here</h2>
-          <p className="ai-solver-card-lead">
-            Works immediately in the browser. No embed required.
-          </p>
+        <section className="ai-solver-card" aria-labelledby="ai-solver-heading">
+          <div className="ai-solver-launch-kicker">{topic.label}</div>
+          <h2 id="ai-solver-heading">Solve a problem</h2>
 
-          <div className="ai-op-row" role="tablist" aria-label="Operation">
-            {OPERATIONS.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                aria-selected={op === item.id}
-                className={`ai-op-btn${op === item.id ? " ai-op-btn--active" : ""}`}
-                onClick={() => setOp(item.id)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+          {topic.ops.length > 1 && (
+            <div className="ai-op-row" role="tablist" aria-label="Operation">
+              {topic.ops.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={op.id === item.id}
+                  className={`ai-op-btn${op.id === item.id ? " ai-op-btn--active" : ""}`}
+                  onClick={() => selectOperation(item)}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          )}
 
-          <label className="ai-field">
-            <span>Expression</span>
-            <input
-              value={expression}
-              onChange={(e) => setExpression(e.target.value)}
-              placeholder="e.g. x^2 * sin(x)"
-              onKeyDown={(e) => {
-                if (e.key === "Enter") handleSolve();
-              }}
-            />
-          </label>
-
-          <div className="ai-field-row">
-            <label className="ai-field">
-              <span>Variable</span>
-              <input
-                value={variable}
-                onChange={(e) => setVariable(e.target.value)}
-                placeholder="x"
-              />
-            </label>
-            {op === "evaluate" && (
-              <label className="ai-field">
-                <span>At value</span>
-                <input
-                  value={atValue}
-                  onChange={(e) => setAtValue(e.target.value)}
-                  placeholder="e.g. 2"
-                />
-              </label>
-            )}
-          </div>
-
-          <button
-            type="button"
-            className="ai-solver-open-btn"
-            onClick={handleSolve}
-            disabled={busy}
+          <form
+            className="ai-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSolve();
+            }}
           >
-            {busy ? "Solving…" : "Solve"}
-          </button>
+            {mainFields.map(renderField)}
+            {shortFields.length > 0 && <div className="ai-field-row">{shortFields.map(renderField)}</div>}
+
+            <div className="ai-form-actions">
+              <button type="submit" className="ai-solver-open-btn" disabled={busy}>
+                {busy ? "Solving…" : "Solve"}
+              </button>
+              <span className="ai-input-hint">
+                Use <code>^</code> for powers, <code>sqrt()</code>, <code>ln()</code>, <code>e^x</code>, <code>pi</code>,{" "}
+                <code>inf</code>
+              </span>
+            </div>
+          </form>
 
           {error && (
             <div className="ai-solver-error" role="alert">
@@ -313,92 +223,119 @@ function AISolver() {
           )}
 
           {result && (
-            <div className="ai-solver-result">
+            <div className="ai-solver-result" aria-live="polite">
               <div className="ai-solver-result-label">
-                Result {result.mode ? `(${result.mode})` : ""}
+                {result.title}
+                {result.verified && <span className="ai-verified">✓ Verified</span>}
               </div>
-              <div className="ai-solver-result-value">{result.text}</div>
-              {result.localPreview && result.localPreview !== result.text && (
-                <div className="ai-solver-result-meta">
-                  Local preview: {result.localPreview}
+              <div className="ai-solver-result-value">
+                <Tex tex={result.result.tex} block />
+              </div>
+
+              {result.details && result.details.length > 0 && (
+                <dl className="ai-result-details">
+                  {result.details.map((d, i) => (
+                    <div key={i}>
+                      <dt>{d.label}</dt>
+                      <dd>
+                        <Tex tex={d.tex} />
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+
+              {result.table && result.table.rows.length > 0 && (
+                <div className="ai-result-table-wrap">
+                  <table className="ai-result-table">
+                    <thead>
+                      <tr>
+                        {result.table.columns.map((c, i) => (
+                          <th key={i}>{c}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {result.table.rows.map((row, i) => (
+                        <tr key={i}>
+                          {row.map((cell, j) => (
+                            <td key={j}>{j === row.length - 1 && !/\\/.test(cell) && /[a-z]/i.test(cell) ? cell : <Tex tex={cell} />}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
+              )}
+
+              {result.steps && result.steps.length > 0 && (
+                <ol className="ai-steps">
+                  {result.steps.map((s, i) => (
+                    <li key={i}>
+                      <span>{s.text}</span>
+                      {s.tex && <Tex tex={s.tex} block className="ai-step-tex" />}
+                    </li>
+                  ))}
+                </ol>
               )}
             </div>
           )}
 
-          <div className="ai-examples">
-            <div className="ai-examples-label">Try an example</div>
-            <div className="ai-examples-list">
-              {EXAMPLES.map((ex) => (
-                <button
-                  key={`${ex.op}-${ex.expr}`}
-                  type="button"
-                  className="ai-example-btn"
-                  onClick={() => loadExample(ex)}
-                >
-                  <strong>{ex.op}</strong>
-                  <span>{ex.expr}</span>
-                </button>
-              ))}
+          {op.examples && op.examples.length > 0 && (
+            <div className="ai-examples">
+              <div className="ai-examples-label">Try an example</div>
+              <div className="ai-examples-list">
+                {op.examples.map((ex) => (
+                  <button
+                    key={ex}
+                    type="button"
+                    className="ai-example-btn"
+                    onClick={() => loadExample(ex)}
+                    aria-label={`Use example ${ex}`}
+                  >
+                    <strong aria-hidden="true">ƒ</strong>
+                    <span>{ex}</span>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </section>
 
-        <section className="ai-solver-card ai-solver-card--host">
-          <div className="ai-solver-launch-kicker">Hosted neural solver</div>
-          <h2>Open CalculusSolver</h2>
-          <p className="ai-solver-card-lead">
-            Streamlit apps cannot be embedded in this site (browser frame
-            blocking). Use the button below to launch the full neural solver in
-            a new tab.
-          </p>
-          <a
-            href={STREAMLIT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ai-solver-open-btn"
-            onClick={handleOpenSolver}
-          >
-            Open hosted solver →
-          </a>
-          <p className="ai-solver-host-note">
-            If the hosted app is sleeping, Streamlit may take ~30s to wake up on
-            first open.
-          </p>
-        </section>
-      </div>
+        <aside className="ai-solver-side">
+          <section className="ai-solver-card ai-solver-card--host">
+            <div className="ai-solver-launch-kicker">Hosted neural solver</div>
+            <h2>Open CalculusSolver</h2>
+            <p className="ai-solver-card-lead">
+              The research neural solver runs on Streamlit and can't be embedded here. It opens in a new tab and may
+              take ~30 seconds to wake up.
+            </p>
+            <a
+              href={STREAMLIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ai-solver-open-btn ai-solver-open-btn--secondary"
+              onClick={handleOpenSolver}
+            >
+              Open hosted solver →
+            </a>
+          </section>
 
-      <div className="ai-solver-info">
-        <div className="ai-info-card">
-          <div className="ai-info-icon">🧠</div>
-          <div>
-            <div className="ai-info-title">Neural Architecture</div>
-            <div className="ai-info-desc">
-              Tree-to-tree transformer with specialized rule heads for calculus
-              operations (hosted tab).
-            </div>
-          </div>
-        </div>
-        <div className="ai-info-card">
-          <div className="ai-info-icon">⚡</div>
-          <div>
-            <div className="ai-info-title">Instant Local Mode</div>
-            <div className="ai-info-desc">
-              Derivatives, integrals, simplify, and evaluate run in your browser
-              so the page never freezes waiting on an embed.
-            </div>
-          </div>
-        </div>
-        <div className="ai-info-card">
-          <div className="ai-info-icon">✅</div>
-          <div>
-            <div className="ai-info-title">Verified Answers</div>
-            <div className="ai-info-desc">
-              Hosted solutions are numerically verified at random test points
-              using the SLaNg math library.
-            </div>
-          </div>
-        </div>
+          <section className="ai-solver-card ai-solver-card--tips">
+            <div className="ai-solver-launch-kicker">How answers are checked</div>
+            <ul className="ai-tips">
+              <li>
+                <strong>Exact first.</strong> Derivatives, antiderivatives and series are computed symbolically.
+              </li>
+              <li>
+                <strong>Verified.</strong> Every antiderivative is differentiated back and compared with your integrand.
+              </li>
+              <li>
+                <strong>Exact numbers.</strong> Numeric answers are shown as fractions, √n, π or e when they match.
+              </li>
+            </ul>
+          </section>
+        </aside>
       </div>
     </main>
   );
