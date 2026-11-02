@@ -6,6 +6,19 @@
 
 /* Fixed anchor — bubble + panel aligned bottom-right */
 .cb-root {
+  /* Chat colours come from the site's theme tokens (styles/tokens.css), so
+     the widget matches light, dark and sepia. The header bar uses the same
+     colours as the site header (dark bar in sepia/dark, light bar in light);
+     filled controls use the theme's filled-button colour and its text colour.
+     Fallbacks keep the widget usable if tokens.css is not loaded. */
+  --cb-head-bg: var(--c-header-bg, var(--chat-header-bg, #111317));
+  --cb-head-text: var(--c-header-text, var(--chat-text-on-fill, #ffffff));
+  --cb-head-muted: var(--c-header-muted, color-mix(in srgb, var(--cb-head-text) 70%, transparent));
+  --cb-head-accent: var(--c-header-accent, var(--gold-2, #0056D2));
+  --cb-fill: var(--c-accent-strong, var(--gold, #0056D2));
+  --cb-fill-hover: var(--c-accent-strong-hover, var(--cb-fill));
+  --cb-on-fill: var(--c-on-accent, #ffffff);
+
   position: fixed;
   bottom: 24px;
   right: 24px;
@@ -26,23 +39,24 @@
   height: 52px;
   min-width: 52px;
   box-sizing: border-box;
-  background: var(--primary, #0056D2);
+  background: var(--cb-fill);
   border: none;
   border-radius: 999px;
-  color: #fff;
+  color: var(--cb-on-fill);
   cursor: pointer;
   font-family: inherit;
   font-size: 0.88rem;
   font-weight: 700;
   line-height: 1;
   flex-shrink: 0;
-  box-shadow: 0 8px 28px color-mix(in srgb, var(--primary, #0056D2) 45%, transparent), 0 2px 8px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--cb-fill) 45%, transparent), 0 2px 8px rgba(0, 0, 0, 0.18);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .cb-bubble:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px color-mix(in srgb, var(--primary, #0056D2) 55%, transparent), 0 4px 12px rgba(0, 0, 0, 0.22);
+  background: var(--cb-fill-hover);
+  box-shadow: 0 12px 36px color-mix(in srgb, var(--cb-fill) 55%, transparent), 0 4px 12px rgba(0, 0, 0, 0.22);
 }
 
 .cb-bubble:active {
@@ -50,7 +64,10 @@
 }
 
 .cb-bubble--open {
-  background: var(--ink-2);
+  /* Same filled colour as the "Ask tutor" pill. (--ink-2 turns light in dark
+     mode, and index.css forces every span white there, which hid the ×.) */
+  background: var(--cb-fill);
+  color: var(--cb-on-fill);
   padding: 0;
   width: 52px;
   height: 52px;
@@ -81,7 +98,7 @@
   width: 10px;
   height: 10px;
   background: var(--error);
-  border: 2px solid var(--chat-text-on-fill);
+  border: 2px solid var(--cb-on-fill);
   border-radius: 50%;
 }
 
@@ -144,17 +161,17 @@
     font-weight: 700;
     white-space: nowrap;
     letter-spacing: 0.01em;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--gold-2) 18%, transparent), color-mix(in srgb, var(--teal) 18%, transparent));
-    border: 1px solid color-mix(in srgb, var(--gold-2) 35%, transparent);
-    color: var(--gold-2);
+    background: color-mix(in srgb, var(--cb-head-accent) 16%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cb-head-accent) 45%, transparent);
+    color: var(--cb-head-accent);
     transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
   }
 
   .cb-new-chat-btn:hover {
-    background: linear-gradient(135deg, color-mix(in srgb, var(--gold-2) 28%, transparent), color-mix(in srgb, var(--teal) 28%, transparent));
-    border-color: color-mix(in srgb, var(--gold-2) 55%, transparent);
+    background: color-mix(in srgb, var(--cb-head-accent) 26%, transparent);
+    border-color: color-mix(in srgb, var(--cb-head-accent) 65%, transparent);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--gold) 25%, transparent);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--cb-head-accent) 25%, transparent);
   }
 
   .cb-new-chat-btn:active {
@@ -172,7 +189,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.25rem;
-    background: linear-gradient(90deg, color-mix(in srgb, var(--blue) 22%, transparent), transparent 34%), var(--chat-header-bg);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--cb-head-accent) 18%, transparent), transparent 34%), var(--cb-head-bg);
     border-bottom: 1px solid color-mix(in srgb, var(--gold-2) 28%, transparent);
     flex-shrink: 0;
     overflow:hidden;
@@ -232,9 +249,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* Mix against the constant light token — --card goes dark in dark mode and
-       would render the title invisible on the dark header bar. */
-    color: color-mix(in srgb, var(--gold-2) 25%, var(--chat-text-on-fill));
+    /* Header text colour comes from the site header tokens, which are chosen
+       for the header bar in each theme (light text on the dark sepia bar). */
+    color: var(--cb-head-text);
     line-height: 1.2;
   }
   .cb-icon-btn:active,
@@ -261,7 +278,7 @@
 }
   .cb-header-topic {
     font-size: 0.72rem;
-    color: color-mix(in srgb, var(--gold-2) 70%, transparent);
+    color: var(--cb-head-muted);
     line-height: 1.2;
     max-width: 180px;
     white-space: nowrap;
@@ -276,18 +293,18 @@
     flex-shrink: 0;
   }
   
-  /* Header sits on a theme-constant dark bar, so icon color must come from the
-     constant light token (--chat-text-on-fill), not --card which flips in dark mode. */
+  /* Header buttons use the header text colour so they stay visible on the
+     header bar in every theme. */
   .cb-icon-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 30px;
     height: 30px;
-    background: color-mix(in srgb, var(--chat-text-on-fill) 8%, transparent);
-    border: 1px solid color-mix(in srgb, var(--chat-text-on-fill) 15%, transparent);
+    background: color-mix(in srgb, var(--cb-head-text) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cb-head-text) 18%, transparent);
     border-radius: 6px;
-    color: color-mix(in srgb, var(--chat-text-on-fill) 70%, transparent);
+    color: color-mix(in srgb, var(--cb-head-text) 80%, transparent);
     cursor: pointer;
     font-size: 0.9rem;
     font-family: inherit;
@@ -295,8 +312,8 @@
   }
   
   .cb-icon-btn:hover {
-    background: color-mix(in srgb, var(--gold-2) 15%, transparent);
-    color: var(--gold-2);
+    background: color-mix(in srgb, var(--cb-head-accent) 18%, transparent);
+    color: var(--cb-head-accent);
   }
   
   .cb-icon-btn--close:hover {
@@ -310,10 +327,10 @@
     justify-content: center;
     width: 30px;
     height: 30px;
-    background: color-mix(in srgb, var(--chat-text-on-fill) 8%, transparent);
-    border: 1px solid color-mix(in srgb, var(--chat-text-on-fill) 15%, transparent);
+    background: color-mix(in srgb, var(--cb-head-text) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cb-head-text) 18%, transparent);
     border-radius: 6px;
-    color: color-mix(in srgb, var(--chat-text-on-fill) 70%, transparent);
+    color: color-mix(in srgb, var(--cb-head-text) 80%, transparent);
     cursor: pointer;
     font-size: 0.9rem;
     font-family: inherit;
@@ -322,9 +339,9 @@
   
   .cb-tab-btn:hover,
   .cb-tab-btn--active {
-    background: color-mix(in srgb, var(--gold-2) 20%, transparent);
-    border-color: color-mix(in srgb, var(--gold-2) 35%, transparent);
-    color: var(--gold-2);
+    background: color-mix(in srgb, var(--cb-head-accent) 20%, transparent);
+    border-color: color-mix(in srgb, var(--cb-head-accent) 40%, transparent);
+    color: var(--cb-head-accent);
   }
   
   /* ── Topic Bar ────────────────────────────────────────────────────────────── */
@@ -531,8 +548,8 @@
   }
   
   .cb-msg-avatar--user {
-    background: var(--gold);
-    color: var(--chat-text-on-fill);
+    background: var(--cb-fill);
+    color: var(--cb-on-fill);
     font-size: 0.75rem;
     font-family: Inter, sans-serif;
   }
@@ -584,8 +601,8 @@
 }
 
 .cb-msg-bubble--user {
-  background: var(--gold);
-  color: var(--chat-text-on-fill);
+  background: var(--cb-fill);
+  color: var(--cb-on-fill);
   border-bottom-right-radius: 6px;
 }
 
@@ -1045,9 +1062,9 @@
   
   .cb-sym-group-btn:hover,
   .cb-sym-group-btn.active {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--chat-text-on-fill);
+    background: var(--cb-fill);
+    border-color: var(--cb-fill);
+    color: var(--cb-on-fill);
   }
   
   .cb-sym-grid {
@@ -1193,10 +1210,10 @@
     width: 34px;
     height: 34px;
     flex-shrink: 0;
-    background: var(--gold);
+    background: var(--cb-fill);
     border: none;
     border-radius: 8px;
-    color: var(--chat-text-on-fill);
+    color: var(--cb-on-fill);
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: 700;
