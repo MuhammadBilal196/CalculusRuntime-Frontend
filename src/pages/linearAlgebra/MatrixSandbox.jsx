@@ -32,15 +32,28 @@ const fmt = (v) => {
   return Object.is(r, -0) ? "0" : String(r);
 };
 
+/** Exact display: integers and simple fractions (denominator ≤ 1000), else 4 decimals. */
+const nice = (v) => {
+  if (typeof v !== "number" || !isFinite(v)) return "—";
+  if (Math.abs(v) < 1e-10) return "0";
+  const rounded = Math.round(v);
+  if (Math.abs(v - rounded) < 1e-9 * Math.max(1, Math.abs(v))) return String(rounded);
+  for (let d = 2; d <= 1000; d++) {
+    const n = Math.round(v * d);
+    if (Math.abs(n / d - v) < 1e-9 * Math.max(1, Math.abs(v))) return `${n}/${d}`;
+  }
+  const r = Number(v.toFixed(4));
+  return Object.is(r, -0) ? "0" : String(r);
+};
+
+/** Treat floating-point dust as exact zero. */
+const tidy = (grid) => grid.map((row) => row.map((v) => (Math.abs(v) < 1e-10 ? 0 : v)));
+
 const toNumeric = (grid) =>
   grid.map((row) => row.map((v) => (v === "" || v === undefined || Number.isNaN(Number(v)) ? 0 : Number(v))));
 
 function toFraction(x) {
-  try {
-    return math.fraction(math.round(x, 6)).toFraction(true);
-  } catch {
-    return fmt(x);
-  }
+  return nice(x);
 }
 
 function resizeGrid(prev, newRows, newCols) {
@@ -63,9 +76,11 @@ function rrefWithSteps(input) {
   const steps = [];
   let pivotRow = 0;
 
+  const scale = Math.max(1, ...M.flat().map((v) => Math.abs(v)));
+  const eps = 1e-10 * scale;
   for (let col = 0; col < cols && pivotRow < rows; col++) {
     let sel = -1;
-    let best = 1e-9;
+    let best = eps;
     for (let r = pivotRow; r < rows; r++) {
       if (Math.abs(M[r][col]) > best) {
         best = Math.abs(M[r][col]);
@@ -78,16 +93,16 @@ function rrefWithSteps(input) {
       [M[sel], M[pivotRow]] = [M[pivotRow], M[sel]];
       steps.push({
         text: `Swap R${sel + 1} ↔ R${pivotRow + 1} to bring a nonzero entry into the pivot position (column ${col + 1}).`,
-        grid: M.map((r) => r.slice()),
+        grid: tidy(M),
       });
     }
 
     const pivotVal = M[pivotRow][col];
-    if (Math.abs(pivotVal - 1) > 1e-9) {
+    if (Math.abs(pivotVal - 1) > 1e-12) {
       M[pivotRow] = M[pivotRow].map((v) => v / pivotVal);
       steps.push({
-        text: `Scale R${pivotRow + 1} by 1/${toFraction(pivotVal)} to make the pivot in column ${col + 1} equal to 1.`,
-        grid: M.map((r) => r.slice()),
+        text: `Divide R${pivotRow + 1} by ${toFraction(pivotVal)} to make the pivot in column ${col + 1} equal to 1.`,
+        grid: tidy(M),
       });
     }
 
@@ -95,11 +110,11 @@ function rrefWithSteps(input) {
       if (r === pivotRow) continue;
       const factor = M[r][col];
       const pr = pivotRow;
-      if (Math.abs(factor) > 1e-9) {
-        M[r] = M[r].map((v, c) => v - factor * M[pr][c]);
+      if (Math.abs(factor) > eps) {
+        M[r] = M[r].map((v, c) => (Math.abs(v - factor * M[pr][c]) < eps ? 0 : v - factor * M[pr][c]));
         steps.push({
-          text: `R${r + 1} → R${r + 1} − (${toFraction(factor)})·R${pr + 1} to clear column ${col + 1} above/below the pivot.`,
-          grid: M.map((row) => row.slice()),
+          text: `R${r + 1} → R${r + 1} − (${toFraction(factor)})·R${pr + 1} to clear column ${col + 1} ${r < pr ? "above" : "below"} the pivot.`,
+          grid: tidy(M),
         });
       }
     }
@@ -107,7 +122,7 @@ function rrefWithSteps(input) {
     pivotRow++;
   }
 
-  return { result: M, steps, rank: pivotRow };
+  return { result: tidy(M), steps, rank: pivotRow };
 }
 
 function frobeniusNorm(M) {
@@ -118,12 +133,22 @@ function frobeniusNorm(M) {
 
 function matrixPower(M, n) {
   const k = Math.trunc(Number(n));
-  if (!Number.isFinite(k) || k < 0) throw new Error("Power must be a non-negative integer.");
+  if (!Number.isFinite(k) || k < 0 || String(n).trim() === "" || Number(n) !== k) {
+    throw new Error("Power must be a non-negative whole number.");
+  }
+  if (k > 100) throw new Error("Use a power of 100 or less.");
   if (M.length !== M[0].length) throw new Error("Power requires a square matrix.");
   if (k === 0) return identityGrid(M.length);
-  let acc = M.map((r) => r.slice());
-  for (let i = 1; i < k; i++) acc = math.multiply(acc, M);
-  return acc;
+  // square-and-multiply: fewer products, less rounding error
+  let result = identityGrid(M.length);
+  let base = M.map((r) => r.slice());
+  let e = k;
+  while (e > 0) {
+    if (e & 1) result = math.multiply(result, base);
+    base = math.multiply(base, base);
+    e >>= 1;
+  }
+  return result;
 }
 
 function MatrixGrid({ grid, onChange, editable = true, label, highlightCol = -1 }) {
@@ -140,13 +165,24 @@ function MatrixGrid({ grid, onChange, editable = true, label, highlightCol = -1 
         }}
       >
         {grid.map((row, i) =>
-          row.map((val, j) => (
+          row.map((val, j) =>
+            !editable ? (
+              <output
+                key={`${i}-${j}`}
+                className={"ms-cell ms-cell-ro" + (j === highlightCol ? " ms-cell-hl" : "")}
+                title={typeof val === "number" ? String(val) : undefined}
+              >
+                {typeof val === "number" ? nice(val) : val}
+              </output>
+            ) : (
             <input
               key={`${i}-${j}`}
               className={"ms-cell" + (j === highlightCol ? " ms-cell-hl" : "")}
               type="number"
+              inputMode="decimal"
+              step="any"
+              aria-label={`${label ? label.split(" ")[0] : "Matrix"} row ${i + 1}, column ${j + 1}`}
               value={val}
-              disabled={!editable}
               onChange={(e) => {
                 if (!onChange) return;
                 const next = grid.map((r) => r.slice());
@@ -155,7 +191,8 @@ function MatrixGrid({ grid, onChange, editable = true, label, highlightCol = -1 
                 onChange(next);
               }}
             />
-          ))
+            )
+          )
         )}
       </div>
     </div>
@@ -202,13 +239,13 @@ function MatrixSandbox() {
 
   const removeMatrix = (idx) => {
     if (matrices.length <= MIN_MATRICES) return;
-    setMatrices((prev) => {
-      const next = prev.filter((_, i) => i !== idx).map((m, i) => ({ ...m, label: LABELS[i] || m.label }));
-      return next;
-    });
-    setActiveIdx((i) => Math.min(i, matrices.length - 2));
-    setLeftIdx((i) => Math.min(i, matrices.length - 2));
-    setRightIdx((i) => Math.min(Math.max(0, i === idx ? 0 : i > idx ? i - 1 : i), matrices.length - 2));
+    const last = matrices.length - 2; // highest index after removal
+    // Indices after the removed slot shift left by one; the removed slot falls back to its neighbour.
+    const shift = (i) => Math.max(0, Math.min(last, i > idx ? i - 1 : i === idx ? Math.min(idx, last) : i));
+    setMatrices((prev) => prev.filter((_, i) => i !== idx).map((m, i) => ({ ...m, label: LABELS[i] || m.label })));
+    setActiveIdx(shift);
+    setLeftIdx(shift);
+    setRightIdx(shift);
     setStepIndex(0);
   };
 
@@ -230,13 +267,13 @@ function MatrixSandbox() {
 
   const inverse = useMemo(() => {
     if (!isSquare) return null;
+    if (rref.rank < active.rows) return "singular";
     try {
-      if (Math.abs(determinant) < 1e-9) return "singular";
-      return math.inv(numericActive);
+      return tidy(math.inv(numericActive));
     } catch {
       return "singular";
     }
-  }, [numericActive, isSquare, determinant]);
+  }, [numericActive, isSquare, rref.rank, active.rows]);
 
   const transpose = useMemo(() => math.transpose(numericActive), [numericActive]);
 
@@ -267,14 +304,16 @@ function MatrixSandbox() {
   const eigenvalues = useMemo(() => {
     if (!isSquare) return { ok: false, error: "Eigenvalues require a square matrix." };
     try {
-      const e = math.eigs(numericActive);
+      const e = math.eigs(numericActive, { eigenvectors: false });
       const vals = (e.values || []).map((v) => {
-        if (typeof v === "number") return fmt(v);
+        if (typeof v === "number") return nice(v);
         if (v && typeof v === "object" && "re" in v) {
-          const re = fmt(v.re);
+          const re = Number(v.re) || 0;
           const im = Number(v.im) || 0;
-          if (Math.abs(im) < 1e-9) return re;
-          return `${re}${im >= 0 ? "+" : ""}${fmt(im)}i`;
+          if (Math.abs(im) < 1e-9) return nice(re);
+          const imPart = `${Math.abs(im - 1) < 1e-9 || Math.abs(im + 1) < 1e-9 ? "" : nice(Math.abs(im))}i`;
+          if (Math.abs(re) < 1e-10) return `${im < 0 ? "−" : ""}${imPart}`;
+          return `${nice(re)} ${im < 0 ? "−" : "+"} ${imPart}`;
         }
         return String(v);
       });
@@ -561,13 +600,8 @@ function MatrixSandbox() {
                 <div className="ms-step-text">This matrix is already in reduced row-echelon form.</div>
               )}
               <div className="ms-note">
-                Rank of {active.label} (pivot rows): <strong>{rref.rank}</strong>
-                {isSquare ? (
-                  <>
-                    {" "}
-                    · Nullity: <strong>{active.cols - rref.rank}</strong>
-                  </>
-                ) : null}
+                Rank of {active.label} (pivot rows): <strong>{rref.rank}</strong> · Nullity (free columns):{" "}
+                <strong>{active.cols - rref.rank}</strong>
               </div>
             </>
           )}
@@ -577,7 +611,7 @@ function MatrixSandbox() {
               <div className="ms-panel-title">Determinant of {active.label}</div>
               {isSquare ? (
                 <div className="ms-result-big">
-                  det({active.label}) = {fmt(determinant)}
+                  det({active.label}) = {nice(determinant)}
                 </div>
               ) : (
                 <div className="ms-step-text">The determinant is only defined for square matrices. Set rows = columns first.</div>
@@ -592,10 +626,11 @@ function MatrixSandbox() {
                 <div className="ms-step-text">The inverse is only defined for square matrices.</div>
               ) : inverse === "singular" ? (
                 <div className="ms-step-text">
-                  det({active.label}) = {fmt(determinant)} ≈ 0, so {active.label} is singular — no inverse exists.
+                  rank({active.label}) = {rref.rank} &lt; {active.rows} (det = {nice(determinant)}), so {active.label} is singular — no
+                  inverse exists.
                 </div>
               ) : (
-                <MatrixGrid grid={inverse.map((row) => row.map(fmt))} editable={false} label={`${active.label}⁻¹`} />
+                <MatrixGrid grid={inverse} editable={false} label={`${active.label}⁻¹`} />
               )}
             </>
           )}
@@ -618,7 +653,7 @@ function MatrixSandbox() {
                 k
                 <input type="number" value={scalar} onChange={(e) => setScalar(e.target.value)} />
               </label>
-              <MatrixGrid grid={scaled.map((row) => row.map(fmt))} editable={false} label={`${scalar}·${active.label}`} />
+              <MatrixGrid grid={scaled} editable={false} label={`${scalar}·${active.label}`} />
             </>
           )}
 
@@ -627,7 +662,7 @@ function MatrixSandbox() {
               <div className="ms-panel-title">Trace of {active.label}</div>
               {isSquare ? (
                 <div className="ms-result-big">
-                  tr({active.label}) = {fmt(trace)}
+                  tr({active.label}) = {nice(trace)}
                 </div>
               ) : (
                 <div className="ms-step-text">Trace is the sum of diagonal entries — only defined for square matrices.</div>
@@ -653,7 +688,7 @@ function MatrixSandbox() {
               </label>
               {powered.ok ? (
                 <MatrixGrid
-                  grid={powered.grid.map((row) => row.map(fmt))}
+                  grid={tidy(powered.grid)}
                   editable={false}
                   label={`${active.label}^${Math.trunc(Number(powerN)) || 0}`}
                 />
@@ -698,7 +733,7 @@ function MatrixSandbox() {
               </div>
               {multiply.ok ? (
                 <MatrixGrid
-                  grid={multiply.grid.map((row) => row.map(fmt))}
+                  grid={tidy(multiply.grid)}
                   editable={false}
                   label={`${left.label}${right.label} (${left.rows}×${right.cols})`}
                 />
@@ -715,7 +750,7 @@ function MatrixSandbox() {
               </div>
               {add.ok ? (
                 <MatrixGrid
-                  grid={add.grid.map((row) => row.map(fmt))}
+                  grid={add.grid}
                   editable={false}
                   label={`${left.label}+${right.label}`}
                 />
@@ -732,7 +767,7 @@ function MatrixSandbox() {
               </div>
               {subtract.ok ? (
                 <MatrixGrid
-                  grid={subtract.grid.map((row) => row.map(fmt))}
+                  grid={subtract.grid}
                   editable={false}
                   label={`${left.label}−${right.label}`}
                 />
@@ -749,7 +784,7 @@ function MatrixSandbox() {
               </div>
               {hadamard.ok ? (
                 <MatrixGrid
-                  grid={hadamard.grid.map((row) => row.map(fmt))}
+                  grid={hadamard.grid}
                   editable={false}
                   label={`${left.label}⊙${right.label}`}
                 />
@@ -762,25 +797,37 @@ function MatrixSandbox() {
       </div>
 
       <style>{`
+                /* Colours follow the site theme (src/styles/tokens.css): Light, Dark, Sepia. */
                 .ms-page {
-                    --ms-teal: #0284c7;
-                    --ms-gold: #0056D2;
-                    --ms-ink: #16120a;
-                    --ms-muted: #5c4f3a;
-                    --ms-card: #ffffff;
-                    --ms-soft: #ffffff;
-                    --ms-line: #e2e8f0;
-                    --ms-shadow: 0 8px 32px rgba(21,16,12,0.10);
+                    --ms-teal: var(--c-accent-strong, #2b4cc9);
+                    --ms-on-accent: var(--c-on-accent, #ffffff);
+                    --ms-gold: var(--c-accent, #2541b2);
+                    --ms-ink: var(--c-text, #18213d);
+                    --ms-muted: var(--c-muted, #5d6785);
+                    --ms-card: var(--c-surface, #ffffff);
+                    --ms-soft: var(--c-surface-2, #eef2f9);
+                    --ms-line: var(--c-border, #dbe2ee);
+                    --ms-shadow: var(--c-shadow-md, 0 8px 32px rgba(21,16,12,0.10));
                     min-height: 100vh;
-                    background: var(--paper, #ffffff);
+                    background: var(--c-bg, var(--paper, #ffffff));
+                    color: var(--ms-ink);
                     padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 3rem);
                 }
-                [data-theme="dark"] .ms-page {
-                    --ms-ink: #f5f0e8;
-                    --ms-muted: #b5a98e;
-                    --ms-card: #1e1a14;
-                    --ms-soft: #17130d;
-                    --ms-line: #3a3020;
+                .ms-page button:focus-visible,
+                .ms-page input:focus-visible,
+                .ms-page select:focus-visible {
+                    outline: 3px solid var(--c-focus, rgba(43, 76, 201, 0.4));
+                    outline-offset: 2px;
+                }
+                .ms-cell-ro {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-variant-numeric: tabular-nums;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    cursor: default;
                 }
                 .ms-container { max-width: 860px; margin: 0 auto; }
                 .ms-title {
@@ -824,9 +871,9 @@ function MatrixSandbox() {
                 .ms-slot-active {
                     background: var(--ms-teal);
                     border-color: var(--ms-teal);
-                    color: #fff;
+                    color: var(--ms-on-accent);
                 }
-                .ms-slot-active .ms-slot-size { color: rgba(255,255,255,0.85); }
+                .ms-slot-active .ms-slot-size { color: var(--ms-on-accent); opacity: 0.85; }
                 .ms-count-hint {
                     font-size: 0.8rem;
                     color: var(--ms-muted);
@@ -863,7 +910,7 @@ function MatrixSandbox() {
                     border-radius: 6px;
                     border: 1px solid var(--ms-teal);
                     background: var(--ms-teal);
-                    color: #fff;
+                    color: var(--ms-on-accent);
                     font-weight: 600;
                     cursor: pointer;
                 }
@@ -921,7 +968,7 @@ function MatrixSandbox() {
                 .ms-tab-active {
                     background: var(--ms-teal);
                     border-color: var(--ms-teal);
-                    color: #fff;
+                    color: var(--ms-on-accent);
                     font-weight: 600;
                 }
                 .ms-panel {
