@@ -21,19 +21,6 @@ const WELCOME_PROMPTS = [
   "What is the chain rule here?",
 ];
 
-const DEMO_BOT_REPLY =
-  "[STEP 1 of 2]\n\n" +
-  "Great question! The partial derivative $\\frac{\\partial f}{\\partial x}$ measures how $f$ changes when only $x$ changes.\n\n" +
-  "Step 1: Treat other variables as constants.\n" +
-  "Step 2: Differentiate with respect to $x$.\n\n" +
-  "For example, if $f(x,y) = x^2 y$, then $\\frac{\\partial f}{\\partial x} = 2xy$.";
-
-const DEMO_SUGGESTIONS = [
-  "Can you show me another example?",
-  "What about ∂f/∂y?",
-  "Explain the gradient geometrically",
-];
-
 const DIFFICULTY_LABELS = {
   beginner: { emoji: "🌱", label: "Beginner" },
   intermediate: { emoji: "📈", label: "Intermediate" },
@@ -354,14 +341,18 @@ function ChatWindow({ onClose, onActivity }) {
               return [
                 ...withoutPlaceholder,
                 {
+                  // Show the real problem instead of a canned answer, so a
+                  // missing or broken chat backend is visible to the student.
                   id: botMsgId,
-                  role: "assistant",
-                  content: DEMO_BOT_REPLY,
+                  role: "error",
+                  content:
+                    err?.message ||
+                    "The tutor is unavailable right now. Please try again in a moment.",
                   timestamp: new Date().toISOString(),
                 },
               ];
             });
-            setSuggestions(DEMO_SUGGESTIONS);
+            setSuggestions([]);
           }
         } finally {
           setIsLoading(false);

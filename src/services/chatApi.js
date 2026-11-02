@@ -6,11 +6,17 @@
  * Standalone (Beanie):   POST {REACT_APP_CHAT_URL}/chat
  */
 
-// Chat can run on the main API or a dedicated chatbot backend (default 8003).
-const CHAT_API_URL =
+// Chat can run on the main API (which mounts the chatbot at /api/chat) or on a
+// dedicated chatbot backend. Order: REACT_APP_CHAT_API_URL, then
+// REACT_APP_API_URL. The localhost default is for local development only; a
+// production build with neither variable set uses the page's own origin.
+const CHAT_API_URL = (
   process.env.REACT_APP_CHAT_API_URL ||
   process.env.REACT_APP_API_URL ||
-  "http://127.0.0.1:8003";
+  (process.env.NODE_ENV === "production" ? "" : "http://127.0.0.1:8003")
+).replace(/\/$/, "");
+const UNREACHABLE_MESSAGE =
+  "The tutor service can't be reached right now. Please try again in a moment.";
 const STANDALONE_CHAT_URL = process.env.REACT_APP_CHAT_URL || "";
 const REQUEST_TIMEOUT_MS = 45000;
 
@@ -57,7 +63,7 @@ export async function sendMessage(messages, context, token = null, pageUrl = "/"
     });
   } catch (err) {
     if (err.message.includes("taking too long")) throw err;
-    throw new Error("Could not reach the chat service. Make sure the backend is running.");
+    throw new Error(UNREACHABLE_MESSAGE);
   }
 
   // CB-11/CB-14: Handle rate limiting (429 Too Many Requests)
@@ -75,6 +81,11 @@ export async function sendMessage(messages, context, token = null, pageUrl = "/"
     throw error;
   }
 
+  if (response.status === 404 || response.status === 405) {
+    // The API answered but has no /api/chat route: the chatbot isn't mounted.
+    throw new Error("The tutor service isn't available on this server yet.");
+  }
+
   if (!response.ok) {
     let detail = "Chat request failed.";
     try {
@@ -87,11 +98,13 @@ export async function sendMessage(messages, context, token = null, pageUrl = "/"
   try {
     const data = await response.json();
     return {
-      reply: data.reply || data.response || "",
+      reply: data.reply || data.response || data.answer || "",
       suggestions: Array.isArray(data.suggestions) ? data.suggestions : [],
       difficulty: data.difficulty || null, // CB-18
       message_id: data.message_id || null,  // CB-12: for feedback submission
       session_id: data.session_id || null,  // CB-19: for export / CB-12: for feedback
+      mode: data.mode || null,
+      source: data.source || null,
     };
   } catch {
     throw new Error("Invalid response from chat service.");
@@ -134,7 +147,7 @@ export async function sendMessageStream(
       body: JSON.stringify({ messages, context, topic_key: topicKey, page_url: pageUrl }),
     });
   } catch (err) {
-    onError(new Error("Could not reach the chat service. Make sure the backend is running."));
+    onError(new Error(UNREACHABLE_MESSAGE));
     return;
   }
 
