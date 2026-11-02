@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { useAuth, getDisplayName, getInitials } from "../../context/AuthContext";
 import AccountDrawer from "./AccountDrawer";
+import ThemeMenu from "./ThemeMenu";
 import { Sun, Moon, BookOpen, Menu, X, ChevronDown, Award, Trophy } from "lucide-react";
 
 const courseLinks = [
@@ -28,7 +29,7 @@ const THEME_OPTIONS = [
   { id: "sepia", label: "Sepia", Icon: BookOpen },
 ];
 
-/** Three-way theme switch: Light · Dark · Sepia (arrow keys move between them). */
+/** Three-way theme switch used in the mobile drawer (arrow keys move between them). */
 function ThemePicker({ theme, onChange }) {
   const onKeyDown = (event) => {
     const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
@@ -143,9 +144,9 @@ function Header({ theme: themeProp, onThemeChange, darkMode, onToggleDark }) {
         </NavLink>
       </nav>
 
-      {/* Controls: theme toggle + auth + hamburger */}
+      {/* Controls: theme menu + auth + hamburger */}
       <div className="header-controls">
-        <ThemePicker theme={theme} onChange={changeTheme} />
+        <ThemeMenu theme={theme} onChange={changeTheme} />
 
         {user ? (
           <button
@@ -196,4 +197,4 @@ function Header({ theme: themeProp, onThemeChange, darkMode, onToggleDark }) {
   );
 }
 
-export default Header;
+export default Header;
