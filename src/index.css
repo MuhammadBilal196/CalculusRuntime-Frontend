@@ -2444,3 +2444,217 @@ body.dark,
 }
 
 
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Home on phones: course paths as compact rows instead of four tall boxes,
+   tools as a two-column grid and the stats as a 2 × 2 strip.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.guide-card-tile,
+.guide-card-chevron {
+  display: none;
+}
+
+.guide-signup-note {
+  margin: -0.6rem 0 1.4rem;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+}
+
+.guide-signup-note a {
+  font-weight: 700;
+  color: var(--c-accent, #2541b2);
+}
+
+@media (max-width: 640px) {
+  .guide-section h2,
+  .tool-strip h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .guide-grid,
+  [data-site-theme="default"] .guide-grid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .guide-card,
+  [data-site-theme="default"] .guide-card {
+    display: grid !important;
+    grid-template-columns: 3rem minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 0.9rem;
+    min-height: 0;
+    padding: 0.9rem 0.85rem 0.9rem 0.95rem !important;
+    border-width: 1px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  .guide-card:hover,
+  [data-site-theme="default"] .guide-card:hover {
+    transform: none !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  .guide-card:active,
+  [data-site-theme="default"] .guide-card:active {
+    transform: scale(0.985) !important;
+    background: var(--paper-2, #f8fafc) !important;
+  }
+
+  .guide-card::before,
+  .guide-card::after,
+  .guide-card .guide-card-logo,
+  [data-site-theme="default"] .guide-card .guide-card-logo {
+    display: none !important;
+  }
+
+  .guide-card .guide-card-tile {
+    --tile: #2b4cc9;
+    display: inline-grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--tile) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tile) 24%, transparent);
+    color: var(--tile) !important;
+    font-family: "Cambria Math", "KaTeX_Main", "Times New Roman", Georgia, serif;
+    font-size: 1.55rem !important;
+    font-weight: 700 !important;
+    line-height: 1;
+  }
+
+  .guide-card--gold .guide-card-tile {
+    --tile: #c28a2e;
+  }
+  .guide-card--teal .guide-card-tile {
+    --tile: #0d9488;
+  }
+  .guide-card--blue .guide-card-tile {
+    --tile: #2563eb;
+  }
+  .guide-card--purple .guide-card-tile {
+    --tile: #7c3aed;
+  }
+
+  .guide-card-body {
+    min-width: 0;
+  }
+
+  .guide-card h3,
+  [data-site-theme="default"] .guide-card h3 {
+    margin: 0 0 0.15rem 0 !important;
+    font-size: 1.02rem !important;
+    font-weight: 750 !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.3 !important;
+  }
+
+  .guide-card-meta,
+  [data-site-theme="default"] .guide-card span.guide-card-meta {
+    margin: 0 0 0.25rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 650 !important;
+  }
+
+  .guide-card p,
+  [data-site-theme="default"] .guide-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 0 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .guide-card .guide-card-chevron {
+    display: inline-grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    background: var(--paper-2, #f1f5f9);
+    color: var(--muted, #64748b) !important;
+    font-size: 1.35rem !important;
+    font-weight: 600 !important;
+    line-height: 1;
+    padding-bottom: 2px;
+  }
+
+  [data-theme="dark"] .guide-card .guide-card-chevron {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Tools: two columns of compact chips */
+  .tool-strip,
+  [data-site-theme="default"] .tool-strip {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .tool-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .tool-links a {
+    justify-content: flex-start !important;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.7rem 0.75rem !important;
+    font-size: 0.82rem !important;
+    line-height: 1.25;
+  }
+
+  .tool-link-icon {
+    flex: none;
+    width: 1.3rem;
+    text-align: center;
+  }
+
+  /* Stats: 2 × 2 */
+  .home-stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-inline: 1rem;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .home-stats .stat-divider {
+    display: none;
+  }
+
+  .home-stats .stat-item {
+    padding: 1rem 0.5rem;
+    border-color: var(--line, #e2e8f0);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  /* children: item, divider, item, divider, item, divider, item */
+  .home-stats .stat-item:nth-child(1),
+  .home-stats .stat-item:nth-child(5) {
+    border-right-width: 1px;
+  }
+
+  .home-stats .stat-item:nth-child(1),
+  .home-stats .stat-item:nth-child(3) {
+    border-bottom-width: 1px;
+  }
+
+  .stat-num {
+    font-size: 1.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+}

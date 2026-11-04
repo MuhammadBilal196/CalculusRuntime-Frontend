@@ -232,6 +232,11 @@ function Home() {
         <section className="guide-section" aria-labelledby="guide-heading">
           <div className="section-kicker">Study Guides</div>
           <h2 id="guide-heading">Choose a path</h2>
+          {!user ? (
+            <p className="guide-signup-note">
+              Courses are free — <Link to="/signup">create an account</Link> to open them and save your progress.
+            </p>
+          ) : null}
           <div className="guide-grid">
             {filteredGuides.map((guide) => (
               <Link
@@ -239,10 +244,19 @@ function Home() {
                 key={guide.path}
                 to={guide.path}
               >
+                {/* Phones show a compact row: symbol tile · title · arrow */}
+                <span className="guide-card-tile" aria-hidden="true">
+                  {guide.icon}
+                </span>
                 {guide.logo && <div className="guide-card-logo">{guide.logo}</div>}
-                <h3>{guide.title}</h3>
-                <span className="guide-card-meta">{guide.meta}</span>
-                <p>{guide.description}</p>
+                <div className="guide-card-body">
+                  <h3>{guide.title}</h3>
+                  <span className="guide-card-meta">{guide.meta}</span>
+                  <p>{guide.description}</p>
+                </div>
+                <span className="guide-card-chevron" aria-hidden="true">
+                  ›
+                </span>
               </Link>
             ))}
           </div>
