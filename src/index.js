@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { installBackendWake } from "./utils/backendWake";
+import { installNetworkActivity } from "./utils/networkActivity";
 import "./styles/theme.css";
 import "./styles/responsive.css";
 import "./styles/partial-theme.css";
@@ -12,6 +13,8 @@ import "./styles/study-theme.css";
 
 // Wake the SnapDeploy backend if it is asleep (no-op locally).
 installBackendWake();
+// Show the loading screen when a click waits on a slow connection.
+installNetworkActivity();
 
 // Fade out the boot loader from public/index.html once React has painted.
 function hideBootLoader() {
