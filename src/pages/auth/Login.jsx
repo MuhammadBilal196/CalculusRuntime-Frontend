@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
+import { needsEmailVerification, safeNextPath } from "../../utils/courseAccess";
 import AuthShell from "./AuthShell";
 
 function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const next = safeNextPath(params.get("next"));
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,8 +29,10 @@ function Login() {
     setLoading(false);
     if (result.error) {
       setError(result.error);
+    } else if (needsEmailVerification(result.user)) {
+      navigate(`/verify-email?next=${encodeURIComponent(next)}`, { replace: true });
     } else {
-      navigate("/dashboard");
+      navigate(next, { replace: true });
     }
   };
 
@@ -37,7 +42,10 @@ function Login() {
       subtitle="Sign in to continue your courses, quizzes and certificates."
       footer={
         <>
-          New to CalcVoyager? <Link to="/signup">Create an account</Link>
+          New to CalcVoyager?{" "}
+          <Link to={params.get("next") ? `/signup?next=${encodeURIComponent(next)}` : "/signup"}>
+            Create an account
+          </Link>
         </>
       }
     >
