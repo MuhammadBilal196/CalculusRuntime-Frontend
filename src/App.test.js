@@ -14,8 +14,13 @@ import { getRequiredSections, getQuizId } from "./data/courseCompletion";
 // JSDOM has no scrolling implementation; anchor navigation is verified by URL.
 beforeAll(() => { Element.prototype.scrollIntoView = jest.fn(); });
 
+// Course pages need an account, so most tests read the guides as a signed-in
+// learner. Tests about guests clear this session first.
+const READER = { id: 1, username: "guide-reader", accessToken: "reader-token" };
+
 beforeEach(() => {
   localStorage.clear();
+  localStorage.setItem("calcvoyager_user", JSON.stringify(READER));
   window.history.replaceState({}, "", "/");
 });
 
@@ -240,6 +245,7 @@ describe("authentication and certificate quiz integration", () => {
   const response = (body, status = 200) => Promise.resolve({
     ok: status >= 200 && status < 300, status, json: async () => body,
   });
+  beforeEach(() => { localStorage.clear(); });
   afterEach(() => { global.fetch = originalFetch; });
 
   function SessionProbe() {
@@ -697,3 +703,42 @@ test.each(studyPartPaths)('all topic and quiz links stay compact on %s', async (
     }
   }
 });
+
+
+describe("course access", () => {
+  test("guests who open a course are asked to sign up and keep their destination", async () => {
+    localStorage.clear();
+    window.history.replaceState({}, "", "/differentiation/1");
+    render(<App />);
+    expect(await screen.findByRole("heading", { name: "Create your account" })).toBeInTheDocument();
+    expect(window.location.pathname).toBe("/signup");
+    expect(new URLSearchParams(window.location.search).get("next")).toBe("/differentiation/1");
+    expect(screen.getByText(/Create a free account to open this course/)).toBeInTheDocument();
+  });
+
+  test("guests can still use the home page and the tools", async () => {
+    localStorage.clear();
+    window.history.replaceState({}, "", "/linear-algebra/matrix-sandbox");
+    render(<App />);
+    await waitFor(() => expect(window.location.pathname).toBe("/linear-algebra/matrix-sandbox"));
+  });
+
+  test("a new account that hasn't confirmed its email goes to the verification step", async () => {
+    localStorage.setItem("calcvoyager_user", JSON.stringify({
+      ...READER, email: "reader@example.com", emailVerified: false, verificationRequired: true,
+    }));
+    window.history.replaceState({}, "", "/courses/linear-algebra");
+    render(<App />);
+    expect(await screen.findByRole("heading", { name: "Verify your email" })).toBeInTheDocument();
+    expect(window.location.pathname).toBe("/verify-email");
+    expect(screen.getAllByRole("textbox", { name: /Digit/ })).toHaveLength(6);
+  });
+
+  test("members from before email verification keep opening courses", async () => {
+    localStorage.setItem("calcvoyager_user", JSON.stringify({ ...READER, emailVerified: false, verificationRequired: false }));
+    window.history.replaceState({}, "", "/courses/linear-algebra");
+    render(<App />);
+    expect(await screen.findByRole("heading", { level: 1, name: "Linear Algebra" })).toBeInTheDocument();
+  });
+});
+

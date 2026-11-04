@@ -57,6 +57,20 @@ The backend has matching persistence endpoints for much of this data, but the cu
 - Use `ScrollToTop` for route transitions.
 - Avoid introducing new prototype-style route names; prefer descriptive paths for new features.
 
+### Course access and email verification
+
+- `Layout` wraps every page in a course gate (`utils/courseAccess.js`). Course
+  hubs, overviews, study guides and mock exams send guests to
+  `/signup?next=<page>&reason=course`; tools, the home page, quizzes (which have
+  their own sign-in screen) and the leaderboard stay public.
+- New accounts (`verificationRequired` and not `emailVerified`) are sent to
+  `/verify-email?next=<page>` until they enter the 6-digit code or open the link
+  from the email. Accounts created before verification existed can verify from
+  the profile page.
+- `components/common/PageLoader.jsx` shows a thin progress bar while a page's
+  data loads, and the boot-screen loading card when a button/form action or a
+  code-split page takes longer than half a second (`utils/networkActivity.js`).
+
 ## UI Guidelines
 
 - Reuse existing colors, spacing, and page layout conventions from current CSS.

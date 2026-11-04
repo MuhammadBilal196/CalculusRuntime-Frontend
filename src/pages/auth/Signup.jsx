@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
+import { Eye, EyeOff, Lock } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
+import { needsEmailVerification, safeNextPath } from "../../utils/courseAccess";
 import AuthShell from "./AuthShell";
+import "./EmailVerify.css";
 
 function passwordStrength(password) {
   let score = 0;
@@ -17,6 +19,9 @@ function passwordStrength(password) {
 function Signup() {
   const { signup } = useAuth();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const next = safeNextPath(params.get("next"));
+  const fromCourse = params.get("reason") === "course";
   const [form, setForm] = useState({
     fullName: "",
     username: "",
@@ -37,8 +42,8 @@ function Signup() {
     const fullName = form.fullName.replace(/\s+/g, " ").trim();
     const username = form.username.trim();
     const email = form.email.trim();
-    if (!fullName || !username || !form.password || !form.confirm) {
-      setError("Please fill in your name, username and password.");
+    if (!fullName || !username || !email || !form.password || !form.confirm) {
+      setError("Please fill in your name, username, email and password.");
       return;
     }
     if (fullName.length < 2) {
@@ -53,8 +58,8 @@ function Signup() {
       setError("Username can't contain spaces.");
       return;
     }
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError("Enter a valid email address, or leave it empty.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Enter a valid email address — we’ll send a code to verify it.");
       return;
     }
     if (form.password.length < 6) {
@@ -70,8 +75,14 @@ function Signup() {
     setLoading(false);
     if (result.error) {
       setError(result.error);
+    } else if (needsEmailVerification(result.user)) {
+      // Step 2: confirm the email. The code was sent with the sign-up request.
+      navigate(`/verify-email?next=${encodeURIComponent(next)}`, {
+        replace: true,
+        state: { verification: result.verification || { sent: false } },
+      });
     } else {
-      navigate("/dashboard");
+      navigate(next, { replace: true });
     }
   };
 
@@ -81,10 +92,28 @@ function Signup() {
       subtitle="Free forever. Track your progress, earn points and claim certificates."
       footer={
         <>
-          Already have an account? <Link to="/login">Sign in</Link>
+          Already have an account?{" "}
+          <Link to={params.get("next") ? `/login?next=${encodeURIComponent(next)}` : "/login"}>Sign in</Link>
         </>
       }
     >
+      {fromCourse ? (
+        <p className="auth-banner" role="status">
+          <Lock size={16} aria-hidden="true" />
+          <span>
+            <strong>Create a free account to open this course.</strong> It takes a minute, and your progress,
+            quiz scores and certificates are saved to it.
+          </span>
+        </p>
+      ) : null}
+      <ol className="auth-steps" aria-label="Sign-up progress">
+        <li className="is-active" aria-current="step">
+          <span className="auth-steps__num">1</span> Account
+        </li>
+        <li>
+          <span className="auth-steps__num">2</span> Verify email
+        </li>
+      </ol>
       <form className="auth-form" onSubmit={submit} noValidate>
         <label className="auth-label">
           Full name
@@ -115,7 +144,7 @@ function Signup() {
             />
           </label>
           <label className="auth-label">
-            Email <span className="auth-optional">optional</span>
+            Email
             <input
               className="auth-input"
               type="email"
@@ -124,6 +153,7 @@ function Signup() {
               onChange={handle}
               autoComplete="email"
               placeholder="you@example.com"
+              required
             />
           </label>
         </div>
