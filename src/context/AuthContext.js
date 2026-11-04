@@ -82,7 +82,19 @@ async function requestAuth(path, body) {
     accessToken: data.access_token,
     tokenType: data.token_type,
   };
-  return { ok: true, user: session };
+  return { ok: true, user: session, verification: data.verification || null };
+}
+
+/** Verification fields as the server reports them (absent on older backends). */
+function verificationFields(serverUser) {
+  if (!serverUser) return {};
+  const out = {};
+  const verified = serverUser.emailVerified ?? serverUser.email_verified;
+  const required = serverUser.verificationRequired ?? serverUser.verification_required;
+  if (verified !== undefined) out.emailVerified = Boolean(verified);
+  if (required !== undefined) out.verificationRequired = Boolean(required);
+  if (serverUser.email !== undefined) out.email = serverUser.email || null;
+  return out;
 }
 
 /** Full name if set, otherwise the username. */
@@ -133,6 +145,7 @@ export function AuthProvider({ children }) {
             if (!prev) return prev;
             const next = {
               ...prev,
+              ...verificationFields(me),
               email: me.email ?? prev.email ?? null,
               createdAt: me.created_at ?? prev.createdAt,
               // An older backend has no full_name column: keep the name saved here.
@@ -160,7 +173,11 @@ export function AuthProvider({ children }) {
     if (email) body.email = email;
     const result = await requestAuth("signup", body);
     if (result.ok) {
-      const session = { ...result.user, fullName: result.user.fullName || fullName || null };
+      const session = {
+        ...result.user,
+        fullName: result.user.fullName || fullName || null,
+        email: result.user.email || email || null,
+      };
       saveLocalProfile(session.username, { fullName: session.fullName, email: session.email || email || null });
       setUser(session);
       saveUser(session);
@@ -184,6 +201,61 @@ export function AuthProvider({ children }) {
     setUser(null);
     saveUser(null);
   }, []);
+
+  /** Merge verification state returned by the server into the saved session. */
+  const applyServerUser = useCallback((serverUser) => {
+    if (!serverUser) return;
+    setUser((prev) => {
+      if (!prev) return prev;
+      const next = { ...prev, ...verificationFields(serverUser) };
+      saveUser(next);
+      return next;
+    });
+  }, []);
+
+  const verificationRequest = useCallback(
+    async (path, body, { auth = true } = {}) => {
+      const headers = { "Content-Type": "application/json" };
+      if (auth && user?.accessToken) headers.Authorization = `Bearer ${user.accessToken}`;
+      let response;
+      try {
+        response = await fetch(`${API_URL}/api/auth/verify-email/${path}`, {
+          method: "POST",
+          headers,
+          body: JSON.stringify(body || {}),
+        });
+      } catch {
+        return { error: "Could not reach the server. Check your connection and try again." };
+      }
+      const data = await response.json().catch(() => ({}));
+      if (data.user) applyServerUser(data.user);
+      if (response.status === 404 || response.status === 405) {
+        return { error: "Email verification isn't available on this server yet.", unsupported: true };
+      }
+      if (!response.ok) {
+        return { ...data, error: data.detail || data.error || "Something went wrong. Please try again." };
+      }
+      return { ok: true, ...data };
+    },
+    [user?.accessToken, applyServerUser],
+  );
+
+  /** Email a new code + link. Pass an email to change the address first. */
+  const sendVerificationEmail = useCallback(
+    (email) => verificationRequest("send", email ? { email: String(email).trim().toLowerCase() } : {}),
+    [verificationRequest],
+  );
+
+  const confirmEmailCode = useCallback(
+    (code) => verificationRequest("confirm", { code: String(code || "").replace(/\D/g, "") }),
+    [verificationRequest],
+  );
+
+  /** Token from the link in the email; works signed in or not. */
+  const verifyEmailLink = useCallback(
+    (token) => verificationRequest("link", { token }),
+    [verificationRequest],
+  );
 
   /**
    * Edit the profile ({ fullName, email }). Saved on the server when it
@@ -237,6 +309,7 @@ export function AuthProvider({ children }) {
       applyLocal({
         fullName: data.user?.fullName ?? fullName ?? user.fullName,
         email: data.user?.email ?? email ?? user.email,
+        ...verificationFields(data.user),
       });
       return { ok: true };
     },
@@ -244,7 +317,19 @@ export function AuthProvider({ children }) {
   );
 
   return (
-    <AuthContext.Provider value={{ user, isHydrated, signup, login, logout, updateProfile }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isHydrated,
+        signup,
+        login,
+        logout,
+        updateProfile,
+        sendVerificationEmail,
+        confirmEmailCode,
+        verifyEmailLink,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -252,4 +337,4 @@ export function AuthProvider({ children }) {
 
 export function useAuth() {
   return useContext(AuthContext);
-}
+}
