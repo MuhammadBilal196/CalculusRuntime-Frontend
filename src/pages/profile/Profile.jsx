@@ -13,6 +13,9 @@ import {
   Award,
   Timer,
   BookOpen,
+  MailCheck,
+  BadgeCheck,
+  X,
 } from "lucide-react";
 import { useAuth, getDisplayName, getInitials } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
@@ -33,6 +36,7 @@ import { unresolvedMistakes } from "../../utils/mistakeNotebook";
 import { formatCompletionDate } from "../../utils/progressUtils";
 import { DailyChallengePromo } from "../challenge/DailyChallenge";
 import CourseRegister from "../../components/study/CourseRegister";
+import EmailVerifyPanel from "../auth/EmailVerifyPanel";
 import "./Profile.css";
 
 const TOOLS = [
@@ -120,6 +124,66 @@ function StudyTools() {
           </Link>
         ))}
       </div>
+    </section>
+  );
+}
+
+/** Lets members who joined before verification existed confirm their email. */
+function EmailVerification({ user }) {
+  const [open, setOpen] = useState(false);
+  const [justVerified, setJustVerified] = useState(false);
+
+  if (justVerified) {
+    return (
+      <section className="pf-verify pf-verify--done" role="status">
+        <span className="pf-verify__icon" aria-hidden="true">
+          <BadgeCheck size={20} />
+        </span>
+        <div className="pf-verify__body">
+          <strong>Email verified.</strong> Thanks — {user.email} is confirmed.
+        </div>
+        <button type="button" className="pf-verify__close" onClick={() => setJustVerified(false)} aria-label="Dismiss">
+          <X size={16} />
+        </button>
+      </section>
+    );
+  }
+  // Older backends don't report verification at all; show nothing then.
+  if (user.emailVerified !== false) return null;
+
+  return (
+    <section className="pf-verify" aria-labelledby="pf-verify-title">
+      <span className="pf-verify__icon" aria-hidden="true">
+        <MailCheck size={20} />
+      </span>
+      <div className="pf-verify__body">
+        <h2 id="pf-verify-title" className="pf-verify__title">
+          {user.email ? "Verify your email" : "Add and verify your email"}
+        </h2>
+        <p className="pf-verify__text">
+          {user.email ? (
+            <>
+              Confirm <strong>{user.email}</strong> so we can reach you about your account and certificates.
+            </>
+          ) : (
+            "Add an email address so you can recover your account and receive your certificates."
+          )}
+        </p>
+        {open ? (
+          <div className="pf-verify__panel">
+            <EmailVerifyPanel compact onVerified={() => setJustVerified(true)} />
+          </div>
+        ) : null}
+      </div>
+      {!open ? (
+        <button type="button" className="pf-btn pf-btn--primary pf-verify__cta" onClick={() => setOpen(true)}>
+          {user.email ? "Verify email" : "Add email"}
+        </button>
+      ) : (
+        <button type="button" className="pf-verify__close" onClick={() => setOpen(false)} aria-label="Close">
+          <X size={16} />
+        </button>
+      )}
     </section>
   );
 }
@@ -312,6 +376,11 @@ export default function Profile() {
             <p className="pf-hero__meta">
               @{user.username}
               {joined ? ` · ${joined}` : ""}
+              {user.emailVerified ? (
+                <span className="pf-verified" title={user.email || "Email verified"}>
+                  <BadgeCheck size={14} aria-hidden="true" /> Email verified
+                </span>
+              ) : null}
               {!user.fullName ? (
                 <>
                   {" · "}
@@ -344,6 +413,8 @@ export default function Profile() {
           ) : null}
         </div>
       </section>
+
+      <EmailVerification user={user} />
 
       {/* ── Key numbers ── */}
       <section className="pf-stats" aria-label="Your numbers">

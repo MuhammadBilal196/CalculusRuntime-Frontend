@@ -703,3 +703,122 @@ a.pf-stat:hover {
     transition: none;
   }
 }
+
+/* ── Email verification ── */
+.pf-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.55rem;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--c-success-border);
+  border-radius: 999px;
+  background: var(--c-success-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  vertical-align: middle;
+  --tc: var(--c-success);
+}
+
+.pf-verified svg {
+  color: var(--c-success);
+}
+
+.pf-verify {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin: 1.25rem 0 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--c-warning-border);
+  border-radius: 14px;
+  background: var(--c-warning-soft);
+}
+
+.pf-verify--done {
+  align-items: center;
+  border-color: var(--c-success-border);
+  background: var(--c-success-soft);
+  --tc: var(--c-success);
+}
+
+.pf-verify__icon {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 10px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-warning-border);
+  color: var(--c-warning);
+}
+
+.pf-verify--done .pf-verify__icon {
+  border-color: var(--c-success-border);
+  color: var(--c-success);
+}
+
+.pf-verify__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pf-verify__title {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.pf-verify__text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  --tc: var(--c-text-2);
+}
+
+.pf-verify__text strong {
+  overflow-wrap: anywhere;
+}
+
+.pf-verify__panel {
+  margin-top: 0.9rem;
+  padding: 1rem;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  background: var(--c-surface);
+  max-width: 460px;
+}
+
+.pf-verify__cta {
+  flex: none;
+  align-self: center;
+}
+
+.pf-verify__close {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  --tc: var(--c-muted);
+  color: var(--c-muted);
+}
+
+.pf-verify__close:hover {
+  background: var(--c-surface-2);
+}
+
+@media (max-width: 560px) {
+  .pf-verify {
+    flex-wrap: wrap;
+  }
+
+  .pf-verify__cta {
+    width: 100%;
+  }
+}
