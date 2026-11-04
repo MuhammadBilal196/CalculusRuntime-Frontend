@@ -16,6 +16,8 @@ import SiteThemeManager from "./components/common/SiteThemeManager";
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
+import VerifyEmail from "./pages/auth/VerifyEmail";
+import PageLoader, { RouteLoader } from "./components/common/PageLoader";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Settings from "./pages/settings/Settings";
 import AISolver from "./pages/tools/AISolver";
@@ -81,7 +83,6 @@ import Chatbot from "./components/Chatbot/Chatbot";
 import { QuantumChatAuthProvider } from "./features/quantumchat/context/QuantumChatAuthContext";
 import QuantumChatDock from "./features/quantumchat/components/QuantumChatDock";
 import BackToTop from "./components/common/BackToTop";
-import LoadingSpinner from "./components/common/LoadingSpinner";
 
 import {
   LinearEquationsPart1,
@@ -266,6 +267,7 @@ function App() {
           <BrowserRouter>
             <ErrorBoundary>
               <ScrollToTop />
+              <PageLoader />
               <CourseAutoEnroll />
               <SiteThemeManager />
               <GuideNotesLayer />
@@ -288,6 +290,7 @@ function App() {
                 {/* Auth */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/verify-email" element={<VerifyEmail />} />
                 <Route
                   path="/dashboard"
                   element={<Layout body={<Dashboard />} />}
@@ -1940,11 +1943,7 @@ function App() {
                       body={
                         <Suspense
                           fallback={
-                            <LoadingSpinner
-                              size="lg"
-                              text="Loading explorer…"
-                              fullPage
-                            />
+                            <RouteLoader />
                           }
                         >
                           <DistributionExplorer />
@@ -1960,11 +1959,7 @@ function App() {
                       body={
                         <Suspense
                           fallback={
-                            <LoadingSpinner
-                              size="lg"
-                              text="Loading calculator…"
-                              fullPage
-                            />
+                            <RouteLoader />
                           }
                         >
                           <StatsCalculator />
@@ -1980,11 +1975,7 @@ function App() {
                       body={
                         <Suspense
                           fallback={
-                            <LoadingSpinner
-                              size="lg"
-                              text="Loading badges…"
-                              fullPage
-                            />
+                            <RouteLoader />
                           }
                         >
                           <Achievements />
@@ -2004,11 +1995,7 @@ function App() {
                       body={
                         <Suspense
                           fallback={
-                            <LoadingSpinner
-                              size="lg"
-                              text="Loading 3D view…"
-                              fullPage
-                            />
+                            <RouteLoader />
                           }
                         >
                           <SurfaceExplorer />
