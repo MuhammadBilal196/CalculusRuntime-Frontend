@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { Eye, EyeOff, Lock } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
-import { needsEmailVerification, safeNextPath } from "../../utils/courseAccess";
+import { /* needsEmailVerification, */ safeNextPath } from "../../utils/courseAccess";
 import AuthShell from "./AuthShell";
 import "./EmailVerify.css";
 
@@ -42,8 +42,8 @@ function Signup() {
     const fullName = form.fullName.replace(/\s+/g, " ").trim();
     const username = form.username.trim();
     const email = form.email.trim();
-    if (!fullName || !username || !email || !form.password || !form.confirm) {
-      setError("Please fill in your name, username, email and password.");
+    if (!fullName || !username || !form.password || !form.confirm) {
+      setError("Please fill in your name, username and password.");
       return;
     }
     if (fullName.length < 2) {
@@ -58,31 +58,31 @@ function Signup() {
       setError("Username can't contain spaces.");
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError("Enter a valid email address — we’ll send a code to verify it.");
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Enter a valid email address, or leave it blank.");
       return;
     }
     if (form.password.length < 6) {
       setError("Password must be at least 6 characters.");
-      return;
-    }
-    if (form.password !== form.confirm) {
+    } else if (form.password !== form.confirm) {
       setError("Passwords don't match.");
-      return;
-    }
-    setLoading(true);
-    const result = await signup(username, form.password, { fullName, email });
-    setLoading(false);
-    if (result.error) {
-      setError(result.error);
-    } else if (needsEmailVerification(result.user)) {
-      // Step 2: confirm the email. The code was sent with the sign-up request.
-      navigate(`/verify-email?next=${encodeURIComponent(next)}`, {
-        replace: true,
-        state: { verification: result.verification || { sent: false } },
-      });
     } else {
-      navigate(next, { replace: true });
+      setLoading(true);
+      const result = await signup(username, form.password, { fullName, email });
+      setLoading(false);
+      if (result.error) {
+        setError(result.error);
+      } else {
+        // Email verification step is commented out until the backend is deployed:
+        // if (needsEmailVerification(result.user)) {
+        //   navigate(`/verify-email?next=${encodeURIComponent(next)}`, {
+        //     replace: true,
+        //     state: { verification: result.verification || { sent: false } },
+        //   });
+        //   return;
+        // }
+        navigate(next, { replace: true });
+      }
     }
   };
 
@@ -106,6 +106,7 @@ function Signup() {
           </span>
         </p>
       ) : null}
+      {/* Email verification progress steps (commented out until backend is deployed):
       <ol className="auth-steps" aria-label="Sign-up progress">
         <li className="is-active" aria-current="step">
           <span className="auth-steps__num">1</span> Account
@@ -114,6 +115,7 @@ function Signup() {
           <span className="auth-steps__num">2</span> Verify email
         </li>
       </ol>
+      */}
       <form className="auth-form" onSubmit={submit} noValidate>
         <label className="auth-label">
           Full name
@@ -144,7 +146,7 @@ function Signup() {
             />
           </label>
           <label className="auth-label">
-            Email
+            Email (optional)
             <input
               className="auth-input"
               type="email"
@@ -153,7 +155,6 @@ function Signup() {
               onChange={handle}
               autoComplete="email"
               placeholder="you@example.com"
-              required
             />
           </label>
         </div>
