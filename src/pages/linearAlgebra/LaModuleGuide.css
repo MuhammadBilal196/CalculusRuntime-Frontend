@@ -22,8 +22,16 @@
   text-decoration: underline;
 }
 
-.la-module-guide .sidebar .sb-link {
-  white-space: normal;
+@media (min-width: 921px) {
+  .la-module-guide .sidebar .sb-link {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 920px) {
+  .la-module-guide .sidebar .sb-link {
+    white-space: nowrap;
+  }
 }
 
 .la-module-guide .ch-title {
