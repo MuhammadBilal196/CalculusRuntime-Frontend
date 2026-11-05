@@ -13,9 +13,12 @@ const CORE_PATH_ORDER = [
   "/multiple-integrals/1",
   "/coordinate-transformations/1",
   "/lagrange-multipliers/1",
+  "/constrained-unconstrained-optimization/1",
   "/vector-calculus/1",
   "/divergence-curl/1",
   "/stokes-theorem/1",
+  "/space-curves/1",
+  "/vector-fields-approximation/1",
 ];
 const CORE_CERT_PATHS = new Set(CORE_PATH_ORDER);
 
@@ -165,9 +168,11 @@ function MultivariableOverview() {
           The core certificate track covers <strong>3D Analytical Geometry &amp; Quadric Surfaces</strong>,{" "}
           <strong>Partial Derivatives</strong>, <strong>Multiple Integrals</strong>,{" "}
           <strong>Coordinate Transformations &amp; Surfaces</strong>, <strong>Lagrange Multipliers</strong>,{" "}
-          <strong>Vector Calculus</strong>, <strong>Divergence &amp; Curl</strong>, and{" "}
-          <strong>Stokes' Theorem</strong>. Complete the core modules to unlock the 100-question final exam
-          and earn your verifiable digital certificate.
+          <strong>Constrained &amp; Unconstrained Optimization</strong>, <strong>Vector Calculus</strong>,{" "}
+          <strong>Divergence &amp; Curl</strong>, <strong>Stokes' Theorem</strong>,{" "}
+          <strong>Space Curves &amp; Arc Length</strong>, and{" "}
+          <strong>Vector Fields &amp; Approximation Theory</strong>. Complete the core modules to unlock the
+          100-question final exam and earn your verifiable digital certificate.
         </p>
         <p className="la-overview-lead">
           Every other guide is optional additional depth. Newer modules such as{" "}

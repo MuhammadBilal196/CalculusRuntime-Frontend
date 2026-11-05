@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { getCourseById } from "../../data/courses";
 import "../linearAlgebra/LinearAlgebraOverview.css";
 
-const CORE_CERT_PATHS = new Set([
+const CORE_PATH_ORDER = [
   "/limits-continuity/1",
   "/differentiation/1",
   "/integration/1",
   "/sequences-series/1",
+  "/taylor-series/1",
   "/conic-sections/1",
   "/lines-geometry/1",
   "/circles-tangents/1",
@@ -14,7 +15,6 @@ const CORE_CERT_PATHS = new Set([
   "/differential-equations/1",
   "/space-curves/1",
   "/vector-motion/1",
-  "/parametric-surfaces/1",
   "/polar-calculus/1",
   "/solids-revolution/1",
   "/volume-cross-sections/1",
@@ -24,19 +24,8 @@ const CORE_CERT_PATHS = new Set([
   "/hyperbolic-functions/1",
   "/laplace-transforms/1",
   "/fourier-series/1",
-  "/gamma-beta-functions/1",
-  "/leibniz-rule/1",
-  "/fourier-transforms/1",
-  "/z-transforms/1",
-  "/intro-pdes/1",
-  "/orthogonal-polynomials/1",
-  "/pointwise-uniform-convergence/1",
-  "/interchanging-limits/1",
-  "/power-series-ode/1",
-  "/frobenius-method/1",
-  "/analytic-functions/1",
-  "/contour-integrals/1",
-]);
+];
+const CORE_CERT_PATHS = new Set(CORE_PATH_ORDER);
 
 const EXCLUDED_FROM_ROADMAP = new Set([
   "/calculus/overview",
@@ -45,10 +34,50 @@ const EXCLUDED_FROM_ROADMAP = new Set([
   "/quiz/calculus-analytical-geometry",
 ]);
 
+function isToolModule(mod) {
+  const meta = mod.meta?.toLowerCase() || "";
+  return meta.includes("tool") || meta.includes("interactive");
+}
+
+function RoadmapGroup({ id, title, lead, modules, tag, core = false }) {
+  if (!modules.length) return null;
+  return (
+    <>
+      <h3 id={id} style={{ margin: "2rem 0 0.4rem", fontSize: "1.15rem" }}>
+        {title}
+      </h3>
+      {lead && <p className="la-overview-lead" style={{ marginTop: 0 }}>{lead}</p>}
+      <ol className="la-roadmap">
+        {modules.map((mod, i) => (
+          <li key={mod.path}>
+            <Link to={mod.path} className="la-roadmap-row">
+              <span className="la-roadmap-num">{i + 1}</span>
+              <span className="la-roadmap-copy">
+                <span className="la-roadmap-title">
+                  {mod.title}
+                  <span className={`la-roadmap-tag${core ? " la-roadmap-tag--core" : ""}`}>{tag}</span>
+                </span>
+                <small>{mod.description}</small>
+              </span>
+              <span className="la-roadmap-arrow" aria-hidden="true">→</span>
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </>
+  );
+}
+
 function CalculusOverview() {
   const course = getCourseById("calculus-analytical-geometry");
   const roadmap = (course?.modules || []).filter((m) => !EXCLUDED_FROM_ROADMAP.has(m.path));
-  const firstTopicPath = roadmap[0]?.path || "/limits-continuity/1";
+
+  const coreModules = CORE_PATH_ORDER.map((path) => roadmap.find((m) => m.path === path)).filter(Boolean);
+  const toolModules = roadmap.filter((m) => !CORE_CERT_PATHS.has(m.path) && isToolModule(m));
+  const extraModules = roadmap.filter((m) => !CORE_CERT_PATHS.has(m.path) && !isToolModule(m));
+
+  const firstModule = coreModules[0] || roadmap[0];
+  const firstTopicPath = firstModule?.path || "/limits-continuity/1";
 
   return (
     <main className="home-page la-overview">
@@ -100,29 +129,28 @@ function CalculusOverview() {
       <section className="guide-section" aria-labelledby="roadmap-heading">
         <div className="section-kicker">Roadmap</div>
         <h2 id="roadmap-heading">What you'll learn, in order</h2>
-        <ol className="la-roadmap">
-          {roadmap.map((mod, i) => {
-            const isCore = CORE_CERT_PATHS.has(mod.path);
-            const isTool = mod.meta?.toLowerCase().includes("tool") || mod.meta?.toLowerCase().includes("interactive");
-            return (
-              <li key={mod.path}>
-                <Link to={mod.path} className="la-roadmap-row">
-                  <span className="la-roadmap-num">{i + 1}</span>
-                  <span className="la-roadmap-copy">
-                    <span className="la-roadmap-title">
-                      {mod.title}
-                      <span className={`la-roadmap-tag${isCore ? " la-roadmap-tag--core" : ""}`}>
-                        {isCore ? "Core · certificate" : isTool ? "Interactive Tool" : "Additional Depth"}
-                      </span>
-                    </span>
-                    <small>{mod.description}</small>
-                  </span>
-                  <span className="la-roadmap-arrow" aria-hidden="true">→</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ol>
+        <RoadmapGroup
+          id="roadmap-core"
+          title="Core path · required for the certificate"
+          lead="Work through these core modules in order. Every topic touching core single-variable calculus, analytical geometry, space curves, volumes, ODEs, and transforms is included here and required for the course certificate."
+          modules={coreModules}
+          tag="Core · certificate"
+          core
+        />
+        <RoadmapGroup
+          id="roadmap-extra"
+          title="Additional depth · optional"
+          lead="Take any of these specialized analysis, transform, and differential equation modules once the core path is done. They provide advanced mathematical depth and are optional for the certificate."
+          modules={extraModules}
+          tag="Additional Depth · optional"
+        />
+        <RoadmapGroup
+          id="roadmap-tools"
+          title="Interactive tools"
+          lead="Use these interactive visualizers alongside the guides to explore curves, derivatives, and integrals."
+          modules={toolModules}
+          tag="Interactive Tool"
+        />
       </section>
 
       <section className="guide-section" aria-labelledby="structure-heading">
