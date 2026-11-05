@@ -21,6 +21,11 @@ const EXCLUDED_FROM_ROADMAP = new Set([
   "/quiz/linear-algebra",
 ]);
 
+const isToolModule = (mod) => {
+  const meta = mod.meta?.toLowerCase() || "";
+  return meta.includes("tool") || meta.includes("interactive");
+};
+
 function LinearAlgebraOverview() {
   const { hash } = useLocation();
   useEffect(() => {
@@ -30,6 +35,9 @@ function LinearAlgebraOverview() {
   }, [hash]);
   const course = getCourseById("linear-algebra");
   const roadmap = (course?.modules || []).filter((m) => !EXCLUDED_FROM_ROADMAP.has(m.path));
+  const coreModules = roadmap.filter((mod) => CORE_CERT_PATHS.has(mod.path));
+  const extraModules = roadmap.filter((mod) => !CORE_CERT_PATHS.has(mod.path) && !isToolModule(mod));
+  const toolModules = roadmap.filter((mod) => !CORE_CERT_PATHS.has(mod.path) && isToolModule(mod));
   const firstTopicPath = roadmap[0]?.path || "/linear-algebra/linear-equations/1";
 
   return (
@@ -81,28 +89,85 @@ function LinearAlgebraOverview() {
       <section className="guide-section" aria-labelledby="roadmap-heading">
         <div className="section-kicker">Roadmap</div>
         <h2 id="roadmap-heading">What you'll learn, in order</h2>
+        <h3 id="roadmap-core" style={{ margin: "2rem 0 0.4rem", fontSize: "1.15rem" }}>
+          Core path · required for the certificate
+        </h3>
+        <p className="la-overview-lead" style={{ marginTop: 0 }}>
+          Work through these core modules in order. Complete all {getRequiredSections("linear-algebra").length} required parts across these 12 core modules to unlock the certification exam.
+        </p>
         <ol className="la-roadmap">
-          {roadmap.map((mod, i) => {
-            const isCore = CORE_CERT_PATHS.has(mod.path);
-            return (
-              <li key={mod.path}>
-                <Link to={mod.path} className="la-roadmap-row">
-                  <span className="la-roadmap-num">{i + 1}</span>
-                  <span className="la-roadmap-copy">
-                    <span className="la-roadmap-title">
-                      {mod.title}
-                      <span className={`la-roadmap-tag${isCore ? " la-roadmap-tag--core" : ""}`}>
-                        {isCore ? "Required for certificate" : LA_EXPANSION_MODULES.some((module) => getLaModulePath(module) === mod.path) ? "New topics" : "Extra depth"}
-                      </span>
+          {coreModules.map((mod, i) => (
+            <li key={mod.path}>
+              <Link to={mod.path} className="la-roadmap-row">
+                <span className="la-roadmap-num">{i + 1}</span>
+                <span className="la-roadmap-copy">
+                  <span className="la-roadmap-title">
+                    {mod.title}
+                    <span className="la-roadmap-tag la-roadmap-tag--core">
+                      Required for certificate
                     </span>
-                    <small>{mod.description}</small>
                   </span>
-                  <span className="la-roadmap-arrow" aria-hidden="true">→</span>
-                </Link>
-              </li>
-            );
-          })}
+                  <small>{mod.description}</small>
+                </span>
+                <span className="la-roadmap-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+          ))}
         </ol>
+
+        <h3 id="roadmap-extra" style={{ margin: "2rem 0 0.4rem", fontSize: "1.15rem" }}>
+          Additional depth · optional
+        </h3>
+        <p className="la-overview-lead" style={{ marginTop: 0 }}>
+          Optional foundational and geometric depth modules that complement the core curriculum.
+        </p>
+        <ol className="la-roadmap">
+          {extraModules.map((mod, i) => (
+            <li key={mod.path}>
+              <Link to={mod.path} className="la-roadmap-row">
+                <span className="la-roadmap-num">{i + 1}</span>
+                <span className="la-roadmap-copy">
+                  <span className="la-roadmap-title">
+                    {mod.title}
+                    <span className="la-roadmap-tag">
+                      {LA_EXPANSION_MODULES.some((module) => getLaModulePath(module) === mod.path) ? "New topics" : "Extra depth"}
+                    </span>
+                  </span>
+                  <small>{mod.description}</small>
+                </span>
+                <span className="la-roadmap-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+
+        {toolModules.length ? (
+          <>
+            <h3 id="roadmap-tools" style={{ margin: "2rem 0 0.4rem", fontSize: "1.15rem" }}>
+              Interactive tools &amp; practice
+            </h3>
+            <p className="la-overview-lead" style={{ marginTop: 0 }}>
+              Use these interactive tools and timed practice alongside the study guides.
+            </p>
+            <ol className="la-roadmap">
+              {toolModules.map((mod, i) => (
+                <li key={mod.path}>
+                  <Link to={mod.path} className="la-roadmap-row">
+                    <span className="la-roadmap-num">{i + 1}</span>
+                    <span className="la-roadmap-copy">
+                      <span className="la-roadmap-title">
+                        {mod.title}
+                        <span className="la-roadmap-tag">Interactive Tool</span>
+                      </span>
+                      <small>{mod.description}</small>
+                    </span>
+                    <span className="la-roadmap-arrow" aria-hidden="true">→</span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </>
+        ) : null}
       </section>
 
       {LA_MODULES.map((module) => (
