@@ -25,9 +25,13 @@ export function isCourseContentPath(pathname = "") {
   return Boolean(getModuleSectionIds(path));
 }
 
-/** True while a new account still has to confirm its email before studying. */
-export function needsEmailVerification(user) {
-  return Boolean(user && user.verificationRequired && !user.emailVerified);
+/**
+ * Email verification gate is commented out until the main backend is deployed.
+ * Uncomment the line below when ready to re-enable email verification.
+ */
+export function needsEmailVerification(/* user */) {
+  // return Boolean(user && user.verificationRequired && !user.emailVerified);
+  return false;
 }
 
 /** Only same-site paths are allowed as the page to return to after signing in. */
