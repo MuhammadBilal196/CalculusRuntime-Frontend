@@ -162,12 +162,13 @@ html[data-site-theme] .partial-derivatives-guide .sb-link--page {
   color: var(--c-muted);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 920px) {
   html[data-site-theme] .partial-derivatives-guide .sb-link {
     display: inline-flex;
     align-items: center;
     border-radius: var(--c-radius-pill);
     padding: 0.3rem 0.75rem 0.3rem 0.35rem;
+    white-space: nowrap;
   }
 
   html[data-site-theme] .partial-derivatives-guide .sb-group {
@@ -184,23 +185,29 @@ html[data-site-theme] .partial-derivatives-guide .sb-link--page {
   padding: 0 1.25rem 0.85rem;
 }
 
-.sb-parts__course {
+.sb-parts__nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.sb-parts__course,
+.sb-parts__prev {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  margin-bottom: 0.6rem;
   color: var(--c-muted) !important;
   font-size: 0.76rem;
-  font-weight: 600;
+  font-weight: 650;
   text-decoration: none !important;
+  transition: color 0.15s ease;
 }
 
-/* The sidebar brand already names the course */
-.sidebar:has(.sb-sub) .sb-parts__course {
-  display: none;
-}
-
-.sb-parts__course:hover {
+.sb-parts__course:hover,
+.sb-parts__prev:hover {
   color: var(--c-accent) !important;
 }
 
@@ -236,7 +243,7 @@ html[data-site-theme] .partial-derivatives-guide .sb-link--page {
   box-shadow: var(--c-shadow-sm);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 920px) {
   .sb-parts-host {
     flex: 0 0 auto;
     display: flex;
@@ -244,13 +251,30 @@ html[data-site-theme] .partial-derivatives-guide .sb-link--page {
   }
 
   .sb-parts {
-    padding: 0 0.6rem 0 0;
-    margin-right: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0 0.65rem 0 0;
+    margin-right: 0.25rem;
     border-right: 1px solid var(--c-border);
   }
 
-  .sb-parts__course {
-    display: none;
+  .sb-parts__nav-row {
+    margin-bottom: 0;
+    flex-wrap: nowrap;
+    gap: 0.45rem;
+  }
+
+  .sb-parts__course,
+  .sb-parts__prev {
+    display: inline-flex;
+    padding: 0.24rem 0.6rem;
+    border: 1px solid var(--c-border);
+    border-radius: var(--c-radius-pill);
+    background: var(--c-surface);
+    color: var(--c-text) !important;
+    font-size: 0.75rem;
+    white-space: nowrap;
   }
 
   .sb-parts__tabs {
