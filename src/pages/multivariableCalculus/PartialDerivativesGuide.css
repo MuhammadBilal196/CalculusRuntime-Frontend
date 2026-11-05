@@ -1020,16 +1020,17 @@
 }
 
 /* ── Phones & tablets ──────────────────────────────────────────────────── */
-@media (max-width: 860px) {
+@media (max-width: 920px) {
   .partial-derivatives-guide .sidebar {
     position: sticky;
-    top: var(--header-h, 70px);
+    top: var(--sidebar-top, var(--header-h, 70px));
     left: auto;
     bottom: auto;
     width: 100%;
     max-width: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
     gap: 0.4rem;
     overflow-x: auto;
     overflow-y: hidden;
