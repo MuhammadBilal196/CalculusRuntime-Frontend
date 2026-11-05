@@ -56,10 +56,20 @@ export default function TopicModulePage({
     };
   };
 
+  const coursePath = completion?.courseId ? `/courses/${completion.courseId}` : "/courses/multivariable-calculus";
+
   return (
     <div className="guide-part-wrapper">
       <div className="guide-part-topbar">
         <div className="guide-part-info">
+          <Link className="guide-part-back" to={coursePath}>
+            ← {courseTitle}
+          </Link>
+          {part === 2 ? (
+            <Link className="guide-part-back guide-part-back--part" to={`${basePath}/1`}>
+              ← Part 1
+            </Link>
+          ) : null}
           <span className="guide-part-badge">Part {part} of 2</span>
           <span className="guide-part-title">{moduleTitle}</span>
         </div>
@@ -135,6 +145,12 @@ export default function TopicModulePage({
               {moduleTitle} · Part {part} of 2
             </p>
             <div className="guide-navigation">
+              {part === 1 ? (
+                <Link to={coursePath} className="guide-nav-button guide-nav-button--prev">
+                  <span className="guide-nav-button__hint">Back to course</span>
+                  <span className="guide-nav-button__label">← {courseTitle}</span>
+                </Link>
+              ) : null}
               {part === 2 ? (
                 <Link to={`${basePath}/1`} className="guide-nav-button guide-nav-button--prev">
                   <span className="guide-nav-button__hint">Previous part</span>
@@ -148,6 +164,14 @@ export default function TopicModulePage({
                   <span className="guide-nav-button__hint">Next part</span>
                   <span className="guide-nav-button__label">
                     {otherTopics.map((t) => t.title).join(" & ")}
+                  </span>
+                </Link>
+              ) : null}
+              {part === 2 && completion?.nextPath ? (
+                <Link to={completion.nextPath} className="guide-nav-button guide-nav-button--next">
+                  <span className="guide-nav-button__hint">Next module</span>
+                  <span className="guide-nav-button__label">
+                    {completion.nextLabel || "Continue course"} →
                   </span>
                 </Link>
               ) : null}
