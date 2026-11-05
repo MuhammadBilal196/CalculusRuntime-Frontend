@@ -3,6 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useProgress } from "../../context/ProgressContext";
 import { Link, useLocation } from "react-router-dom";
 import { isCourseCertificateEligible, isCourseComplete } from "../../data/courseCompletion";
+import { findGuideModule } from "../../utils/guideParts";
 import {
   SECTION_QUIZ_PASS_PERCENT,
   getSectionQuizGateStatus,
@@ -19,10 +20,20 @@ import "./SectionCompleteBar.css";
  * Mark as complete stays locked until every in-guide quiz for this section
  * is finished at ≥80% (see sectionQuizGates.js).
  */
-/** Part 2 pages link back to Part 1 automatically (/x/2 → /x/1). */
-function defaultPrevPath(pathname) {
+/** Part 2 pages link back to Part 1; Part 1 pages link back to previous module or course hub. */
+function defaultPrevInfo(pathname) {
+  const info = findGuideModule(pathname);
+  if (info?.prevPartPath) {
+    return { path: info.prevPartPath, label: "Back to Part 1" };
+  }
+  if (info?.prevModule?.path) {
+    return { path: info.prevModule.path, label: `Previous: ${info.prevModule.title}` };
+  }
+  if (info?.coursePath) {
+    return { path: info.coursePath, label: `Back to ${info.courseTitle}` };
+  }
   const match = pathname.match(/^(.*)\/2\/?$/);
-  return match && match[1] ? `${match[1]}/1` : null;
+  return match && match[1] ? { path: `${match[1]}/1`, label: "Back to Part 1" } : { path: null, label: null };
 }
 
 function PrevLink({ to, label }) {
@@ -37,8 +48,9 @@ function PrevLink({ to, label }) {
 function SectionCompleteBar({ sectionId, nextPath, nextLabel, prevPath, prevLabel, courseId }) {
   const { user } = useAuth();
   const { pathname } = useLocation();
-  const resolvedPrev = prevPath === undefined ? defaultPrevPath(pathname) : prevPath;
-  const resolvedPrevLabel = prevLabel || (prevPath === undefined ? "Back to Part 1" : "Previous");
+  const fallbackPrev = defaultPrevInfo(pathname);
+  const resolvedPrev = prevPath === undefined ? fallbackPrev.path : prevPath;
+  const resolvedPrevLabel = prevLabel || (prevPath === undefined ? fallbackPrev.label : "Previous");
   const { progress, markSectionComplete } = useProgress();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
