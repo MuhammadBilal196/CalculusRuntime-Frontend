@@ -129,6 +129,7 @@ function StudyTools() {
 }
 
 /** Lets members who joined before verification existed confirm their email. */
+// eslint-disable-next-line no-unused-vars
 function EmailVerification({ user }) {
   const [open, setOpen] = useState(false);
   const [justVerified, setJustVerified] = useState(false);
@@ -376,11 +377,13 @@ export default function Profile() {
             <p className="pf-hero__meta">
               @{user.username}
               {joined ? ` · ${joined}` : ""}
+              {/* Email verified badge commented out until backend deployment:
               {user.emailVerified ? (
                 <span className="pf-verified" title={user.email || "Email verified"}>
                   <BadgeCheck size={14} aria-hidden="true" /> Email verified
                 </span>
               ) : null}
+              */}
               {!user.fullName ? (
                 <>
                   {" · "}
@@ -414,7 +417,8 @@ export default function Profile() {
         </div>
       </section>
 
-      <EmailVerification user={user} />
+      {/* Email verification banner commented out until backend deployment: */}
+      {/* <EmailVerification user={user} /> */}
 
       {/* ── Key numbers ── */}
       <section className="pf-stats" aria-label="Your numbers">
