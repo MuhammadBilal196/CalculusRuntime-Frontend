@@ -117,6 +117,24 @@
 }
 
 @media (max-width: 640px) {
+  .guide-card::before,
+  .guide-card::after,
+  .guide-card .guide-card-logo,
+  .guide-card .guide-card-icon,
+  [data-site-theme="default"] .guide-card .guide-card-logo,
+  [data-site-theme="default"] .guide-card .guide-card-icon {
+    display: none !important;
+  }
+
+  .guide-card:not(:has(.guide-card-body)),
+  [data-site-theme="default"] .guide-card:not(:has(.guide-card-body)) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.25rem;
+    padding: 1rem 1.1rem !important;
+  }
+
   .la-roadmap-row {
     gap: 0.85rem;
     padding: 0.9rem 1rem;
