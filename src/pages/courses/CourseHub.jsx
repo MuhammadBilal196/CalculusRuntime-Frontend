@@ -3,11 +3,12 @@ import { getCourseById } from "../../data/courses";
 import { useProgress } from "../../context/ProgressContext";
 import { useAuth } from "../../context/AuthContext";
 import { CourseRegisterButton } from "../../components/study/CourseRegister";
-import { CATALOG_COURSE_IDS } from "../../data/courseCatalog";
+import { CATALOG_COURSE_IDS, getModuleSectionIds } from "../../data/courseCatalog";
 import {
   isCourseCertificateEligible,
   isCourseComplete,
   getRemainingSections,
+  getRequiredSections,
 } from "../../data/courseCompletion";
 
 function CourseHub() {
@@ -24,6 +25,7 @@ function CourseHub() {
   const eligible = isCourseCertificateEligible(courseId);
   const complete = isCourseComplete(courseId, progress.completedSections);
   const remaining = getRemainingSections(courseId, progress.completedSections);
+  const requiredSet = new Set(getRequiredSections(courseId));
 
   return (
     <main className="home-page">
@@ -96,6 +98,15 @@ function CourseHub() {
               );
             }
 
+            const sectionIds = getModuleSectionIds(mod.path);
+            const isStudyModule = Array.isArray(sectionIds) && sectionIds.length > 0;
+            const isCoreModule = isStudyModule && sectionIds.some((id) => requiredSet.has(id));
+            const trackBadge = isStudyModule
+              ? isCoreModule
+                ? "Core · Required for Certificate"
+                : "Optional · Additional Depth"
+              : null;
+
             return (
               <Link
                 className={`guide-card guide-card--${course.color}${mod.start ? " guide-card--start" : ""}`}
@@ -108,7 +119,9 @@ function CourseHub() {
                   <div className="guide-card-icon">{mod.icon || "✦"}</div>
                 )}
                 <h3>{mod.title}</h3>
-                <span className="guide-card-meta">{mod.meta}</span>
+                <span className="guide-card-meta">
+                  {trackBadge ? `${trackBadge} · ${mod.meta}` : mod.meta}
+                </span>
                 <p>{mod.description}</p>
               </Link>
             );
