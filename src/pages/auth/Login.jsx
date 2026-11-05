@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
-import { needsEmailVerification, safeNextPath } from "../../utils/courseAccess";
+import { /* needsEmailVerification, */ safeNextPath } from "../../utils/courseAccess";
 import AuthShell from "./AuthShell";
 
 function Login() {
@@ -29,9 +29,12 @@ function Login() {
     setLoading(false);
     if (result.error) {
       setError(result.error);
-    } else if (needsEmailVerification(result.user)) {
-      navigate(`/verify-email?next=${encodeURIComponent(next)}`, { replace: true });
     } else {
+      // Email verification redirect commented out until backend deployment:
+      // if (needsEmailVerification(result.user)) {
+      //   navigate(`/verify-email?next=${encodeURIComponent(next)}`, { replace: true });
+      //   return;
+      // }
       navigate(next, { replace: true });
     }
   };
