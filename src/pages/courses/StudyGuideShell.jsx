@@ -59,6 +59,18 @@ const saveForLaterStyles = `
   box-shadow: 0 0 0 8px var(--c-accent-soft, rgba(2, 132, 199, 0.2));
   transition: outline 0.2s, box-shadow 0.2s;
 }
+@media (max-width: 640px) {
+  .box.exm {
+    padding-right: 1.15rem;
+    padding-top: 2.6rem;
+  }
+  .save-example-btn {
+    top: 0.55rem;
+    right: 0.65rem;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
+  }
+}
 `;
 
 function renderLatex(root) {
@@ -488,6 +500,242 @@ function setupMcqs(root, { publishQuizToLeaderboard, saveQuizScore, setLeaderboa
   return cleanups;
 }
 
+function ensureCoordinateTransformationsPattern(root, partInfo, guideTitle) {
+  const cleanups = [];
+  const sidebar = root.querySelector(".sidebar");
+  const main = root.querySelector(".main");
+
+  // 1. Standardize Sidebar (.sb-brand with .sb-sub + .sb-title, and .sb-group)
+  if (sidebar) {
+    let brand = sidebar.querySelector(".sb-brand");
+    if (!brand) {
+      brand = document.createElement("div");
+      brand.className = "sb-brand";
+      brand.dataset.autoCreated = "true";
+      const sub = document.createElement("div");
+      sub.className = "sb-sub";
+      sub.textContent = partInfo?.courseTitle || "CalcVoyager";
+      const titleEl = document.createElement("div");
+      titleEl.className = "sb-title";
+      titleEl.textContent = partInfo?.moduleTitle || guideTitle || "Study Guide";
+      brand.appendChild(sub);
+      brand.appendChild(titleEl);
+      const host = sidebar.querySelector(".sb-parts-host");
+      if (host && host.nextSibling) {
+        sidebar.insertBefore(brand, host.nextSibling);
+      } else if (host) {
+        sidebar.appendChild(brand);
+      } else {
+        sidebar.insertBefore(brand, sidebar.firstChild);
+      }
+      cleanups.push(() => brand.remove());
+    } else {
+      if (!brand.querySelector(".sb-sub") && partInfo?.courseTitle) {
+        const sub = document.createElement("div");
+        sub.className = "sb-sub";
+        sub.dataset.autoCreated = "true";
+        sub.textContent = partInfo.courseTitle;
+        brand.insertBefore(sub, brand.firstChild);
+        cleanups.push(() => sub.remove());
+      }
+      const titleEl = brand.querySelector(".sb-title");
+      if (titleEl && titleEl.textContent.trim() === "Topic" && partInfo?.moduleTitle) {
+        const prevText = titleEl.textContent;
+        titleEl.textContent = partInfo.moduleTitle;
+        cleanups.push(() => {
+          titleEl.textContent = prevText;
+        });
+      }
+    }
+
+    if (!sidebar.querySelector(".sb-group")) {
+      const firstLink = sidebar.querySelector(".sb-link, .sidebar-link");
+      if (firstLink) {
+        const group = document.createElement("div");
+        group.className = "sb-group";
+        group.dataset.autoCreated = "true";
+        group.textContent =
+          partInfo?.moduleTitle ||
+          (partInfo?.part ? `Part ${partInfo.part} Sections` : "Sections");
+        sidebar.insertBefore(group, firstLink);
+        cleanups.push(() => group.remove());
+      }
+    }
+  }
+
+  // 2. Standardize Header ornament & Table of Contents (.toc with .toc-grid--auto)
+  if (main) {
+    const hdr = main.querySelector(".ch-hdr");
+    if (hdr && !hdr.querySelector(".ch-orn")) {
+      const orn = document.createElement("span");
+      orn.className = "ch-orn";
+      orn.dataset.autoCreated = "true";
+      orn.innerHTML = "✦ &nbsp; ✦ &nbsp; ✦";
+      hdr.appendChild(orn);
+      cleanups.push(() => orn.remove());
+    }
+
+    const existingToc = main.querySelector(".toc");
+    if (!existingToc && hdr) {
+      const rawLinks = sidebar
+        ? Array.from(sidebar.querySelectorAll('.sb-link[href^="#"], .sidebar-link[href^="#"]'))
+        : [];
+      const items = [];
+      const seen = new Set();
+      rawLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (!href || !href.startsWith("#") || href.length < 2 || seen.has(href)) return;
+        const id = href.slice(1);
+        const target = root.querySelector(`#${CSS.escape(id)}`);
+        if (!target) return;
+        seen.add(href);
+        const label = (link.textContent || "").replace(/\s+/g, " ").trim();
+        if (label) items.push({ href, label });
+      });
+
+      if (items.length === 0) {
+        Array.from(main.querySelectorAll(".section[id], .mcq-section[id]")).forEach((sec) => {
+          if (!sec.id) return;
+          const href = `#${sec.id}`;
+          if (seen.has(href)) return;
+          seen.add(href);
+          const h = sec.querySelector("h2, .sec-title, h3");
+          const label = (h?.textContent || sec.id).replace(/\s+/g, " ").trim();
+          if (label) items.push({ href, label });
+        });
+      }
+
+      if (items.length > 0) {
+        const toc = document.createElement("nav");
+        toc.className = "toc";
+        toc.dataset.autoCreated = "true";
+        const tocH = document.createElement("div");
+        tocH.className = "toc-h";
+        tocH.textContent = partInfo?.isTwoPart
+          ? `Contents — Part ${partInfo.part} of ${partInfo.parts.length}`
+          : "Contents — On this page";
+        toc.appendChild(tocH);
+
+        const topicWrap = document.createElement("div");
+        topicWrap.className = "toc-topic";
+        if (partInfo?.moduleTitle) {
+          const topicH = document.createElement("div");
+          topicH.className = "toc-h toc-h--topic";
+          topicH.textContent = partInfo.moduleTitle;
+          topicWrap.appendChild(topicH);
+        }
+        const grid = document.createElement("div");
+        grid.className = "toc-grid toc-grid--auto";
+        items.forEach(({ href, label }) => {
+          const a = document.createElement("a");
+          a.className = "toc-a";
+          a.setAttribute("href", href);
+          a.textContent = label;
+          grid.appendChild(a);
+        });
+        topicWrap.appendChild(grid);
+        toc.appendChild(topicWrap);
+        hdr.insertAdjacentElement("afterend", toc);
+        cleanups.push(() => toc.remove());
+      }
+    } else if (existingToc) {
+      existingToc.querySelectorAll(".toc-grid").forEach((grid) => {
+        if (!grid.querySelector(".tn") && !grid.classList.contains("toc-grid--auto")) {
+          grid.classList.add("toc-grid--auto");
+          cleanups.push(() => grid.classList.remove("toc-grid--auto"));
+        }
+      });
+    }
+
+    // 3. Ensure bottom page footer (.pg-foot) has previous/next & course navigation
+    if (partInfo) {
+      let foot = main.querySelector(".pg-foot");
+      if (!foot) {
+        foot = document.createElement("div");
+        foot.className = "pg-foot";
+        foot.dataset.autoCreated = "true";
+        const p = document.createElement("p");
+        p.textContent = `${partInfo.moduleTitle}${partInfo.isTwoPart ? ` · Part ${partInfo.part} of 2` : ""}`;
+        foot.appendChild(p);
+        main.appendChild(foot);
+        cleanups.push(() => foot.remove());
+      }
+      if (!foot.querySelector(".guide-navigation")) {
+        const nav = document.createElement("div");
+        nav.className = "guide-navigation";
+        nav.dataset.autoCreated = "true";
+
+        const prevHref = partInfo.prevPartPath || partInfo.prevModule?.path || partInfo.coursePath;
+        const prevHint = partInfo.prevPartPath
+          ? "Previous part"
+          : partInfo.prevModule
+          ? "Previous module"
+          : "Back to course";
+        const prevLabel = partInfo.prevPartPath
+          ? `${partInfo.moduleTitle} — Part 1`
+          : partInfo.prevModule
+          ? `← ${partInfo.prevModule.title}`
+          : `← ${partInfo.courseTitle}`;
+
+        if (prevHref) {
+          const prevA = document.createElement("a");
+          prevA.className = "guide-nav-button guide-nav-button--prev";
+          prevA.setAttribute("href", prevHref);
+          prevA.innerHTML = `<span class="guide-nav-button__hint">${prevHint}</span><span class="guide-nav-button__label">${prevLabel}</span>`;
+          nav.appendChild(prevA);
+        }
+
+        const nextHref = partInfo.nextPartPath || partInfo.nextModule?.path || partInfo.coursePath;
+        const nextHint = partInfo.nextPartPath
+          ? "Next part"
+          : partInfo.nextModule
+          ? "Next module"
+          : "Course hub";
+        const nextLabel = partInfo.nextPartPath
+          ? `${partInfo.moduleTitle} — Part 2 →`
+          : partInfo.nextModule
+          ? `${partInfo.nextModule.title} →`
+          : `${partInfo.courseTitle} →`;
+
+        if (nextHref) {
+          const nextA = document.createElement("a");
+          nextA.className = "guide-nav-button guide-nav-button--next";
+          nextA.setAttribute("href", nextHref);
+          nextA.innerHTML = `<span class="guide-nav-button__hint">${nextHint}</span><span class="guide-nav-button__label">${nextLabel}</span>`;
+          nav.appendChild(nextA);
+        }
+
+        foot.appendChild(nav);
+        cleanups.push(() => nav.remove());
+      }
+    }
+  }
+
+  // 4. Ensure .guide-part-topbar has back-to-course and back-to-part-1 links on both desktop & mobile
+  const wrapper = root.closest(".guide-part-wrapper");
+  const topbarInfo = wrapper?.querySelector(".guide-part-topbar .guide-part-info");
+  if (topbarInfo && partInfo && !topbarInfo.querySelector(".guide-part-back")) {
+    if (partInfo.prevPartPath) {
+      const partBack = document.createElement("a");
+      partBack.className = "guide-part-back guide-part-back--part";
+      partBack.dataset.autoCreated = "true";
+      partBack.setAttribute("href", partInfo.prevPartPath);
+      partBack.textContent = "← Part 1";
+      topbarInfo.insertBefore(partBack, topbarInfo.firstChild);
+      cleanups.push(() => partBack.remove());
+    }
+    const courseBack = document.createElement("a");
+    courseBack.className = "guide-part-back";
+    courseBack.dataset.autoCreated = "true";
+    courseBack.setAttribute("href", partInfo.coursePath);
+    courseBack.textContent = `← ${partInfo.courseTitle}`;
+    topbarInfo.insertBefore(courseBack, topbarInfo.firstChild);
+    cleanups.push(() => courseBack.remove());
+  }
+
+  return () => cleanups.forEach((fn) => fn());
+}
+
 function setupPinnedGuideNav(root) {
   const sidebar = root.querySelector(".sidebar");
   if (!sidebar) return () => {};
@@ -526,27 +774,32 @@ function setupPinnedGuideNav(root) {
 
     document.documentElement.style.setProperty("--sidebar-top", `${topOffset}px`);
 
-    sidebar.style.position = "fixed";
-    sidebar.style.top = `${topOffset}px`;
-    sidebar.style.left = "0";
-    sidebar.style.zIndex = "115";
-
     if (mobile) {
+      // Sticky in normal document flow on mobile so the sidebar pushes .main
+      // down naturally and NEVER overlaps inner module headers or lesson text.
+      sidebar.style.position = "sticky";
+      sidebar.style.top = `${topOffset}px`;
+      sidebar.style.left = "0";
       sidebar.style.right = "0";
       sidebar.style.bottom = "auto";
       sidebar.style.width = "100%";
       sidebar.style.height = "auto";
-      sidebar.style.maxHeight = "";
+      sidebar.style.maxHeight = "none";
       sidebar.style.borderRadius = "0";
-      spacer.style.display = "block";
-      spacer.style.height = `${Math.ceil(sidebar.getBoundingClientRect().height || 52)}px`;
+      sidebar.style.zIndex = "115";
+      spacer.style.display = "none";
+      spacer.style.height = "0";
     } else {
+      sidebar.style.position = "fixed";
+      sidebar.style.top = `${topOffset}px`;
+      sidebar.style.left = "0";
       sidebar.style.right = "auto";
       sidebar.style.bottom = "0";
       sidebar.style.width = "260px";
       sidebar.style.height = `calc(100vh - ${topOffset}px)`;
       sidebar.style.maxHeight = "none";
       sidebar.style.borderRadius = "0";
+      sidebar.style.zIndex = "115";
       spacer.style.display = "none";
       spacer.style.height = "0";
     }
@@ -976,8 +1229,14 @@ function StudyGuideShell({
     const wire = () => {
       if (cancelled || !rootRef.current) return;
       cleanups.forEach((cleanup) => cleanup());
+      const patternCleanup = ensureCoordinateTransformationsPattern(
+        rootRef.current,
+        partInfo,
+        title,
+      );
       renderLatex(rootRef.current);
       cleanups = [
+        patternCleanup,
         setupReadableAnchors(rootRef.current, () => scrollToExampleHash(rootRef.current)),
         ...setupMcqs(rootRef.current, {
           publishQuizToLeaderboard,
