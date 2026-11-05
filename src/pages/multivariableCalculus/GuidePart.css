@@ -28,6 +28,28 @@
   flex-wrap: wrap;
 }
 
+.guide-part-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.24rem 0.65rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--c-radius-pill);
+  background: var(--c-surface-2, var(--c-surface));
+  color: var(--c-text) !important;
+  font-size: 0.76rem;
+  font-weight: 650;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.guide-part-back:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent) !important;
+  background: var(--c-surface);
+}
+
 .guide-part-badge {
   background: var(--c-accent-strong) !important;
   border-radius: var(--c-radius-pill);
@@ -55,7 +77,7 @@
   }
 }
 
-@media (min-width: 861px) {
+@media (min-width: 921px) {
   .guide-part-wrapper .scb-wrap {
     margin-left: calc(var(--sw, 268px) + 2rem) !important;
     margin-right: 2rem !important;
