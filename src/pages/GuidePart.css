@@ -24,6 +24,27 @@
   flex-wrap: wrap;
 }
 
+.guide-part-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.24rem 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 99px;
+  background: rgba(15, 23, 42, 0.55);
+  color: #e2e8f0 !important;
+  font-size: 0.76rem;
+  font-weight: 650;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.guide-part-back:hover {
+  border-color: #38bdf8;
+  color: #38bdf8 !important;
+}
+
 .guide-part-badge {
   background: #0056D2 !important;
   border-radius: 99px;
@@ -60,7 +81,7 @@
   color: #cbd5e1 !important;
 }
 
-@media (min-width: 861px) {
+@media (min-width: 921px) {
   .guide-part-wrapper .scb-wrap {
     margin-left: calc(var(--sw, 260px) + 2rem) !important;
     margin-right: 2rem !important;
