@@ -165,9 +165,10 @@ function CourseHub() {
                   role="group"
                   aria-disabled="true"
                 >
-                  <div className="guide-card-tile">
-                    <div className="guide-card-icon">🔒</div>
-                  </div>
+                  <span className="guide-card-tile" aria-hidden="true">
+                    🔒
+                  </span>
+                  <div className="guide-card-icon">🔒</div>
                   <div className="guide-card-body">
                     <h3>{mod.title}</h3>
                     <span className="guide-card-meta">Locked</span>
@@ -177,6 +178,9 @@ function CourseHub() {
                       unlock the certification quiz.
                     </p>
                   </div>
+                  <span className="guide-card-chevron" aria-hidden="true">
+                    🔒
+                  </span>
                 </div>
               );
             }
@@ -189,6 +193,10 @@ function CourseHub() {
                 ? "Core · Required for Certificate"
                 : "Optional · Additional Depth"
               : null;
+            const tileIcon =
+              typeof mod.icon === "string" && mod.icon.length <= 3
+                ? mod.icon
+                : "✦";
 
             return (
               <Link
@@ -196,13 +204,14 @@ function CourseHub() {
                 key={mod.path}
                 to={mod.path}
               >
-                <div className="guide-card-tile">
-                  {mod.logo ? (
-                    <div className="guide-card-logo">{mod.logo}</div>
-                  ) : (
-                    <div className="guide-card-icon">{mod.icon || "✦"}</div>
-                  )}
-                </div>
+                <span className="guide-card-tile" aria-hidden="true">
+                  {tileIcon}
+                </span>
+                {mod.logo ? (
+                  <div className="guide-card-logo">{mod.logo}</div>
+                ) : (
+                  <div className="guide-card-icon">{mod.icon || "✦"}</div>
+                )}
                 <div className="guide-card-body">
                   <h3>{mod.title}</h3>
                   <span className="guide-card-meta">
@@ -211,7 +220,7 @@ function CourseHub() {
                   <p>{mod.description}</p>
                 </div>
                 <span className="guide-card-chevron" aria-hidden="true">
-                  →
+                  ›
                 </span>
               </Link>
             );
