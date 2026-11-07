@@ -773,3 +773,43 @@ html[data-site-theme] .back-to-top {
     bottom: 136px !important;
   }
 }
+
+
+/* ── 14. Clean Textbook PDF Export & Print Styles ────────────────────────── */
+html.pdf-exporting .sidebar,
+html.pdf-exporting .save-example-btn,
+html.pdf-exporting .mcq-progress-sidebar,
+html.pdf-exporting .guide-navigation,
+html.pdf-exporting .save-as-pdf-btn,
+html.pdf-exporting .back-to-top,
+html.pdf-exporting .cb-root {
+  display: none !important;
+}
+
+html.pdf-exporting .partial-derivatives-guide .main {
+  margin-left: 0 !important;
+  max-width: 880px !important;
+  padding: 2rem 2.25rem !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+@media print {
+  .site-header,
+  .guide-part-topbar,
+  .sidebar,
+  .save-example-btn,
+  .mcq-progress-sidebar,
+  .guide-navigation,
+  .save-as-pdf-btn,
+  .back-to-top,
+  .cb-root {
+    display: none !important;
+  }
+
+  .partial-derivatives-guide .main {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+}
