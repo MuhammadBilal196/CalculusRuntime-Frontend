@@ -1164,39 +1164,53 @@ function StudyGuideShell({
   }, [guidePath, Boolean(partInfo)]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSaveAsPDF = async () => {
-    const element = rootRef.current;
-    if (!element) return;
+    const root = rootRef.current;
+    if (!root) return;
+    const target = root.querySelector(".main") || root;
     setIsGeneratingPDF(true);
+    root.classList.add("pdf-exporting");
+    document.documentElement.classList.add("pdf-exporting");
     try {
+      const canvas = await html2canvas(target, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+        windowWidth: Math.max(target.scrollWidth, 960),
+        ignoreElements: (el) =>
+          el.classList?.contains("sidebar") ||
+          el.classList?.contains("save-example-btn") ||
+          el.classList?.contains("mcq-progress-sidebar") ||
+          el.classList?.contains("guide-navigation") ||
+          el.classList?.contains("save-as-pdf-btn"),
+      });
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const pageWidth = 210;
+      const pageHeight = 297;
+      const margin = 10;
+      const contentWidth = pageWidth - margin * 2;
+      const contentHeight = pageHeight - margin * 2;
+      const imgHeight = (canvas.height * contentWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = margin;
 
-    const canvas = await html2canvas(element, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: "#ffffff",
-    });
-    const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF("p", "mm", "a4");
-    const pageWidth = 210;
-    const pageHeight = 297;
-    const imgHeight = (canvas.height * pageWidth) / canvas.width;
-    let heightLeft = imgHeight;
-    let position = 0;
+      pdf.addImage(imgData, "PNG", margin, position, contentWidth, imgHeight);
+      heightLeft -= contentHeight;
 
-    pdf.addImage(imgData, "PNG", 0, position, pageWidth, imgHeight);
-    heightLeft -= pageHeight;
+      while (heightLeft > 0) {
+        position = margin + (heightLeft - imgHeight);
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", margin, position, contentWidth, imgHeight);
+        heightLeft -= contentHeight;
+      }
 
-    while (heightLeft > 0) {
-      position = heightLeft - imgHeight;
-      pdf.addPage();
-      pdf.addImage(imgData, "PNG", 0, position, pageWidth, imgHeight);
-      heightLeft -= pageHeight;
+      const fileName = title ? `${title}.pdf` : "study-guide.pdf";
+      pdf.save(fileName);
+    } finally {
+      root.classList.remove("pdf-exporting");
+      document.documentElement.classList.remove("pdf-exporting");
+      setIsGeneratingPDF(false);
     }
-
-    const fileName = title ? `${title}.pdf` : "study-guide.pdf";
-    pdf.save(fileName);
-  } finally {
-    setIsGeneratingPDF(false);
-  }
   };
 
   useEffect(() => {
